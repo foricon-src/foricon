@@ -22,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className={`${afacad.variable}`}>
+    <html lang='en' className={`${afacad.className}`}>
       <body>{children}</body>
     </html>
   );
