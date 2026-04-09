@@ -1,21 +1,6 @@
-import { Afacad } from 'next/font/google';
-import getLang from 'Com/get-lang';
+import GetLang from 'Com/get-lang';
 import './globals.css';
 import 'Com/utilities.js'
-
-// const geistSans = Geist({
-//   variable: '--font-geist-sans',
-//   subsets: ['latin'],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: '--font-geist-mono',
-//   subsets: ['latin'],
-// });
-const afacad = Afacad({
-    weight: 'variable',
-    subsets: ['latin', 'vietnamese'],
-});
 
 export const metadata = {
     title: 'Foricon',
@@ -25,8 +10,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang='en' className={`${afacad.className}`}>
+            <head>
+                <link href='//fonts.googleapis.com' rel='preconnect'/>
+                <link crossorigin='' href='//fonts.gstatic.com' rel='preconnect'/>
+                <link href='//fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&amp;family=Fira+Code:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=Kode+Mono:wght@400..700&amp;family=Nova+Mono&amp;family=Sono:wght,MONO@200..800,1&amp;family=Xanh+Mono:ital@0;1' rel='stylesheet'/>
+            </head>
             <body>{children}</body>
-            <getLang/>
+            <GetLang/>
         </html>
     );
 }
