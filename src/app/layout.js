@@ -2,7 +2,8 @@ import GetLang from 'Com/get-lang';
 import Image from 'next/image';
 import Script from 'next/script';
 import Link from 'next/link';
-import logo from 'Pub/foricon-f-2.png'
+import logo from 'Pub/foricon-f-2.png';
+import { useState } from 'react';
 import './globals.css';
 import 'Com/utilities.js';
 
@@ -12,6 +13,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+    const [ open, setOpen ] = useState(false);
     return (
         <html lang='en'>
             <head>
@@ -114,7 +116,7 @@ export default function RootLayout({ children }) {
                             <lang value='es'>Idiomas</lang>
                             <lang value='ru'>Языки</lang>
                         </li>
-                        <li className='chip bottom' onClick={() => toggle(this, qSelec(false, 'header > ul[name="all"]'))}>
+                        <li className='chip bottom' onClick={() => setOpen(!open)}>
                             <f-icon icon='bars' i-s='outline'></f-icon>
                             <lang value='en'>All</lang>
                             <lang value='vi'>Tất cả</lang>
@@ -134,7 +136,7 @@ export default function RootLayout({ children }) {
                             <span/>
                         </li>
                     </ul>
-                    <ul className='btn-list' name='all'>
+                    <ul className={`btn-list${open ? ' active' : ''}`} name='all'>
                         <li>Foricon Plus</li>
                         <li className='line'>
                             <lang value='en'>Home</lang>
