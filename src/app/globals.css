@@ -206,6 +206,334 @@ lang, :before, :after {
     --mns-ft-sz: .79rem;
 }
 
+ul.btn-list > li, f-option {
+    display: flex;
+    gap: 10px;
+    
+    :is(.vertical) > & > f-icon, &:is(f-option) > f-icon {
+        flex-shrink: 0;
+        width: var(--bn-li-icon-width);
+    }
+}
+
+:not(ul.list-layout, ol) > :not(li) > :is(ul.list-layout, ol) {
+    margin: 15px 0;
+}
+ul.list-layout, ol {
+    padding-left: 20px;
+}
+ul {
+    list-style: none;
+    
+    &.list-layout {
+        list-style: disc;
+        
+        li > & {
+            list-style: circle;
+        }
+        &::marker {
+            color: rgba(var(--text-color-rgb), .5);
+        }
+    }
+    &.btn-list {
+        display: flex;
+        position: relative;
+        gap: 5px;
+        
+        &:not(.vertical) {
+            flex-wrap: wrap;
+        }
+        &.line:before, > li.line:before {
+            content: '';
+            position: absolute;
+            width: 1px;
+            inset: 10px 0 10px -11px;
+            background-color: var(--dk-gray);
+        }
+        &.line {
+            &.vertical {
+                margin-top: 21px;
+            }
+            &:not(.vertical) {
+                margin-left: 21px;
+            }
+        }
+        &.vertical {
+            flex-direction: column;
+            
+            &.line:before, & > li.line:before {
+                height: 1px;
+                width: auto;
+                inset: -11px 10px 0;
+            }
+        }
+        > li {
+            user-select: none;
+            padding: var(--inner-spacing);
+            border-radius: var(--s-bdr-rad);
+            cursor: var(--cursor-pointer);
+            position: relative;
+            flex-shrink: 0;
+            
+            &:hover {
+                color: var(--title-color);
+                background-color: var(--lt-gray);
+                
+                :not(.line-active) > &.active {
+                    color: var(--main-color);
+                    background-color: var(--gray);
+                }
+            }
+            &:is(.chip, :has(> :is(f-icon, i):only-child)), #sidebar:not(.vertical) > & {
+                justify-content: center;
+                padding-left: 0;
+                padding-right: 0;
+                width: 47px;
+                
+                .small > & {
+                    width: 35px;
+                }
+                > :is(span, lang) {
+                    position: absolute;
+                    font-size: var(--s-ft-sz);
+                    background-color: var(--lt-gray);
+                    border-radius: var(--s-bdr-rad);
+                    padding: 2px 10px;
+                    border: 1px solid var(--gray);
+                    color: var(--title-color);
+                    pointer-events: none;
+                    width: max-content;
+                    line-height: var(--s-ln-hgt);
+                    z-index: 2;
+                }
+                &:not(:hover) > :is(span, lang) {
+                    opacity: 0;
+                    
+                    .top > & {
+                        translate: 0 5px;
+                    }
+                    .bottom > & {
+                        translate: 0 -5px;
+                    }
+                }
+                
+                &.top > :is(span, lang) {
+                    bottom: calc(100% + 10px);
+                }
+                &.bottom > :is(span, lang) {
+                    top: calc(100% + 10px);
+                }
+            }
+            :not(.vertical) > &:has(> ul.btn-list) {
+                &:before {
+                    content: '';
+                    height: 10px;
+                    position:
+                    absolute;
+                    inset: 100% 0 0 0;
+                    z-index: 1;
+                }
+                &:after {
+                    content: '\e0a2';
+                    font-family: 'Foricon Beta';
+                }
+                &:not(:hover):before, &:not(:hover) > ul.btn-list.vertical {
+                    pointer-events: none;
+                    opacity: 0;
+                    top: 100%;
+                }
+                > ul.btn-list.vertical {
+                    position: absolute;
+                    inset: calc(100% + 5px) 0 auto 0;
+                    padding: 5px;
+                    border-radius: var(--bdr-rad);
+                    background-color: var(--bg-blur);
+                    backdrop-filter: var(--bg-blur-px);
+                    z-index: 2;
+                    width: max-content;
+                    border: 1px solid var(--gray);
+                    cursor: var(--cursor-default);
+                    box-shadow: var(--xs-shadow);
+                    
+                    > li {
+                        margin-left: 0;
+                    }
+                }
+            }
+            &:not(.chip) > :is(span, lang) {
+                color: inherit;
+            }
+            &:not(:has(> ul.btn-list:hover)):active {
+                color: var(--title-color);
+                background-color: var(--gray);
+                
+                > f-icon, &:has(> ul.btn-list):after {
+                    scale: var(--btn-scale);
+                }
+            }
+            .small > & {
+                font-size: var(--s-ft-sz);
+                padding: var(--inner-spacing-s);
+                gap: 6px;
+                
+                *, :before {
+                    line-height: var(--s-ln-hgt);
+                }
+            }
+            .large > & {
+                padding: var(--spacing-xxsmall) var(--spacing-xsmall);
+                border-radius: var(--bdr-rad);
+                justify-content: space-between;
+                
+                &:after {
+                    content: '\e0ab';
+                    font-family: 'Foricon Beta';
+                }
+            }
+            .line-active > & {
+                --gap: 75%;
+                
+                &:after {
+                    content: '';
+                    background-color: var(--main-color);
+                    position: absolute;
+                    pointer-events: none;
+                    border-radius: 2px;
+                }
+                &:not(.active):after {
+                    opacity: 0;
+                }
+                :not(.vertical) > & {
+                    &:after {
+                        inset: auto 15px -8px;
+                        height: 4px;
+                    }
+                    :not(:has(> .active)) > &:not(.active):after {
+                        inset: auto calc(100% - 2px) -8px;
+                    }
+                    &.active:hover:after {
+                        left: 8px;
+                        right: 8px;
+                    }
+                    .top > &:after {
+                        bottom: unset;
+                        top: -8px;
+                    }
+                    .active ~ &:after {
+                        left: 0;
+                        right: var(--gap);
+                    }
+                    &:has(~ .active):after {
+                        left: var(--gap);
+                        right: 0;
+                    }
+                    .active ~ &:is(.chip, :has(> :is(f-icon, i):only-child)):after {
+                        right: calc(100% - 4px);
+                    }
+                    &:is(.chip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
+                        left: calc(100% - 4px);
+                    }
+                }
+                .vertical > & {
+                    &:after {
+                        inset: 14px 0 14px -8px;
+                        width: 4px;
+                    }
+                    :not(:has(> .active)) > &:not(.active):after {
+                        inset: calc(100% - 2px) 0 calc(100% - 2px) -8px;
+                    }
+                    &:hover:after {
+                        top: 10px;
+                        bottom: 10px;
+                    }
+                    .active ~ &:after {
+                        top: 0;
+                        bottom: var(--gap);
+                    }
+                    &:has(~ .active):after {
+                        top: var(--gap);
+                        bottom: 0;
+                    }
+                    .active ~ &:is(.chip, :has(> :is(f-icon, i):only-child)):after {
+                        bottom: calc(100% - 4px);
+                    }
+                    &:is(.chip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
+                        top: calc(100% - 4px);
+                    }
+                }
+            }
+            .darker > & {
+                background-color: var(--lt-gray);
+                
+                &:hover {
+                    background-color: var(--gray);
+                }
+                &:active {
+                    background-color: var(--dk-gray);
+                }
+            }
+            &[disabled]:has(> *) {
+                opacity: 1;
+                
+                > * {
+                    opacity: .5;
+                }
+            }
+            &.active {
+                .line-active > & {
+                    color: var(--title-color);
+                }
+                :not(.line-active) > & {
+                    color: var(--dk-main-color);
+                    background-color: var(--main-color);
+                    
+                    &:active {
+                        background-color: var(--dk-gray);
+                    }
+                }
+            }
+            &.line {
+                :not(.vertical) > & {
+                    margin-left: 16px;
+                }
+                .vertical > & {
+                    margin-top: 16px;
+                }
+            }
+            &.red {
+                color: var(--red) !important;
+            }
+            &.yellow {
+                color: var(--yellow) !important;
+            }
+            &.green {
+                color: var(--green) !important;
+            }
+            &.blue {
+                color: var(--blue) !important;
+            }
+            
+            > span.badge {
+                font-size: var(--s-ft-sz);
+                padding: 2px 5px;
+                border-radius: 8px;
+                background-color: var(--main-color);
+                color: var(--dk-main-color);
+                font-weight: bold;
+            }
+        }
+    }
+}
+ol:has(> li:nth-child(10)) {
+    padding-left: 30px;
+}
+ol:has(> li:nth-child(100)) {
+    padding-left: 40px;
+}
+ol > li::marker {
+    color: var(--title-color);
+}
+
 header {
     background:
         var(--bg-color)
@@ -258,7 +586,7 @@ header {
         height: 100%;
         gap: 5px;
         justify-content: center;
-                
+        
         > li > a {
             padding: 5px 15px;
             border-radius: var(--s-bdr-rad);
