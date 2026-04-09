@@ -2,18 +2,16 @@
 import { useEffect } from 'react';
 
 export default function getLang() {
-    useEffect(async () => {
+    useEffect(() => {
         let html = document.documentElement;
         let storedLang = localStorage.getItem('language');
+        let visited = sessionStorage.getItem('visited') == 'true';
         
         storedLang && html.setAttribute('lang', storedLang);
-        
-        let visited = sessionStorage.getItem('visited');
-        
-        if (!visited) {
+        !visited && (async () => {
             try {
                 let res = await(await fetch('https://ipinfo.io/json')).json();
-                
+
                 let lang = {
                     VN: 'vi', FR: 'fr', IT: 'it', KR: 'kr',
                     JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
@@ -28,7 +26,7 @@ export default function getLang() {
             catch (err) {
                 console.error('IP info error:', err)
             }
-        }
+        })()
     }, [])
     
     return null;
