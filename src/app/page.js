@@ -7,7 +7,7 @@ export default function Home() {
       <main className={styles.main}>
         <Image
           className={styles.logo}
-          src="Assets/foricon-f-favicon.png"
+          src="./assets/foricon-f-favicon.png"
           alt="Foricon logo"
           width={100}
           height={20}
