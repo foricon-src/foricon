@@ -31,24 +31,71 @@ export default function RootLayout({ children }) {
                         </Link>
                         <Link href='/changelog' name='version'>Beta 3.0</Link>
                     </div>
-                    <ul className='btn-list' name='center'>
+                    <ul name='center'>
                         <li>
-                            <lang value='en'>Home</lang>
-                            <lang value='vi'>Trang chủ</lang>
-                            <lang value='fr'>Page d&apos;accueil</lang>
-                            <lang value='it'>Pagina iniziale</lang>
-                            <lang value='kr'>홈페이지</lang>
-                            <lang value='ja'>ホームページ</lang>
-                            <lang value='de'>Startseite</lang>
-                            <lang value='nl'>Startpagina</lang>
-                            <lang value='dk'>Hjemmeside</lang>
-                            <lang value='pt'>Pagina inicial</lang>
-                            <lang value='es'>Pagina de inicio</lang>
-                            <lang value='ru'>Дом</lang>
+                            <Link href='/'>
+                                <lang value='en'>Home</lang>
+                                <lang value='vi'>Trang chủ</lang>
+                                <lang value='fr'>Page d&apos;accueil</lang>
+                                <lang value='it'>Pagina iniziale</lang>
+                                <lang value='kr'>홈페이지</lang>
+                                <lang value='ja'>ホームページ</lang>
+                                <lang value='de'>Startseite</lang>
+                                <lang value='nl'>Startpagina</lang>
+                                <lang value='dk'>Hjemmeside</lang>
+                                <lang value='pt'>Pagina inicial</lang>
+                                <lang value='es'>Pagina de inicio</lang>
+                                <lang value='ru'>Дом</lang>
+                            </Link>
                         </li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>
+                            <Link href='/search'>
+                                <lang value='en'>Search</lang>
+                                <lang value='vi'>Tìm kiếm</lang>
+                                <lang value='fr'>Recherche</lang>
+                                <lang value='it'>Ricerca</lang>
+                                <lang value='kr'>찾다</lang>
+                                <lang value='ja'>検索</lang>
+                                <lang value='de'>Suchen</lang>
+                                <lang value='nl'>Zoekopdracht</lang>
+                                <lang value='dk'>Søg</lang>
+                                <lang value='pt'>Procurar</lang>
+                                <lang value='es'>Buscar</lang>
+                                <lang value='ru'>Поиск</lang>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href='/'>
+                                <lang value='en'>Docs</lang>
+                                <lang value='vi'>Tài liệu</lang>
+                                <lang value='fr'>Documents</lang>
+                                <lang value='it'>Documenti</lang>
+                                <lang value='kr'>문서</lang>
+                                <lang value='ja'>ドキュメント</lang>
+                                <lang value='de'>Dokumente</lang>
+                                <lang value='nl'>Documenten</lang>
+                                <lang value='dk'>Dokumenter</lang>
+                                <lang value='pt'>Documentos</lang>
+                                <lang value='es'>Documentos</lang>
+                                <lang value='ru'>Документы</lang>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href='/'>
+                                <lang value='en'>Support</lang>
+                                <lang value='vi'>Hỗ trợ</lang>
+                                <lang value='fr'>Soutien</lang>
+                                <lang value='it'>Supporto</lang>
+                                <lang value='kr'>지원하다</lang>
+                                <lang value='ja'>サポート</lang>
+                                <lang value='de'>Unterstützung</lang>
+                                <lang value='nl'>Steun</lang>
+                                <lang value='dk'>Support</lang>
+                                <lang value='pt'>Apoiar</lang>
+                                <lang value='es'>Apoyo</lang>
+                                <lang value='ru'>Поддерживать</lang>
+                            </Link>
+                        </li>
                     </ul>
                     <ul className='btn-list' name='right'>
                         <li className='chip bottom'>
