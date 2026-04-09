@@ -1,6 +1,7 @@
 import GetLang from 'Com/get-lang';
+import Image from 'next/image';
 import './globals.css';
-import 'Com/utilities.js'
+import logo from 'Pub/foricon-f-2.png'
 
 export const metadata = {
     title: 'Foricon',
@@ -11,11 +12,64 @@ export default function RootLayout({ children }) {
     return (
         <html lang='en'>
             <head>
+                <script data-uid='ud4lP1mhq4XvynG7qUlcsAxi0Q02' src='//foricon-src.github.io/main/loader.js'/>
                 <link href='//fonts.googleapis.com' rel='preconnect'/>
-                <link crossorigin='' href='//fonts.gstatic.com' rel='preconnect'/>
-                <link href='//fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&amp;family=Fira+Code:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=Kode+Mono:wght@400..700&amp;family=Nova+Mono&amp;family=Sono:wght,MONO@200..800,1&amp;family=Xanh+Mono:ital@0;1' rel='stylesheet'/>
+                <link crossOrigin='' href='//fonts.gstatic.com' rel='preconnect'/>
+                <link href='//fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Kode+Mono:wght@400..700&family=Nova+Mono&family=Sono:wght,MONO@200..800,1&family=Xanh+Mono:ital@0;1' rel='stylesheet'/>
             </head>
-            <body>{children}</body>
+            <body>
+                <header>
+                    <Image src={logo}></Image>
+                    <span></span>
+                    <ul className='btn-list' name='center'>
+                        <li>
+                            <lang data-value='en'>Home</lang>
+                            <lang data-value='vi'>Trang chủ</lang>
+                            <lang data-value='fr'>Page d'accueil</lang>
+                            <lang data-value='it'>Pagina iniziale</lang>
+                            <lang data-value='kr'>홈페이지</lang>
+                            <lang data-value='ja'>ホームページ</lang>
+                            <lang data-value='de'>Startseite</lang>
+                            <lang data-value='nl'>Startpagina</lang>
+                            <lang data-value='dk'>Hjemmeside</lang>
+                            <lang data-value='pt'>Pagina inicial</lang>
+                            <lang data-value='es'>Pagina de inicio</lang>
+                            <lang data-value='ru'>Дом</lang>
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul className='btn-list' name='right'>
+                        <li><f-icon icon='language' i-s='outline'></f-icon></li>
+                        <li><f-icon icon='bars' i-s='outline'></f-icon></li>
+                        <li><f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon></li>
+                    </ul>
+                    <ul className='btn-list' name='all'>
+                        <li>Foricon Plus</li>
+                        <li className='line'>
+                            <lang data-value='en'>Home</lang>
+                            <lang data-value='vi'>Trang chủ</lang>
+                            <lang data-value='fr'>Page d'accueil</lang>
+                            <lang data-value='it'>Pagina iniziale</lang>
+                            <lang data-value='kr'>홈페이지</lang>
+                            <lang data-value='ja'>ホームページ</lang>
+                            <lang data-value='de'>Startseite</lang>
+                            <lang data-value='nl'>Startpagina</lang>
+                            <lang data-value='dk'>Hjemmeside</lang>
+                            <lang data-value='pt'>Pagina inicial</lang>
+                            <lang data-value='es'>Pagina de inicio</lang>
+                            <lang data-value='ru'>Дом</lang>
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </header>
+                {children}
+            </body>
             <GetLang/>
         </html>
     );
