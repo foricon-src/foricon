@@ -640,6 +640,7 @@ header {
         
         > a[name='logo'] {
             padding: 0;
+            background: none;
             
             > img {
                 height: 40px;
@@ -657,7 +658,6 @@ header {
     > ul[name='center'] {
         grid-area: center;
         display: flex;
-        height: 100%;
         gap: 5px;
         justify-content: center;
         
@@ -667,7 +667,6 @@ header {
             display: block;
             color: var(--text-color);
             position: relative;
-            background: none;
             
             &:hover {
                 color: var(--title-color);
@@ -715,7 +714,7 @@ header {
             align-items: center;
             
             &:active > f-icon[icon='bars'] {
-                scale: .75 1;
+                scale: .75 1 !important;
             }
             > img {
                 height: 27px;

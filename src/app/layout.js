@@ -2,8 +2,9 @@ import GetLang from 'Com/get-lang';
 import Image from 'next/image';
 import Script from 'next/script';
 import Link from 'next/link';
-import './globals.css';
 import logo from 'Pub/foricon-f-2.png'
+import './globals.css';
+import 'Com/utilities.js';
 
 export const metadata = {
     title: 'Foricon',
@@ -65,7 +66,7 @@ export default function RootLayout({ children }) {
                             </Link>
                         </li>
                         <li>
-                            <Link href='/'>
+                            <Link href='/docs'>
                                 <lang value='en'>Docs</lang>
                                 <lang value='vi'>Tài liệu</lang>
                                 <lang value='fr'>Documents</lang>
@@ -81,7 +82,7 @@ export default function RootLayout({ children }) {
                             </Link>
                         </li>
                         <li>
-                            <Link href='/'>
+                            <Link href='/support'>
                                 <lang value='en'>Support</lang>
                                 <lang value='vi'>Hỗ trợ</lang>
                                 <lang value='fr'>Soutien</lang>
@@ -113,7 +114,7 @@ export default function RootLayout({ children }) {
                             <lang value='es'>Idiomas</lang>
                             <lang value='ru'>Языки</lang>
                         </li>
-                        <li className='chip bottom'>
+                        <li className='chip bottom' onClick={() => toggle(this, qSelec(false, 'header > ul[name="all"]'))}>
                             <f-icon icon='bars' i-s='outline'></f-icon>
                             <lang value='en'>All</lang>
                             <lang value='vi'>Tất cả</lang>
