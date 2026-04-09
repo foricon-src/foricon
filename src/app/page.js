@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import favicon from 'Pub/foricon-f-favicon.png'
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <main className={styles.main}>
         <Image
           className={styles.logo}
-          src="./assets/foricon-f-favicon.png"
+          src={favicon}
           alt="Foricon logo"
           width={100}
           height={20}

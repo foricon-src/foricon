@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "Pages/*": ["/src/app/*"],
-      "Assets/*": ["/src/assets/*"],
+      "Pag/*": ["/src/app/*"],
+      "Pub/*": ["/src/public/*"],
     }
   }
 }
