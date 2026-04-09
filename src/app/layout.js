@@ -10,7 +10,7 @@ import "./globals.css";
 //   variable: "--font-geist-mono",
 //   subsets: ["latin"],
 // });
-let afacad = Afacad({
+const afacad = Afacad({
   weight: 'variable'
 })
 
