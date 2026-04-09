@@ -1,5 +1,6 @@
 import GetLang from 'Com/get-lang';
 import Image from 'next/image';
+import Script from 'next/script';
 import './globals.css';
 import logo from 'Pub/foricon-f-2.png'
 
@@ -12,14 +13,18 @@ export default function RootLayout({ children }) {
     return (
         <html lang='en'>
             <head>
-                <script data-uid='ud4lP1mhq4XvynG7qUlcsAxi0Q02' src='//foricon-src.github.io/main/loader.js'/>
+                <Script
+                    data-uid='ud4lP1mhq4XvynG7qUlcsAxi0Q02'
+                    src='//foricon-src.github.io/main/loader.js'
+                    strategy='afterInteractive'
+                />
                 <link href='//fonts.googleapis.com' rel='preconnect'/>
                 <link crossOrigin='' href='//fonts.gstatic.com' rel='preconnect'/>
                 <link href='//fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Kode+Mono:wght@400..700&family=Nova+Mono&family=Sono:wght,MONO@200..800,1&family=Xanh+Mono:ital@0;1' rel='stylesheet'/>
             </head>
             <body>
                 <header>
-                    <Image src={logo}></Image>
+                    <Image src={logo} alt='Foricon logo'></Image>
                     <span></span>
                     <ul className='btn-list' name='center'>
                         <li>
