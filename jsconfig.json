@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "Pages/*": ["/src/app/*"],
-      "CSS/*": ["/src/css/*"],
-      "Assets/*": ["/src/assets/*"],
+      "Pages/*": ["./src/app/*"],
+      "CSS/*": ["./src/css/*"],
+      "Assets/*": ["./src/assets/*"],
     }
   }
 }
