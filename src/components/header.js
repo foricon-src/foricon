@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-2.png';
 
-export default function () {
+export default function Header() {
     const [ open, setOpen ] = useState(false);
     return (
         <header>
