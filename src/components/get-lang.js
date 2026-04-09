@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 
-export default function getLang() {
+export default function GetLang() {
     useEffect(() => {
         let html = document.documentElement;
         let storedLang = localStorage.getItem('language');
