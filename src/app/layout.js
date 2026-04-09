@@ -1,6 +1,7 @@
 import GetLang from 'Com/get-lang';
 import Image from 'next/image';
 import Script from 'next/script';
+import Link from 'next/link';
 import './globals.css';
 import logo from 'Pub/foricon-f-2.png'
 
@@ -25,10 +26,10 @@ export default function RootLayout({ children }) {
                 />
                 <header>
                     <div>
-                        <a href='/' name='logo'>
+                        <Link href='/' name='logo'>
                             <Image src={logo} alt='Foricon logo'></Image>
-                        </a>
-                        <a href='/changelog' name='version'>Beta 3.0</a>
+                        </Link>
+                        <Link href='/changelog' name='version'>Beta 3.0</Link>
                     </div>
                     <ul className='btn-list' name='center'>
                         <li>
