@@ -24,8 +24,12 @@ export default function RootLayout({ children }) {
                     strategy='afterInteractive'
                 />
                 <header>
-                    <Image src={logo} alt='Foricon logo'></Image>
-                    <span></span>
+                    <div>
+                        <a href='/' name='logo'>
+                            <Image src={logo} alt='Foricon logo'></Image>
+                        </a>
+                        <a href='/changelog' name='version'>Beta 3.0</a>
+                    </div>
                     <ul className='btn-list' name='center'>
                         <li>
                             <lang value='en'>Home</lang>

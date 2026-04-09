@@ -229,7 +229,7 @@ header {
     grid-template-columns: 167px auto 167px;
     align-items: center;
     
-    > img {
+    > div {
         grid-area: left;
         display: grid;
         grid-template-columns: 18.84px max-content;
