@@ -11,7 +11,8 @@ import "./globals.css";
 //   subsets: ["latin"],
 // });
 const afacad = Afacad({
-  weight: 'variable'
+  weight: 'variable',
+  subsets: ['latin', 'vietnamese']
 })
 
 export const metadata = {
