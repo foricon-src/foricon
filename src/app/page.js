@@ -10,8 +10,6 @@ export default function Home() {
           className={styles.logo}
           src={favicon}
           alt="Foricon logo"
-          width={100}
-          height={20}
           priority
         />
         <div className={styles.intro}>
