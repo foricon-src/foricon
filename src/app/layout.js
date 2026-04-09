@@ -28,43 +28,74 @@ export default function RootLayout({ children }) {
                     <span></span>
                     <ul className='btn-list' name='center'>
                         <li>
-                            <lang data-value='en'>Home</lang>
-                            <lang data-value='vi'>Trang chủ</lang>
-                            <lang data-value='fr'>Page d&apos;accueil</lang>
-                            <lang data-value='it'>Pagina iniziale</lang>
-                            <lang data-value='kr'>홈페이지</lang>
-                            <lang data-value='ja'>ホームページ</lang>
-                            <lang data-value='de'>Startseite</lang>
-                            <lang data-value='nl'>Startpagina</lang>
-                            <lang data-value='dk'>Hjemmeside</lang>
-                            <lang data-value='pt'>Pagina inicial</lang>
-                            <lang data-value='es'>Pagina de inicio</lang>
-                            <lang data-value='ru'>Дом</lang>
+                            <lang value='en'>Home</lang>
+                            <lang value='vi'>Trang chủ</lang>
+                            <lang value='fr'>Page d&apos;accueil</lang>
+                            <lang value='it'>Pagina iniziale</lang>
+                            <lang value='kr'>홈페이지</lang>
+                            <lang value='ja'>ホームページ</lang>
+                            <lang value='de'>Startseite</lang>
+                            <lang value='nl'>Startpagina</lang>
+                            <lang value='dk'>Hjemmeside</lang>
+                            <lang value='pt'>Pagina inicial</lang>
+                            <lang value='es'>Pagina de inicio</lang>
+                            <lang value='ru'>Дом</lang>
                         </li>
                         <li></li>
                         <li></li>
                         <li></li>
                     </ul>
                     <ul className='btn-list' name='right'>
-                        <li><f-icon icon='language' i-s='outline'></f-icon></li>
-                        <li><f-icon icon='bars' i-s='outline'></f-icon></li>
-                        <li><f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon></li>
+                        <li className='chip bottom'>
+                            <f-icon icon='translate' i-s='outline'></f-icon>
+                            <lang value='en'>Languages</lang>
+                            <lang value='vi'>Ngôn ngữ</lang>
+                            <lang value='fr'>Langues</lang>
+                            <lang value='it'>Le lingue</lang>
+                            <lang value='kr'>언어</lang>
+                            <lang value='ja'>言語</lang>
+                            <lang value='de'>Sprachen</lang>
+                            <lang value='nl'>Talen</lang>
+                            <lang value='dk'>Sprog</lang>
+                            <lang value='pt'>Línguas</lang>
+                            <lang value='es'>Idiomas</lang>
+                            <lang value='ru'>Языки</lang>
+                        </li>
+                        <li className='chip bottom'>
+                            <f-icon icon='bars' i-s='outline'></f-icon>
+                            <lang value='en'>All</lang>
+                            <lang value='vi'>Tất cả</lang>
+                            <lang value='fr'>Tout</lang>
+                            <lang value='it'>Tutto</lang>
+                            <lang value='kr'>모두</lang>
+                            <lang value='ja'>全て</lang>
+                            <lang value='de'>Alle</lang>
+                            <lang value='nl'>Alle</lang>
+                            <lang value='dk'>Alle</lang>
+                            <lang value='pt'>Tudo</lang>
+                            <lang value='es'>Todo</lang>
+                            <lang value='ru'>Все</lang>
+                        </li>
+                        <li className='chip bottom line'>
+                            <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>
+                            <span/>
+                        </li>
                     </ul>
                     <ul className='btn-list' name='all'>
                         <li>Foricon Plus</li>
                         <li className='line'>
-                            <lang data-value='en'>Home</lang>
-                            <lang data-value='vi'>Trang chủ</lang>
-                            <lang data-value='fr'>Page d&apos;accueil</lang>
-                            <lang data-value='it'>Pagina iniziale</lang>
-                            <lang data-value='kr'>홈페이지</lang>
-                            <lang data-value='ja'>ホームページ</lang>
-                            <lang data-value='de'>Startseite</lang>
-                            <lang data-value='nl'>Startpagina</lang>
-                            <lang data-value='dk'>Hjemmeside</lang>
-                            <lang data-value='pt'>Pagina inicial</lang>
-                            <lang data-value='es'>Pagina de inicio</lang>
-                            <lang data-value='ru'>Дом</lang>
+                            <lang value='en'>Home</lang>
+                            <lang value='vi'>Trang chủ</lang>
+                            <lang value='fr'>Page d&apos;accueil</lang>
+                            <lang value='it'>Pagina iniziale</lang>
+                            <lang value='kr'>홈페이지</lang>
+                            <lang value='ja'>ホームページ</lang>
+                            <lang value='de'>Startseite</lang>
+                            <lang value='nl'>Startpagina</lang>
+                            <lang value='dk'>Hjemmeside</lang>
+                            <lang value='pt'>Pagina inicial</lang>
+                            <lang value='es'>Pagina de inicio</lang>
+                            <lang value='ru'>Дом</lang>
                         </li>
                         <li></li>
                         <li></li>
