@@ -7,8 +7,8 @@ export default function Home() {
       <main className={styles.main}>
         <Image
           className={styles.logo}
-          src="./assets/foricon-f-favicon-png"
-          alt="FOricon logo"
+          src="Assets/foricon-f-favicon.png"
+          alt="Foricon logo"
           width={100}
           height={20}
           priority
