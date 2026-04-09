@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang='en' className={`${afacad.className}`}>
+        <html lang='en'>
             <head>
                 <link href='//fonts.googleapis.com' rel='preconnect'/>
                 <link crossorigin='' href='//fonts.gstatic.com' rel='preconnect'/>
