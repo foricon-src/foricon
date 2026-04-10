@@ -1657,6 +1657,16 @@ div.message.offline:before {
     background-color: var(--dk-bg-color);
 }
 
+.outer-corner:before {
+    content: '';
+    width: var(--bdr-rad);
+    aspect-ratio: 1/1;
+    background-image: radial-gradient(circle at bottom left, transparent var(--bdr-rad), var(--bg-color) var(--bdr-rad));
+    position: absolute;
+    right: 0;
+    bottom: calc(-1 * var(--bdr-rad));
+}
+
 header {
     background:
     var(--bg-color)
