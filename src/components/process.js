@@ -9,8 +9,15 @@ import 'Com/utilities'
 
 export default function Process() {
     useEffect(() => (async () => {
-        let html = document.documentElement;
+        let { body, documentElement: html } = document;
         let visited = sessionStorage.getItem('visited') == 'true';
+        let theme = localStorage.getItem('theme');
+
+        (
+            theme == 'dark'
+            ||
+            theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
+        ) && body.classList.add('dark');
         
         language = localStorage.getItem('language');
         country = localStorage.getItem('country');

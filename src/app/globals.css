@@ -1263,6 +1263,36 @@ f-player {
     }
 }
 
+span, p {
+    color: var(--text-color);
+}
+p {
+    margin: 15px 0;
+}
+span {
+    &.small-code, &.key {
+        padding: 2px 5px;
+        border-radius: 5px;
+        font-size: var(--mns-ft-sz);
+    }
+    &.small-code {
+        font-family: var(--mns-ft);
+        color: var(--title-color);
+        background-color: var(--dk-gray);
+    }
+    &.element {
+        &:before {
+            content: '<';
+        }
+        &:after {
+            content: '>';
+        }
+    }
+    &.key {
+        border: 1px solid var(--text-color);
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: var(--title-color);
 }
@@ -1623,6 +1653,7 @@ header {
             
             > img {
                 height: 40px;
+                width: unset;
                 display: block;
             }
         }

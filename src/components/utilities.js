@@ -803,6 +803,11 @@ globalThis.qSelec = (all, param1, param2) => {
 globalThis.elemById = id => {
     return document.getElementById(id);
 }
+globalThis.toggleTheme = () => {
+    body.classList.toggle('dark');
+    toggle(li);
+    return localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+} 
 globalThis.getDateObj = (date, options) => {
     options?.isUTC && (date.timezone = 0);
     date = date

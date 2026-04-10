@@ -1,6 +1,7 @@
 import Process from 'Com/process';
 import Script from 'next/script';
 import Header from 'Com/header';
+import Image from 'next/image';
 import './globals.css';
 
 export const metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
                     strategy='afterInteractive'
                 />
                 <div id='loading'>
-                    <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYgDdhGLSs3mBT3pnVFO51gd7azcbZgGYkc-2az3pyMx1rq6CTlEZDrTjf2tKNC8YZqefBM5xWoUi_st2OOkYdjrzvVlaEf1JV22WE2t8CFDEnSU_dC-ukYMQqg2LY34vwnUjp0nNT9Zi1o0HdtepkzUU4MHnASM25C5V5os-GUDMPCscMM30IcmxKuvw/s1600/loading-b2.gif' alt='Foricon loading logo'/>
+                    <Image src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYgDdhGLSs3mBT3pnVFO51gd7azcbZgGYkc-2az3pyMx1rq6CTlEZDrTjf2tKNC8YZqefBM5xWoUi_st2OOkYdjrzvVlaEf1JV22WE2t8CFDEnSU_dC-ukYMQqg2LY34vwnUjp0nNT9Zi1o0HdtepkzUU4MHnASM25C5V5os-GUDMPCscMM30IcmxKuvw/s1600/loading-b2.gif' alt='Foricon loading logo'/>
                 </div>
                 <Header/>
                 {children}

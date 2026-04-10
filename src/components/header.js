@@ -133,11 +133,68 @@ export default function Header() {
                     <lang value='es'>Pagina de inicio</lang>
                     <lang value='ru'>Дом</lang>
                 </li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>
+                    <lang value='en'>Search</lang>
+                    <lang value='vi'>Tìm kiếm</lang>
+                    <lang value='fr'>Recherche</lang>
+                    <lang value='it'>Ricerca</lang>
+                    <lang value='kr'>찾다</lang>
+                    <lang value='ja'>検索</lang>
+                    <lang value='de'>Suchen</lang>
+                    <lang value='nl'>Zoekopdracht</lang>
+                    <lang value='dk'>Søg</lang>
+                    <lang value='pt'>Procurar</lang>
+                    <lang value='es'>Buscar</lang>
+                    <lang value='ru'>Поиск</lang>
+                </li>
+                <li>
+                    <lang value='en'>Docs</lang>
+                    <lang value='vi'>Tài liệu</lang>
+                    <lang value='fr'>Documents</lang>
+                    <lang value='it'>Documenti</lang>
+                    <lang value='kr'>문서</lang>
+                    <lang value='ja'>ドキュメント</lang>
+                    <lang value='de'>Dokumente</lang>
+                    <lang value='nl'>Documenten</lang>
+                    <lang value='dk'>Dokumenter</lang>
+                    <lang value='pt'>Documentos</lang>
+                    <lang value='es'>Documentos</lang>
+                    <lang value='ru'>Документы</lang>
+                </li>
+                <li>
+                    <lang value='en'>Support</lang>
+                    <lang value='vi'>Hỗ trợ</lang>
+                    <lang value='fr'>Soutien</lang>
+                    <lang value='it'>Supporto</lang>
+                    <lang value='kr'>지원하다</lang>
+                    <lang value='ja'>サポート</lang>
+                    <lang value='de'>Unterstützung</lang>
+                    <lang value='nl'>Steun</lang>
+                    <lang value='dk'>Support</lang>
+                    <lang value='pt'>Apoiar</lang>
+                    <lang value='es'>Apoyo</lang>
+                    <lang value='ru'>Поддерживать</lang>
+                </li>
+                <li>Fotorno</li>
+                <li>Hub</li>
+                <li>Media</li>
+                <li>Music</li>
+                <li name='dark-toggle' onClick={toggleTheme}>
+                    <div/>
+                    <lang value='en'>Dark mode</lang>
+                    <lang value='vi'>Chế độ tối</lang>
+                    <lang value='fr'>Mode sombre</lang>
+                    <lang value='it'>Modalità scura</lang>
+                    <lang value='kr'>다크 모드</lang>
+                    <lang value='ja'>ダークモード</lang>
+                    <lang value='de'>Dunkler Modus</lang>
+                    <lang value='nl'>Donkere modus</lang>
+                    <lang value='dk'>Mørk tilstand</lang>
+                    <lang value='pt'>Modo escuro</lang>
+                    <lang value='es'>Modo oscuro</lang>
+                    <lang value='ru'>Темный режим</lang>
+                    (<span class='key'>Ctrl</span> + <span class='key'>B</span>)
+                </li>
             </ul>
         </header>
     )
