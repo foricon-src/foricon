@@ -1,7 +1,7 @@
 globalThis.webData = {
     isBeta: true,
     verNum: '3.0',
-    verFull: (this.isBeta ? 'Beta ' : '') + verNum,
+    verFull: (this.isBeta ? 'Beta ' : '') + this.verNum,
     icons: [],
     iconsB2: [],
     categories: {
