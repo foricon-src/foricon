@@ -2,7 +2,6 @@ import GetLang from 'Com/get-lang';
 import Script from 'next/script';
 import Header from 'Com/header';
 import './globals.css';
-import 'Com/utilities';
 
 export const metadata = {
     title: 'Foricon',
