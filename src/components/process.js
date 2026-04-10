@@ -3,7 +3,9 @@
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
+import { get, ref } from 'firebase/database';
 import { auth, dbFirestore } from './firebase';
+import 'Com/utilities'
 
 export default function Process() {
     useEffect(() => (async () => {
@@ -31,20 +33,20 @@ export default function Process() {
             console.error('IP info error:', err)
         }
         
-        document.querySelectorAll('lang').forEach(
+        qSelec(true, 'lang').forEach(
             each => each.getAttribute('value') != html.lang && each.remove()
         )
         onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
             let admin;
             let { body } = document;
-            
+            console.log('get')
             if (res) {
                 user = res;
                 let d = await getDoc(doc(dbFirestore, 'users', user.uid));
                 user.doc = d.data();
                 
-                document.querySelectorAll('.signup').forEach(each => each.remove());
+                qSelec(true, '.signup').forEach(each => each.remove());
                 if (user.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
                     document.addEventListener('keydown', ({ ctrlKey, key }) => {
                         ctrlKey && key == '/' && location.pathname != '/p/management-center.html' && !document.activeElement.matches('textarea, input') &&
