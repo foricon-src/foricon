@@ -1263,6 +1263,43 @@ f-player {
     }
 }
 
+::-webkit-scrollbar {
+    width: 16px;
+}
+::-webkit-scrollbar, ::-webkit-scrollbar-corner {
+    background-color: var(--bg-color);
+}
+:not(body)::-webkit-scrollbar, ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+    border: 4px solid var(--bg-color);
+    background-color: var(--lt-gray);
+}
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover,
+::-webkit-scrollbar-button:single-button:vertical:increment:hover,
+::-webkit-scrollbar-button:single-button:horizontal:decrement:hover,
+::-webkit-scrollbar-button:single-button:horizontal:increment:hover {
+    background-color: var(--gray);
+}
+::-webkit-scrollbar-thumb:active,
+::-webkit-scrollbar-button:single-button:vertical:decrement:active,
+::-webkit-scrollbar-button:single-button:vertical:increment:active,
+::-webkit-scrollbar-button:single-button:horizontal:decrement:active,
+::-webkit-scrollbar-button:single-button:horizontal:increment:active {
+    background-color: var(--main-color);
+}
+::-webkit-scrollbar-button:single-button:vertical:decrement,
+::-webkit-scrollbar-button:single-button:vertical:increment,
+::-webkit-scrollbar-button:single-button:horizontal:decrement,
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+    border: 4px solid var(--bg-color);
+    border-radius: 50%;
+    background-color: var(--lt-gray);
+    height: 16px;
+}
+
 span, p {
     color: var(--text-color);
 }
