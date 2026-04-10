@@ -1,6 +1,7 @@
 import Process from 'Com/process';
 import Script from 'next/script';
 import Header from 'Com/header';
+import Image from 'next/image';
 import './globals.css';
 
 export const metadata = {
