@@ -3,6 +3,7 @@
         "baseUrl": ".",
         "paths": {
             "Pag/*": ["src/app/*"],
+            "Api/*": ["Pag/api/*"],
             "Ass/*": ["src/assets/*"],
             "Com/*": ["src/components/*"]
         }

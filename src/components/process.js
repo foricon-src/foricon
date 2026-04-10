@@ -85,7 +85,7 @@ export default function Process() {
             let locked = (await get(ref(db, 'locked'))).val();
             let admin;
             let { body } = document;
-            console.log('get')
+            
             if (res) {
                 user = res;
                 let d = await getDoc(doc(dbFirestore, 'users', user.uid));
