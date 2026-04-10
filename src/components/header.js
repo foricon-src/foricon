@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Ass/foricon-f-2.png';
 import 'Com/utilities';
@@ -12,7 +11,7 @@ export default function Header() {
         <header>
             <div>
                 <Link href='/' name='logo'>
-                    <Image src={logo} alt='Foricon logo'></Image>
+                    <img src={logo} alt='Foricon logo'/>
                 </Link>
                 <Link href='/changelog' name='version'>{webData.verFull}</Link>
             </div>

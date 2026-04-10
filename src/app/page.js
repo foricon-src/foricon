@@ -7,7 +7,7 @@ import 'Com/utilities';
 
 export default function Home() {
     return (
-        <div className='section' itemID='hero'>
+        <div className='section' id='hero'>
             <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBX39PGrjfEdpF2RTkpAaKi84zc4JJ5cs7MzKgtnPH6jepJLRGh8zTwACp0VH2Dt5dj7AZH39t4pvfY69Fc8yt_6W2Ya0iwT432qMJURupVCcq6ZHAPAjaJO85Dw8Gj2LppRLBKkJYUTbq6yAFFRc2ezL66KkHDXR0ksoDroknEakKo0PlBODWcq3aXCc/s1600/foricon-f.png'/>
             <a href='/p/new-changelog.html'>
                 <f-icon i-s='outline' icon='hashtag'/>{webData.verFull}

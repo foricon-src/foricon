@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { getDoc, doc } from 'firebase/firestore';
+import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from './firebase';
 import 'Com/utilities'
@@ -10,32 +10,70 @@ import 'Com/utilities'
 export default function Process() {
     useEffect(() => (async () => {
         let html = document.documentElement;
-        let storedLang = localStorage.getItem('language');
         let visited = sessionStorage.getItem('visited') == 'true';
         
-        storedLang && (html.lang = storedLang);
-        if (!visited)
-            try {
+        language = localStorage.getItem('language');
+        country = localStorage.getItem('country');
+        
+        if (!visited) {
             let res = await(await fetch('https://ipinfo.io/json')).json();
+            country = res.country;
             
-            let lang = {
+            language = {
                 VN: 'vi', FR: 'fr', IT: 'it', KR: 'kr',
                 JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
                 PT: 'pt', ES: 'es', RU: 'ru',
-            }[res.country] || 'en';
+            }[country] || 'en';
             
-            html.lang = lang;
-            
-            localStorage.setItem('language', lang);
+            localStorage.setItem('language', language);
+            localStorage.setItem('country', country);
             sessionStorage.setItem('visited', true);
+            
+            if (!['14.187', '113.23', '27.2', '118.69'].some(i => ip.startsWith(i))) {
+                let { userAgent } = navigator;
+                let browserName =
+                    userAgent.indexOf('OPR') + 1 ? 'Opera' :
+                    userAgent.indexOf('Edg') + 1 ? 'Microsoft Edge' :
+                    userAgent.indexOf('MSIE') + 1 ? 'Microsoft Internet Explorer' :
+                    userAgent.indexOf('Chrome') + 1 ? 'Chrome' :
+                    userAgent.indexOf('Safari') + 1 ? 'Safari' :
+                    userAgent.indexOf('Firefox') + 1 ? 'Firefox' : 'Other';
+                
+                let date = new Date();
+                let today = formatDate({
+                    day: date.getUTCDate(),
+                    month: date.getUTCMonth(),
+                    year: date.getUTCFullYear(),
+                }, 'en');
+                let stats = (await getDoc(doc(dbFirestore, 'statistics', 'item'))).data();
+                stats.visits[today] ||= {
+                    browsers: {},
+                    countries: {},
+                }
+                
+                function update(obj, key) {
+                    obj[key] = (obj[key] || 0) + 1;
+                }
+                let { browsers, countries } = stats.visits[today];
+                update(browsers, browserName);
+                update(countries, res.country);
+                
+                await setDoc(doc(dbFirestore, 'statistics', 'item'), stats);
+            }
         }
-        catch (err) {
-            console.error('IP info error:', err)
-        }
+        html.lang = language;
         
-        qSelec(true, 'lang').forEach(
-            each => each.getAttribute('value') != html.lang && each.remove()
-        )
+        qSelec(true, '*').forEach(each => {
+            each.mathes('lang') && each.getAttribute('value') != html.lang && each.remove();
+            [...each.attributes].forEach(attr => {
+                let { name, value } = attr;
+                if (name.startsWith('lang:')) {
+                    let [ lang, attr ] = name.slice(5).split('-');
+                    lang == language && each.setAttribute(attr, value);
+                    each.removeAttribute(name);
+                }
+            })
+        })
         onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
             let admin;
@@ -66,7 +104,7 @@ export default function Process() {
             //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
             // }
         })
-
+        
         while (user == null || user && !user.doc/* || !foriconPackageIsLoaded*/) await wait();
         let loading = elemById('loading');
         loading.style.opacity = '0';

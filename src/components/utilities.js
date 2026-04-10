@@ -670,6 +670,8 @@ globalThis.webData = {
     }
 }
 globalThis.user = null;
+globalThis.language = null;
+globalThis.country = null;
 
 /**
 * Appends pairs of keys and values to a specific object
@@ -800,4 +802,135 @@ globalThis.qSelec = (all, param1, param2) => {
 */
 globalThis.elemById = id => {
     return document.getElementById(id);
+}
+globalThis.getDateObj = (date, options) => {
+    options?.isUTC && (date.timezone = 0);
+    date = date
+        ? options?.syncToDate
+            ? syncDate(date)
+            : date
+        : new Date();
+    
+    let obj = {
+        day: date.getDate(),
+        month: date.getMonth(),
+        year: date.getFullYear(),
+        timezone,
+    }
+    if (options?.detailed) {
+        obj.hours = date.getHours();
+        obj.minutes = date.getMinutes();
+        obj.seconds = date.getSeconds();
+    }
+    return obj;
+}
+globalThis.parseDate = date => {
+    return new Date(date.year, date.month, date.day, date.hours || 0, date.minutes || 0, date.seconds || 0);
+}
+globalThis.syncDate = date => {
+    let tz = date.timezone;
+    date = date.getHours ? date : new Date(date.year, date.month, date.day, date.hours || 0, date.minutes || 0, date.seconds || 0);
+    date.setHours(date.getHours() + tz);
+    date.setHours(date.getHours() - timezone);
+    return date;
+}
+globalThis.formatDate = (obj, lang = language) => {
+    let { seconds, minutes, hours, day, month, year } = obj;
+    let string;
+    
+    hours = hours != undefined
+        ? lang == 'ja'
+            ? `${hours}時`
+            : hours < 10
+                ? `0${hours}`
+                : `${hours}`
+        : '';
+    minutes = minutes != undefined
+        ? lang == 'ja'
+            ? `${minutes}分`
+            : minutes < 10
+                ? `:0${minutes}`
+                : `:${minutes}`
+        : '';
+    seconds = seconds != undefined
+        ? lang == 'ja'
+            ? `${seconds}秒`
+            : seconds < 10
+                ? `:0${seconds}`
+                : `:${seconds}`
+        : '';
+    
+    let time = `${hours}${minutes}${seconds}`;
+    let currentMonth = {
+        en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+        it: ['gennaio', 'febbraio', '&#176; marzo', 'aprile', '&#176; maggio', 'giugno', '&#176; luglio', '&#176; agosto', 'settembre', 'ottobre', 'novembre', '&#176; dicembre'],
+        de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        nl: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+        dk: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'],
+        pt: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+        es: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+        ru: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
+    }[lang]?.[month];
+    
+    string =
+        lang == 'vi' ? `${day} tháng ${++month}, ${year}` :
+        lang == 'kr' ? `${year}월 ${++month}년 ${day}일` :
+        lang == 'ja' ? `${year}年${++month}月${day}日` :
+        lang == 'de' || lang == 'dk' ? `${day}. ${currentMonth}, ${year}` :
+        lang == 'pt' || lang == 'es' ? `${day} de ${currentMonth} de ${year}` :
+        lang == 'ru' ? `${day} ${currentMonth} ${year} г.` :
+        `${day} ${currentMonth}, ${year}`;
+    
+    string = lang == 'kr' || lang == 'ja'
+        ? string + (time ? ` ${time}` : '')
+        : (time ? `${time}, ` : '') + string;
+    
+    return string;
+}
+globalThis.formatTime = time => {
+    let seconds = Math.floor(time % 60);
+    let minutes = Math.floor(time / 60) % 60;
+    let hours = Math.floor(time / 3600);
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    
+    if (hours == 0) {return `${minutes}:${seconds}`}
+    return `${hours}:${minutes}:${seconds}`;
+}
+globalThis.timeDiff = obj => {
+    let now = new Date();
+    let past = obj.year ? parseDate(obj) : obj;
+    let elapsed = now - past;
+    
+    let msPerSecond = 1000;
+    let msPerMinute = msPerSecond * 60;
+    let msPerHour = msPerMinute * 60;
+    let msPerDay = msPerHour * 24;
+    let msPerWeek = msPerDay * 7;
+    let msPerMonth = msPerDay * 365 / 12;
+    let msPerYear = msPerDay * 365;
+    
+    let text = {
+        en: [' seconds ago', ' minutes ago', ' hours ago', ' days ago', ' weeks ago', ' months ago', ' years ago'],
+        vi: [' giây trước', ' phút trước', ' giờ trước', ' ngày trước', ' tuần trước', ' tháng trước', ' năm trước'],
+        fr: [' secondes avant', ' minutes avant', ' heures avant', ' jours avant', ' semaines avant', ' mois avant', ' années avant'],
+        it: [' secondi fa', ' minuti fa', ' ore fa', ' giorni fa', ' settimane fa', ' mesi fa', ' anni fa'],
+        kr: [' 초 전', ' 분 전', ' 시간 전', ' 일 전', ' 주 전', ' 개월 전', ' 년 전'],
+        ja: [' 秒前', ' 分前', ' 時間前', ' 日前', ' 週間前', ' ヶ月前', ' 年前'],
+        de: [' Sekunden vor', ' Minuten vor', ' Stunden vor', ' Tagen vor', ' Wochen vor', ' Monaten vor', ' Jahren vor'],
+        nl: [' seconden geleden', ' minuten geleden', ' uren geleden', ' dagen geleden', ' weken geleden', ' maanden geleden', ' jaren geleden'],
+        dk: [' sekunder siden', ' minutter siden', ' timer siden', ' dage siden', ' uger siden', ' måneder siden', ' år siden'],
+        pt: [' segundos atrás', ' minutos atrás', ' horas atrás', ' dias atrás', ' semanas atrás', ' meses atrás', ' anos atrás'],
+        es: [' segundos atrás', ' minutos atrás', ' horas atrás', ' días atrás', ' semanas atrás', ' meses atrás', ' años atrás'],
+        ru: [' секунд назад', ' минут назад', ' часов назад', ' дней назад', ' недель назад', ' месяцев назад', ' лет назад']
+    }[language];
+
+    return elapsed < msPerMinute ? Math.floor(elapsed / msPerSecond) + text[0] :
+           elapsed < msPerHour ? Math.floor(elapsed / msPerMinute) + text[1] :
+           elapsed < msPerDay ? Math.floor(elapsed / msPerHour) + text[2] :
+           elapsed < msPerWeek ? Math.floor(elapsed / msPerDay) + text[3] :
+           elapsed < msPerMonth ? Math.floor(elapsed / msPerWeek) + text[4] :
+           elapsed < msPerYear ? Math.floor(elapsed / msPerMonth) + text[5] :
+           Math.floor(elapsed / msPerYear) + text[6];
 }

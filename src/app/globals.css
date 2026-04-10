@@ -1623,7 +1623,6 @@ header {
             
             > img {
                 height: 40px;
-                width: unset;
                 display: block;
             }
         }
