@@ -1,7 +1,5 @@
-export function GET(req, res) {
-    let { uid } = req.params;
-    res.setHeader('Content-Type', 'application/javascript');
-    res.send(`
+export function GET(_, { params: { uid }}) {
+    return new Response(`
         const { log, warn, error } = console;
         const uid = ${uid};
         let foriconPackageIsLoadded = false;
@@ -454,5 +452,7 @@ export function GET(req, res) {
                 error('[Foricon Package] An error occurred:', err);
             }
         })()
-    `)
+    `, {
+        header: { 'Content-Type': 'application/javascript' }
+    })
 }
