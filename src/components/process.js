@@ -64,7 +64,7 @@ export default function Process() {
         html.lang = language;
         
         qSelec(true, '*').forEach(each => {
-            each.mathes('lang') && each.getAttribute('value') != html.lang && each.remove();
+            each.matches('lang') && each.getAttribute('value') != html.lang && each.remove();
             [...each.attributes].forEach(attr => {
                 let { name, value } = attr;
                 if (name.startsWith('lang:')) {
