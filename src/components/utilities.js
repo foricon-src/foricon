@@ -1,4 +1,4 @@
-export const webData = {
+globalThis.webData = {
     isBeta: true,
     verNum: '3.0',
     get verFull() {
@@ -675,7 +675,7 @@ export const webData = {
 * @param {Object} target - Object to be appended
 * @param {Object} data - Data to append
 */
-export const appendData = (target, data) => {
+globalThis.appendData = (target, data) => {
     for (let key in data)
         target[key] = data[key];
 }
@@ -683,14 +683,14 @@ export const appendData = (target, data) => {
 * Waits for a while before continuing the task
 * @param {number} s - Seconds
 */
-export const wait = (s) => {
+globalThis.wait = (s) => {
     return new Promise(resolve => setTimeout(resolve, s * 1000));
 }
 /**
 * Makes element(s) to be in active state
 * @param {HTMLElement} elems - Element(s) to activate
 */
-export const activate = (...elems) => {
+globalThis.activate = (...elems) => {
     let { body } = document;
     elems.forEach(elem => {
         if (elem.classList.contains('modal') && !document.querySelector('.modal.active')) {
@@ -709,7 +709,7 @@ export const activate = (...elems) => {
 * Removes active state from element(s)
 * @param {HTMLElement} elems - Element(s) to inactivate
 */
-export const inactivate = (...elems) => {
+globalThis.inactivate = (...elems) => {
     let { body } = document;
     elems.forEach(elem => {
         let html = document.documentElement;
@@ -727,14 +727,14 @@ export const inactivate = (...elems) => {
 * @param {HTMLElement} elem - Element to check
 * @returns {Boolean} Boolean
 */
-export const isActive = elem => {
+globalThis.isActive = elem => {
     return elem.classList.contains('active');
 }
 /**
 * Toggles active state of elements
 * @param {HTMLElement} elems - Element(s) to toggle
 */
-export const toggle = (...elems) => {
+globalThis.toggle = (...elems) => {
     elems.forEach(
         elem => isActive(elem) ? inactivate(elem) : activate(elem)
     )
@@ -743,7 +743,7 @@ export const toggle = (...elems) => {
 * Makes elements unclickable
 * @param {HTMLElement} elems - Element(s) to disable
 */
-export const disable = (...elems) => {
+globalThis.disable = (...elems) => {
     elems.forEach(elem => {
         elem.setAttribute('disabled', '');
         querySelec(elem, ':focus')?.blur();
@@ -753,7 +753,7 @@ export const disable = (...elems) => {
 * Makes elements clickable again
 * @param {HTMLElement} elems - Element(s) to enable
 */
-export const enable = (...elems) => {
+globalThis.enable = (...elems) => {
     elems.forEach(elem => {
         elem.removeAttribute('disabled');
     })
@@ -763,21 +763,21 @@ export const enable = (...elems) => {
 * @param {HTMLElement} elem - Element to check
 * @returns {Boolean} Boolean
 */
-export const isEnabled = (elem) => {
+globalThis.isEnabled = (elem) => {
     return elem.getAttribute('disabled') == undefined;
 }
 /**
 * Removes all children of element(s)
 * @param {HTMLElement} elems - Element(s) to has its child removed
 */
-export const clear = (...elems) => {
+globalThis.clear = (...elems) => {
     elems.forEach(elem => elem && (elem.innerHTML = ''));
 }
 /**
 * Removes element(s)
 * @param {HTMLElement} elems - Element(s) to remove
 */
-export const remove = (...elems) => {
+globalThis.remove = (...elems) => {
     elems.forEach(elem => elem?.remove());
 }
 /**
@@ -787,7 +787,7 @@ export const remove = (...elems) => {
 * @param {string} [param2] - Query string
 * @returns {HTMLElement | Array | undefined} Returns an `Array` if `all` is `true`, otherwise returns a `HTMLElement`, or `undefined` if nothing matches
 */
-export const qSelec = (all, param1, param2) => {
+globalThis.qSelec = (all, param1, param2) => {
     let elem = param2 ? param1 : document;
     let str = param2 || param1;
     return elem?.[all ? 'querySelectorAll' : 'querySelector'](str) || undefined;
