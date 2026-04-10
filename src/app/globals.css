@@ -1653,6 +1653,10 @@ div.message.offline:before {
     }
 }
 
+.dk-bg {
+    background-color: var(--dk-bg-color);
+}
+
 header {
     background:
     var(--bg-color)
@@ -1840,6 +1844,7 @@ footer > div {
 
             > img {
                 height: 60px;
+                width: unset;
             }
         }
     }

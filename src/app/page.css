@@ -320,7 +320,7 @@
     &#pages {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        padding: var(--spacing-default) 60px 0;
+        padding: 60px 60px 0;
         
         > a {
             padding: var(--spacing-xxsmall);
