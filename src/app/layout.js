@@ -44,78 +44,78 @@ export default function RootLayout({ children }) {
                         <span>&#169;2023 - 2026 Foricon</span>
                         <ul>
                             <li>
-                                <a href='/p/about.html'>
-                                    <lang data-value='en'>About us</lang>
-                                    <lang data-value='vi'>Về chúng tôi</lang>
-                                    <lang data-value='fr'>À propos de nous</lang>
-                                    <lang data-value='it'>Chi siamo</lang>
-                                    <lang data-value='kr'>회사 소개</lang>
-                                    <lang data-value='ja'>私たちについて</lang>
-                                    <lang data-value='de'>Über uns</lang>
-                                    <lang data-value='nl'>Over ons</lang>
-                                    <lang data-value='dk'>Om os</lang>
-                                    <lang data-value='pt'>Sobre nós</lang>
-                                    <lang data-value='es'>Sobre nosotros</lang>
+                                <a href='/about'>
+                                    <lang value='en'>About us</lang>
+                                    <lang value='vi'>Về chúng tôi</lang>
+                                    <lang value='fr'>À propos de nous</lang>
+                                    <lang value='it'>Chi siamo</lang>
+                                    <lang value='kr'>회사 소개</lang>
+                                    <lang value='ja'>私たちについて</lang>
+                                    <lang value='de'>Über uns</lang>
+                                    <lang value='nl'>Over ons</lang>
+                                    <lang value='dk'>Om os</lang>
+                                    <lang value='pt'>Sobre nós</lang>
+                                    <lang value='es'>Sobre nosotros</lang>
                                 </a>
                             </li>
                             <li>
-                                <a href='/p/tos.html'>
-                                    <lang data-value='en'>Terms of Service</lang>
-                                    <lang data-value='vi'>Điều khoản dịch vụ</lang>
-                                    <lang data-value='fr'>Conditions d&#39;utilisation</lang>
-                                    <lang data-value='it'>Termini di servizio</lang>
-                                    <lang data-value='kr'>서비스 약관</lang>
-                                    <lang data-value='ja'>利用規約</lang>
-                                    <lang data-value='de'>Nutzungsbedingungen</lang>
-                                    <lang data-value='nl'>Servicevoorwaarden</lang>
-                                    <lang data-value='dk'>Servicevilkår</lang>
-                                    <lang data-value='pt'>Termos de serviço</lang>
-                                    <lang data-value='es'>Términos de servicio</lang>
+                                <a href='/tos'>
+                                    <lang value='en'>Terms of Service</lang>
+                                    <lang value='vi'>Điều khoản dịch vụ</lang>
+                                    <lang value='fr'>Conditions d&#39;utilisation</lang>
+                                    <lang value='it'>Termini di servizio</lang>
+                                    <lang value='kr'>서비스 약관</lang>
+                                    <lang value='ja'>利用規約</lang>
+                                    <lang value='de'>Nutzungsbedingungen</lang>
+                                    <lang value='nl'>Servicevoorwaarden</lang>
+                                    <lang value='dk'>Servicevilkår</lang>
+                                    <lang value='pt'>Termos de serviço</lang>
+                                    <lang value='es'>Términos de servicio</lang>
                                 </a>
                             </li>
                             <li>
-                                <a href='/p/refund-policy.html'>
-                                    <lang data-value='en'>Refund Policy</lang>
-                                    <lang data-value='vi'>Chính sách hoàn tiền</lang>
-                                    <lang data-value='fr'>Politique de remboursement</lang>
-                                    <lang data-value='it'>Politica di rimborso</lang>
-                                    <lang data-value='kr'>환불 정책</lang>
-                                    <lang data-value='ja'>返金ポリシー</lang>
-                                    <lang data-value='de'>Rückgaberecht</lang>
-                                    <lang data-value='nl'>Restitutiebeleid</lang>
-                                    <lang data-value='dk'>Refusionspolitik</lang>
-                                    <lang data-value='pt'>Política de Reembolso</lang>
-                                    <lang data-value='es'>Política de reembolso</lang>
+                                <a href='/refund-policy'>
+                                    <lang value='en'>Refund Policy</lang>
+                                    <lang value='vi'>Chính sách hoàn tiền</lang>
+                                    <lang value='fr'>Politique de remboursement</lang>
+                                    <lang value='it'>Politica di rimborso</lang>
+                                    <lang value='kr'>환불 정책</lang>
+                                    <lang value='ja'>返金ポリシー</lang>
+                                    <lang value='de'>Rückgaberecht</lang>
+                                    <lang value='nl'>Restitutiebeleid</lang>
+                                    <lang value='dk'>Refusionspolitik</lang>
+                                    <lang value='pt'>Política de Reembolso</lang>
+                                    <lang value='es'>Política de reembolso</lang>
                                 </a>
                             </li>
                             <li>
-                                <a href='/p/privacy.html'>
-                                    <lang data-value='en'>Privacy Policy</lang>
-                                    <lang data-value='vi'>Chính sách bảo mật</lang>
-                                    <lang data-value='fr'>Politique de Confidentialité</lang>
-                                    <lang data-value='it'>Politica sulla Riservatezza</lang>
-                                    <lang data-value='kr'>개인 정보 정책</lang>
-                                    <lang data-value='ja'>プライバシーポリシー</lang>
-                                    <lang data-value='de'>Datenschutzrichtlinie</lang>
-                                    <lang data-value='nl'>Privacybeleid</lang>
-                                    <lang data-value='dk'>Fortrolighedspolitik</lang>
-                                    <lang data-value='pt'>Política de Privacidade</lang>
-                                    <lang data-value='es'>Política de Privacidad</lang>
+                                <a href='/privacy'>
+                                    <lang value='en'>Privacy Policy</lang>
+                                    <lang value='vi'>Chính sách bảo mật</lang>
+                                    <lang value='fr'>Politique de Confidentialité</lang>
+                                    <lang value='it'>Politica sulla Riservatezza</lang>
+                                    <lang value='kr'>개인 정보 정책</lang>
+                                    <lang value='ja'>プライバシーポリシー</lang>
+                                    <lang value='de'>Datenschutzrichtlinie</lang>
+                                    <lang value='nl'>Privacybeleid</lang>
+                                    <lang value='dk'>Fortrolighedspolitik</lang>
+                                    <lang value='pt'>Política de Privacidade</lang>
+                                    <lang value='es'>Política de Privacidad</lang>
                                 </a>
                             </li>
                             <li>
-                                <a href='/p/support.html'>
-                                    <lang data-value='en'>Support</lang>
-                                    <lang data-value='vi'>Hỗ trợ</lang>
-                                    <lang data-value='fr'>Soutien</lang>
-                                    <lang data-value='it'>Supporto</lang>
-                                    <lang data-value='kr'>지원하다</lang>
-                                    <lang data-value='ja'>サポート</lang>
-                                    <lang data-value='de'>Unterstützung</lang>
-                                    <lang data-value='nl'>Steun</lang>
-                                    <lang data-value='dk'>Support</lang>
-                                    <lang data-value='pt'>Apoiar</lang>
-                                    <lang data-value='es'>Apoyo</lang>
+                                <a href='/support'>
+                                    <lang value='en'>Support</lang>
+                                    <lang value='vi'>Hỗ trợ</lang>
+                                    <lang value='fr'>Soutien</lang>
+                                    <lang value='it'>Supporto</lang>
+                                    <lang value='kr'>지원하다</lang>
+                                    <lang value='ja'>サポート</lang>
+                                    <lang value='de'>Unterstützung</lang>
+                                    <lang value='nl'>Steun</lang>
+                                    <lang value='dk'>Support</lang>
+                                    <lang value='pt'>Apoiar</lang>
+                                    <lang value='es'>Apoyo</lang>
                                 </a>
                             </li>
                         </ul>
