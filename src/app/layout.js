@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
                 <link href='//fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Kode+Mono:wght@400..700&family=Nova+Mono&family=Sono:wght,MONO@200..800,1&family=Xanh+Mono:ital@0;1' rel='stylesheet'/>
             </head>
             <body>
-                <Script src='Api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
+                <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
                 <div id='loading'>
                     <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYgDdhGLSs3mBT3pnVFO51gd7azcbZgGYkc-2az3pyMx1rq6CTlEZDrTjf2tKNC8YZqefBM5xWoUi_st2OOkYdjrzvVlaEf1JV22WE2t8CFDEnSU_dC-ukYMQqg2LY34vwnUjp0nNT9Zi1o0HdtepkzUU4MHnASM25C5V5os-GUDMPCscMM30IcmxKuvw/s1600/loading-b2.gif' alt='Foricon loading logo'/>
                 </div>
