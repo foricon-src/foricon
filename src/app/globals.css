@@ -1716,14 +1716,14 @@ header {
         grid-area: right;
         justify-content: flex-end;
         
-        > :is(li) {
+        > li {
             padding: 0;
-            width: 42px;
+            width: 42px !important;
             aspect-ratio: 1/1;
             align-items: center;
             
             &:active > f-icon[icon='bars'] {
-                scale: .75 1;
+                scale: .75 1 !important;
             }
             > img {
                 height: 27px;
