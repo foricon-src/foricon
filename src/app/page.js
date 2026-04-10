@@ -617,9 +617,13 @@ export default function Home() {
             </div>
             <div class='content-section signup' id='get-started'>
                 <div>
-                <h1>Get started</h1>
-                <p>Get access to the power of the Foricon</p>
-                <a class='btn primary' href='/p/signup.html'><f-icon i-s='outline' icon='arrow-right-to-bracket'/>Sign up</a><a class='btn secondary' href='/p/docs.html' style='color: var(--main-color)'><f-icon icon='file-lines'/>View the Docs</a>
+                    <h1>Get started</h1>
+                    <p>Get access to the power of the Foricon</p>
+                    <a class='btn primary' href='/p/signup.html'>
+                        <f-icon i-s='outline' icon='arrow-right-to-bracket'/>Sign up
+                    </a><a class='btn secondary' href='/p/docs.html'>
+                        <f-icon icon='file-lines'/>View the Docs
+                    </a>
                 </div>
             </div>
             <div class='content-section' id='pages'>
