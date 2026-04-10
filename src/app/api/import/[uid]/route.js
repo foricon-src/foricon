@@ -436,10 +436,10 @@ export function GET(_, { params: { uid }}) {
                             let unicode = icon.unicodes?.[item.replace("/", "-")];
                             if (item.startsWith("duotone/")) {
                                 let unicode_layers = unicode?.split("|");
-                                string += \`[i-s="\${item}"]::before { content: "\\\${unicode_layers?.[0]}"}
-                                \${string}[i-s="\${item}"]::after { content: "\\\${unicode_layers?.[1]}"}\`;
+                                string += \`[i-s="\${item}"]::before { content: "\${unicode_layers?.[0]}"}
+                                \${string}[i-s="\${item}"]::after { content: "\${unicode_layers?.[1]}"}\`;
                             }
-                            else string += \`\${item == "outline" ? '[i-s="outline"]' : ""}::before { content: "\\\${unicode}"}\`;
+                            else string += \`\${item == "outline" ? '[i-s="outline"]' : ""}::before { content: "\${unicode}"}\`;
                             s.innerHTML += string;
                         })
                     }
