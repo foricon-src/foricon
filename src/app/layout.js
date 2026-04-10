@@ -1,7 +1,6 @@
 import GetLang from 'Com/get-lang';
 import Script from 'next/script';
 import Header from 'Com/header';
-import 'Com/utilities';
 import './globals.css';
 
 export const metadata = {

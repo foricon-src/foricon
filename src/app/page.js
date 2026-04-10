@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import favicon from 'Ass/foricon-f-favicon.png';
 import './page.css';
+import 'Com/utilities';
 
 export default function Home() {
     return (

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Ass/foricon-f-2.png';
+import 'Com/utilities';
 
 export default function Header() {
     const [ open, setOpen ] = useState(false);
