@@ -1011,3 +1011,7 @@ globalThis.go = (href, openInNewTab) => {
         if (openInNewTab) window.open(link, '_blank');
         else location.href = link;
 }
+
+globalThis.random = arr => {
+    return arr[Math.floor(Math.random() * arr.length)]
+}
