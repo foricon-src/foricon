@@ -2,7 +2,7 @@ import Process from 'Com/process';
 import Script from 'next/script';
 import Header from 'Com/header';
 import Image from 'next/image';
-import logo from 'Ass/foricon-f-2'
+import logo from 'Ass/foricon-f-2.png'
 import './globals.css';
 
 export const metadata = {
