@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from 'Pub/foricon-f-2.png';
+import logo from 'Ass/foricon-f-2.png';
+import pageConfig from '/src/pageConfig.json'
 
 export default function Header() {
     const [ open, setOpen ] = useState(false);
@@ -12,7 +13,7 @@ export default function Header() {
                 <Link href='/' name='logo'>
                     <Image src={logo} alt='Foricon logo'></Image>
                 </Link>
-                <Link href='/changelog' name='version'>Beta 3.0</Link>
+                <Link href='/changelog' name='version'>Beta {pageConfig.version}</Link>
             </div>
             <ul name='center'>
                 <li>
@@ -116,7 +117,7 @@ export default function Header() {
                     <span/>
                 </li>
             </ul>
-            <ul className={`btn-list${open ? ' active' : ''}`} name='all'>
+            <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
                 <li>Foricon Plus</li>
                 <li className='line'>
                     <lang value='en'>Home</lang>

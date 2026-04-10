@@ -1,65 +1,59 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import favicon from 'Pub/foricon-f-favicon.png'
+import Image from 'next/image';
+import favicon from 'Ass/foricon-f-favicon.png';
+import './page.css';
 
 export default function Home() {
     return (
-        <div className='.page'>
-            <main className={styles.main}>
-                <Image
-                    className={styles.logo}
-                    src={favicon}
-                    alt="Foricon logo"
-                    priority
+        <div className='section' itemID='hero'>
+            <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBX39PGrjfEdpF2RTkpAaKi84zc4JJ5cs7MzKgtnPH6jepJLRGh8zTwACp0VH2Dt5dj7AZH39t4pvfY69Fc8yt_6W2Ya0iwT432qMJURupVCcq6ZHAPAjaJO85Dw8Gj2LppRLBKkJYUTbq6yAFFRc2ezL66KkHDXR0ksoDroknEakKo0PlBODWcq3aXCc/s1600/foricon-f.png'/>
+            <a href='/p/new-changelog.html'>
+                <f-icon i-s='outline' icon='hashtag'/>{globalThis.webData.verFull}
+            </a>
+            <h1>
+                <lang data-value='en'>Icons That Make Your Design Shine</lang>
+                <lang data-value='vi'>Kho icon font free, đầu tiên tại Việt Nam</lang>
+                <lang data-value='fr'>Des icônes qui font briller votre design</lang>
+                <lang data-value='it'>Icone che fanno brillare il tuo design</lang>
+                <lang data-value='kr'>디자인을 빛나게 하는 아이콘</lang>
+                <lang data-value='ja'>あなたのデザインを輝かせるアイコン</lang>
+                <lang data-value='de'>Icons, die Ihr Design zum Strahlen bringen</lang>
+                <lang data-value='nl'>Iconen die je ontwerp laten schitteren</lang>
+                <lang data-value='dk'>Ikoner der får dit design til at skinne</lang>
+                <lang data-value='pt'>Ícones que fazem seu design brilhar</lang>
+                <lang data-value='es'>Iconos que hacen que tu diseño brille</lang>
+                <lang data-value='ru'>Иконки, которые делают ваш дизайн ярким</lang>
+            </h1>
+            <p>
+                <lang data-value='en'>Design smarter with icons that customize, animate, and integrate in seconds</lang>
+                <lang data-value='vi'>Thiết kế thông minh hơn với các biểu tượng có thể tùy chỉnh, animate và tích hợp trong vài giây</lang>
+                <lang data-value='fr'>Concevez plus intelligemment avec des icônes qui se personnalisent, s&#39;animent et s&#39;intègrent en quelques secondes</lang>
+                <lang data-value='it'>Progetta in modo più intelligente con icone che si personalizzano, si animano e si integrano in pochi secondi</lang>
+                <lang data-value='kr'>몇 초 만에 사용자 지정, 애니메이션 및 통합이 가능한 아이콘으로 더욱 스마트하게 디자인하세요</lang>
+                <lang data-value='ja'>数秒でカスタマイズ&#12289;アニメーション&#12289;統合できるアイコンで&#12289;よりスマートにデザインできます</lang>
+                <lang data-value='de'>Gestalten Sie intelligenter mit Symbolen, die sich in Sekundenschnelle anpassen, animieren und integrieren lassen</lang>
+                <lang data-value='nl'>Ontwerp slimmer met pictogrammen die u in seconden kunt aanpassen, animeren en integreren</lang>
+                <lang data-value='dk'>Design smartere med ikoner, der tilpasser, animerer og integrerer på få sekunder</lang>
+                <lang data-value='pt'>Crie um design mais inteligente com ícones que podem ser personalizados, animados e integrados em segundos</lang>
+                <lang data-value='es'>Diseñe de forma más inteligente con íconos que se personalizan, animan e integran en segundos</lang>
+                <lang data-value='ru'>Проектируйте умнее с помощью иконок, которые можно настраивать, анимировать и интегрировать за считанные секунды.</lang>
+            </p>
+            <label>
+                <f-icon i-s='outline' icon='magnifying-glass'/>
+                <input
+                    lang:en-placeholder='Find your perfect icon - start typing...'
+                    lang:vi-placeholder='Tìm biểu tượng hoàn hảo - bắt đầu nhập...'
+                    lang:fr-placeholder='Trouvez votre icône parfaite - commencez à taper...'
+                    lang:it-placeholder='Trova l&apos;icona perfetta: inizia a digitare...'
+                    lang:kr-placeholder='당신에게 딱 맞는 아이콘을 찾아보세요 - 입력을 시작하세요...'
+                    lang:ja-placeholder='最適なアイコンを見つけて、入力を開始してください...'
+                    lang:de-placeholder='Finden Sie Ihr perfektes Symbol - beginnen Sie mit der Eingabe …'
+                    lang:dk-placeholder='Find dit perfekte ikon - begynd at skrive...'
+                    lang:nl-placeholder='Vind het perfecte pictogram - begin met typen...'
+                    lang:pt-placeholder='Encuentra tu icono perfecto: comienza a escribir...'
+                    lang:es-placeholder='Encontre o ícone perfeito - comece a escrever...'
+                    lang:ru-placeholder='Найдите свой идеальный значок — начните вводить текст...'
                 />
-                <div className={styles.intro}>
-                    <h1>Foricon</h1>
-                    <p>
-                        Looking for a starting point or more instructions? Head over to{" "}
-                        <a
-                            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Templates
-                        </a>{" "}
-                        or the{" "}
-                        <a
-                            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Learning
-                        </a>{" "}
-                        center.
-                    </p>
-                </div>
-                <div className={styles.ctas}>
-                    <a
-                        className={styles.primary}
-                        href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            className={styles.logo}
-                            src="/vercel.svg"
-                            alt="Vercel logomark"
-                            width={16}
-                            height={16}
-                        />
-                        Deploy Now
-                    </a>
-                    <a
-                        className={styles.secondary}
-                        href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Documentation
-                    </a>
-                </div>
-            </main>
+            </label>
         </div>
     );
 }

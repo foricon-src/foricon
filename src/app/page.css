@@ -1,0 +1,37 @@
+#hero {
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 var(--spacing-default) 7vh;
+    background: url('//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5KJE4NqlY-rEfGQ9qd_ty1MXPzdbY6SgMFt-xdwAStwyd7fUSUuX97g660VVzRNiYhXo-iijRkJlWDLP7f6MyBxEixbGbss8UvZJ0VL1eb1f3eHycUxIEnYnR7JBe-MSXsX5FkSkzwCkcqh5A9t4rHLoPzbW6tyk3H5_lQzqxMUBYaBZ3jqUw-vHt0tQ/s1600/pattern.png') no-repeat center/contain;
+    
+    > img {
+        height: 80px;
+        margin-bottom: var(--spacing-medium);
+    }
+    > a {
+        background: none;
+        
+        > f-icon {
+            margin-right: 8px;
+        }
+    }
+    > :is(h1, label) {
+        margin: 0;
+    }
+    > p {
+        margin-bottom: var(--spacing-small);
+    }
+    > label {
+        width: 400px;
+        transition: var(--df-trans), width .5s ease;
+        
+        &:focus-within {
+            width: 600px;
+        }
+    }
+}
