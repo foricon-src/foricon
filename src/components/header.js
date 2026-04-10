@@ -11,7 +11,7 @@ export default function Header() {
         <header>
             <div>
                 <Link href='/' name='logo'>
-                    <img src={logo} alt='Foricon logo'/>
+                    <Image src={logo} alt='Foricon logo'/>
                 </Link>
                 <Link href='/changelog' name='version'>{webData.verFull}</Link>
             </div>
@@ -193,7 +193,7 @@ export default function Header() {
                     <lang value='pt'>Modo escuro</lang>
                     <lang value='es'>Modo oscuro</lang>
                     <lang value='ru'>Темный режим</lang>
-                    (<span class='key'>Ctrl</span> + <span class='key'>B</span>)
+                    <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>
                 </li>
             </ul>
         </header>

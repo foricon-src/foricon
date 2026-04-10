@@ -17,7 +17,7 @@ export default function Process() {
             theme == 'dark'
             ||
             !theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
-        ) && body.classList.add('dark');
+        ) && toggleTheme();
         
         language = localStorage.getItem('language');
         country = localStorage.getItem('country');
