@@ -16,7 +16,7 @@ export default function Process() {
         (
             theme == 'dark'
             ||
-            theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
+            !theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
         ) && body.classList.add('dark');
         
         language = localStorage.getItem('language');
