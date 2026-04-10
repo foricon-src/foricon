@@ -360,7 +360,7 @@ ul {
                     }
                 }
             }
-            &:not(.chip) > :is(span, lang) {
+            &:not(.chip) :is(span, lang) {
                 color: inherit;
             }
             &:not(:has(> ul.btn-list:hover)):active {
@@ -479,7 +479,7 @@ ul {
                     opacity: .5;
                 }
             }
-            &.active {
+            :not([name='all']) > &.active {
                 .line-active > & {
                     color: var(--title-color);
                 }

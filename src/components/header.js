@@ -182,19 +182,21 @@ export default function Header() {
                 <li>Music</li>
                 <li name='dark-toggle' onClick={toggleTheme}>
                     <div/>
-                    <lang value='en'>Dark mode</lang>
-                    <lang value='vi'>Chế độ tối</lang>
-                    <lang value='fr'>Mode sombre</lang>
-                    <lang value='it'>Modalità scura</lang>
-                    <lang value='kr'>다크 모드</lang>
-                    <lang value='ja'>ダークモード</lang>
-                    <lang value='de'>Dunkler Modus</lang>
-                    <lang value='nl'>Donkere modus</lang>
-                    <lang value='dk'>Mørk tilstand</lang>
-                    <lang value='pt'>Modo escuro</lang>
-                    <lang value='es'>Modo oscuro</lang>
-                    <lang value='ru'>Темный режим</lang>
-                    <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>
+                    <span>
+                        <lang value='en'>Dark mode</lang>
+                        <lang value='vi'>Chế độ tối</lang>
+                        <lang value='fr'>Mode sombre</lang>
+                        <lang value='it'>Modalità scura</lang>
+                        <lang value='kr'>다크 모드</lang>
+                        <lang value='ja'>ダークモード</lang>
+                        <lang value='de'>Dunkler Modus</lang>
+                        <lang value='nl'>Donkere modus</lang>
+                        <lang value='dk'>Mørk tilstand</lang>
+                        <lang value='pt'>Modo escuro</lang>
+                        <lang value='es'>Modo oscuro</lang>
+                        <lang value='ru'>Темный режим</lang>
+                        <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>
+                    </span>
                 </li>
             </ul>
         </header>
