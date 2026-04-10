@@ -176,7 +176,7 @@ export default function Header() {
                     <lang value='es'>Apoyo</lang>
                     <lang value='ru'>Поддерживать</lang>
                 </li>
-                <li>Fotorno</li>
+                <li className='line'>Fotorno</li>
                 <li>Hub</li>
                 <li>Media</li>
                 <li>Music</li>
@@ -195,7 +195,7 @@ export default function Header() {
                         <lang value='pt'>Modo escuro</lang>
                         <lang value='es'>Modo oscuro</lang>
                         <lang value='ru'>Темный режим</lang>
-                        <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>
+                        {' '}<span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>
                     </span>
                 </li>
             </ul>
