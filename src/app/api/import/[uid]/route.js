@@ -446,7 +446,7 @@ export function GET(_, { params: { uid }}) {
                 }
                 document.querySelector("head").appendChild(s);
                 foriconPackageIsLoadded = true;
-                log('[Foricon Package] Step 4/4: Foricon package loaded successfully!\n\nEverthing looks fine now, wanna look for some "decoration"? Just browse it here: https://foricon-dev.blogspot.com/p/search.html');
+                log('[Foricon Package] Step 4/4: Foricon package loaded successfully!\\n\\nEverthing looks fine now, wanna look for some "decoration"? Just browse it here: https://foricon-dev.blogspot.com/p/search.html');
             }
             catch (err) {
                 error('[Foricon Package] An error occurred:', err);
