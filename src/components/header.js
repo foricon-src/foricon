@@ -9,7 +9,7 @@ import 'Com/utilities';
 export default function Header() {
     const [ open, setOpen ] = useState(false);
     return (
-        <header className='outer-cornor'>
+        <header className='outer-corner'>
             <div>
                 <Link href='/' name='logo'>
                     <Image src={logo} alt='Foricon logo'/>
