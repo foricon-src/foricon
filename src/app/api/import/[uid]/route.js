@@ -1,7 +1,7 @@
 export function GET(_, { params: { uid }}) {
     return new Response(`
         const { log, warn, error } = console;
-        const uid = ${uid};
+        const uid = '${uid}';
         let foriconPackageIsLoadded = false;
 
         (async () => {
