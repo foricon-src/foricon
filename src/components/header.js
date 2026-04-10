@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Ass/foricon-f-2.png';
-import pageConfig from '/src/pageConfig.json'
 
 export default function Header() {
     const [ open, setOpen ] = useState(false);
@@ -13,7 +12,7 @@ export default function Header() {
                 <Link href='/' name='logo'>
                     <Image src={logo} alt='Foricon logo'></Image>
                 </Link>
-                <Link href='/changelog' name='version'>Beta {pageConfig.version}</Link>
+                <Link href='/changelog' name='version'>{webData.verFull}</Link>
             </div>
             <ul name='center'>
                 <li>
