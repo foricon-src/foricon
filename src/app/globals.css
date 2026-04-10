@@ -1756,28 +1756,32 @@ header {
             max-height: 25vh;
             transition: var(--df-trans), max-height .25s ease-in;
         }
-        > li[name='dark-toggle'] > div {
-            height: 20px;;
-            border-radius: 15px;
-            aspect-ratio: 5/3;
-            position: relative;
-            background-color: var(--dk-main-color);
+        > li[name='dark-toggle'] {
+            align-items: center;
             
-            &:before {
-                content: '';
-                height: calc(100% - 4px);
-                aspect-ratio: 1/1;
-                background-color: var(--main-color);
-                position: absolute;
-                inset: 2px 0 0 2px;
+            > div {
+                height: 20px;
                 border-radius: 15px;
-            }
-            .active > & {
-                background-color: var(--main-color);
+                aspect-ratio: 5/3;
+                position: relative;
+                background-color: var(--dk-main-color);
                 
                 &:before {
-                    left: calc(100% - 18px);
-                    background-color: var(--dk-main-color);
+                    content: '';
+                    height: calc(100% - 4px);
+                    aspect-ratio: 1/1;
+                    background-color: var(--main-color);
+                    position: absolute;
+                    inset: 2px 0 0 2px;
+                    border-radius: 15px;
+                }
+                .active > & {
+                    background-color: var(--main-color);
+                    
+                    &:before {
+                        left: calc(100% - 18px);
+                        background-color: var(--dk-main-color);
+                    }
                 }
             }
         }
