@@ -1,11 +1,31 @@
 'use client';
 
-import Image from 'next/image';
-import favicon from 'Ass/foricon-f-favicon.png';
+import { useEffect } from 'react';
+// import Image from 'next/image';
+// import favicon from 'Ass/foricon-f-favicon.png';
 import './page.css';
 import 'Com/utilities';
 
 export default function Home() {
+    useEffect(() => (async () => {
+        while (elemById('loading')) await wait();
+        let icons = elemById('icons');
+        let added = [];
+        for (let i = 0; i < 4; i++) {
+            let div = newElem('div');
+            while (div.children.length < 10) {
+                await wait();
+                let icon = random(webData.iconsB2);
+                let { name, styles } = icon;
+                let style = random(styles);
+                if (!added.includes(`${name} ${style}`)) {
+                    div.innerHTML += `<f-icon i-s='${style}' icon='${name}'/>`;
+                    added.push(`${name} ${style}`);
+                }
+            }
+            icons.insertBefore(div, querySelec('#icons > div:last-child'));
+        }
+    })(), [])
     return (
         <>
             <div className='section' id='hero'>
@@ -30,7 +50,7 @@ export default function Home() {
                 <p>
                     <lang value='en'>Design smarter with icons that customize, animate, and integrate in seconds</lang>
                     <lang value='vi'>Thiết kế thông minh hơn với các biểu tượng có thể tùy chỉnh, animate và tích hợp trong vài giây</lang>
-                    <lang value='fr'>Concevez plus intelligemment avec des icônes qui se personnalisent, s&#39;animent et s&#39;intègrent en quelques secondes</lang>
+                    <lang value='fr'>Concevez plus intelligemment avec des icônes qui se personnalisent, s'animent et s'intègrent en quelques secondes</lang>
                     <lang value='it'>Progetta in modo più intelligente con icone che si personalizzano, si animano e si integrano in pochi secondi</lang>
                     <lang value='kr'>몇 초 만에 사용자 지정, 애니메이션 및 통합이 가능한 아이콘으로 더욱 스마트하게 디자인하세요</lang>
                     <lang value='ja'>数秒でカスタマイズ&#12289;アニメーション&#12289;統合できるアイコンで&#12289;よりスマートにデザインできます</lang>
@@ -97,7 +117,7 @@ export default function Home() {
                     <h6 class='tagline'>
                         <lang value='en'>Integration</lang>
                         <lang value='vi'>Tích hợp</lang>
-                        <lang value='fr'>L&#39;intégration</lang>
+                        <lang value='fr'>L'intégration</lang>
                         <lang value='it'>Integrazione</lang>
                         <lang value='kr'>완성</lang>
                         <lang value='ja'>統合</lang>
@@ -123,10 +143,10 @@ export default function Home() {
                         <lang value='ru'>Простая интеграция,<br/>Потрясающие результаты</lang>
                     </h1>
                     <p>
-                        <lang value='en'>Integrating our icon library into your projects is a breeze. Simply choose the icons you need, get its code, and start using them right away. With our extensive collection and easy-to-use interface, you&#39;ll find the perfect icons to elevate your designs.</lang>
+                        <lang value='en'>Integrating our icon library into your projects is a breeze. Simply choose the icons you need, get its code, and start using them right away. With our extensive collection and easy-to-use interface, you'll find the perfect icons to elevate your designs.</lang>
                         <lang value='vi'>Tích hợp thư viện icon của chúng tôi vào các dự án của bạn rất dễ. Chỉ cần chọn các biểu tượng bạn cần, lấy mã nhúng của biểu tượng đó và bắt đầu sử dụng ngay. Với bộ sưu tập phong phú và giao diện dễ sử dụng của chúng tôi, bạn sẽ tìm thấy các biểu tượng hoàn hảo để nâng tầm thiết kế của mình.</lang>
-                        <lang value='fr'>L&#39;intégration de notre bibliothèque d&#39;icônes dans vos projets est un jeu d&#39;enfant. Choisissez simplement les icônes dont vous avez besoin, obtenez leur code et commencez à les utiliser immédiatement. Grâce à notre vaste collection et à notre interface facile à utiliser, vous trouverez les icônes parfaites pour rehausser vos créations.</lang>
-                        <lang value='it'>Integrare la nostra libreria di icone nei tuoi progetti è un gioco da ragazzi. Scegli semplicemente le icone di cui hai bisogno, ottieni il codice e inizia a usarle subito. Con la nostra vasta collezione e l&#39;interfaccia facile da usare, troverai le icone perfette per migliorare i tuoi design.</lang>
+                        <lang value='fr'>L'intégration de notre bibliothèque d'icônes dans vos projets est un jeu d'enfant. Choisissez simplement les icônes dont vous avez besoin, obtenez leur code et commencez à les utiliser immédiatement. Grâce à notre vaste collection et à notre interface facile à utiliser, vous trouverez les icônes parfaites pour rehausser vos créations.</lang>
+                        <lang value='it'>Integrare la nostra libreria di icone nei tuoi progetti è un gioco da ragazzi. Scegli semplicemente le icone di cui hai bisogno, ottieni il codice e inizia a usarle subito. Con la nostra vasta collezione e l'interfaccia facile da usare, troverai le icone perfette per migliorare i tuoi design.</lang>
                         <lang value='kr'>아이콘 라이브러리를 프로젝트에 통합하는 것은 아주 간단합니다. 필요한 아이콘을 선택하고, 코드를 받고, 바로 사용하기 시작하면 됩니다. 광범위한 컬렉션과 사용하기 쉬운 인터페이스로 디자인을 한 단계 업그레이드할 완벽한 아이콘을 찾을 수 있습니다.</lang>
                         <lang value='ja'>当社のアイコン ライブラリをプロジェクトに統合するのは簡単です&#12290;必要なアイコンを選択し&#12289;コードを取得して&#12289;すぐに使い始めるだけです&#12290;当社の豊富なコレクションと使いやすいインターフェイスにより&#12289;デザインを向上させる完璧なアイコンが見つかります&#12290;</lang>
                         <lang value='de'>Die Integration unserer Symbolbibliothek in Ihre Projekte ist ein Kinderspiel. Wählen Sie einfach die gewünschten Symbole aus, holen Sie sich den Code und verwenden Sie sie sofort. Mit unserer umfangreichen Sammlung und der benutzerfreundlichen Oberfläche finden Sie die perfekten Symbole, um Ihre Designs aufzuwerten.</lang>
@@ -139,8 +159,8 @@ export default function Home() {
                     <a class='btn primary' href='/p/docs.html?adding-icons/basics'>
                         <lang value='en'>Basics of Adding Icons</lang>
                         <lang value='vi'>Hướng dẫn về thêm các icon</lang>
-                        <lang value='fr'>Notions de base sur l&#39;ajout d&#39;icônes</lang>
-                        <lang value='it'>Nozioni di base sull&#39;aggiunta di icone</lang>
+                        <lang value='fr'>Notions de base sur l'ajout d'icônes</lang>
+                        <lang value='it'>Nozioni di base sull'aggiunta di icone</lang>
                         <lang value='kr'>아이콘 추가의 기본 사항</lang>
                         <lang value='ja'>アイコン追加の基本</lang>
                         <lang value='de'>Grundlagen zum Hinzufügen von Symbolen</lang>
@@ -159,7 +179,7 @@ export default function Home() {
                 <h6 class='tagline'>
                     <lang value='en'>Icon Families</lang>
                     <lang value='vi'>Bộ biểu tượng</lang>
-                    <lang value='fr'>Familles d&#39;icônes</lang>
+                    <lang value='fr'>Familles d'icônes</lang>
                     <lang value='it'>Famiglie di icone</lang>
                     <lang value='kr'>아이콘 패밀리</lang>
                     <lang value='ja'>アイコンファミリー</lang>
@@ -311,8 +331,8 @@ export default function Home() {
                 <p>
                     <lang value='en'>Foricon allows you to customize icons to match your unique style and branding. Adjust colors, sizes, styles, transform and animate them to create a cohesive visual identity across all your designs. Make our icons truly yours.</lang>
                     <lang value='vi'>Foricon cho phép bạn tùy chỉnh các biểu tượng để phù hợp với phong cách và thương hiệu độc đáo của bạn. Điều chỉnh màu sắc, kích thước, kiểu dáng, biến đổi và tạo hoạt ảnh cho chúng để tạo ra sự đồng bộ trên tất cả các thiết kế của bạn. Làm cho các biểu tượng của chúng tôi thực sự là của bạn.</lang>
-                    <lang value='fr'>Foricon vous permet de personnaliser vos icônes pour qu&#39;elles correspondent à votre style et à votre image de marque. Ajustez les couleurs, les tailles, les styles, transformez-les et animez-les pour créer une identité visuelle cohérente sur toutes vos créations. Personnalisez nos icônes.</lang>
-                    <lang value='it'>Foricon ti consente di personalizzare le icone per adattarle al tuo stile e al tuo marchio unici. Regola colori, dimensioni, stili, trasformali e animali per creare un&#39;identità visiva coesa in tutti i tuoi design. Rendi le nostre icone davvero tue.</lang>
+                    <lang value='fr'>Foricon vous permet de personnaliser vos icônes pour qu'elles correspondent à votre style et à votre image de marque. Ajustez les couleurs, les tailles, les styles, transformez-les et animez-les pour créer une identité visuelle cohérente sur toutes vos créations. Personnalisez nos icônes.</lang>
+                    <lang value='it'>Foricon ti consente di personalizzare le icone per adattarle al tuo stile e al tuo marchio unici. Regola colori, dimensioni, stili, trasformali e animali per creare un'identità visiva coesa in tutti i tuoi design. Rendi le nostre icone davvero tue.</lang>
                     <lang value='kr'>Foricon을 사용하면 고유한 스타일과 브랜딩에 맞게 아이콘을 사용자 정의할 수 있습니다. 색상, 크기, 스타일을 조정하고 변형하고 애니메이션을 적용하여 모든 디자인에서 일관된 시각적 정체성을 만드세요. 아이콘을 진정으로 당신만의 것으로 만드세요.</lang>
                     <lang value='ja'>Foricon を使用すると&#12289;独自のスタイルやブランドに合わせてアイコンをカスタマイズできます&#12290;色&#12289;サイズ&#12289;スタイルを調整し&#12289;変形やアニメーション化を行って&#12289;すべてのデザインに一貫したビジュアル アイデンティティを作成します&#12290;当社のアイコンを真に自分らしくしましょう&#12290;</lang>
                     <lang value='de'>Mit Foricon können Sie Symbole an Ihren individuellen Stil und Ihre Marke anpassen. Passen Sie Farben, Größen und Stile an, transformieren und animieren Sie sie, um eine einheitliche visuelle Identität für alle Ihre Designs zu schaffen. Machen Sie unsere Symbole zu Ihren ganz persönlichen Symbolen.</lang>
@@ -479,7 +499,7 @@ export default function Home() {
                 <p>
                     <lang value='en'>Dive into their properties and how they work. Advanced color, style, size and animation adjustment are all in the Docs.</lang>
                     <lang value='vi'>Đi sâu vào thuộc tính của chúng và cách chúng hoạt đọng. Điều chỉnh màu sắc, kiểu dáng, kích thước và hoạt ảnh nâng cao đều có trong Tài liệu.</lang>
-                    <lang value='fr'>Plongez dans leurs propriétés et leur fonctionnement. Les réglages avancés de couleur, de style, de taille et d&#39;animation se trouvent tous dans la documentation.</lang>
+                    <lang value='fr'>Plongez dans leurs propriétés et leur fonctionnement. Les réglages avancés de couleur, de style, de taille et d'animation se trouvent tous dans la documentation.</lang>
                     <lang value='it'>Immergiti nelle loro proprietà e nel loro funzionamento. Regolazione avanzata di colore, stile, dimensione e animazione sono tutte nei Documenti.</lang>
                     <lang value='kr'>속성과 작동 방식을 자세히 알아보세요. 고급 색상, 스타일, 크기 및 애니메이션 조정은 모두 Docs에 있습니다.</lang>
                     <lang value='ja'>それぞれのプロパティとその動作について詳しく見てみましょう&#12290;高度な色&#12289;スタイル&#12289;サイズ&#12289;アニメーションの調整はすべてドキュメントに記載されています&#12290;</lang>

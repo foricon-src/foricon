@@ -115,6 +115,29 @@ export default function Process() {
             // }
         })
         
+        let icons = (await get(ref(db, 'icons/'))).val();
+        for (let name in icons) {
+            let icon = icons[name];
+            webData.icons.push({
+                name,
+                categories: icon.categories.map(cate => cate.replace('bussiness', 'business')),
+                styles: icon.styles,
+                glyphs: icon.glyphs,
+                unicodes: icon.unicodes,
+            })
+        }
+        let iconsB2 = (await get(ref(db, 'iconsB2/'))).val();
+        for (let name in iconsB2) {
+            let icon = iconsB2[name];
+            webData.iconsB2.push({
+                name,
+                categories: icon.categories,
+                styles: icon.styles,
+                glyphs: icon.glyphs,
+                unicodes: icon.unicodes,
+            })
+        }
+        
         while (user == null || user && !user.doc/* || !foriconPackageIsLoaded*/) await wait();
         let loading = elemById('loading');
         loading.style.opacity = '0';
