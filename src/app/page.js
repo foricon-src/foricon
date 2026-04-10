@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import favicon from 'Ass/foricon-f-favicon.png';
+import 'Com/utilities';
 import './page.css';
 
 export default function Home() {
@@ -7,7 +8,7 @@ export default function Home() {
         <div className='section' itemID='hero'>
             <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBX39PGrjfEdpF2RTkpAaKi84zc4JJ5cs7MzKgtnPH6jepJLRGh8zTwACp0VH2Dt5dj7AZH39t4pvfY69Fc8yt_6W2Ya0iwT432qMJURupVCcq6ZHAPAjaJO85Dw8Gj2LppRLBKkJYUTbq6yAFFRc2ezL66KkHDXR0ksoDroknEakKo0PlBODWcq3aXCc/s1600/foricon-f.png'/>
             <a href='/p/new-changelog.html'>
-                <f-icon i-s='outline' icon='hashtag'/>{globalThis.webData.verFull}
+                <f-icon i-s='outline' icon='hashtag'/>{webData.verFull}
             </a>
             <h1>
                 <lang value='en'>Icons That Make Your Design Shine</lang>
