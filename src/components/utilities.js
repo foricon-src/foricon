@@ -806,7 +806,7 @@ globalThis.elemById = id => {
 globalThis.toggleTheme = () => {
     let { body } = document;
     body.classList.toggle('dark');
-    toggle(qSelec(false, 'header > ul[name"all"] > li[name="dark-toggle"]'));
+    toggle(qSelec(false, 'header > ul[name="all"] > li[name="dark-toggle"]'));
     return localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
 } 
 globalThis.getDateObj = (date, options) => {
