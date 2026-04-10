@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import favicon from 'Ass/foricon-f-favicon.png';
-import { webData } from 'Com/utilities';
+import { webData } from '../components/utilities';
 import './page.css';
 
 export default function Home() {
