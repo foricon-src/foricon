@@ -479,7 +479,7 @@ ul {
                     opacity: .5;
                 }
             }
-            :not([name='all']) > &.active {
+            &:not([name='dark-toggle']).active {
                 .line-active > & {
                     color: var(--title-color);
                 }
@@ -487,7 +487,7 @@ ul {
                     color: var(--dk-main-color);
                     background-color: var(--main-color);
                     
-                    &:active {
+                    &:not([name='dark-toggle']):active {
                         background-color: var(--dk-gray);
                     }
                 }
