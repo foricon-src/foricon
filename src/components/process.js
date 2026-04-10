@@ -3,8 +3,8 @@
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
-import { get, ref, db } from 'firebase/database';
-import { auth, dbFirestore } from './firebase';
+import { get, ref } from 'firebase/database';
+import { auth, dbFirestore, db } from './firebase';
 import 'Com/utilities'
 
 export default function Process() {
