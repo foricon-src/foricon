@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import logo from 'Ass/foricon-f-2.png';
 import 'Com/utilities';
 
@@ -97,7 +98,7 @@ export default function Header() {
                     <lang value='es'>Idiomas</lang>
                     <lang value='ru'>Языки</lang>
                 </li>
-                <li className='chip bottom' onClick={() => setOpen(!open)}>
+                <li className={`chip bottom${open ? ' active' : ''}`} onClick={() => setOpen(!open)}>
                     <f-icon icon='bars' i-s='outline'></f-icon>
                     <lang value='en'>All</lang>
                     <lang value='vi'>Tất cả</lang>
