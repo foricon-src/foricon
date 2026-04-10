@@ -803,6 +803,68 @@ globalThis.qSelec = (all, param1, param2) => {
 globalThis.elemById = id => {
     return document.getElementById(id);
 }
+globalThis.getChild = (elem) => {
+    return elem ? [...elem.children] : [];
+}
+globalThis.getAttr = (elem, attr) => {
+    return elem?.getAttribute(attr);
+}
+const listenerMap = new Map();
+globalThis.addEvLis = (elems, types, func) => {
+    elems = Array.isArray(elems) ? elems : [elems];
+    types = Array.isArray(types) ? types : [types];
+    
+    elems.forEach((elem, i) => 
+        (elem instanceof HTMLElement || elem == document || elem == window) && types.forEach(type => {
+            let wrapped = e => func((e => {
+                appendData(e, { i });
+                return e;
+            })(e), elem);
+            
+            // Create nested maps: elem &#8594; types &#8594; func &#8594; wrapped
+            !listenerMap.has(elem) && listenerMap.set(elem, new Map());
+            !listenerMap.get(elem).has(type) && listenerMap.get(elem).set(type, new Map());
+            
+            listenerMap.get(elem).get(type).set(func, wrapped);
+            elem.addEventListener(type, wrapped);
+        })
+    )
+}
+globalThis.remvEvLis = (elem, type, func) => {
+    const wrapped = listenerMap.get(elem)?.get(type)?.get(func);
+    
+    if (wrapped) {
+        elem.removeEventListener(type, wrapped);
+        listenerMap.get(elem).get(type).delete(func);
+    }
+}
+globalThis.newElem = (str, param, children) => {
+    let elem = document.createElement(str);
+    if (param) {
+        let { attrs, events } = param;
+        if (attrs) {
+            Object.entries(attrs).forEach(([ name, value ]) => elem.setAttribute(name, value));
+            delete param.attrs;
+        }
+        else if (events) {
+            for (let e in events)
+                addEvenList(elem, e, events[e])
+            delete param.events;
+        }
+    }
+    typeof param == 'string'
+    ? (elem.innerHTML = param)
+    : appendData(elem, param);
+    children && elem.append(...children);
+    return elem;
+}
+globalThis.remvElem = (...elems) => {
+    elems.forEach(e => e.remove());
+}
+globalThis.classList = (elem, action, className) => {
+    elem = Array.isArray(elem) ? elem : [elem];
+    elem.forEach(each => each.classList[action](className));
+}
 globalThis.toggleTheme = () => {
     let { body } = document;
     body.classList.toggle('dark');
@@ -812,10 +874,10 @@ globalThis.toggleTheme = () => {
 globalThis.getDateObj = (date, options) => {
     options?.isUTC && (date.timezone = 0);
     date = date
-        ? options?.syncToDate
-            ? syncDate(date)
-            : date
-        : new Date();
+    ? options?.syncToDate
+    ? syncDate(date)
+    : date
+    : new Date();
     
     let obj = {
         day: date.getDate(),
@@ -845,26 +907,26 @@ globalThis.formatDate = (obj, lang = language) => {
     let string;
     
     hours = hours != undefined
-        ? lang == 'ja'
-            ? `${hours}時`
-            : hours < 10
-                ? `0${hours}`
-                : `${hours}`
-        : '';
+    ? lang == 'ja'
+    ? `${hours}時`
+    : hours < 10
+    ? `0${hours}`
+    : `${hours}`
+    : '';
     minutes = minutes != undefined
-        ? lang == 'ja'
-            ? `${minutes}分`
-            : minutes < 10
-                ? `:0${minutes}`
-                : `:${minutes}`
-        : '';
+    ? lang == 'ja'
+    ? `${minutes}分`
+    : minutes < 10
+    ? `:0${minutes}`
+    : `:${minutes}`
+    : '';
     seconds = seconds != undefined
-        ? lang == 'ja'
-            ? `${seconds}秒`
-            : seconds < 10
-                ? `:0${seconds}`
-                : `:${seconds}`
-        : '';
+    ? lang == 'ja'
+    ? `${seconds}秒`
+    : seconds < 10
+    ? `:0${seconds}`
+    : `:${seconds}`
+    : '';
     
     let time = `${hours}${minutes}${seconds}`;
     let currentMonth = {
@@ -880,17 +942,17 @@ globalThis.formatDate = (obj, lang = language) => {
     }[lang]?.[month];
     
     string =
-        lang == 'vi' ? `${day} tháng ${++month}, ${year}` :
-        lang == 'kr' ? `${year}월 ${++month}년 ${day}일` :
-        lang == 'ja' ? `${year}年${++month}月${day}日` :
-        lang == 'de' || lang == 'dk' ? `${day}. ${currentMonth}, ${year}` :
-        lang == 'pt' || lang == 'es' ? `${day} de ${currentMonth} de ${year}` :
-        lang == 'ru' ? `${day} ${currentMonth} ${year} г.` :
-        `${day} ${currentMonth}, ${year}`;
+    lang == 'vi' ? `${day} tháng ${++month}, ${year}` :
+    lang == 'kr' ? `${year}월 ${++month}년 ${day}일` :
+    lang == 'ja' ? `${year}年${++month}月${day}日` :
+    lang == 'de' || lang == 'dk' ? `${day}. ${currentMonth}, ${year}` :
+    lang == 'pt' || lang == 'es' ? `${day} de ${currentMonth} de ${year}` :
+    lang == 'ru' ? `${day} ${currentMonth} ${year} г.` :
+    `${day} ${currentMonth}, ${year}`;
     
     string = lang == 'kr' || lang == 'ja'
-        ? string + (time ? ` ${time}` : '')
-        : (time ? `${time}, ` : '') + string;
+    ? string + (time ? ` ${time}` : '')
+    : (time ? `${time}, ` : '') + string;
     
     return string;
 }
@@ -931,12 +993,21 @@ globalThis.timeDiff = obj => {
         es: [' segundos atrás', ' minutos atrás', ' horas atrás', ' días atrás', ' semanas atrás', ' meses atrás', ' años atrás'],
         ru: [' секунд назад', ' минут назад', ' часов назад', ' дней назад', ' недель назад', ' месяцев назад', ' лет назад']
     }[language];
-
+    
     return elapsed < msPerMinute ? Math.floor(elapsed / msPerSecond) + text[0] :
-           elapsed < msPerHour ? Math.floor(elapsed / msPerMinute) + text[1] :
-           elapsed < msPerDay ? Math.floor(elapsed / msPerHour) + text[2] :
-           elapsed < msPerWeek ? Math.floor(elapsed / msPerDay) + text[3] :
-           elapsed < msPerMonth ? Math.floor(elapsed / msPerWeek) + text[4] :
-           elapsed < msPerYear ? Math.floor(elapsed / msPerMonth) + text[5] :
-           Math.floor(elapsed / msPerYear) + text[6];
+    elapsed < msPerHour ? Math.floor(elapsed / msPerMinute) + text[1] :
+    elapsed < msPerDay ? Math.floor(elapsed / msPerHour) + text[2] :
+    elapsed < msPerWeek ? Math.floor(elapsed / msPerDay) + text[3] :
+    elapsed < msPerMonth ? Math.floor(elapsed / msPerWeek) + text[4] :
+    elapsed < msPerYear ? Math.floor(elapsed / msPerMonth) + text[5] :
+    Math.floor(elapsed / msPerYear) + text[6];
+}
+globalThis.go = (href, openInNewTab) => {
+    if (!href) location.href = '/';
+    else if (href[0] == '#') location.hash = href;
+    else if (href[0] == '?') location.search = href;
+    else if (href.startsWith('//') || href.startsWith('https://')) window.open(href, '_blank');
+    else
+        if (openInNewTab) window.open(link, '_blank');
+        else location.href = link;
 }

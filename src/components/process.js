@@ -13,6 +13,9 @@ export default function Process() {
         let visited = sessionStorage.getItem('visited') == 'true';
         let theme = localStorage.getItem('theme');
 
+        let accBtn = qSelec(false, 'header > ul[name="right"] > li:last-child');
+        let accBtn_span = qSelec(false, accBtn, 'span');
+
         (
             theme == 'dark'
             ||
@@ -117,6 +120,28 @@ export default function Process() {
         loading.style.opacity = '0';
         await wait(.2);
         loading.remove();
+
+        if (user) {
+            accBtn.replaceChild(
+                newElem('img', { src: user.doc.avatar }),
+                qSelec(false, accBtn, 'f-icon')
+            )
+            accBtn_span.innerText = user.doc.name;
+        }
+        else accBtn_span.innerText = {
+            en: 'Log in',
+            vi: 'Đăng nhập',
+            fr: 'Se connecter',
+            it: 'Login',
+            kr: '로그인',
+            ja: 'ログイン',
+            de: 'Einloggen',
+            nl: 'Inloggen',
+            dk: 'Log ind',
+            pt: 'Conecte-se',
+            es: 'Acceso',
+            ru: 'Авторизоваться',
+        }[language]
     })(), [])
     
     return null;
