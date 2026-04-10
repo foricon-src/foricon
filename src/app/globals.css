@@ -1824,6 +1824,35 @@ header {
         }
     }
 }
+footer > div {
+    &, &:last-child > ul {
+        display: flex;
+        align-items: center;
+    }
+    &:first-child {
+        padding: 0 var(--spacing-default) 0 calc(var(--spacing-default) + var(--spacing-small));
+        justify-content: space-between;
+        height: 180px;
+
+        > a {
+            background: none;
+            padding: 0;
+
+            > img {
+                height: 60px;
+            }
+        }
+    }
+    &:last-child {
+        border-top-right-radius: var(--bdr-rad);
+        justify-content: space-between;
+        padding: var(--spacing-xxsmall) var(--spacing-default);
+        
+        > ul > li + li {
+            margin-left: 20px;
+        }
+    }
+}
 
 #loading {
     position: fixed;
