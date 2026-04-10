@@ -669,6 +669,7 @@ globalThis.webData = {
         }
     }
 }
+globalThis.user = null;
 
 /**
 * Appends pairs of keys and values to a specific object
@@ -791,4 +792,12 @@ globalThis.qSelec = (all, param1, param2) => {
     let elem = param2 ? param1 : document;
     let str = param2 || param1;
     return elem?.[all ? 'querySelectorAll' : 'querySelector'](str) || undefined;
+}
+/**
+* Get an element by its `id`
+* @param {string} id - ID of an element
+* @returns {HTMLElement} A HTML element
+*/
+globalThis.elemById = id => {
+    return document.getElementById(id);
 }
