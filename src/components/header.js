@@ -180,7 +180,7 @@ export default function Header() {
                 <li>Hub</li>
                 <li>Media</li>
                 <li>Music</li>
-                <li name='dark-toggle' onClick={toggleTheme}>
+                <li className='line' name='dark-toggle' onClick={toggleTheme}>
                     <div/>
                     <span>
                         <lang value='en'>Dark mode</lang>

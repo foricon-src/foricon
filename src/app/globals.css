@@ -279,7 +279,7 @@ ul {
                 color: var(--title-color);
                 background-color: var(--lt-gray);
                 
-                :not(.line-active) > &.active {
+                :not(.line-active) > &:not([name='dark-toggle']).active {
                     color: var(--main-color);
                     background-color: var(--gray);
                 }
