@@ -114,7 +114,7 @@ export default function Process() {
             //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
             // }
         })
-        
+
         let icons = (await get(ref(db, 'icons/'))).val();
         for (let name in icons) {
             let icon = icons[name];
@@ -143,6 +143,12 @@ export default function Process() {
         loading.style.opacity = '0';
         await wait(.2);
         loading.remove();
+
+        qSelec(true, '.icon-count').forEach(
+            each => each.innerText = `${Math.floor(webData.iconsB2.reduce(
+                (total, icon) => total + icon.styles.length, 0
+            ) / 100) * 100}`
+        )
 
         if (user) {
             accBtn.replaceChild(

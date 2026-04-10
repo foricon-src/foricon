@@ -23,9 +23,10 @@ export default function Home() {
                     added.push(`${name} ${style}`);
                 }
             }
-            icons.insertBefore(div, querySelec('#icons > div:last-child'));
+            icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
         }
     })(), [])
+
     return (
         <>
             <div className='section' id='hero'>
@@ -82,7 +83,7 @@ export default function Home() {
             <div class='content-section' id='icons'>
                 <div>
                     <h1>
-                        <span class='icon-count'/>+
+                        <span class='icon-count'/>+{' '}
                         <lang value='en'>icons</lang>
                         <lang value='vi'>biểu tượng</lang>
                         <lang value='fr'>icônes</lang>
