@@ -67,7 +67,7 @@ export default function Process() {
             // }
         })
 
-        while (user == null || user && !user.doc || !foriconPackageIsLoaded) await wait();
+        while (user == null || user && !user.doc/* || !foriconPackageIsLoaded*/) await wait();
         let loading = elemById('loading');
         loading.style.opacity = '0';
         await wait(.2);
