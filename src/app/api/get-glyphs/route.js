@@ -25,7 +25,7 @@ export async function GET() {
         })
     }
     catch (err) {
-        error('Error getting font: ', err)
+        console.error('Error getting font: ', err)
         res.status(500).send('Internal Server Error');
     }
 }
