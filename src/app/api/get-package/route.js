@@ -6,7 +6,7 @@ export async function GET(req) {
     let db = getDb();
 
     try {
-        let { searchParams } = new URL(req.url);
+        let { searchParams } = req.nextUrl;
         let uid = searchParams.get('uid');
         let timezone = Number(searchParams.get('timezone'));
         let origin = req.headers.get('origin') || req.headers.get('referer');

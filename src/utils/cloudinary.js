@@ -1,14 +1,16 @@
 import { v2 as cloudinary } from 'cloudinary';
 
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET,
-})
-
+export function getCloudinary() {
+    cloudinary.config({
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_SECRET,
+    })
+    return cloudinary;
+}
 export function getFile(publicId) {
     let now = Date.now();
-    return `${cloudinary.url(publicId, {
+    return `${getCloudinary().url(publicId, {
         resource_type: 'raw',
         type: 'authenticated',
         sign_url: true,
