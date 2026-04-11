@@ -39,29 +39,30 @@ export default function Search() {
         
         let charNameList = [], isBarOpened = false;
         
+        if (!charNameList.length)
         try {
-            // let res = await fetch(`//foricon-server-side.onrender.com/get-font/2/ttf`);
-            // let src = await res.text();
-            // opentype.load(src, (err, font) => {
-            //     if (err) {
-            //         notify('error', err.message);
-            //         console.error('Font could not be loaded:', err);
-            //     }
-            //     else
-            //         for (let [, char] of Object.entries(font.glyphs.glyphs)) {
-            //             let { name } = char;
-            //             let unicode = (char.unicode || 0).toString(16).padStart(4, '0');
-            //             let glyph = String.fromCharCode(char.unicode);
-            //             charNameList.push({ name, unicode });
-            //         }
-            // })
-            let res = await fetch('/api/get-glyphs');
-            let icons = await res.json();
-            charNameList.push(...icons);
-        }
-        catch ({ message }) {
-            notify('error', message);
-        }
+                // let res = await fetch(`//foricon-server-side.onrender.com/get-font/2/ttf`);
+                // let src = await res.text();
+                // opentype.load(src, (err, font) => {
+                //     if (err) {
+                //         notify('error', err.message);
+                //         console.error('Font could not be loaded:', err);
+                //     }
+                //     else
+                //         for (let [, char] of Object.entries(font.glyphs.glyphs)) {
+                //             let { name } = char;
+                //             let unicode = (char.unicode || 0).toString(16).padStart(4, '0');
+                //             let glyph = String.fromCharCode(char.unicode);
+                //             charNameList.push({ name, unicode });
+                //         }
+                // })
+                let res = await fetch('/api/get-glyphs');
+                let icons = await res.json();
+                charNameList.push(...icons);
+            }
+            catch ({ message }) {
+                notify('error', message);
+            }
         
         if (quickSearch) {
             sessionStorage.removeItem('search');
@@ -146,17 +147,17 @@ export default function Search() {
             
                         getChild(bar_download_ul).forEach(btn => btn.onclick = ({currentTarget}) => {
                             if (isB1) {
-                            notify('warn', 'This feature does not support Beta 1.x icons');
-                            return;
+                                notify('warn', 'This feature does not support Beta 1.x icons');
+                                return;
                             }
                             let type = getAttr(currentTarget, 'name');
                             chooseLayers_b.innerText = currentTarget.innerText;
                             isDuotone ? enable(chooseLayers_checkboxes[1]) : disable(chooseLayers_checkboxes[1]);
                             modal(chooseLayers, layers =>
-                            layers.forEach(layer => {
-                                let { name } = charNameList.find(i => i.unicode == unicodes[layer == 'pri' ? 0 : 1]);
-                                go(`//foricon-server-side.onrender.com/get-icon/${type}/${name}`, true);
-                            })
+                                layers.forEach(layer => {
+                                    let { name } = charNameList.find(i => i.unicode == unicodes[layer == 'pri' ? 0 : 1]);
+                                    go(`//foricon-server-side.onrender.com/get-icon/${type}/${name}`, true);
+                                })
                             )
                         })
                     })
