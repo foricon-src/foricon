@@ -1,6 +1,8 @@
 import { getAdmin, getDb } from 'Uti/firebase-admin';
 import { getFile } from 'Uti/cloudinary';
 
+export const runtime = 'nodejs';
+
 export async function GET(req) {
     let admin = getAdmin();
     let db = getDb();

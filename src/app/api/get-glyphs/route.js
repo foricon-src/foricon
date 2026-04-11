@@ -1,6 +1,8 @@
 import opentype from 'opentype.js';
 import { getFile } from 'Uti/cloudinary';
 
+export const runtime = 'nodejs';
+
 export async function GET() {
     try {
         let url = getFile(`systemAssets/fontb2.ttf`);
