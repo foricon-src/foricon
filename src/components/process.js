@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
@@ -178,7 +179,7 @@ export default function Process() {
             es: 'Acceso',
             ru: 'Авторизоваться',
         }[language]
-    })()}, [])
+    })()}, [ usePathname() ])
     
     return null;
 }

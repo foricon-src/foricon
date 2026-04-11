@@ -121,8 +121,8 @@ export default function RootLayout({ children }) {
                         </ul>
                     </div>
                 </footer>
+                <Process/>
             </body>
-            <Process/>
         </html>
     );
 }
