@@ -91,8 +91,8 @@ export default function Process() {
             })
         })
         qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname && activate(each));
-
-        onAuthStateChanged(auth, async res => {
+        
+        user == null && onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
             let admin;
             let { body } = document;
@@ -122,28 +122,30 @@ export default function Process() {
             //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
             // }
         })
-
-        let icons = (await get(ref(db, 'icons/'))).val();
-        for (let name in icons) {
-            let icon = icons[name];
-            webData.icons.push({
-                name,
-                categories: icon.categories.map(cate => cate.replace('bussiness', 'business')),
-                styles: icon.styles,
-                glyphs: icon.glyphs,
-                unicodes: icon.unicodes,
-            })
-        }
-        let iconsB2 = (await get(ref(db, 'iconsB2/'))).val();
-        for (let name in iconsB2) {
-            let icon = iconsB2[name];
-            webData.iconsB2.push({
-                name,
-                categories: icon.categories,
-                styles: icon.styles,
-                glyphs: icon.glyphs,
-                unicodes: icon.unicodes,
-            })
+        
+        if (!webData.iconsB2.length) {
+            let icons = (await get(ref(db, 'icons/'))).val();
+            for (let name in icons) {
+                let icon = icons[name];
+                webData.icons.push({
+                    name,
+                    categories: icon.categories.map(cate => cate.replace('bussiness', 'business')),
+                    styles: icon.styles,
+                    glyphs: icon.glyphs,
+                    unicodes: icon.unicodes,
+                })
+            }
+            let iconsB2 = (await get(ref(db, 'iconsB2/'))).val();
+            for (let name in iconsB2) {
+                let icon = iconsB2[name];
+                webData.iconsB2.push({
+                    name,
+                    categories: icon.categories,
+                    styles: icon.styles,
+                    glyphs: icon.glyphs,
+                    unicodes: icon.unicodes,
+                })
+            }
         }
         
         while (user == null || user && !user.doc/* || !foriconPackageIsLoaded*/) await wait();
