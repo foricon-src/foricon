@@ -105,7 +105,7 @@ export default function Search() {
                         <span>${icon.name}</span>`)
                     li.page = num;
                     resultCount > 150 && (li.style.display = 'none');
-                    addEvenList(li, 'click', async () => {
+                    addEvLis(li, 'click', async () => {
                         if (isActive(li)) return;
 
                         isBarOpened && await wait(.2);
@@ -166,7 +166,7 @@ export default function Search() {
                         let li_page = newElem('li');
                         num == 1 && activate(li_page);
                         li_page.innerText = num;
-                        addEvenList(li_page, 'click',() =>
+                        addEvLis(li_page, 'click',() =>
                             getChild(results).forEach(each => {
                                 each.style.display = each.page == num ? '' : 'none';
                                 inactivate(...pages.children);
@@ -201,7 +201,7 @@ export default function Search() {
                 selectedCategories.includes(item) && activate(li_category);
                 li_category.innerHTML = `<span>${obj[item].icon}${obj[item][language]}</span><span>${abbreviateNumber(obj[item].count || 0)}</span>`;
                 
-                addEvenList(li_category, 'click', () => {
+                addEvLis(li_category, 'click', () => {
                     let i = selectedCategories.indexOf(item);
                     i + 1 ? selectedCategories.splice(i, 1) : selectedCategories.push(item);
                     goLink();
@@ -237,14 +237,14 @@ export default function Search() {
         let isHovered = false;
         let topPos = `${-top.offsetHeight + 70}px`;
         let lastPos = 0;
-        addEvenList(document, 'click', ({target}) => {
+        addEvLis(document, 'click', ({target}) => {
             if (!qSelec(false, results, '.active')?.contains(target) && !bar.contains(target) && !chooseLayers.contains(target) && isActive(bar)) {
                 inactivate(...results.children, bar);
                 isBarOpened = false;
             }
             !top.contains(target) && hideTop();
         })
-        addEvenList(document, 'scroll', async () => {
+        addEvLis(document, 'scroll', async () => {
             if (animating) return;
             animating = true;
             let calculated = document.documentElement.scrollTop - window.innerHeight;
@@ -276,7 +276,7 @@ export default function Search() {
             animating = false;
         })
         
-        addEvenList(
+        addEvLis(
             [ bar_glyphs_primary, bar_glyphs_secondary, bar_unicodes_primary, bar_unicodes_secondary ],
             'click',
             async ({currentTarget}) => {
@@ -302,14 +302,14 @@ export default function Search() {
             await wait(.5);
             top.classList.remove('slow-trans');
         }
-        addEvenList(top, 'mouseenter', openTop);
-        addEvenList(top, 'mouseleave', hideTop);
-        addEvenList(top_search, 'input', () => {
+        addEvLis(top, 'mouseenter', openTop);
+        addEvLis(top, 'mouseleave', hideTop);
+        addEvLis(top_search, 'input', () => {
             clearTimeout(timeoutSearch)
             timeoutSearch = setTimeout(show, 250);
             goLink();
         })
-        addEvenList(top_versions, 'change', () => {
+        addEvLis(top_versions, 'change', () => {
             show();
             results.dataset.version = top_versions.value;
             goLink();
