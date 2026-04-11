@@ -27,42 +27,41 @@ export default function Search() {
         let pages = elemById('pages');
         let bar = elemById('bar');
         let bar_code = qSelec(false, bar, 'code');
-        let bar_glyphs = qSelec(false, bar, 'div#bar_glyphs');
+        let bar_glyphs = qSelec(false, bar, '#bar_glyphs');
         let bar_glyphs_primary = qSelec(false, bar_glyphs, 'div[name="Primary"]');
         let bar_glyphs_secondary = qSelec(false, bar_glyphs, 'div[name="Secondary"]');
-        let bar_unicodes = qSelec(false, bar, 'div#bar_unicodes');
+        let bar_unicodes = qSelec(false, bar, '#bar_unicodes');
         let bar_unicodes_primary = qSelec(false, bar_unicodes, 'div[name="Primary"]');
         let bar_unicodes_secondary = qSelec(false, bar_unicodes, 'div[name="Secondary"]');
-        let bar_categories = qSelec(false, bar, 'div#bar_categories > ul');
-        let bar_download = qSelec(false, bar, 'div#bar_download');
+        let bar_categories = qSelec(false, bar, '#bar_categories > ul');
+        let bar_download = qSelec(false, bar, '#bar_download');
         let bar_download_ul = qSelec(false, bar_download, 'ul');
         
         let charNameList = [], isBarOpened = false;
         
-        if (!charNameList.length)
         try {
-                // let res = await fetch(`//foricon-server-side.onrender.com/get-font/2/ttf`);
-                // let src = await res.text();
-                // opentype.load(src, (err, font) => {
-                //     if (err) {
-                //         notify('error', err.message);
-                //         console.error('Font could not be loaded:', err);
-                //     }
-                //     else
-                //         for (let [, char] of Object.entries(font.glyphs.glyphs)) {
-                //             let { name } = char;
-                //             let unicode = (char.unicode || 0).toString(16).padStart(4, '0');
-                //             let glyph = String.fromCharCode(char.unicode);
-                //             charNameList.push({ name, unicode });
-                //         }
-                // })
-                let res = await fetch('/api/get-glyphs');
-                let icons = await res.json();
-                charNameList.push(...icons);
-            }
-            catch ({ message }) {
-                notify('error', message);
-            }
+            // let res = await fetch(`//foricon-server-side.onrender.com/get-font/2/ttf`);
+            // let src = await res.text();
+            // opentype.load(src, (err, font) => {
+            //     if (err) {
+            //         notify('error', err.message);
+            //         console.error('Font could not be loaded:', err);
+            //     }
+            //     else
+            //         for (let [, char] of Object.entries(font.glyphs.glyphs)) {
+            //             let { name } = char;
+            //             let unicode = (char.unicode || 0).toString(16).padStart(4, '0');
+            //             let glyph = String.fromCharCode(char.unicode);
+            //             charNameList.push({ name, unicode });
+            //         }
+            // })
+            let res = await fetch('/api/get-glyphs');
+            let icons = await res.json();
+            charNameList.push(...icons);
+        }
+        catch ({ message }) {
+            notify('error', message);
+        }
         
         if (quickSearch) {
             sessionStorage.removeItem('search');
@@ -140,8 +139,8 @@ export default function Search() {
                         else bar_glyphs_secondary.innerText = bar_unicodes_secondary.innerText = '';
                         bar_categories.append(
                             ...categories.map(cate => {
-                            let category = webData.categories[cate];
-                            return newElem('li', `${category.icon}<span>${category[language]}</span>`);
+                                let category = webData.categories[cate];
+                                return newElem('li', `${category.icon}<span>${category[language]}</span>`);
                             }).sort((a, b) => a.innerText.localeCompare(b.innerText))
                         )
             
