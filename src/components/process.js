@@ -26,7 +26,7 @@ export default function Process() {
             theme == 'dark'
             ||
             !theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
-        ) && classList(body, 'contains', 'dark') && toggleTheme();
+        ) && !classList(body, 'contains', 'dark') && toggleTheme();
         
         language = localStorage.getItem('language');
         country = localStorage.getItem('country');
