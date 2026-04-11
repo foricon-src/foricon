@@ -1,3 +1,4 @@
+globalThis.pageLoaded = false;
 globalThis.webData = {
     isBeta: true,
     verNum: '3.0',
@@ -1014,4 +1015,9 @@ globalThis.go = (href, openInNewTab) => {
 
 globalThis.random = arr => {
     return arr[Math.floor(Math.random() * arr.length)]
+}
+
+globalThis.updateRange = (elem, value) => {
+    elem.value = value;
+    elem.dispatchEvent(new Event('input'));
 }
