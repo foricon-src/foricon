@@ -194,7 +194,7 @@ export default function Search() {
                 (a, b) => similarity(b.name, value) - similarity(a.name, value)
             )).forEach(icon => getStyles(icon).forEach(style => showIcon(icon, style)));
             
-            qSelec(false, `#main > h5 > lang[data-value='${language}'] > span`).innerText = resultCount;
+            qSelec(false, `#main > h5 > lang[value='${language}'] > span`).innerText = resultCount;
             
             for (let item in obj) {
                 let li_category = document.createElement('li');
