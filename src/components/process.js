@@ -552,226 +552,227 @@ export default function Process() {
                     addEvLis(control_controls_center_forward, 'click', () => elem.forward(5));
                     
                     control_controls_right_speed.addEventListener('click', () => toggle(control_controls_right_speedOptions));
-                    control_controls_right_speedOptions_options.forEach(opt =>
-                        opt.addEventListener('click', () => elem.setPlaybackRate(opt.dataset.value)));
-                        control_controls_right_fullscreen.addEventListener('click', () => document.fullscreenElement ? document.exitFullscreen() : elem.requestFullscreen());
+                    control_controls_right_speedOptions_options.forEach(opt => opt.addEventListener('click', () => elem.setPlaybackRate(opt.dataset.value)));
+                    control_controls_right_fullscreen.addEventListener('click', () => document.fullscreenElement ? document.exitFullscreen() : elem.requestFullscreen());
+                    
+                    video.addEventListener('timeupdate', () => {
+                        elem.style.setProperty('--percent', `${isNaN(video.duration) ? 0 : video.currentTime / video.duration * 100}%`);
+                        control_controls_left_timer_currentTime.innerText = formatTime(elem.currentTime = video.currentTime);
+                        control_controls_left_timer_duration.innerText = formatTime(elem.duration = video.duration);
+                    })
+                    video.addEventListener('loadeddata', async () => {
+                        let { videoWidth, videoHeight } = video;
                         
-                        video.addEventListener('timeupdate', () => {
-                            elem.style.setProperty('--percent', `${isNaN(video.duration) ? 0 : video.currentTime / video.duration * 100}%`);
-                            control_controls_left_timer_currentTime.innerText = formatTime(elem.currentTime = video.currentTime);
-                            control_controls_left_timer_duration.innerText = formatTime(elem.duration = video.duration);
-                        })
-                        video.addEventListener('loadeddata', async () => {
-                            let { videoWidth, videoHeight } = video;
+                        control_controls_left_timer_duration.innerText = formatTime(elem.duration = video.duration);
+                        elem.style.width = elem.style.height = null;
+                        
+                        if (getAttr(elem, 'use-media-dimensions') != undefined && videoWidth && videoHeight) {
+                            let { parentNode } = elem;
+                            let computedStyle = getComputedStyle(parentNode);
+                            let parentHeight = parentNode.clientHeight - parseFloat(computedStyle.paddingTop) - parseFloat(computedStyle.paddingBottom);
+                            let parentWidth = parentNode.clientWidth - parseFloat(computedStyle.paddingLeft) - parseFloat(computedStyle.paddingRight);
+                            let parentAspectRatio = parentWidth / parentHeight;
+                            let videoAspectRatio = videoWidth / videoHeight;
+                            let condition = parentAspectRatio < videoAspectRatio;
                             
-                            control_controls_left_timer_duration.innerText = formatTime(elem.duration = video.duration);
-                            elem.style.width = elem.style.height = null;
-                            
-                            if (getAttr(elem, 'use-media-dimensions') != undefined && videoWidth && videoHeight) {
-                                let { parentNode } = elem;
-                                let computedStyle = getComputedStyle(parentNode);
-                                let parentHeight = parentNode.clientHeight - parseFloat(computedStyle.paddingTop) - parseFloat(computedStyle.paddingBottom);
-                                let parentWidth = parentNode.clientWidth - parseFloat(computedStyle.paddingLeft) - parseFloat(computedStyle.paddingRight);
-                                let parentAspectRatio = parentWidth / parentHeight;
-                                let videoAspectRatio = videoWidth / videoHeight;
-                                let condition = parentAspectRatio < videoAspectRatio;
-                                
-                                elem.style[!condition ? 'width' : 'height'] = null;
-                                elem.style[condition ? 'width' : 'height'] = `${condition ? videoWidth : videoHeight}px`;
-                            }
-                        })
-                        video.addEventListener('play', () => {
-                            control_controls_center_play_icon.setIcon('pause');
-                            controllingNotify('play');
-                            elem.paused = false;
-                            hideControls();
-                        })
-                        video.addEventListener('pause', () => {
-                            control_controls_center_play_icon.setIcon('play');
-                            controllingNotify('pause');
-                            elem.paused = true;
-                            elem.classList.add('show');
-                        })
-                    }
-                })
-                customElements.define('f-select', class extends HTMLElement {
-                    async connectedCallback() {
-                        let elem = this;
-                        let multiple = getAttr(elem, 'multiple') != undefined;
-                        
-                        await wait(.1);
-                        
-                        let txt = qSelec(false, elem, 'text');
-                        let optList = qSelec(false, elem, 'option-list');
-                        let optList_option = [...optList.children];
-                        
-                        !txt && console.error('Missing element: &quot;text&quot; is not found');
-                        
-                        elem.value = multiple ? [] : '';
-                        
-                        Object.defineProperty(elem, '_v', {
-                            set(newValue) {
-                                elem.value = newValue;
-                                elem.dispatchEvent(new Event('change'));
-                            }
-                        })
-                        
-                        elem.addEventListener('click', async e => {
-                            if (!optList) console.error('Missing element: &quot;option-list&quot; is not found');
-                            else if (e.target == elem) {
-                                if (!isActive(optList)) {
-                                    let hei = optList.offsetHeight;
-                                    optList.style.height = '0';
-                                    await wait();
-                                    active(optList);
-                                    optList.style.height = `${hei}px`;
-                                    await wait(.2);
-                                    optList.style = '';
-                                }
-                                optList.classList[
-                                    elem.getBoundingClientRect().top + optList.offsetHeight > window.innerHeight ? 'add' : 'remove'
-                                ]('bottom')
-                            }
-                        })
-                        document.addEventListener('click', e => {
-                            let { target } = e;
-                            async function hide() {
+                            elem.style[!condition ? 'width' : 'height'] = null;
+                            elem.style[condition ? 'width' : 'height'] = `${condition ? videoWidth : videoHeight}px`;
+                        }
+                    })
+                    video.addEventListener('play', () => {
+                        control_controls_center_play_icon.setIcon('pause');
+                        controllingNotify('play');
+                        elem.paused = false;
+                        hideControls();
+                    })
+                    video.addEventListener('pause', () => {
+                        control_controls_center_play_icon.setIcon('play');
+                        controllingNotify('pause');
+                        elem.paused = true;
+                        elem.classList.add('show');
+                    })
+                }
+            })
+            customElements.define('f-select', class extends HTMLElement {
+                async connectedCallback() {
+                    let elem = this;
+                    let multiple = getAttr(elem, 'multiple') != undefined;
+                    
+                    await wait(.1);
+                    
+                    let txt = qSelec(false, elem, 'text');
+                    let optList = qSelec(false, elem, 'option-list');
+                    let optList_option = [...optList.children];
+                    
+                    !txt && console.error('Missing element: &quot;text&quot; is not found');
+                    
+                    elem.value = multiple ? [] : '';
+                    
+                    Object.defineProperty(elem, '_v', {
+                        set(newValue) {
+                            elem.value = newValue;
+                            elem.dispatchEvent(new Event('change'));
+                        }
+                    })
+                    
+                    elem.addEventListener('click', async e => {
+                        if (!optList) console.error('Missing element: &quot;option-list&quot; is not found');
+                        else if (e.target == elem) {
+                            if (!isActive(optList)) {
                                 let hei = optList.offsetHeight;
-                                unactive(optList);
-                                optList.style.height = `${hei}px`;
-                                await wait();
                                 optList.style.height = '0';
+                                await wait();
+                                active(optList);
+                                optList.style.height = `${hei}px`;
                                 await wait(.2);
                                 optList.style = '';
                             }
-                            if (isActive(optList))
-                                multiple ?
-                            target != optList && ![...optList.children].some(child => child.contains(target)) && hide() :
-                            target != optList && hide();
-                        })
-                        optList_option.forEach(each => elem.formatOption(each))
-                    }
-                    formatOption(opt) {
-                        let elem = this;
-                        let txt = qSelec(false, elem, 'text');
-                        let optList = qSelec(false, elem, 'option-list');
-                        let multiple = getAttr(elem, 'multiple') != undefined;
-                        let required = getAttr(elem, 'required') != undefined;
-                        
-                        async function setOption() {
-                            while (document.getElementById('loading')) await wait();
-                            
-                            let optList_option = [...optList.children];
-                            let { innerText } = opt;
-                            let val = getAttr(opt, 'value') ?? innerText;
-                            
-                            if (multiple) {
-                                let { children } = txt;
-                                if (
-                                    isActive(opt) && (
-                                        !required || required && querySelecAll(optList, '.active').length > 1
-                                    )
-                                ) {
-                                    for (let span of children) span.innerText == innerText && span.remove();
-                                    unactive(opt);
-                                }
-                                else active(opt);
-                                elem._v = optList_option.map(opt => {
-                                    if (isActive(opt))
-                                        return getAttr(opt, 'value') ?? opt.innerText;
-                                }).filter(item => (item))
-                                clear(txt);
-                                optList_option.forEach(opt => {
-                                    if (isActive(opt))
-                                        txt.innerHTML += `<span>${opt.innerText}</span>`
-                                })
-                            }
-                            else {
-                                let act = optList.querySelector('.active');
-                                let lang = opt.querySelector('lang');
-                                act && unactive(act);
-                                txt.innerText = (lang || opt).innerText;
-                                active(opt);
-                                elem._v = val;
-                            }
+                            optList.classList[
+                                elem.getBoundingClientRect().top + optList.offsetHeight > window.innerHeight ? 'add' : 'remove'
+                            ]('bottom')
                         }
-                        addEvLis(opt, 'click', setOption);
-                        getAttr(opt, ) == '' && setOption();
-                    }
-                    createOption(innerHTML, value, options) {
-                        let opt = document.createElement('f-option');
-                        
-                        options?.disabled && disable(opt);
-                        options?.selected && (opt.className = 'selected');
-                        value && opt.setAttribute('value', value);
-                        opt.innerHTML = innerHTML;
-                        
-                        this.querySelector('option-list').append(opt);
-                        this.formatOption(opt);
-                    }
-                    clearOptions() {
-                        clear(this.querySelector('text'), this.querySelector('option-list'));
-                    }
-                    async setValue(value) {
+                    })
+                    document.addEventListener('click', e => {
+                        let { target } = e;
+                        async function hide() {
+                            let hei = optList.offsetHeight;
+                            unactive(optList);
+                            optList.style.height = `${hei}px`;
+                            await wait();
+                            optList.style.height = '0';
+                            await wait(.2);
+                            optList.style = '';
+                        }
+                        if (isActive(optList))
+                            multiple ?
+                        target != optList && ![...optList.children].some(child => child.contains(target)) && hide() :
+                        target != optList && hide();
+                    })
+                    optList_option.forEach(each => elem.formatOption(each))
+                }
+                formatOption(opt) {
+                    let elem = this;
+                    let txt = qSelec(false, elem, 'text');
+                    let optList = qSelec(false, elem, 'option-list');
+                    let multiple = getAttr(elem, 'multiple') != undefined;
+                    let required = getAttr(elem, 'required') != undefined;
+                    
+                    async function setOption() {
                         while (document.getElementById('loading')) await wait();
                         
-                        let multiple = getAttr(this, 'multiple') != undefined;
+                        let optList_option = [...optList.children];
+                        let { innerText } = opt;
+                        let val = getAttr(opt, 'value') ?? innerText;
                         
-                        if (value == null) {
-                            clear(this.querySelector('text'));
-                            this.querySelectorAll('f-option').forEach(opt => unactive(opt));
-                            this._v = multiple ? [] : '';
-                        }
-                        else {
-                            let found;
-                            this.querySelectorAll('f-option').forEach(async opt => {
-                                let val = getAttr(opt, 'value') || opt.innerText;
-                                if (val == value || (multiple && value.includes(val))) {
-                                    opt.click();
-                                    found = true;
-                                }
+                        if (multiple) {
+                            let { children } = txt;
+                            if (
+                                isActive(opt) && (
+                                    !required || required && querySelecAll(optList, '.active').length > 1
+                                )
+                            ) {
+                                for (let span of children) span.innerText == innerText && span.remove();
+                                unactive(opt);
+                            }
+                            else active(opt);
+                            elem._v = optList_option.map(opt => {
+                                if (isActive(opt))
+                                    return getAttr(opt, 'value') ?? opt.innerText;
+                            }).filter(item => (item))
+                            clear(txt);
+                            optList_option.forEach(opt => {
+                                if (isActive(opt))
+                                    txt.innerHTML += `<span>${opt.innerText}</span>`
                             })
                         }
+                        else {
+                            let act = optList.querySelector('.active');
+                            let lang = opt.querySelector('lang');
+                            act && unactive(act);
+                            txt.innerText = (lang || opt).innerText;
+                            active(opt);
+                            elem._v = val;
+                        }
                     }
-                })
-            }
-            
-            while (user == null || user && !user.doc/* || !foriconPackageIsLoaded*/) await wait();
-            let loading = elemById('loading');
-            if (loading) {
-                loading.style.opacity = '0';
-                await wait(.2);
-                loading.remove();
-            }
-            
-            qSelec(true, '.icon-count').forEach(
-                each => each.innerText = `${Math.floor(webData.iconsB2.reduce(
-                    (total, icon) => total + icon.styles.length, 0
-                ) / 100) * 100}`
-            )
-            
-            if (user) {
-                header_right_accBtn.replaceChild(
-                    newElem('img', { src: user.doc.avatar }),
-                    qSelec(false, header_right_accBtn, 'f-icon')
-                )
-                header_right_accBtn_span.innerText = user.doc.name;
-            }
-            else header_right_accBtn_span.innerText = {
-                en: 'Log in',
-                vi: 'Đăng nhập',
-                fr: 'Se connecter',
-                it: 'Login',
-                kr: '로그인',
-                ja: 'ログイン',
-                de: 'Einloggen',
-                nl: 'Inloggen',
-                dk: 'Log ind',
-                pt: 'Conecte-se',
-                es: 'Acceso',
-                ru: 'Авторизоваться',
-            }[language]
-        })()}, [ usePathname() ])
+                    addEvLis(opt, 'click', setOption);
+                    getAttr(opt, ) == '' && setOption();
+                }
+                createOption(innerHTML, value, options) {
+                    let opt = document.createElement('f-option');
+                    
+                    options?.disabled && disable(opt);
+                    options?.selected && (opt.className = 'selected');
+                    value && opt.setAttribute('value', value);
+                    opt.innerHTML = innerHTML;
+                    
+                    this.querySelector('option-list').append(opt);
+                    this.formatOption(opt);
+                }
+                clearOptions() {
+                    clear(this.querySelector('text'), this.querySelector('option-list'));
+                }
+                async setValue(value) {
+                    while (document.getElementById('loading')) await wait();
+                    
+                    let multiple = getAttr(this, 'multiple') != undefined;
+                    
+                    if (value == null) {
+                        clear(this.querySelector('text'));
+                        this.querySelectorAll('f-option').forEach(opt => unactive(opt));
+                        this._v = multiple ? [] : '';
+                    }
+                    else {
+                        let found;
+                        this.querySelectorAll('f-option').forEach(async opt => {
+                            let val = getAttr(opt, 'value') || opt.innerText;
+                            if (val == value || (multiple && value.includes(val))) {
+                                opt.click();
+                                found = true;
+                            }
+                        })
+                    }
+                }
+            })
+
+            pageLoaded = true;
+        }
         
-        return null;
-    }
+        while (user == null || user && !user.doc/* || !foriconPackageIsLoaded*/) await wait();
+        let loading = elemById('loading');
+        if (loading) {
+            loading.style.opacity = '0';
+            await wait(.2);
+            loading.remove();
+        }
+        
+        qSelec(true, '.icon-count').forEach(
+            each => each.innerText = `${Math.floor(webData.iconsB2.reduce(
+                (total, icon) => total + icon.styles.length, 0
+            ) / 100) * 100}`
+        )
+        
+        if (user) {
+            header_right_accBtn.replaceChild(
+                newElem('img', { src: user.doc.avatar }),
+                qSelec(false, header_right_accBtn, 'f-icon')
+            )
+            header_right_accBtn_span.innerText = user.doc.name;
+        }
+        else header_right_accBtn_span.innerText = {
+            en: 'Log in',
+            vi: 'Đăng nhập',
+            fr: 'Se connecter',
+            it: 'Login',
+            kr: '로그인',
+            ja: 'ログイン',
+            de: 'Einloggen',
+            nl: 'Inloggen',
+            dk: 'Log ind',
+            pt: 'Conecte-se',
+            es: 'Acceso',
+            ru: 'Авторизоваться',
+        }[language]
+    })()}, [ usePathname() ])
+    
+    return null;
+}
