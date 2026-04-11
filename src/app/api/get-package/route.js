@@ -1,5 +1,5 @@
-import { admin, db } from 'Com/firebase-admin';
-import 'Com/utilities';
+import { admin, db } from 'Uti/firebase-admin';
+import { getFile } from 'Uti/cloudinary';
 
 export async function GET(req) {
     try {

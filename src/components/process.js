@@ -6,7 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from './firebase';
-import 'Com/utilities'
+import 'Com/utils'
 
 export default function Process() {
     useEffect(() => {(async () => {

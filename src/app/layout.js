@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Ass/foricon-f-2.png';
 import './globals.css';
+import 'Com/utils'
 
 export const metadata = {
     title: 'Foricon',

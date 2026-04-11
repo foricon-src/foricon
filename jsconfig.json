@@ -5,7 +5,8 @@
             "Pag/*": ["src/app/*"],
             "Api/*": ["Pag/api/*"],
             "Ass/*": ["src/assets/*"],
-            "Com/*": ["src/components/*"]
+            "Com/*": ["src/components/*"],
+            "Uti/*": ["src/utils/*"]
         }
     }
 }

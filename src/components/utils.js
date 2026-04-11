@@ -1,5 +1,3 @@
-import { v2 as cloudinary } from 'cloudinary'
-
 globalThis.pageLoaded = false;
 globalThis.webData = {
     isBeta: true,
@@ -1095,14 +1093,4 @@ globalThis.abbreviateNumber = num => {
     ['vi', 'fr', 'de', 'nl', 'dk', 'pt', 'es', 'ru'].includes(language) && (formatted = formatted.toString().replace('.', ','));
 
     return formatted;
-}
-
-globalThis.getFile = publicId => {
-    let now = Date.now();
-    return `${cloudinary.url(publicId, {
-        resource_type: 'raw',
-        type: 'authenticated',
-        sign_url: true,
-        expires_at: Math.floor(now / 1000) + 300
-    })}`
 }
