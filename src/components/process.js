@@ -26,7 +26,7 @@ export default function Process() {
             theme == 'dark'
             ||
             !theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
-        ) && toggleTheme();
+        ) && classList(body, 'contains', 'dark') && toggleTheme();
         
         language = localStorage.getItem('language');
         country = localStorage.getItem('country');
@@ -122,7 +122,7 @@ export default function Process() {
             //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
             // }
         })
-        
+
         if (!webData.iconsB2.length) {
             let icons = (await get(ref(db, 'icons/'))).val();
             for (let name in icons) {
@@ -150,9 +150,11 @@ export default function Process() {
         
         while (user == null || user && !user.doc/* || !foriconPackageIsLoaded*/) await wait();
         let loading = elemById('loading');
-        loading.style.opacity = '0';
-        await wait(.2);
-        loading.remove();
+        if (loading) {
+            loading.style.opacity = '0';
+            await wait(.2);
+            loading.remove();
+        }
 
         qSelec(true, '.icon-count').forEach(
             each => each.innerText = `${Math.floor(webData.iconsB2.reduce(
