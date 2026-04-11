@@ -148,6 +148,7 @@ export function GET(_, { params: { uid }}) {
                 log('[Foricon Package] Step 2/4: Verifying and fetching package data from server...');
 
                 const res = await fetch(\`//foricon.vercel.app/api/get-package?uid=\${uid}&timezone=\${new Date().getTimezoneOffset() / 60}\`);
+                console.log(res)
                 const parsed = await res.json();
 
                 if (!res.ok) throw new Error(parsed.message);
