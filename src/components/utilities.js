@@ -1065,3 +1065,32 @@ globalThis.notify = async (type, message) => {
     await wait(.5);
     div.remove();
 }
+
+globalThis.abbreviateNumber = num => {
+    let units = {
+        en: ['', 'K', 'M', 'B', 'T'],
+        vi: ['', ' N', ' Tr', ' tỷ', ' N tỷ'],
+        fr: ['', 'k', 'M', 'Md', 'Bn'],
+        it: ['', 'k', 'M', 'Mld', 'T'],
+        kr: ['', '천', '백만', '억', '조'],
+        ja: ['', '千', '百万', '億', '兆'],
+        de: ['', ' Tsd.', ' Mio.', ' Mrd.', ' Bio.'],
+        nl: ['', 'K', ' mln', ' mld', ' bln'],
+        dk: ['', 'k', ' mio.', ' mia.', ' bio.'],
+        pt: ['', ' mil', ' mi', ' bi', ' tri'],
+        es: ['', ' mil', ' M', ' mil M', ' Bn'],
+        ru: ['', ' тыс', ' млн', ' млрд', ' трлн'],
+    }[language];
+    let unitIndex = 0;
+
+    while (num >= 1000 && unitIndex < units.length - 1) {
+        num /= 1000;
+        unitIndex++;
+    }
+
+    let formatted = (num < 100 && unitIndex ? number.toFixed(1) : num) + units[unitIndex];
+  
+    ['vi', 'fr', 'de', 'nl', 'dk', 'pt', 'es', 'ru'].includes(language) && (formatted = formatted.toString().replace('.', ','));
+
+    return formatted;
+}
