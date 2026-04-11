@@ -77,7 +77,7 @@ export default function Search() {
                     <lang value='en'>Enjoy free icons - sign up to access the entire set!</lang>
                     <lang value='vi'>Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập</lang>
                     <lang value='fr'>Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !</lang>
-                    <lang value='it'>Goditi le icone gratuite - registrati per accedere all’intera collezione!</lang>
+                    <lang value='it'>Goditi le icone gratuite - registrati per accedere all&apos;intera collezione!</lang>
                     <lang value='kr'>무료 아이콘을 즐기세요 - 전체 세트를 이용하려면 가입하세요!</lang>
                     <lang value='ja'>無料アイコンを楽しもう - 全セットを使うには登録が必要です！</lang>
                     <lang value='de'>Kostenlose Icons genießen - registriere dich für das komplette Set!</lang>
@@ -89,7 +89,7 @@ export default function Search() {
                     <a href='/p/sign-up.html' class='btn'>
                         <lang value='en'>Sign up</lang>
                         <lang value='vi'>Đăng ký</lang>
-                        <lang value='fr'>S'inscrire</lang>
+                        <lang value='fr'>S&apos;inscrire</lang>
                         <lang value='it'>Iscrizione</lang>
                         <lang value='kr'>가입하기</lang>
                         <lang value='ja'>サインアップ</lang>
