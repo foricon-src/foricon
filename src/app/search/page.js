@@ -206,7 +206,7 @@ export default function Search() {
                     i + 1 ? selectedCategories.splice(i, 1) : selectedCategories.push(item);
                     goLink();
                     show();
-                })
+                });
                 
                 (obj[item].count || isActive(li_category)) && children.push(li_category);
             }
