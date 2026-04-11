@@ -3,7 +3,7 @@ import { getFile } from 'Uti/cloudinary';
 
 export async function GET(req) {
     try {
-        const { searchParams } = new URL(req.url);
+        const { searchParams } = req.nextUrl;
         const uid = searchParams.get('uid');
         let timezone = Number(searchParams.get('timezone'));
         const origin = req.headers.get('origin') || req.headers.get('referer');
