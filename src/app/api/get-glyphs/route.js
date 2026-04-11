@@ -1,7 +1,7 @@
+export const runtime = 'nodejs';
+
 import opentype from 'opentype.js';
 import { getFile } from 'Uti/cloudinary';
-
-export const runtime = 'nodejs';
 
 export async function GET() {
     try {
