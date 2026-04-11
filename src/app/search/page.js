@@ -253,14 +253,14 @@ export default function Search() {
             if (calculated > 0) {
                 activate(top);
                 appendData(top.style, {
-                top: topPos,
-                translate: '0 18px',
+                    top: topPos,
+                    translate: '0 18px',
                 })
                 if (document.activeElement == top_search) {
-                openTop();
-                top.classList.add('slow-trans');
-                await wait(.5);
-                top.classList.remove('slow-trans');
+                    openTop();
+                    top.classList.add('slow-trans');
+                    await wait(.5);
+                    top.classList.remove('slow-trans');
                 }
                 else await wait(.2);
             }

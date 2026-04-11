@@ -1386,6 +1386,122 @@ iframe {
     width: 100%;
     display: block;
 }
+code {
+    display: block;
+    padding: 25px;
+    border-radius: var(--bdr-rad);
+    font-size: var(--mns-ft-sz);
+    margin: var(--spacing-small) 0;
+    font-family: var(--mns-ft);
+    position: relative;
+    border: 1px solid var(--dk-gray);
+    position: relative;
+    width: -webkit-fill-available;
+    white-space: pre-wrap;
+    background-color: var(--bg-color);
+    
+    &:hover {
+        border-color: var(--text-color);
+    }
+    &[name] {
+        padding-top: 0;
+        
+        &:before {
+            content: attr(name);
+            display: block;
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--gray);
+            background-color: var(--lt-gray);
+            margin: 0 -25px 25px;
+            border-radius: 14px 14px 0 0;
+        }
+        &:not([disable-copy-on-hover]) {
+            cursor: var(--cursor-pointer);
+
+            &:hover:before {
+            content: 'Ctrl + Left click to copy';
+            }
+        }
+    }
+    &.hover {
+        border-color: var(--main-color);
+    }
+    span {
+        font-family: inherit;
+        color: inherit;
+        
+        &:is(.attr-val, .css.important, .string) {
+            color: rgb(220, 105, 70);
+        }
+        &.tag, &.attr {
+            color: dimgray;
+        }
+        &.tag > span:not(.attr, .attr-val), &:is(.css.property, .js.variable) {
+            color: rgb(40, 120, 230);
+        }
+        &.attr > span, &.css.selector {
+            color: rgb(45, 180, 100);
+        }
+        &.css {
+            &.property {
+            color: rgb(250, 170, 20);
+            }
+            &.property-value {
+            color: rgb(30, 150, 235);
+            }
+            &.color {
+            color: rgb(150, 50, 255);
+            }
+        }
+        &.js {
+            &.keyword {
+            color: mediumorchid;
+            }
+            &.function {
+            color: lightseagreen;
+            }
+            &.property {
+            opacity: .75;
+            }
+        }
+        &.bracket {
+            color: rgb(255, 220, 60);
+        }
+        &.number {
+            color: rgb(50, 200, 115);
+        }
+        &.comment {
+            color: rgb(210, 170, 60);
+            
+            * {
+            color: inherit !important;
+            }
+        }
+        &.hidden-char {
+            outline: 1px solid var(--main-color);
+        }
+    }
+}
+code, .code-selection {
+    &::selection {
+        background-color: rgba(0, 0, 0, .1);
+
+        &:is(textarea) {
+            color: transparent;
+        }
+    }
+    body.dark &::selection {
+        background-color: rgba(255, 255, 255, .1);
+    }
+}
+preview-code {
+    display: block;
+    border-radius: var(--bdr-rad);
+    border: 1px solid var(--dk-gray);
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+}
 
 #toast {
     position: fixed;
@@ -1655,6 +1771,46 @@ div.message.offline:before {
 
 .dk-bg {
     background-color: var(--dk-bg-color);
+}
+
+.banner {
+    padding: 20px;
+
+    > div {
+        text-align: center;
+        color: rgb(30, 30, 30);
+        padding: 20px;
+        border-radius: var(--bdr-rad);
+
+        .blue > & {
+            background-image:
+                radial-gradient(circle at top right, rgba(140, 190, 240, .5), transparent 200px),
+                radial-gradient(circle at 85% -25%, rgba(190, 110, 255, .4), transparent 220px),
+                radial-gradient(circle at 70% 125%, rgba(50, 120, 255, .35), transparent 250px),
+                radial-gradient(circle at 30% 10%, rgba(50, 190, 240, .25), transparent 180px),
+                radial-gradient(circle at 18% 110%, rgba(120, 100, 200, .45), transparent 200px),
+                radial-gradient(circle at top left, rgba(80, 10, 255, .5), transparent 210px);
+            background-color: rgb(210, 225, 255);
+        }
+        > span {
+            margin: 0 0 0 20px;
+            color: rgb(35, 35, 35);
+        }
+        > a.btn {
+            margin: 0 0 0 20px;
+            color: white;
+            background: rgb(35, 35, 35);
+
+            &:hover {
+                color: rgb(35, 35, 35) !important;
+                background: white;
+            }
+            &:after {
+                content: '\e0ae';
+                font-family: 'Foricon Beta';
+            }
+        }
+    }
 }
 
 .outer-corner:before {
