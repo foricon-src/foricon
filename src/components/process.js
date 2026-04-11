@@ -89,7 +89,7 @@ export default function Process() {
                 }
             })
         })
-        getChild(header_center).forEach(each => pathname == qSelec(false, each, 'a').pathname && activate(each));
+        qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname && activate(each));
 
         onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
