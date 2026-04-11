@@ -1,17 +1,10 @@
 import admin from 'firebase-admin';
-
-export function getAdmin() {
-    let obj = {
+admin.initializeApp({
+    credential: admin.credential.cert({
         projectId: process.env.FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-    }
-    console.log(obj)
-    admin.initializeApp({
-        credential: admin.credential.cert(obj)
+        privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
     })
-    return admin;
-}
-export function getDb() {
-    return getAdmin().firestore();
-}
+})
+const db = admin.firestore();
+export { admin, db };

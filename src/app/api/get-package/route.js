@@ -1,12 +1,7 @@
-export const runtime = 'nodejs';
-
-import { getAdmin, getDb } from 'Uti/firebase-admin';
+import { admin, db } from 'Uti/firebase-admin';
 import { getFile } from 'Uti/cloudinary';
 
 export async function GET(req) {
-    let admin = getAdmin();
-    let db = getDb();
-
     try {
         let { searchParams } = req.nextUrl;
         let uid = searchParams.get('uid');
