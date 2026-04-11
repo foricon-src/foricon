@@ -13,8 +13,12 @@ export default function Process() {
         let visited = sessionStorage.getItem('visited') == 'true';
         let theme = localStorage.getItem('theme');
 
-        let accBtn = qSelec(false, 'header > ul[name="right"] > li:last-child');
-        let accBtn_span = qSelec(false, accBtn, 'span');
+        let header = qSelec(false, 'header');
+        let header_center = qSelec(false, header, 'ul[name="center"]');
+        let header_right = qSelec(false, header, 'ul[name="right"]');
+        let header_right_accBtn = qSelec(false, header_right, 'li:last-child');
+        let header_right_accBtn_span = qSelec(false, header_right_accBtn, 'span');
+        let header_all = qSelec(false, header, 'ul[name="all"]');
 
         (
             theme == 'dark'
@@ -84,6 +88,8 @@ export default function Process() {
                 }
             })
         })
+        getChild(header_center).forEach(each => pathname == qSelec(false, each, 'a').pathname && activate(each));
+        
         onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
             let admin;
@@ -151,13 +157,13 @@ export default function Process() {
         )
 
         if (user) {
-            accBtn.replaceChild(
+            header_right_accBtn.replaceChild(
                 newElem('img', { src: user.doc.avatar }),
-                qSelec(false, accBtn, 'f-icon')
+                qSelec(false, header_right_accBtn, 'f-icon')
             )
-            accBtn_span.innerText = user.doc.name;
+            header_right_accBtn_span.innerText = user.doc.name;
         }
-        else accBtn_span.innerText = {
+        else header_right_accBtn_span.innerText = {
             en: 'Log in',
             vi: 'Đăng nhập',
             fr: 'Se connecter',
