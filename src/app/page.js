@@ -7,7 +7,7 @@ import './page.css';
 import 'Com/utilities';
 
 export default function Home() {
-    useEffect(() => (async () => {
+    useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
         let icons = elemById('icons');
         let added = [];
@@ -25,7 +25,7 @@ export default function Home() {
             }
             icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
         }
-    })(), [])
+    })()}, [])
 
     return (
         <>

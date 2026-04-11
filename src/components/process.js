@@ -8,7 +8,7 @@ import { auth, dbFirestore, db } from './firebase';
 import 'Com/utilities'
 
 export default function Process() {
-    useEffect(() => (async () => {
+    useEffect(() => {(async () => {
         let { body, documentElement: html } = document;
         let { pathname } = location;
         let visited = sessionStorage.getItem('visited') == 'true';
@@ -178,7 +178,7 @@ export default function Process() {
             es: 'Acceso',
             ru: 'Авторизоваться',
         }[language]
-    })(), [])
+    })()}, [])
     
     return null;
 }
