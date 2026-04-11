@@ -147,42 +147,11 @@ export function GET(_, { params: { uid }}) {
 
                 log('[Foricon Package] Step 2/4: Verifying and fetching package data from server...');
 
-                function xhrWithTimeoutAndRetry(url) {
-                    return new Promise((resolve, reject) => {
-                        let attempt = 1;
+                const res = await fetch(\`//foricon.vercel.app/api/get-package?uid=\${uid}&timezone=\${new Date().getTimezoneOffset() / 60}\`);
+                const parsed = await res.json();
 
-                        function makeRequest() {
-                            const xhr = new XMLHttpRequest();
-                            xhr.open('POST', url, true);
-                            xhr.withCredentials = true;
-                            xhr.timeout = 60000;
-
-                            xhr.onload = () => {
-                                xhr.status >= 200 && xhr.status < 300 ? resolve(xhr.responseText) : retryOrFail(\`HTTP error: \${xhr.status}\`);
-                            }
-                            xhr.onerror = () => {
-                                retryOrFail('Network error');
-                            }
-                            xhr.ontimeout = () => {
-                                retryOrFail('Request timed out');
-                            }
-                            xhr.send();
-                        }
-                        function retryOrFail(message) {
-                            if (attempt < 10) {
-                                warn(\`[Foricon Package] Step 2/4: Error occured in attempt \${attempt}: \${message}\`);
-                                attempt++;
-                                setTimeout(makeRequest(), 1000);
-                                log(\`[Foricon Package] Step 2/4: Retrying (Attempt \${attempt})\`)
-                            }
-                            else reject(new Error(\`[Foricon Package] Failed to recieve after 10 attempts: \${message}\`));
-                        }
-                        makeRequest();
-                    })
-                }
-
-                const res = await xhrWithTimeoutAndRetry(\`//foricon.vercel.app/api/get-package?uid=\${uid}&timezone=\${new Date().getTimezoneOffset() / 60}\`);
-                const { settings, fonts } = JSON.parse(res);
+                if (!res.ok) throw new Error(parsed.message);
+                const { settings, fonts } = parsed;
 
                 log('[Foricon Package] Step 3/4: Applying settings and finalizing styles...');
                 

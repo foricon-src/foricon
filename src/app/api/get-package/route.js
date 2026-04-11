@@ -3,23 +3,23 @@ import { getFile } from 'Uti/cloudinary';
 
 export async function GET(req) {
     try {
-        const { searchParams } = req.nextUrl;
+        const { searchParams } = new URL(req.url);
         const uid = searchParams.get('uid');
         let timezone = Number(searchParams.get('timezone'));
         const origin = req.headers.get('origin') || req.headers.get('referer');
         
-        if (!uid) return Response.json('Missing UID', { status: 400 });
-        if (Number.isNaN(timezone)) return Response.json('Timezone must be a number', { status: 400 });
+        if (!uid) return Response.json({ message: 'Missing UID' }, { status: 400 });
+        if (Number.isNaN(timezone)) return Response.json({ message: 'Timezone must be a number' }, { status: 400 });
         
         let userDoc = await db.collection('users').doc(uid).get();
-        if (!userDoc.exists) return Response.json('User not found', { status: 404 });
+        if (!userDoc.exists) return Response.json({ message: 'User not found' }, { status: 404 });
         let user = userDoc.data();
         
         if (!origin || !user.settings.allowedDomains.some(d => origin.includes(d)))
-            return Response.json('Domain not allowed', { status: 403 });
+            return Response.json({ message: 'Domain not allowed' }, { status: 403 });
         
         let plansSnap = await admin.database().ref('plans').once('value');
-        if (!plansSnap.exists()) return Response.json('Plans config missing', { status: 500 });
+        if (!plansSnap.exists()) return Response.json({ message: 'Plans config missing' }, { status: 500 });
         let plans = plansSnap.val();
         
         let { plan, pageview: { start, count }, settings } = user;
@@ -62,7 +62,7 @@ export async function GET(req) {
             })
         }
         else {
-            if (count >= plans[plan].pageviews) return Response.json('Plan limit exceeded', { status: 403 });
+            if (count >= plans[plan].pageviews) return Response.json({ message: 'Plan limit exceeded' }, { status: 403 });
             await db.doc(`users/${uid}`).update({
                 'pageview.count': ++count,
             })
@@ -78,6 +78,6 @@ export async function GET(req) {
     }
     catch (err) {
         console.error(err);
-        return Response.json({ error: 'Internal Server Error' }, { status: 500 });
+        return Response.json({ message: 'Internal Server Error' }, { status: 500 });
     }
 }
