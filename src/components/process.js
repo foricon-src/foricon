@@ -618,7 +618,7 @@ export default function Process() {
                     elem.addEventListener('click', async e => {
                         if (!optList) console.error('Missing element: &quot;option-list&quot; is not found');
                         else if (e.target == elem) {
-                            if (!isactivate(optList)) {
+                            if (!isActive(optList)) {
                                 let hei = optList.offsetHeight;
                                 optList.style.height = '0';
                                 await wait();
@@ -643,7 +643,7 @@ export default function Process() {
                             await wait(.2);
                             optList.style = '';
                         }
-                        if (isactivate(optList))
+                        if (isActive(optList))
                             multiple ?
                         target != optList && ![...optList.children].some(child => child.contains(target)) && hide() :
                         target != optList && hide();
@@ -667,7 +667,7 @@ export default function Process() {
                         if (multiple) {
                             let { children } = txt;
                             if (
-                                isactivate(opt) && (
+                                isActive(opt) && (
                                     !required || required && querySelecAll(optList, '.active').length > 1
                                 )
                             ) {
@@ -676,12 +676,12 @@ export default function Process() {
                             }
                             else activate(opt);
                             elem._v = optList_option.map(opt => {
-                                if (isactivate(opt))
+                                if (isActive(opt))
                                     return getAttr(opt, 'value') ?? opt.innerText;
                             }).filter(item => (item))
                             clear(txt);
                             optList_option.forEach(opt => {
-                                if (isactivate(opt))
+                                if (isActive(opt))
                                     txt.innerHTML += `<span>${opt.innerText}</span>`
                             })
                         }
