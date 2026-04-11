@@ -1,5 +1,5 @@
 import { admin, db } from 'Com/firebase-admin';
-import { getFile } from 'Com/utilities';
+import 'Com/utilities';
 
 export async function GET(req) {
     try {
