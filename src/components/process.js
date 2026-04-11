@@ -450,8 +450,8 @@ export default function Process() {
                     }
                     
                     elem.setPlaybackRate = value => {
-                        unactive(...control_controls_right_speedOptions_options);
-                        control_controls_right_speedOptions_options.forEach(opt => opt.dataset.value == value && active(opt));
+                        inactivate(...control_controls_right_speedOptions_options);
+                        control_controls_right_speedOptions_options.forEach(opt => opt.dataset.value == value && activate(opt));
                         video.playbackRate = elem.playbackRate = value;
                     }
                     
@@ -484,13 +484,13 @@ export default function Process() {
                     addEvLis(elem, 'click', ({target}) => {
                         target == elem && !dragging && control_controls_center_play.click();
                         !control_controls_right_speedOptions.contains(target) && !control_controls_right_speed.contains(target) &&
-                        unactive(control_controls_right_speedOptions)
+                        inactivate(control_controls_right_speedOptions)
                     })
                     
                     addEvLis(elem, ['pointermove', 'pointerleave', 'click'], () => hideControls());
                     //addEvLis(elem, 'pointerdown'], () => hideControls());
                     
-                    addEvLis(more, 'click', () => active(info));
+                    addEvLis(more, 'click', () => activate(info));
                     
                     function getRatio(e) {
                         let { left } = control_timeline_div.getBoundingClientRect();
@@ -508,7 +508,7 @@ export default function Process() {
                         video.pause();
                         video.currentTime = getRatio(e) * video.duration;
                         addEvLis(document, 'pointermove', drag);
-                        active(control_timeline);
+                        activate(control_timeline);
                     })
                     addEvLis(control_timeline, 'pointermove', e => {
                         let ratio = getRatio(e);
@@ -518,7 +518,7 @@ export default function Process() {
                     addEvLis(document, 'pointerup', async () => {
                         if (dragging) {
                             remvEvLis(document, 'pointermove', drag);
-                            unactive(control_timeline);
+                            inactivate(control_timeline);
                             play && video.play();
                             await wait();
                             dragging = false;
@@ -618,11 +618,11 @@ export default function Process() {
                     elem.addEventListener('click', async e => {
                         if (!optList) console.error('Missing element: &quot;option-list&quot; is not found');
                         else if (e.target == elem) {
-                            if (!isActive(optList)) {
+                            if (!isactivate(optList)) {
                                 let hei = optList.offsetHeight;
                                 optList.style.height = '0';
                                 await wait();
-                                active(optList);
+                                activate(optList);
                                 optList.style.height = `${hei}px`;
                                 await wait(.2);
                                 optList.style = '';
@@ -636,14 +636,14 @@ export default function Process() {
                         let { target } = e;
                         async function hide() {
                             let hei = optList.offsetHeight;
-                            unactive(optList);
+                            inactivate(optList);
                             optList.style.height = `${hei}px`;
                             await wait();
                             optList.style.height = '0';
                             await wait(.2);
                             optList.style = '';
                         }
-                        if (isActive(optList))
+                        if (isactivate(optList))
                             multiple ?
                         target != optList && ![...optList.children].some(child => child.contains(target)) && hide() :
                         target != optList && hide();
@@ -667,30 +667,30 @@ export default function Process() {
                         if (multiple) {
                             let { children } = txt;
                             if (
-                                isActive(opt) && (
+                                isactivate(opt) && (
                                     !required || required && querySelecAll(optList, '.active').length > 1
                                 )
                             ) {
                                 for (let span of children) span.innerText == innerText && span.remove();
-                                unactive(opt);
+                                inactivate(opt);
                             }
-                            else active(opt);
+                            else activate(opt);
                             elem._v = optList_option.map(opt => {
-                                if (isActive(opt))
+                                if (isactivate(opt))
                                     return getAttr(opt, 'value') ?? opt.innerText;
                             }).filter(item => (item))
                             clear(txt);
                             optList_option.forEach(opt => {
-                                if (isActive(opt))
+                                if (isactivate(opt))
                                     txt.innerHTML += `<span>${opt.innerText}</span>`
                             })
                         }
                         else {
                             let act = optList.querySelector('.active');
                             let lang = opt.querySelector('lang');
-                            act && unactive(act);
+                            act && inactivate(act);
                             txt.innerText = (lang || opt).innerText;
-                            active(opt);
+                            activate(opt);
                             elem._v = val;
                         }
                     }
@@ -718,7 +718,7 @@ export default function Process() {
                     
                     if (value == null) {
                         clear(this.querySelector('text'));
-                        this.querySelectorAll('f-option').forEach(opt => unactive(opt));
+                        this.querySelectorAll('f-option').forEach(opt => inactivate(opt));
                         this._v = multiple ? [] : '';
                     }
                     else {
