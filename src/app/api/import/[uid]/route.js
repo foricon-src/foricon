@@ -181,7 +181,7 @@ export function GET(_, { params: { uid }}) {
                     })
                 }
 
-                const res = await xhrWithTimeoutAndRetry(\`https://foricon-server-side.onrender.com/get-package?uid=\${uid}&timezone=\${new Date().getTimezoneOffset() / 60}\`);
+                const res = await xhrWithTimeoutAndRetry(\`//foricon.vercel.app/api/get-package?uid=\${uid}&timezone=\${new Date().getTimezoneOffset() / 60}\`);
                 const { settings, fonts } = JSON.parse(res);
 
                 log('[Foricon Package] Step 3/4: Applying settings and finalizing styles...');
@@ -453,6 +453,9 @@ export function GET(_, { params: { uid }}) {
             }
         })()
     `, {
-        header: { 'Content-Type': 'application/javascript' }
+        headers: {
+            'Content-Type': 'application/javascript',
+            'Access-Control-Allow-Origin': '*',
+        }
     })
 }

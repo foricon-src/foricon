@@ -1,3 +1,5 @@
+import { v2 as cloudinary } from 'cloudinary'
+
 globalThis.pageLoaded = false;
 globalThis.webData = {
     isBeta: true,
@@ -9,7 +11,7 @@ globalThis.webData = {
     iconsB2: [],
     categories: {
         accessibility: {
-            icon: "<f-icon icon='eye'/>",
+            icon: "<f-icon icon='eye'></f-icon>",
             en: 'Accessibility',
             vi: 'Khả năng truy cập',
             fr: 'Accessibilité',
@@ -24,7 +26,7 @@ globalThis.webData = {
             ru: 'Доступность',
         },
         alert: {
-            icon: "<f-icon icon='bell'/>",
+            icon: "<f-icon icon='bell'></f-icon>",
             en: 'Alert',
             vi: 'Cảnh báo',
             fr: 'Alerte',
@@ -39,7 +41,7 @@ globalThis.webData = {
             ru: 'Оповещение',
         },
         arrows: {
-            icon: "<f-icon i-s='outline' icon='arrows-repeat'/>",
+            icon: "<f-icon i-s='outline' icon='arrows-repeat'></f-icon>",
             en: 'Arrows',
             vi: 'Mũi tên',
             fr: 'Flèches',
@@ -54,7 +56,7 @@ globalThis.webData = {
             ru: 'Стрелки',
         },
         automotive: {
-            icon: "<f-icon icon='gauge-5'/>",
+            icon: "<f-icon icon='gauge-5'></f-icon>",
             en: 'Automotive',
             vi: 'Ngành ô tô',
             fr: 'Automobile',
@@ -69,7 +71,7 @@ globalThis.webData = {
             ru: 'Автомобильная промышленность',
         },
         astronomy: {
-            icon: "<f-icon icon='star'/>",
+            icon: "<f-icon icon='star'></f-icon>",
             en: 'Astronomy',
             vi: 'Thiên văn học',
             fr: 'Astronomie',
@@ -84,7 +86,7 @@ globalThis.webData = {
             ru: 'Астрономия',
         },
         buildings: {
-            icon: "<f-icon icon='house'/>",
+            icon: "<f-icon icon='house'></f-icon>",
             en: 'Buildings',
             vi: 'Công trình',
             fr: 'Bâtiments',
@@ -99,7 +101,7 @@ globalThis.webData = {
             ru: 'Здания',
         },
         business: {
-            icon: "<f-icon icon='briefcase'/>",
+            icon: "<f-icon icon='briefcase'></f-icon>",
             en: 'Business',
             vi: 'Kinh doanh',
             fr: 'Affaires',
@@ -114,7 +116,7 @@ globalThis.webData = {
             ru: 'Бизнес',
         },
         coding: {
-            icon: "<f-icon i-s='outline' icon='code'/>",
+            icon: "<f-icon i-s='outline' icon='code'></f-icon>",
             en: 'Coding',
             vi: 'Lập trình',
             fr: 'Codage',
@@ -129,7 +131,7 @@ globalThis.webData = {
             ru: 'Кодирование',
         },
         communication: {
-            icon: "<f-icon icon='comment'/>",
+            icon: "<f-icon icon='comment'></f-icon>",
             en: 'Communication',
             vi: 'Giao tiếp',
             fr: 'Communication',
@@ -144,7 +146,7 @@ globalThis.webData = {
             ru: 'Общение',
         },
         connectivity: {
-            icon: "<f-icon i-s='outline' icon='wifi'/>",
+            icon: "<f-icon i-s='outline' icon='wifi'></f-icon>",
             en: 'Connectivity',
             vi: 'Kết nối',
             fr: 'Connectivité',
@@ -159,7 +161,7 @@ globalThis.webData = {
             ru: 'Связь',
         },
         construction: {
-            icon: "<f-icon icon='helmet-safety'/>",
+            icon: "<f-icon icon='helmet-safety'></f-icon>",
             en: 'Construction',
             vi: 'Xây dựng',
             fr: 'Construction',
@@ -174,7 +176,7 @@ globalThis.webData = {
             ru: 'Строительство',
         },
         'countries+territories': {
-            icon: "<f-icon icon='united-states'/>",
+            icon: "<f-icon icon='united-states'></f-icon>",
             en: 'Countries + Territories',
             vi: 'Quốc gia + Lãnh thổ',
             fr: 'Pays et territoires',
@@ -189,7 +191,7 @@ globalThis.webData = {
             ru: 'Страны + территории',
         },
         design: {
-            icon: "<f-icon icon='palette'/>",
+            icon: "<f-icon icon='palette'></f-icon>",
             en: 'Design',
             vi: 'Thiết kế',
             fr: 'Conception',
@@ -204,7 +206,7 @@ globalThis.webData = {
             ru: 'Дизайн',
         },
         devices: {
-            icon: "<f-icon icon='display'/>",
+            icon: "<f-icon icon='display'></f-icon>",
             en: 'Devices',
             vi: 'Thiết bị',
             fr: 'Appareils',
@@ -219,7 +221,7 @@ globalThis.webData = {
             ru: 'Устройства',
         },
         editing: {
-            icon: "<f-icon icon='pencil'/>",
+            icon: "<f-icon icon='pencil'></f-icon>",
             en: 'Editing',
             vi: 'Chỉnh sửa',
             fr: 'Édition',
@@ -234,7 +236,7 @@ globalThis.webData = {
             ru: 'Редактирование',
         },
         emojis: {
-            icon: "<f-icon icon='face-smile'/>",
+            icon: "<f-icon icon='face-smile'></f-icon>",
             en: 'Emojis',
             vi: 'Biểu tượng cảm xúc',
             fr: 'Émojis',
@@ -249,7 +251,7 @@ globalThis.webData = {
             ru: 'Эмодзи',
         },
         files: {
-            icon: "<f-icon icon='file'/>",
+            icon: "<f-icon icon='file'></f-icon>",
             en: 'Files',
             vi: 'Tệp tin',
             fr: 'Fichiers',
@@ -264,7 +266,7 @@ globalThis.webData = {
             ru: 'Файлы',
         },
         'films+videos': {
-            icon: "<f-icon icon='clapperboard'/>",
+            icon: "<f-icon icon='clapperboard'></f-icon>",
             en: 'Films + Videos',
             vi: 'Phim + Video',
             fr: 'Films + vidéos',
@@ -279,7 +281,7 @@ globalThis.webData = {
             ru: 'Фильмы + Видео',
         },
         'food+beverage': {
-            icon: "<f-icon icon='mug-hot'/>",
+            icon: "<f-icon icon='mug-hot'></f-icon>",
             en: 'Food + Beverage',
             vi: 'Thực phẩm + Đồ uống',
             fr: 'Alimentation + Boissons',
@@ -294,7 +296,7 @@ globalThis.webData = {
             ru: 'Еда + Напитки',
         },
         gaming: {
-            icon: "<f-icon icon='gamepad'/>",
+            icon: "<f-icon icon='gamepad'></f-icon>",
             en: 'Gaming',
             vi: 'Trò chơi',
             fr: 'Jeux',
@@ -309,7 +311,7 @@ globalThis.webData = {
             ru: 'Игры',
         },
         hands: {
-            icon: "<f-icon icon='thumb-up'/>",
+            icon: "<f-icon icon='thumb-up'></f-icon>",
             en: 'Hands',
             vi: 'Cử chỉ tay',
             fr: 'Mains',
@@ -324,7 +326,7 @@ globalThis.webData = {
             ru: 'Руки',
         },
         maps: {
-            icon: "<f-icon icon='map-pin'/>",
+            icon: "<f-icon icon='map-pin'></f-icon>",
             en: 'Maps',
             vi: 'Bản đồ',
             fr: 'Cartes',
@@ -339,7 +341,7 @@ globalThis.webData = {
             ru: 'Карты',
         },
         marketing: {
-            icon: "<f-icon icon='bullhorn'/>",
+            icon: "<f-icon icon='bullhorn'></f-icon>",
             en: 'Marketing',
             vi: 'Tiếp thị',
             fr: 'Marketing',
@@ -354,7 +356,7 @@ globalThis.webData = {
             ru: 'Маркетинг',
         },
         mathematics: {
-            icon: "<f-icon i-s='outline' icon='divide'/>",
+            icon: "<f-icon i-s='outline' icon='divide'></f-icon>",
             en: 'Mathematics',
             vi: 'Toán học',
             fr: 'Mathématiques',
@@ -369,7 +371,7 @@ globalThis.webData = {
             ru: 'Математика',
         },
         'media-playback': {
-            icon: "<f-icon icon='play'/>",
+            icon: "<f-icon icon='play'></f-icon>",
             en: 'Media playback',
             vi: 'Phát đa phương tiện',
             fr: 'Lecture multimédia',
@@ -384,7 +386,7 @@ globalThis.webData = {
             ru: 'Воспроизведение медиа',
         },
         money: {
-            icon: "<f-icon i-s='outline' icon='dollar'/>",
+            icon: "<f-icon i-s='outline' icon='dollar'></f-icon>",
             en: 'Money',
             vi: 'Tiền',
             fr: 'Argent',
@@ -399,7 +401,7 @@ globalThis.webData = {
             ru: 'Деньги',
         },
         'music+audio': {
-            icon: "<f-icon icon='music-note'/>",
+            icon: "<f-icon icon='music-note'></f-icon>",
             en: 'Music + Audio',
             vi: 'Nhạc + Âm thanh',
             fr: 'Musique + Audio',
@@ -414,7 +416,7 @@ globalThis.webData = {
             ru: 'Музыка + Аудио',
         },
         'medical+health': {
-            icon: "<f-icon icon='medbag'/>",
+            icon: "<f-icon icon='medbag'></f-icon>",
             en: 'Medical + Health',
             vi: 'Y tế + Sức khỏe',
             fr: 'Santé + Médical',
@@ -429,7 +431,7 @@ globalThis.webData = {
             ru: 'Медицина + Здоровье',
         },
         people: {
-            icon: "<f-icon icon='user'/>",
+            icon: "<f-icon icon='user'></f-icon>",
             en: 'People',
             vi: 'Người',
             fr: 'Personnes',
@@ -444,7 +446,7 @@ globalThis.webData = {
             ru: 'Люди',
         },
         'photos+images': {
-            icon: "<f-icon icon='image'/>",
+            icon: "<f-icon icon='image'></f-icon>",
             en: 'Photos + Images',
             vi: 'Ảnh + Hình ảnh',
             fr: 'Photos + Images',
@@ -459,7 +461,7 @@ globalThis.webData = {
             ru: 'Фото + изображения',
         },
         security: {
-            icon: "<f-icon icon='shield-half-stroke'/>",
+            icon: "<f-icon icon='shield-half-stroke'></f-icon>",
             en: 'Security',
             vi: 'Bảo mật',
             fr: 'Sécurité',
@@ -474,7 +476,7 @@ globalThis.webData = {
             ru: 'Безопасность',
         },
         shapes: {
-            icon: "<f-icon icon='diamond'/>",
+            icon: "<f-icon icon='diamond'></f-icon>",
             en: 'Shapes',
             vi: 'Hình dạng',
             fr: 'Formes',
@@ -489,7 +491,7 @@ globalThis.webData = {
             ru: 'Фигуры',
         },
         shopping: {
-            icon: "<f-icon icon='cart'/>",
+            icon: "<f-icon icon='cart'></f-icon>",
             en: 'Shopping',
             vi: 'Mua sắm',
             fr: 'Achats',
@@ -504,7 +506,7 @@ globalThis.webData = {
             ru: 'Покупки',
         },
         social: {
-            icon: "<f-icon icon='paper-plane-simple'/>",
+            icon: "<f-icon icon='paper-plane-simple'></f-icon>",
             en: 'Social',
             vi: 'Xã hội',
             fr: 'Social',
@@ -519,7 +521,7 @@ globalThis.webData = {
             ru: 'Социальное',
         },
         spinners: {
-            icon: "<f-icon i-s='outline' icon='spinner-3p4'/>",
+            icon: "<f-icon i-s='outline' icon='spinner-3p4'></f-icon>",
             en: 'Spinners',
             vi: 'Biểu tượng tải',
             fr: 'Indicateurs de chargement',
@@ -534,7 +536,7 @@ globalThis.webData = {
             ru: 'Спиннеры',
         },
         statistics: {
-            icon: "<f-icon icon='chart'/>",
+            icon: "<f-icon icon='chart'></f-icon>",
             en: 'Statistics',
             vi: 'Thống kê',
             fr: 'Statistiques',
@@ -549,7 +551,7 @@ globalThis.webData = {
             ru: 'Статистика',
         },
         symbols: {
-            icon: "<f-icon i-s='outline' icon='hashtag'/>",
+            icon: "<f-icon i-s='outline' icon='hashtag'></f-icon>",
             en: 'Symbols',
             vi: 'Biểu tượng',
             fr: 'Symboles',
@@ -564,7 +566,7 @@ globalThis.webData = {
             ru: 'Символы',
         },
         'text-formatting': {
-            icon: "<f-icon i-s='outline' icon='text'/>",
+            icon: "<f-icon i-s='outline' icon='text'></f-icon>",
             en: 'Text Formatting',
             vi: 'Định dạng văn bản',
             fr: 'Mise en forme du texte',
@@ -579,7 +581,7 @@ globalThis.webData = {
             ru: 'Форматирование текста',
         },
         time: {
-            icon: "<f-icon icon='clock-four'/>",
+            icon: "<f-icon icon='clock-four'></f-icon>",
             en: 'Time',
             vi: 'Thời gian',
             fr: 'Temps',
@@ -594,7 +596,7 @@ globalThis.webData = {
             ru: 'Время',
         },
         toggles: {
-            icon: "<f-icon icon='square-check'/>",
+            icon: "<f-icon icon='square-check'></f-icon>",
             en: 'Toggles',
             vi: 'Công tắc',
             fr: 'Commutateurs',
@@ -609,7 +611,7 @@ globalThis.webData = {
             ru: 'Переключатели',
         },
         transportation: {
-            icon: "<f-icon icon='car'/>",
+            icon: "<f-icon icon='car'></f-icon>",
             en: 'Transportation',
             vi: 'Vận tải',
             fr: 'Transport',
@@ -624,7 +626,7 @@ globalThis.webData = {
             ru: 'Транспорт',
         },
         travel: {
-            icon: "<f-icon icon='plane'/>",
+            icon: "<f-icon icon='plane'></f-icon>",
             en: 'Travel',
             vi: 'Du lịch',
             fr: 'Voyage',
@@ -639,7 +641,7 @@ globalThis.webData = {
             ru: 'Путешествия',
         },
         weather: {
-            icon: "<f-icon icon='cloud-sun'/>",
+            icon: "<f-icon icon='cloud-sun'></f-icon>",
             en: 'Weather',
             vi: 'Thời tiết',
             fr: 'Météo',
@@ -654,7 +656,7 @@ globalThis.webData = {
             ru: 'Погода',
         },
         writing: {
-            icon: "<f-icon icon='paragraph'/>",
+            icon: "<f-icon icon='paragraph'></f-icon>",
             en: 'Writing',
             vi: 'Soạn thảo',
             fr: 'Écriture',
@@ -1093,4 +1095,14 @@ globalThis.abbreviateNumber = num => {
     ['vi', 'fr', 'de', 'nl', 'dk', 'pt', 'es', 'ru'].includes(language) && (formatted = formatted.toString().replace('.', ','));
 
     return formatted;
+}
+
+globalThis.getFile = publicId => {
+    let now = Date.now();
+    return `${cloudinary.url(publicId, {
+        resource_type: 'raw',
+        type: 'authenticated',
+        sign_url: true,
+        expires_at: Math.floor(now / 1000) + 300
+    })}`
 }

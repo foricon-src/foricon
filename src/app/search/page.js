@@ -55,7 +55,7 @@ export default function Search() {
             //             charNameList.push({ name, unicode });
             //         }
             // })
-            let res = await fetch('//foricon-server-side.onrender.com/get-glyphs');
+            let res = await fetch('/api/get-glyphs');
             let icons = await res.json();
             charNameList.push(...icons);
         }
