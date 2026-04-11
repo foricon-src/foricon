@@ -1,12 +1,15 @@
-import { admin, db } from 'Uti/firebase-admin';
+import { getAdmin, getDb } from 'Uti/firebase-admin';
 import { getFile } from 'Uti/cloudinary';
 
 export async function GET(req) {
+    let admin = getAdmin();
+    let db = getDb();
+
     try {
-        const { searchParams } = new URL(req.url);
-        const uid = searchParams.get('uid');
+        let { searchParams } = new URL(req.url);
+        let uid = searchParams.get('uid');
         let timezone = Number(searchParams.get('timezone'));
-        const origin = req.headers.get('origin') || req.headers.get('referer');
+        let origin = req.headers.get('origin') || req.headers.get('referer');
         
         if (!uid) return Response.json({ message: 'Missing UID' }, { status: 400 });
         if (Number.isNaN(timezone)) return Response.json({ message: 'Timezone must be a number' }, { status: 400 });
