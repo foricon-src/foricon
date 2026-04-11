@@ -10,6 +10,7 @@ import 'Com/utilities'
 export default function Process() {
     useEffect(() => (async () => {
         let { body, documentElement: html } = document;
+        let { pathname } = location;
         let visited = sessionStorage.getItem('visited') == 'true';
         let theme = localStorage.getItem('theme');
 
@@ -89,7 +90,7 @@ export default function Process() {
             })
         })
         getChild(header_center).forEach(each => pathname == qSelec(false, each, 'a').pathname && activate(each));
-        
+
         onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
             let admin;

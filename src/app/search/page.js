@@ -301,92 +301,92 @@ export default function Search() {
                 </div>
             </div>
             <div id='bar'>
-            <h6></h6>
-            <div id='bar_code'>
-                <lang value='en'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='vi'>Mã <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='fr'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='it'>Codice <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='kr'>암호 <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='ja'>コード <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='de'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='nl'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='dk'>Kode <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='pt'>Código <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='es'>Código <f-icon icon='circle-info'></f-icon>:</lang>
-                <lang value='ru'>Код <f-icon icon='circle-info'></f-icon>:</lang>
-                <code></code>
-            </div>
-            <div id='bar_glyphs'>
-                <lang value='en'>Glyphs:</lang>
-                <lang value='vi'>Glyph:</lang>
-                <lang value='fr'>Glyphes:</lang>
-                <lang value='it'>Glifi:</lang>
-                <lang value='kr'>글리프:</lang>
-                <lang value='ja'>グリフ:</lang>
-                <lang value='de'>Glyphen:</lang>
-                <lang value='nl'>Tekens:</lang>
-                <lang value='dk'>Glyffer:</lang>
-                <lang value='pt'>Glifos:</lang>
-                <lang value='es'>Glifos:</lang>
-                <lang value='ru'>Глифы:</lang>
-                <div>
-                    <div name='Primary'></div>
-                    <div name='Secondary'></div>
+                <h6></h6>
+                <div id='bar_code'>
+                    <lang value='en'>Code <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='vi'>Mã <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='fr'>Code <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='it'>Codice <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='kr'>암호 <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='ja'>コード <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='de'>Code <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='nl'>Code <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='dk'>Kode <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='pt'>Código <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='es'>Código <f-icon icon='circle-info'></f-icon>:</lang>
+                    <lang value='ru'>Код <f-icon icon='circle-info'></f-icon>:</lang>
+                    <code></code>
                 </div>
-            </div>
-            <div id='bar_unicodes'>
-                <lang value='en'>Unicodes:</lang>
-                <lang value='vi'>Unicode:</lang>
-                <lang value='fr'>Unicodes:</lang>
-                <lang value='it'>Unicode:</lang>
-                <lang value='kr'>유니코드:</lang>
-                <lang value='ja'>ユニコード:</lang>
-                <lang value='de'>Unicodes:</lang>
-                <lang value='nl'>Unicodes:</lang>
-                <lang value='dk'>Unicodes:</lang>
-                <lang value='pt'>Unicodes:</lang>
-                <lang value='es'>Unicodes:</lang>
-                <lang value='ru'>Юникоды:</lang>
-                <div>
-                    <div name='Primary'></div>
-                    <div name='Secondary'></div>
+                <div id='bar_glyphs'>
+                    <lang value='en'>Glyphs:</lang>
+                    <lang value='vi'>Glyph:</lang>
+                    <lang value='fr'>Glyphes:</lang>
+                    <lang value='it'>Glifi:</lang>
+                    <lang value='kr'>글리프:</lang>
+                    <lang value='ja'>グリフ:</lang>
+                    <lang value='de'>Glyphen:</lang>
+                    <lang value='nl'>Tekens:</lang>
+                    <lang value='dk'>Glyffer:</lang>
+                    <lang value='pt'>Glifos:</lang>
+                    <lang value='es'>Glifos:</lang>
+                    <lang value='ru'>Глифы:</lang>
+                    <div>
+                        <div name='Primary'></div>
+                        <div name='Secondary'></div>
+                    </div>
                 </div>
-            </div>
-            <div id='bar_categories'>
-                <lang value='en'>Categories:</lang>
-                <lang value='vi'>Thể loại:</lang>
-                <lang value='fr'>Catégories:</lang>
-                <lang value='it'>Categorie:</lang>
-                <lang value='kr'>카테고리:</lang>
-                <lang value='ja'>カテゴリー:</lang>
-                <lang value='de'>Kategorien:</lang>
-                <lang value='nl'>Categorieën:</lang>
-                <lang value='dk'>Kategorier:</lang>
-                <lang value='pt'>Categorias:</lang>
-                <lang value='es'>Categorías:</lang>
-                <lang value='ru'>Категории:</lang>
-                <ul class='btn-list'></ul>
-            </div>
-            <div id='bar_download'>
-                <lang value='en'>Download:</lang>
-                <lang value='vi'>Tải xuống:</lang>
-                <lang value='fr'>Télécharger:</lang>
-                <lang value='it'>Scaricamento:</lang>
-                <lang value='kr'>다운로드:</lang>
-                <lang value='ja'>ダウンロード:</lang>
-                <lang value='de'>Herunterladen:</lang>
-                <lang value='nl'>Download:</lang>
-                <lang value='dk'>Download:</lang>
-                <lang value='pt'>Transferir:</lang>
-                <lang value='es'>Descargar:</lang>
-                <lang value='ru'>Скачать:</lang>
-                <ul class='btn-list'>
-                    <li name='svg'>SVG</li>
-                    <li name='png'>PNG</li>
-                    <li name='webp'>WebP</li>
-                </ul>
-            </div>
+                <div id='bar_unicodes'>
+                    <lang value='en'>Unicodes:</lang>
+                    <lang value='vi'>Unicode:</lang>
+                    <lang value='fr'>Unicodes:</lang>
+                    <lang value='it'>Unicode:</lang>
+                    <lang value='kr'>유니코드:</lang>
+                    <lang value='ja'>ユニコード:</lang>
+                    <lang value='de'>Unicodes:</lang>
+                    <lang value='nl'>Unicodes:</lang>
+                    <lang value='dk'>Unicodes:</lang>
+                    <lang value='pt'>Unicodes:</lang>
+                    <lang value='es'>Unicodes:</lang>
+                    <lang value='ru'>Юникоды:</lang>
+                    <div>
+                        <div name='Primary'></div>
+                        <div name='Secondary'></div>
+                    </div>
+                </div>
+                <div id='bar_categories'>
+                    <lang value='en'>Categories:</lang>
+                    <lang value='vi'>Thể loại:</lang>
+                    <lang value='fr'>Catégories:</lang>
+                    <lang value='it'>Categorie:</lang>
+                    <lang value='kr'>카테고리:</lang>
+                    <lang value='ja'>カテゴリー:</lang>
+                    <lang value='de'>Kategorien:</lang>
+                    <lang value='nl'>Categorieën:</lang>
+                    <lang value='dk'>Kategorier:</lang>
+                    <lang value='pt'>Categorias:</lang>
+                    <lang value='es'>Categorías:</lang>
+                    <lang value='ru'>Категории:</lang>
+                    <ul class='btn-list'></ul>
+                </div>
+                <div id='bar_download'>
+                    <lang value='en'>Download:</lang>
+                    <lang value='vi'>Tải xuống:</lang>
+                    <lang value='fr'>Télécharger:</lang>
+                    <lang value='it'>Scaricamento:</lang>
+                    <lang value='kr'>다운로드:</lang>
+                    <lang value='ja'>ダウンロード:</lang>
+                    <lang value='de'>Herunterladen:</lang>
+                    <lang value='nl'>Download:</lang>
+                    <lang value='dk'>Download:</lang>
+                    <lang value='pt'>Transferir:</lang>
+                    <lang value='es'>Descargar:</lang>
+                    <lang value='ru'>Скачать:</lang>
+                    <ul class='btn-list'>
+                        <li name='svg'>SVG</li>
+                        <li name='png'>PNG</li>
+                        <li name='webp'>WebP</li>
+                    </ul>
+                </div>
             </div>
         </>
     )
