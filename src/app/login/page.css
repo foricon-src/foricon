@@ -18,7 +18,7 @@
         &:first-child > * {
             margin-bottom: 0;
             
-            &:is(a) {
+            &:is(button) {
                 &.btn {
                     margin-top: var(--spacing-small);
                 }
@@ -61,7 +61,7 @@
             margin-bottom: 15px;
             width: 100%;
             
-            > a {
+            > button {
                 margin: 0;
                 text-align: center;
                 padding: 11px;
@@ -74,12 +74,13 @@
         > input {
             margin-top: 0;
         }
-        > a {
+        > button {
             align-self: flex-start;
         }
         > div {
             align-self: flex-end;
-            > a {
+            
+            > button {
                 margin-top: 0;
                 margin-bottom: 0;
             }

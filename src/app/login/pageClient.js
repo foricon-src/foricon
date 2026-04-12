@@ -158,7 +158,10 @@ export default function LogIn() {
                     <lang value='ru'>Создать новую учетную запись</lang>
                 </button>
             </div>
-            <form className={step == 'email' ? 'active' : ''}>
+            <form className={step == 'email' ? 'active' : ''} onSubmit={e => {
+                e.preventDefault()
+                setStep('password')
+            }}>
                 <div id='providers'>
                     <button className='btn secondary'><i class='fa-brands fa-google'></i></button>
                     <button className='btn secondary'><i class='fa-brands fa-microsoft'></i></button>
@@ -166,7 +169,7 @@ export default function LogIn() {
                 </div>
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
-                    <button className='btn primary'>
+                    <button className='primary' type='submit'>
                         <lang value='en'>Next</lang>
                         <lang value='vi'>Tiếp theo</lang>
                         <lang value='fr'>Suivante</lang>
@@ -182,14 +185,14 @@ export default function LogIn() {
                     </button>
                 </div>
             </form>
-            <form className={step == 'password' ? 'active' : ''}>
+            <form className={step == 'password' ? 'active' : ''} onSubmit={e => e.preventDefault()}>
                 <div>
                     <img src={userDoc?.avatar}/>{userDoc?.name}
                 </div>
                 <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
                 <button href='/forgot'>Forgot password</button>
                 <div>
-                    <button class='btn secondary back'>
+                    <button class='secondary back' onClick={() => setStep('email')}>
                         <lang value='en'>Back</lang>
                         <lang value='vi'>Trở lại</lang>
                         <lang value='fr'>Dos</lang>
@@ -202,7 +205,7 @@ export default function LogIn() {
                         <lang value='pt'>Voltar</lang>
                         <lang value='es'>Atrás</lang>
                         <lang value='ru'>Назад</lang>
-                    </button><button class='btn primary'>
+                    </button><button class='primary' type='submit'>
                         <lang value='en'>Log in</lang>
                         <lang value='vi'>Đăng nhập</lang>
                         <lang value='fr'>Se connecter</lang>
