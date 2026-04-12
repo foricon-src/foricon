@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Pub/foricon-f-2.png';
+import 'Com/utils';
 
 export default function Header() {
     let [ open, setOpen ] = useState(false);
