@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import logo from 'Ass/foricon-f-2.png';
@@ -123,7 +123,6 @@ let texts = {
 }
 
 export default function LogIn() {
-    use
     let router = useRouter();
     let params = useSearchParams();
 
@@ -133,6 +132,11 @@ export default function LogIn() {
     let [ userDoc, setUserDoc ] = useState(null);
 
     let des = params.get('redirect') || 'account';
+
+    useEffect(() => (async () => {
+        while (elemById('loading')) await wait();
+        user && go(router, 'account');
+    })(), [ usePathname() ])
 
     return (
         <div id='wrapper'>
