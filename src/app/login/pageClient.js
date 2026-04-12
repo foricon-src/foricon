@@ -1,12 +1,10 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
-import logo from 'Ass/foricon-f-2.png';
 import './page.css';
 
 let texts = {
@@ -142,7 +140,7 @@ export default function LogIn() {
         <div id='wrapper'>
             <div>
                 <Link href='/' title='Back to home'>
-                    <Image src={logo}/>
+                    <img src='/foricon-f-2.png'/>
                 </Link>
                 <h1>{texts[language][step]}</h1>
                 <p>{texts[language][step]}</p>

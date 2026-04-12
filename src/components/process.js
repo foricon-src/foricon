@@ -6,7 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from './firebase';
-import 'Com/utils';
+import { useRouter } from 'next/router';
 
 class Info extends Error {
     constructor(message) {
@@ -22,6 +22,8 @@ class Warn extends Error {
 }
 
 export default function Process() {
+    let router = useRouter();
+
     useEffect(() => {(async () => {
         let { body, documentElement: html } = document;
         let { pathname } = location;
@@ -106,7 +108,7 @@ export default function Process() {
                     if (user.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
                         document.addEventListener('keydown', ({ ctrlKey, key }) => {
                             ctrlKey && key == '/' && location.pathname != '/p/management-center.html' && !document.activeElement.matches('textarea, input') &&
-                            go('admin', true);
+                            go(router, 'admin', true);
                         }, false)
                         admin = true;
                     }
