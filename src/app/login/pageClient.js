@@ -141,8 +141,8 @@ export default function LogIn() {
                 <Link href='/' title='Back to home'>
                     <img src='/foricon-f-2.png'/>
                 </Link>
-                <h1>{texts[language][step]}</h1>
-                <p>{texts[language][step]}</p>
+                <h1>{texts[language][step].h1}</h1>
+                <p>{texts[language][step].p}</p>
                 <a className='btn secondary' href='/signup'>
                     <lang data-value='en'>Create a new account</lang>
                     <lang data-value='vi'>Tạo tài khoản mới</lang>
