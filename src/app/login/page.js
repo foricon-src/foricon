@@ -3,7 +3,7 @@ import LogIn from "./pageClient";
 
 export default function Page() {
     return (
-        <Suspense>
+        <Suspense fallback={<div></div>}>
             <LogIn/>
         </Suspense>
     )
