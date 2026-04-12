@@ -144,18 +144,18 @@ export default function LogIn() {
                 <h1>{texts[language][step].h1}</h1>
                 <p>{texts[language][step].p}</p>
                 <a className='btn secondary' href='/signup'>
-                    <lang data-value='en'>Create a new account</lang>
-                    <lang data-value='vi'>Tạo tài khoản mới</lang>
-                    <lang data-value='fr'>Créer un nouveau compte</lang>
-                    <lang data-value='it'>Creare un nuovo account</lang>
-                    <lang data-value='kr'>새 계정 생성</lang>
-                    <lang data-value='ja'>新しいアカウントを作成する</lang>
-                    <lang data-value='de'>Ein neues Konto erstellen</lang>
-                    <lang data-value='nl'>Maak een nieuw account aan</lang>
-                    <lang data-value='dk'>Oprette en ny konto</lang>
-                    <lang data-value='pt'>Criar uma nova conta</lang>
-                    <lang data-value='es'>Crea una cuenta nueva</lang>
-                    <lang data-value='ru'>Создать новую учетную запись</lang>
+                    <lang value='en'>Create a new account</lang>
+                    <lang value='vi'>Tạo tài khoản mới</lang>
+                    <lang value='fr'>Créer un nouveau compte</lang>
+                    <lang value='it'>Creare un nuovo account</lang>
+                    <lang value='kr'>새 계정 생성</lang>
+                    <lang value='ja'>新しいアカウントを作成する</lang>
+                    <lang value='de'>Ein neues Konto erstellen</lang>
+                    <lang value='nl'>Maak een nieuw account aan</lang>
+                    <lang value='dk'>Oprette en ny konto</lang>
+                    <lang value='pt'>Criar uma nova conta</lang>
+                    <lang value='es'>Crea una cuenta nueva</lang>
+                    <lang value='ru'>Создать новую учетную запись</lang>
                 </a>
             </div>
             <form className={step == 'email' ? 'active' : ''}>
@@ -164,21 +164,21 @@ export default function LogIn() {
                     <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-microsoft'></i></a>
                     <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-github'></i></a>
                 </div>
-                <input placeholder='Email' name='email' type='email' autocomplete='email' value={email}/>
+                <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
                     <a className='btn primary' href='javascript:void(0)'>
-                        <lang data-value='en'>Next</lang>
-                        <lang data-value='vi'>Tiếp theo</lang>
-                        <lang data-value='fr'>Suivante</lang>
-                        <lang data-value='it'>Prossimo</lang>
-                        <lang data-value='kr'>다음</lang>
-                        <lang data-value='ja'>次</lang>
-                        <lang data-value='de'>Nächste</lang>
-                        <lang data-value='nl'>Volgende</lang>
-                        <lang data-value='dk'>Næste</lang>
-                        <lang data-value='pt'>Próximo</lang>
-                        <lang data-value='es'>Próximo</lang>
-                        <lang data-value='ru'>Следующий</lang>
+                        <lang value='en'>Next</lang>
+                        <lang value='vi'>Tiếp theo</lang>
+                        <lang value='fr'>Suivante</lang>
+                        <lang value='it'>Prossimo</lang>
+                        <lang value='kr'>다음</lang>
+                        <lang value='ja'>次</lang>
+                        <lang value='de'>Nächste</lang>
+                        <lang value='nl'>Volgende</lang>
+                        <lang value='dk'>Næste</lang>
+                        <lang value='pt'>Próximo</lang>
+                        <lang value='es'>Próximo</lang>
+                        <lang value='ru'>Следующий</lang>
                     </a>
                 </div>
             </form>
@@ -186,35 +186,35 @@ export default function LogIn() {
                 <div>
                     <img src={userDoc?.avatar}/>{userDoc?.name}
                 </div>
-                <input placeholder='Password' name='password' type='password' autocomplete='password' value={password}/>
+                <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
                 <a href='/forgot'>Forgot password</a>
                 <div>
                     <a class='btn secondary back' href='javascript:void(0)'>
-                        <lang data-value='en'>Back</lang>
-                        <lang data-value='vi'>Trở lại</lang>
-                        <lang data-value='fr'>Dos</lang>
-                        <lang data-value='it'>Indietro</lang>
-                        <lang data-value='kr'>뒤쪽에</lang>
-                        <lang data-value='ja'>戻る</lang>
-                        <lang data-value='de'>Zurück</lang>
-                        <lang data-value='nl'>Rug</lang>
-                        <lang data-value='dk'>Tilbage</lang>
-                        <lang data-value='pt'>Voltar</lang>
-                        <lang data-value='es'>Atrás</lang>
-                        <lang data-value='ru'>Назад</lang>
+                        <lang value='en'>Back</lang>
+                        <lang value='vi'>Trở lại</lang>
+                        <lang value='fr'>Dos</lang>
+                        <lang value='it'>Indietro</lang>
+                        <lang value='kr'>뒤쪽에</lang>
+                        <lang value='ja'>戻る</lang>
+                        <lang value='de'>Zurück</lang>
+                        <lang value='nl'>Rug</lang>
+                        <lang value='dk'>Tilbage</lang>
+                        <lang value='pt'>Voltar</lang>
+                        <lang value='es'>Atrás</lang>
+                        <lang value='ru'>Назад</lang>
                     </a><a class='btn primary' href='javascript:void(0)'>
-                        <lang data-value='en'>Log in</lang>
-                        <lang data-value='vi'>Đăng nhập</lang>
-                        <lang data-value='fr'>Se connecter</lang>
-                        <lang data-value='it'>Login</lang>
-                        <lang data-value='kr'>로그인</lang>
-                        <lang data-value='ja'>ログイン</lang>
-                        <lang data-value='de'>Anmeldung</lang>
-                        <lang data-value='nl'>Log in</lang>
-                        <lang data-value='dk'>Log på</lang>
-                        <lang data-value='pt'>Conecte-se</lang>
-                        <lang data-value='es'>Acceso</lang>
-                        <lang data-value='ru'>Авторизоваться</lang>
+                        <lang value='en'>Log in</lang>
+                        <lang value='vi'>Đăng nhập</lang>
+                        <lang value='fr'>Se connecter</lang>
+                        <lang value='it'>Login</lang>
+                        <lang value='kr'>로그인</lang>
+                        <lang value='ja'>ログイン</lang>
+                        <lang value='de'>Anmeldung</lang>
+                        <lang value='nl'>Log in</lang>
+                        <lang value='dk'>Log på</lang>
+                        <lang value='pt'>Conecte-se</lang>
+                        <lang value='es'>Acceso</lang>
+                        <lang value='ru'>Авторизоваться</lang>
                     </a>
                 </div>
             </form>
