@@ -600,7 +600,7 @@ button, a.btn {
             color: var(--red);
         }
     }
-    & + a.btn {
+    & + :is(a.btn, button) {
         margin-left: 5px;
     }
     & > span {
