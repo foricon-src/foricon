@@ -6,7 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from './firebase';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 class Info extends Error {
     constructor(message) {
