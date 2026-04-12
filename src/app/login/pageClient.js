@@ -125,7 +125,6 @@ let texts = {
 export default function LogIn() {
     let router = useRouter();
     let params = useSearchParams();
-    let pathname = usePathname();
 
     let [ step, setStep ] = useState('email');
     let [ email, setEmail ] = useState('');
@@ -134,10 +133,10 @@ export default function LogIn() {
 
     let des = params.get('redirect') || 'account';
 
-    useEffect(() => (async () => {
+    useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
         user && go(router, 'account');
-    })(), [ pathname ])
+    })()}, [ usePathname() ])
 
     return (
         <div id='wrapper'>
