@@ -1,12 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import Router from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Ass/foricon-f-2.png';
 
 export default function Header() {
-    const [ open, setOpen ] = useState(false);
+    let [ open, setOpen ] = useState(false);
+    let router = Router();
+
     return (
         <header className='outer-corner'>
             <div>
@@ -82,7 +85,7 @@ export default function Header() {
                 </li>
             </ul>
             <ul className='btn-list' name='right'>
-                <li className='chip bottom'>
+                <li className='chip bottom' onClick={() => go(router, 'languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
                     <lang value='en'>Languages</lang>
                     <lang value='vi'>Ngôn ngữ</lang>
@@ -112,7 +115,7 @@ export default function Header() {
                     <lang value='es'>Todo</lang>
                     <lang value='ru'>Все</lang>
                 </li>
-                <li className='chip bottom line'>
+                <li className='chip bottom line' onClick={() => go(router, user ? 'account' : 'login')}>
                     <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>
                     <span/>
                 </li>

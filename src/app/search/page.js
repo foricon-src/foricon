@@ -230,6 +230,7 @@ export default function Search() {
         })
         !qSelec(false, top_options_styles, '.active') && activate(top_options_styles.children[0]);
         !qSelec(false, top_options_families, '.active') && activate(top_options_families.children[0]);
+        console.log(qSelec(false, top_options_styles, '.active'))
         show();
         goLink();
         
@@ -248,7 +249,6 @@ export default function Search() {
             if (animating) return;
             animating = true;
             let calculated = document.documentElement.scrollTop - window.innerHeight;
-            let triggerOpen = lastPos < calculated;
             lastPos = calculated;
             if (calculated > 0) {
                 activate(top);
