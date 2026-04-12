@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 // import Image from 'next/image';
 // import favicon from 'Ass/foricon-f-favicon.png';
 import './page.css';
-import 'Com/utilities';
+import 'Com/utils';
 
 export default function Home() {
     useEffect(() => {(async () => {
