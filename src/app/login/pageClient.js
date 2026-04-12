@@ -128,10 +128,11 @@ export default function LogIn() {
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
 
+    let des = params.get('redirect') || 'account';
+    
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
         user && go(router, 'account');
-        let des = params.get('redirect') || 'account';
     })()}, [ usePathname() ])
 
     return (

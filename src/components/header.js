@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Pub/foricon-f-2.png';
 
 export default function Header() {
     let [ open, setOpen ] = useState(false);
-    let router = Router();
+    let router = useRouter();
 
     return (
         <header className='outer-corner'>
