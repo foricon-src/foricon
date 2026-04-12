@@ -129,12 +129,10 @@ export default function LogIn() {
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
 
-    let des;
-
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
         user && go(router, 'account');
-        des = params.get('redirect') || 'account';
+        let des = params.get('redirect') || 'account';
     })()}, [ usePathname() ])
 
     return (
