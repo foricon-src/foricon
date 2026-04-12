@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
-import './page.css';
 
 let texts = {
     en: {
@@ -121,104 +120,103 @@ let texts = {
 }
 
 export default function LogIn() {
-    return (<div></div>)
-    // let router = useRouter();
-    // let params = useSearchParams();
+    let router = useRouter();
+    let params = useSearchParams();
 
-    // let [ step, setStep ] = useState('email');
-    // let [ email, setEmail ] = useState('');
-    // let [ password, setPassword ] = useState('');
-    // let [ userDoc, setUserDoc ] = useState(null);
+    let [ step, setStep ] = useState('email');
+    let [ email, setEmail ] = useState('');
+    let [ password, setPassword ] = useState('');
+    let [ userDoc, setUserDoc ] = useState(null);
 
-    // useEffect(() => {(async () => {
-    //     while (elemById('loading')) await wait();
-    //     user && go(router, 'account');
-    //     let des = params.get('redirect') || 'account';
-    // })()}, [ usePathname() ])
+    useEffect(() => {(async () => {
+        while (elemById('loading')) await wait();
+        user && go(router, 'account');
+        let des = params.get('redirect') || 'account';
+    })()}, [ usePathname() ])
 
-    // return (
-    //     <div id='wrapper'>
-    //         <div>
-    //             <Link href='/' title='Back to home'>
-    //                 <img src='/foricon-f-2.png'/>
-    //             </Link>
-    //             <h1>{texts[language][step]}</h1>
-    //             <p>{texts[language][step]}</p>
-    //             <a className='btn secondary' href='/signup'>
-    //                 <lang data-value='en'>Create a new account</lang>
-    //                 <lang data-value='vi'>Tạo tài khoản mới</lang>
-    //                 <lang data-value='fr'>Créer un nouveau compte</lang>
-    //                 <lang data-value='it'>Creare un nuovo account</lang>
-    //                 <lang data-value='kr'>새 계정 생성</lang>
-    //                 <lang data-value='ja'>新しいアカウントを作成する</lang>
-    //                 <lang data-value='de'>Ein neues Konto erstellen</lang>
-    //                 <lang data-value='nl'>Maak een nieuw account aan</lang>
-    //                 <lang data-value='dk'>Oprette en ny konto</lang>
-    //                 <lang data-value='pt'>Criar uma nova conta</lang>
-    //                 <lang data-value='es'>Crea una cuenta nueva</lang>
-    //                 <lang data-value='ru'>Создать новую учетную запись</lang>
-    //             </a>
-    //         </div>
-    //         <form className={step == 'email' ? 'active' : ''}>
-    //             <div id='providers'>
-    //                 <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-google'></i></a>
-    //                 <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-microsoft'></i></a>
-    //                 <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-github'></i></a>
-    //             </div>
-    //             <input placeholder='Email' name='email' type='email' autocomplete='email' value={email}/>
-    //             <div>
-    //                 <a className='btn primary' href='javascript:void(0)'>
-    //                     <lang data-value='en'>Next</lang>
-    //                     <lang data-value='vi'>Tiếp theo</lang>
-    //                     <lang data-value='fr'>Suivante</lang>
-    //                     <lang data-value='it'>Prossimo</lang>
-    //                     <lang data-value='kr'>다음</lang>
-    //                     <lang data-value='ja'>次</lang>
-    //                     <lang data-value='de'>Nächste</lang>
-    //                     <lang data-value='nl'>Volgende</lang>
-    //                     <lang data-value='dk'>Næste</lang>
-    //                     <lang data-value='pt'>Próximo</lang>
-    //                     <lang data-value='es'>Próximo</lang>
-    //                     <lang data-value='ru'>Следующий</lang>
-    //                 </a>
-    //             </div>
-    //         </form>
-    //         <form className={step == 'password' ? 'active' : ''}>
-    //             <div>
-    //                 <img src={userDoc?.avatar}/>{userDoc?.name}
-    //             </div>
-    //             <input placeholder='Password' name='password' type='password' autocomplete='password' value={password}/>
-    //             <a href='/forgot'>Forgot password</a>
-    //             <div>
-    //                 <a class='btn secondary back' href='javascript:void(0)'>
-    //                     <lang data-value='en'>Back</lang>
-    //                     <lang data-value='vi'>Trở lại</lang>
-    //                     <lang data-value='fr'>Dos</lang>
-    //                     <lang data-value='it'>Indietro</lang>
-    //                     <lang data-value='kr'>뒤쪽에</lang>
-    //                     <lang data-value='ja'>戻る</lang>
-    //                     <lang data-value='de'>Zurück</lang>
-    //                     <lang data-value='nl'>Rug</lang>
-    //                     <lang data-value='dk'>Tilbage</lang>
-    //                     <lang data-value='pt'>Voltar</lang>
-    //                     <lang data-value='es'>Atrás</lang>
-    //                     <lang data-value='ru'>Назад</lang>
-    //                 </a><a class='btn primary' href='javascript:void(0)'>
-    //                     <lang data-value='en'>Log in</lang>
-    //                     <lang data-value='vi'>Đăng nhập</lang>
-    //                     <lang data-value='fr'>Se connecter</lang>
-    //                     <lang data-value='it'>Login</lang>
-    //                     <lang data-value='kr'>로그인</lang>
-    //                     <lang data-value='ja'>ログイン</lang>
-    //                     <lang data-value='de'>Anmeldung</lang>
-    //                     <lang data-value='nl'>Log in</lang>
-    //                     <lang data-value='dk'>Log på</lang>
-    //                     <lang data-value='pt'>Conecte-se</lang>
-    //                     <lang data-value='es'>Acceso</lang>
-    //                     <lang data-value='ru'>Авторизоваться</lang>
-    //                 </a>
-    //             </div>
-    //         </form>
-    //     </div>
-    // )
+    return (
+        <div id='wrapper'>
+            <div>
+                <Link href='/' title='Back to home'>
+                    <img src='/foricon-f-2.png'/>
+                </Link>
+                <h1>{texts[language][step]}</h1>
+                <p>{texts[language][step]}</p>
+                <a className='btn secondary' href='/signup'>
+                    <lang data-value='en'>Create a new account</lang>
+                    <lang data-value='vi'>Tạo tài khoản mới</lang>
+                    <lang data-value='fr'>Créer un nouveau compte</lang>
+                    <lang data-value='it'>Creare un nuovo account</lang>
+                    <lang data-value='kr'>새 계정 생성</lang>
+                    <lang data-value='ja'>新しいアカウントを作成する</lang>
+                    <lang data-value='de'>Ein neues Konto erstellen</lang>
+                    <lang data-value='nl'>Maak een nieuw account aan</lang>
+                    <lang data-value='dk'>Oprette en ny konto</lang>
+                    <lang data-value='pt'>Criar uma nova conta</lang>
+                    <lang data-value='es'>Crea una cuenta nueva</lang>
+                    <lang data-value='ru'>Создать новую учетную запись</lang>
+                </a>
+            </div>
+            <form className={step == 'email' ? 'active' : ''}>
+                <div id='providers'>
+                    <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-google'></i></a>
+                    <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-microsoft'></i></a>
+                    <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-github'></i></a>
+                </div>
+                <input placeholder='Email' name='email' type='email' autocomplete='email' value={email}/>
+                <div>
+                    <a className='btn primary' href='javascript:void(0)'>
+                        <lang data-value='en'>Next</lang>
+                        <lang data-value='vi'>Tiếp theo</lang>
+                        <lang data-value='fr'>Suivante</lang>
+                        <lang data-value='it'>Prossimo</lang>
+                        <lang data-value='kr'>다음</lang>
+                        <lang data-value='ja'>次</lang>
+                        <lang data-value='de'>Nächste</lang>
+                        <lang data-value='nl'>Volgende</lang>
+                        <lang data-value='dk'>Næste</lang>
+                        <lang data-value='pt'>Próximo</lang>
+                        <lang data-value='es'>Próximo</lang>
+                        <lang data-value='ru'>Следующий</lang>
+                    </a>
+                </div>
+            </form>
+            <form className={step == 'password' ? 'active' : ''}>
+                <div>
+                    <img src={userDoc?.avatar}/>{userDoc?.name}
+                </div>
+                <input placeholder='Password' name='password' type='password' autocomplete='password' value={password}/>
+                <a href='/forgot'>Forgot password</a>
+                <div>
+                    <a class='btn secondary back' href='javascript:void(0)'>
+                        <lang data-value='en'>Back</lang>
+                        <lang data-value='vi'>Trở lại</lang>
+                        <lang data-value='fr'>Dos</lang>
+                        <lang data-value='it'>Indietro</lang>
+                        <lang data-value='kr'>뒤쪽에</lang>
+                        <lang data-value='ja'>戻る</lang>
+                        <lang data-value='de'>Zurück</lang>
+                        <lang data-value='nl'>Rug</lang>
+                        <lang data-value='dk'>Tilbage</lang>
+                        <lang data-value='pt'>Voltar</lang>
+                        <lang data-value='es'>Atrás</lang>
+                        <lang data-value='ru'>Назад</lang>
+                    </a><a class='btn primary' href='javascript:void(0)'>
+                        <lang data-value='en'>Log in</lang>
+                        <lang data-value='vi'>Đăng nhập</lang>
+                        <lang data-value='fr'>Se connecter</lang>
+                        <lang data-value='it'>Login</lang>
+                        <lang data-value='kr'>로그인</lang>
+                        <lang data-value='ja'>ログイン</lang>
+                        <lang data-value='de'>Anmeldung</lang>
+                        <lang data-value='nl'>Log in</lang>
+                        <lang data-value='dk'>Log på</lang>
+                        <lang data-value='pt'>Conecte-se</lang>
+                        <lang data-value='es'>Acceso</lang>
+                        <lang data-value='ru'>Авторизоваться</lang>
+                    </a>
+                </div>
+            </form>
+        </div>
+    )
 }
