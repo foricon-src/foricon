@@ -545,65 +545,66 @@ a {
     &:hover{
         background-color: var(--tr-main-color);
     }
-    &.btn {
-        display: inline-flex;
-        padding: 8px 20px;
-        border-radius: var(--s-bdr-rad);
-        font-size: 1rem;
-        justify-content: center;
-        gap: 10px;
-        margin: 15px 0;
+}
+button, a.btn {
+    display: inline-flex;
+    padding: 8px 20px;
+    border-radius: var(--s-bdr-rad);
+    font-size: 1rem;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    border: 0;
+    
+    p + & {
+        margin: 0;
+    }
+    &:active {
+        scale: var(--btn-scale);
+    }
+    &.primary {
+        background-color: var(--main-color);
+        color: var(--dk-main-color);
         
-        p + & {
-            margin: 0;
+        &:hover {
+            background-color: var(--gray);
         }
-        &:active {
-            scale: var(--btn-scale);
+        body.dark &:hover {
+            color: var(--main-color);
         }
-        &.primary {
-            background-color: var(--main-color);
-            color: var(--dk-main-color);
-            
-            &:hover {
-                background-color: var(--gray);
-            }
-            body.dark &:hover {
-                color: var(--main-color);
-            }
+    }
+    &.secondary {
+        background-color: var(--tr-main-color);
+        color: var(--dk-main-color);
+        
+        &:hover {
+            background-color: rgba(var(--main-color-rgb), .35);
         }
-        &.secondary {
-            background-color: var(--tr-main-color);
-            color: var(--dk-main-color);
-            
-            &:hover {
-                background-color: rgba(var(--main-color-rgb), .35);
-            }
-            body.dark & {
-                color: var(--main-color);
-            }
+        body.dark & {
+            color: var(--main-color);
         }
-        &.blue {
-            background-color: var(--blue);
-            color: var(--dk-blue);
-            
-            body.dark &:hover {
-                color: var(--blue);
-            }
+    }
+    &.blue {
+        background-color: var(--blue);
+        color: var(--dk-blue);
+        
+        body.dark &:hover {
+            color: var(--blue);
         }
-        &.red {
-            background-color: var(--red);
-            color: var(--dk-red);
-            
-            body.dark &:hover {
-                color: var(--red);
-            }
+    }
+    &.red {
+        background-color: var(--red);
+        color: var(--dk-red);
+        
+        body.dark &:hover {
+            color: var(--red);
         }
-        & + a.btn {
-            margin-left: 5px;
-        }
-        & > span {
-            color: inherit;
-        }
+    }
+    & + a.btn {
+        margin-left: 5px;
+    }
+    & > span {
+        color: inherit;
     }
 }
 

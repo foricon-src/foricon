@@ -143,7 +143,7 @@ export default function LogIn() {
                 </Link>
                 <h1>{texts[language][step].h1}</h1>
                 <p>{texts[language][step].p}</p>
-                <a className='btn secondary' href='/signup'>
+                <button className='btn secondary' href='/signup'>
                     <lang value='en'>Create a new account</lang>
                     <lang value='vi'>Tạo tài khoản mới</lang>
                     <lang value='fr'>Créer un nouveau compte</lang>
@@ -156,17 +156,17 @@ export default function LogIn() {
                     <lang value='pt'>Criar uma nova conta</lang>
                     <lang value='es'>Crea una cuenta nueva</lang>
                     <lang value='ru'>Создать новую учетную запись</lang>
-                </a>
+                </button>
             </div>
             <form className={step == 'email' ? 'active' : ''}>
                 <div id='providers'>
-                    <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-google'></i></a>
-                    <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-microsoft'></i></a>
-                    <a href='javascript:void(0)' className='btn secondary'><i class='fa-brands fa-github'></i></a>
+                    <button className='btn secondary'><i class='fa-brands fa-google'></i></button>
+                    <button className='btn secondary'><i class='fa-brands fa-microsoft'></i></button>
+                    <button className='btn secondary'><i class='fa-brands fa-github'></i></button>
                 </div>
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
-                    <a className='btn primary' href='javascript:void(0)'>
+                    <button className='btn primary'>
                         <lang value='en'>Next</lang>
                         <lang value='vi'>Tiếp theo</lang>
                         <lang value='fr'>Suivante</lang>
@@ -179,7 +179,7 @@ export default function LogIn() {
                         <lang value='pt'>Próximo</lang>
                         <lang value='es'>Próximo</lang>
                         <lang value='ru'>Следующий</lang>
-                    </a>
+                    </button>
                 </div>
             </form>
             <form className={step == 'password' ? 'active' : ''}>
@@ -187,9 +187,9 @@ export default function LogIn() {
                     <img src={userDoc?.avatar}/>{userDoc?.name}
                 </div>
                 <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
-                <a href='/forgot'>Forgot password</a>
+                <button href='/forgot'>Forgot password</button>
                 <div>
-                    <a class='btn secondary back' href='javascript:void(0)'>
+                    <button class='btn secondary back'>
                         <lang value='en'>Back</lang>
                         <lang value='vi'>Trở lại</lang>
                         <lang value='fr'>Dos</lang>
@@ -202,7 +202,7 @@ export default function LogIn() {
                         <lang value='pt'>Voltar</lang>
                         <lang value='es'>Atrás</lang>
                         <lang value='ru'>Назад</lang>
-                    </a><a class='btn primary' href='javascript:void(0)'>
+                    </button><button class='btn primary'>
                         <lang value='en'>Log in</lang>
                         <lang value='vi'>Đăng nhập</lang>
                         <lang value='fr'>Se connecter</lang>
@@ -215,7 +215,7 @@ export default function LogIn() {
                         <lang value='pt'>Conecte-se</lang>
                         <lang value='es'>Acceso</lang>
                         <lang value='ru'>Авторизоваться</lang>
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>
