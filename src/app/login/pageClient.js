@@ -190,7 +190,7 @@ export default function LogIn() {
                     <img src={userDoc?.avatar}/>{userDoc?.name}
                 </div>
                 <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
-                <button href='/forgot'>Forgot password</button>
+                <a href='/forgot'>Forgot password</a>
                 <div>
                     <button class='secondary back' onClick={() => setStep('email')}>
                         <lang value='en'>Back</lang>
