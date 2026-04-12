@@ -3,7 +3,7 @@ import Script from 'next/script';
 import Header from 'Com/header';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from 'Ass/foricon-f-2.png';
+import logo from 'Pub/foricon-f-2.png';
 import './globals.css';
 import 'Com/utils'
 
