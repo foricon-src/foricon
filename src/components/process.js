@@ -8,19 +8,6 @@ import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from './firebase';
 import { useRouter } from 'next/navigation';
 
-class Info extends Error {
-    constructor(message) {
-        super(message);
-        this.name = 'Info:';
-    }
-}
-class Warn extends Error {
-    constructor(message) {
-        super(message);
-        this.name = 'Warning';
-    }
-}
-
 export default function Process() {
     let router = useRouter();
 

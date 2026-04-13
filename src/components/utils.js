@@ -1300,3 +1300,19 @@ globalThis.showAccountRequire = back => {
         () => back && history.back()
     )
 }
+
+
+class Info extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'Info:';
+    }
+}
+class Warn extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'Warning';
+    }
+}
+globalThis.Info = Info;
+globalThis.Warn = Warn;

@@ -59,13 +59,23 @@
             margin-bottom: 15px;
             width: 100%;
             
-            > button {
-                margin: 0;
-                text-align: center;
-                padding: 11px;
+            > li {
+                background-size: 27px;
+                background-position: center center;
+                /* height: 47px; */
                 
-                > i {
-                    translate: 0 1px;
+                &[name='google'] {
+                    background-image: url(/public/google-logo.svg);
+                }
+                &[name='micrsoft'] {
+                    background-image: url(/public/microsoft-logo.svg);
+                }
+                &[name='github'] {
+                    background-image: url(/public/github-logo.svg);
+
+                    body.dark & {
+                        background-image: url(/public/github-logo-white.svg);
+                    }
                 }
             }
         }

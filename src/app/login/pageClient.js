@@ -135,6 +135,21 @@ export default function LogIn() {
         user && go(router, 'account');
     })()}, [ usePathname() ])
 
+    async function changePage(page, func) {
+        try {
+            let wrapper = elemById('wrapper');
+            wrapper.style.opacity = '0';
+            await wait(.2);
+            await func?.();
+            setStep(page)
+            await wait();
+            wrapper.style.opacity = null;
+        }
+        catch (obj) {
+            notify(obj instanceof Warn ? 'warn' : 'error', obj.message);
+        }
+    }
+
     return (
         <div id='wrapper'>
             <div>
@@ -158,15 +173,29 @@ export default function LogIn() {
                     <lang value='ru'>Создать новую учетную запись</lang>
                 </button>
             </div>
-            <form className={step == 'email' ? 'active' : ''} onSubmit={e => {
-                e.preventDefault()
-                setStep('password')
-            }}>
-                <div id='providers'>
-                    <button className='btn secondary'><i class='fa-brands fa-google'></i></button>
-                    <button className='btn secondary'><i class='fa-brands fa-microsoft'></i></button>
-                    <button className='btn secondary'><i class='fa-brands fa-github'></i></button>
-                </div>
+            <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', async () => {
+                e.preventDefault();
+                let snapshot = await getDocs(query(
+                    collection(db, 'users'),
+                    where('email', '==', email)
+                ))
+            
+                if (snapshot.empty) throw new Warn('No account created with this email');
+            
+                setUserDoc(snapshot.docs[0].data());
+                changePage('password');
+            })}>
+                <ul className='btn-list darker' id='providers'>
+                    <li className='chip top' name='google'>
+                        <span>Log in with Google</span>
+                    </li>
+                    <li className='chip top' name='microsoft'>
+                        <span>Log in with Microsoft</span>
+                    </li>
+                    <li className='chip top' name='logo'>
+                        <span>Log in with Github</span>
+                    </li>
+                </ul>
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
                     <button className='primary' type='submit'>
@@ -192,7 +221,7 @@ export default function LogIn() {
                 <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
                 <a href='/forgot'>Forgot password</a>
                 <div>
-                    <button class='secondary back' onClick={() => setStep('email')}>
+                    <button class='secondary' type='button' onClick={() => changePage('email')}>
                         <lang value='en'>Back</lang>
                         <lang value='vi'>Trở lại</lang>
                         <lang value='fr'>Dos</lang>
