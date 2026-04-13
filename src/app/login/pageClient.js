@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
+import { dbFirestore } from "Com/firebase";
 
 let texts = {
     en: {
@@ -180,7 +181,7 @@ export default function LogIn() {
             </div>
             <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', e, async () => {
                 let snapshot = await getDocs(query(
-                    collection(db, 'users'),
+                    collection(dbFirestore, 'users'),
                     where('email', '==', email)
                 ))
             

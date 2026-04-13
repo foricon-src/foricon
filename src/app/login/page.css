@@ -21,7 +21,7 @@
             &:is(button) {
                 margin-top: var(--spacing-small);
             }
-            &:is(a) {
+            &:is(a):not(.btn) {
                 background: none;
                 
                 &:hover {

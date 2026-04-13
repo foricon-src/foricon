@@ -1142,6 +1142,7 @@ globalThis.similarity = (s1, s2) => {
  */
 globalThis.notify = async (type, message) => {
     let toast = qSelec(false, '#toast');
+    console.log(toast)
     while (toast.children.length < 4) await wait();
     let div = newElem('div', {
         innerHTML: message,
@@ -1149,6 +1150,7 @@ globalThis.notify = async (type, message) => {
         style: 'opacity: 0; translate: 100%; transition: all .5s ease, margin-bottom 0s;',
     })
     toast.append(div);
+    console.log(div)
     div.style = `height: ${div.offsetHeight}px; transition: all .5s ease, margin-bottom 0s;`;
     await wait(message.length < 40 ? message.length < 80 ? 5 : 4 : 3);
     div.style = 'opacity: 0; height: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0;';
