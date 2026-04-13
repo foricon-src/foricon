@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
-import { collection, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
+import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { dbFirestore } from "Com/firebase";
 
 let texts = {
