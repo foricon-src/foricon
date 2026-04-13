@@ -137,15 +137,15 @@ export default function LogIn() {
 
     async function changePage(page, e, func) {
         e?.preventDefault();
-        
+
         try {
             let wrapper = elemById('wrapper');
             wrapper.style.opacity = '0';
             await wait(.2);
             await func?.();
-            setStep(page)
+            setStep(page);
             await wait();
-            wrapper.style.opacity = null;
+            wrapper.style.opacity = 0;
         }
         catch (obj) {
             notify(obj instanceof Warn ? 'warn' : 'error', obj.message);
