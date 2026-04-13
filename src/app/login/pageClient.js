@@ -144,11 +144,13 @@ export default function LogIn() {
             await wait(.2);
             await func?.();
             setStep(page);
-            await wait();
-            wrapper.style.opacity = '1';
         }
         catch (obj) {
             notify(obj instanceof Warn ? 'warn' : 'error', obj.message);
+        }
+        finally {
+            await wait();
+            wrapper.style.opacity = '1';
         }
     }
 
