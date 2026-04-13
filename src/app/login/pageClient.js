@@ -192,7 +192,7 @@ export default function LogIn() {
                     <li className='chip top' name='microsoft'>
                         <span>Log in with Microsoft</span>
                     </li>
-                    <li className='chip top' name='logo'>
+                    <li className='chip top' name='github'>
                         <span>Log in with Github</span>
                     </li>
                 </ul>

@@ -63,13 +63,14 @@
                 background-size: 27px;
                 background-position: center center;
                 background-repeat: no-repeat;
-                height: 47px;
+                height: 57px;
                 width: unset;
                 
                 &[name='google'] {
                     background-image: url(/google-logo.svg);
                 }
                 &[name='microsoft'] {
+                    background-size: 25px;
                     background-image: url(/microsoft-logo.svg);
                 }
                 &[name='github'] {
