@@ -709,7 +709,7 @@ globalThis.activate = (...elems) => {
                 body.style.overflow = 'hidden scroll';
             }
         }
-        elem.classList.add('activate');
+        elem.classList.add('active');
     })
 }
 /**
@@ -720,7 +720,7 @@ globalThis.inactivate = (...elems) => {
     let { body } = document;
     elems.forEach(elem => {
         let html = document.documentElement;
-        elem.classList.remove('activate');
+        elem.classList.remove('active');
         if (elem.classList.contains('modal') && document.querySelectorAll('.modal.activate').length == 0) {
             html.style.scrollBehavior = 'auto';
             body.style.position = body.style.top = body.style.width = body.style.overflow = '';
@@ -735,7 +735,7 @@ globalThis.inactivate = (...elems) => {
  * @returns {Boolean} Boolean
  */
 globalThis.isActive = elem => {
-    return elem.classList.contains('activate');
+    return elem.classList.contains('active');
 }
 /**
  * Toggles activate state of elements

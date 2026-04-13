@@ -230,7 +230,6 @@ export default function Search() {
         })
         !qSelec(false, top_options_styles, '.active') && activate(top_options_styles.children[0]);
         !qSelec(false, top_options_families, '.active') && activate(top_options_families.children[0]);
-        console.log(qSelec(false, top_options_styles, '.active'), top_options_styles.children)
         show();
         goLink();
         
