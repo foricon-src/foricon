@@ -67,16 +67,16 @@
                 width: unset;
                 
                 &[name='google'] {
-                    background-image: url(/public/google-logo.svg);
+                    background-image: url(/google-logo.svg);
                 }
                 &[name='microsoft'] {
-                    background-image: url(/public/microsoft-logo.svg);
+                    background-image: url(/microsoft-logo.svg);
                 }
                 &[name='github'] {
-                    background-image: url(/public/github-logo.svg);
+                    background-image: url(/github-logo.svg);
 
                     body.dark & {
-                        background-image: url(/public/github-logo-white.svg);
+                        background-image: url(/github-logo-white.svg);
                     }
                 }
             }
