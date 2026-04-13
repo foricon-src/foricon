@@ -135,7 +135,9 @@ export default function LogIn() {
         user && go(router, 'account');
     })()}, [ usePathname() ])
 
-    async function changePage(page, func) {
+    async function changePage(page, e, func) {
+        e?.preventDefault();
+        
         try {
             let wrapper = elemById('wrapper');
             wrapper.style.opacity = '0';
@@ -158,7 +160,7 @@ export default function LogIn() {
                 </Link>
                 <h1>{texts[language][step].h1}</h1>
                 <p>{texts[language][step].p}</p>
-                <button className='btn secondary' href='/signup'>
+                <a className='btn secondary' href='/signup'>
                     <lang value='en'>Create a new account</lang>
                     <lang value='vi'>Tạo tài khoản mới</lang>
                     <lang value='fr'>Créer un nouveau compte</lang>
@@ -171,10 +173,9 @@ export default function LogIn() {
                     <lang value='pt'>Criar uma nova conta</lang>
                     <lang value='es'>Crea una cuenta nueva</lang>
                     <lang value='ru'>Создать новую учетную запись</lang>
-                </button>
+                </a>
             </div>
-            <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', async () => {
-                e.preventDefault();
+            <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', e, async () => {
                 let snapshot = await getDocs(query(
                     collection(db, 'users'),
                     where('email', '==', email)
@@ -183,7 +184,6 @@ export default function LogIn() {
                 if (snapshot.empty) throw new Warn('No account created with this email');
             
                 setUserDoc(snapshot.docs[0].data());
-                changePage('password');
             })}>
                 <ul className='btn-list darker' id='providers'>
                     <li className='chip top' name='google'>
