@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import './page.css'
 
 export default function Search() {
+    let router = useRouter();
+
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
   
@@ -73,7 +76,7 @@ export default function Search() {
             return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
         }
         function goLink() {
-            go(`#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}&s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`);
+            go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}&s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`);
         }
         function show() {
             let value = normalize(top_search.value);
@@ -155,7 +158,7 @@ export default function Search() {
                             modal(chooseLayers, layers =>
                                 layers.forEach(layer => {
                                     let { name } = charNameList.find(i => i.unicode == unicodes[layer == 'pri' ? 0 : 1]);
-                                    go(`//foricon-server-side.onrender.com/get-icon/${type}/${name}`, true);
+                                    go(router, `//foricon-server-side.onrender.com/get-icon/${type}/${name}`, true);
                                 })
                             )
                         })
