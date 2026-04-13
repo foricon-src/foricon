@@ -93,7 +93,7 @@ export default function Process() {
                     
                     qSelec(true, '.signup').forEach(each => each.remove());
                     if (user.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
-                        document.addEventListener('keydown', ({ ctrlKey, key }) => {
+                        addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
                             ctrlKey && key == '/' && location.pathname != '/p/management-center.html' && !document.activeElement.matches('textarea, input') &&
                             go(router, 'admin', true);
                         }, false)
@@ -708,8 +708,6 @@ export default function Process() {
                     }
                 }
             })
-
-            pageLoaded = true;
         }
 
         html.lang = language;
@@ -741,27 +739,31 @@ export default function Process() {
             ) / 100) * 100}`
         )
         
-        if (user) {
-            header_right_accBtn.replaceChild(
-                newElem('img', { src: user.doc.avatar }),
-                qSelec(false, header_right_accBtn, 'f-icon')
-            )
-            header_right_accBtn_span.innerText = user.doc.name;
-        }
-        else header_right_accBtn_span.innerText = {
-            en: 'Log in',
-            vi: 'Đăng nhập',
-            fr: 'Se connecter',
-            it: 'Login',
-            kr: '로그인',
-            ja: 'ログイン',
-            de: 'Einloggen',
-            nl: 'Inloggen',
-            dk: 'Log ind',
-            pt: 'Conecte-se',
-            es: 'Acceso',
-            ru: 'Авторизоваться',
-        }[language]
+        if (!pageLoaded)
+            if (user) {
+                header_right_accBtn.replaceChild(
+                    newElem('img', { src: user.doc.avatar }),
+                    qSelec(false, header_right_accBtn, 'f-icon')
+                )
+                header_right_accBtn_span.innerText = user.doc.name;
+            }
+            else header_right_accBtn_span.innerText = {
+                en: 'Log in',
+                vi: 'Đăng nhập',
+                fr: 'Se connecter',
+                it: 'Login',
+                kr: '로그인',
+                ja: 'ログイン',
+                de: 'Einloggen',
+                nl: 'Inloggen',
+                dk: 'Log ind',
+                pt: 'Conecte-se',
+                es: 'Acceso',
+                ru: 'Авторизоваться',
+            }[language]
+            
+
+        pageLoaded = true;
     })()}, [ usePathname() ])
     
     return null;
