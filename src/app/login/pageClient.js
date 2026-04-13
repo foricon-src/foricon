@@ -145,7 +145,7 @@ export default function LogIn() {
             await func?.();
             setStep(page);
             await wait();
-            wrapper.style.opacity = 0;
+            wrapper.style.opacity = '1';
         }
         catch (obj) {
             notify(obj instanceof Warn ? 'warn' : 'error', obj.message);
