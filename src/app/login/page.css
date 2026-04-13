@@ -62,12 +62,14 @@
             > li {
                 background-size: 27px;
                 background-position: center center;
-                /* height: 47px; */
+                background-repeat: no-repeat;
+                height: 47px;
+                width: unset;
                 
                 &[name='google'] {
                     background-image: url(/public/google-logo.svg);
                 }
-                &[name='micrsoft'] {
+                &[name='microsoft'] {
                     background-image: url(/public/microsoft-logo.svg);
                 }
                 &[name='github'] {
