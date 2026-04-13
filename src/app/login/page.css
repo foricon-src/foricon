@@ -21,14 +21,19 @@
             &:is(button) {
                 margin-top: var(--spacing-small);
             }
-            &:is(a):not(.btn) {
-                background: none;
-                
-                &:hover {
-                    scale: 1.05;
+            &:is(a) {
+                &:not(.btn) {
+                    background: none;
+                    
+                    &:hover {
+                        scale: 1.05;
+                    }
+                    > img {
+                        height: 100px;
+                    }
                 }
-                > img {
-                    height: 100px;
+                &.btn {
+                    margin-top: var(--spacing-small);
                 }
             }
             &:is(h1) {
