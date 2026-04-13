@@ -189,7 +189,7 @@ export default function LogIn() {
             
                 setUserDoc(snapshot.docs[0].data());
             })}>
-                <ul className='btn-list darker' id='providers'>
+                <ul className='btn-list darker'>
                     <li className='chip top' name='google'>
                         <span>Log in with Google</span>
                     </li>

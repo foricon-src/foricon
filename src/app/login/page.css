@@ -57,33 +57,40 @@
         &:not(.active) {
             display: none;
         }
-        > #providers {
+        > ul, > div:not(:last-child) {
+            width: 100%;
+        }
+        > ul {
             display: grid;
             gap: 10px;
             grid-template-columns: repeat(3, 1fr);
             margin-bottom: 15px;
-            width: 100%;
             
             > li {
-                background-size: 27px;
+                background-size: var(--size);
                 background-position: center center;
                 background-repeat: no-repeat;
                 height: 57px;
                 width: unset;
                 
                 &[name='google'] {
+                    --size: 27px;
                     background-image: url(/google-logo.svg);
                 }
                 &[name='microsoft'] {
-                    background-size: 25px;
+                    --size: 25px;
                     background-image: url(/microsoft-logo.svg);
                 }
                 &[name='github'] {
+                    --size: 27px;
                     background-image: url(/github-logo.svg);
 
                     body.dark & {
                         background-image: url(/github-logo-white.svg);
                     }
+                }
+                &:active {
+                    scale: calc(var(--size) * .8);
                 }
             }
         }
@@ -94,11 +101,24 @@
             align-self: flex-start;
         }
         > div {
-            align-self: flex-end;
+            &:not(:last-child) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-            > button {
-                margin-top: 0;
-                margin-bottom: 0;
+                > img {
+                    height: 20px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                }
+            }
+            &:last-child {
+                align-self: flex-end;
+                
+                > button {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
             }
         }
     }
