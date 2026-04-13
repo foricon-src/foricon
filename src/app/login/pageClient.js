@@ -146,6 +146,7 @@ export default function LogIn() {
             setStep(page);
         }
         catch (obj) {
+            console.log(obj);
             notify(obj instanceof Warn ? 'warn' : 'error', obj.message);
         }
         finally {
