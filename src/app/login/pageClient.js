@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
-import { dbFirestore } from "Com/firebase";
+import { dbFirestore, auth } from "Com/firebase";
+import popUp from "Com/popup";
+import recordLogin from "Com/record-login";
 
 let texts = {
     en: {
@@ -132,7 +134,7 @@ export default function LogIn() {
     let des = params.get('redirect') || 'account';
     
     useEffect(() => {(async () => {
-        while (elemById('loading')) await wait();
+        while (user == null) await wait();
         user && go(router, 'account');
     })()}, [ usePathname() ])
 
@@ -190,13 +192,13 @@ export default function LogIn() {
                 setUserDoc(snapshot.docs[0].data());
             })}>
                 <ul className='btn-list darker'>
-                    <li className='chip top' name='google'>
+                    <li className='chip top' name='google' onClick={() => popUp(new GoogleAuthProvider(), des)}>
                         <span>Log in with Google</span>
                     </li>
-                    <li className='chip top' name='microsoft'>
+                    <li className='chip top' name='microsoft' onClick={() => popUp(new OAuthProvider('microsoft.com'), des)}>
                         <span>Log in with Microsoft</span>
                     </li>
-                    <li className='chip top' name='github'>
+                    <li className='chip top' name='github' onClick={() => popUp(new GithubAuthProvider(), des)}>
                         <span>Log in with Github</span>
                     </li>
                 </ul>
@@ -218,7 +220,13 @@ export default function LogIn() {
                     </button>
                 </div>
             </form>
-            <form className={step == 'password' ? 'active' : ''} onSubmit={e => e.preventDefault()}>
+            <form className={step == 'password' ? 'active' : ''} onSubmit={async e => {
+                e.preventDefault()
+                let result = await signInWithEmailAndPassword(auth, email, password);
+                let token = await result.user.getIdToken();
+                await recordLogin(token);
+                router.push(des);
+            }}>
                 <div>
                     <img src={userDoc?.avatar}/>{userDoc?.name}
                 </div>
