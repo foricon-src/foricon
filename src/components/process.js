@@ -712,9 +712,10 @@ export default function Process() {
 
         html.lang = language;
         
-        qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
-        
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
+
+        qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
+
         let loading = elemById('loading');
         if (loading) {
             loading.style.opacity = '0';
