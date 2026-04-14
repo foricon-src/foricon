@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from "next/navigation";
-import 'Pag/siderbar-page.css'
+import 'Pag/sidebar-page.css';
 
 export default function Account() {
     let pathname = usePathname();
