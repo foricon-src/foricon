@@ -5,9 +5,8 @@ import { usePathname } from "next/navigation";
 export default function Sidebar() {
     let pathname = usePathname();
 
-    function stateActive(path) {
+    function stateActive(path = '') {
         path && (path = `/${path}`);
-        console.log(pathname, `/account${path}`)
         return pathname == `/account${path}` ? 'active' : '';
     }
 
