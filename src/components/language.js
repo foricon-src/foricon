@@ -14,21 +14,21 @@ export function AttrLang(obj) {
     return obj[lang];
 }
 export function LanguageProvider({ children }) {
-    const [ language, setLanguage ] = useState(null);
+    const [ lang, setLanguage ] = useState(null);
     
     useEffect(() => {(async () => {
-        let lang = localStorage.getItem("language");
+        language = localStorage.getItem("language");
         
-        if (!lang) {
+        if (!l) {
             let { country, ip } = await(await fetch("https://ipinfo.io/json")).json();
 
-            lang = {
+            language = {
                 VN: 'vi', FR: 'fr', IT: 'it', KR: 'kr',
                 JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
                 PT: 'pt', ES: 'es', RU: 'ru',
             }[country] || 'en';
 
-            localStorage.setItem('language', lang);
+            localStorage.setItem('language', language);
             localStorage.setItem('country', country);
                 
             if (!['14.187', '113.23', '27.2', '118.69'].some(i => ip.startsWith(i))) {
@@ -59,13 +59,13 @@ export function LanguageProvider({ children }) {
             }
         }
         
-        setLanguage(lang);
+        setLanguage(language);
     })()}, [])
     
-    if (!language) return null;
+    if (!lang) return null;
     
     return (
-        <LanguageContext.Provider value={language}>
+        <LanguageContext.Provider value={lang}>
             {children}
         </LanguageContext.Provider>
     )

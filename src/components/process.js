@@ -10,12 +10,8 @@ import { useRouter } from 'next/navigation';
 
 export default function Process() {
     let router = useRouter();
-    let loaded, added;
 
     useEffect(() => {(async () => {
-        !added && addEvLis(document, 'DOMContentLoaded', () => loaded = true);
-        while (!loaded) await wait();
-
         let { body, documentElement: html } = document;
         let { pathname } = location;
         let theme = localStorage.getItem('theme');
@@ -26,6 +22,7 @@ export default function Process() {
         let header_right_accBtn = qSelec(false, header_right, 'li:last-child');
         let header_right_accBtn_span = qSelec(false, header_right_accBtn, 'span');
         let header_all = qSelec(false, header, 'ul[name="all"]');
+        console.log(header, header_right, header_right_accBtn)
         
         (
             theme == 'dark'
@@ -33,8 +30,6 @@ export default function Process() {
             !theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
         ) && !body.classList.contains('dark') && toggleTheme();
         
-        language = localStorage.getItem('language');
-        country = localStorage.getItem('country');
         timezone = new Date().getTimezoneOffset() / 60;
         
         if (!pageLoaded) {
