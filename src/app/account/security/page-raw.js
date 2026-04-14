@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "./sidebar";
 import 'Pag/sidebar-page.css';
-import './page.css';
+import 'Pag/account//page.css';
 
 export default function Page() {
     let router = useRouter();
