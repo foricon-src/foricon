@@ -914,10 +914,12 @@ globalThis.classList = (elems, action, className) => {
 /**
  * Toggles the theme of the site and saves it to `localStorage`
  */
-globalThis.toggleTheme = () => {
+globalThis.toggleTheme = async () => {
     let { body } = document;
     body.classList.toggle('dark');
-    toggle(qSelec(false, 'header > ul[name="all"] > li[name="dark-toggle"]'));
+    let darkToggle = qSelec(false, 'header > ul[name="all"] > li[name="dark-toggle"]');
+    while (!darkToggle) await wait();
+    toggle(darkToggle);
     return localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
 }
 
