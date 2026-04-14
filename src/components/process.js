@@ -10,11 +10,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Process() {
     let router = useRouter();
-    let loaded;
-
-    document.addEventListener('DOMContentLoaded', () => loaded = true);
+    let loaded, added;
 
     useEffect(() => {(async () => {
+        !added && addEvLis(document, 'DOMContentLoaded', () => loaded = true);
         while (!loaded) await wait();
 
         let { body, documentElement: html } = document;
