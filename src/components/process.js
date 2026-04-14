@@ -724,7 +724,7 @@ export default function Process() {
                 }
             })
         })
-        console.log(qSelec(false, 'lang'))
+        console.log(qSelec(false, 'lang[value="en"]'))
         qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
