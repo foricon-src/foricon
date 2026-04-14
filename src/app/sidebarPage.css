@@ -1,0 +1,26 @@
+#sidebar-page {
+    grid-template-columns: 300px auto;
+    height: calc(100svh - 70px);
+    
+    > :not(.modal) {
+        padding: var(--spacing-medium) 0;
+        
+        &:is(ul) {
+            overflow-y: scroll;
+            padding-left: calc(var(--spacing-default) - 20px);
+            
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        &:is(div) {
+            overflow-y: scroll;
+            padding-right: calc(var(--spacing-default) - 16px);
+            padding-left: var(--spacing-medium);
+            container: main / inline-size;
+        }
+    }
+}
+footer {
+    display: none;
+}

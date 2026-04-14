@@ -43,21 +43,6 @@ export default function Search() {
         let charNameList = [], isBarOpened = false;
         
         try {
-            // let res = await fetch(`//foricon-server-side.onrender.com/get-font/2/ttf`);
-            // let src = await res.text();
-            // opentype.load(src, (err, font) => {
-            //     if (err) {
-            //         notify('error', err.message);
-            //         console.error('Font could not be loaded:', err);
-            //     }
-            //     else
-            //         for (let [, char] of Object.entries(font.glyphs.glyphs)) {
-            //             let { name } = char;
-            //             let unicode = (char.unicode || 0).toString(16).padStart(4, '0');
-            //             let glyph = String.fromCharCode(char.unicode);
-            //             charNameList.push({ name, unicode });
-            //         }
-            // })
             let res = await fetch('/api/get-glyphs');
             let icons = await res.json();
             charNameList.push(...icons);
