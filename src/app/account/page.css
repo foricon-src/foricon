@@ -1,0 +1,68 @@
+#siderbar-page > div > div {
+    > div#main_home_hero {
+        height: min(500px, 40vh);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        > div.img {
+            height: 90px;
+        }
+        > h2 {
+            margin: var(--spacing-small) 0 0;
+        }
+    }
+    > ul#main_home_services {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-xxsmall);
+        margin-bottom: var(--spacing-small);
+        
+        &, > li {
+            display: grid;
+        }
+        > li {
+            padding: var(--spacing-small) var(--spacing-xxsmall) var(--spacing-xsmall);
+            border-radius: var(--bdr-rad);
+            background-color: var(--lt-gray);
+            cursor: var(--cursor-pointer);
+            gap: var(--spacing-xxsmall);
+            grid-template-rows: 60px max-content;
+            justify-items: center;
+            align-items: center;
+            text-align: center;
+            user-select: none;
+            position: relative;
+            animation: appear .5s ease .2s both;
+            
+            &:hover {
+                background-color: var(--gray);
+            }
+            &:nth-child(2) {
+                animation-delay: .3s;
+            }
+            &:nth-child(3) {
+                animation-delay: .4s;
+            }
+            &:last-child {
+                animation-delay: .5s;
+            }
+            > lang {
+                top: 0;
+                left: var(--spacing-xsmall);
+                translate: 0 -25%;
+                position: absolute;
+                border-radius: var(--s-bdr-rad);
+                padding: 2px 10px;
+                color: var(--dk-main-color);
+                background-color: var(--main-color);
+            }
+            &:active > img {
+                scale: .9;
+            }
+            > h6 {
+                margin: 0;
+            }
+        }
+    }
+}
