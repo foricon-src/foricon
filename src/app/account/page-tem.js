@@ -1,11 +1,11 @@
-'use client'
+/*'use client'
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Sidebar from "./sidebar";
 import 'Pag/sidebar-page.css';
 
-export default function Page() {
+export default function Account() {
     let router = useRouter();
 
     return (
@@ -798,4 +798,4 @@ export default function Page() {
             </div>
         </div>
     )
-}
+}*/
