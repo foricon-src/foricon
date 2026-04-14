@@ -38,53 +38,6 @@ export default function Process() {
         timezone = new Date().getTimezoneOffset() / 60;
         
         if (!pageLoaded) {
-            if (!language) {
-                let res = await(await fetch('//ipinfo.io/json')).json();
-                country = res.country;
-                
-                language = {
-                    VN: 'vi', FR: 'fr', IT: 'it', KR: 'kr',
-                    JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
-                    PT: 'pt', ES: 'es', RU: 'ru',
-                }[country] || 'en';
-                
-                localStorage.setItem('language', language);
-                localStorage.setItem('country', country);
-                sessionStorage.setItem('visited', true);
-                
-                if (!['14.187', '113.23', '27.2', '118.69'].some(i => ip.startsWith(i))) {
-                    let { userAgent } = navigator;
-                    let browserName =
-                    userAgent.indexOf('OPR') + 1 ? 'Opera' :
-                    userAgent.indexOf('Edg') + 1 ? 'Microsoft Edge' :
-                    userAgent.indexOf('MSIE') + 1 ? 'Microsoft Internet Explorer' :
-                    userAgent.indexOf('Chrome') + 1 ? 'Chrome' :
-                    userAgent.indexOf('Safari') + 1 ? 'Safari' :
-                    userAgent.indexOf('Firefox') + 1 ? 'Firefox' : 'Other';
-                    
-                    let date = new Date();
-                    let today = formatDate({
-                        day: date.getUTCDate(),
-                        month: date.getUTCMonth(),
-                        year: date.getUTCFullYear(),
-                    }, 'en');
-                    let stats = (await getDoc(doc(dbFirestore, 'statistics', 'item'))).data();
-                    stats.visits[today] ||= {
-                        browsers: {},
-                        countries: {},
-                    }
-                    
-                    function update(obj, key) {
-                        obj[key] = (obj[key] || 0) + 1;
-                    }
-                    let { browsers, countries } = stats.visits[today];
-                    update(browsers, browserName);
-                    update(countries, res.country);
-                    
-                    await setDoc(doc(dbFirestore, 'statistics', 'item'), stats);
-                }
-            }
-
             onAuthStateChanged(auth, async res => {
                 let locked = (await get(ref(db, 'locked'))).val();
                 let admin;
