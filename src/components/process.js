@@ -35,7 +35,7 @@ export default function Process() {
         
         if (!pageLoaded) {
             if (!language) {
-                let res = await(await fetch('https://ipinfo.io/json')).json();
+                let res = await(await fetch('//ipinfo.io/json')).json();
                 country = res.country;
                 
                 language = {
@@ -712,19 +712,6 @@ export default function Process() {
 
         html.lang = language;
         
-        console.log('log');
-        qSelec(true, '*').forEach(each => {
-            each.matches('lang') && getAttr(each, 'value') != language && each.remove();
-            [...each.attributes].forEach(attr => {
-                let { name, value } = attr;
-                if (name.startsWith('lang:')) {
-                    let [ lang, attr ] = name.slice(5).split('-');
-                    lang == language && each.setAttribute(attr, value);
-                    each.removeAttribute(name);
-                }
-            })
-        })
-        console.log(qSelec(false, 'lang[value="en"]'))
         qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();

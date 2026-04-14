@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Pub/foricon-f-2.png';
+import { Lang } from './language';
 import 'Com/utils';
 
 export default function Header() {
@@ -22,99 +23,99 @@ export default function Header() {
             <ul name='center'>
                 <li>
                     <Link href='/'>
-                        <lang value='en'>Home</lang>
-                        <lang value='vi'>Trang chủ</lang>
-                        <lang value='fr'>Page d&apos;accueil</lang>
-                        <lang value='it'>Pagina iniziale</lang>
-                        <lang value='kr'>홈페이지</lang>
-                        <lang value='ja'>ホームページ</lang>
-                        <lang value='de'>Startseite</lang>
-                        <lang value='nl'>Startpagina</lang>
-                        <lang value='dk'>Hjemmeside</lang>
-                        <lang value='pt'>Pagina inicial</lang>
-                        <lang value='es'>Pagina de inicio</lang>
-                        <lang value='ru'>Дом</lang>
+                        <Lang value='en'>Home</Lang>
+                        <Lang value='vi'>Trang chủ</Lang>
+                        <Lang value='fr'>Page d&apos;accueil</Lang>
+                        <Lang value='it'>Pagina iniziale</Lang>
+                        <Lang value='kr'>홈페이지</Lang>
+                        <Lang value='ja'>ホームページ</Lang>
+                        <Lang value='de'>Startseite</Lang>
+                        <Lang value='nl'>Startpagina</Lang>
+                        <Lang value='dk'>Hjemmeside</Lang>
+                        <Lang value='pt'>Pagina inicial</Lang>
+                        <Lang value='es'>Pagina de inicio</Lang>
+                        <Lang value='ru'>Дом</Lang>
                     </Link>
                 </li>
                 <li>
                     <Link href='/search'>
-                        <lang value='en'>Search</lang>
-                        <lang value='vi'>Tìm kiếm</lang>
-                        <lang value='fr'>Recherche</lang>
-                        <lang value='it'>Ricerca</lang>
-                        <lang value='kr'>찾다</lang>
-                        <lang value='ja'>検索</lang>
-                        <lang value='de'>Suchen</lang>
-                        <lang value='nl'>Zoekopdracht</lang>
-                        <lang value='dk'>Søg</lang>
-                        <lang value='pt'>Procurar</lang>
-                        <lang value='es'>Buscar</lang>
-                        <lang value='ru'>Поиск</lang>
+                        <Lang value='en'>Search</Lang>
+                        <Lang value='vi'>Tìm kiếm</Lang>
+                        <Lang value='fr'>Recherche</Lang>
+                        <Lang value='it'>Ricerca</Lang>
+                        <Lang value='kr'>찾다</Lang>
+                        <Lang value='ja'>検索</Lang>
+                        <Lang value='de'>Suchen</Lang>
+                        <Lang value='nl'>Zoekopdracht</Lang>
+                        <Lang value='dk'>Søg</Lang>
+                        <Lang value='pt'>Procurar</Lang>
+                        <Lang value='es'>Buscar</Lang>
+                        <Lang value='ru'>Поиск</Lang>
                     </Link>
                 </li>
                 <li>
                     <Link href='/docs'>
-                        <lang value='en'>Docs</lang>
-                        <lang value='vi'>Tài liệu</lang>
-                        <lang value='fr'>Documents</lang>
-                        <lang value='it'>Documenti</lang>
-                        <lang value='kr'>문서</lang>
-                        <lang value='ja'>ドキュメント</lang>
-                        <lang value='de'>Dokumente</lang>
-                        <lang value='nl'>Documenten</lang>
-                        <lang value='dk'>Dokumenter</lang>
-                        <lang value='pt'>Documentos</lang>
-                        <lang value='es'>Documentos</lang>
-                        <lang value='ru'>Документы</lang>
+                        <Lang value='en'>Docs</Lang>
+                        <Lang value='vi'>Tài liệu</Lang>
+                        <Lang value='fr'>Documents</Lang>
+                        <Lang value='it'>Documenti</Lang>
+                        <Lang value='kr'>문서</Lang>
+                        <Lang value='ja'>ドキュメント</Lang>
+                        <Lang value='de'>Dokumente</Lang>
+                        <Lang value='nl'>Documenten</Lang>
+                        <Lang value='dk'>Dokumenter</Lang>
+                        <Lang value='pt'>Documentos</Lang>
+                        <Lang value='es'>Documentos</Lang>
+                        <Lang value='ru'>Документы</Lang>
                     </Link>
                 </li>
                 <li>
                     <Link href='/support'>
-                        <lang value='en'>Support</lang>
-                        <lang value='vi'>Hỗ trợ</lang>
-                        <lang value='fr'>Soutien</lang>
-                        <lang value='it'>Supporto</lang>
-                        <lang value='kr'>지원하다</lang>
-                        <lang value='ja'>サポート</lang>
-                        <lang value='de'>Unterstützung</lang>
-                        <lang value='nl'>Steun</lang>
-                        <lang value='dk'>Support</lang>
-                        <lang value='pt'>Apoiar</lang>
-                        <lang value='es'>Apoyo</lang>
-                        <lang value='ru'>Поддерживать</lang>
+                        <Lang value='en'>Support</Lang>
+                        <Lang value='vi'>Hỗ trợ</Lang>
+                        <Lang value='fr'>Soutien</Lang>
+                        <Lang value='it'>Supporto</Lang>
+                        <Lang value='kr'>지원하다</Lang>
+                        <Lang value='ja'>サポート</Lang>
+                        <Lang value='de'>Unterstützung</Lang>
+                        <Lang value='nl'>Steun</Lang>
+                        <Lang value='dk'>Support</Lang>
+                        <Lang value='pt'>Apoiar</Lang>
+                        <Lang value='es'>Apoyo</Lang>
+                        <Lang value='ru'>Поддерживать</Lang>
                     </Link>
                 </li>
             </ul>
             <ul className='btn-list' name='right'>
                 <li className='chip bottom' onClick={() => go(router, 'languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
-                    <lang value='en'>Languages</lang>
-                    <lang value='vi'>Ngôn ngữ</lang>
-                    <lang value='fr'>Langues</lang>
-                    <lang value='it'>Le lingue</lang>
-                    <lang value='kr'>언어</lang>
-                    <lang value='ja'>言語</lang>
-                    <lang value='de'>Sprachen</lang>
-                    <lang value='nl'>Talen</lang>
-                    <lang value='dk'>Sprog</lang>
-                    <lang value='pt'>Línguas</lang>
-                    <lang value='es'>Idiomas</lang>
-                    <lang value='ru'>Языки</lang>
+                    <Lang value='en'>Languages</Lang>
+                    <Lang value='vi'>Ngôn ngữ</Lang>
+                    <Lang value='fr'>Langues</Lang>
+                    <Lang value='it'>Le lingue</Lang>
+                    <Lang value='kr'>언어</Lang>
+                    <Lang value='ja'>言語</Lang>
+                    <Lang value='de'>Sprachen</Lang>
+                    <Lang value='nl'>Talen</Lang>
+                    <Lang value='dk'>Sprog</Lang>
+                    <Lang value='pt'>Línguas</Lang>
+                    <Lang value='es'>Idiomas</Lang>
+                    <Lang value='ru'>Языки</Lang>
                 </li>
                 <li className={`chip bottom${open ? ' active' : ''}`} onClick={() => setOpen(!open)}>
                     <f-icon icon='bars' i-s='outline'></f-icon>
-                    <lang value='en'>All</lang>
-                    <lang value='vi'>Tất cả</lang>
-                    <lang value='fr'>Tout</lang>
-                    <lang value='it'>Tutto</lang>
-                    <lang value='kr'>모두</lang>
-                    <lang value='ja'>全て</lang>
-                    <lang value='de'>Alle</lang>
-                    <lang value='nl'>Alle</lang>
-                    <lang value='dk'>Alle</lang>
-                    <lang value='pt'>Tudo</lang>
-                    <lang value='es'>Todo</lang>
-                    <lang value='ru'>Все</lang>
+                    <Lang value='en'>All</Lang>
+                    <Lang value='vi'>Tất cả</Lang>
+                    <Lang value='fr'>Tout</Lang>
+                    <Lang value='it'>Tutto</Lang>
+                    <Lang value='kr'>모두</Lang>
+                    <Lang value='ja'>全て</Lang>
+                    <Lang value='de'>Alle</Lang>
+                    <Lang value='nl'>Alle</Lang>
+                    <Lang value='dk'>Alle</Lang>
+                    <Lang value='pt'>Tudo</Lang>
+                    <Lang value='es'>Todo</Lang>
+                    <Lang value='ru'>Все</Lang>
                 </li>
                 <li className='chip bottom line' onClick={() => go(router, user ? 'account' : 'login')}>
                     <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>
@@ -124,60 +125,60 @@ export default function Header() {
             <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
                 <li>Foricon Plus</li>
                 <li className='line'>
-                    <lang value='en'>Home</lang>
-                    <lang value='vi'>Trang chủ</lang>
-                    <lang value='fr'>Page d&apos;accueil</lang>
-                    <lang value='it'>Pagina iniziale</lang>
-                    <lang value='kr'>홈페이지</lang>
-                    <lang value='ja'>ホームページ</lang>
-                    <lang value='de'>Startseite</lang>
-                    <lang value='nl'>Startpagina</lang>
-                    <lang value='dk'>Hjemmeside</lang>
-                    <lang value='pt'>Pagina inicial</lang>
-                    <lang value='es'>Pagina de inicio</lang>
-                    <lang value='ru'>Дом</lang>
+                    <Lang value='en'>Home</Lang>
+                    <Lang value='vi'>Trang chủ</Lang>
+                    <Lang value='fr'>Page d&apos;accueil</Lang>
+                    <Lang value='it'>Pagina iniziale</Lang>
+                    <Lang value='kr'>홈페이지</Lang>
+                    <Lang value='ja'>ホームページ</Lang>
+                    <Lang value='de'>Startseite</Lang>
+                    <Lang value='nl'>Startpagina</Lang>
+                    <Lang value='dk'>Hjemmeside</Lang>
+                    <Lang value='pt'>Pagina inicial</Lang>
+                    <Lang value='es'>Pagina de inicio</Lang>
+                    <Lang value='ru'>Дом</Lang>
                 </li>
                 <li>
-                    <lang value='en'>Search</lang>
-                    <lang value='vi'>Tìm kiếm</lang>
-                    <lang value='fr'>Recherche</lang>
-                    <lang value='it'>Ricerca</lang>
-                    <lang value='kr'>찾다</lang>
-                    <lang value='ja'>検索</lang>
-                    <lang value='de'>Suchen</lang>
-                    <lang value='nl'>Zoekopdracht</lang>
-                    <lang value='dk'>Søg</lang>
-                    <lang value='pt'>Procurar</lang>
-                    <lang value='es'>Buscar</lang>
-                    <lang value='ru'>Поиск</lang>
+                    <Lang value='en'>Search</Lang>
+                    <Lang value='vi'>Tìm kiếm</Lang>
+                    <Lang value='fr'>Recherche</Lang>
+                    <Lang value='it'>Ricerca</Lang>
+                    <Lang value='kr'>찾다</Lang>
+                    <Lang value='ja'>検索</Lang>
+                    <Lang value='de'>Suchen</Lang>
+                    <Lang value='nl'>Zoekopdracht</Lang>
+                    <Lang value='dk'>Søg</Lang>
+                    <Lang value='pt'>Procurar</Lang>
+                    <Lang value='es'>Buscar</Lang>
+                    <Lang value='ru'>Поиск</Lang>
                 </li>
                 <li>
-                    <lang value='en'>Docs</lang>
-                    <lang value='vi'>Tài liệu</lang>
-                    <lang value='fr'>Documents</lang>
-                    <lang value='it'>Documenti</lang>
-                    <lang value='kr'>문서</lang>
-                    <lang value='ja'>ドキュメント</lang>
-                    <lang value='de'>Dokumente</lang>
-                    <lang value='nl'>Documenten</lang>
-                    <lang value='dk'>Dokumenter</lang>
-                    <lang value='pt'>Documentos</lang>
-                    <lang value='es'>Documentos</lang>
-                    <lang value='ru'>Документы</lang>
+                    <Lang value='en'>Docs</Lang>
+                    <Lang value='vi'>Tài liệu</Lang>
+                    <Lang value='fr'>Documents</Lang>
+                    <Lang value='it'>Documenti</Lang>
+                    <Lang value='kr'>문서</Lang>
+                    <Lang value='ja'>ドキュメント</Lang>
+                    <Lang value='de'>Dokumente</Lang>
+                    <Lang value='nl'>Documenten</Lang>
+                    <Lang value='dk'>Dokumenter</Lang>
+                    <Lang value='pt'>Documentos</Lang>
+                    <Lang value='es'>Documentos</Lang>
+                    <Lang value='ru'>Документы</Lang>
                 </li>
                 <li>
-                    <lang value='en'>Support</lang>
-                    <lang value='vi'>Hỗ trợ</lang>
-                    <lang value='fr'>Soutien</lang>
-                    <lang value='it'>Supporto</lang>
-                    <lang value='kr'>지원하다</lang>
-                    <lang value='ja'>サポート</lang>
-                    <lang value='de'>Unterstützung</lang>
-                    <lang value='nl'>Steun</lang>
-                    <lang value='dk'>Support</lang>
-                    <lang value='pt'>Apoiar</lang>
-                    <lang value='es'>Apoyo</lang>
-                    <lang value='ru'>Поддерживать</lang>
+                    <Lang value='en'>Support</Lang>
+                    <Lang value='vi'>Hỗ trợ</Lang>
+                    <Lang value='fr'>Soutien</Lang>
+                    <Lang value='it'>Supporto</Lang>
+                    <Lang value='kr'>지원하다</Lang>
+                    <Lang value='ja'>サポート</Lang>
+                    <Lang value='de'>Unterstützung</Lang>
+                    <Lang value='nl'>Steun</Lang>
+                    <Lang value='dk'>Support</Lang>
+                    <Lang value='pt'>Apoiar</Lang>
+                    <Lang value='es'>Apoyo</Lang>
+                    <Lang value='ru'>Поддерживать</Lang>
                 </li>
                 <li className='line'>Fotorno</li>
                 <li>Hub</li>
@@ -186,18 +187,18 @@ export default function Header() {
                 <li className='line' name='dark-toggle' onClick={toggleTheme}>
                     <div/>
                     <span>
-                        <lang value='en'>Dark mode</lang>
-                        <lang value='vi'>Chế độ tối</lang>
-                        <lang value='fr'>Mode sombre</lang>
-                        <lang value='it'>Modalità scura</lang>
-                        <lang value='kr'>다크 모드</lang>
-                        <lang value='ja'>ダークモード</lang>
-                        <lang value='de'>Dunkler Modus</lang>
-                        <lang value='nl'>Donkere modus</lang>
-                        <lang value='dk'>Mørk tilstand</lang>
-                        <lang value='pt'>Modo escuro</lang>
-                        <lang value='es'>Modo oscuro</lang>
-                        <lang value='ru'>Темный режим</lang>
+                        <Lang value='en'>Dark mode</Lang>
+                        <Lang value='vi'>Chế độ tối</Lang>
+                        <Lang value='fr'>Mode sombre</Lang>
+                        <Lang value='it'>Modalità scura</Lang>
+                        <Lang value='kr'>다크 모드</Lang>
+                        <Lang value='ja'>ダークモード</Lang>
+                        <Lang value='de'>Dunkler Modus</Lang>
+                        <Lang value='nl'>Donkere modus</Lang>
+                        <Lang value='dk'>Mørk tilstand</Lang>
+                        <Lang value='pt'>Modo escuro</Lang>
+                        <Lang value='es'>Modo oscuro</Lang>
+                        <Lang value='ru'>Темный режим</Lang>
                         {' '}<span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>
                     </span>
                 </li>

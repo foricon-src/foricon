@@ -1,5 +1,3 @@
-const { Router } = require("next/router");
-
 globalThis.pageLoaded = false;
 globalThis.webData = {
     isBeta: true,

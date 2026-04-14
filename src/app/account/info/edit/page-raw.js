@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
+import { Lang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -12,73 +13,73 @@ export default function Page() {
             <div>
                 <div name='info/edit'>
                     <h3>
-                        <lang value='en'>Edit account info</lang>
-                        <lang value='vi'>Chỉnh sửa thông tin tài khoản</lang>
-                        <lang value='fr'>Modifier les informations du compte</lang>
-                        <lang value='it'>Modifica informazioni account</lang>
-                        <lang value='kr'>계정 정보 편집</lang>
-                        <lang value='ja'>アカウント情報を編集</lang>
-                        <lang value='de'>Kontoinformationen bearbeiten</lang>
-                        <lang value='nl'>Accountgegevens bewerken</lang>
-                        <lang value='dk'>Rediger kontooplysninger</lang>
-                        <lang value='pt'>Editar informações da conta</lang>
-                        <lang value='es'>Editar la información de la cuenta</lang>
-                        <lang value='ru'>Изменить информацию об аккаунте</lang>
+                        <Lang value='en'>Edit account info</Lang>
+                        <Lang value='vi'>Chỉnh sửa thông tin tài khoản</Lang>
+                        <Lang value='fr'>Modifier les informations du compte</Lang>
+                        <Lang value='it'>Modifica informazioni account</Lang>
+                        <Lang value='kr'>계정 정보 편집</Lang>
+                        <Lang value='ja'>アカウント情報を編集</Lang>
+                        <Lang value='de'>Kontoinformationen bearbeiten</Lang>
+                        <Lang value='nl'>Accountgegevens bewerken</Lang>
+                        <Lang value='dk'>Rediger kontooplysninger</Lang>
+                        <Lang value='pt'>Editar informações da conta</Lang>
+                        <Lang value='es'>Editar la información de la cuenta</Lang>
+                        <Lang value='ru'>Изменить информацию об аккаунте</Lang>
                     </h3>
                     <form>
-                        <lang value='en'>Avatar</lang>
-                        <lang value='vi'>Ảnh đại diện</lang>
-                        <lang value='fr'>Avatar</lang>
-                        <lang value='it'>L&apos;Avatar</lang>
-                        <lang value='kr'>화신</lang>
-                        <lang value='ja'>アバター</lang>
-                        <lang value='de'>Avatar</lang>
-                        <lang value='nl'>Avatar</lang>
-                        <lang value='dk'>Avatar</lang>
-                        <lang value='pt'>Avatar</lang>
-                        <lang value='es'>Avatar</lang>
-                        <lang value='ru'>Аватар</lang>
+                        <Lang value='en'>Avatar</Lang>
+                        <Lang value='vi'>Ảnh đại diện</Lang>
+                        <Lang value='fr'>Avatar</Lang>
+                        <Lang value='it'>L&apos;Avatar</Lang>
+                        <Lang value='kr'>화신</Lang>
+                        <Lang value='ja'>アバター</Lang>
+                        <Lang value='de'>Avatar</Lang>
+                        <Lang value='nl'>Avatar</Lang>
+                        <Lang value='dk'>Avatar</Lang>
+                        <Lang value='pt'>Avatar</Lang>
+                        <Lang value='es'>Avatar</Lang>
+                        <Lang value='ru'>Аватар</Lang>
                         <input name='avatar'/>
                         <button type='button' className='secondary' id='main_account-info-edit_form_choose-avatar'>Choose from Media</button>
-                        <lang value='en'>Name</lang>
-                        <lang value='vi'>Tên</lang>
-                        <lang value='fr'>Nom</lang>
-                        <lang value='it'>Nome</lang>
-                        <lang value='kr'>이름</lang>
-                        <lang value='ja'>名前</lang>
-                        <lang value='de'>Name</lang>
-                        <lang value='nl'>Naam</lang>
-                        <lang value='dk'>Navn</lang>
-                        <lang value='pt'>Nome</lang>
-                        <lang value='es'>Nombre</lang>
-                        <lang value='ru'>Имя</lang>
+                        <Lang value='en'>Name</Lang>
+                        <Lang value='vi'>Tên</Lang>
+                        <Lang value='fr'>Nom</Lang>
+                        <Lang value='it'>Nome</Lang>
+                        <Lang value='kr'>이름</Lang>
+                        <Lang value='ja'>名前</Lang>
+                        <Lang value='de'>Name</Lang>
+                        <Lang value='nl'>Naam</Lang>
+                        <Lang value='dk'>Navn</Lang>
+                        <Lang value='pt'>Nome</Lang>
+                        <Lang value='es'>Nombre</Lang>
+                        <Lang value='ru'>Имя</Lang>
                         <input name='name' type='name' maxlength='30' placeholder='John Doe'/>
-                        <lang value='en'>Email</lang>
-                        <lang value='vi'>Email</lang>
-                        <lang value='fr'>Email</lang>
-                        <lang value='it'>Email</lang>
-                        <lang value='kr'>이메일</lang>
-                        <lang value='ja'>メール</lang>
-                        <lang value='de'>Email</lang>
-                        <lang value='nl'>Email</lang>
-                        <lang value='dk'>Email</lang>
-                        <lang value='pt'>Email</lang>
-                        <lang value='es'>Correo electrónico</lang>
-                        <lang value='ru'>Электронная почта</lang>
+                        <Lang value='en'>Email</Lang>
+                        <Lang value='vi'>Email</Lang>
+                        <Lang value='fr'>Email</Lang>
+                        <Lang value='it'>Email</Lang>
+                        <Lang value='kr'>이메일</Lang>
+                        <Lang value='ja'>メール</Lang>
+                        <Lang value='de'>Email</Lang>
+                        <Lang value='nl'>Email</Lang>
+                        <Lang value='dk'>Email</Lang>
+                        <Lang value='pt'>Email</Lang>
+                        <Lang value='es'>Correo electrónico</Lang>
+                        <Lang value='ru'>Электронная почта</Lang>
                         <input name='email' type='email' placeholder='user@example.com'/>
                         <button className='primary'>
-                            <lang value='en'>Save changes</lang>
-                            <lang value='vi'>Lưu thay đổi</lang>
-                            <lang value='fr'>Enregistrer les modifications</lang>
-                            <lang value='it'>Salvare le modifiche</lang>
-                            <lang value='kr'>변경 사항 저장</lang>
-                            <lang value='ja'>変更を保存</lang>
-                            <lang value='de'>Änderungen speichern</lang>
-                            <lang value='nl'>Wijzigingen opslaan</lang>
-                            <lang value='dk'>Gem ændringer</lang>
-                            <lang value='pt'>Guardar alterações</lang>
-                            <lang value='es'>Guardar cambios</lang>
-                            <lang value='ru'>Сохранить изменения</lang>
+                            <Lang value='en'>Save changes</Lang>
+                            <Lang value='vi'>Lưu thay đổi</Lang>
+                            <Lang value='fr'>Enregistrer les modifications</Lang>
+                            <Lang value='it'>Salvare le modifiche</Lang>
+                            <Lang value='kr'>변경 사항 저장</Lang>
+                            <Lang value='ja'>変更を保存</Lang>
+                            <Lang value='de'>Änderungen speichern</Lang>
+                            <Lang value='nl'>Wijzigingen opslaan</Lang>
+                            <Lang value='dk'>Gem ændringer</Lang>
+                            <Lang value='pt'>Guardar alterações</Lang>
+                            <Lang value='es'>Guardar cambios</Lang>
+                            <Lang value='ru'>Сохранить изменения</Lang>
                         </button>
                     </form>
                 </div>

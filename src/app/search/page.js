@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import './page.css'
+import { langValue, Lang } from 'Com/language';
 
 export default function Search() {
     let router = useRouter();
@@ -339,32 +340,32 @@ export default function Search() {
             <div class='modal confirm' id='choose-layers'>
                 <div>
                     <h3>
-                        <lang value='en'>Select layer(s) to download</lang>
-                        <lang value='vi'>Chọn (các) lớp để tải xuống</lang>
-                        <lang value='fr'>Sélectionnez la/les couche(s) à télécharger</lang>
-                        <lang value='it'>Seleziona il/i layer da scaricare</lang>
-                        <lang value='kr'>다운로드할 레이어 선택</lang>
-                        <lang value='ja'>ダウンロードするレイヤーを選択</lang>
-                        <lang value='de'>Wählen Sie die Ebene(n) zum Herunterladen aus</lang>
-                        <lang value='nl'>Selecteer laag/lagen om te downloaden</lang>
-                        <lang value='dk'>Vælg lag til download</lang>
-                        <lang value='pt'>Selecione camada(s) para download</lang>
-                        <lang value='es'>Seleccione capa(s) para descargar</lang>
-                        <lang value='ru'>Выберите слой(и) для загрузки</lang>
+                        <Lang value='en'>Select layer(s) to download</Lang>
+                        <Lang value='vi'>Chọn (các) lớp để tải xuống</Lang>
+                        <Lang value='fr'>Sélectionnez la/les couche(s) à télécharger</Lang>
+                        <Lang value='it'>Seleziona il/i layer da scaricare</Lang>
+                        <Lang value='kr'>다운로드할 레이어 선택</Lang>
+                        <Lang value='ja'>ダウンロードするレイヤーを選択</Lang>
+                        <Lang value='de'>Wählen Sie die Ebene(n) zum Herunterladen aus</Lang>
+                        <Lang value='nl'>Selecteer laag/lagen om te downloaden</Lang>
+                        <Lang value='dk'>Vælg lag til download</Lang>
+                        <Lang value='pt'>Selecione camada(s) para download</Lang>
+                        <Lang value='es'>Seleccione capa(s) para descargar</Lang>
+                        <Lang value='ru'>Выберите слой(и) для загрузки</Lang>
                     </h3>
                     <p>
-                        <lang value='en'>Download selected layer(s) as <b></b></lang>
-                        <lang value='vi'>Tải xuống lớp đã chọn dưới dạng <b></b></lang>
-                        <lang value='fr'>Télécharger la/les couche(s) sélectionnée(s) en tant que <b></b></lang>
-                        <lang value='it'>Scarica il/i layer selezionato/i come <b></b></lang>
-                        <lang value='kr'>선택한 레이어를 다음 형식으로 다운로드 <b></b></lang>
-                        <lang value='ja'>選択したレイヤーを次の形式でダウンロード <b></b></lang>
-                        <lang value='de'>Ausgewählte Ebene(n) herunterladen als <b></b></lang>
-                        <lang value='nl'>Download geselecteerde laag/lagen als <b></b></lang>
-                        <lang value='dk'>Download valgte lag som <b></b></lang>
-                        <lang value='pt'>Baixar camada(s) selecionada(s) como <b></b></lang>
-                        <lang value='es'>Descargar capa(s) seleccionada(s) como <b></b></lang>
-                        <lang value='ru'>Скачать выбранный(е) слой(и) как <b></b></lang>
+                        <Lang value='en'>Download selected layer(s) as <b></b></Lang>
+                        <Lang value='vi'>Tải xuống lớp đã chọn dưới dạng <b></b></Lang>
+                        <Lang value='fr'>Télécharger la/les couche(s) sélectionnée(s) en tant que <b></b></Lang>
+                        <Lang value='it'>Scarica il/i layer selezionato/i come <b></b></Lang>
+                        <Lang value='kr'>선택한 레이어를 다음 형식으로 다운로드 <b></b></Lang>
+                        <Lang value='ja'>選択したレイヤーを次の形式でダウンロード <b></b></Lang>
+                        <Lang value='de'>Ausgewählte Ebene(n) herunterladen als <b></b></Lang>
+                        <Lang value='nl'>Download geselecteerde laag/lagen als <b></b></Lang>
+                        <Lang value='dk'>Download valgte lag som <b></b></Lang>
+                        <Lang value='pt'>Baixar camada(s) selecionada(s) como <b></b></Lang>
+                        <Lang value='es'>Descargar capa(s) seleccionada(s) como <b></b></Lang>
+                        <Lang value='ru'>Скачать выбранный(е) слой(и) как <b></b></Lang>
                     </p>
                     <div class='checkboxes'>
                         <label>
@@ -376,32 +377,32 @@ export default function Search() {
                     </div>
                     <div>
                         <a href='javascript:void(0)' class='btn secondary'>
-                            <lang value='en'>Cancel</lang>
-                            <lang value='vi'>Hủy</lang>
-                            <lang value='fr'>Annuler</lang>
-                            <lang value='it'>Cancellare</lang>
-                            <lang value='kr'>취소</lang>
-                            <lang value='ja'>キャンセル</lang>
-                            <lang value='de'>Stornieren</lang>
-                            <lang value='nl'>Annuleren</lang>
-                            <lang value='dk'>Ophæve</lang>
-                            <lang value='pt'>Cancelar</lang>
-                            <lang value='es'>Cancelar</lang>
-                            <lang value='ru'>Отмена</lang>
+                            <Lang value='en'>Cancel</Lang>
+                            <Lang value='vi'>Hủy</Lang>
+                            <Lang value='fr'>Annuler</Lang>
+                            <Lang value='it'>Cancellare</Lang>
+                            <Lang value='kr'>취소</Lang>
+                            <Lang value='ja'>キャンセル</Lang>
+                            <Lang value='de'>Stornieren</Lang>
+                            <Lang value='nl'>Annuleren</Lang>
+                            <Lang value='dk'>Ophæve</Lang>
+                            <Lang value='pt'>Cancelar</Lang>
+                            <Lang value='es'>Cancelar</Lang>
+                            <Lang value='ru'>Отмена</Lang>
                         </a>
                         <a href='javascript:void(0)' class='btn primary'>
-                            <lang value='en'>Download</lang>
-                            <lang value='vi'>Tải xuống</lang>
-                            <lang value='fr'>Télécharger</lang>
-                            <lang value='it'>Scaricamento</lang>
-                            <lang value='kr'>다운로드</lang>
-                            <lang value='ja'>ダウンロード</lang>
-                            <lang value='de'>Herunterladen</lang>
-                            <lang value='nl'>Download</lang>
-                            <lang value='dk'>Download</lang>
-                            <lang value='pt'>Transferir</lang>
-                            <lang value='es'>Descargar</lang>
-                            <lang value='ru'>Скачать</lang>
+                            <Lang value='en'>Download</Lang>
+                            <Lang value='vi'>Tải xuống</Lang>
+                            <Lang value='fr'>Télécharger</Lang>
+                            <Lang value='it'>Scaricamento</Lang>
+                            <Lang value='kr'>다운로드</Lang>
+                            <Lang value='ja'>ダウンロード</Lang>
+                            <Lang value='de'>Herunterladen</Lang>
+                            <Lang value='nl'>Download</Lang>
+                            <Lang value='dk'>Download</Lang>
+                            <Lang value='pt'>Transferir</Lang>
+                            <Lang value='es'>Descargar</Lang>
+                            <Lang value='ru'>Скачать</Lang>
                         </a>
                     </div>
                 </div>
@@ -409,51 +410,53 @@ export default function Search() {
             {/* <ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
             <div class='banner blue signup'>
                 <div>
-                    <lang value='en'>Enjoy free icons - sign up to access the entire set!</lang>
-                    <lang value='vi'>Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập</lang>
-                    <lang value='fr'>Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !</lang>
-                    <lang value='it'>Goditi le icone gratuite - registrati per accedere all&apos;intera collezione!</lang>
-                    <lang value='kr'>무료 아이콘을 즐기세요 - 전체 세트를 이용하려면 가입하세요!</lang>
-                    <lang value='ja'>無料アイコンを楽しもう - 全セットを使うには登録が必要です！</lang>
-                    <lang value='de'>Kostenlose Icons genießen - registriere dich für das komplette Set!</lang>
-                    <lang value='nl'>Geniet van gratis iconen - meld je aan om de hele set te gebruiken!</lang>
-                    <lang value='dk'>Nyd gratis ikoner - tilmeld dig for adgang til hele samlingen!</lang>
-                    <lang value='pt'>Aproveite os ícones gratuitos - inscreva-se para acessar o conjunto completo!</lang>
-                    <lang value='es'>Disfruta de iconos gratis - regístrate para acceder al conjunto completo!</lang>
-                    <lang value='ru'>Наслаждайтесь бесплатными иконками - зарегистрируйтесь для доступа ко всем!</lang>
+                    <Lang value='en'>Enjoy free icons - sign up to access the entire set!</Lang>
+                    <Lang value='vi'>Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập</Lang>
+                    <Lang value='fr'>Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !</Lang>
+                    <Lang value='it'>Goditi le icone gratuite - registrati per accedere all&apos;intera collezione!</Lang>
+                    <Lang value='kr'>무료 아이콘을 즐기세요 - 전체 세트를 이용하려면 가입하세요!</Lang>
+                    <Lang value='ja'>無料アイコンを楽しもう - 全セットを使うには登録が必要です！</Lang>
+                    <Lang value='de'>Kostenlose Icons genießen - registriere dich für das komplette Set!</Lang>
+                    <Lang value='nl'>Geniet van gratis iconen - meld je aan om de hele set te gebruiken!</Lang>
+                    <Lang value='dk'>Nyd gratis ikoner - tilmeld dig for adgang til hele samlingen!</Lang>
+                    <Lang value='pt'>Aproveite os ícones gratuitos - inscreva-se para acessar o conjunto completo!</Lang>
+                    <Lang value='es'>Disfruta de iconos gratis - regístrate para acceder al conjunto completo!</Lang>
+                    <Lang value='ru'>Наслаждайтесь бесплатными иконками - зарегистрируйтесь для доступа ко всем!</Lang>
                     <a href='/p/sign-up.html' class='btn'>
-                        <lang value='en'>Sign up</lang>
-                        <lang value='vi'>Đăng ký</lang>
-                        <lang value='fr'>S&apos;inscrire</lang>
-                        <lang value='it'>Iscrizione</lang>
-                        <lang value='kr'>가입하기</lang>
-                        <lang value='ja'>サインアップ</lang>
-                        <lang value='de'>Melden Sie sich an</lang>
-                        <lang value='nl'>Aanmelden</lang>
-                        <lang value='dk'>Tilmelde</lang>
-                        <lang value='pt'>Inscrever-se</lang>
-                        <lang value='es'>Inscribirse</lang>
-                        <lang value='ru'>Зарегистрироваться</lang>
+                        <Lang value='en'>Sign up</Lang>
+                        <Lang value='vi'>Đăng ký</Lang>
+                        <Lang value='fr'>S&apos;inscrire</Lang>
+                        <Lang value='it'>Iscrizione</Lang>
+                        <Lang value='kr'>가입하기</Lang>
+                        <Lang value='ja'>サインアップ</Lang>
+                        <Lang value='de'>Melden Sie sich an</Lang>
+                        <Lang value='nl'>Aanmelden</Lang>
+                        <Lang value='dk'>Tilmelde</Lang>
+                        <Lang value='pt'>Inscrever-se</Lang>
+                        <Lang value='es'>Inscribirse</Lang>
+                        <Lang value='ru'>Зарегистрироваться</Lang>
                     </a>
                 </div>
             </div>
             <div id='top' class='outer-corner'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
-                    <input {...{
-                        'lang:en-placeholder': 'Find the perfect icon for your next masterpiece…',
-                        'lang:vi-placeholder': 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
-                        'lang:fr-placeholder': "Trouvez l'icône parfaite pour votre prochaine création…",
-                        'lang:it-placeholder': "Trova l'icona perfetta per il tuo prossimo capolavoro…",
-                        'lang:kr-placeholder': '다음 작품을 위한 완벽한 아이콘을 찾아보세요…',
-                        'lang:ja-placeholder': '次の傑作にぴったりのアイコンを見つけましょう…',
-                        'lang:de-placeholder': 'Finden Sie das perfekte Icon für Ihr nächstes Meisterwerk…',
-                        'lang:nl-placeholder': 'Vind het perfecte icoon voor je volgende meesterwerk…',
-                        'lang:dk-placeholder': 'Find det perfekte ikon til dit næste mesterværk…',
-                        'lang:pt-placeholder': 'Encontre o ícone perfeito para sua próxima obra-prima…',
-                        'lang:es-placeholder': 'Encuentra el icono perfecto para tu próxima obra maestra…',
-                        'lang:ru-placeholder': 'Найдите идеальную иконку для вашего следующего шедевра…',
-                    }}/>
+                    <input placeholder={
+                        langValue({
+                            en: 'Find the perfect icon for your next masterpiece…',
+                            vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
+                            fr: "Trouvez l'icône parfaite pour votre prochaine création…",
+                            it: "Trova l'icona perfetta per il tuo prossimo capolavoro…",
+                            kr: '다음 작품을 위한 완벽한 아이콘을 찾아보세요…',
+                            ja: '次の傑作にぴったりのアイコンを見つけましょう…',
+                            de: 'Finden Sie das perfekte Icon für Ihr nächstes Meisterwerk…',
+                            nl: 'Vind het perfecte icoon voor je volgende meesterwerk…',
+                            dk: 'Find det perfekte ikon til dit næste mesterværk…',
+                            pt: 'Encontre o ícone perfeito para sua próxima obra-prima…',
+                            es: 'Encuentra el icono perfecto para tu próxima obra maestra…',
+                            ru: 'Найдите идеальную иконку для вашего следующего шедевра…',
+                        })
+                    }/>
                 </label>
                 <f-select>
                     <text></text>
@@ -465,169 +468,169 @@ export default function Search() {
                 <div id='options'>
                     <ul class='btn-list line-active' id='top_options_families'>
                     <li data-value='all'>
-                        <lang value='en'>All</lang>
-                        <lang value='vi'>Tất cả</lang>
-                        <lang value='fr'>Tout</lang>
-                        <lang value='it'>Tutto</lang>
-                        <lang value='kr'>모두</lang>
-                        <lang value='ja'>全て</lang>
-                        <lang value='de'>Alle</lang>
-                        <lang value='nl'>Alle</lang>
-                        <lang value='dk'>Alle</lang>
-                        <lang value='pt'>Tudo</lang>
-                        <lang value='es'>Todo</lang>
-                        <lang value='ru'>Все</lang>
+                        <Lang value='en'>All</Lang>
+                        <Lang value='vi'>Tất cả</Lang>
+                        <Lang value='fr'>Tout</Lang>
+                        <Lang value='it'>Tutto</Lang>
+                        <Lang value='kr'>모두</Lang>
+                        <Lang value='ja'>全て</Lang>
+                        <Lang value='de'>Alle</Lang>
+                        <Lang value='nl'>Alle</Lang>
+                        <Lang value='dk'>Alle</Lang>
+                        <Lang value='pt'>Tudo</Lang>
+                        <Lang value='es'>Todo</Lang>
+                        <Lang value='ru'>Все</Lang>
                     </li>
                     <li data-value='regular'>
-                        <lang value='en'>Regular</lang>
-                        <lang value='vi'>Thường</lang>
-                        <lang value='fr'>Régulier</lang>
-                        <lang value='it'>Regolare</lang>
-                        <lang value='kr'>정기적인</lang>
-                        <lang value='ja'>通常</lang>
-                        <lang value='de'>Regulär</lang>
-                        <lang value='nl'>Normaal</lang>
-                        <lang value='dk'>Fast</lang>
-                        <lang value='pt'>Regular</lang>
-                        <lang value='es'>Regular</lang>
-                        <lang value='ru'>Обычный</lang>
+                        <Lang value='en'>Regular</Lang>
+                        <Lang value='vi'>Thường</Lang>
+                        <Lang value='fr'>Régulier</Lang>
+                        <Lang value='it'>Regolare</Lang>
+                        <Lang value='kr'>정기적인</Lang>
+                        <Lang value='ja'>通常</Lang>
+                        <Lang value='de'>Regulär</Lang>
+                        <Lang value='nl'>Normaal</Lang>
+                        <Lang value='dk'>Fast</Lang>
+                        <Lang value='pt'>Regular</Lang>
+                        <Lang value='es'>Regular</Lang>
+                        <Lang value='ru'>Обычный</Lang>
                     </li>
                     <li data-value='duotone'>
-                        <lang value='en'>Duotone</lang>
-                        <lang value='vi'>Duotone</lang>
-                        <lang value='fr'>Bichromie</lang>
-                        <lang value='it'>Duotone</lang>
-                        <lang value='kr'>듀오톤</lang>
-                        <lang value='ja'>デュオトーン</lang>
-                        <lang value='de'>Duotone</lang>
-                        <lang value='nl'>Duotoon</lang>
-                        <lang value='dk'>Duotone</lang>
-                        <lang value='pt'>Duotónico</lang>
-                        <lang value='es'>Duotono</lang>
-                        <lang value='ru'>Дуотон</lang>
+                        <Lang value='en'>Duotone</Lang>
+                        <Lang value='vi'>Duotone</Lang>
+                        <Lang value='fr'>Bichromie</Lang>
+                        <Lang value='it'>Duotone</Lang>
+                        <Lang value='kr'>듀오톤</Lang>
+                        <Lang value='ja'>デュオトーン</Lang>
+                        <Lang value='de'>Duotone</Lang>
+                        <Lang value='nl'>Duotoon</Lang>
+                        <Lang value='dk'>Duotone</Lang>
+                        <Lang value='pt'>Duotónico</Lang>
+                        <Lang value='es'>Duotono</Lang>
+                        <Lang value='ru'>Дуотон</Lang>
                     </li>
                     </ul>
                     <ul class='btn-list line-active line' id='top_options_styles'>
                     <li data-value='all'>
-                        <lang value='en'>All</lang>
-                        <lang value='vi'>Tất cả</lang>
-                        <lang value='fr'>Tout</lang>
-                        <lang value='it'>Tutto</lang>
-                        <lang value='kr'>모두</lang>
-                        <lang value='ja'>全て</lang>
-                        <lang value='de'>Alle</lang>
-                        <lang value='nl'>Alle</lang>
-                        <lang value='dk'>Alle</lang>
-                        <lang value='pt'>Tudo</lang>
-                        <lang value='es'>Todo</lang>
-                        <lang value='ru'>Все</lang>
+                        <Lang value='en'>All</Lang>
+                        <Lang value='vi'>Tất cả</Lang>
+                        <Lang value='fr'>Tout</Lang>
+                        <Lang value='it'>Tutto</Lang>
+                        <Lang value='kr'>모두</Lang>
+                        <Lang value='ja'>全て</Lang>
+                        <Lang value='de'>Alle</Lang>
+                        <Lang value='nl'>Alle</Lang>
+                        <Lang value='dk'>Alle</Lang>
+                        <Lang value='pt'>Tudo</Lang>
+                        <Lang value='es'>Todo</Lang>
+                        <Lang value='ru'>Все</Lang>
                     </li>
                     <li data-value='solid'>
-                        <lang value='en'>Solid</lang>
-                        <lang value='vi'>Đặc</lang>
-                        <lang value='fr'>Solide</lang>
-                        <lang value='it'>Solido</lang>
-                        <lang value='kr'>단단한</lang>
-                        <lang value='ja'>固体</lang>
-                        <lang value='de'>Solide</lang>
-                        <lang value='nl'>Stevig</lang>
-                        <lang value='dk'>Solid</lang>
-                        <lang value='pt'>Sólido</lang>
-                        <lang value='es'>Sólido</lang>
-                        <lang value='ru'>Твердый</lang>
+                        <Lang value='en'>Solid</Lang>
+                        <Lang value='vi'>Đặc</Lang>
+                        <Lang value='fr'>Solide</Lang>
+                        <Lang value='it'>Solido</Lang>
+                        <Lang value='kr'>단단한</Lang>
+                        <Lang value='ja'>固体</Lang>
+                        <Lang value='de'>Solide</Lang>
+                        <Lang value='nl'>Stevig</Lang>
+                        <Lang value='dk'>Solid</Lang>
+                        <Lang value='pt'>Sólido</Lang>
+                        <Lang value='es'>Sólido</Lang>
+                        <Lang value='ru'>Твердый</Lang>
                     </li>
                     <li data-value='outline'>
-                        <lang value='en'>Outline</lang>
-                        <lang value='vi'>Đường viền</lang>
-                        <lang value='fr'>Contour</lang>
-                        <lang value='it'>Contorno</lang>
-                        <lang value='kr'>개요</lang>
-                        <lang value='ja'>概要</lang>
-                        <lang value='de'>Gliederung</lang>
-                        <lang value='nl'>Overzicht</lang>
-                        <lang value='dk'>Omrids</lang>
-                        <lang value='pt'>Delimitar</lang>
-                        <lang value='es'>Describir</lang>
-                        <lang value='ru'>Контур</lang>
+                        <Lang value='en'>Outline</Lang>
+                        <Lang value='vi'>Đường viền</Lang>
+                        <Lang value='fr'>Contour</Lang>
+                        <Lang value='it'>Contorno</Lang>
+                        <Lang value='kr'>개요</Lang>
+                        <Lang value='ja'>概要</Lang>
+                        <Lang value='de'>Gliederung</Lang>
+                        <Lang value='nl'>Overzicht</Lang>
+                        <Lang value='dk'>Omrids</Lang>
+                        <Lang value='pt'>Delimitar</Lang>
+                        <Lang value='es'>Describir</Lang>
+                        <Lang value='ru'>Контур</Lang>
                     </li>
                     </ul>
                     <ul class='btn-list line-active' id='top_options_views'>
                     <li name='large' class='chip top'>
                         <f-icon icon='grid-4'></f-icon>
-                        <lang value='en'>Large icons</lang>
-                        <lang value='vi'>Biểu tượng lớn</lang>
-                        <lang value='fr'>Grandes icônes</lang>
-                        <lang value='it'>Icone grandi</lang>
-                        <lang value='kr'>큰 아이콘</lang>
-                        <lang value='ja'>大きなアイコン</lang>
-                        <lang value='de'>Große Symbole</lang>
-                        <lang value='nl'>Grote iconen</lang>
-                        <lang value='dk'>Store ikoner</lang>
-                        <lang value='pt'>Ícones grandes</lang>
-                        <lang value='es'>Iconos grandes</lang>
-                        <lang value='ru'>Большие значки</lang>
+                        <Lang value='en'>Large icons</Lang>
+                        <Lang value='vi'>Biểu tượng lớn</Lang>
+                        <Lang value='fr'>Grandes icônes</Lang>
+                        <Lang value='it'>Icone grandi</Lang>
+                        <Lang value='kr'>큰 아이콘</Lang>
+                        <Lang value='ja'>大きなアイコン</Lang>
+                        <Lang value='de'>Große Symbole</Lang>
+                        <Lang value='nl'>Grote iconen</Lang>
+                        <Lang value='dk'>Store ikoner</Lang>
+                        <Lang value='pt'>Ícones grandes</Lang>
+                        <Lang value='es'>Iconos grandes</Lang>
+                        <Lang value='ru'>Большие значки</Lang>
                     </li>
                     <li name='small' class='chip top'>
                         <f-icon icon='grid-9'></f-icon>
-                        <lang value='en'>Small icons</lang>
-                        <lang value='vi'>Biểu tượng nhỏ</lang>
-                        <lang value='fr'>Petites icônes</lang>
-                        <lang value='it'>Piccole icone</lang>
-                        <lang value='kr'>작은 아이콘</lang>
-                        <lang value='ja'>小さいアイコン</lang>
-                        <lang value='de'>Kleine Symbole</lang>
-                        <lang value='nl'>Kleine iconen</lang>
-                        <lang value='dk'>Små ikoner</lang>
-                        <lang value='pt'>Ícones pequenos</lang>
-                        <lang value='es'>Iconos pequeños</lang>
-                        <lang value='ru'>Маленькие значки</lang>
+                        <Lang value='en'>Small icons</Lang>
+                        <Lang value='vi'>Biểu tượng nhỏ</Lang>
+                        <Lang value='fr'>Petites icônes</Lang>
+                        <Lang value='it'>Piccole icone</Lang>
+                        <Lang value='kr'>작은 아이콘</Lang>
+                        <Lang value='ja'>小さいアイコン</Lang>
+                        <Lang value='de'>Kleine Symbole</Lang>
+                        <Lang value='nl'>Kleine iconen</Lang>
+                        <Lang value='dk'>Små ikoner</Lang>
+                        <Lang value='pt'>Ícones pequenos</Lang>
+                        <Lang value='es'>Iconos pequeños</Lang>
+                        <Lang value='ru'>Маленькие значки</Lang>
                     </li>
                     <li name='tiles' class='chip top'>
                         <f-icon icon='list' i-s='outline'></f-icon>
-                        <lang value='en'>Tiles</lang>
-                        <lang value='vi'>Ô gạch</lang>
-                        <lang value='fr'>Carrelage</lang>
-                        <lang value='it'>Piastrelle</lang>
-                        <lang value='kr'>타일</lang>
-                        <lang value='ja'>タイル</lang>
-                        <lang value='de'>Fliesen</lang>
-                        <lang value='nl'>Tegels</lang>
-                        <lang value='dk'>Fliser</lang>
-                        <lang value='pt'>Azulejos</lang>
-                        <lang value='es'>Azulejos</lang>
-                        <lang value='ru'>Плитка</lang>
+                        <Lang value='en'>Tiles</Lang>
+                        <Lang value='vi'>Ô gạch</Lang>
+                        <Lang value='fr'>Carrelage</Lang>
+                        <Lang value='it'>Piastrelle</Lang>
+                        <Lang value='kr'>타일</Lang>
+                        <Lang value='ja'>タイル</Lang>
+                        <Lang value='de'>Fliesen</Lang>
+                        <Lang value='nl'>Tegels</Lang>
+                        <Lang value='dk'>Fliser</Lang>
+                        <Lang value='pt'>Azulejos</Lang>
+                        <Lang value='es'>Azulejos</Lang>
+                        <Lang value='ru'>Плитка</Lang>
                     </li>
                     </ul>
                 </div>
             </div>
             <div id='main'>
                 <h5>
-                    <lang value='en'>Categories</lang>
-                    <lang value='vi'>Thể loại</lang>
-                    <lang value='fr'>Catégories</lang>
-                    <lang value='it'>Categorie</lang>
-                    <lang value='kr'>카테고리</lang>
-                    <lang value='ja'>カテゴリー</lang>
-                    <lang value='de'>Kategorien</lang>
-                    <lang value='nl'>Categorieën</lang>
-                    <lang value='dk'>Kategorier</lang>
-                    <lang value='pt'>Categorias</lang>
-                    <lang value='es'>Categorías</lang>
-                    <lang value='ru'>Категории</lang>
+                    <Lang value='en'>Categories</Lang>
+                    <Lang value='vi'>Thể loại</Lang>
+                    <Lang value='fr'>Catégories</Lang>
+                    <Lang value='it'>Categorie</Lang>
+                    <Lang value='kr'>카테고리</Lang>
+                    <Lang value='ja'>カテゴリー</Lang>
+                    <Lang value='de'>Kategorien</Lang>
+                    <Lang value='nl'>Categorieën</Lang>
+                    <Lang value='dk'>Kategorier</Lang>
+                    <Lang value='pt'>Categorias</Lang>
+                    <Lang value='es'>Categorías</Lang>
+                    <Lang value='ru'>Категории</Lang>
                 </h5>
                 <h5>
-                    <lang value='en'>Showing <span></span> results</lang>
-                    <lang value='vi'>Đang hiển thị <span></span> kết quả</lang>
-                    <lang value='fr'>Affichage de <span></span> résultats</lang>
-                    <lang value='it'>Visualizzazione di <span></span> risultati</lang>
-                    <lang value='kr'><span></span> 개의 결과 표시 중</lang>
-                    <lang value='ja'><span></span> 件の結果を表示</lang>
-                    <lang value='de'>Zeigt <span></span> ergebnisse</lang>
-                    <lang value='nl'>Er worden <span></span> resultaten weergegeven</lang>
-                    <lang value='dk'>Viser <span></span> resultater</lang>
-                    <lang value='pt'>Mostrando <span></span> resultados</lang>
-                    <lang value='es'>Mostrando <span></span> resultados</lang>
-                    <lang value='ru'>Показано <span></span> результата</lang>
+                    <Lang value='en'>Showing <span></span> results</Lang>
+                    <Lang value='vi'>Đang hiển thị <span></span> kết quả</Lang>
+                    <Lang value='fr'>Affichage de <span></span> résultats</Lang>
+                    <Lang value='it'>Visualizzazione di <span></span> risultati</Lang>
+                    <Lang value='kr'><span></span> 개의 결과 표시 중</Lang>
+                    <Lang value='ja'><span></span> 件の結果を表示</Lang>
+                    <Lang value='de'>Zeigt <span></span> ergebnisse</Lang>
+                    <Lang value='nl'>Er worden <span></span> resultaten weergegeven</Lang>
+                    <Lang value='dk'>Viser <span></span> resultater</Lang>
+                    <Lang value='pt'>Mostrando <span></span> resultados</Lang>
+                    <Lang value='es'>Mostrando <span></span> resultados</Lang>
+                    <Lang value='ru'>Показано <span></span> результата</Lang>
                 </h5>
                 <ul class='btn-list vertical' id='categories'></ul>
                 <div>
@@ -638,84 +641,84 @@ export default function Search() {
             <div id='bar'>
                 <h6></h6>
                 <div id='bar_code'>
-                    <lang value='en'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='vi'>Mã <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='fr'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='it'>Codice <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='kr'>암호 <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='ja'>コード <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='de'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='nl'>Code <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='dk'>Kode <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='pt'>Código <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='es'>Código <f-icon icon='circle-info'></f-icon>:</lang>
-                    <lang value='ru'>Код <f-icon icon='circle-info'></f-icon>:</lang>
+                    <Lang value='en'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='vi'>Mã <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='fr'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='it'>Codice <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='kr'>암호 <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='ja'>コード <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='de'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='nl'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='dk'>Kode <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='pt'>Código <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='es'>Código <f-icon icon='circle-info'></f-icon>:</Lang>
+                    <Lang value='ru'>Код <f-icon icon='circle-info'></f-icon>:</Lang>
                     <code></code>
                 </div>
                 <div id='bar_glyphs'>
-                    <lang value='en'>Glyphs:</lang>
-                    <lang value='vi'>Glyph:</lang>
-                    <lang value='fr'>Glyphes:</lang>
-                    <lang value='it'>Glifi:</lang>
-                    <lang value='kr'>글리프:</lang>
-                    <lang value='ja'>グリフ:</lang>
-                    <lang value='de'>Glyphen:</lang>
-                    <lang value='nl'>Tekens:</lang>
-                    <lang value='dk'>Glyffer:</lang>
-                    <lang value='pt'>Glifos:</lang>
-                    <lang value='es'>Glifos:</lang>
-                    <lang value='ru'>Глифы:</lang>
+                    <Lang value='en'>Glyphs:</Lang>
+                    <Lang value='vi'>Glyph:</Lang>
+                    <Lang value='fr'>Glyphes:</Lang>
+                    <Lang value='it'>Glifi:</Lang>
+                    <Lang value='kr'>글리프:</Lang>
+                    <Lang value='ja'>グリフ:</Lang>
+                    <Lang value='de'>Glyphen:</Lang>
+                    <Lang value='nl'>Tekens:</Lang>
+                    <Lang value='dk'>Glyffer:</Lang>
+                    <Lang value='pt'>Glifos:</Lang>
+                    <Lang value='es'>Glifos:</Lang>
+                    <Lang value='ru'>Глифы:</Lang>
                     <div>
                         <div name='Primary'></div>
                         <div name='Secondary'></div>
                     </div>
                 </div>
                 <div id='bar_unicodes'>
-                    <lang value='en'>Unicodes:</lang>
-                    <lang value='vi'>Unicode:</lang>
-                    <lang value='fr'>Unicodes:</lang>
-                    <lang value='it'>Unicode:</lang>
-                    <lang value='kr'>유니코드:</lang>
-                    <lang value='ja'>ユニコード:</lang>
-                    <lang value='de'>Unicodes:</lang>
-                    <lang value='nl'>Unicodes:</lang>
-                    <lang value='dk'>Unicodes:</lang>
-                    <lang value='pt'>Unicodes:</lang>
-                    <lang value='es'>Unicodes:</lang>
-                    <lang value='ru'>Юникоды:</lang>
+                    <Lang value='en'>Unicodes:</Lang>
+                    <Lang value='vi'>Unicode:</Lang>
+                    <Lang value='fr'>Unicodes:</Lang>
+                    <Lang value='it'>Unicode:</Lang>
+                    <Lang value='kr'>유니코드:</Lang>
+                    <Lang value='ja'>ユニコード:</Lang>
+                    <Lang value='de'>Unicodes:</Lang>
+                    <Lang value='nl'>Unicodes:</Lang>
+                    <Lang value='dk'>Unicodes:</Lang>
+                    <Lang value='pt'>Unicodes:</Lang>
+                    <Lang value='es'>Unicodes:</Lang>
+                    <Lang value='ru'>Юникоды:</Lang>
                     <div>
                         <div name='Primary'></div>
                         <div name='Secondary'></div>
                     </div>
                 </div>
                 <div id='bar_categories'>
-                    <lang value='en'>Categories:</lang>
-                    <lang value='vi'>Thể loại:</lang>
-                    <lang value='fr'>Catégories:</lang>
-                    <lang value='it'>Categorie:</lang>
-                    <lang value='kr'>카테고리:</lang>
-                    <lang value='ja'>カテゴリー:</lang>
-                    <lang value='de'>Kategorien:</lang>
-                    <lang value='nl'>Categorieën:</lang>
-                    <lang value='dk'>Kategorier:</lang>
-                    <lang value='pt'>Categorias:</lang>
-                    <lang value='es'>Categorías:</lang>
-                    <lang value='ru'>Категории:</lang>
+                    <Lang value='en'>Categories:</Lang>
+                    <Lang value='vi'>Thể loại:</Lang>
+                    <Lang value='fr'>Catégories:</Lang>
+                    <Lang value='it'>Categorie:</Lang>
+                    <Lang value='kr'>카테고리:</Lang>
+                    <Lang value='ja'>カテゴリー:</Lang>
+                    <Lang value='de'>Kategorien:</Lang>
+                    <Lang value='nl'>Categorieën:</Lang>
+                    <Lang value='dk'>Kategorier:</Lang>
+                    <Lang value='pt'>Categorias:</Lang>
+                    <Lang value='es'>Categorías:</Lang>
+                    <Lang value='ru'>Категории:</Lang>
                     <ul class='btn-list'></ul>
                 </div>
                 <div id='bar_download'>
-                    <lang value='en'>Download:</lang>
-                    <lang value='vi'>Tải xuống:</lang>
-                    <lang value='fr'>Télécharger:</lang>
-                    <lang value='it'>Scaricamento:</lang>
-                    <lang value='kr'>다운로드:</lang>
-                    <lang value='ja'>ダウンロード:</lang>
-                    <lang value='de'>Herunterladen:</lang>
-                    <lang value='nl'>Download:</lang>
-                    <lang value='dk'>Download:</lang>
-                    <lang value='pt'>Transferir:</lang>
-                    <lang value='es'>Descargar:</lang>
-                    <lang value='ru'>Скачать:</lang>
+                    <Lang value='en'>Download:</Lang>
+                    <Lang value='vi'>Tải xuống:</Lang>
+                    <Lang value='fr'>Télécharger:</Lang>
+                    <Lang value='it'>Scaricamento:</Lang>
+                    <Lang value='kr'>다운로드:</Lang>
+                    <Lang value='ja'>ダウンロード:</Lang>
+                    <Lang value='de'>Herunterladen:</Lang>
+                    <Lang value='nl'>Download:</Lang>
+                    <Lang value='dk'>Download:</Lang>
+                    <Lang value='pt'>Transferir:</Lang>
+                    <Lang value='es'>Descargar:</Lang>
+                    <Lang value='ru'>Скачать:</Lang>
                     <ul class='btn-list'>
                         <li name='svg'>SVG</li>
                         <li name='png'>PNG</li>

@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
+import { Lang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -12,34 +13,34 @@ export default function Page() {
             <div>
                 <div name='package/download'>
                     <h3>
-                        <lang value='en'>Download</lang>
-                        <lang value='vi'>Tải xuống</lang>
-                        <lang value='fr'>Télécharger</lang>
-                        <lang value='it'>Scaricamento</lang>
-                        <lang value='kr'>다운로드</lang>
-                        <lang value='ja'>ダウンロード</lang>
-                        <lang value='de'>Herunterladen</lang>
-                        <lang value='nl'>Download</lang>
-                        <lang value='dk'>Download</lang>
-                        <lang value='pt'>Transferir</lang>
-                        <lang value='es'>Descargar</lang>
-                        <lang value='ru'>Скачать</lang>
+                        <Lang value='en'>Download</Lang>
+                        <Lang value='vi'>Tải xuống</Lang>
+                        <Lang value='fr'>Télécharger</Lang>
+                        <Lang value='it'>Scaricamento</Lang>
+                        <Lang value='kr'>다운로드</Lang>
+                        <Lang value='ja'>ダウンロード</Lang>
+                        <Lang value='de'>Herunterladen</Lang>
+                        <Lang value='nl'>Download</Lang>
+                        <Lang value='dk'>Download</Lang>
+                        <Lang value='pt'>Transferir</Lang>
+                        <Lang value='es'>Descargar</Lang>
+                        <Lang value='ru'>Скачать</Lang>
                     </h3>
                     <ul>
                         <li>
                             <h6>
-                                <lang value='en'>Font pack</lang>
-                                <lang value='vi'>Gói phông chữ</lang>
-                                <lang value='fr'>Pack de polices</lang>
-                                <lang value='it'>Pacchetto di caratteri</lang>
-                                <lang value='kr'>폰트 팩</lang>
-                                <lang value='ja'>フォントパック</lang>
-                                <lang value='de'>Schriftartenpaket</lang>
-                                <lang value='nl'>Lettertypepakket</lang>
-                                <lang value='dk'>Skrifttypepakke</lang>
-                                <lang value='pt'>Pacote de fontes</lang>
-                                <lang value='es'>Paquete de fuentes</lang>
-                                <lang value='ru'>набор шрифтов</lang>
+                                <Lang value='en'>Font pack</Lang>
+                                <Lang value='vi'>Gói phông chữ</Lang>
+                                <Lang value='fr'>Pack de polices</Lang>
+                                <Lang value='it'>Pacchetto di caratteri</Lang>
+                                <Lang value='kr'>폰트 팩</Lang>
+                                <Lang value='ja'>フォントパック</Lang>
+                                <Lang value='de'>Schriftartenpaket</Lang>
+                                <Lang value='nl'>Lettertypepakket</Lang>
+                                <Lang value='dk'>Skrifttypepakke</Lang>
+                                <Lang value='pt'>Pacote de fontes</Lang>
+                                <Lang value='es'>Paquete de fuentes</Lang>
+                                <Lang value='ru'>набор шрифтов</Lang>
                             </h6>
                             <span></span>
                             <button className='primary' name='fonts'>
@@ -48,18 +49,18 @@ export default function Page() {
                         </li>
                         <li>
                             <h6>
-                                <lang value='en'>Icon pack</lang>
-                                <lang value='vi'>Gói biểu tượng</lang>
-                                <lang value='fr'>Pack d&apos;icônes</lang>
-                                <lang value='it'>Pacchetto di icone</lang>
-                                <lang value='kr'>아이콘 팩</lang>
-                                <lang value='ja'>アイコンパック</lang>
-                                <lang value='de'>Symbolpaket</lang>
-                                <lang value='nl'>Pictogrammenpakket</lang>
-                                <lang value='dk'>Ikonpakke</lang>
-                                <lang value='pt'>Pacote de ícones</lang>
-                                <lang value='es'>Paquete de iconos</lang>
-                                <lang value='ru'>набор иконок</lang>
+                                <Lang value='en'>Icon pack</Lang>
+                                <Lang value='vi'>Gói biểu tượng</Lang>
+                                <Lang value='fr'>Pack d&apos;icônes</Lang>
+                                <Lang value='it'>Pacchetto di icone</Lang>
+                                <Lang value='kr'>아이콘 팩</Lang>
+                                <Lang value='ja'>アイコンパック</Lang>
+                                <Lang value='de'>Symbolpaket</Lang>
+                                <Lang value='nl'>Pictogrammenpakket</Lang>
+                                <Lang value='dk'>Ikonpakke</Lang>
+                                <Lang value='pt'>Pacote de ícones</Lang>
+                                <Lang value='es'>Paquete de iconos</Lang>
+                                <Lang value='ru'>набор иконок</Lang>
                             </h6>
                             <span></span>
                             <button className='btn primary' name='icons'>

@@ -4,6 +4,7 @@ import Header from 'Com/header';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-2.png';
+import { Lang, LanguageProvider } from 'Com/language';
 import './globals.css';
 import 'Com/utils'
 
@@ -21,108 +22,110 @@ export default function RootLayout({ children }) {
                 <link href='//fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Kode+Mono:wght@400..700&family=Nova+Mono&family=Sono:wght,MONO@200..800,1&family=Xanh+Mono:ital@0;1' rel='stylesheet'/>
             </head>
             <body>
-                <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
-                <div id='loading'>
-                    <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYgDdhGLSs3mBT3pnVFO51gd7azcbZgGYkc-2az3pyMx1rq6CTlEZDrTjf2tKNC8YZqefBM5xWoUi_st2OOkYdjrzvVlaEf1JV22WE2t8CFDEnSU_dC-ukYMQqg2LY34vwnUjp0nNT9Zi1o0HdtepkzUU4MHnASM25C5V5os-GUDMPCscMM30IcmxKuvw/s1600/loading-b2.gif' alt='Foricon loading logo'/>
-                </div>
-                <div id='toast'/>
-                <Header/>
-                {children}
-                <footer>
-                    <div>
-                        <Link href='/'>
-                            <Image src={logo}/>
-                        </Link>
+                <LanguageProvider>
+                    <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
+                    <div id='loading'>
+                        <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYgDdhGLSs3mBT3pnVFO51gd7azcbZgGYkc-2az3pyMx1rq6CTlEZDrTjf2tKNC8YZqefBM5xWoUi_st2OOkYdjrzvVlaEf1JV22WE2t8CFDEnSU_dC-ukYMQqg2LY34vwnUjp0nNT9Zi1o0HdtepkzUU4MHnASM25C5V5os-GUDMPCscMM30IcmxKuvw/s1600/loading-b2.gif' alt='Foricon loading logo'/>
+                    </div>
+                    <div id='toast'/>
+                    <Header/>
+                    {children}
+                    <footer>
                         <div>
-                            <a class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>
-                                <i class='fa-brands fa-facebook'/><span>Follow us</span>
-                            </a>
-                            <a class='btn secondary' href='//youtube.com/@ForiconIconFont' target='_blank'>
-                                <i class='fa-brands fa-youtube'/><span>Our channel</span>
-                            </a>
+                            <Link href='/'>
+                                <Image src={logo}/>
+                            </Link>
+                            <div>
+                                <a class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>
+                                    <i class='fa-brands fa-facebook'/><span>Follow us</span>
+                                </a>
+                                <a class='btn secondary' href='//youtube.com/@ForiconIconFont' target='_blank'>
+                                    <i class='fa-brands fa-youtube'/><span>Our channel</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class='dk-bg first'>
-                        <span>&#169;2023 - 2026 Foricon</span>
-                        <ul>
-                            <li>
-                                <a href='/about'>
-                                    <lang value='en'>About us</lang>
-                                    <lang value='vi'>Về chúng tôi</lang>
-                                    <lang value='fr'>À propos de nous</lang>
-                                    <lang value='it'>Chi siamo</lang>
-                                    <lang value='kr'>회사 소개</lang>
-                                    <lang value='ja'>私たちについて</lang>
-                                    <lang value='de'>Über uns</lang>
-                                    <lang value='nl'>Over ons</lang>
-                                    <lang value='dk'>Om os</lang>
-                                    <lang value='pt'>Sobre nós</lang>
-                                    <lang value='es'>Sobre nosotros</lang>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='/tos'>
-                                    <lang value='en'>Terms of Service</lang>
-                                    <lang value='vi'>Điều khoản dịch vụ</lang>
-                                    <lang value='fr'>Conditions d&#39;utilisation</lang>
-                                    <lang value='it'>Termini di servizio</lang>
-                                    <lang value='kr'>서비스 약관</lang>
-                                    <lang value='ja'>利用規約</lang>
-                                    <lang value='de'>Nutzungsbedingungen</lang>
-                                    <lang value='nl'>Servicevoorwaarden</lang>
-                                    <lang value='dk'>Servicevilkår</lang>
-                                    <lang value='pt'>Termos de serviço</lang>
-                                    <lang value='es'>Términos de servicio</lang>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='/refund-policy'>
-                                    <lang value='en'>Refund Policy</lang>
-                                    <lang value='vi'>Chính sách hoàn tiền</lang>
-                                    <lang value='fr'>Politique de remboursement</lang>
-                                    <lang value='it'>Politica di rimborso</lang>
-                                    <lang value='kr'>환불 정책</lang>
-                                    <lang value='ja'>返金ポリシー</lang>
-                                    <lang value='de'>Rückgaberecht</lang>
-                                    <lang value='nl'>Restitutiebeleid</lang>
-                                    <lang value='dk'>Refusionspolitik</lang>
-                                    <lang value='pt'>Política de Reembolso</lang>
-                                    <lang value='es'>Política de reembolso</lang>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='/privacy'>
-                                    <lang value='en'>Privacy Policy</lang>
-                                    <lang value='vi'>Chính sách bảo mật</lang>
-                                    <lang value='fr'>Politique de Confidentialité</lang>
-                                    <lang value='it'>Politica sulla Riservatezza</lang>
-                                    <lang value='kr'>개인 정보 정책</lang>
-                                    <lang value='ja'>プライバシーポリシー</lang>
-                                    <lang value='de'>Datenschutzrichtlinie</lang>
-                                    <lang value='nl'>Privacybeleid</lang>
-                                    <lang value='dk'>Fortrolighedspolitik</lang>
-                                    <lang value='pt'>Política de Privacidade</lang>
-                                    <lang value='es'>Política de Privacidad</lang>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='/support'>
-                                    <lang value='en'>Support</lang>
-                                    <lang value='vi'>Hỗ trợ</lang>
-                                    <lang value='fr'>Soutien</lang>
-                                    <lang value='it'>Supporto</lang>
-                                    <lang value='kr'>지원하다</lang>
-                                    <lang value='ja'>サポート</lang>
-                                    <lang value='de'>Unterstützung</lang>
-                                    <lang value='nl'>Steun</lang>
-                                    <lang value='dk'>Support</lang>
-                                    <lang value='pt'>Apoiar</lang>
-                                    <lang value='es'>Apoyo</lang>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </footer>
+                        <div class='dk-bg first'>
+                            <span>&#169;2023 - 2026 Foricon</span>
+                            <ul>
+                                <li>
+                                    <a href='/about'>
+                                        <Lang value='en'>About us</Lang>
+                                        <Lang value='vi'>Về chúng tôi</Lang>
+                                        <Lang value='fr'>À propos de nous</Lang>
+                                        <Lang value='it'>Chi siamo</Lang>
+                                        <Lang value='kr'>회사 소개</Lang>
+                                        <Lang value='ja'>私たちについて</Lang>
+                                        <Lang value='de'>Über uns</Lang>
+                                        <Lang value='nl'>Over ons</Lang>
+                                        <Lang value='dk'>Om os</Lang>
+                                        <Lang value='pt'>Sobre nós</Lang>
+                                        <Lang value='es'>Sobre nosotros</Lang>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='/tos'>
+                                        <Lang value='en'>Terms of Service</Lang>
+                                        <Lang value='vi'>Điều khoản dịch vụ</Lang>
+                                        <Lang value='fr'>Conditions d&#39;utilisation</Lang>
+                                        <Lang value='it'>Termini di servizio</Lang>
+                                        <Lang value='kr'>서비스 약관</Lang>
+                                        <Lang value='ja'>利用規約</Lang>
+                                        <Lang value='de'>Nutzungsbedingungen</Lang>
+                                        <Lang value='nl'>Servicevoorwaarden</Lang>
+                                        <Lang value='dk'>Servicevilkår</Lang>
+                                        <Lang value='pt'>Termos de serviço</Lang>
+                                        <Lang value='es'>Términos de servicio</Lang>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='/refund-policy'>
+                                        <Lang value='en'>Refund Policy</Lang>
+                                        <Lang value='vi'>Chính sách hoàn tiền</Lang>
+                                        <Lang value='fr'>Politique de remboursement</Lang>
+                                        <Lang value='it'>Politica di rimborso</Lang>
+                                        <Lang value='kr'>환불 정책</Lang>
+                                        <Lang value='ja'>返金ポリシー</Lang>
+                                        <Lang value='de'>Rückgaberecht</Lang>
+                                        <Lang value='nl'>Restitutiebeleid</Lang>
+                                        <Lang value='dk'>Refusionspolitik</Lang>
+                                        <Lang value='pt'>Política de Reembolso</Lang>
+                                        <Lang value='es'>Política de reembolso</Lang>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='/privacy'>
+                                        <Lang value='en'>Privacy Policy</Lang>
+                                        <Lang value='vi'>Chính sách bảo mật</Lang>
+                                        <Lang value='fr'>Politique de Confidentialité</Lang>
+                                        <Lang value='it'>Politica sulla Riservatezza</Lang>
+                                        <Lang value='kr'>개인 정보 정책</Lang>
+                                        <Lang value='ja'>プライバシーポリシー</Lang>
+                                        <Lang value='de'>Datenschutzrichtlinie</Lang>
+                                        <Lang value='nl'>Privacybeleid</Lang>
+                                        <Lang value='dk'>Fortrolighedspolitik</Lang>
+                                        <Lang value='pt'>Política de Privacidade</Lang>
+                                        <Lang value='es'>Política de Privacidad</Lang>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='/support'>
+                                        <Lang value='en'>Support</Lang>
+                                        <Lang value='vi'>Hỗ trợ</Lang>
+                                        <Lang value='fr'>Soutien</Lang>
+                                        <Lang value='it'>Supporto</Lang>
+                                        <Lang value='kr'>지원하다</Lang>
+                                        <Lang value='ja'>サポート</Lang>
+                                        <Lang value='de'>Unterstützung</Lang>
+                                        <Lang value='nl'>Steun</Lang>
+                                        <Lang value='dk'>Support</Lang>
+                                        <Lang value='pt'>Apoiar</Lang>
+                                        <Lang value='es'>Apoyo</Lang>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </footer>
+                </LanguageProvider>
                 <Process/>
             </body>
         </html>

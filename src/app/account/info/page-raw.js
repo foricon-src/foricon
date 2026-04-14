@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
+import { Lang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -14,18 +15,18 @@ export default function Page() {
                     <table>
                         <tr>
                             <td>
-                            <lang value='en'>Avatar</lang>
-                            <lang value='vi'>Ảnh đại diện</lang>
-                            <lang value='fr'>Avatar</lang>
-                            <lang value='it'>L&apos;Avatar</lang>
-                            <lang value='kr'>화신</lang>
-                            <lang value='ja'>アバター</lang>
-                            <lang value='de'>Avatar</lang>
-                            <lang value='nl'>Avatar</lang>
-                            <lang value='dk'>Avatar</lang>
-                            <lang value='pt'>Avatar</lang>
-                            <lang value='es'>Avatar</lang>
-                            <lang value='ru'>Аватар</lang>
+                            <Lang value='en'>Avatar</Lang>
+                            <Lang value='vi'>Ảnh đại diện</Lang>
+                            <Lang value='fr'>Avatar</Lang>
+                            <Lang value='it'>L&apos;Avatar</Lang>
+                            <Lang value='kr'>화신</Lang>
+                            <Lang value='ja'>アバター</Lang>
+                            <Lang value='de'>Avatar</Lang>
+                            <Lang value='nl'>Avatar</Lang>
+                            <Lang value='dk'>Avatar</Lang>
+                            <Lang value='pt'>Avatar</Lang>
+                            <Lang value='es'>Avatar</Lang>
+                            <Lang value='ru'>Аватар</Lang>
                             </td>
                             <td>
                             <div id='main_account-info_avatar' className='img circle square avatar'></div>
@@ -33,87 +34,87 @@ export default function Page() {
                         </tr>
                         <tr>
                             <td>
-                            <lang value='en'>Name</lang>
-                            <lang value='vi'>Tên</lang>
-                            <lang value='fr'>Nom</lang>
-                            <lang value='it'>Nome</lang>
-                            <lang value='kr'>이름</lang>
-                            <lang value='ja'>名前</lang>
-                            <lang value='de'>Name</lang>
-                            <lang value='nl'>Naam</lang>
-                            <lang value='dk'>Navn</lang>
-                            <lang value='pt'>Nome</lang>
-                            <lang value='es'>Nombre</lang>
-                            <lang value='ru'>Имя</lang>
+                            <Lang value='en'>Name</Lang>
+                            <Lang value='vi'>Tên</Lang>
+                            <Lang value='fr'>Nom</Lang>
+                            <Lang value='it'>Nome</Lang>
+                            <Lang value='kr'>이름</Lang>
+                            <Lang value='ja'>名前</Lang>
+                            <Lang value='de'>Name</Lang>
+                            <Lang value='nl'>Naam</Lang>
+                            <Lang value='dk'>Navn</Lang>
+                            <Lang value='pt'>Nome</Lang>
+                            <Lang value='es'>Nombre</Lang>
+                            <Lang value='ru'>Имя</Lang>
                             </td>
                             <td id='main_account-info_username'>Username123</td>
                         </tr>
                         <tr>
                             <td>
-                            <lang value='en'>Email</lang>
-                            <lang value='vi'>Email</lang>
-                            <lang value='fr'>Email</lang>
-                            <lang value='it'>Email</lang>
-                            <lang value='kr'>이메일</lang>
-                            <lang value='ja'>メール</lang>
-                            <lang value='de'>Email</lang>
-                            <lang value='nl'>Email</lang>
-                            <lang value='dk'>Email</lang>
-                            <lang value='pt'>Email</lang>
-                            <lang value='es'>Correo electrónico</lang>
-                            <lang value='ru'>Электронная почта</lang>
+                            <Lang value='en'>Email</Lang>
+                            <Lang value='vi'>Email</Lang>
+                            <Lang value='fr'>Email</Lang>
+                            <Lang value='it'>Email</Lang>
+                            <Lang value='kr'>이메일</Lang>
+                            <Lang value='ja'>メール</Lang>
+                            <Lang value='de'>Email</Lang>
+                            <Lang value='nl'>Email</Lang>
+                            <Lang value='dk'>Email</Lang>
+                            <Lang value='pt'>Email</Lang>
+                            <Lang value='es'>Correo electrónico</Lang>
+                            <Lang value='ru'>Электронная почта</Lang>
                             </td>
                             <td id='main_account-info_email'>user@example.com</td>
                         </tr>
                         <tr>
                             <td>
-                            <lang value='en'>User ID</lang>
-                            <lang value='vi'>ID người dùng</lang>
-                            <lang value='fr'>ID de l&apos;utilisateur</lang>
-                            <lang value='it'>ID utente</lang>
-                            <lang value='kr'>사용자 ID</lang>
-                            <lang value='ja'>ユーザーID</lang>
-                            <lang value='de'>Benutzer-ID</lang>
-                            <lang value='nl'>Gebruikers-ID</lang>
-                            <lang value='dk'>Bruger-id</lang>
-                            <lang value='pt'>ID do utilizador</lang>
-                            <lang value='es'>ID de usuario</lang>
-                            <lang value='ru'>ID пользователя</lang>
+                            <Lang value='en'>User ID</Lang>
+                            <Lang value='vi'>ID người dùng</Lang>
+                            <Lang value='fr'>ID de l&apos;utilisateur</Lang>
+                            <Lang value='it'>ID utente</Lang>
+                            <Lang value='kr'>사용자 ID</Lang>
+                            <Lang value='ja'>ユーザーID</Lang>
+                            <Lang value='de'>Benutzer-ID</Lang>
+                            <Lang value='nl'>Gebruikers-ID</Lang>
+                            <Lang value='dk'>Bruger-id</Lang>
+                            <Lang value='pt'>ID do utilizador</Lang>
+                            <Lang value='es'>ID de usuario</Lang>
+                            <Lang value='ru'>ID пользователя</Lang>
                             </td>
                             <td id='main_account-info_uid'>123ABC</td>
                         </tr>
                         <tr>
                             <td>
-                            <lang value='en'>Joining date</lang>
-                            <lang value='vi'>Ngày tham gia</lang>
-                            <lang value='fr'>Date d&apos;adhésion</lang>
-                            <lang value='it'>Data di adesione</lang>
-                            <lang value='kr'>가입날짜</lang>
-                            <lang value='ja'>入社日</lang>
-                            <lang value='de'>Eintrittsdatum</lang>
-                            <lang value='nl'>Datum van toetreding</lang>
-                            <lang value='dk'>Tilmeldingsdato</lang>
-                            <lang value='pt'>Data de adesão</lang>
-                            <lang value='es'>Fecha de ingreso</lang>
-                            <lang value='ru'>Дата присоединения</lang>
+                            <Lang value='en'>Joining date</Lang>
+                            <Lang value='vi'>Ngày tham gia</Lang>
+                            <Lang value='fr'>Date d&apos;adhésion</Lang>
+                            <Lang value='it'>Data di adesione</Lang>
+                            <Lang value='kr'>가입날짜</Lang>
+                            <Lang value='ja'>入社日</Lang>
+                            <Lang value='de'>Eintrittsdatum</Lang>
+                            <Lang value='nl'>Datum van toetreding</Lang>
+                            <Lang value='dk'>Tilmeldingsdato</Lang>
+                            <Lang value='pt'>Data de adesão</Lang>
+                            <Lang value='es'>Fecha de ingreso</Lang>
+                            <Lang value='ru'>Дата присоединения</Lang>
                             </td>
                             <td id='main_account-info_joining-date'>21 December, 2023</td>
                         </tr>
                     </table>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'account/info/edit')}>
-                            <lang value='en'>Edit account info</lang>
-                            <lang value='vi'>Chỉnh sửa thông tin tài khoản</lang>
-                            <lang value='fr'>Modifier les informations du compte</lang>
-                            <lang value='it'>Modifica informazioni account</lang>
-                            <lang value='kr'>계정 정보 편집</lang>
-                            <lang value='ja'>アカウント情報を編集</lang>
-                            <lang value='de'>Kontoinformationen bearbeiten</lang>
-                            <lang value='nl'>Accountgegevens bewerken</lang>
-                            <lang value='dk'>Rediger kontooplysninger</lang>
-                            <lang value='pt'>Editar informações da conta</lang>
-                            <lang value='es'>Editar la información de la cuenta</lang>
-                            <lang value='ru'>Изменить информацию об аккаунте</lang>
+                            <Lang value='en'>Edit account info</Lang>
+                            <Lang value='vi'>Chỉnh sửa thông tin tài khoản</Lang>
+                            <Lang value='fr'>Modifier les informations du compte</Lang>
+                            <Lang value='it'>Modifica informazioni account</Lang>
+                            <Lang value='kr'>계정 정보 편집</Lang>
+                            <Lang value='ja'>アカウント情報を編集</Lang>
+                            <Lang value='de'>Kontoinformationen bearbeiten</Lang>
+                            <Lang value='nl'>Accountgegevens bewerken</Lang>
+                            <Lang value='dk'>Rediger kontooplysninger</Lang>
+                            <Lang value='pt'>Editar informações da conta</Lang>
+                            <Lang value='es'>Editar la información de la cuenta</Lang>
+                            <Lang value='ru'>Изменить информацию об аккаунте</Lang>
                         </li>
                     </ul>
                 </div>

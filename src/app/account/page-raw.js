@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
+import { Lang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -35,32 +36,32 @@ export default function Page() {
                     </ul>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'pricing')}>
-                            <lang value='en'>Foricon Plus plans</lang>
-                            <lang value='vi'>Các gói Foricon Plus</lang>
-                            <lang value='fr'>Forfaits Foricon Plus</lang>
-                            <lang value='it'>Piani Foricon Plus</lang>
-                            <lang value='kr'>Foricon Plus 계획</lang>
-                            <lang value='ja'>Foricon Plusプラン</lang>
-                            <lang value='de'>Foricon Plus-Pläne</lang>
-                            <lang value='nl'>Foricon Plus-abonnementen</lang>
-                            <lang value='dk'>Foricon Plus-planer</lang>
-                            <lang value='pt'>Planos Foricon Plus</lang>
-                            <lang value='es'>Planes de Foricon Plus</lang>
-                            <lang value='ru'>Планы Foricon Plus</lang>
+                            <Lang value='en'>Foricon Plus plans</Lang>
+                            <Lang value='vi'>Các gói Foricon Plus</Lang>
+                            <Lang value='fr'>Forfaits Foricon Plus</Lang>
+                            <Lang value='it'>Piani Foricon Plus</Lang>
+                            <Lang value='kr'>Foricon Plus 계획</Lang>
+                            <Lang value='ja'>Foricon Plusプラン</Lang>
+                            <Lang value='de'>Foricon Plus-Pläne</Lang>
+                            <Lang value='nl'>Foricon Plus-abonnementen</Lang>
+                            <Lang value='dk'>Foricon Plus-planer</Lang>
+                            <Lang value='pt'>Planos Foricon Plus</Lang>
+                            <Lang value='es'>Planes de Foricon Plus</Lang>
+                            <Lang value='ru'>Планы Foricon Plus</Lang>
                         </li>
                         <li className='red'>
-                            <lang value='en'>Remove my account</lang>
-                            <lang value='vi'>Xoá tài khoản của tôi</lang>
-                            <lang value='fr'>Supprimer mon compte</lang>
-                            <lang value='it'>Rimuovi il mio account</lang>
-                            <lang value='kr'>내 계정 삭제</lang>
-                            <lang value='ja'>アカウントを削除する</lang>
-                            <lang value='de'>Mein Konto entfernen</lang>
-                            <lang value='nl'>Verwijder mijn account</lang>
-                            <lang value='dk'>Fjern min konto</lang>
-                            <lang value='pt'>Remover a minha conta</lang>
-                            <lang value='es'>Eliminar mi cuenta</lang>
-                            <lang value='ru'>Удалить мой аккаунт</lang>
+                            <Lang value='en'>Remove my account</Lang>
+                            <Lang value='vi'>Xoá tài khoản của tôi</Lang>
+                            <Lang value='fr'>Supprimer mon compte</Lang>
+                            <Lang value='it'>Rimuovi il mio account</Lang>
+                            <Lang value='kr'>내 계정 삭제</Lang>
+                            <Lang value='ja'>アカウントを削除する</Lang>
+                            <Lang value='de'>Mein Konto entfernen</Lang>
+                            <Lang value='nl'>Verwijder mijn account</Lang>
+                            <Lang value='dk'>Fjern min konto</Lang>
+                            <Lang value='pt'>Remover a minha conta</Lang>
+                            <Lang value='es'>Eliminar mi cuenta</Lang>
+                            <Lang value='ru'>Удалить мой аккаунт</Lang>
                         </li>
                     </ul>
                 </div>

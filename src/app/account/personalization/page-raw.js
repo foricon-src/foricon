@@ -1,5 +1,7 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
+import Code from "Com/code";
+import { Lang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -12,18 +14,18 @@ export default function Page() {
             <div>
                 <div name='personalization'>
                     <form>
-                        <lang value='en'>Codebox&apos;s font</lang>
-                        <lang value='vi'>Phông chữ của hộp mã</lang>
-                        <lang value='fr'>Police de caractères de Codebox</lang>
-                        <lang value='it'>Il carattere di Codebox</lang>
-                        <lang value='kr'>코드박스의 폰트</lang>
-                        <lang value='ja'>Codeboxのフォント</lang>
-                        <lang value='de'>Schriftart von Codebox</lang>
-                        <lang value='nl'>Het lettertype van Codebox</lang>
-                        <lang value='dk'>Codebox&apos; skrifttype</lang>
-                        <lang value='pt'>Fonte Codebox</lang>
-                        <lang value='es'>Fuente de Codebox</lang>
-                        <lang value='ru'>Шрифт Codebox</lang>
+                        <Lang value='en'>Codebox&apos;s font</Lang>
+                        <Lang value='vi'>Phông chữ của hộp mã</Lang>
+                        <Lang value='fr'>Police de caractères de Codebox</Lang>
+                        <Lang value='it'>Il carattere di Codebox</Lang>
+                        <Lang value='kr'>코드박스의 폰트</Lang>
+                        <Lang value='ja'>Codeboxのフォント</Lang>
+                        <Lang value='de'>Schriftart von Codebox</Lang>
+                        <Lang value='nl'>Het lettertype van Codebox</Lang>
+                        <Lang value='dk'>Codebox&apos; skrifttype</Lang>
+                        <Lang value='pt'>Fonte Codebox</Lang>
+                        <Lang value='es'>Fuente de Codebox</Lang>
+                        <Lang value='ru'>Шрифт Codebox</Lang>
                         <f-select name='font'>
                             <text></text>
                             <option-list>
@@ -37,7 +39,7 @@ export default function Page() {
                                 <f-option value='sono'>Sono</f-option>
                             </option-list>
                         </f-select>
-                        <code name='HTML'>{`<div className='box'>
+                        <Code lang='HTML'>{`<div className='box'>
   <!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
@@ -48,33 +50,33 @@ export default function Page() {
   for (let i in a) {
     a[i] += '_str'
   }
-</script>`}</code>
-                        <lang value='en'>Indentation space</lang>
-                        <lang value='vi'>Khoảng cách thụt dòng</lang>
-                        <lang value='fr'>Espace d&apos;indentation</lang>
-                        <lang value='it'>spazio di rientro</lang>
-                        <lang value='kr'>들여쓰기 공간</lang>
-                        <lang value='ja'>インデントスペース</lang>
-                        <lang value='de'>Einrückungsraum</lang>
-                        <lang value='nl'>Inspringingsruimte</lang>
-                        <lang value='dk'>Indrykningsafstand</lang>
-                        <lang value='pt'>Espaço de recuo</lang>
-                        <lang value='es'>Espacio de indentación</lang>
-                        <lang value='ru'>Пространство отступа</lang>
+</script>`}</Code>
+                        <Lang value='en'>Indentation space</Lang>
+                        <Lang value='vi'>Khoảng cách thụt dòng</Lang>
+                        <Lang value='fr'>Espace d&apos;indentation</Lang>
+                        <Lang value='it'>spazio di rientro</Lang>
+                        <Lang value='kr'>들여쓰기 공간</Lang>
+                        <Lang value='ja'>インデントスペース</Lang>
+                        <Lang value='de'>Einrückungsraum</Lang>
+                        <Lang value='nl'>Inspringingsruimte</Lang>
+                        <Lang value='dk'>Indrykningsafstand</Lang>
+                        <Lang value='pt'>Espaço de recuo</Lang>
+                        <Lang value='es'>Espacio de indentación</Lang>
+                        <Lang value='ru'>Пространство отступа</Lang>
                         <input name='indent' type='range' min='1' max='6' step='1' df-value='2'/>
                         <button className='primary'>
-                            <lang value='en'>Save changes</lang>
-                            <lang value='vi'>Lưu thay đổi</lang>
-                            <lang value='fr'>Enregistrer les modifications</lang>
-                            <lang value='it'>Salvare le modifiche</lang>
-                            <lang value='kr'>변경 사항 저장</lang>
-                            <lang value='ja'>変更を保存</lang>
-                            <lang value='de'>Änderungen speichern</lang>
-                            <lang value='nl'>Wijzigingen opslaan</lang>
-                            <lang value='dk'>Gem ændringer</lang>
-                            <lang value='pt'>Guardar alterações</lang>
-                            <lang value='es'>Guardar cambios</lang>
-                            <lang value='ru'>Сохранить изменения</lang>
+                            <Lang value='en'>Save changes</Lang>
+                            <Lang value='vi'>Lưu thay đổi</Lang>
+                            <Lang value='fr'>Enregistrer les modifications</Lang>
+                            <Lang value='it'>Salvare le modifiche</Lang>
+                            <Lang value='kr'>변경 사항 저장</Lang>
+                            <Lang value='ja'>変更を保存</Lang>
+                            <Lang value='de'>Änderungen speichern</Lang>
+                            <Lang value='nl'>Wijzigingen opslaan</Lang>
+                            <Lang value='dk'>Gem ændringer</Lang>
+                            <Lang value='pt'>Guardar alterações</Lang>
+                            <Lang value='es'>Guardar cambios</Lang>
+                            <Lang value='ru'>Сохранить изменения</Lang>
                         </button>
                     </form>
                 </div>

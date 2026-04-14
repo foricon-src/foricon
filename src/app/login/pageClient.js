@@ -6,6 +6,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { dbFirestore, auth } from "Com/firebase";
+import { Lang } from "Com/language";
 import popUp from "Com/popup";
 import recordLogin from "Com/record-login";
 
@@ -167,18 +168,18 @@ export default function LogIn() {
                 <h1>{texts[language][step].h1}</h1>
                 <p>{texts[language][step].p}</p>
                 <a className='btn secondary' href='/signup'>
-                    <lang value='en'>Create a new account</lang>
-                    <lang value='vi'>Tạo tài khoản mới</lang>
-                    <lang value='fr'>Créer un nouveau compte</lang>
-                    <lang value='it'>Creare un nuovo account</lang>
-                    <lang value='kr'>새 계정 생성</lang>
-                    <lang value='ja'>新しいアカウントを作成する</lang>
-                    <lang value='de'>Ein neues Konto erstellen</lang>
-                    <lang value='nl'>Maak een nieuw account aan</lang>
-                    <lang value='dk'>Oprette en ny konto</lang>
-                    <lang value='pt'>Criar uma nova conta</lang>
-                    <lang value='es'>Crea una cuenta nueva</lang>
-                    <lang value='ru'>Создать новую учетную запись</lang>
+                    <Lang value='en'>Create a new account</Lang>
+                    <Lang value='vi'>Tạo tài khoản mới</Lang>
+                    <Lang value='fr'>Créer un nouveau compte</Lang>
+                    <Lang value='it'>Creare un nuovo account</Lang>
+                    <Lang value='kr'>새 계정 생성</Lang>
+                    <Lang value='ja'>新しいアカウントを作成する</Lang>
+                    <Lang value='de'>Ein neues Konto erstellen</Lang>
+                    <Lang value='nl'>Maak een nieuw account aan</Lang>
+                    <Lang value='dk'>Oprette en ny konto</Lang>
+                    <Lang value='pt'>Criar uma nova conta</Lang>
+                    <Lang value='es'>Crea una cuenta nueva</Lang>
+                    <Lang value='ru'>Создать новую учетную запись</Lang>
                 </a>
             </div>
             <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', e, async () => {
@@ -205,18 +206,18 @@ export default function LogIn() {
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
                     <button className='primary' type='submit'>
-                        <lang value='en'>Next</lang>
-                        <lang value='vi'>Tiếp theo</lang>
-                        <lang value='fr'>Suivante</lang>
-                        <lang value='it'>Prossimo</lang>
-                        <lang value='kr'>다음</lang>
-                        <lang value='ja'>次</lang>
-                        <lang value='de'>Nächste</lang>
-                        <lang value='nl'>Volgende</lang>
-                        <lang value='dk'>Næste</lang>
-                        <lang value='pt'>Próximo</lang>
-                        <lang value='es'>Próximo</lang>
-                        <lang value='ru'>Следующий</lang>
+                        <Lang value='en'>Next</Lang>
+                        <Lang value='vi'>Tiếp theo</Lang>
+                        <Lang value='fr'>Suivante</Lang>
+                        <Lang value='it'>Prossimo</Lang>
+                        <Lang value='kr'>다음</Lang>
+                        <Lang value='ja'>次</Lang>
+                        <Lang value='de'>Nächste</Lang>
+                        <Lang value='nl'>Volgende</Lang>
+                        <Lang value='dk'>Næste</Lang>
+                        <Lang value='pt'>Próximo</Lang>
+                        <Lang value='es'>Próximo</Lang>
+                        <Lang value='ru'>Следующий</Lang>
                     </button>
                 </div>
             </form>
@@ -234,31 +235,31 @@ export default function LogIn() {
                 <a href='/forgot'>Forgot password</a>
                 <div>
                     <button class='secondary' type='button' onClick={() => changePage('email')}>
-                        <lang value='en'>Back</lang>
-                        <lang value='vi'>Trở lại</lang>
-                        <lang value='fr'>Dos</lang>
-                        <lang value='it'>Indietro</lang>
-                        <lang value='kr'>뒤쪽에</lang>
-                        <lang value='ja'>戻る</lang>
-                        <lang value='de'>Zurück</lang>
-                        <lang value='nl'>Rug</lang>
-                        <lang value='dk'>Tilbage</lang>
-                        <lang value='pt'>Voltar</lang>
-                        <lang value='es'>Atrás</lang>
-                        <lang value='ru'>Назад</lang>
+                        <Lang value='en'>Back</Lang>
+                        <Lang value='vi'>Trở lại</Lang>
+                        <Lang value='fr'>Dos</Lang>
+                        <Lang value='it'>Indietro</Lang>
+                        <Lang value='kr'>뒤쪽에</Lang>
+                        <Lang value='ja'>戻る</Lang>
+                        <Lang value='de'>Zurück</Lang>
+                        <Lang value='nl'>Rug</Lang>
+                        <Lang value='dk'>Tilbage</Lang>
+                        <Lang value='pt'>Voltar</Lang>
+                        <Lang value='es'>Atrás</Lang>
+                        <Lang value='ru'>Назад</Lang>
                     </button><button class='primary' type='submit'>
-                        <lang value='en'>Log in</lang>
-                        <lang value='vi'>Đăng nhập</lang>
-                        <lang value='fr'>Se connecter</lang>
-                        <lang value='it'>Login</lang>
-                        <lang value='kr'>로그인</lang>
-                        <lang value='ja'>ログイン</lang>
-                        <lang value='de'>Anmeldung</lang>
-                        <lang value='nl'>Log in</lang>
-                        <lang value='dk'>Log på</lang>
-                        <lang value='pt'>Conecte-se</lang>
-                        <lang value='es'>Acceso</lang>
-                        <lang value='ru'>Авторизоваться</lang>
+                        <Lang value='en'>Log in</Lang>
+                        <Lang value='vi'>Đăng nhập</Lang>
+                        <Lang value='fr'>Se connecter</Lang>
+                        <Lang value='it'>Login</Lang>
+                        <Lang value='kr'>로그인</Lang>
+                        <Lang value='ja'>ログイン</Lang>
+                        <Lang value='de'>Anmeldung</Lang>
+                        <Lang value='nl'>Log in</Lang>
+                        <Lang value='dk'>Log på</Lang>
+                        <Lang value='pt'>Conecte-se</Lang>
+                        <Lang value='es'>Acceso</Lang>
+                        <Lang value='ru'>Авторизоваться</Lang>
                     </button>
                 </div>
             </form>
