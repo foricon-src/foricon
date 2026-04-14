@@ -7,7 +7,7 @@ export function Lang({ value, wrapped, children }) {
     let lang = useContext(LanguageContext);
     return lang != value ? null : wrapped ? <span>{children}</span> : children;
 }
-export function langValue(obj) {
+export function AttrLang(obj) {
     let lang = useContext(LanguageContext);
     return obj[lang];
 }

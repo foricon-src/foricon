@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
-import { langValue, Lang } from "Com/language";
+import { AttrLang, Lang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -40,7 +40,7 @@ export default function Page() {
                         <Lang value='es'>Su contraseña actual</Lang>
                         <Lang value='ru'>Ваш текущий пароль</Lang>
                         <input name='current' type='password' placeholder={
-                            langValue({
+                            AttrLang({
                                 en: 'Enter password',
                                 vi: 'Nhập mật khẩu',
                                 fr: 'Entrez le mot de passe',
@@ -68,7 +68,7 @@ export default function Page() {
                         <Lang value='es'>Su nueva contraseña</Lang>
                         <Lang value='ru'>Ваш новый пароль</Lang>
                         <input name='new' type='password' placeholder={
-                            langValue({
+                            AttrLang({
                                 en: 'Enter password',
                                 vi: 'Nhập mật khẩu',
                                 fr: 'Entrez le mot de passe',
@@ -96,7 +96,7 @@ export default function Page() {
                         <Lang value='es'>Repita su nueva contraseña</Lang>
                         <Lang value='ru'>Повторите ваш новый пароль</Lang>
                         <input name='repeat' type='password' placeholder={
-                            langValue({
+                            AttrLang({
                                 en: 'Enter password',
                                 vi: 'Nhập mật khẩu',
                                 fr: 'Entrez le mot de passe',

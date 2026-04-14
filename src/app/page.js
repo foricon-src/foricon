@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 // import Image from 'next/image';
 // import favicon from 'Ass/foricon-f-favicon.png';
-import { langValue, Lang } from 'Com/language';
+import { AttrLang, Lang } from 'Com/language';
 import './page.css';
 import 'Com/utils';
 
@@ -66,7 +66,7 @@ export default function Home() {
                 <label>
                     <f-icon i-s='outline' icon='magnifying-glass'/>
                     <input placeholder={
-                        langValue({
+                        AttrLang({
                             en: 'Find your perfect icon - start typing...',
                             vi: 'Tìm biểu tượng hoàn hảo - bắt đầu nhập...',
                             fr: 'Trouvez votre icône parfaite - commencez à taper...',

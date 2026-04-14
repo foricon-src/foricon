@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import './page.css'
-import { langValue, Lang } from 'Com/language';
+import { AttrLang, Lang } from 'Com/language';
 
 export default function Search() {
     let router = useRouter();
@@ -442,7 +442,7 @@ export default function Search() {
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input placeholder={
-                        langValue({
+                        AttrLang({
                             en: 'Find the perfect icon for your next masterpiece…',
                             vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
                             fr: "Trouvez l'icône parfaite pour votre prochaine création…",
