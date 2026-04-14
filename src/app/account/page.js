@@ -31,7 +31,7 @@ export default function Account() {
                     <lang value='es'>Finalizar la sesión</lang>
                     <lang value='ru'>Выйти</lang>
                 </li>
-                <li className={`line ${() => stateActive()}`}>
+                <li className={`line ${stateActive()}`}>
                     <f-icon icon='house' i-s='outline'></f-icon>
                     <lang value='en'>Home</lang>
                     <lang value='vi'>Trang chủ</lang>
@@ -545,7 +545,7 @@ export default function Account() {
                                 <f-option value='sono'>Sono</f-option>
                             </option-list>
                         </f-select>
-                        <code name='HTML'>{formatCode(`<div className='box'>
+                        <code name='HTML'>{`<div className='box'>
   <!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
@@ -556,7 +556,7 @@ export default function Account() {
   for (let i in a) {
     a[i] += '_str'
   }
-</script>`, 'html')}</code>
+</script>`}</code>
                         <lang value='en'>Indentation space</lang>
                         <lang value='vi'>Khoảng cách thụt dòng</lang>
                         <lang value='fr'>Espace d&apos;indentation</lang>
