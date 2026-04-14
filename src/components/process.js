@@ -10,8 +10,13 @@ import { useRouter } from 'next/navigation';
 
 export default function Process() {
     let router = useRouter();
+    let loaded;
+
+    document.addEventListener('DOMContentLoaded', () => loaded = true);
 
     useEffect(() => {(async () => {
+        while (!loaded) await wait();
+
         let { body, documentElement: html } = document;
         let { pathname } = location;
         let theme = localStorage.getItem('theme');
@@ -712,13 +717,7 @@ export default function Process() {
 
         html.lang = language;
 
-        (async () => {
-            function get() {
-                qSelec(true, header_center, 'a');
-            }
-            while (!get()) await wait();
-            get().forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
-        })()
+        qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each))
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
 
