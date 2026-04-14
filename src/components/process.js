@@ -24,7 +24,6 @@ export default function Process() {
         let header_right_accBtn = qSelec(false, header_right, 'li:last-child');
         let header_right_accBtn_span = qSelec(false, header_right_accBtn, 'span');
         let header_all = qSelec(false, header, 'ul[name="all"]');
-        console.log(header, header_right, header_right_accBtn);
         
         (
             theme == 'dark'
