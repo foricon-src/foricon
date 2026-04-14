@@ -714,7 +714,7 @@ export default function Process() {
         
         console.log('log');
         qSelec(true, '*').forEach(each => {
-            each.matches('lang') && getAttr(each, 'value') != html.lang && each.remove();
+            each.matches('lang') && getAttr(each, 'value') != language && each.remove();
             [...each.attributes].forEach(attr => {
                 let { name, value } = attr;
                 if (name.startsWith('lang:')) {
@@ -724,6 +724,7 @@ export default function Process() {
                 }
             })
         })
+        console.log(qSelec(false, 'lang'))
         qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
