@@ -678,9 +678,7 @@ export default function Account() {
                         <lang value='es'>Para importar el paquete Foricon a su sitio, copie el código a continuación y péguelo en el <span className='small-code element'>head</span> de su HTML.</lang>
                         <lang value='ru'>Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.</lang>
                     </p>
-                    <code name='HTML'>
-                        {formatCode(`<script src='https://foricon.vercel.app/api/import/${''}`)}
-                    </code>
+                    <code name='HTML'></code>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'docs/styling-icons/basics')}>
                             <lang value='en'>Guide about customizing icons</lang>
