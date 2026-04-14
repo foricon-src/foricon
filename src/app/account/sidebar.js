@@ -1,9 +1,11 @@
 'use client';
 
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
     let pathname = usePathname();
+    let router = useRouter();
 
     function stateActive(path = '', isIcon) {
         path && (path = `/${path}`);
@@ -29,7 +31,7 @@ export default function Sidebar() {
                 <lang value='es'>Finalizar la sesión</lang>
                 <lang value='ru'>Выйти</lang>
             </li>
-            <li className={`line ${stateActive()}`} onClick={() => go('account')}>
+            <li className={`line ${stateActive()}`} onClick={() => go(router, 'account')}>
                 <f-icon icon='house' i-s={stateActive('', true)}></f-icon>
                 <lang value='en'>Home</lang>
                 <lang value='vi'>Trang chủ</lang>
@@ -44,7 +46,7 @@ export default function Sidebar() {
                 <lang value='es'>Pagina de inicio</lang>
                 <lang value='ru'>Дом</lang>
             </li>
-            <li className={stateActive('info')} onClick={() => go('account/info')}>
+            <li className={stateActive('info')} onClick={() => go(router, 'account/info')}>
                 <f-icon icon='circle-info' i-s={stateActive('info', true)}></f-icon>
                 <lang value='en'>Account info</lang>
                 <lang value='vi'>Thông tin tài khoản</lang>
@@ -59,7 +61,7 @@ export default function Sidebar() {
                 <lang value='es'>Información de la cuenta</lang>
                 <lang value='ru'>Информация об аккаунте</lang>
             </li>
-            <li className={stateActive('security')} onClick={() => go('account/security')}>
+            <li className={stateActive('security')} onClick={() => go(router, 'account/security')}>
                 <f-icon icon='shield' i-s={stateActive('security', true)}></f-icon>
                 <lang value='en'>Security</lang>
                 <lang value='vi'>Bảo mật</lang>
@@ -74,7 +76,7 @@ export default function Sidebar() {
                 <lang value='es'>Seguridad</lang>
                 <lang value='ru'>Безопасность</lang>
             </li>
-            <li className={stateActive('personalization')} onClick={() => go('account/personalization')}>
+            <li className={stateActive('personalization')} onClick={() => go(router, 'account/personalization')}>
                 <f-icon icon='palette' i-s={stateActive('personalization', true)}></f-icon>
                 <lang value='en'>Personalization</lang>
                 <lang value='vi'>Cá nhân hóa</lang>
@@ -90,7 +92,7 @@ export default function Sidebar() {
                 <lang value='ru'>Персонализация</lang>
                 <span className='badge'>New</span>
             </li>
-            <li className={stateActive('package')} onClick={() => go('package')}>
+            <li className={stateActive('package')} onClick={() => go(router, 'package')}>
                 <f-icon icon='code' i-s='outline'></f-icon><span>Foricon Package</span>
             </li>
         </ul>
