@@ -15,6 +15,8 @@ export default function Process() {
         let { body, documentElement: html } = document;
         let { pathname } = location;
         let theme = localStorage.getItem('theme');
+
+        while (!qSelec(false, 'header')) await wait();
         
         let header = qSelec(false, 'header');
         let header_center = qSelec(false, header, 'ul[name="center"]');
@@ -22,14 +24,14 @@ export default function Process() {
         let header_right_accBtn = qSelec(false, header_right, 'li:last-child');
         let header_right_accBtn_span = qSelec(false, header_right_accBtn, 'span');
         let header_all = qSelec(false, header, 'ul[name="all"]');
-        console.log(header, header_right, header_right_accBtn)
+        console.log(header, header_right, header_right_accBtn);
         
         (
             theme == 'dark'
             ||
             !theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
         ) && !body.classList.contains('dark') && toggleTheme();
-        
+
         timezone = new Date().getTimezoneOffset() / 60;
         
         if (!pageLoaded) {
