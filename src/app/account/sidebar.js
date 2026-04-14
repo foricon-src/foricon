@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 export default function Sidebar() {
     let pathname = usePathname();
 
-    function stateActive(path = '') {
+    function stateActive(path = '', isIcon) {
         path && (path = `/${path}`);
-        return pathname == `/account${path}` ? 'active' : '';
+        return pathname == `/account${path}`
+            ? isIcon ? 'solid' : 'active'
+            : isIcon ? 'outline' : '';
     }
 
     return (
@@ -28,7 +30,7 @@ export default function Sidebar() {
                 <lang value='ru'>Выйти</lang>
             </li>
             <li className={`line ${stateActive()}`} onClick={() => go('account')}>
-                <f-icon icon='house' i-s='outline'></f-icon>
+                <f-icon icon='house' i-s={stateActive('', true)}></f-icon>
                 <lang value='en'>Home</lang>
                 <lang value='vi'>Trang chủ</lang>
                 <lang value='fr'>Page d&apos;accueil</lang>
@@ -43,7 +45,7 @@ export default function Sidebar() {
                 <lang value='ru'>Дом</lang>
             </li>
             <li className={stateActive('info')} onClick={() => go('account/info')}>
-                <f-icon icon='circle-info' i-s='outline'></f-icon>
+                <f-icon icon='circle-info' i-s={stateActive('info', true)}></f-icon>
                 <lang value='en'>Account info</lang>
                 <lang value='vi'>Thông tin tài khoản</lang>
                 <lang value='fr'>Informations sur le compte</lang>
@@ -58,7 +60,7 @@ export default function Sidebar() {
                 <lang value='ru'>Информация об аккаунте</lang>
             </li>
             <li className={stateActive('security')} onClick={() => go('account/security')}>
-                <f-icon icon='shield' i-s='outline'></f-icon>
+                <f-icon icon='shield' i-s={stateActive('security', true)}></f-icon>
                 <lang value='en'>Security</lang>
                 <lang value='vi'>Bảo mật</lang>
                 <lang value='fr'>Sécurité</lang>
@@ -73,7 +75,7 @@ export default function Sidebar() {
                 <lang value='ru'>Безопасность</lang>
             </li>
             <li className={stateActive('personalization')} onClick={() => go('account/personalization')}>
-                <f-icon icon='palette' i-s='outline'></f-icon>
+                <f-icon icon='palette' i-s={stateActive('personalization', true)}></f-icon>
                 <lang value='en'>Personalization</lang>
                 <lang value='vi'>Cá nhân hóa</lang>
                 <lang value='fr'>Personnalisation</lang>
