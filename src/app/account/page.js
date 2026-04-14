@@ -402,19 +402,20 @@ export default function Account() {
                         <lang value='pt'>A sua senha atual</lang>
                         <lang value='es'>Su contraseña actual</lang>
                         <lang value='ru'>Ваш текущий пароль</lang>
-                        <input name='current' type='password'
-                                lang:en-placeholder='Enter password'
-                                lang:vi-placeholder='Nhập mật khẩu'
-                                lang:fr-placeholder='Entrez le mot de passe'
-                                lang:it-placeholder='Inserisci la password'
-                                lang:kr-placeholder='비밀번호를 입력하세요'
-                                lang:ja-placeholder='パスワードを入力してください'
-                                lang:de-placeholder='Passwort eingeben'
-                                lang:nl-placeholder='Voer wachtwoord in'
-                                lang:dk-placeholder='Indtast adgangskode'
-                                lang:pt-placeholder='Introduza a senha'
-                                lang:es-placeholder='Introducir contraseña'
-                                lang:ru-placeholder='Введите пароль'/>
+                        <input name='current' type='password' {...{
+                            'lang:en-placeholder': 'Enter password',
+                            'lang:vi-placeholder': 'Nhập mật khẩu',
+                            'lang:fr-placeholder': 'Entrez le mot de passe',
+                            'lang:it-placeholder': 'Inserisci la password',
+                            'lang:kr-placeholder': '비밀번호를 입력하세요',
+                            'lang:ja-placeholder': 'パスワードを入力してください',
+                            'lang:de-placeholder': 'Passwort eingeben',
+                            'lang:nl-placeholder': 'Voer wachtwoord in',
+                            'lang:dk-placeholder': 'Indtast adgangskode',
+                            'lang:pt-placeholder': 'Introduza a senha',
+                            'lang:es-placeholder': 'Introducir contraseña',
+                            'lang:ru-placeholder': 'Введите пароль',
+                        }}/>
                         <lang value='en'>Your new password</lang>
                         <lang value='vi'>Mật khẩu mới</lang>
                         <lang value='fr'>Votre nouveau mot de passe</lang>
@@ -427,19 +428,20 @@ export default function Account() {
                         <lang value='pt'>A sua nova senha</lang>
                         <lang value='es'>Su nueva contraseña</lang>
                         <lang value='ru'>Ваш новый пароль</lang>
-                        <input name='new' type='password'
-                                lang:en-placeholder='Enter password'
-                                lang:vi-placeholder='Nhập mật khẩu'
-                                lang:fr-placeholder='Entrez le mot de passe'
-                                lang:it-placeholder='Inserisci la password'
-                                lang:kr-placeholder='비밀번호를 입력하세요'
-                                lang:ja-placeholder='パスワードを入力してください'
-                                lang:de-placeholder='Passwort eingeben'
-                                lang:nl-placeholder='Voer wachtwoord in'
-                                lang:dk-placeholder='Indtast adgangskode'
-                                lang:pt-placeholder='Introduza a senha'
-                                lang:es-placeholder='Introducir contraseña'
-                                lang:ru-placeholder='Введите пароль'/>
+                        <input name='new' type='password' {...{
+                            'lang:en-placeholder': 'Enter password',
+                            'lang:vi-placeholder': 'Nhập mật khẩu',
+                            'lang:fr-placeholder': 'Entrez le mot de passe',
+                            'lang:it-placeholder': 'Inserisci la password',
+                            'lang:kr-placeholder': '비밀번호를 입력하세요',
+                            'lang:ja-placeholder': 'パスワードを入力してください',
+                            'lang:de-placeholder': 'Passwort eingeben',
+                            'lang:nl-placeholder': 'Voer wachtwoord in',
+                            'lang:dk-placeholder': 'Indtast adgangskode',
+                            'lang:pt-placeholder': 'Introduza a senha',
+                            'lang:es-placeholder': 'Introducir contraseña',
+                            'lang:ru-placeholder': 'Введите пароль',
+                        }}/>
                         <lang value='en'>Repeat your new password</lang>
                         <lang value='vi'>Nhập lại mật khẩu mới</lang>
                         <lang value='fr'>Répétez votre nouveau mot de passe</lang>
@@ -452,19 +454,20 @@ export default function Account() {
                         <lang value='pt'>Repita a sua nova palavra-passe</lang>
                         <lang value='es'>Repita su nueva contraseña</lang>
                         <lang value='ru'>Повторите ваш новый пароль</lang>
-                        <input name='repeat' type='password'
-                                lang:en-placeholder='Enter password'
-                                lang:vi-placeholder='Nhập mật khẩu'
-                                lang:fr-placeholder='Entrez le mot de passe'
-                                lang:it-placeholder='Inserisci la password'
-                                lang:kr-placeholder='비밀번호를 입력하세요'
-                                lang:ja-placeholder='パスワードを入力してください'
-                                lang:de-placeholder='Passwort eingeben'
-                                lang:nl-placeholder='Voer wachtwoord in'
-                                lang:dk-placeholder='Indtast adgangskode'
-                                lang:pt-placeholder='Introduza a senha'
-                                lang:es-placeholder='Introducir contraseña'
-                                lang:ru-placeholder='Введите пароль'/>
+                        <input name='repeat' type='password' {...{
+                            'lang:en-placeholder': 'Enter password',
+                            'lang:vi-placeholder': 'Nhập mật khẩu',
+                            'lang:fr-placeholder': 'Entrez le mot de passe',
+                            'lang:it-placeholder': 'Inserisci la password',
+                            'lang:kr-placeholder': '비밀번호를 입력하세요',
+                            'lang:ja-placeholder': 'パスワードを入力してください',
+                            'lang:de-placeholder': 'Passwort eingeben',
+                            'lang:nl-placeholder': 'Voer wachtwoord in',
+                            'lang:dk-placeholder': 'Indtast adgangskode',
+                            'lang:pt-placeholder': 'Introduza a senha',
+                            'lang:es-placeholder': 'Introducir contraseña',
+                            'lang:ru-placeholder': 'Введите пароль',
+                        }}/>
                         <button className='primary'>
                             <lang value='en'>Change</lang>
                             <lang value='vi'>Thay đổi</lang>
