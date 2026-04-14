@@ -7,6 +7,7 @@ export default function Sidebar() {
 
     function stateActive(path) {
         path && (path = `/${path}`);
+        console.log(pathname, `/account${path}`)
         return pathname == `/account${path}` ? 'active' : '';
     }
 
