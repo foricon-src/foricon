@@ -2,8 +2,8 @@
 
 import dynamic from "next/dynamic";
 
-let Page = dynamic(() => import('./page-raw'), { ssr: false });
+let Raw = dynamic(() => import('./page-raw'), { ssr: false });
 
-export default function () {
-    return <Page/>;
+export default function Page() {
+    return <Raw/>;
 }
