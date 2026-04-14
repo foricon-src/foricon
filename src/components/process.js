@@ -712,6 +712,7 @@ export default function Process() {
 
         html.lang = language;
         
+        console.log('log');
         qSelec(true, '*').forEach(each => {
             each.matches('lang') && getAttr(each, 'value') != html.lang && each.remove();
             [...each.attributes].forEach(attr => {
