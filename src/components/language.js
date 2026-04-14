@@ -19,9 +19,9 @@ export function LanguageProvider({ children }) {
     useEffect(() => {(async () => {
         language = localStorage.getItem("language");
         
-        if (!l) {
-            let { country, ip } = await(await fetch("https://ipinfo.io/json")).json();
+        let { country, ip } = await(await fetch("https://ipinfo.io/json")).json();
 
+        if (!language) {
             language = {
                 VN: 'vi', FR: 'fr', IT: 'it', KR: 'kr',
                 JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
@@ -30,33 +30,33 @@ export function LanguageProvider({ children }) {
 
             localStorage.setItem('language', language);
             localStorage.setItem('country', country);
-                
-            if (!['14.187', '113.23', '27.2', '118.69'].some(i => ip.startsWith(i))) {
-                let { userAgent } = navigator;
-                let browserName =
-                    userAgent.indexOf('OPR') + 1 ? 'Opera' :
-                    userAgent.indexOf('Edg') + 1 ? 'Microsoft Edge' :
-                    userAgent.indexOf('MSIE') + 1 ? 'Microsoft Internet Explorer' :
-                    userAgent.indexOf('Chrome') + 1 ? 'Chrome' :
-                    userAgent.indexOf('Safari') + 1 ? 'Safari' :
-                    userAgent.indexOf('Firefox') + 1 ? 'Firefox' : 'Other';
-                
-                let today = getUTC();
-                let stats = (await getDoc(doc(dbFirestore, 'statistics', 'item'))).data();
-                stats.visits[today] ||= {
-                    browsers: {},
-                    countries: {},
-                }
-                
-                function update(obj, key) {
-                    obj[key] = (obj[key] || 0) + 1;
-                }
-                let { browsers, countries } = stats.visits[today];
-                update(browsers, browserName);
-                update(countries, res.country);
-                
-                await setDoc(doc(dbFirestore, 'statistics', 'item'), stats);
+        }
+        if (!['14.187', '113.23', '27.2', '118.69'].some(i => ip.startsWith(i))) {
+            console.log('set view')
+            let { userAgent } = navigator;
+            let browserName =
+                userAgent.indexOf('OPR') + 1 ? 'Opera' :
+                userAgent.indexOf('Edg') + 1 ? 'Microsoft Edge' :
+                userAgent.indexOf('MSIE') + 1 ? 'Microsoft Internet Explorer' :
+                userAgent.indexOf('Chrome') + 1 ? 'Chrome' :
+                userAgent.indexOf('Safari') + 1 ? 'Safari' :
+                userAgent.indexOf('Firefox') + 1 ? 'Firefox' : 'Other';
+            
+            let today = getUTC();
+            let stats = (await getDoc(doc(dbFirestore, 'statistics', 'item'))).data();
+            stats.visits[today] ||= {
+                browsers: {},
+                countries: {},
             }
+            
+            function update(obj, key) {
+                obj[key] = (obj[key] || 0) + 1;
+            }
+            let { browsers, countries } = stats.visits[today];
+            update(browsers, browserName);
+            update(countries, res.country);
+            
+            await setDoc(doc(dbFirestore, 'statistics', 'item'), stats);
         }
         
         setLanguage(language);
