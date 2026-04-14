@@ -33,7 +33,7 @@ export default function Account() {
                     <f-icon icon='house' i-s='outline'></f-icon>
                     <lang value='en'>Home</lang>
                     <lang value='vi'>Trang chủ</lang>
-                    <lang value='fr'>Page d'accueil</lang>
+                    <lang value='fr'>Page d&apos;accueil</lang>
                     <lang value='it'>Pagina iniziale</lang>
                     <lang value='kr'>홈페이지</lang>
                     <lang value='ja'>ホームページ</lang>
@@ -49,7 +49,7 @@ export default function Account() {
                     <lang value='en'>Account info</lang>
                     <lang value='vi'>Thông tin tài khoản</lang>
                     <lang value='fr'>Informations sur le compte</lang>
-                    <lang value='it'>Informazioni sull'account</lang>
+                    <lang value='it'>Informazioni sull&apos;account</lang>
                     <lang value='kr'>계정 정보</lang>
                     <lang value='ja'>アカウント情報</lang>
                     <lang value='de'>Kontoinformationen</lang>
@@ -156,7 +156,7 @@ export default function Account() {
                             <lang value='en'>Avatar</lang>
                             <lang value='vi'>Ảnh đại diện</lang>
                             <lang value='fr'>Avatar</lang>
-                            <lang value='it'>L'Avatar</lang>
+                            <lang value='it'>L&apos;Avatar</lang>
                             <lang value='kr'>화신</lang>
                             <lang value='ja'>アバター</lang>
                             <lang value='de'>Avatar</lang>
@@ -208,7 +208,7 @@ export default function Account() {
                             <td>
                             <lang value='en'>User ID</lang>
                             <lang value='vi'>ID người dùng</lang>
-                            <lang value='fr'>ID de l'utilisateur</lang>
+                            <lang value='fr'>ID de l&apos;utilisateur</lang>
                             <lang value='it'>ID utente</lang>
                             <lang value='kr'>사용자 ID</lang>
                             <lang value='ja'>ユーザーID</lang>
@@ -225,7 +225,7 @@ export default function Account() {
                             <td>
                             <lang value='en'>Joining date</lang>
                             <lang value='vi'>Ngày tham gia</lang>
-                            <lang value='fr'>Date d'adhésion</lang>
+                            <lang value='fr'>Date d&apos;adhésion</lang>
                             <lang value='it'>Data di adesione</lang>
                             <lang value='kr'>가입날짜</lang>
                             <lang value='ja'>入社日</lang>
@@ -275,7 +275,7 @@ export default function Account() {
                         <lang value='en'>Avatar</lang>
                         <lang value='vi'>Ảnh đại diện</lang>
                         <lang value='fr'>Avatar</lang>
-                        <lang value='it'>L'Avatar</lang>
+                        <lang value='it'>L&apos;Avatar</lang>
                         <lang value='kr'>화신</lang>
                         <lang value='ja'>アバター</lang>
                         <lang value='de'>Avatar</lang>
@@ -518,7 +518,7 @@ export default function Account() {
                 </div>
                 <div name='personalization' className={stateActive('personalization')}>
                     <form>
-                        <lang value='en'>Codebox's font</lang>
+                        <lang value='en'>Codebox&apos;s font</lang>
                         <lang value='vi'>Phông chữ của hộp mã</lang>
                         <lang value='fr'>Police de caractères de Codebox</lang>
                         <lang value='it'>Il carattere di Codebox</lang>
@@ -526,7 +526,7 @@ export default function Account() {
                         <lang value='ja'>Codeboxのフォント</lang>
                         <lang value='de'>Schriftart von Codebox</lang>
                         <lang value='nl'>Het lettertype van Codebox</lang>
-                        <lang value='dk'>Codebox' skrifttype</lang>
+                        <lang value='dk'>Codebox&apos; skrifttype</lang>
                         <lang value='pt'>Fonte Codebox</lang>
                         <lang value='es'>Fuente de Codebox</lang>
                         <lang value='ru'>Шрифт Codebox</lang>
@@ -544,20 +544,20 @@ export default function Account() {
                             </option-list>
                         </f-select>
                         <code name='HTML'>{formatCode(`<div className='box'>
-            <!--<p>Hello World!</p>-->
-        </div>
-        <script type='module'>
-        let a = JSON.parse(localStorage.getItem('a'));
-        if (a.length) {
-            a.map(i => i == 'data' || i != 'money');
-        }
-        for (let i in a) {
-            a[i] += '_str'
-        }
-        </script>`, 'html')}</code>
+  <!--<p>Hello World!</p>-->
+</div>
+<script type='module'>
+  let a = JSON.parse(localStorage.getItem('a'));
+  if (a.length) {
+    a.map(i => i == 'data' || i != 'money');
+  }
+  for (let i in a) {
+    a[i] += '_str'
+  }
+</script>`, 'html')}</code>
                         <lang value='en'>Indentation space</lang>
                         <lang value='vi'>Khoảng cách thụt dòng</lang>
-                        <lang value='fr'>Espace d'indentation</lang>
+                        <lang value='fr'>Espace d&apos;indentation</lang>
                         <lang value='it'>spazio di rientro</lang>
                         <lang value='kr'>들여쓰기 공간</lang>
                         <lang value='ja'>インデントスペース</lang>
@@ -663,7 +663,7 @@ export default function Account() {
                         <lang value='ru'>Импорт</lang>
                     </h3>
                     <p>
-                        <lang value='en'>To import Foricon Package to your site, please copy the code below and paste it into your HTML's <span className='small-code element'>head</span></lang>
+                        <lang value='en'>To import Foricon Package to your site, please copy the code below and paste it into your HTML&apos;s <span className='small-code element'>head</span></lang>
                         <lang value='vi'>Để import Foricon Package vào trang web của bạn, vui lòng sao chép mã bên dưới và dán vào thẻ <span className='small-code element'>head</span> của HTML của bạn</lang>
                         <lang value='fr'>Pour importer le package Foricon sur votre site, veuillez copier le code ci-dessous et le coller dans votre <span className='small-code element'>head</span> HTML</lang>
                         <lang value='it'>Per importare il pacchetto Foricon sul tuo sito, copia il codice sottostante e incollalo nel <span className='small-code element'>head</span> del tuo HTML</lang>
@@ -677,7 +677,7 @@ export default function Account() {
                         <lang value='ru'>Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.</lang>
                     </p>
                     <code name='HTML'>
-                        {formatCode(`<script src='https://foricon.vercel.app/api/import/${user.uid}'></script>`, 'html')}
+                        {formatCode(`<script src='https://foricon.vercel.app/api/import/${''}`)}
                     </code>
                     <ul className='btn-list vertical large'>
                         <li onclick='go("docs?styling-icons/basics")'>
@@ -862,7 +862,7 @@ export default function Account() {
                             <h6>
                                 <lang value='en'>Icon pack</lang>
                                 <lang value='vi'>Gói biểu tượng</lang>
-                                <lang value='fr'>Pack d'icônes</lang>
+                                <lang value='fr'>Pack d&apos;icônes</lang>
                                 <lang value='it'>Pacchetto di icone</lang>
                                 <lang value='kr'>아이콘 팩</lang>
                                 <lang value='ja'>アイコンパック</lang>
