@@ -10,7 +10,7 @@ export default function Sidebar() {
 
     function stateActive(path = '', isIcon) {
         path && (path = `/${path}`);
-        return pathname.startsWith(`/account${path}`)
+        return pathname.slice(8).startsWith(path)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
     }
