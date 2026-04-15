@@ -1,3 +1,3 @@
-div[name='personalization'] > form > input[name='avatar'] {
+#sidebar-page > div > div > form > input[name='avatar'] {
     display: none;
 }

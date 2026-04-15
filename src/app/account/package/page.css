@@ -1,4 +1,4 @@
-div[name='package'] > div#main_package_pageviews {
+#sidebar-page > div > div > div#main_package_pageviews {
     padding: var(--spacing-small);
     border: 1px solid var(--gray);
     border-radius: var(--bdr-rad);
