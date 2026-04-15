@@ -11,14 +11,15 @@ export function UpdateRange(elem, value) {
     elem.value = value;
     elem.dispatchEvent(new Event('input'));
 }
-export function Range(props) {
-    let { min, max, dfValue, value } = props;
+export function Range({ min, max, dfValue, value, className = '', ...rest }) {
     let [ v, setValue ] = useState(value ?? dfValue);
+    
     return <input
-        className={dfValue == v ? 'default' : ''}
         type='range'
+        className={`${className}${dfValue == v ? ' default' : ''}`}
         onInput={e => setValue(Number(e.currentTarget.value))}
         style={{'--pos': `${(v - min) / (max - min) * 100}%`}}
-        {...props}
+        value={v}
+        {...rest}
     />
 }
