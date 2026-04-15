@@ -4,9 +4,10 @@ import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
 import Code from "Com/code";
 import { GetLang } from 'Com/language';
-import 'Pag/sidebar-page.css';
-import './page.css';
 import { UpdateRange, Range } from "Com/range";
+import 'Pag/sidebar-page.css';
+import 'Pag/interal-global.css'
+import './page.css';
 
 export default function Page() {
     let router = useRouter();
