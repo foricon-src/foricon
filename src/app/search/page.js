@@ -1,18 +1,20 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import './page.css'
-import { AttrLang, Lang } from 'Com/language';
+import { getLang, Lang } from 'Com/language';
 
 export default function Search() {
     let router = useRouter();
+
+    let [ count, setCount ] = useState(0);
+    let [ type, setType ] = useState('');
 
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
   
         let chooseLayers = elemById('choose-layers');
-        let chooseLayers_b = qSelec(false, chooseLayers, 'b');
         let chooseLayers_checkboxes = getChild(qSelec(false, chooseLayers, 'div.checkboxes'));
         
         let selectedCategories = [];
@@ -139,7 +141,7 @@ export default function Search() {
                                 return;
                             }
                             let type = getAttr(currentTarget, 'name');
-                            chooseLayers_b.innerText = currentTarget.innerText;
+                            setType(currentTarget.innerText);
                             isDuotone ? enable(chooseLayers_checkboxes[1]) : disable(chooseLayers_checkboxes[1]);
                             modal(chooseLayers, layers =>
                                 layers.forEach(layer => {
@@ -183,7 +185,7 @@ export default function Search() {
                 (a, b) => similarity(b.name, value) - similarity(a.name, value)
             )).forEach(icon => getStyles(icon).forEach(style => showIcon(icon, style)));
             
-            qSelec(false, `#main > h5 > lang[value='${language}'] > span`).innerText = resultCount;
+            setCount(resultCount);
             
             for (let item in obj) {
                 let li_category = document.createElement('li');
@@ -339,34 +341,38 @@ export default function Search() {
         <>
             <div class='modal confirm' id='choose-layers'>
                 <div>
-                    <h3>
-                        <Lang value='en'>Select layer(s) to download</Lang>
-                        <Lang value='vi'>Chọn (các) lớp để tải xuống</Lang>
-                        <Lang value='fr'>Sélectionnez la/les couche(s) à télécharger</Lang>
-                        <Lang value='it'>Seleziona il/i layer da scaricare</Lang>
-                        <Lang value='kr'>다운로드할 레이어 선택</Lang>
-                        <Lang value='ja'>ダウンロードするレイヤーを選択</Lang>
-                        <Lang value='de'>Wählen Sie die Ebene(n) zum Herunterladen aus</Lang>
-                        <Lang value='nl'>Selecteer laag/lagen om te downloaden</Lang>
-                        <Lang value='dk'>Vælg lag til download</Lang>
-                        <Lang value='pt'>Selecione camada(s) para download</Lang>
-                        <Lang value='es'>Seleccione capa(s) para descargar</Lang>
-                        <Lang value='ru'>Выберите слой(и) для загрузки</Lang>
-                    </h3>
-                    <p>
-                        <Lang value='en'>Download selected layer(s) as <b></b></Lang>
-                        <Lang value='vi'>Tải xuống lớp đã chọn dưới dạng <b></b></Lang>
-                        <Lang value='fr'>Télécharger la/les couche(s) sélectionnée(s) en tant que <b></b></Lang>
-                        <Lang value='it'>Scarica il/i layer selezionato/i come <b></b></Lang>
-                        <Lang value='kr'>선택한 레이어를 다음 형식으로 다운로드 <b></b></Lang>
-                        <Lang value='ja'>選択したレイヤーを次の形式でダウンロード <b></b></Lang>
-                        <Lang value='de'>Ausgewählte Ebene(n) herunterladen als <b></b></Lang>
-                        <Lang value='nl'>Download geselecteerde laag/lagen als <b></b></Lang>
-                        <Lang value='dk'>Download valgte lag som <b></b></Lang>
-                        <Lang value='pt'>Baixar camada(s) selecionada(s) como <b></b></Lang>
-                        <Lang value='es'>Descargar capa(s) seleccionada(s) como <b></b></Lang>
-                        <Lang value='ru'>Скачать выбранный(е) слой(и) как <b></b></Lang>
-                    </p>
+                    <h3>{
+                        getLang({
+                            en: 'Select layer(s) to download',
+                            vi: 'Chọn (các) lớp để tải xuống',
+                            fr: 'Sélectionnez la/les couche(s) à télécharger',
+                            it: 'Seleziona il/i layer da scaricare',
+                            kr: '다운로드할 레이어 선택',
+                            ja: 'ダウンロードするレイヤーを選択',
+                            de: 'Wählen Sie die Ebene(n) zum Herunterladen aus',
+                            nl: 'Selecteer laag/lagen om te downloaden',
+                            dk: 'Vælg lag til download',
+                            pt: 'Selecione camada(s) para download',
+                            es: 'Seleccione capa(s) para descargar',
+                            ru: 'Выберите слой(и) для загрузки',
+                        })
+                    }</h3>
+                    <p>{
+                        getLang({
+                            en: `Download selected layer(s) as ${type}`,
+                            vi: `Tải xuống lớp đã chọn dưới dạng ${type}`,
+                            fr: `Télécharger la/les couche(s) sélectionnée(s) en tant que ${type}`,
+                            it: `Scarica il/i layer selezionato/i come ${type}`,
+                            kr: `선택한 레이어를 다음 형식으로 다운로드 ${type}`,
+                            ja: `選択したレイヤーを次の形式でダウンロード ${type}`,
+                            de: `Ausgewählte Ebene(n) herunterladen als ${type}`,
+                            nl: `Download geselecteerde laag/lagen als ${type}`,
+                            dk: `Download valgte lag som ${type}`,
+                            pt: `Baixar camada(s) selecionada(s) como ${type}`,
+                            es: `Descargar capa(s) seleccionada(s) como ${type}`,
+                            ru: `Скачать выбранный(е) слой(и) как ${type}`,
+                        })
+                    }</p>
                     <div class='checkboxes'>
                         <label>
                             <input type='checkbox' value='pri'/><div class='checkmark'></div>Primary
@@ -376,73 +382,82 @@ export default function Search() {
                         </label>
                     </div>
                     <div>
-                        <a href='javascript:void(0)' class='btn secondary'>
-                            <Lang value='en'>Cancel</Lang>
-                            <Lang value='vi'>Hủy</Lang>
-                            <Lang value='fr'>Annuler</Lang>
-                            <Lang value='it'>Cancellare</Lang>
-                            <Lang value='kr'>취소</Lang>
-                            <Lang value='ja'>キャンセル</Lang>
-                            <Lang value='de'>Stornieren</Lang>
-                            <Lang value='nl'>Annuleren</Lang>
-                            <Lang value='dk'>Ophæve</Lang>
-                            <Lang value='pt'>Cancelar</Lang>
-                            <Lang value='es'>Cancelar</Lang>
-                            <Lang value='ru'>Отмена</Lang>
-                        </a>
-                        <a href='javascript:void(0)' class='btn primary'>
-                            <Lang value='en'>Download</Lang>
-                            <Lang value='vi'>Tải xuống</Lang>
-                            <Lang value='fr'>Télécharger</Lang>
-                            <Lang value='it'>Scaricamento</Lang>
-                            <Lang value='kr'>다운로드</Lang>
-                            <Lang value='ja'>ダウンロード</Lang>
-                            <Lang value='de'>Herunterladen</Lang>
-                            <Lang value='nl'>Download</Lang>
-                            <Lang value='dk'>Download</Lang>
-                            <Lang value='pt'>Transferir</Lang>
-                            <Lang value='es'>Descargar</Lang>
-                            <Lang value='ru'>Скачать</Lang>
-                        </a>
+                        <a href='javascript:void(0)' class='btn secondary'>{
+                            getLang({
+                                en: 'Cancel',
+                                vi: 'Hủy',
+                                fr: 'Annuler',
+                                it: 'Cancellare',
+                                kr: '취소',
+                                ja: 'キャンセル',
+                                de: 'Stornieren',
+                                nl: 'Annuleren',
+                                dk: 'Ophæve',
+                                pt: 'Cancelar',
+                                es: 'Cancelar',
+                                ru: 'Отмена',
+                            })
+                        }</a>
+                        <a href='javascript:void(0)' class='btn primary'>{
+                            getLang({
+                                en: 'Download',
+                                vi: 'Tải xuống',
+                                fr: 'Télécharger',
+                                it: 'Scaricamento',
+                                kr: '다운로드',
+                                ja: 'ダウンロード',
+                                de: 'Herunterladen',
+                                nl: 'Download',
+                                dk: 'Download',
+                                pt: 'Transferir',
+                                es: 'Descargar',
+                                ru: 'Скачать',
+                            })
+                        }</a>
                     </div>
                 </div>
             </div>
             {/* <ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
             <div class='banner blue signup'>
-                <div>
-                    <Lang value='en'>Enjoy free icons - sign up to access the entire set!</Lang>
-                    <Lang value='vi'>Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập</Lang>
-                    <Lang value='fr'>Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !</Lang>
-                    <Lang value='it'>Goditi le icone gratuite - registrati per accedere all&apos;intera collezione!</Lang>
-                    <Lang value='kr'>무료 아이콘을 즐기세요 - 전체 세트를 이용하려면 가입하세요!</Lang>
-                    <Lang value='ja'>無料アイコンを楽しもう - 全セットを使うには登録が必要です！</Lang>
-                    <Lang value='de'>Kostenlose Icons genießen - registriere dich für das komplette Set!</Lang>
-                    <Lang value='nl'>Geniet van gratis iconen - meld je aan om de hele set te gebruiken!</Lang>
-                    <Lang value='dk'>Nyd gratis ikoner - tilmeld dig for adgang til hele samlingen!</Lang>
-                    <Lang value='pt'>Aproveite os ícones gratuitos - inscreva-se para acessar o conjunto completo!</Lang>
-                    <Lang value='es'>Disfruta de iconos gratis - regístrate para acceder al conjunto completo!</Lang>
-                    <Lang value='ru'>Наслаждайтесь бесплатными иконками - зарегистрируйтесь для доступа ко всем!</Lang>
-                    <a href='/p/sign-up.html' class='btn'>
-                        <Lang value='en'>Sign up</Lang>
-                        <Lang value='vi'>Đăng ký</Lang>
-                        <Lang value='fr'>S&apos;inscrire</Lang>
-                        <Lang value='it'>Iscrizione</Lang>
-                        <Lang value='kr'>가입하기</Lang>
-                        <Lang value='ja'>サインアップ</Lang>
-                        <Lang value='de'>Melden Sie sich an</Lang>
-                        <Lang value='nl'>Aanmelden</Lang>
-                        <Lang value='dk'>Tilmelde</Lang>
-                        <Lang value='pt'>Inscrever-se</Lang>
-                        <Lang value='es'>Inscribirse</Lang>
-                        <Lang value='ru'>Зарегистрироваться</Lang>
-                    </a>
+                <div>{
+                    getLang({
+                        en: 'Enjoy free icons - sign up to access the entire set!',
+                        vi: 'Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
+                        fr: 'Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !',
+                        it: 'Goditi le icone gratuite - registrati per accedere all\'intera collezione!',
+                        kr: '무료 아이콘을 즐기세요 - 전체 세트를 이용하려면 가입하세요!',
+                        ja: '無料アイコンを楽しもう - 全セットを使うには登録が必要です！',
+                        de: 'Kostenlose Icons genießen - registriere dich für das komplette Set!',
+                        nl: 'Geniet van gratis iconen - meld je aan om de hele set te gebruiken!',
+                        dk: 'Nyd gratis ikoner - tilmeld dig for adgang til hele samlingen!',
+                        pt: 'Aproveite os ícones gratuitos - inscreva-se para acessar o conjunto completo!',
+                        es: 'Disfruta de iconos gratis - regístrate para acceder al conjunto completo!',
+                        ru: 'Наслаждайтесь бесплатными иконками - зарегистрируйтесь для доступа ко всем!',
+                    })
+                }
+                    <a href='/p/sign-up.html' class='btn'>{
+                        getLang({
+                            en: 'Sign up',
+                            vi: 'Đăng ký',
+                            fr: 'S\'inscrire',
+                            it: 'Iscrizione',
+                            kr: '가입하기',
+                            ja: 'サインアップ',
+                            de: 'Melden Sie sich an',
+                            nl: 'Aanmelden',
+                            dk: 'Tilmelde',
+                            pt: 'Inscrever-se',
+                            es: 'Inscribirse',
+                            ru: 'Зарегистрироваться',
+                        })
+                    }</a>
                 </div>
             </div>
             <div id='top' class='outer-corner'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input placeholder={
-                        AttrLang({
+                        getLang({
                             en: 'Find the perfect icon for your next masterpiece…',
                             vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
                             fr: "Trouvez l'icône parfaite pour votre prochaine création…",
@@ -467,170 +482,199 @@ export default function Search() {
                 </f-select>
                 <div id='options'>
                     <ul class='btn-list line-active' id='top_options_families'>
-                    <li data-value='all'>
-                        <Lang value='en'>All</Lang>
-                        <Lang value='vi'>Tất cả</Lang>
-                        <Lang value='fr'>Tout</Lang>
-                        <Lang value='it'>Tutto</Lang>
-                        <Lang value='kr'>모두</Lang>
-                        <Lang value='ja'>全て</Lang>
-                        <Lang value='de'>Alle</Lang>
-                        <Lang value='nl'>Alle</Lang>
-                        <Lang value='dk'>Alle</Lang>
-                        <Lang value='pt'>Tudo</Lang>
-                        <Lang value='es'>Todo</Lang>
-                        <Lang value='ru'>Все</Lang>
-                    </li>
-                    <li data-value='regular'>
-                        <Lang value='en'>Regular</Lang>
-                        <Lang value='vi'>Thường</Lang>
-                        <Lang value='fr'>Régulier</Lang>
-                        <Lang value='it'>Regolare</Lang>
-                        <Lang value='kr'>정기적인</Lang>
-                        <Lang value='ja'>通常</Lang>
-                        <Lang value='de'>Regulär</Lang>
-                        <Lang value='nl'>Normaal</Lang>
-                        <Lang value='dk'>Fast</Lang>
-                        <Lang value='pt'>Regular</Lang>
-                        <Lang value='es'>Regular</Lang>
-                        <Lang value='ru'>Обычный</Lang>
-                    </li>
-                    <li data-value='duotone'>
-                        <Lang value='en'>Duotone</Lang>
-                        <Lang value='vi'>Duotone</Lang>
-                        <Lang value='fr'>Bichromie</Lang>
-                        <Lang value='it'>Duotone</Lang>
-                        <Lang value='kr'>듀오톤</Lang>
-                        <Lang value='ja'>デュオトーン</Lang>
-                        <Lang value='de'>Duotone</Lang>
-                        <Lang value='nl'>Duotoon</Lang>
-                        <Lang value='dk'>Duotone</Lang>
-                        <Lang value='pt'>Duotónico</Lang>
-                        <Lang value='es'>Duotono</Lang>
-                        <Lang value='ru'>Дуотон</Lang>
-                    </li>
+                        <li data-value='all'>{
+                            getLang({
+                                en: 'All',
+                                vi: 'Tất cả',
+                                fr: 'Tout',
+                                it: 'Tutto',
+                                kr: '모두',
+                                ja: '全て',
+                                de: 'Alle',
+                                nl: 'Alle',
+                                dk: 'Alle',
+                                pt: 'Tudo',
+                                es: 'Todo',
+                                ru: 'Все',
+                            })
+                        }</li>
+                        <li data-value='regular'>{
+                            getLang({
+                                en: 'Regular',
+                                vi: 'Thường',
+                                fr: 'Régulier',
+                                it: 'Regolare',
+                                kr: '정기적인',
+                                ja: '通常',
+                                de: 'Regulär',
+                                nl: 'Normaal',
+                                dk: 'Fast',
+                                pt: 'Regular',
+                                es: 'Regular',
+                                ru: 'Обычный',
+                            })
+                        }</li>
+                        <li data-value='duotone'>{
+                            getLang({
+                                en: 'Duotone',
+                                vi: 'Duotone',
+                                fr: 'Bichromie',
+                                it: 'Duotone',
+                                kr: '듀오톤',
+                                ja: 'デュオトーン',
+                                de: 'Duotone',
+                                nl: 'Duotoon',
+                                dk: 'Duotone',
+                                pt: 'Duotónico',
+                                es: 'Duotono',
+                                ru: 'Дуотон',
+                            })
+                        }</li>
                     </ul>
                     <ul class='btn-list line-active line' id='top_options_styles'>
-                    <li data-value='all'>
-                        <Lang value='en'>All</Lang>
-                        <Lang value='vi'>Tất cả</Lang>
-                        <Lang value='fr'>Tout</Lang>
-                        <Lang value='it'>Tutto</Lang>
-                        <Lang value='kr'>모두</Lang>
-                        <Lang value='ja'>全て</Lang>
-                        <Lang value='de'>Alle</Lang>
-                        <Lang value='nl'>Alle</Lang>
-                        <Lang value='dk'>Alle</Lang>
-                        <Lang value='pt'>Tudo</Lang>
-                        <Lang value='es'>Todo</Lang>
-                        <Lang value='ru'>Все</Lang>
-                    </li>
-                    <li data-value='solid'>
-                        <Lang value='en'>Solid</Lang>
-                        <Lang value='vi'>Đặc</Lang>
-                        <Lang value='fr'>Solide</Lang>
-                        <Lang value='it'>Solido</Lang>
-                        <Lang value='kr'>단단한</Lang>
-                        <Lang value='ja'>固体</Lang>
-                        <Lang value='de'>Solide</Lang>
-                        <Lang value='nl'>Stevig</Lang>
-                        <Lang value='dk'>Solid</Lang>
-                        <Lang value='pt'>Sólido</Lang>
-                        <Lang value='es'>Sólido</Lang>
-                        <Lang value='ru'>Твердый</Lang>
-                    </li>
-                    <li data-value='outline'>
-                        <Lang value='en'>Outline</Lang>
-                        <Lang value='vi'>Đường viền</Lang>
-                        <Lang value='fr'>Contour</Lang>
-                        <Lang value='it'>Contorno</Lang>
-                        <Lang value='kr'>개요</Lang>
-                        <Lang value='ja'>概要</Lang>
-                        <Lang value='de'>Gliederung</Lang>
-                        <Lang value='nl'>Overzicht</Lang>
-                        <Lang value='dk'>Omrids</Lang>
-                        <Lang value='pt'>Delimitar</Lang>
-                        <Lang value='es'>Describir</Lang>
-                        <Lang value='ru'>Контур</Lang>
-                    </li>
+                        <li data-value='all'>{
+                            getLang({
+                                en: 'All',
+                                vi: 'Tất cả',
+                                fr: 'Tout',
+                                it: 'Tutto',
+                                kr: '모두',
+                                ja: '全て',
+                                de: 'Alle',
+                                nl: 'Alle',
+                                dk: 'Alle',
+                                pt: 'Tudo',
+                                es: 'Todo',
+                                ru: 'Все',
+                            })
+                        }</li>
+                        <li data-value='solid'>{
+                            getLang({
+                                en: 'Solid',
+                                vi: 'Đặc',
+                                fr: 'Solide',
+                                it: 'Solido',
+                                kr: '단단한',
+                                ja: '固体',
+                                de: 'Solide',
+                                nl: 'Stevig',
+                                dk: 'Solid',
+                                pt: 'Sólido',
+                                es: 'Sólido',
+                                ru: 'Твердый',
+                            })
+                        }</li>
+                        <li data-value='outline'>{
+                            getLang({
+                                en: 'Outline',
+                                vi: 'Đường viền',
+                                fr: 'Contour',
+                                it: 'Contorno',
+                                kr: '개요',
+                                ja: '概要',
+                                de: 'Gliederung',
+                                nl: 'Overzicht',
+                                dk: 'Omrids',
+                                pt: 'Delimitar',
+                                es: 'Describir',
+                                ru: 'Контур',
+                            })
+                        }</li>
                     </ul>
                     <ul class='btn-list line-active' id='top_options_views'>
                     <li name='large' class='chip top'>
                         <f-icon icon='grid-4'></f-icon>
-                        <Lang value='en'>Large icons</Lang>
-                        <Lang value='vi'>Biểu tượng lớn</Lang>
-                        <Lang value='fr'>Grandes icônes</Lang>
-                        <Lang value='it'>Icone grandi</Lang>
-                        <Lang value='kr'>큰 아이콘</Lang>
-                        <Lang value='ja'>大きなアイコン</Lang>
-                        <Lang value='de'>Große Symbole</Lang>
-                        <Lang value='nl'>Grote iconen</Lang>
-                        <Lang value='dk'>Store ikoner</Lang>
-                        <Lang value='pt'>Ícones grandes</Lang>
-                        <Lang value='es'>Iconos grandes</Lang>
-                        <Lang value='ru'>Большие значки</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Large icons',
+                                vi: 'Biểu tượng lớn',
+                                fr: 'Grandes icônes',
+                                it: 'Icone grandi',
+                                kr: '큰 아이콘',
+                                ja: '大きなアイコン',
+                                de: 'Große Symbole',
+                                nl: 'Grote iconen',
+                                dk: 'Store ikoner',
+                                pt: 'Ícones grandes',
+                                es: 'Iconos grandes',
+                                ru: 'Большие значки',
+                            })
+                        }</span>
                     </li>
                     <li name='small' class='chip top'>
                         <f-icon icon='grid-9'></f-icon>
-                        <Lang value='en'>Small icons</Lang>
-                        <Lang value='vi'>Biểu tượng nhỏ</Lang>
-                        <Lang value='fr'>Petites icônes</Lang>
-                        <Lang value='it'>Piccole icone</Lang>
-                        <Lang value='kr'>작은 아이콘</Lang>
-                        <Lang value='ja'>小さいアイコン</Lang>
-                        <Lang value='de'>Kleine Symbole</Lang>
-                        <Lang value='nl'>Kleine iconen</Lang>
-                        <Lang value='dk'>Små ikoner</Lang>
-                        <Lang value='pt'>Ícones pequenos</Lang>
-                        <Lang value='es'>Iconos pequeños</Lang>
-                        <Lang value='ru'>Маленькие значки</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Small icons',
+                                vi: 'Biểu tượng nhỏ',
+                                fr: 'Petites icônes',
+                                it: 'Piccole icone',
+                                kr: '작은 아이콘',
+                                ja: '小さいアイコン',
+                                de: 'Kleine Symbole',
+                                nl: 'Kleine iconen',
+                                dk: 'Små ikoner',
+                                pt: 'Ícones pequenos',
+                                es: 'Iconos pequeños',
+                                ru: 'Маленькие значки',
+                            })
+                        }</span>
                     </li>
                     <li name='tiles' class='chip top'>
                         <f-icon icon='list' i-s='outline'></f-icon>
-                        <Lang value='en'>Tiles</Lang>
-                        <Lang value='vi'>Ô gạch</Lang>
-                        <Lang value='fr'>Carrelage</Lang>
-                        <Lang value='it'>Piastrelle</Lang>
-                        <Lang value='kr'>타일</Lang>
-                        <Lang value='ja'>タイル</Lang>
-                        <Lang value='de'>Fliesen</Lang>
-                        <Lang value='nl'>Tegels</Lang>
-                        <Lang value='dk'>Fliser</Lang>
-                        <Lang value='pt'>Azulejos</Lang>
-                        <Lang value='es'>Azulejos</Lang>
-                        <Lang value='ru'>Плитка</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Tiles',
+                                vi: 'Ô gạch',
+                                fr: 'Carrelage',
+                                it: 'Piastrelle',
+                                kr: '타일',
+                                ja: 'タイル',
+                                de: 'Fliesen',
+                                nl: 'Tegels',
+                                dk: 'Fliser',
+                                pt: 'Azulejos',
+                                es: 'Azulejos',
+                                ru: 'Плитка',
+                            })
+                        }</span>
                     </li>
                     </ul>
                 </div>
             </div>
             <div id='main'>
-                <h5>
-                    <Lang value='en'>Categories</Lang>
-                    <Lang value='vi'>Thể loại</Lang>
-                    <Lang value='fr'>Catégories</Lang>
-                    <Lang value='it'>Categorie</Lang>
-                    <Lang value='kr'>카테고리</Lang>
-                    <Lang value='ja'>カテゴリー</Lang>
-                    <Lang value='de'>Kategorien</Lang>
-                    <Lang value='nl'>Categorieën</Lang>
-                    <Lang value='dk'>Kategorier</Lang>
-                    <Lang value='pt'>Categorias</Lang>
-                    <Lang value='es'>Categorías</Lang>
-                    <Lang value='ru'>Категории</Lang>
-                </h5>
-                <h5>
-                    <Lang value='en'>Showing <span></span> results</Lang>
-                    <Lang value='vi'>Đang hiển thị <span></span> kết quả</Lang>
-                    <Lang value='fr'>Affichage de <span></span> résultats</Lang>
-                    <Lang value='it'>Visualizzazione di <span></span> risultati</Lang>
-                    <Lang value='kr'><span></span> 개의 결과 표시 중</Lang>
-                    <Lang value='ja'><span></span> 件の結果を表示</Lang>
-                    <Lang value='de'>Zeigt <span></span> ergebnisse</Lang>
-                    <Lang value='nl'>Er worden <span></span> resultaten weergegeven</Lang>
-                    <Lang value='dk'>Viser <span></span> resultater</Lang>
-                    <Lang value='pt'>Mostrando <span></span> resultados</Lang>
-                    <Lang value='es'>Mostrando <span></span> resultados</Lang>
-                    <Lang value='ru'>Показано <span></span> результата</Lang>
+                <h5>{
+                    getLang({
+                        en: 'Categories',
+                        vi: 'Thể loại',
+                        fr: 'Catégories',
+                        it: 'Categorie',
+                        kr: '카테고리',
+                        ja: 'カテゴリー',
+                        de: 'Kategorien',
+                        nl: 'Categorieën',
+                        dk: 'Kategorier',
+                        pt: 'Categorias',
+                        es: 'Categorías',
+                        ru: 'Категории',
+                    })
+                }</h5>
+                <h5>{
+                    getLang({
+                        en: `Showing ${count} results`,
+                        vi: `Đang hiển thị ${count} kết quả`,
+                        fr: `Affichage de ${count} résultats`,
+                        it: `Visualizzazione di ${count} risultati`,
+                        kr: `${count} 개의 결과 표시 중`,
+                        ja: `${count} 件の結果を表示`,
+                        de: `Zeigt ${count} ergebnisse`,
+                        nl: `Er worden ${count} resultaten weergegeven`,
+                        dk: `Viser ${count} resultater`,
+                        pt: `Mostrando ${count} resultados`,
+                        es: `Mostrando ${count} resultados`,
+                        ru: `Показано ${count} результата`,
+                    })
+                }
                 </h5>
                 <ul class='btn-list vertical' id='categories'></ul>
                 <div>
@@ -640,85 +684,101 @@ export default function Search() {
             </div>
             <div id='bar'>
                 <h6></h6>
-                <div id='bar_code'>
-                    <Lang value='en'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='vi'>Mã <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='fr'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='it'>Codice <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='kr'>암호 <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='ja'>コード <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='de'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='nl'>Code <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='dk'>Kode <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='pt'>Código <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='es'>Código <f-icon icon='circle-info'></f-icon>:</Lang>
-                    <Lang value='ru'>Код <f-icon icon='circle-info'></f-icon>:</Lang>
+                <div id='bar_code'>{
+                    `${getLang({
+                        en: 'Code',
+                        vi: 'Mã',
+                        fr: 'Code',
+                        it: 'Codice',
+                        kr: '암호',
+                        ja: 'コード',
+                        de: 'Code',
+                        nl: 'Code',
+                        dk: 'Kode',
+                        pt: 'Código',
+                        es: 'Código',
+                        ru: 'Код',
+                    })} `
+                }
+                    <f-icon icon='circle-info'></f-icon>:
                     <code></code>
                 </div>
-                <div id='bar_glyphs'>
-                    <Lang value='en'>Glyphs:</Lang>
-                    <Lang value='vi'>Glyph:</Lang>
-                    <Lang value='fr'>Glyphes:</Lang>
-                    <Lang value='it'>Glifi:</Lang>
-                    <Lang value='kr'>글리프:</Lang>
-                    <Lang value='ja'>グリフ:</Lang>
-                    <Lang value='de'>Glyphen:</Lang>
-                    <Lang value='nl'>Tekens:</Lang>
-                    <Lang value='dk'>Glyffer:</Lang>
-                    <Lang value='pt'>Glifos:</Lang>
-                    <Lang value='es'>Glifos:</Lang>
-                    <Lang value='ru'>Глифы:</Lang>
+                <div id='bar_glyphs'>{
+                    getLang({
+                        en: 'Glyphs:',
+                        vi: 'Glyph:',
+                        fr: 'Glyphes:',
+                        it: 'Glifi:',
+                        kr: '글리프:',
+                        ja: 'グリフ:',
+                        de: 'Glyphen:',
+                        nl: 'Tekens:',
+                        dk: 'Glyffer:',
+                        pt: 'Glifos:',
+                        es: 'Glifos:',
+                        ru: 'Глифы:',
+                    })
+                }
                     <div>
                         <div name='Primary'></div>
                         <div name='Secondary'></div>
                     </div>
                 </div>
-                <div id='bar_unicodes'>
-                    <Lang value='en'>Unicodes:</Lang>
-                    <Lang value='vi'>Unicode:</Lang>
-                    <Lang value='fr'>Unicodes:</Lang>
-                    <Lang value='it'>Unicode:</Lang>
-                    <Lang value='kr'>유니코드:</Lang>
-                    <Lang value='ja'>ユニコード:</Lang>
-                    <Lang value='de'>Unicodes:</Lang>
-                    <Lang value='nl'>Unicodes:</Lang>
-                    <Lang value='dk'>Unicodes:</Lang>
-                    <Lang value='pt'>Unicodes:</Lang>
-                    <Lang value='es'>Unicodes:</Lang>
-                    <Lang value='ru'>Юникоды:</Lang>
+                <div id='bar_unicodes'>{
+                    getLang({
+                        en: 'Unicodes:',
+                        vi: 'Unicode:',
+                        fr: 'Unicodes:',
+                        it: 'Unicode:',
+                        kr: '유니코드:',
+                        ja: 'ユニコード:',
+                        de: 'Unicodes:',
+                        nl: 'Unicodes:',
+                        dk: 'Unicodes:',
+                        pt: 'Unicodes:',
+                        es: 'Unicodes:',
+                        ru: 'Юникоды:',
+                    })
+                }
                     <div>
                         <div name='Primary'></div>
                         <div name='Secondary'></div>
                     </div>
                 </div>
-                <div id='bar_categories'>
-                    <Lang value='en'>Categories:</Lang>
-                    <Lang value='vi'>Thể loại:</Lang>
-                    <Lang value='fr'>Catégories:</Lang>
-                    <Lang value='it'>Categorie:</Lang>
-                    <Lang value='kr'>카테고리:</Lang>
-                    <Lang value='ja'>カテゴリー:</Lang>
-                    <Lang value='de'>Kategorien:</Lang>
-                    <Lang value='nl'>Categorieën:</Lang>
-                    <Lang value='dk'>Kategorier:</Lang>
-                    <Lang value='pt'>Categorias:</Lang>
-                    <Lang value='es'>Categorías:</Lang>
-                    <Lang value='ru'>Категории:</Lang>
+                <div id='bar_categories'>{
+                    getLang({
+                        en: 'Categories:',
+                        vi: 'Thể loại:',
+                        fr: 'Catégories:',
+                        it: 'Categorie:',
+                        kr: '카테고리:',
+                        ja: 'カテゴリー:',
+                        de: 'Kategorien:',
+                        nl: 'Categorieën:',
+                        dk: 'Kategorier:',
+                        pt: 'Categorias:',
+                        es: 'Categorías:',
+                        ru: 'Категории:',
+                    })
+                }
                     <ul class='btn-list'></ul>
                 </div>
-                <div id='bar_download'>
-                    <Lang value='en'>Download:</Lang>
-                    <Lang value='vi'>Tải xuống:</Lang>
-                    <Lang value='fr'>Télécharger:</Lang>
-                    <Lang value='it'>Scaricamento:</Lang>
-                    <Lang value='kr'>다운로드:</Lang>
-                    <Lang value='ja'>ダウンロード:</Lang>
-                    <Lang value='de'>Herunterladen:</Lang>
-                    <Lang value='nl'>Download:</Lang>
-                    <Lang value='dk'>Download:</Lang>
-                    <Lang value='pt'>Transferir:</Lang>
-                    <Lang value='es'>Descargar:</Lang>
-                    <Lang value='ru'>Скачать:</Lang>
+                <div id='bar_download'>{
+                    getLang({
+                        en: 'Download:',
+                        vi: 'Tải xuống:',
+                        fr: 'Télécharger:',
+                        it: 'Scaricamento:',
+                        kr: '다운로드:',
+                        ja: 'ダウンロード:',
+                        de: 'Herunterladen:',
+                        nl: 'Download:',
+                        dk: 'Download:',
+                        pt: 'Transferir:',
+                        es: 'Descargar:',
+                        ru: 'Скачать:',
+                    })
+                }
                     <ul class='btn-list'>
                         <li name='svg'>SVG</li>
                         <li name='png'>PNG</li>

@@ -35,34 +35,38 @@ export default function Page() {
                         </li>
                     </ul>
                     <ul className='btn-list vertical large'>
-                        <li onClick={() => go(router, 'pricing')}>
-                            <Lang value='en'>Foricon Plus plans</Lang>
-                            <Lang value='vi'>Các gói Foricon Plus</Lang>
-                            <Lang value='fr'>Forfaits Foricon Plus</Lang>
-                            <Lang value='it'>Piani Foricon Plus</Lang>
-                            <Lang value='kr'>Foricon Plus 계획</Lang>
-                            <Lang value='ja'>Foricon Plusプラン</Lang>
-                            <Lang value='de'>Foricon Plus-Pläne</Lang>
-                            <Lang value='nl'>Foricon Plus-abonnementen</Lang>
-                            <Lang value='dk'>Foricon Plus-planer</Lang>
-                            <Lang value='pt'>Planos Foricon Plus</Lang>
-                            <Lang value='es'>Planes de Foricon Plus</Lang>
-                            <Lang value='ru'>Планы Foricon Plus</Lang>
-                        </li>
-                        <li className='red'>
-                            <Lang value='en'>Remove my account</Lang>
-                            <Lang value='vi'>Xoá tài khoản của tôi</Lang>
-                            <Lang value='fr'>Supprimer mon compte</Lang>
-                            <Lang value='it'>Rimuovi il mio account</Lang>
-                            <Lang value='kr'>내 계정 삭제</Lang>
-                            <Lang value='ja'>アカウントを削除する</Lang>
-                            <Lang value='de'>Mein Konto entfernen</Lang>
-                            <Lang value='nl'>Verwijder mijn account</Lang>
-                            <Lang value='dk'>Fjern min konto</Lang>
-                            <Lang value='pt'>Remover a minha conta</Lang>
-                            <Lang value='es'>Eliminar mi cuenta</Lang>
-                            <Lang value='ru'>Удалить мой аккаунт</Lang>
-                        </li>
+                        <li onClick={() => go(router, 'pricing')}>{
+                            getLang({
+                                en: 'Foricon Plus plans',
+                                vi: 'Các gói Foricon Plus',
+                                fr: 'Forfaits Foricon Plus',
+                                it: 'Piani Foricon Plus',
+                                kr: 'Foricon Plus 계획',
+                                ja: 'Foricon Plusプラン',
+                                de: 'Foricon Plus-Pläne',
+                                nl: 'Foricon Plus-abonnementen',
+                                dk: 'Foricon Plus-planer',
+                                pt: 'Planos Foricon Plus',
+                                es: 'Planes de Foricon Plus',
+                                ru: 'Планы Foricon Plus',
+                            })
+                        }</li>
+                        <li className='red'>{
+                            getLang({
+                                en: 'Remove my account',
+                                vi: 'Xoá tài khoản của tôi',
+                                fr: 'Supprimer mon compte',
+                                it: 'Rimuovi il mio account',
+                                kr: '내 계정 삭제',
+                                ja: 'アカウントを削除する',
+                                de: 'Mein Konto entfernen',
+                                nl: 'Verwijder mijn account',
+                                dk: 'Fjern min konto',
+                                pt: 'Remover a minha conta',
+                                es: 'Eliminar mi cuenta',
+                                ru: 'Удалить мой аккаунт',
+                            })
+                        }</li>
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
-import { AttrLang, Lang } from "Com/language";
+import { getLang, Lang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -12,35 +12,41 @@ export default function Page() {
             <Sidebar/>
             <div>
                 <div name='security/change-password'>
-                    <h3>
-                        <Lang value='en'>Change password</Lang>
-                        <Lang value='vi'>Thay đổi mật khẩu</Lang>
-                        <Lang value='fr'>Changer le mot de passe</Lang>
-                        <Lang value='it'>Cambiare la password</Lang>
-                        <Lang value='kr'>비밀번호 변경</Lang>
-                        <Lang value='ja'>パスワードを変更する</Lang>
-                        <Lang value='de'>Kennwort ändern</Lang>
-                        <Lang value='nl'>Wachtwoord wijzigen</Lang>
-                        <Lang value='dk'>Skift adgangskode</Lang>
-                        <Lang value='pt'>Alterar a palavra-passe</Lang>
-                        <Lang value='es'>Cambiar la contraseña</Lang>
-                        <Lang value='ru'>Изменить пароль</Lang>
-                    </h3>
+                    <h3>{
+                        getLang({
+                            en: 'Change password',
+                            vi: 'Thay đổi mật khẩu',
+                            fr: 'Changer le mot de passe',
+                            it: 'Cambiare la password',
+                            kr: '비밀번호 변경',
+                            ja: 'パスワードを変更する',
+                            de: 'Kennwort ändern',
+                            nl: 'Wachtwoord wijzigen',
+                            dk: 'Skift adgangskode',
+                            pt: 'Alterar a palavra-passe',
+                            es: 'Cambiar la contraseña',
+                            ru: 'Изменить пароль',
+                        })
+                    }</h3>
                     <form>
-                        <Lang value='en'>Your current password</Lang>
-                        <Lang value='vi'>Mật khẩu hiện tại của bạn</Lang>
-                        <Lang value='fr'>Votre mot de passe actuel</Lang>
-                        <Lang value='it'>La tua password attuale</Lang>
-                        <Lang value='kr'>현재 비밀번호</Lang>
-                        <Lang value='ja'>現在のパスワード</Lang>
-                        <Lang value='de'>Ihr aktuelles Passwort</Lang>
-                        <Lang value='nl'>Uw huidige wachtwoord</Lang>
-                        <Lang value='dk'>Din nuværende adgangskode</Lang>
-                        <Lang value='pt'>A sua senha atual</Lang>
-                        <Lang value='es'>Su contraseña actual</Lang>
-                        <Lang value='ru'>Ваш текущий пароль</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Your current password',
+                                vi: 'Mật khẩu hiện tại của bạn',
+                                fr: 'Votre mot de passe actuel',
+                                it: 'La tua password attuale',
+                                kr: '현재 비밀번호',
+                                ja: '現在のパスワード',
+                                de: 'Ihr aktuelles Passwort',
+                                nl: 'Uw huidige wachtwoord',
+                                dk: 'Din nuværende adgangskode',
+                                pt: 'A sua senha atual',
+                                es: 'Su contraseña actual',
+                                ru: 'Ваш текущий пароль',
+                            })
+                        }</span>
                         <input name='current' type='password' placeholder={
-                            AttrLang({
+                            getLang({
                                 en: 'Enter password',
                                 vi: 'Nhập mật khẩu',
                                 fr: 'Entrez le mot de passe',
@@ -55,20 +61,24 @@ export default function Page() {
                                 ru: 'Введите пароль',
                             })
                         }/>
-                        <Lang value='en'>Your new password</Lang>
-                        <Lang value='vi'>Mật khẩu mới</Lang>
-                        <Lang value='fr'>Votre nouveau mot de passe</Lang>
-                        <Lang value='it'>La tua nuova password</Lang>
-                        <Lang value='kr'>새로운 비밀번호</Lang>
-                        <Lang value='ja'>新しいパスワード</Lang>
-                        <Lang value='de'>Ihr neues Passwort</Lang>
-                        <Lang value='nl'>Uw nieuwe wachtwoord</Lang>
-                        <Lang value='dk'>Din nye adgangskode</Lang>
-                        <Lang value='pt'>A sua nova senha</Lang>
-                        <Lang value='es'>Su nueva contraseña</Lang>
-                        <Lang value='ru'>Ваш новый пароль</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Your new password',
+                                vi: 'Mật khẩu mới',
+                                fr: 'Votre nouveau mot de passe',
+                                it: 'La tua nuova password',
+                                kr: '새로운 비밀번호',
+                                ja: '新しいパスワード',
+                                de: 'Ihr neues Passwort',
+                                nl: 'Uw nieuwe wachtwoord',
+                                dk: 'Din nye adgangskode',
+                                pt: 'A sua nova senha',
+                                es: 'Su nueva contraseña',
+                                ru: 'Ваш новый пароль',
+                            })
+                        }</span>
                         <input name='new' type='password' placeholder={
-                            AttrLang({
+                            getLang({
                                 en: 'Enter password',
                                 vi: 'Nhập mật khẩu',
                                 fr: 'Entrez le mot de passe',
@@ -83,20 +93,24 @@ export default function Page() {
                                 ru: 'Введите пароль',
                             })
                         }/>
-                        <Lang value='en'>Repeat your new password</Lang>
-                        <Lang value='vi'>Nhập lại mật khẩu mới</Lang>
-                        <Lang value='fr'>Répétez votre nouveau mot de passe</Lang>
-                        <Lang value='it'>Ripeti la tua nuova password</Lang>
-                        <Lang value='kr'>새로운 비밀번호를 다시 입력하세요</Lang>
-                        <Lang value='ja'>新しいパスワードを繰り返し入力してください</Lang>
-                        <Lang value='de'>Wiederholen Sie Ihr neues Passwort</Lang>
-                        <Lang value='nl'>Herhaal uw nieuwe wachtwoord</Lang>
-                        <Lang value='dk'>Gentag din nye adgangskode</Lang>
-                        <Lang value='pt'>Repita a sua nova palavra-passe</Lang>
-                        <Lang value='es'>Repita su nueva contraseña</Lang>
-                        <Lang value='ru'>Повторите ваш новый пароль</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Repeat your new password',
+                                vi: 'Nhập lại mật khẩu mới',
+                                fr: 'Répétez votre nouveau mot de passe',
+                                it: 'Ripeti la tua nuova password',
+                                kr: '새로운 비밀번호를 다시 입력하세요',
+                                ja: '新しいパスワードを繰り返し入力してください',
+                                de: 'Wiederholen Sie Ihr neues Passwort',
+                                nl: 'Herhaal uw nieuwe wachtwoord',
+                                dk: 'Gentag din nye adgangskode',
+                                pt: 'Repita a sua nova palavra-passe',
+                                es: 'Repita su nueva contraseña',
+                                ru: 'Повторите ваш новый пароль',
+                            })
+                        }</span>
                         <input name='repeat' type='password' placeholder={
-                            AttrLang({
+                            getLang({
                                 en: 'Enter password',
                                 vi: 'Nhập mật khẩu',
                                 fr: 'Entrez le mot de passe',
@@ -111,20 +125,22 @@ export default function Page() {
                                 ru: 'Введите пароль',
                             })
                         }/>
-                        <button className='primary'>
-                            <Lang value='en'>Change</Lang>
-                            <Lang value='vi'>Thay đổi</Lang>
-                            <Lang value='fr'>Changement</Lang>
-                            <Lang value='it'>Modifica</Lang>
-                            <Lang value='kr'>변화</Lang>
-                            <Lang value='ja'>変化</Lang>
-                            <Lang value='de'>Ändern</Lang>
-                            <Lang value='nl'>Wijziging</Lang>
-                            <Lang value='dk'>Forandring</Lang>
-                            <Lang value='pt'>Mudar</Lang>
-                            <Lang value='es'>Cambiar</Lang>
-                            <Lang value='ru'>Изменять</Lang>
-                        </button>
+                        <button className='primary'>{
+                            getLang({
+                                en: 'Change',
+                                vi: 'Thay đổi',
+                                fr: 'Changement',
+                                it: 'Modifica',
+                                kr: '변화',
+                                ja: '変化',
+                                de: 'Ändern',
+                                nl: 'Wijziging',
+                                dk: 'Forandring',
+                                pt: 'Mudar',
+                                es: 'Cambiar',
+                                ru: 'Изменять',
+                            })
+                        }</button>
                     </form>
                 </div>
             </div>

@@ -14,18 +14,22 @@ export default function Page() {
             <div>
                 <div name='personalization'>
                     <form>
-                        <Lang value='en'>Codebox&apos;s font</Lang>
-                        <Lang value='vi'>Phông chữ của hộp mã</Lang>
-                        <Lang value='fr'>Police de caractères de Codebox</Lang>
-                        <Lang value='it'>Il carattere di Codebox</Lang>
-                        <Lang value='kr'>코드박스의 폰트</Lang>
-                        <Lang value='ja'>Codeboxのフォント</Lang>
-                        <Lang value='de'>Schriftart von Codebox</Lang>
-                        <Lang value='nl'>Het lettertype van Codebox</Lang>
-                        <Lang value='dk'>Codebox&apos; skrifttype</Lang>
-                        <Lang value='pt'>Fonte Codebox</Lang>
-                        <Lang value='es'>Fuente de Codebox</Lang>
-                        <Lang value='ru'>Шрифт Codebox</Lang>
+                        <span>{
+                            getLang({
+                                en: "Codebox's font",
+                                vi: 'Phông chữ của hộp mã',
+                                fr: 'Police de caractères de Codebox',
+                                it: 'Il carattere di Codebox',
+                                kr: '코드박스의 폰트',
+                                ja: 'Codeboxのフォント',
+                                de: 'Schriftart von Codebox',
+                                nl: 'Het lettertype van Codebox',
+                                dk: "Codebox' skrifttype",
+                                pt: 'Fonte Codebox',
+                                es: 'Fuente de Codebox',
+                                ru: 'Шрифт Codebox',
+                            })
+                        }</span>
                         <f-select name='font'>
                             <text></text>
                             <option-list>
@@ -51,33 +55,39 @@ export default function Page() {
     a[i] += '_str'
   }
 </script>`}</Code>
-                        <Lang value='en'>Indentation space</Lang>
-                        <Lang value='vi'>Khoảng cách thụt dòng</Lang>
-                        <Lang value='fr'>Espace d&apos;indentation</Lang>
-                        <Lang value='it'>spazio di rientro</Lang>
-                        <Lang value='kr'>들여쓰기 공간</Lang>
-                        <Lang value='ja'>インデントスペース</Lang>
-                        <Lang value='de'>Einrückungsraum</Lang>
-                        <Lang value='nl'>Inspringingsruimte</Lang>
-                        <Lang value='dk'>Indrykningsafstand</Lang>
-                        <Lang value='pt'>Espaço de recuo</Lang>
-                        <Lang value='es'>Espacio de indentación</Lang>
-                        <Lang value='ru'>Пространство отступа</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Indentation space',
+                                vi: 'Khoảng cách thụt dòng',
+                                fr: 'Espace d\'indentation',
+                                it: 'spazio di rientro',
+                                kr: '들여쓰기 공간',
+                                ja: 'インデントスペース',
+                                de: 'Einrückungsraum',
+                                nl: 'Inspringingsruimte',
+                                dk: 'Indrykningsafstand',
+                                pt: 'Espaço de recuo',
+                                es: 'Espacio de indentación',
+                                ru: 'Пространство отступа',
+                            })
+                        }</span>
                         <input name='indent' type='range' min='1' max='6' step='1' df-value='2'/>
-                        <button className='primary'>
-                            <Lang value='en'>Save changes</Lang>
-                            <Lang value='vi'>Lưu thay đổi</Lang>
-                            <Lang value='fr'>Enregistrer les modifications</Lang>
-                            <Lang value='it'>Salvare le modifiche</Lang>
-                            <Lang value='kr'>변경 사항 저장</Lang>
-                            <Lang value='ja'>変更を保存</Lang>
-                            <Lang value='de'>Änderungen speichern</Lang>
-                            <Lang value='nl'>Wijzigingen opslaan</Lang>
-                            <Lang value='dk'>Gem ændringer</Lang>
-                            <Lang value='pt'>Guardar alterações</Lang>
-                            <Lang value='es'>Guardar cambios</Lang>
-                            <Lang value='ru'>Сохранить изменения</Lang>
-                        </button>
+                        <button className='primary'>{
+                            getLang({
+                                en: 'Save changes',
+                                vi: 'Lưu thay đổi',
+                                fr: 'Enregistrer les modifications',
+                                it: 'Salvare le modifiche',
+                                kr: '변경 사항 저장',
+                                ja: '変更を保存',
+                                de: 'Änderungen speichern',
+                                nl: 'Wijzigingen opslaan',
+                                dk: 'Gem ændringer',
+                                pt: 'Guardar alterações',
+                                es: 'Guardar cambios',
+                                ru: 'Сохранить изменения',
+                            })
+                        }</button>
                     </form>
                 </div>
             </div>

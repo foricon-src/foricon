@@ -4,7 +4,7 @@ import Header from 'Com/header';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-2.png';
-import { Lang, LanguageProvider } from 'Com/language';
+import { getLang, Lang, LanguageProvider } from 'Com/language';
 import './globals.css';
 import 'Com/utils'
 
@@ -48,79 +48,89 @@ export default function RootLayout({ children }) {
                             <span>&#169;2023 - 2026 Foricon</span>
                             <ul>
                                 <li>
-                                    <a href='/about'>
-                                        <Lang value='en'>About us</Lang>
-                                        <Lang value='vi'>Về chúng tôi</Lang>
-                                        <Lang value='fr'>À propos de nous</Lang>
-                                        <Lang value='it'>Chi siamo</Lang>
-                                        <Lang value='kr'>회사 소개</Lang>
-                                        <Lang value='ja'>私たちについて</Lang>
-                                        <Lang value='de'>Über uns</Lang>
-                                        <Lang value='nl'>Over ons</Lang>
-                                        <Lang value='dk'>Om os</Lang>
-                                        <Lang value='pt'>Sobre nós</Lang>
-                                        <Lang value='es'>Sobre nosotros</Lang>
-                                    </a>
+                                    <a href='/about'>{
+                                        getLang({
+                                            en: 'About us',
+                                            vi: 'Về chúng tôi',
+                                            fr: 'À propos de nous',
+                                            it: 'Chi siamo',
+                                            kr: '회사 소개',
+                                            ja: '私たちについて',
+                                            de: 'Über uns',
+                                            nl: 'Over ons',
+                                            dk: 'Om os',
+                                            pt: 'Sobre nós',
+                                            es: 'Sobre nosotros',
+                                        })
+                                    }</a>
                                 </li>
                                 <li>
-                                    <a href='/tos'>
-                                        <Lang value='en'>Terms of Service</Lang>
-                                        <Lang value='vi'>Điều khoản dịch vụ</Lang>
-                                        <Lang value='fr'>Conditions d&#39;utilisation</Lang>
-                                        <Lang value='it'>Termini di servizio</Lang>
-                                        <Lang value='kr'>서비스 약관</Lang>
-                                        <Lang value='ja'>利用規約</Lang>
-                                        <Lang value='de'>Nutzungsbedingungen</Lang>
-                                        <Lang value='nl'>Servicevoorwaarden</Lang>
-                                        <Lang value='dk'>Servicevilkår</Lang>
-                                        <Lang value='pt'>Termos de serviço</Lang>
-                                        <Lang value='es'>Términos de servicio</Lang>
-                                    </a>
+                                    <a href='/tos'>{
+                                        getLang({
+                                            en: 'Terms of Service',
+                                            vi: 'Điều khoản dịch vụ',
+                                            fr: 'Conditions d&#39;utilisation',
+                                            it: 'Termini di servizio',
+                                            kr: '서비스 약관',
+                                            ja: '利用規約',
+                                            de: 'Nutzungsbedingungen',
+                                            nl: 'Servicevoorwaarden',
+                                            dk: 'Servicevilkår',
+                                            pt: 'Termos de serviço',
+                                            es: 'Términos de servicio',
+                                        })
+                                    }</a>
                                 </li>
                                 <li>
-                                    <a href='/refund-policy'>
-                                        <Lang value='en'>Refund Policy</Lang>
-                                        <Lang value='vi'>Chính sách hoàn tiền</Lang>
-                                        <Lang value='fr'>Politique de remboursement</Lang>
-                                        <Lang value='it'>Politica di rimborso</Lang>
-                                        <Lang value='kr'>환불 정책</Lang>
-                                        <Lang value='ja'>返金ポリシー</Lang>
-                                        <Lang value='de'>Rückgaberecht</Lang>
-                                        <Lang value='nl'>Restitutiebeleid</Lang>
-                                        <Lang value='dk'>Refusionspolitik</Lang>
-                                        <Lang value='pt'>Política de Reembolso</Lang>
-                                        <Lang value='es'>Política de reembolso</Lang>
-                                    </a>
+                                    <a href='/refund-policy'>{
+                                        getLang({
+                                            en: 'Refund Policy',
+                                            vi: 'Chính sách hoàn tiền',
+                                            fr: 'Politique de remboursement',
+                                            it: 'Politica di rimborso',
+                                            kr: '환불 정책',
+                                            ja: '返金ポリシー',
+                                            de: 'Rückgaberecht',
+                                            nl: 'Restitutiebeleid',
+                                            dk: 'Refusionspolitik',
+                                            pt: 'Política de Reembolso',
+                                            es: 'Política de reembolso',
+                                        })
+                                    }</a>
                                 </li>
                                 <li>
-                                    <a href='/privacy'>
-                                        <Lang value='en'>Privacy Policy</Lang>
-                                        <Lang value='vi'>Chính sách bảo mật</Lang>
-                                        <Lang value='fr'>Politique de Confidentialité</Lang>
-                                        <Lang value='it'>Politica sulla Riservatezza</Lang>
-                                        <Lang value='kr'>개인 정보 정책</Lang>
-                                        <Lang value='ja'>プライバシーポリシー</Lang>
-                                        <Lang value='de'>Datenschutzrichtlinie</Lang>
-                                        <Lang value='nl'>Privacybeleid</Lang>
-                                        <Lang value='dk'>Fortrolighedspolitik</Lang>
-                                        <Lang value='pt'>Política de Privacidade</Lang>
-                                        <Lang value='es'>Política de Privacidad</Lang>
-                                    </a>
+                                    <a href='/privacy'>{
+                                        getLang({
+                                            en: 'Privacy Policy',
+                                            vi: 'Chính sách bảo mật',
+                                            fr: 'Politique de Confidentialité',
+                                            it: 'Politica sulla Riservatezza',
+                                            kr: '개인 정보 정책',
+                                            ja: 'プライバシーポリシー',
+                                            de: 'Datenschutzrichtlinie',
+                                            nl: 'Privacybeleid',
+                                            dk: 'Fortrolighedspolitik',
+                                            pt: 'Política de Privacidade',
+                                            es: 'Política de Privacidad',
+                                        })
+                                    }</a>
                                 </li>
                                 <li>
-                                    <a href='/support'>
-                                        <Lang value='en'>Support</Lang>
-                                        <Lang value='vi'>Hỗ trợ</Lang>
-                                        <Lang value='fr'>Soutien</Lang>
-                                        <Lang value='it'>Supporto</Lang>
-                                        <Lang value='kr'>지원하다</Lang>
-                                        <Lang value='ja'>サポート</Lang>
-                                        <Lang value='de'>Unterstützung</Lang>
-                                        <Lang value='nl'>Steun</Lang>
-                                        <Lang value='dk'>Support</Lang>
-                                        <Lang value='pt'>Apoiar</Lang>
-                                        <Lang value='es'>Apoyo</Lang>
-                                    </a>
+                                    <a href='/support'>{
+                                        getLang({
+                                            en: 'Support',
+                                            vi: 'Hỗ trợ',
+                                            fr: 'Soutien',
+                                            it: 'Supporto',
+                                            kr: '지원하다',
+                                            ja: 'サポート',
+                                            de: 'Unterstützung',
+                                            nl: 'Steun',
+                                            dk: 'Support',
+                                            pt: 'Apoiar',
+                                            es: 'Apoyo',
+                                        })
+                                    }</a>
                                 </li>
                             </ul>
                         </div>

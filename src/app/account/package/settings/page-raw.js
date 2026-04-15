@@ -12,33 +12,39 @@ export default function Page() {
             <Sidebar/>
             <div>
                 <div name='package/settings'>
-                    <h3>
-                        <Lang value='en'>Package settings</Lang>
-                        <Lang value='vi'>Cài đặt gói</Lang>
-                        <Lang value='fr'>Paramètres du package</Lang>
-                        <Lang value='it'>Impostazioni del pacchetto</Lang>
-                        <Lang value='kr'>패키지 설정</Lang>
-                        <Lang value='ja'>パッケージ設定</Lang>
-                        <Lang value='de'>Paketeinstellungen</Lang>
-                        <Lang value='nl'>Pakketinstellingen</Lang>
-                        <Lang value='dk'>Pakkeindstillinger</Lang>
-                        <Lang value='pt'>Configurações do pacote</Lang>
-                        <Lang value='es'>Configuración del paquete</Lang>
-                        <Lang value='ru'>Настройки пакета</Lang>
-                    </h3>
+                    <h3>{
+                        getLang({
+                            en: 'Package settings',
+                            vi: 'Cài đặt gói',
+                            fr: 'Paramètres du package',
+                            it: 'Impostazioni del pacchetto',
+                            kr: '패키지 설정',
+                            ja: 'パッケージ設定',
+                            de: 'Paketeinstellungen',
+                            nl: 'Pakketinstellingen',
+                            dk: 'Pakkeindstillinger',
+                            pt: 'Configurações do pacote',
+                            es: 'Configuración del paquete',
+                            ru: 'Настройки пакета',
+                        })
+                    }</h3>
                     <form>
-                        <Lang value='en'>Version</Lang>
-                        <Lang value='vi'>Phiên bản</Lang>
-                        <Lang value='fr'>Option de rendu</Lang>
-                        <Lang value='it'>Opzione di rendering</Lang>
-                        <Lang value='kr'>렌더링 옵션</Lang>
-                        <Lang value='ja'>レンダリングオプション</Lang>
-                        <Lang value='de'>Rendering-Option</Lang>
-                        <Lang value='nl'>Rendering-optie</Lang>
-                        <Lang value='dk'>Mulighed for gengivelse</Lang>
-                        <Lang value='pt'>Opção de renderização</Lang>
-                        <Lang value='es'>Opción de renderizado</Lang>
-                        <Lang value='ru'>Вариант рендеринга</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Version',
+                                vi: 'Phiên bản',
+                                fr: 'Option de rendu',
+                                it: 'Opzione di rendering',
+                                kr: '렌더링 옵션',
+                                ja: 'レンダリングオプション',
+                                de: 'Rendering-Option',
+                                nl: 'Rendering-optie',
+                                dk: 'Mulighed for gengivelse',
+                                pt: 'Opção de renderização',
+                                es: 'Opción de renderizado',
+                                ru: 'Вариант рендеринга',
+                            })
+                        }</span>
                         <f-select name='versions' multiple required>
                             <text></text>
                             <option-list>
@@ -47,94 +53,112 @@ export default function Page() {
                             <f-option value='b2w2'>Beta 2+ (WOFF2)</f-option>
                             </option-list>
                         </f-select>
-                        <Lang value='en'>Rendering option</Lang>
-                        <Lang value='vi'>Tùy chọn kết xuất</Lang>
-                        <Lang value='fr'>Option de rendu</Lang>
-                        <Lang value='it'>Opzione di rendering</Lang>
-                        <Lang value='kr'>렌더링 옵션</Lang>
-                        <Lang value='ja'>レンダリングオプション</Lang>
-                        <Lang value='de'>Rendering-Option</Lang>
-                        <Lang value='nl'>Rendering-optie</Lang>
-                        <Lang value='dk'>Mulighed for gengivelse</Lang>
-                        <Lang value='pt'>Opção de renderização</Lang>
-                        <Lang value='es'>Opción de renderizado</Lang>
-                        <Lang value='ru'>Вариант рендеринга</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Rendering option',
+                                vi: 'Tùy chọn kết xuất',
+                                fr: 'Option de rendu',
+                                it: 'Opzione di rendering',
+                                kr: '렌더링 옵션',
+                                ja: 'レンダリングオプション',
+                                de: 'Rendering-Option',
+                                nl: 'Rendering-optie',
+                                dk: 'Mulighed for gengivelse',
+                                pt: 'Opção de renderização',
+                                es: 'Opción de renderizado',
+                                ru: 'Вариант рендеринга',
+                            })
+                        }</span>
                         <f-select name='rendering-option'>
                             <text></text>
                             <option-list>
-                            <f-option value='performance'>
-                                <Lang value='en'>Performance</Lang>
-                                <Lang value='vi'>Hiệu suất</Lang>
-                                <Lang value='fr'>Performance</Lang>
-                                <Lang value='it'>Prestazione</Lang>
-                                <Lang value='kr'>성능</Lang>
-                                <Lang value='ja'>パフォーマンス</Lang>
-                                <Lang value='de'>Leistung</Lang>
-                                <Lang value='nl'>Prestatie</Lang>
-                                <Lang value='dk'>Ydeevne</Lang>
-                                <Lang value='pt'>Desempenho</Lang>
-                                <Lang value='es'>Actuación</Lang>
-                                <Lang value='ru'>Производительность</Lang>
-                            </f-option>
-                            <f-option value='precision'>
-                                <Lang value='en'>Precision</Lang>
-                                <Lang value='vi'>Chính xác</Lang>
-                                <Lang value='fr'>Précision</Lang>
-                                <Lang value='it'>Precisione</Lang>
-                                <Lang value='kr'>정도</Lang>
-                                <Lang value='ja'>精度</Lang>
-                                <Lang value='de'>Präzision</Lang>
-                                <Lang value='nl'>Precisie</Lang>
-                                <Lang value='dk'>Præcision</Lang>
-                                <Lang value='pt'>Precisão</Lang>
-                                <Lang value='es'>Precisión</Lang>
-                                <Lang value='ru'>Точность</Lang>
-                            </f-option>
+                            <f-option value='performance'>{
+                                getLang({
+                                    en: 'Performance',
+                                    vi: 'Hiệu suất',
+                                    fr: 'Performance',
+                                    it: 'Prestazione',
+                                    kr: '성능',
+                                    ja: 'パフォーマンス',
+                                    de: 'Leistung',
+                                    nl: 'Prestatie',
+                                    dk: 'Ydeevne',
+                                    pt: 'Desempenho',
+                                    es: 'Actuación',
+                                    ru: 'Производительность',
+                                })
+                            }</f-option>
+                            <f-option value='precision'>{
+                                getLang({
+                                    en: 'Precision',
+                                    vi: 'Chính xác',
+                                    fr: 'Précision',
+                                    it: 'Precisione',
+                                    kr: '정도',
+                                    ja: '精度',
+                                    de: 'Präzision',
+                                    nl: 'Precisie',
+                                    dk: 'Præcision',
+                                    pt: 'Precisão',
+                                    es: 'Precisión',
+                                    ru: 'Точность',
+                                })
+                            }</f-option>
                             </option-list>
                         </f-select>
-                        <Lang value='en'>Allowed domains</Lang>
-                        <Lang value='vi'>Tên miền được phép</Lang>
-                        <Lang value='fr'>Domaines autorisés</Lang>
-                        <Lang value='it'>Domini consentiti</Lang>
-                        <Lang value='kr'>허용된 도메인</Lang>
-                        <Lang value='ja'>許可されたドメイン</Lang>
-                        <Lang value='de'>Erlaubte Domänen</Lang>
-                        <Lang value='nl'>Toegestane domeinen</Lang>
-                        <Lang value='dk'>Tilladte domæner</Lang>
-                        <Lang value='pt'>Domínios permitidos</Lang>
-                        <Lang value='es'>Dominios permitidos</Lang>
-                        <Lang value='ru'>Разрешенные домены</Lang>
+                        <span>{
+                            getLang({
+                                en: 'Allowed domains',
+                                vi: 'Tên miền được phép',
+                                fr: 'Domaines autorisés',
+                                it: 'Domini consentiti',
+                                kr: '허용된 도메인',
+                                ja: '許可されたドメイン',
+                                de: 'Erlaubte Domänen',
+                                nl: 'Toegestane domeinen',
+                                dk: 'Tilladte domæner',
+                                pt: 'Domínios permitidos',
+                                es: 'Dominios permitidos',
+                                ru: 'Разрешенные домены',
+                            })
+                        }</span>
                         <ul className='btn-list vertical' name='domains'>
                             <li>
-                            <f-icon icon='plus' i-s='outline'></f-icon>
-                            <Lang value='en'>Add a domain</Lang>
-                            <Lang value='vi'>Thêm tên miền</Lang>
-                            <Lang value='fr'>Ajouter un domaine</Lang>
-                            <Lang value='it'>Aggiungi un dominio</Lang>
-                            <Lang value='kr'>도메인 추가</Lang>
-                            <Lang value='ja'>ドメインを追加する</Lang>
-                            <Lang value='de'>Hinzufügen einer Domäne</Lang>
-                            <Lang value='nl'>Een domein toevoegen</Lang>
-                            <Lang value='dk'>Tilføj et domæne</Lang>
-                            <Lang value='pt'>Adicionar um domínio</Lang>
-                            <Lang value='es'>Agregar un dominio</Lang>
-                            <Lang value='ru'>Добавить домен</Lang>
+                                <f-icon icon='plus' i-s='outline'></f-icon>
+                                <span>{
+                                    getLang({
+                                        en: 'Add a domain',
+                                        vi: 'Thêm tên miền',
+                                        fr: 'Ajouter un domaine',
+                                        it: 'Aggiungi un dominio',
+                                        kr: '도메인 추가',
+                                        ja: 'ドメインを追加する',
+                                        de: 'Hinzufügen einer Domäne',
+                                        nl: 'Een domein toevoegen',
+                                        dk: 'Tilføj et domæne',
+                                        pt: 'Adicionar um domínio',
+                                        es: 'Agregar un dominio',
+                                        ru: 'Добавить домен',
+                                    })
+                                }</span>
                             </li>
                         </ul>
-                        <button className='primary'>
-                            <Lang value='en'>Save changes</Lang>
-                            <Lang value='vi'>Lưu thay đổi</Lang>
-                            <Lang value='fr'>Enregistrer les modifications</Lang>
-                            <Lang value='it'>Salvare le modifiche</Lang>
-                            <Lang value='kr'>변경 사항 저장</Lang>
-                            <Lang value='ja'>変更を保存</Lang>
-                            <Lang value='de'>Änderungen speichern</Lang>
-                            <Lang value='nl'>Wijzigingen opslaan</Lang>
-                            <Lang value='dk'>Gem ændringer</Lang>
-                            <Lang value='pt'>Guardar alterações</Lang>
-                            <Lang value='es'>Guardar cambios</Lang>
-                            <Lang value='ru'>Сохранить изменения</Lang>
-                        </button>
+                        <button className='primary'>{
+                            getLang({
+                                en: 'Save changes',
+                                vi: 'Lưu thay đổi',
+                                fr: 'Enregistrer les modifications',
+                                it: 'Salvare le modifiche',
+                                kr: '변경 사항 저장',
+                                ja: '変更を保存',
+                                de: 'Änderungen speichern',
+                                nl: 'Wijzigingen opslaan',
+                                dk: 'Gem ændringer',
+                                pt: 'Guardar alterações',
+                                es: 'Guardar cambios',
+                                ru: 'Сохранить изменения',
+                            })
+                        }</button>
                     </form>
                 </div>
             </div>

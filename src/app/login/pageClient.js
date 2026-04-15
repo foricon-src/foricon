@@ -167,19 +167,22 @@ export default function LogIn() {
                 </Link>
                 <h1>{texts[language][step].h1}</h1>
                 <p>{texts[language][step].p}</p>
-                <a className='btn secondary' href='/signup'>
-                    <Lang value='en'>Create a new account</Lang>
-                    <Lang value='vi'>Tạo tài khoản mới</Lang>
-                    <Lang value='fr'>Créer un nouveau compte</Lang>
-                    <Lang value='it'>Creare un nuovo account</Lang>
-                    <Lang value='kr'>새 계정 생성</Lang>
-                    <Lang value='ja'>新しいアカウントを作成する</Lang>
-                    <Lang value='de'>Ein neues Konto erstellen</Lang>
-                    <Lang value='nl'>Maak een nieuw account aan</Lang>
-                    <Lang value='dk'>Oprette en ny konto</Lang>
-                    <Lang value='pt'>Criar uma nova conta</Lang>
-                    <Lang value='es'>Crea una cuenta nueva</Lang>
-                    <Lang value='ru'>Создать новую учетную запись</Lang>
+                <a className='btn secondary' href='/signup'>{
+                    getLang({
+                        en: 'Create a new account',
+                        vi: 'Tạo tài khoản mới',
+                        fr: 'Créer un nouveau compte',
+                        it: 'Creare un nuovo account',
+                        kr: '새 계정 생성',
+                        ja: '新しいアカウントを作成する',
+                        de: 'Ein neues Konto erstellen',
+                        nl: 'Maak een nieuw account aan',
+                        dk: 'Oprette en ny konto',
+                        pt: 'Criar uma nova conta',
+                        es: 'Crea una cuenta nueva',
+                        ru: 'Создать новую учетную запись',
+                    })
+                }
                 </a>
             </div>
             <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', e, async () => {
@@ -205,20 +208,22 @@ export default function LogIn() {
                 </ul>
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
-                    <button className='primary' type='submit'>
-                        <Lang value='en'>Next</Lang>
-                        <Lang value='vi'>Tiếp theo</Lang>
-                        <Lang value='fr'>Suivante</Lang>
-                        <Lang value='it'>Prossimo</Lang>
-                        <Lang value='kr'>다음</Lang>
-                        <Lang value='ja'>次</Lang>
-                        <Lang value='de'>Nächste</Lang>
-                        <Lang value='nl'>Volgende</Lang>
-                        <Lang value='dk'>Næste</Lang>
-                        <Lang value='pt'>Próximo</Lang>
-                        <Lang value='es'>Próximo</Lang>
-                        <Lang value='ru'>Следующий</Lang>
-                    </button>
+                    <button className='primary' type='submit'>{
+                        getLang({
+                            en: 'Next',
+                            vi: 'Tiếp theo',
+                            fr: 'Suivante',
+                            it: 'Prossimo',
+                            kr: '다음',
+                            ja: '次',
+                            de: 'Nächste',
+                            nl: 'Volgende',
+                            dk: 'Næste',
+                            pt: 'Próximo',
+                            es: 'Próximo',
+                            ru: 'Следующий',
+                        })
+                    }</button>
                 </div>
             </form>
             <form className={step == 'password' ? 'active' : ''} onSubmit={async e => {
@@ -234,33 +239,38 @@ export default function LogIn() {
                 <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
                 <a href='/forgot'>Forgot password</a>
                 <div>
-                    <button class='secondary' type='button' onClick={() => changePage('email')}>
-                        <Lang value='en'>Back</Lang>
-                        <Lang value='vi'>Trở lại</Lang>
-                        <Lang value='fr'>Dos</Lang>
-                        <Lang value='it'>Indietro</Lang>
-                        <Lang value='kr'>뒤쪽에</Lang>
-                        <Lang value='ja'>戻る</Lang>
-                        <Lang value='de'>Zurück</Lang>
-                        <Lang value='nl'>Rug</Lang>
-                        <Lang value='dk'>Tilbage</Lang>
-                        <Lang value='pt'>Voltar</Lang>
-                        <Lang value='es'>Atrás</Lang>
-                        <Lang value='ru'>Назад</Lang>
-                    </button><button class='primary' type='submit'>
-                        <Lang value='en'>Log in</Lang>
-                        <Lang value='vi'>Đăng nhập</Lang>
-                        <Lang value='fr'>Se connecter</Lang>
-                        <Lang value='it'>Login</Lang>
-                        <Lang value='kr'>로그인</Lang>
-                        <Lang value='ja'>ログイン</Lang>
-                        <Lang value='de'>Anmeldung</Lang>
-                        <Lang value='nl'>Log in</Lang>
-                        <Lang value='dk'>Log på</Lang>
-                        <Lang value='pt'>Conecte-se</Lang>
-                        <Lang value='es'>Acceso</Lang>
-                        <Lang value='ru'>Авторизоваться</Lang>
-                    </button>
+                    <button class='secondary' type='button' onClick={() => changePage('email')}>{
+                        getLang({
+                            en: 'Back',
+                            vi: 'Trở lại',
+                            fr: 'Dos',
+                            it: 'Indietro',
+                            kr: '뒤쪽에',
+                            ja: '戻る',
+                            de: 'Zurück',
+                            nl: 'Rug',
+                            dk: 'Tilbage',
+                            pt: 'Voltar',
+                            es: 'Atrás',
+                            ru: 'Назад',
+                        })
+                    }</button>
+                    <button class='primary' type='submit'>{
+                        getLang({
+                            en: 'Log in',
+                            vi: 'Đăng nhập',
+                            fr: 'Se connecter',
+                            it: 'Login',
+                            kr: '로그인',
+                            ja: 'ログイン',
+                            de: 'Anmeldung',
+                            nl: 'Log in',
+                            dk: 'Log på',
+                            pt: 'Conecte-se',
+                            es: 'Acceso',
+                            ru: 'Авторизоваться',
+                        })
+                    }</button>
                 </div>
             </form>
         </div>

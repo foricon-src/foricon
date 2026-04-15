@@ -22,100 +22,116 @@ export default function Header() {
             </div>
             <ul name='center'>
                 <li>
-                    <Link href='/'>
-                        <Lang value='en'>Home</Lang>
-                        <Lang value='vi'>Trang chủ</Lang>
-                        <Lang value='fr'>Page d&apos;accueil</Lang>
-                        <Lang value='it'>Pagina iniziale</Lang>
-                        <Lang value='kr'>홈페이지</Lang>
-                        <Lang value='ja'>ホームページ</Lang>
-                        <Lang value='de'>Startseite</Lang>
-                        <Lang value='nl'>Startpagina</Lang>
-                        <Lang value='dk'>Hjemmeside</Lang>
-                        <Lang value='pt'>Pagina inicial</Lang>
-                        <Lang value='es'>Pagina de inicio</Lang>
-                        <Lang value='ru'>Дом</Lang>
-                    </Link>
+                    <Link href='/'>{
+                        getLang({
+                            en: 'Home',
+                            vi: 'Trang chủ',
+                            fr: 'Page d\'accueil',
+                            it: 'Pagina iniziale',
+                            kr: '홈페이지',
+                            ja: 'ホームページ',
+                            de: 'Startseite',
+                            nl: 'Startpagina',
+                            dk: 'Hjemmeside',
+                            pt: 'Pagina inicial',
+                            es: 'Pagina de inicio',
+                            ru: 'Дом',
+                        })
+                    }</Link>
                 </li>
                 <li>
-                    <Link href='/search'>
-                        <Lang value='en'>Search</Lang>
-                        <Lang value='vi'>Tìm kiếm</Lang>
-                        <Lang value='fr'>Recherche</Lang>
-                        <Lang value='it'>Ricerca</Lang>
-                        <Lang value='kr'>찾다</Lang>
-                        <Lang value='ja'>検索</Lang>
-                        <Lang value='de'>Suchen</Lang>
-                        <Lang value='nl'>Zoekopdracht</Lang>
-                        <Lang value='dk'>Søg</Lang>
-                        <Lang value='pt'>Procurar</Lang>
-                        <Lang value='es'>Buscar</Lang>
-                        <Lang value='ru'>Поиск</Lang>
-                    </Link>
+                    <Link href='/search'>{
+                        getLang({
+                            en: 'Search',
+                            vi: 'Tìm kiếm',
+                            fr: 'Recherche',
+                            it: 'Ricerca',
+                            kr: '찾다',
+                            ja: '検索',
+                            de: 'Suchen',
+                            nl: 'Zoekopdracht',
+                            dk: 'Søg',
+                            pt: 'Procurar',
+                            es: 'Buscar',
+                            ru: 'Поиск',
+                        })
+                    }</Link>
                 </li>
                 <li>
-                    <Link href='/docs'>
-                        <Lang value='en'>Docs</Lang>
-                        <Lang value='vi'>Tài liệu</Lang>
-                        <Lang value='fr'>Documents</Lang>
-                        <Lang value='it'>Documenti</Lang>
-                        <Lang value='kr'>문서</Lang>
-                        <Lang value='ja'>ドキュメント</Lang>
-                        <Lang value='de'>Dokumente</Lang>
-                        <Lang value='nl'>Documenten</Lang>
-                        <Lang value='dk'>Dokumenter</Lang>
-                        <Lang value='pt'>Documentos</Lang>
-                        <Lang value='es'>Documentos</Lang>
-                        <Lang value='ru'>Документы</Lang>
-                    </Link>
+                    <Link href='/docs'>{
+                        getLang({
+                            en: 'Docs',
+                            vi: 'Tài liệu',
+                            fr: 'Documents',
+                            it: 'Documenti',
+                            kr: '문서',
+                            ja: 'ドキュメント',
+                            de: 'Dokumente',
+                            nl: 'Documenten',
+                            dk: 'Dokumenter',
+                            pt: 'Documentos',
+                            es: 'Documentos',
+                            ru: 'Документы',
+                        })
+                    }</Link>
                 </li>
                 <li>
-                    <Link href='/support'>
-                        <Lang value='en'>Support</Lang>
-                        <Lang value='vi'>Hỗ trợ</Lang>
-                        <Lang value='fr'>Soutien</Lang>
-                        <Lang value='it'>Supporto</Lang>
-                        <Lang value='kr'>지원하다</Lang>
-                        <Lang value='ja'>サポート</Lang>
-                        <Lang value='de'>Unterstützung</Lang>
-                        <Lang value='nl'>Steun</Lang>
-                        <Lang value='dk'>Support</Lang>
-                        <Lang value='pt'>Apoiar</Lang>
-                        <Lang value='es'>Apoyo</Lang>
-                        <Lang value='ru'>Поддерживать</Lang>
-                    </Link>
+                    <Link href='/support'>{
+                        getLang({
+                            en: 'Support',
+                            vi: 'Hỗ trợ',
+                            fr: 'Soutien',
+                            it: 'Supporto',
+                            kr: '지원하다',
+                            ja: 'サポート',
+                            de: 'Unterstützung',
+                            nl: 'Steun',
+                            dk: 'Support',
+                            pt: 'Apoiar',
+                            es: 'Apoyo',
+                            ru: 'Поддерживать',
+                        })
+                    }</Link>
                 </li>
             </ul>
             <ul className='btn-list' name='right'>
                 <li className='chip bottom' onClick={() => go(router, 'languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
-                    <Lang value='en'>Languages</Lang>
-                    <Lang value='vi'>Ngôn ngữ</Lang>
-                    <Lang value='fr'>Langues</Lang>
-                    <Lang value='it'>Le lingue</Lang>
-                    <Lang value='kr'>언어</Lang>
-                    <Lang value='ja'>言語</Lang>
-                    <Lang value='de'>Sprachen</Lang>
-                    <Lang value='nl'>Talen</Lang>
-                    <Lang value='dk'>Sprog</Lang>
-                    <Lang value='pt'>Línguas</Lang>
-                    <Lang value='es'>Idiomas</Lang>
-                    <Lang value='ru'>Языки</Lang>
+                    <span>{
+                        getLang({
+                            en: 'Languages',
+                            vi: 'Ngôn ngữ',
+                            fr: 'Langues',
+                            it: 'Le lingue',
+                            kr: '언어',
+                            ja: '言語',
+                            de: 'Sprachen',
+                            nl: 'Talen',
+                            dk: 'Sprog',
+                            pt: 'Línguas',
+                            es: 'Idiomas',
+                            ru: 'Языки',
+                        })
+                    }</span>
                 </li>
                 <li className={`chip bottom${open ? ' active' : ''}`} onClick={() => setOpen(!open)}>
                     <f-icon icon='bars' i-s='outline'></f-icon>
-                    <Lang value='en'>All</Lang>
-                    <Lang value='vi'>Tất cả</Lang>
-                    <Lang value='fr'>Tout</Lang>
-                    <Lang value='it'>Tutto</Lang>
-                    <Lang value='kr'>모두</Lang>
-                    <Lang value='ja'>全て</Lang>
-                    <Lang value='de'>Alle</Lang>
-                    <Lang value='nl'>Alle</Lang>
-                    <Lang value='dk'>Alle</Lang>
-                    <Lang value='pt'>Tudo</Lang>
-                    <Lang value='es'>Todo</Lang>
-                    <Lang value='ru'>Все</Lang>
+                    <span>{
+                        getLang({
+                            en: 'All',
+                            vi: 'Tất cả',
+                            fr: 'Tout',
+                            it: 'Tutto',
+                            kr: '모두',
+                            ja: '全て',
+                            de: 'Alle',
+                            nl: 'Alle',
+                            dk: 'Alle',
+                            pt: 'Tudo',
+                            es: 'Todo',
+                            ru: 'Все',
+                        })
+                    }</span>
                 </li>
                 <li className='chip bottom line' onClick={() => go(router, user ? 'account' : 'login')}>
                     <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>
@@ -124,83 +140,92 @@ export default function Header() {
             </ul>
             <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
                 <li>Foricon Plus</li>
-                <li className='line'>
-                    <Lang value='en'>Home</Lang>
-                    <Lang value='vi'>Trang chủ</Lang>
-                    <Lang value='fr'>Page d&apos;accueil</Lang>
-                    <Lang value='it'>Pagina iniziale</Lang>
-                    <Lang value='kr'>홈페이지</Lang>
-                    <Lang value='ja'>ホームページ</Lang>
-                    <Lang value='de'>Startseite</Lang>
-                    <Lang value='nl'>Startpagina</Lang>
-                    <Lang value='dk'>Hjemmeside</Lang>
-                    <Lang value='pt'>Pagina inicial</Lang>
-                    <Lang value='es'>Pagina de inicio</Lang>
-                    <Lang value='ru'>Дом</Lang>
-                </li>
-                <li>
-                    <Lang value='en'>Search</Lang>
-                    <Lang value='vi'>Tìm kiếm</Lang>
-                    <Lang value='fr'>Recherche</Lang>
-                    <Lang value='it'>Ricerca</Lang>
-                    <Lang value='kr'>찾다</Lang>
-                    <Lang value='ja'>検索</Lang>
-                    <Lang value='de'>Suchen</Lang>
-                    <Lang value='nl'>Zoekopdracht</Lang>
-                    <Lang value='dk'>Søg</Lang>
-                    <Lang value='pt'>Procurar</Lang>
-                    <Lang value='es'>Buscar</Lang>
-                    <Lang value='ru'>Поиск</Lang>
-                </li>
-                <li>
-                    <Lang value='en'>Docs</Lang>
-                    <Lang value='vi'>Tài liệu</Lang>
-                    <Lang value='fr'>Documents</Lang>
-                    <Lang value='it'>Documenti</Lang>
-                    <Lang value='kr'>문서</Lang>
-                    <Lang value='ja'>ドキュメント</Lang>
-                    <Lang value='de'>Dokumente</Lang>
-                    <Lang value='nl'>Documenten</Lang>
-                    <Lang value='dk'>Dokumenter</Lang>
-                    <Lang value='pt'>Documentos</Lang>
-                    <Lang value='es'>Documentos</Lang>
-                    <Lang value='ru'>Документы</Lang>
-                </li>
-                <li>
-                    <Lang value='en'>Support</Lang>
-                    <Lang value='vi'>Hỗ trợ</Lang>
-                    <Lang value='fr'>Soutien</Lang>
-                    <Lang value='it'>Supporto</Lang>
-                    <Lang value='kr'>지원하다</Lang>
-                    <Lang value='ja'>サポート</Lang>
-                    <Lang value='de'>Unterstützung</Lang>
-                    <Lang value='nl'>Steun</Lang>
-                    <Lang value='dk'>Support</Lang>
-                    <Lang value='pt'>Apoiar</Lang>
-                    <Lang value='es'>Apoyo</Lang>
-                    <Lang value='ru'>Поддерживать</Lang>
-                </li>
+                <li className='line'>{
+                    getLang({
+                        en: 'Home',
+                        vi: 'Trang chủ',
+                        fr: 'Page d\'accueil',
+                        it: 'Pagina iniziale',
+                        kr: '홈페이지',
+                        ja: 'ホームページ',
+                        de: 'Startseite',
+                        nl: 'Startpagina',
+                        dk: 'Hjemmeside',
+                        pt: 'Pagina inicial',
+                        es: 'Pagina de inicio',
+                        ru: 'Дом',
+                    })
+                }</li>
+                <li>{
+                    getLang({
+                        en: 'Search',
+                        vi: 'Tìm kiếm',
+                        fr: 'Recherche',
+                        it: 'Ricerca',
+                        kr: '찾다',
+                        ja: '検索',
+                        de: 'Suchen',
+                        nl: 'Zoekopdracht',
+                        dk: 'Søg',
+                        pt: 'Procurar',
+                        es: 'Buscar',
+                        ru: 'Поиск',
+                    })
+                }</li>
+                <li>{
+                    getLang({
+                        en: 'Docs',
+                        vi: 'Tài liệu',
+                        fr: 'Documents',
+                        it: 'Documenti',
+                        kr: '문서',
+                        ja: 'ドキュメント',
+                        de: 'Dokumente',
+                        nl: 'Documenten',
+                        dk: 'Dokumenter',
+                        pt: 'Documentos',
+                        es: 'Documentos',
+                        ru: 'Документы',
+                    })
+                }</li>
+                <li>{
+                    getLang({
+                        en: 'Support',
+                        vi: 'Hỗ trợ',
+                        fr: 'Soutien',
+                        it: 'Supporto',
+                        kr: '지원하다',
+                        ja: 'サポート',
+                        de: 'Unterstützung',
+                        nl: 'Steun',
+                        dk: 'Support',
+                        pt: 'Apoiar',
+                        es: 'Apoyo',
+                        ru: 'Поддерживать',
+                    })
+                }</li>
                 <li className='line'>Fotorno</li>
                 <li>Hub</li>
                 <li>Media</li>
                 <li>Music</li>
                 <li className='line' name='dark-toggle' onClick={toggleTheme}>
                     <div/>
-                    <span>
-                        <Lang value='en'>Dark mode</Lang>
-                        <Lang value='vi'>Chế độ tối</Lang>
-                        <Lang value='fr'>Mode sombre</Lang>
-                        <Lang value='it'>Modalità scura</Lang>
-                        <Lang value='kr'>다크 모드</Lang>
-                        <Lang value='ja'>ダークモード</Lang>
-                        <Lang value='de'>Dunkler Modus</Lang>
-                        <Lang value='nl'>Donkere modus</Lang>
-                        <Lang value='dk'>Mørk tilstand</Lang>
-                        <Lang value='pt'>Modo escuro</Lang>
-                        <Lang value='es'>Modo oscuro</Lang>
-                        <Lang value='ru'>Темный режим</Lang>
-                        {' '}<span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>
-                    </span>
+                    <span dangerouslySetInnerHTML={
+                        `${getLang({
+                            en: 'Dark mode',
+                            vi: 'Chế độ tối',
+                            fr: 'Mode sombre',
+                            it: 'Modalità scura',
+                            kr: '다크 모드',
+                            ja: 'ダークモード',
+                            de: 'Dunkler Modus',
+                            nl: 'Donkere modus',
+                            dk: 'Mørk tilstand',
+                            pt: 'Modo escuro',
+                            es: 'Modo oscuro',
+                            ru: 'Темный режим',
+                        })} <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>`
+                    }/>
                 </li>
             </ul>
         </header>

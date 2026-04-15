@@ -12,35 +12,39 @@ export default function Page() {
             <Sidebar/>
             <div>
                 <div name='security/login-history'>
-                    <h3>
-                        <Lang value='en'>Login history</Lang>
-                        <Lang value='vi'>Lịch sử đăng nhập</Lang>
-                        <Lang value='fr'>Historique de connexion</Lang>
-                        <Lang value='it'>Cronologia degli accessi</Lang>
-                        <Lang value='kr'>로그인 기록</Lang>
-                        <Lang value='ja'>ログイン履歴</Lang>
-                        <Lang value='de'>Anmeldeverlauf</Lang>
-                        <Lang value='nl'>Aanmeldingsgeschiedenis</Lang>
-                        <Lang value='dk'>Loginhistorik</Lang>
-                        <Lang value='pt'>Histórico de login</Lang>
-                        <Lang value='es'>Historial de inicio de sesión</Lang>
-                    <Lang value='ru'>История входов</Lang>
-                    </h3>
+                    <h3>{
+                        getLang({
+                            en: 'Login history',
+                            vi: 'Lịch sử đăng nhập',
+                            fr: 'Historique de connexion',
+                            it: 'Cronologia degli accessi',
+                            kr: '로그인 기록',
+                            ja: 'ログイン履歴',
+                            de: 'Anmeldeverlauf',
+                            nl: 'Aanmeldingsgeschiedenis',
+                            dk: 'Loginhistorik',
+                            pt: 'Histórico de login',
+                            es: 'Historial de inicio de sesión',
+                            ru: 'История входов',
+                        })
+                    }</h3>
                     <ul>
-                        <button className='primary'>
-                            <Lang value='en'>Load more</Lang>
-                            <Lang value='vi'>Tải thêm</Lang>
-                            <Lang value='fr'>Charger plus</Lang>
-                            <Lang value='it'>Carica altro</Lang>
-                            <Lang value='kr'>더 보기</Lang>
-                            <Lang value='ja'>さらに読み込む</Lang>
-                            <Lang value='de'>Mehr laden</Lang>
-                            <Lang value='nl'>Meer laden</Lang>
-                            <Lang value='dk'>Indlæs mere</Lang>
-                            <Lang value='pt'>Carregar mais</Lang>
-                            <Lang value='es'>Cargar más</Lang>
-                            <Lang value='ru'>Загрузить еще</Lang>
-                        </button>
+                        <button className='primary'>{
+                            getLang({
+                                en: 'Load more',
+                                vi: 'Tải thêm',
+                                fr: 'Charger plus',
+                                it: 'Carica altro',
+                                kr: '더 보기',
+                                ja: 'さらに読み込む',
+                                de: 'Mehr laden',
+                                nl: 'Meer laden',
+                                dk: 'Indlæs mere',
+                                pt: 'Carregar mais',
+                                es: 'Cargar más',
+                                ru: 'Загрузить еще',
+                            })
+                        }</button>
                     </ul>
                 </div>
             </div>

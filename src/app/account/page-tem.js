@@ -37,32 +37,32 @@ export default function Account() {
                     </ul>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'pricing')}>
-                            <Lang value='en'>Foricon Plus plans</Lang>
-                            <Lang value='vi'>Các gói Foricon Plus</Lang>
-                            <Lang value='fr'>Forfaits Foricon Plus</Lang>
-                            <Lang value='it'>Piani Foricon Plus</Lang>
-                            <Lang value='kr'>Foricon Plus 계획</Lang>
-                            <Lang value='ja'>Foricon Plusプラン</Lang>
-                            <Lang value='de'>Foricon Plus-Pläne</Lang>
-                            <Lang value='nl'>Foricon Plus-abonnementen</Lang>
-                            <Lang value='dk'>Foricon Plus-planer</Lang>
-                            <Lang value='pt'>Planos Foricon Plus</Lang>
-                            <Lang value='es'>Planes de Foricon Plus</Lang>
-                            <Lang value='ru'>Планы Foricon Plus</Lang>
+                            en: 'Foricon Plus plans',
+                            vi: 'Các gói Foricon Plus',
+                            fr: 'Forfaits Foricon Plus',
+                            it: 'Piani Foricon Plus',
+                            kr: 'Foricon Plus 계획',
+                            ja: 'Foricon Plusプラン',
+                            de: 'Foricon Plus-Pläne',
+                            nl: 'Foricon Plus-abonnementen',
+                            dk: 'Foricon Plus-planer',
+                            pt: 'Planos Foricon Plus',
+                            es: 'Planes de Foricon Plus',
+                            ru: 'Планы Foricon Plus',
                         </li>
                         <li className='red'>
-                            <Lang value='en'>Remove my account</Lang>
-                            <Lang value='vi'>Xoá tài khoản của tôi</Lang>
-                            <Lang value='fr'>Supprimer mon compte</Lang>
-                            <Lang value='it'>Rimuovi il mio account</Lang>
-                            <Lang value='kr'>내 계정 삭제</Lang>
-                            <Lang value='ja'>アカウントを削除する</Lang>
-                            <Lang value='de'>Mein Konto entfernen</Lang>
-                            <Lang value='nl'>Verwijder mijn account</Lang>
-                            <Lang value='dk'>Fjern min konto</Lang>
-                            <Lang value='pt'>Remover a minha conta</Lang>
-                            <Lang value='es'>Eliminar mi cuenta</Lang>
-                            <Lang value='ru'>Удалить мой аккаунт</Lang>
+                            en: 'Remove my account',
+                            vi: 'Xoá tài khoản của tôi',
+                            fr: 'Supprimer mon compte',
+                            it: 'Rimuovi il mio account',
+                            kr: '내 계정 삭제',
+                            ja: 'アカウントを削除する',
+                            de: 'Mein Konto entfernen',
+                            nl: 'Verwijder mijn account',
+                            dk: 'Fjern min konto',
+                            pt: 'Remover a minha conta',
+                            es: 'Eliminar mi cuenta',
+                            ru: 'Удалить мой аккаунт',
                         </li>
                     </ul>
                 </div>
@@ -70,18 +70,18 @@ export default function Account() {
                     <table>
                         <tr>
                             <td>
-                            <Lang value='en'>Avatar</Lang>
-                            <Lang value='vi'>Ảnh đại diện</Lang>
-                            <Lang value='fr'>Avatar</Lang>
-                            <Lang value='it'>L&apos;Avatar</Lang>
-                            <Lang value='kr'>화신</Lang>
-                            <Lang value='ja'>アバター</Lang>
-                            <Lang value='de'>Avatar</Lang>
-                            <Lang value='nl'>Avatar</Lang>
-                            <Lang value='dk'>Avatar</Lang>
-                            <Lang value='pt'>Avatar</Lang>
-                            <Lang value='es'>Avatar</Lang>
-                            <Lang value='ru'>Аватар</Lang>
+                            en: 'Avatar',
+                            vi: 'Ảnh đại diện',
+                            fr: 'Avatar',
+                            it: 'L&apos;Avatar',
+                            kr: '화신',
+                            ja: 'アバター',
+                            de: 'Avatar',
+                            nl: 'Avatar',
+                            dk: 'Avatar',
+                            pt: 'Avatar',
+                            es: 'Avatar',
+                            ru: 'Аватар',
                             </td>
                             <td>
                             <div id='main_account-info_avatar' className='img circle square avatar'></div>
@@ -89,236 +89,236 @@ export default function Account() {
                         </tr>
                         <tr>
                             <td>
-                            <Lang value='en'>Name</Lang>
-                            <Lang value='vi'>Tên</Lang>
-                            <Lang value='fr'>Nom</Lang>
-                            <Lang value='it'>Nome</Lang>
-                            <Lang value='kr'>이름</Lang>
-                            <Lang value='ja'>名前</Lang>
-                            <Lang value='de'>Name</Lang>
-                            <Lang value='nl'>Naam</Lang>
-                            <Lang value='dk'>Navn</Lang>
-                            <Lang value='pt'>Nome</Lang>
-                            <Lang value='es'>Nombre</Lang>
-                            <Lang value='ru'>Имя</Lang>
+                            en: 'Name',
+                            vi: 'Tên',
+                            fr: 'Nom',
+                            it: 'Nome',
+                            kr: '이름',
+                            ja: '名前',
+                            de: 'Name',
+                            nl: 'Naam',
+                            dk: 'Navn',
+                            pt: 'Nome',
+                            es: 'Nombre',
+                            ru: 'Имя',
                             </td>
                             <td id='main_account-info_username'>Username123</td>
                         </tr>
                         <tr>
                             <td>
-                            <Lang value='en'>Email</Lang>
-                            <Lang value='vi'>Email</Lang>
-                            <Lang value='fr'>Email</Lang>
-                            <Lang value='it'>Email</Lang>
-                            <Lang value='kr'>이메일</Lang>
-                            <Lang value='ja'>メール</Lang>
-                            <Lang value='de'>Email</Lang>
-                            <Lang value='nl'>Email</Lang>
-                            <Lang value='dk'>Email</Lang>
-                            <Lang value='pt'>Email</Lang>
-                            <Lang value='es'>Correo electrónico</Lang>
-                            <Lang value='ru'>Электронная почта</Lang>
+                            en: 'Email',
+                            vi: 'Email',
+                            fr: 'Email',
+                            it: 'Email',
+                            kr: '이메일',
+                            ja: 'メール',
+                            de: 'Email',
+                            nl: 'Email',
+                            dk: 'Email',
+                            pt: 'Email',
+                            es: 'Correo electrónico',
+                            ru: 'Электронная почта',
                             </td>
                             <td id='main_account-info_email'>user@example.com</td>
                         </tr>
                         <tr>
                             <td>
-                            <Lang value='en'>User ID</Lang>
-                            <Lang value='vi'>ID người dùng</Lang>
-                            <Lang value='fr'>ID de l&apos;utilisateur</Lang>
-                            <Lang value='it'>ID utente</Lang>
-                            <Lang value='kr'>사용자 ID</Lang>
-                            <Lang value='ja'>ユーザーID</Lang>
-                            <Lang value='de'>Benutzer-ID</Lang>
-                            <Lang value='nl'>Gebruikers-ID</Lang>
-                            <Lang value='dk'>Bruger-id</Lang>
-                            <Lang value='pt'>ID do utilizador</Lang>
-                            <Lang value='es'>ID de usuario</Lang>
-                            <Lang value='ru'>ID пользователя</Lang>
+                            en: 'User ID',
+                            vi: 'ID người dùng',
+                            fr: 'ID de l&apos;utilisateur',
+                            it: 'ID utente',
+                            kr: '사용자 ID',
+                            ja: 'ユーザーID',
+                            de: 'Benutzer-ID',
+                            nl: 'Gebruikers-ID',
+                            dk: 'Bruger-id',
+                            pt: 'ID do utilizador',
+                            es: 'ID de usuario',
+                            ru: 'ID пользователя',
                             </td>
                             <td id='main_account-info_uid'>123ABC</td>
                         </tr>
                         <tr>
                             <td>
-                            <Lang value='en'>Joining date</Lang>
-                            <Lang value='vi'>Ngày tham gia</Lang>
-                            <Lang value='fr'>Date d&apos;adhésion</Lang>
-                            <Lang value='it'>Data di adesione</Lang>
-                            <Lang value='kr'>가입날짜</Lang>
-                            <Lang value='ja'>入社日</Lang>
-                            <Lang value='de'>Eintrittsdatum</Lang>
-                            <Lang value='nl'>Datum van toetreding</Lang>
-                            <Lang value='dk'>Tilmeldingsdato</Lang>
-                            <Lang value='pt'>Data de adesão</Lang>
-                            <Lang value='es'>Fecha de ingreso</Lang>
-                            <Lang value='ru'>Дата присоединения</Lang>
+                            en: 'Joining date',
+                            vi: 'Ngày tham gia',
+                            fr: 'Date d&apos;adhésion',
+                            it: 'Data di adesione',
+                            kr: '가입날짜',
+                            ja: '入社日',
+                            de: 'Eintrittsdatum',
+                            nl: 'Datum van toetreding',
+                            dk: 'Tilmeldingsdato',
+                            pt: 'Data de adesão',
+                            es: 'Fecha de ingreso',
+                            ru: 'Дата присоединения',
                             </td>
                             <td id='main_account-info_joining-date'>21 December, 2023</td>
                         </tr>
                     </table>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'account/info/edit')}>
-                            <Lang value='en'>Edit account info</Lang>
-                            <Lang value='vi'>Chỉnh sửa thông tin tài khoản</Lang>
-                            <Lang value='fr'>Modifier les informations du compte</Lang>
-                            <Lang value='it'>Modifica informazioni account</Lang>
-                            <Lang value='kr'>계정 정보 편집</Lang>
-                            <Lang value='ja'>アカウント情報を編集</Lang>
-                            <Lang value='de'>Kontoinformationen bearbeiten</Lang>
-                            <Lang value='nl'>Accountgegevens bewerken</Lang>
-                            <Lang value='dk'>Rediger kontooplysninger</Lang>
-                            <Lang value='pt'>Editar informações da conta</Lang>
-                            <Lang value='es'>Editar la información de la cuenta</Lang>
-                            <Lang value='ru'>Изменить информацию об аккаунте</Lang>
+                            en: 'Edit account info',
+                            vi: 'Chỉnh sửa thông tin tài khoản',
+                            fr: 'Modifier les informations du compte',
+                            it: 'Modifica informazioni account',
+                            kr: '계정 정보 편집',
+                            ja: 'アカウント情報を編集',
+                            de: 'Kontoinformationen bearbeiten',
+                            nl: 'Accountgegevens bewerken',
+                            dk: 'Rediger kontooplysninger',
+                            pt: 'Editar informações da conta',
+                            es: 'Editar la información de la cuenta',
+                            ru: 'Изменить информацию об аккаунте',
                         </li>
                     </ul>
                 </div>
                 <div name='account-info/edit'>
                     <h3>
-                        <Lang value='en'>Edit account info</Lang>
-                        <Lang value='vi'>Chỉnh sửa thông tin tài khoản</Lang>
-                        <Lang value='fr'>Modifier les informations du compte</Lang>
-                        <Lang value='it'>Modifica informazioni account</Lang>
-                        <Lang value='kr'>계정 정보 편집</Lang>
-                        <Lang value='ja'>アカウント情報を編集</Lang>
-                        <Lang value='de'>Kontoinformationen bearbeiten</Lang>
-                        <Lang value='nl'>Accountgegevens bewerken</Lang>
-                        <Lang value='dk'>Rediger kontooplysninger</Lang>
-                        <Lang value='pt'>Editar informações da conta</Lang>
-                        <Lang value='es'>Editar la información de la cuenta</Lang>
-                        <Lang value='ru'>Изменить информацию об аккаунте</Lang>
+                        en: 'Edit account info',
+                        vi: 'Chỉnh sửa thông tin tài khoản',
+                        fr: 'Modifier les informations du compte',
+                        it: 'Modifica informazioni account',
+                        kr: '계정 정보 편집',
+                        ja: 'アカウント情報を編集',
+                        de: 'Kontoinformationen bearbeiten',
+                        nl: 'Accountgegevens bewerken',
+                        dk: 'Rediger kontooplysninger',
+                        pt: 'Editar informações da conta',
+                        es: 'Editar la información de la cuenta',
+                        ru: 'Изменить информацию об аккаунте',
                     </h3>
                     <form>
-                        <Lang value='en'>Avatar</Lang>
-                        <Lang value='vi'>Ảnh đại diện</Lang>
-                        <Lang value='fr'>Avatar</Lang>
-                        <Lang value='it'>L&apos;Avatar</Lang>
-                        <Lang value='kr'>화신</Lang>
-                        <Lang value='ja'>アバター</Lang>
-                        <Lang value='de'>Avatar</Lang>
-                        <Lang value='nl'>Avatar</Lang>
-                        <Lang value='dk'>Avatar</Lang>
-                        <Lang value='pt'>Avatar</Lang>
-                        <Lang value='es'>Avatar</Lang>
-                        <Lang value='ru'>Аватар</Lang>
+                        en: 'Avatar',
+                        vi: 'Ảnh đại diện',
+                        fr: 'Avatar',
+                        it: 'L&apos;Avatar',
+                        kr: '화신',
+                        ja: 'アバター',
+                        de: 'Avatar',
+                        nl: 'Avatar',
+                        dk: 'Avatar',
+                        pt: 'Avatar',
+                        es: 'Avatar',
+                        ru: 'Аватар',
                         <input name='avatar'/>
                         <button type='button' className='secondary' id='main_account-info-edit_form_choose-avatar'>Choose from Media</button>
-                        <Lang value='en'>Name</Lang>
-                        <Lang value='vi'>Tên</Lang>
-                        <Lang value='fr'>Nom</Lang>
-                        <Lang value='it'>Nome</Lang>
-                        <Lang value='kr'>이름</Lang>
-                        <Lang value='ja'>名前</Lang>
-                        <Lang value='de'>Name</Lang>
-                        <Lang value='nl'>Naam</Lang>
-                        <Lang value='dk'>Navn</Lang>
-                        <Lang value='pt'>Nome</Lang>
-                        <Lang value='es'>Nombre</Lang>
-                        <Lang value='ru'>Имя</Lang>
+                        en: 'Name',
+                        vi: 'Tên',
+                        fr: 'Nom',
+                        it: 'Nome',
+                        kr: '이름',
+                        ja: '名前',
+                        de: 'Name',
+                        nl: 'Naam',
+                        dk: 'Navn',
+                        pt: 'Nome',
+                        es: 'Nombre',
+                        ru: 'Имя',
                         <input name='name' type='name' maxlength='30' placeholder='John Doe'/>
-                        <Lang value='en'>Email</Lang>
-                        <Lang value='vi'>Email</Lang>
-                        <Lang value='fr'>Email</Lang>
-                        <Lang value='it'>Email</Lang>
-                        <Lang value='kr'>이메일</Lang>
-                        <Lang value='ja'>メール</Lang>
-                        <Lang value='de'>Email</Lang>
-                        <Lang value='nl'>Email</Lang>
-                        <Lang value='dk'>Email</Lang>
-                        <Lang value='pt'>Email</Lang>
-                        <Lang value='es'>Correo electrónico</Lang>
-                        <Lang value='ru'>Электронная почта</Lang>
+                        en: 'Email',
+                        vi: 'Email',
+                        fr: 'Email',
+                        it: 'Email',
+                        kr: '이메일',
+                        ja: 'メール',
+                        de: 'Email',
+                        nl: 'Email',
+                        dk: 'Email',
+                        pt: 'Email',
+                        es: 'Correo electrónico',
+                        ru: 'Электронная почта',
                         <input name='email' type='email' placeholder='user@example.com'/>
                         <button className='primary'>
-                            <Lang value='en'>Save changes</Lang>
-                            <Lang value='vi'>Lưu thay đổi</Lang>
-                            <Lang value='fr'>Enregistrer les modifications</Lang>
-                            <Lang value='it'>Salvare le modifiche</Lang>
-                            <Lang value='kr'>변경 사항 저장</Lang>
-                            <Lang value='ja'>変更を保存</Lang>
-                            <Lang value='de'>Änderungen speichern</Lang>
-                            <Lang value='nl'>Wijzigingen opslaan</Lang>
-                            <Lang value='dk'>Gem ændringer</Lang>
-                            <Lang value='pt'>Guardar alterações</Lang>
-                            <Lang value='es'>Guardar cambios</Lang>
-                            <Lang value='ru'>Сохранить изменения</Lang>
+                            en: 'Save changes',
+                            vi: 'Lưu thay đổi',
+                            fr: 'Enregistrer les modifications',
+                            it: 'Salvare le modifiche',
+                            kr: '변경 사항 저장',
+                            ja: '変更を保存',
+                            de: 'Änderungen speichern',
+                            nl: 'Wijzigingen opslaan',
+                            dk: 'Gem ændringer',
+                            pt: 'Guardar alterações',
+                            es: 'Guardar cambios',
+                            ru: 'Сохранить изменения',
                         </button>
                     </form>
                 </div>
                 <div name='security'>
                     <h3>
-                        <Lang value='en'>Security & Privacy</Lang>
-                        <Lang value='vi'>Bảo mật & Quyền riêng tư</Lang>
-                        <Lang value='fr'>Sécurité et confidentialité</Lang>
-                        <Lang value='it'>Sicurezza e privacy</Lang>
-                        <Lang value='kr'>보안 및 개인 정보 보호</Lang>
-                        <Lang value='ja'>セキュリティとプライバシー</Lang>
-                        <Lang value='de'>Sicherheit und Datenschutz</Lang>
-                        <Lang value='nl'>Beveiliging en privacy</Lang>
-                        <Lang value='dk'>Sikkerhed og privatliv</Lang>
-                        <Lang value='pt'>Segurança e Privacidade</Lang>
-                        <Lang value='es'>Seguridad y privacidad</Lang>
-                        <Lang value='ru'>Безопасность и конфиденциальность</Lang>
+                        en: 'Security & Privacy',
+                        vi: 'Bảo mật & Quyền riêng tư',
+                        fr: 'Sécurité et confidentialité',
+                        it: 'Sicurezza e privacy',
+                        kr: '보안 및 개인 정보 보호',
+                        ja: 'セキュリティとプライバシー',
+                        de: 'Sicherheit und Datenschutz',
+                        nl: 'Beveiliging en privacy',
+                        dk: 'Sikkerhed og privatliv',
+                        pt: 'Segurança e Privacidade',
+                        es: 'Seguridad y privacidad',
+                        ru: 'Безопасность и конфиденциальность',
                     </h3>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'account/security/change-password')}>
-                            <Lang value='en'>Change password</Lang>
-                            <Lang value='vi'>Thay đổi mật khẩu</Lang>
-                            <Lang value='fr'>Changer le mot de passe</Lang>
-                            <Lang value='it'>Cambiare la password</Lang>
-                            <Lang value='kr'>비밀번호 변경</Lang>
-                            <Lang value='ja'>パスワードを変更する</Lang>
-                            <Lang value='de'>Kennwort ändern</Lang>
-                            <Lang value='nl'>Wachtwoord wijzigen</Lang>
-                            <Lang value='dk'>Skift adgangskode</Lang>
-                            <Lang value='pt'>Alterar a palavra-passe</Lang>
-                            <Lang value='es'>Cambiar la contraseña</Lang>
-                            <Lang value='ru'>Изменить пароль</Lang>
+                            en: 'Change password',
+                            vi: 'Thay đổi mật khẩu',
+                            fr: 'Changer le mot de passe',
+                            it: 'Cambiare la password',
+                            kr: '비밀번호 변경',
+                            ja: 'パスワードを変更する',
+                            de: 'Kennwort ändern',
+                            nl: 'Wachtwoord wijzigen',
+                            dk: 'Skift adgangskode',
+                            pt: 'Alterar a palavra-passe',
+                            es: 'Cambiar la contraseña',
+                            ru: 'Изменить пароль',
                         </li>
                         <li onClick={() => go(router, 'account/security/login-history')}>
-                            <Lang value='en'>Login history</Lang>
-                            <Lang value='vi'>Lịch sử đăng nhập</Lang>
-                            <Lang value='fr'>Historique de connexion</Lang>
-                            <Lang value='it'>Cronologia degli accessi</Lang>
-                            <Lang value='kr'>로그인 기록</Lang>
-                            <Lang value='ja'>ログイン履歴</Lang>
-                            <Lang value='de'>Anmeldeverlauf</Lang>
-                            <Lang value='nl'>Aanmeldingsgeschiedenis</Lang>
-                            <Lang value='dk'>Loginhistorik</Lang>
-                            <Lang value='pt'>Histórico de login</Lang>
-                            <Lang value='es'>Historial de inicio de sesión</Lang>
-                            <Lang value='ru'>История входов</Lang>
+                            en: 'Login history',
+                            vi: 'Lịch sử đăng nhập',
+                            fr: 'Historique de connexion',
+                            it: 'Cronologia degli accessi',
+                            kr: '로그인 기록',
+                            ja: 'ログイン履歴',
+                            de: 'Anmeldeverlauf',
+                            nl: 'Aanmeldingsgeschiedenis',
+                            dk: 'Loginhistorik',
+                            pt: 'Histórico de login',
+                            es: 'Historial de inicio de sesión',
+                            ru: 'История входов',
                         </li>
                     </ul>
                 </div>
                 <div name='security/change-password'>
                     <h3>
-                        <Lang value='en'>Change password</Lang>
-                        <Lang value='vi'>Thay đổi mật khẩu</Lang>
-                        <Lang value='fr'>Changer le mot de passe</Lang>
-                        <Lang value='it'>Cambiare la password</Lang>
-                        <Lang value='kr'>비밀번호 변경</Lang>
-                        <Lang value='ja'>パスワードを変更する</Lang>
-                        <Lang value='de'>Kennwort ändern</Lang>
-                        <Lang value='nl'>Wachtwoord wijzigen</Lang>
-                        <Lang value='dk'>Skift adgangskode</Lang>
-                        <Lang value='pt'>Alterar a palavra-passe</Lang>
-                        <Lang value='es'>Cambiar la contraseña</Lang>
-                        <Lang value='ru'>Изменить пароль</Lang>
+                        en: 'Change password',
+                        vi: 'Thay đổi mật khẩu',
+                        fr: 'Changer le mot de passe',
+                        it: 'Cambiare la password',
+                        kr: '비밀번호 변경',
+                        ja: 'パスワードを変更する',
+                        de: 'Kennwort ändern',
+                        nl: 'Wachtwoord wijzigen',
+                        dk: 'Skift adgangskode',
+                        pt: 'Alterar a palavra-passe',
+                        es: 'Cambiar la contraseña',
+                        ru: 'Изменить пароль',
                     </h3>
                     <form>
-                        <Lang value='en'>Your current password</Lang>
-                        <Lang value='vi'>Mật khẩu hiện tại của bạn</Lang>
-                        <Lang value='fr'>Votre mot de passe actuel</Lang>
-                        <Lang value='it'>La tua password attuale</Lang>
-                        <Lang value='kr'>현재 비밀번호</Lang>
-                        <Lang value='ja'>現在のパスワード</Lang>
-                        <Lang value='de'>Ihr aktuelles Passwort</Lang>
-                        <Lang value='nl'>Uw huidige wachtwoord</Lang>
-                        <Lang value='dk'>Din nuværende adgangskode</Lang>
-                        <Lang value='pt'>A sua senha atual</Lang>
-                        <Lang value='es'>Su contraseña actual</Lang>
-                        <Lang value='ru'>Ваш текущий пароль</Lang>
+                        en: 'Your current password',
+                        vi: 'Mật khẩu hiện tại của bạn',
+                        fr: 'Votre mot de passe actuel',
+                        it: 'La tua password attuale',
+                        kr: '현재 비밀번호',
+                        ja: '現在のパスワード',
+                        de: 'Ihr aktuelles Passwort',
+                        nl: 'Uw huidige wachtwoord',
+                        dk: 'Din nuværende adgangskode',
+                        pt: 'A sua senha atual',
+                        es: 'Su contraseña actual',
+                        ru: 'Ваш текущий пароль',
                         <input name='current' type='password' {...{
                             'lang:en-placeholder': 'Enter password',
                             'lang:vi-placeholder': 'Nhập mật khẩu',
@@ -333,18 +333,18 @@ export default function Account() {
                             'lang:es-placeholder': 'Introducir contraseña',
                             'lang:ru-placeholder': 'Введите пароль',
                         }}/>
-                        <Lang value='en'>Your new password</Lang>
-                        <Lang value='vi'>Mật khẩu mới</Lang>
-                        <Lang value='fr'>Votre nouveau mot de passe</Lang>
-                        <Lang value='it'>La tua nuova password</Lang>
-                        <Lang value='kr'>새로운 비밀번호</Lang>
-                        <Lang value='ja'>新しいパスワード</Lang>
-                        <Lang value='de'>Ihr neues Passwort</Lang>
-                        <Lang value='nl'>Uw nieuwe wachtwoord</Lang>
-                        <Lang value='dk'>Din nye adgangskode</Lang>
-                        <Lang value='pt'>A sua nova senha</Lang>
-                        <Lang value='es'>Su nueva contraseña</Lang>
-                        <Lang value='ru'>Ваш новый пароль</Lang>
+                        en: 'Your new password',
+                        vi: 'Mật khẩu mới',
+                        fr: 'Votre nouveau mot de passe',
+                        it: 'La tua nuova password',
+                        kr: '새로운 비밀번호',
+                        ja: '新しいパスワード',
+                        de: 'Ihr neues Passwort',
+                        nl: 'Uw nieuwe wachtwoord',
+                        dk: 'Din nye adgangskode',
+                        pt: 'A sua nova senha',
+                        es: 'Su nueva contraseña',
+                        ru: 'Ваш новый пароль',
                         <input name='new' type='password' {...{
                             'lang:en-placeholder': 'Enter password',
                             'lang:vi-placeholder': 'Nhập mật khẩu',
@@ -359,18 +359,18 @@ export default function Account() {
                             'lang:es-placeholder': 'Introducir contraseña',
                             'lang:ru-placeholder': 'Введите пароль',
                         }}/>
-                        <Lang value='en'>Repeat your new password</Lang>
-                        <Lang value='vi'>Nhập lại mật khẩu mới</Lang>
-                        <Lang value='fr'>Répétez votre nouveau mot de passe</Lang>
-                        <Lang value='it'>Ripeti la tua nuova password</Lang>
-                        <Lang value='kr'>새로운 비밀번호를 다시 입력하세요</Lang>
-                        <Lang value='ja'>新しいパスワードを繰り返し入力してください</Lang>
-                        <Lang value='de'>Wiederholen Sie Ihr neues Passwort</Lang>
-                        <Lang value='nl'>Herhaal uw nieuwe wachtwoord</Lang>
-                        <Lang value='dk'>Gentag din nye adgangskode</Lang>
-                        <Lang value='pt'>Repita a sua nova palavra-passe</Lang>
-                        <Lang value='es'>Repita su nueva contraseña</Lang>
-                        <Lang value='ru'>Повторите ваш новый пароль</Lang>
+                        en: 'Repeat your new password',
+                        vi: 'Nhập lại mật khẩu mới',
+                        fr: 'Répétez votre nouveau mot de passe',
+                        it: 'Ripeti la tua nuova password',
+                        kr: '새로운 비밀번호를 다시 입력하세요',
+                        ja: '新しいパスワードを繰り返し入力してください',
+                        de: 'Wiederholen Sie Ihr neues Passwort',
+                        nl: 'Herhaal uw nieuwe wachtwoord',
+                        dk: 'Gentag din nye adgangskode',
+                        pt: 'Repita a sua nova palavra-passe',
+                        es: 'Repita su nueva contraseña',
+                        ru: 'Повторите ваш новый пароль',
                         <input name='repeat' type='password' {...{
                             'lang:en-placeholder': 'Enter password',
                             'lang:vi-placeholder': 'Nhập mật khẩu',
@@ -386,67 +386,67 @@ export default function Account() {
                             'lang:ru-placeholder': 'Введите пароль',
                         }}/>
                         <button className='primary'>
-                            <Lang value='en'>Change</Lang>
-                            <Lang value='vi'>Thay đổi</Lang>
-                            <Lang value='fr'>Changement</Lang>
-                            <Lang value='it'>Modifica</Lang>
-                            <Lang value='kr'>변화</Lang>
-                            <Lang value='ja'>変化</Lang>
-                            <Lang value='de'>Ändern</Lang>
-                            <Lang value='nl'>Wijziging</Lang>
-                            <Lang value='dk'>Forandring</Lang>
-                            <Lang value='pt'>Mudar</Lang>
-                            <Lang value='es'>Cambiar</Lang>
-                            <Lang value='ru'>Изменять</Lang>
+                            en: 'Change',
+                            vi: 'Thay đổi',
+                            fr: 'Changement',
+                            it: 'Modifica',
+                            kr: '변화',
+                            ja: '変化',
+                            de: 'Ändern',
+                            nl: 'Wijziging',
+                            dk: 'Forandring',
+                            pt: 'Mudar',
+                            es: 'Cambiar',
+                            ru: 'Изменять',
                         </button>
                     </form>
                 </div>
                 <div name='security/login-history'>
                     <h3>
-                        <Lang value='en'>Login history</Lang>
-                        <Lang value='vi'>Lịch sử đăng nhập</Lang>
-                        <Lang value='fr'>Historique de connexion</Lang>
-                        <Lang value='it'>Cronologia degli accessi</Lang>
-                        <Lang value='kr'>로그인 기록</Lang>
-                        <Lang value='ja'>ログイン履歴</Lang>
-                        <Lang value='de'>Anmeldeverlauf</Lang>
-                        <Lang value='nl'>Aanmeldingsgeschiedenis</Lang>
-                        <Lang value='dk'>Loginhistorik</Lang>
-                        <Lang value='pt'>Histórico de login</Lang>
-                        <Lang value='es'>Historial de inicio de sesión</Lang>
-                    <Lang value='ru'>История входов</Lang>
+                        en: 'Login history',
+                        vi: 'Lịch sử đăng nhập',
+                        fr: 'Historique de connexion',
+                        it: 'Cronologia degli accessi',
+                        kr: '로그인 기록',
+                        ja: 'ログイン履歴',
+                        de: 'Anmeldeverlauf',
+                        nl: 'Aanmeldingsgeschiedenis',
+                        dk: 'Loginhistorik',
+                        pt: 'Histórico de login',
+                        es: 'Historial de inicio de sesión',
+                    ru: 'История входов',
                     </h3>
                     <ul>
                         <button className='primary'>
-                            <Lang value='en'>Load more</Lang>
-                            <Lang value='vi'>Tải thêm</Lang>
-                            <Lang value='fr'>Charger plus</Lang>
-                            <Lang value='it'>Carica altro</Lang>
-                            <Lang value='kr'>더 보기</Lang>
-                            <Lang value='ja'>さらに読み込む</Lang>
-                            <Lang value='de'>Mehr laden</Lang>
-                            <Lang value='nl'>Meer laden</Lang>
-                            <Lang value='dk'>Indlæs mere</Lang>
-                            <Lang value='pt'>Carregar mais</Lang>
-                            <Lang value='es'>Cargar más</Lang>
-                            <Lang value='ru'>Загрузить еще</Lang>
+                            en: 'Load more',
+                            vi: 'Tải thêm',
+                            fr: 'Charger plus',
+                            it: 'Carica altro',
+                            kr: '더 보기',
+                            ja: 'さらに読み込む',
+                            de: 'Mehr laden',
+                            nl: 'Meer laden',
+                            dk: 'Indlæs mere',
+                            pt: 'Carregar mais',
+                            es: 'Cargar más',
+                            ru: 'Загрузить еще',
                         </button>
                     </ul>
                 </div>
                 <div name='personalization'>
                     <form>
-                        <Lang value='en'>Codebox&apos;s font</Lang>
-                        <Lang value='vi'>Phông chữ của hộp mã</Lang>
-                        <Lang value='fr'>Police de caractères de Codebox</Lang>
-                        <Lang value='it'>Il carattere di Codebox</Lang>
-                        <Lang value='kr'>코드박스의 폰트</Lang>
-                        <Lang value='ja'>Codeboxのフォント</Lang>
-                        <Lang value='de'>Schriftart von Codebox</Lang>
-                        <Lang value='nl'>Het lettertype van Codebox</Lang>
-                        <Lang value='dk'>Codebox&apos; skrifttype</Lang>
-                        <Lang value='pt'>Fonte Codebox</Lang>
-                        <Lang value='es'>Fuente de Codebox</Lang>
-                        <Lang value='ru'>Шрифт Codebox</Lang>
+                        en: 'Codebox&apos;s font',
+                        vi: 'Phông chữ của hộp mã',
+                        fr: 'Police de caractères de Codebox',
+                        it: 'Il carattere di Codebox',
+                        kr: '코드박스의 폰트',
+                        ja: 'Codeboxのフォント',
+                        de: 'Schriftart von Codebox',
+                        nl: 'Het lettertype van Codebox',
+                        dk: 'Codebox&apos; skrifttype',
+                        pt: 'Fonte Codebox',
+                        es: 'Fuente de Codebox',
+                        ru: 'Шрифт Codebox',
                         <f-select name='font'>
                             <text></text>
                             <option-list>
@@ -472,32 +472,32 @@ export default function Account() {
     a[i] += '_str'
   }
 </script>`}</code>
-                        <Lang value='en'>Indentation space</Lang>
-                        <Lang value='vi'>Khoảng cách thụt dòng</Lang>
-                        <Lang value='fr'>Espace d&apos;indentation</Lang>
-                        <Lang value='it'>spazio di rientro</Lang>
-                        <Lang value='kr'>들여쓰기 공간</Lang>
-                        <Lang value='ja'>インデントスペース</Lang>
-                        <Lang value='de'>Einrückungsraum</Lang>
-                        <Lang value='nl'>Inspringingsruimte</Lang>
-                        <Lang value='dk'>Indrykningsafstand</Lang>
-                        <Lang value='pt'>Espaço de recuo</Lang>
-                        <Lang value='es'>Espacio de indentación</Lang>
-                        <Lang value='ru'>Пространство отступа</Lang>
+                        en: 'Indentation space',
+                        vi: 'Khoảng cách thụt dòng',
+                        fr: 'Espace d&apos;indentation',
+                        it: 'spazio di rientro',
+                        kr: '들여쓰기 공간',
+                        ja: 'インデントスペース',
+                        de: 'Einrückungsraum',
+                        nl: 'Inspringingsruimte',
+                        dk: 'Indrykningsafstand',
+                        pt: 'Espaço de recuo',
+                        es: 'Espacio de indentación',
+                        ru: 'Пространство отступа',
                         <input name='indent' type='range' min='1' max='6' step='1' df-value='2'/>
                         <button className='primary'>
-                            <Lang value='en'>Save changes</Lang>
-                            <Lang value='vi'>Lưu thay đổi</Lang>
-                            <Lang value='fr'>Enregistrer les modifications</Lang>
-                            <Lang value='it'>Salvare le modifiche</Lang>
-                            <Lang value='kr'>변경 사항 저장</Lang>
-                            <Lang value='ja'>変更を保存</Lang>
-                            <Lang value='de'>Änderungen speichern</Lang>
-                            <Lang value='nl'>Wijzigingen opslaan</Lang>
-                            <Lang value='dk'>Gem ændringer</Lang>
-                            <Lang value='pt'>Guardar alterações</Lang>
-                            <Lang value='es'>Guardar cambios</Lang>
-                            <Lang value='ru'>Сохранить изменения</Lang>
+                            en: 'Save changes',
+                            vi: 'Lưu thay đổi',
+                            fr: 'Enregistrer les modifications',
+                            it: 'Salvare le modifiche',
+                            kr: '변경 사항 저장',
+                            ja: '変更を保存',
+                            de: 'Änderungen speichern',
+                            nl: 'Wijzigingen opslaan',
+                            dk: 'Gem ændringer',
+                            pt: 'Guardar alterações',
+                            es: 'Guardar cambios',
+                            ru: 'Сохранить изменения',
                         </button>
                     </form>
                 </div>
@@ -505,29 +505,29 @@ export default function Account() {
                     <div id='main_package_pageviews'>
                         <div id='main_package_pageviews_chart'>
                             <div>
-                                <Lang value='en'>You have used</Lang>
-                                <Lang value='vi'>Bạn đã sử dụng</Lang>
-                                <Lang value='fr'>Vous avez utilisé</Lang>
-                                <Lang value='it'>Hai utilizzato</Lang>
-                                <Lang value='de'>Sie haben</Lang>
-                                <Lang value='nl'>U hebt</Lang>
-                                <Lang value='dk'>Du har brugt</Lang>
-                                <Lang value='pt'>Utilizou</Lang>
-                                <Lang value='es'>Has utilizado</Lang>
-                                <Lang value='ru'>Вы использовали</Lang>
+                                en: 'You have used',
+                                vi: 'Bạn đã sử dụng',
+                                fr: 'Vous avez utilisé',
+                                it: 'Hai utilizzato',
+                                de: 'Sie haben',
+                                nl: 'U hebt',
+                                dk: 'Du har brugt',
+                                pt: 'Utilizou',
+                                es: 'Has utilizado',
+                                ru: 'Вы использовали',
                                 <h4 id='main_package_pageviews_chart_count'></h4>
-                                <Lang value='en'>pageviews</Lang>
-                                <Lang value='vi'>lượt xem trang</Lang>
-                                <Lang value='fr'>pages vues</Lang>
-                                <Lang value='it'>visualizzazioni di pagina</Lang>
-                                <Lang value='kr'>페이지뷰를 사용했습니다</Lang>
-                                <Lang value='ja'>ページビューを使用しました</Lang>
-                                <Lang value='de'>Seitenaufrufe verwendet</Lang>
-                                <Lang value='nl'>paginaweergaven gebruikt</Lang>
-                                <Lang value='dk'>sidevisninger</Lang>
-                                <Lang value='pt'>visualizações de página</Lang>
-                                <Lang value='es'>páginas vistas</Lang>
-                                <Lang value='ru'>просмотров страниц</Lang>
+                                en: 'pageviews',
+                                vi: 'lượt xem trang',
+                                fr: 'pages vues',
+                                it: 'visualizzazioni di pagina',
+                                kr: '페이지뷰를 사용했습니다',
+                                ja: 'ページビューを使用しました',
+                                de: 'Seitenaufrufe verwendet',
+                                nl: 'paginaweergaven gebruikt',
+                                dk: 'sidevisninger',
+                                pt: 'visualizações de página',
+                                es: 'páginas vistas',
+                                ru: 'просмотров страниц',
                             </div>
                         </div>
                         <span id='main_package_pageviews_reset'></span>
@@ -535,110 +535,110 @@ export default function Account() {
                         <ul className='btn-list'>
                             <li onClick={() => go(router, 'account/package/settings')}>
                                 <f-icon icon='gear'></f-icon>
-                                <Lang value='en'>Settings</Lang>
-                                <Lang value='vi'>Cài đặt</Lang>
-                                <Lang value='fr'>Paramètres</Lang>
-                                <Lang value='it'>Impostazioni</Lang>
-                                <Lang value='kr'>설정</Lang>
-                                <Lang value='ja'>設定</Lang>
-                                <Lang value='de'>Einstellungen</Lang>
-                                <Lang value='nl'>Instellingen</Lang>
-                                <Lang value='dk'>Indstillinger</Lang>
-                                <Lang value='pt'>Configurações</Lang>
-                                <Lang value='es'>Ajustes</Lang>
-                                <Lang value='ru'>Настройки</Lang>
+                                en: 'Settings',
+                                vi: 'Cài đặt',
+                                fr: 'Paramètres',
+                                it: 'Impostazioni',
+                                kr: '설정',
+                                ja: '設定',
+                                de: 'Einstellungen',
+                                nl: 'Instellingen',
+                                dk: 'Indstillinger',
+                                pt: 'Configurações',
+                                es: 'Ajustes',
+                                ru: 'Настройки',
                             </li>
                             <li onClick={() => go(router, 'account/package/download')}>
                                 <f-icon icon='arrow-down-to-bracket' i-s='outline'></f-icon>
-                                <Lang value='en'>Download</Lang>
-                                <Lang value='vi'>Tải xuống</Lang>
-                                <Lang value='fr'>Télécharger</Lang>
-                                <Lang value='it'>Scaricamento</Lang>
-                                <Lang value='kr'>다운로드</Lang>
-                                <Lang value='ja'>ダウンロード</Lang>
-                                <Lang value='de'>Herunterladen</Lang>
-                                <Lang value='nl'>Download</Lang>
-                                <Lang value='dk'>Download</Lang>
-                                <Lang value='pt'>Transferir</Lang>
-                                <Lang value='es'>Descargar</Lang>
-                                <Lang value='ru'>Скачать</Lang>
+                                en: 'Download',
+                                vi: 'Tải xuống',
+                                fr: 'Télécharger',
+                                it: 'Scaricamento',
+                                kr: '다운로드',
+                                ja: 'ダウンロード',
+                                de: 'Herunterladen',
+                                nl: 'Download',
+                                dk: 'Download',
+                                pt: 'Transferir',
+                                es: 'Descargar',
+                                ru: 'Скачать',
                             </li>
                         </ul>
                     </div>
                     <h3>
-                        <Lang value='en'>Import</Lang>
-                        <Lang value='vi'>Import</Lang>
-                        <Lang value='fr'>Importer</Lang>
-                        <Lang value='it'>Importare</Lang>
-                        <Lang value='kr'>수입</Lang>
-                        <Lang value='ja'>輸入</Lang>
-                        <Lang value='de'>Import</Lang>
-                        <Lang value='nl'>Importeren</Lang>
-                        <Lang value='dk'>Importere</Lang>
-                        <Lang value='pt'>Importação</Lang>
-                        <Lang value='es'>Importar</Lang>
-                        <Lang value='ru'>Импорт</Lang>
+                        en: 'Import',
+                        vi: 'Import',
+                        fr: 'Importer',
+                        it: 'Importare',
+                        kr: '수입',
+                        ja: '輸入',
+                        de: 'Import',
+                        nl: 'Importeren',
+                        dk: 'Importere',
+                        pt: 'Importação',
+                        es: 'Importar',
+                        ru: 'Импорт',
                     </h3>
                     <p>
-                        <Lang value='en'>To import Foricon Package to your site, please copy the code below and paste it into your HTML&apos;s <span className='small-code element'>head</span></Lang>
-                        <Lang value='vi'>Để import Foricon Package vào trang web của bạn, vui lòng sao chép mã bên dưới và dán vào thẻ <span className='small-code element'>head</span> của HTML của bạn</Lang>
-                        <Lang value='fr'>Pour importer le package Foricon sur votre site, veuillez copier le code ci-dessous et le coller dans votre <span className='small-code element'>head</span> HTML</Lang>
-                        <Lang value='it'>Per importare il pacchetto Foricon sul tuo sito, copia il codice sottostante e incollalo nel <span className='small-code element'>head</span> del tuo HTML</Lang>
-                        <Lang value='kr'>귀하의 사이트로 Foricon 패키지를 가져오려면 아래 코드를 복사하여 HTML의 <span className='small-code element'>head</span>에 붙여넣으세요.</Lang>
-                        <Lang value='ja'>Foricon パッケージをサイトにインポートするには、以下のコードをコピーして HTML の <span className='small-code element'>head</span> に貼り付けてください。</Lang>
-                        <Lang value='de'>Um das Foricon-Paket auf Ihre Website zu importieren, kopieren Sie bitte den folgenden Code und fügen Sie ihn in den <span className='small-code element'>head</span> Ihres HTML-Codes ein.</Lang>
-                        <Lang value='nl'>Om het Foricon-pakket naar uw site te importeren, kopieert u de onderstaande code en plakt u deze in de <span className='small-code element'>head</span> van uw HTML</Lang>
-                        <Lang value='dk'>For at importere Foricon Package til dit websted, skal du kopiere koden nedenfor og indsætte den i din HTMLs <span className='small-code element'>head</span></Lang>
-                        <Lang value='pt'>Para importar o pacote Foricon para o seu site, copie o código abaixo e cole-o no <span className='small-code element'>head</span> do seu HTML</Lang>
-                        <Lang value='es'>Para importar el paquete Foricon a su sitio, copie el código a continuación y péguelo en el <span className='small-code element'>head</span> de su HTML.</Lang>
-                        <Lang value='ru'>Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.</Lang>
+                        en: 'To import Foricon Package to your site, please copy the code below and paste it into your HTML&apos;s <span className='small-code element'>head</span>',
+                        vi: 'Để import Foricon Package vào trang web của bạn, vui lòng sao chép mã bên dưới và dán vào thẻ <span className='small-code element'>head</span> của HTML của bạn',
+                        fr: 'Pour importer le package Foricon sur votre site, veuillez copier le code ci-dessous et le coller dans votre <span className='small-code element'>head</span> HTML',
+                        it: 'Per importare il pacchetto Foricon sul tuo sito, copia il codice sottostante e incollalo nel <span className='small-code element'>head</span> del tuo HTML',
+                        kr: '귀하의 사이트로 Foricon 패키지를 가져오려면 아래 코드를 복사하여 HTML의 <span className='small-code element'>head</span>에 붙여넣으세요.',
+                        ja: 'Foricon パッケージをサイトにインポートするには、以下のコードをコピーして HTML の <span className='small-code element'>head</span> に貼り付けてください。',
+                        de: 'Um das Foricon-Paket auf Ihre Website zu importieren, kopieren Sie bitte den folgenden Code und fügen Sie ihn in den <span className='small-code element'>head</span> Ihres HTML-Codes ein.',
+                        nl: 'Om het Foricon-pakket naar uw site te importeren, kopieert u de onderstaande code en plakt u deze in de <span className='small-code element'>head</span> van uw HTML',
+                        dk: 'For at importere Foricon Package til dit websted, skal du kopiere koden nedenfor og indsætte den i din HTMLs <span className='small-code element'>head</span>',
+                        pt: 'Para importar o pacote Foricon para o seu site, copie o código abaixo e cole-o no <span className='small-code element'>head</span> do seu HTML',
+                        es: 'Para importar el paquete Foricon a su sitio, copie el código a continuación y péguelo en el <span className='small-code element'>head</span> de su HTML.',
+                        ru: 'Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.',
                     </p>
                     <code name='HTML'></code>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'docs/styling-icons/basics')}>
-                            <Lang value='en'>Guide about customizing icons</Lang>
-                            <Lang value='vi'>Hướng dẫn tùy chỉnh biểu tượng</Lang>
-                            <Lang value='fr'>Guide sur la personnalisation des icônes</Lang>
-                            <Lang value='it'>Guida alla personalizzazione delle icone</Lang>
-                            <Lang value='kr'>아이콘 사용자 정의에 대한 가이드</Lang>
-                            <Lang value='ja'>アイコンのカスタマイズに関するガイド</Lang>
-                            <Lang value='de'>Anleitung zum Anpassen von Symbolen</Lang>
-                            <Lang value='nl'>Handleiding voor het aanpassen van pictogrammen</Lang>
-                            <Lang value='dk'>Vejledning om tilpasning af ikoner</Lang>
-                            <Lang value='pt'>Guia sobre a personalização de ícones</Lang>
-                            <Lang value='es'>Guía sobre cómo personalizar iconos</Lang>
-                            <Lang value='ru'>Руководство по настройке иконок</Lang>
+                            en: 'Guide about customizing icons',
+                            vi: 'Hướng dẫn tùy chỉnh biểu tượng',
+                            fr: 'Guide sur la personnalisation des icônes',
+                            it: 'Guida alla personalizzazione delle icone',
+                            kr: '아이콘 사용자 정의에 대한 가이드',
+                            ja: 'アイコンのカスタマイズに関するガイド',
+                            de: 'Anleitung zum Anpassen von Symbolen',
+                            nl: 'Handleiding voor het aanpassen van pictogrammen',
+                            dk: 'Vejledning om tilpasning af ikoner',
+                            pt: 'Guia sobre a personalização de ícones',
+                            es: 'Guía sobre cómo personalizar iconos',
+                            ru: 'Руководство по настройке иконок',
                         </li>
                     </ul>
                 </div>
                 <div name='package/settings'>
                     <h3>
-                        <Lang value='en'>Package settings</Lang>
-                        <Lang value='vi'>Cài đặt gói</Lang>
-                        <Lang value='fr'>Paramètres du package</Lang>
-                        <Lang value='it'>Impostazioni del pacchetto</Lang>
-                        <Lang value='kr'>패키지 설정</Lang>
-                        <Lang value='ja'>パッケージ設定</Lang>
-                        <Lang value='de'>Paketeinstellungen</Lang>
-                        <Lang value='nl'>Pakketinstellingen</Lang>
-                        <Lang value='dk'>Pakkeindstillinger</Lang>
-                        <Lang value='pt'>Configurações do pacote</Lang>
-                        <Lang value='es'>Configuración del paquete</Lang>
-                        <Lang value='ru'>Настройки пакета</Lang>
+                        en: 'Package settings',
+                        vi: 'Cài đặt gói',
+                        fr: 'Paramètres du package',
+                        it: 'Impostazioni del pacchetto',
+                        kr: '패키지 설정',
+                        ja: 'パッケージ設定',
+                        de: 'Paketeinstellungen',
+                        nl: 'Pakketinstellingen',
+                        dk: 'Pakkeindstillinger',
+                        pt: 'Configurações do pacote',
+                        es: 'Configuración del paquete',
+                        ru: 'Настройки пакета',
                     </h3>
                     <form>
-                        <Lang value='en'>Version</Lang>
-                        <Lang value='vi'>Phiên bản</Lang>
-                        <Lang value='fr'>Option de rendu</Lang>
-                        <Lang value='it'>Opzione di rendering</Lang>
-                        <Lang value='kr'>렌더링 옵션</Lang>
-                        <Lang value='ja'>レンダリングオプション</Lang>
-                        <Lang value='de'>Rendering-Option</Lang>
-                        <Lang value='nl'>Rendering-optie</Lang>
-                        <Lang value='dk'>Mulighed for gengivelse</Lang>
-                        <Lang value='pt'>Opção de renderização</Lang>
-                        <Lang value='es'>Opción de renderizado</Lang>
-                        <Lang value='ru'>Вариант рендеринга</Lang>
+                        en: 'Version',
+                        vi: 'Phiên bản',
+                        fr: 'Option de rendu',
+                        it: 'Opzione di rendering',
+                        kr: '렌더링 옵션',
+                        ja: 'レンダリングオプション',
+                        de: 'Rendering-Option',
+                        nl: 'Rendering-optie',
+                        dk: 'Mulighed for gengivelse',
+                        pt: 'Opção de renderização',
+                        es: 'Opción de renderizado',
+                        ru: 'Вариант рендеринга',
                         <f-select name='versions' multiple required>
                             <text></text>
                             <option-list>
@@ -647,126 +647,126 @@ export default function Account() {
                             <f-option value='b2w2'>Beta 2+ (WOFF2)</f-option>
                             </option-list>
                         </f-select>
-                        <Lang value='en'>Rendering option</Lang>
-                        <Lang value='vi'>Tùy chọn kết xuất</Lang>
-                        <Lang value='fr'>Option de rendu</Lang>
-                        <Lang value='it'>Opzione di rendering</Lang>
-                        <Lang value='kr'>렌더링 옵션</Lang>
-                        <Lang value='ja'>レンダリングオプション</Lang>
-                        <Lang value='de'>Rendering-Option</Lang>
-                        <Lang value='nl'>Rendering-optie</Lang>
-                        <Lang value='dk'>Mulighed for gengivelse</Lang>
-                        <Lang value='pt'>Opção de renderização</Lang>
-                        <Lang value='es'>Opción de renderizado</Lang>
-                        <Lang value='ru'>Вариант рендеринга</Lang>
+                        en: 'Rendering option',
+                        vi: 'Tùy chọn kết xuất',
+                        fr: 'Option de rendu',
+                        it: 'Opzione di rendering',
+                        kr: '렌더링 옵션',
+                        ja: 'レンダリングオプション',
+                        de: 'Rendering-Option',
+                        nl: 'Rendering-optie',
+                        dk: 'Mulighed for gengivelse',
+                        pt: 'Opção de renderização',
+                        es: 'Opción de renderizado',
+                        ru: 'Вариант рендеринга',
                         <f-select name='rendering-option'>
                             <text></text>
                             <option-list>
                             <f-option value='performance'>
-                                <Lang value='en'>Performance</Lang>
-                                <Lang value='vi'>Hiệu suất</Lang>
-                                <Lang value='fr'>Performance</Lang>
-                                <Lang value='it'>Prestazione</Lang>
-                                <Lang value='kr'>성능</Lang>
-                                <Lang value='ja'>パフォーマンス</Lang>
-                                <Lang value='de'>Leistung</Lang>
-                                <Lang value='nl'>Prestatie</Lang>
-                                <Lang value='dk'>Ydeevne</Lang>
-                                <Lang value='pt'>Desempenho</Lang>
-                                <Lang value='es'>Actuación</Lang>
-                                <Lang value='ru'>Производительность</Lang>
+                                en: 'Performance',
+                                vi: 'Hiệu suất',
+                                fr: 'Performance',
+                                it: 'Prestazione',
+                                kr: '성능',
+                                ja: 'パフォーマンス',
+                                de: 'Leistung',
+                                nl: 'Prestatie',
+                                dk: 'Ydeevne',
+                                pt: 'Desempenho',
+                                es: 'Actuación',
+                                ru: 'Производительность',
                             </f-option>
                             <f-option value='precision'>
-                                <Lang value='en'>Precision</Lang>
-                                <Lang value='vi'>Chính xác</Lang>
-                                <Lang value='fr'>Précision</Lang>
-                                <Lang value='it'>Precisione</Lang>
-                                <Lang value='kr'>정도</Lang>
-                                <Lang value='ja'>精度</Lang>
-                                <Lang value='de'>Präzision</Lang>
-                                <Lang value='nl'>Precisie</Lang>
-                                <Lang value='dk'>Præcision</Lang>
-                                <Lang value='pt'>Precisão</Lang>
-                                <Lang value='es'>Precisión</Lang>
-                                <Lang value='ru'>Точность</Lang>
+                                en: 'Precision',
+                                vi: 'Chính xác',
+                                fr: 'Précision',
+                                it: 'Precisione',
+                                kr: '정도',
+                                ja: '精度',
+                                de: 'Präzision',
+                                nl: 'Precisie',
+                                dk: 'Præcision',
+                                pt: 'Precisão',
+                                es: 'Precisión',
+                                ru: 'Точность',
                             </f-option>
                             </option-list>
                         </f-select>
-                        <Lang value='en'>Allowed domains</Lang>
-                        <Lang value='vi'>Tên miền được phép</Lang>
-                        <Lang value='fr'>Domaines autorisés</Lang>
-                        <Lang value='it'>Domini consentiti</Lang>
-                        <Lang value='kr'>허용된 도메인</Lang>
-                        <Lang value='ja'>許可されたドメイン</Lang>
-                        <Lang value='de'>Erlaubte Domänen</Lang>
-                        <Lang value='nl'>Toegestane domeinen</Lang>
-                        <Lang value='dk'>Tilladte domæner</Lang>
-                        <Lang value='pt'>Domínios permitidos</Lang>
-                        <Lang value='es'>Dominios permitidos</Lang>
-                        <Lang value='ru'>Разрешенные домены</Lang>
+                        en: 'Allowed domains',
+                        vi: 'Tên miền được phép',
+                        fr: 'Domaines autorisés',
+                        it: 'Domini consentiti',
+                        kr: '허용된 도메인',
+                        ja: '許可されたドメイン',
+                        de: 'Erlaubte Domänen',
+                        nl: 'Toegestane domeinen',
+                        dk: 'Tilladte domæner',
+                        pt: 'Domínios permitidos',
+                        es: 'Dominios permitidos',
+                        ru: 'Разрешенные домены',
                         <ul className='btn-list vertical' name='domains'>
                             <li>
                             <f-icon icon='plus' i-s='outline'></f-icon>
-                            <Lang value='en'>Add a domain</Lang>
-                            <Lang value='vi'>Thêm tên miền</Lang>
-                            <Lang value='fr'>Ajouter un domaine</Lang>
-                            <Lang value='it'>Aggiungi un dominio</Lang>
-                            <Lang value='kr'>도메인 추가</Lang>
-                            <Lang value='ja'>ドメインを追加する</Lang>
-                            <Lang value='de'>Hinzufügen einer Domäne</Lang>
-                            <Lang value='nl'>Een domein toevoegen</Lang>
-                            <Lang value='dk'>Tilføj et domæne</Lang>
-                            <Lang value='pt'>Adicionar um domínio</Lang>
-                            <Lang value='es'>Agregar un dominio</Lang>
-                            <Lang value='ru'>Добавить домен</Lang>
+                            en: 'Add a domain',
+                            vi: 'Thêm tên miền',
+                            fr: 'Ajouter un domaine',
+                            it: 'Aggiungi un dominio',
+                            kr: '도메인 추가',
+                            ja: 'ドメインを追加する',
+                            de: 'Hinzufügen einer Domäne',
+                            nl: 'Een domein toevoegen',
+                            dk: 'Tilføj et domæne',
+                            pt: 'Adicionar um domínio',
+                            es: 'Agregar un dominio',
+                            ru: 'Добавить домен',
                             </li>
                         </ul>
                         <button className='primary'>
-                            <Lang value='en'>Save changes</Lang>
-                            <Lang value='vi'>Lưu thay đổi</Lang>
-                            <Lang value='fr'>Enregistrer les modifications</Lang>
-                            <Lang value='it'>Salvare le modifiche</Lang>
-                            <Lang value='kr'>변경 사항 저장</Lang>
-                            <Lang value='ja'>変更を保存</Lang>
-                            <Lang value='de'>Änderungen speichern</Lang>
-                            <Lang value='nl'>Wijzigingen opslaan</Lang>
-                            <Lang value='dk'>Gem ændringer</Lang>
-                            <Lang value='pt'>Guardar alterações</Lang>
-                            <Lang value='es'>Guardar cambios</Lang>
-                            <Lang value='ru'>Сохранить изменения</Lang>
+                            en: 'Save changes',
+                            vi: 'Lưu thay đổi',
+                            fr: 'Enregistrer les modifications',
+                            it: 'Salvare le modifiche',
+                            kr: '변경 사항 저장',
+                            ja: '変更を保存',
+                            de: 'Änderungen speichern',
+                            nl: 'Wijzigingen opslaan',
+                            dk: 'Gem ændringer',
+                            pt: 'Guardar alterações',
+                            es: 'Guardar cambios',
+                            ru: 'Сохранить изменения',
                         </button>
                     </form>
                 </div>
                 <div name='package/download'>
                     <h3>
-                        <Lang value='en'>Download</Lang>
-                        <Lang value='vi'>Tải xuống</Lang>
-                        <Lang value='fr'>Télécharger</Lang>
-                        <Lang value='it'>Scaricamento</Lang>
-                        <Lang value='kr'>다운로드</Lang>
-                        <Lang value='ja'>ダウンロード</Lang>
-                        <Lang value='de'>Herunterladen</Lang>
-                        <Lang value='nl'>Download</Lang>
-                        <Lang value='dk'>Download</Lang>
-                        <Lang value='pt'>Transferir</Lang>
-                        <Lang value='es'>Descargar</Lang>
-                        <Lang value='ru'>Скачать</Lang>
+                        en: 'Download',
+                        vi: 'Tải xuống',
+                        fr: 'Télécharger',
+                        it: 'Scaricamento',
+                        kr: '다운로드',
+                        ja: 'ダウンロード',
+                        de: 'Herunterladen',
+                        nl: 'Download',
+                        dk: 'Download',
+                        pt: 'Transferir',
+                        es: 'Descargar',
+                        ru: 'Скачать',
                     </h3>
                     <ul>
                         <li>
                             <h6>
-                                <Lang value='en'>Font pack</Lang>
-                                <Lang value='vi'>Gói phông chữ</Lang>
-                                <Lang value='fr'>Pack de polices</Lang>
-                                <Lang value='it'>Pacchetto di caratteri</Lang>
-                                <Lang value='kr'>폰트 팩</Lang>
-                                <Lang value='ja'>フォントパック</Lang>
-                                <Lang value='de'>Schriftartenpaket</Lang>
-                                <Lang value='nl'>Lettertypepakket</Lang>
-                                <Lang value='dk'>Skrifttypepakke</Lang>
-                                <Lang value='pt'>Pacote de fontes</Lang>
-                                <Lang value='es'>Paquete de fuentes</Lang>
-                                <Lang value='ru'>набор шрифтов</Lang>
+                                en: 'Font pack',
+                                vi: 'Gói phông chữ',
+                                fr: 'Pack de polices',
+                                it: 'Pacchetto di caratteri',
+                                kr: '폰트 팩',
+                                ja: 'フォントパック',
+                                de: 'Schriftartenpaket',
+                                nl: 'Lettertypepakket',
+                                dk: 'Skrifttypepakke',
+                                pt: 'Pacote de fontes',
+                                es: 'Paquete de fuentes',
+                                ru: 'набор шрифтов',
                             </h6>
                             <span></span>
                             <button className='primary' name='fonts'>
@@ -775,18 +775,18 @@ export default function Account() {
                         </li>
                         <li>
                             <h6>
-                                <Lang value='en'>Icon pack</Lang>
-                                <Lang value='vi'>Gói biểu tượng</Lang>
-                                <Lang value='fr'>Pack d&apos;icônes</Lang>
-                                <Lang value='it'>Pacchetto di icone</Lang>
-                                <Lang value='kr'>아이콘 팩</Lang>
-                                <Lang value='ja'>アイコンパック</Lang>
-                                <Lang value='de'>Symbolpaket</Lang>
-                                <Lang value='nl'>Pictogrammenpakket</Lang>
-                                <Lang value='dk'>Ikonpakke</Lang>
-                                <Lang value='pt'>Pacote de ícones</Lang>
-                                <Lang value='es'>Paquete de iconos</Lang>
-                                <Lang value='ru'>набор иконок</Lang>
+                                en: 'Icon pack',
+                                vi: 'Gói biểu tượng',
+                                fr: 'Pack d&apos;icônes',
+                                it: 'Pacchetto di icone',
+                                kr: '아이콘 팩',
+                                ja: 'アイコンパック',
+                                de: 'Symbolpaket',
+                                nl: 'Pictogrammenpakket',
+                                dk: 'Ikonpakke',
+                                pt: 'Pacote de ícones',
+                                es: 'Paquete de iconos',
+                                ru: 'набор иконок',
                             </h6>
                             <span></span>
                             <button className='btn primary' name='icons'>
