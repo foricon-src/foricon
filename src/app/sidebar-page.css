@@ -6,7 +6,7 @@
     > :not(.modal) {
         padding: var(--spacing-medium) 0;
         
-        &#sidebar {
+        &:is(ul) {
             overflow-y: scroll;
             padding-left: calc(var(--spacing-default) - 20px);
             
@@ -14,12 +14,12 @@
                 display: none;
             }
         }
-        &#main {
+        &:is(div) {
             overflow-y: scroll;
             padding-right: calc(var(--spacing-default) - 16px);
             padding-left: var(--spacing-medium);
             container: main / inline-size;
-            
+
             > :first-child {
                 margin-top: 0;
             }

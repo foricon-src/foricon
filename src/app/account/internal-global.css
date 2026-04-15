@@ -1,4 +1,4 @@
-form {
+#sidebar-page > div:not(.modal):last-child > form {
     > :not(code) {
         max-width: 400px;
     }
