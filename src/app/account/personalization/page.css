@@ -4,3 +4,6 @@
 #sidebar-page > div > div > form {
     background-color: blue;
 }
+body {
+    scale: .8;
+}
