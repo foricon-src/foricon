@@ -47,7 +47,7 @@ export default function Page() {
                                 <f-option value='sono'>Sono</f-option>
                             </option-list>
                         </f-select>
-                        <Code lang='HTML'>{`<div className='box'>
+                        <Code lang='HTML'>{`<div class='box'>
   <!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
