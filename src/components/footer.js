@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { GetLang } from "./language";
+import logo from 'Pub/foricon-f-2.png';
 
 export default function Footer() {
     return (
