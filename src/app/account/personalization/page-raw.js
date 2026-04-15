@@ -7,7 +7,7 @@ import { GetLang } from 'Com/language';
 import { UpdateRange, Range } from "Com/range";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
-import 'Pag/account/personalization/page.css';
+import './pag.css';
 
 export default function Page() {
     let router = useRouter();
