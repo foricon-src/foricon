@@ -1,4 +1,4 @@
-#sidebar-page > div:not(.modal):last-child > form {
+#sidebar-page > div:not(.modal):last-child > div > form {
     > :not(code) {
         max-width: 400px;
     }
@@ -8,5 +8,8 @@
         &, * {
             transition: var(--df-trans), font-size 0s;
         }
+    }
+    > button:last-child {
+        margin-bottom: 0;
     }
 }
