@@ -1,0 +1,29 @@
+div[name='package'] > div#main_package_pageviews {
+    padding: var(--spacing-small);
+    border: 1px solid var(--gray);
+    border-radius: var(--bdr-rad);
+    gap: var(--spacing-small);
+
+    > div#main_package_pageviews_chart {
+        height: 300px;
+        aspect-ratio: 1/1;
+        padding: var(--spacing-xxsmall);
+        background-image: conic-gradient(var(--main-color) var(--degree), var(--tr-main-color) var(--degree));
+        animation: grow var(--duration) ease .2s forwards;
+
+        & * {
+            margin: 0;
+        }
+        &, > div {
+            border-radius: 50%;
+        }
+        > div {
+            height: 100%;
+            background-color: var(--bg-color);
+        }
+    }
+    > ul {
+        align-self: start;
+        margin: calc(-1 * var(--spacing-mili)) calc(-1 * var(--spacing-micro));
+    }
+}
