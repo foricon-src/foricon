@@ -210,8 +210,8 @@ export default function Header() {
                 <li>Music</li>
                 <li className='line' name='dark-toggle' onClick={toggleTheme}>
                     <div/>
-                    <span dangerouslySetInnerHTML={
-                        `${GetLang({
+                    <span dangerouslySetInnerHTML={{
+                        __html: `${GetLang({
                             en: 'Dark mode',
                             vi: 'Chế độ tối',
                             fr: 'Mode sombre',
@@ -225,7 +225,7 @@ export default function Header() {
                             es: 'Modo oscuro',
                             ru: 'Темный режим',
                         })} <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>`
-                    }/>
+                    }}/>
                 </li>
             </ul>
         </header>

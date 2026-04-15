@@ -109,8 +109,8 @@ export default function Page() {
                             ru: 'Импорт',
                         })
                     }</h3>
-                    <p dangerouslySetInnerHTML={
-                        GetLang({
+                    <p dangerouslySetInnerHTML={{
+                        __html: GetLang({
                             en: "To import Foricon Package to your site, please copy the code below and paste it into your HTML\'s <span className='small-code element'>head</span>",
                             vi: "Để import Foricon Package vào trang web của bạn, vui lòng sao chép mã bên dưới và dán vào thẻ <span className='small-code element'>head</span> của HTML của bạn",
                             fr: "Pour importer le package Foricon sur votre site, veuillez copier le code ci-dessous et le coller dans votre <span className='small-code element'>head</span> HTML",
@@ -124,7 +124,7 @@ export default function Page() {
                             es: "Para importar el paquete Foricon a su sitio, copie el código a continuación y péguelo en el <span className='small-code element'>head</span> de su HTML.",
                             ru: "Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.",
                         })
-                    }/>
+                    }}/>
                     <code name='HTML'></code>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'docs/styling-icons/basics')}>{
