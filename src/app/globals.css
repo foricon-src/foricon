@@ -534,6 +534,13 @@ ol > li::marker {
     color: var(--title-color);
 }
 
+hr {
+    height: 1px;
+    width: 100%;
+    border: none;
+    background-color: var(--dk-gray);
+}
+
 a {
     text-decoration: none;
     color: var(--main-color);

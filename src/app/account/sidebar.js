@@ -10,7 +10,7 @@ export default function Sidebar() {
 
     function stateActive(path = '', isIcon) {
         path && (path = `/${path}`);
-        return pathname == `/account${path}`
+        return pathname.startsWith(`/account${path}`)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
     }
@@ -111,7 +111,22 @@ export default function Sidebar() {
                         ru:'Персонализация',
                     })
                 }</span>
-                <span className='badge'>New</span>
+                <span className='badge'>{
+                    GetLang({
+                        en:'New',
+                        vi:'Mới',
+                        fr:'Nouveau',
+                        it:'Nuovo',
+                        kr:'새로운',
+                        ja:'新しい',
+                        de:'Neu',
+                        nl:'Nieuw',
+                        dk:'Ny',
+                        pt:'Novo',
+                        es:'Nuevo',
+                        ru:'Новый',
+                    })
+                }</span>
             </li>
             <li className={stateActive('package')} onClick={() => go(router, 'account/package')}>
                 <f-icon icon='code' i-s='outline'></f-icon><span>Foricon Package</span>
