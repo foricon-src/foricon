@@ -11,7 +11,7 @@ export function UpdateRange(elem, value) {
     elem.value = value;
     elem.dispatchEvent(new Event('input'));
 }
-export default function Range(props) {
+export function Range(props) {
     let [ v, setValue ] = useState();
     let { min, max, dfValue } = props;
     return <input
