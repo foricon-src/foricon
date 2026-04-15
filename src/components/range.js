@@ -11,11 +11,14 @@ export function UpdateRange(elem, value) {
     elem.value = value;
     elem.dispatchEvent(new Event('input'));
 }
-export function Range({ min, max, dfValue, value, className = '', ...rest }) {
+export function Range({ min, max, step, dfValue, value, className = '', ...rest }) {
     let [ v, setValue ] = useState(value ?? dfValue);
     
     return <input
         type='range'
+        min={min}
+        max={max}
+        step={step}
         className={`${className}${dfValue == v ? ' default' : ''}`}
         onInput={e => setValue(Number(e.currentTarget.value))}
         style={{'--pos': `${(v - min) / (max - min) * 100}%`}}
