@@ -9,7 +9,6 @@ export default function Sidebar() {
     let router = useRouter();
 
     function stateActive(path = '', isIcon) {
-        path && (path = `/${path}`);
         return pathname.split('/')[2] == path
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
