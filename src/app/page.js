@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 // import Image from 'next/image';
 // import favicon from 'Ass/foricon-f-favicon.png';
-import { getLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import './page.css';
 import 'Com/utils';
 
@@ -36,7 +36,7 @@ export default function Home() {
                     <f-icon i-s='outline' icon='hashtag'/><span>{webData.verFull}</span>
                 </a>
                 <h1>{
-                    getLang({
+                    useLang({
                         en: 'Icons That Make Your Design Shine',
                         vi: 'Kho icon font free, đầu tiên tại Việt Nam',
                         fr: 'Des icônes qui font briller votre design',
@@ -52,7 +52,7 @@ export default function Home() {
                     })
                 }</h1>
                 <p>{
-                    getLang({
+                    useLang({
                         en: 'Design smarter with icons that customize, animate, and integrate in seconds',
                         vi: 'Thiết kế thông minh hơn với các biểu tượng có thể tùy chỉnh, animate và tích hợp trong vài giây',
                         fr: "Concevez plus intelligemment avec des icônes qui se personnalisent, s'animent et s'intègrent en quelques secondes",
@@ -70,7 +70,7 @@ export default function Home() {
                 <label>
                     <f-icon i-s='outline' icon='magnifying-glass'/>
                     <input placeholder={
-                        getLang({
+                        useLang({
                             en: 'Find your perfect icon - start typing...',
                             vi: 'Tìm biểu tượng hoàn hảo - bắt đầu nhập...',
                             fr: 'Trouvez votre icône parfaite - commencez à taper...',
@@ -91,7 +91,7 @@ export default function Home() {
                 <div>
                     <h1>
                         <span class='icon-count'/>{
-                        ` ${getLang({
+                        ` ${useLang({
                             en: 'icons',
                             vi: 'biểu tượng',
                             fr: 'icônes',
@@ -107,7 +107,7 @@ export default function Home() {
                         })}`
                     }</h1>
                     <p>{
-                        getLang({
+                        useLang({
                             en: 'are ready to be used',
                             vi: 'sẵn sàng để sử dụng',
                             fr: 'sont prêts à être utilisés',
@@ -127,7 +127,7 @@ export default function Home() {
             <div class='content-section' id='integration'>
                 <div>
                     <h6 class='tagline'>{
-                        getLang({
+                        useLang({
                             en: 'Integration',
                             vi: 'Tích hợp',
                             fr: "L'intégration",
@@ -143,7 +143,7 @@ export default function Home() {
                         })
                     }</h6>
                     <h1>{
-                        getLang({
+                        useLang({
                             en: 'Easy Integration,\nStunning Results',
                             vi: 'Dễ dàng tích hợp,\nKết quả bắt mắt',
                             fr: 'Intégration facile,\nRésultats époustouflants',
@@ -159,7 +159,7 @@ export default function Home() {
                         })
                     }</h1>
                     <p>{
-                        getLang({
+                        useLang({
                             en: "Integrating our icon library into your projects is a breeze. Simply choose the icons you need, get its code, and start using them right away. With our extensive collection and easy-to-use interface, you'll find the perfect icons to elevate your designs.",
                             vi: 'Tích hợp thư viện icon của chúng tôi vào các dự án của bạn rất dễ. Chỉ cần chọn các biểu tượng bạn cần, lấy mã nhúng của biểu tượng đó và bắt đầu sử dụng ngay. Với bộ sưu tập phong phú và giao diện dễ sử dụng của chúng tôi, bạn sẽ tìm thấy các biểu tượng hoàn hảo để nâng tầm thiết kế của mình.',
                             fr: "L'intégration de notre bibliothèque d'icônes dans vos projets est un jeu d'enfant. Choisissez simplement les icônes dont vous avez besoin, obtenez leur code et commencez à les utiliser immédiatement. Grâce à notre vaste collection et à notre interface facile à utiliser, vous trouverez les icônes parfaites pour rehausser vos créations.",
@@ -175,7 +175,7 @@ export default function Home() {
                         })
                     }</p>
                     <a class='btn primary' href='/p/docs.html?adding-icons/basics'>{
-                        getLang({
+                        useLang({
                             en: 'Basics of Adding Icons',
                             vi: 'Hướng dẫn về thêm các icon',
                             fr: "Notions de base sur l'ajout d'icônes",
@@ -197,7 +197,7 @@ export default function Home() {
             </div>
             <div class='content-section' id='icon-families'>
                 <h6 class='tagline'>{
-                    getLang({
+                    useLang({
                         en: 'Icon Families',
                         vi: 'Bộ biểu tượng',
                         fr: "Familles d'icônes",
@@ -213,7 +213,7 @@ export default function Home() {
                     })
                 }</h6>
                 <h1>{
-                    getLang({
+                    useLang({
                         en: '4 Ways to Decorate Your Project',
                         vi: '4 cách để trang trí dự án của bạn',
                         fr: '4 façons de décorer votre projet',
@@ -325,7 +325,7 @@ export default function Home() {
             </div>
             <div class='content-section' id='customizable'>
                 <h6 class='tagline'>{
-                    getLang({
+                    useLang({
                         en: 'Easy to Customize',
                         vi: 'Dễ dàng tùy chỉnh',
                         fr: 'Facile à personnaliser',
@@ -341,7 +341,7 @@ export default function Home() {
                     })
                 }</h6>
                 <h1>{
-                    getLang({
+                    useLang({
                         en: 'Style Our Icons in Your Own Way',
                         vi: 'Tùy chỉnh icon của chúng tôi theo cách riêng của bạn',
                         fr: 'Personnalisez nos icônes à votre façon',
@@ -357,7 +357,7 @@ export default function Home() {
                     })
                 }</h1>
                 <p>{
-                    getLang({
+                    useLang({
                         en: 'Foricon allows you to customize icons to match your unique style and branding. Adjust colors, sizes, styles, transform and animate them to create a cohesive visual identity across all your designs. Make our icons truly yours.',
                         vi: 'Foricon cho phép bạn tùy chỉnh các biểu tượng để phù hợp với phong cách và thương hiệu độc đáo của bạn. Điều chỉnh màu sắc, kích thước, kiểu dáng, biến đổi và tạo hoạt ảnh cho chúng để tạo ra sự đồng bộ trên tất cả các thiết kế của bạn. Làm cho các biểu tượng của chúng tôi thực sự là của bạn.',
                         fr: "Foricon vous permet de personnaliser vos icônes pour qu'elles correspondent à votre style et à votre image de marque. Ajustez les couleurs, les tailles, les styles, transformez-les et animez-les pour créer une identité visuelle cohérente sur toutes vos créations. Personnalisez nos icônes.",
@@ -375,7 +375,7 @@ export default function Home() {
                 <div>
                     <div>
                         <h6>{
-                            getLang({
+                            useLang({
                                 en: 'Icon',
                                 vi: 'Biểu tượng',
                                 fr: 'Icône',
@@ -399,7 +399,7 @@ export default function Home() {
                             <li data-value='pencil'><f-icon icon='pencil'/></li>
                         </ul>
                         <h6>{
-                            getLang({
+                            useLang({
                                 en: 'Style',
                                 vi: 'Kiểu',
                                 fr: 'Style',
@@ -421,7 +421,7 @@ export default function Home() {
                             <li data-value='duotone/outline'><f-icon i-s='duotone/outline' icon='circle-half'/></li>
                         </ul>
                         <h6>{
-                            getLang({
+                            useLang({
                                 en: 'Scale',
                                 vi: 'Tỉ lệ',
                                 fr: 'Échelle',
@@ -444,7 +444,7 @@ export default function Home() {
                             <li data-value='xlarger'>Extra Larger</li>
                         </ul>
                         <h6>{
-                            getLang({
+                            useLang({
                                 en: 'Size',
                                 vi: 'Kích thước',
                                 fr: 'Taille',
@@ -469,7 +469,7 @@ export default function Home() {
                             <li data-value='largest'>Largest</li>
                         </ul>
                         <h6>{
-                            getLang({
+                            useLang({
                                 en: 'Rotate',
                                 vi: 'Xoay',
                                 fr: 'Tourner',
@@ -493,7 +493,7 @@ export default function Home() {
                             <li data-value='flipY'>Flip Y</li>
                         </ul>
                         <h6>{
-                            getLang({
+                            useLang({
                                 en: 'Animation',
                                 vi: 'Hoạt ảnh',
                                 fr: 'Animation',
@@ -525,7 +525,7 @@ export default function Home() {
             </div>
             <div class='content-section' id='more-styling'>
                 <h1>{
-                    getLang({
+                    useLang({
                         en: 'Explore More Styling Options!',
                         vi: 'Khám phá thêm nhiều tùy chọn hơn!',
                         fr: 'Explorer plus d&#8217;options de style&#160;!',
@@ -542,7 +542,7 @@ export default function Home() {
                 }
                 </h1>
                 <p>{
-                    getLang({
+                    useLang({
                         en: 'Dive into their properties and how they work. Advanced color, style, size and animation adjustment are all in the Docs.',
                         vi: 'Đi sâu vào thuộc tính của chúng và cách chúng hoạt đọng. Điều chỉnh màu sắc, kiểu dáng, kích thước và hoạt ảnh nâng cao đều có trong Tài liệu.',
                         fr: 'Plongez dans leurs propriétés et leur fonctionnement. Les réglages avancés de couleur, de style, de taille et d\'animation se trouvent tous dans la documentation.',
@@ -558,7 +558,7 @@ export default function Home() {
                     })
                 }</p>
                 <a class='btn primary' href='/p/docs.html?styling-icons/basics'>{
-                    getLang({
+                    useLang({
                         en: 'Explore',
                         vi: 'Khám phá',
                         fr: 'Explorer',
@@ -577,7 +577,7 @@ export default function Home() {
             <div class='content-section dk-bg' id='compatible'>
                 <div>
                     <h5>{
-                        getLang({
+                        useLang({
                             en: 'Compatible With',
                             vi: 'Tương thích với',
                             fr: 'Compatible avec',
@@ -593,7 +593,7 @@ export default function Home() {
                         })
                     }</h5>
                     <h1>{
-                        getLang({
+                        useLang({
                             en: 'Where You Work',
                             vi: 'Nơi bạn làm việc',
                             fr: 'Où vous travaillez',
@@ -612,7 +612,7 @@ export default function Home() {
                 <ul>
                     <li>
                         <h3>{
-                            getLang({
+                            useLang({
                                 en: 'Developers',
                                 vi: 'Lập trình viên',
                                 fr: 'Développeurs',
@@ -639,7 +639,7 @@ export default function Home() {
                     </li>
                     <li>
                         <h3>{
-                            getLang({
+                            useLang({
                                 en: 'Designers',
                                 vi: 'Nhà thiết kế đồ họa',
                                 fr: 'Créateurs',
@@ -665,7 +665,7 @@ export default function Home() {
                     </li>
                     <li>
                         <h3>{
-                            getLang({
+                            useLang({
                                 en: 'Content Creators',
                                 vi: 'Nhà sáng tạo nội dung',
                                 fr: 'Créateurs de contenu',

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import './page.css'
 
 export default function Search() {
@@ -342,7 +342,7 @@ export default function Search() {
             <div class='modal confirm' id='choose-layers'>
                 <div>
                     <h3>{
-                        getLang({
+                        useLang({
                             en: 'Select layer(s) to download',
                             vi: 'Chọn (các) lớp để tải xuống',
                             fr: 'Sélectionnez la/les couche(s) à télécharger',
@@ -358,7 +358,7 @@ export default function Search() {
                         })
                     }</h3>
                     <p>{
-                        getLang({
+                        useLang({
                             en: `Download selected layer(s) as ${type}`,
                             vi: `Tải xuống lớp đã chọn dưới dạng ${type}`,
                             fr: `Télécharger la/les couche(s) sélectionnée(s) en tant que ${type}`,
@@ -383,7 +383,7 @@ export default function Search() {
                     </div>
                     <div>
                         <a href='javascript:void(0)' class='btn secondary'>{
-                            getLang({
+                            useLang({
                                 en: 'Cancel',
                                 vi: 'Hủy',
                                 fr: 'Annuler',
@@ -399,7 +399,7 @@ export default function Search() {
                             })
                         }</a>
                         <a href='javascript:void(0)' class='btn primary'>{
-                            getLang({
+                            useLang({
                                 en: 'Download',
                                 vi: 'Tải xuống',
                                 fr: 'Télécharger',
@@ -420,7 +420,7 @@ export default function Search() {
             {/* <ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
             <div class='banner blue signup'>
                 <div>{
-                    getLang({
+                    useLang({
                         en: 'Enjoy free icons - sign up to access the entire set!',
                         vi: 'Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
                         fr: 'Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !',
@@ -436,7 +436,7 @@ export default function Search() {
                     })
                 }
                     <a href='/p/sign-up.html' class='btn'>{
-                        getLang({
+                        useLang({
                             en: 'Sign up',
                             vi: 'Đăng ký',
                             fr: 'S\'inscrire',
@@ -457,7 +457,7 @@ export default function Search() {
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input placeholder={
-                        getLang({
+                        useLang({
                             en: 'Find the perfect icon for your next masterpiece…',
                             vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
                             fr: "Trouvez l'icône parfaite pour votre prochaine création…",
@@ -483,7 +483,7 @@ export default function Search() {
                 <div id='options'>
                     <ul class='btn-list line-active' id='top_options_families'>
                         <li data-value='all'>{
-                            getLang({
+                            useLang({
                                 en: 'All',
                                 vi: 'Tất cả',
                                 fr: 'Tout',
@@ -499,7 +499,7 @@ export default function Search() {
                             })
                         }</li>
                         <li data-value='regular'>{
-                            getLang({
+                            useLang({
                                 en: 'Regular',
                                 vi: 'Thường',
                                 fr: 'Régulier',
@@ -515,7 +515,7 @@ export default function Search() {
                             })
                         }</li>
                         <li data-value='duotone'>{
-                            getLang({
+                            useLang({
                                 en: 'Duotone',
                                 vi: 'Duotone',
                                 fr: 'Bichromie',
@@ -533,7 +533,7 @@ export default function Search() {
                     </ul>
                     <ul class='btn-list line-active line' id='top_options_styles'>
                         <li data-value='all'>{
-                            getLang({
+                            useLang({
                                 en: 'All',
                                 vi: 'Tất cả',
                                 fr: 'Tout',
@@ -549,7 +549,7 @@ export default function Search() {
                             })
                         }</li>
                         <li data-value='solid'>{
-                            getLang({
+                            useLang({
                                 en: 'Solid',
                                 vi: 'Đặc',
                                 fr: 'Solide',
@@ -565,7 +565,7 @@ export default function Search() {
                             })
                         }</li>
                         <li data-value='outline'>{
-                            getLang({
+                            useLang({
                                 en: 'Outline',
                                 vi: 'Đường viền',
                                 fr: 'Contour',
@@ -585,7 +585,7 @@ export default function Search() {
                     <li name='large' class='chip top'>
                         <f-icon icon='grid-4'></f-icon>
                         <span>{
-                            getLang({
+                            useLang({
                                 en: 'Large icons',
                                 vi: 'Biểu tượng lớn',
                                 fr: 'Grandes icônes',
@@ -604,7 +604,7 @@ export default function Search() {
                     <li name='small' class='chip top'>
                         <f-icon icon='grid-9'></f-icon>
                         <span>{
-                            getLang({
+                            useLang({
                                 en: 'Small icons',
                                 vi: 'Biểu tượng nhỏ',
                                 fr: 'Petites icônes',
@@ -623,7 +623,7 @@ export default function Search() {
                     <li name='tiles' class='chip top'>
                         <f-icon icon='list' i-s='outline'></f-icon>
                         <span>{
-                            getLang({
+                            useLang({
                                 en: 'Tiles',
                                 vi: 'Ô gạch',
                                 fr: 'Carrelage',
@@ -644,7 +644,7 @@ export default function Search() {
             </div>
             <div id='main'>
                 <h5>{
-                    getLang({
+                    useLang({
                         en: 'Categories',
                         vi: 'Thể loại',
                         fr: 'Catégories',
@@ -660,7 +660,7 @@ export default function Search() {
                     })
                 }</h5>
                 <h5>{
-                    getLang({
+                    useLang({
                         en: `Showing ${count} results`,
                         vi: `Đang hiển thị ${count} kết quả`,
                         fr: `Affichage de ${count} résultats`,
@@ -685,7 +685,7 @@ export default function Search() {
             <div id='bar'>
                 <h6></h6>
                 <div id='bar_code'>{
-                    `${getLang({
+                    `${useLang({
                         en: 'Code',
                         vi: 'Mã',
                         fr: 'Code',
@@ -704,7 +704,7 @@ export default function Search() {
                     <code></code>
                 </div>
                 <div id='bar_glyphs'>{
-                    getLang({
+                    useLang({
                         en: 'Glyphs:',
                         vi: 'Glyph:',
                         fr: 'Glyphes:',
@@ -725,7 +725,7 @@ export default function Search() {
                     </div>
                 </div>
                 <div id='bar_unicodes'>{
-                    getLang({
+                    useLang({
                         en: 'Unicodes:',
                         vi: 'Unicode:',
                         fr: 'Unicodes:',
@@ -746,7 +746,7 @@ export default function Search() {
                     </div>
                 </div>
                 <div id='bar_categories'>{
-                    getLang({
+                    useLang({
                         en: 'Categories:',
                         vi: 'Thể loại:',
                         fr: 'Catégories:',
@@ -764,7 +764,7 @@ export default function Search() {
                     <ul class='btn-list'></ul>
                 </div>
                 <div id='bar_download'>{
-                    getLang({
+                    useLang({
                         en: 'Download:',
                         vi: 'Tải xuống:',
                         fr: 'Télécharger:',

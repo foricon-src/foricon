@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
-import { getLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -13,7 +13,7 @@ export default function Page() {
             <div>
                 <div name='package/download'>
                     <h3>{
-                        getLang({
+                        useLang({
                             en: 'Download',
                             vi: 'Tải xuống',
                             fr: 'Télécharger',
@@ -31,7 +31,7 @@ export default function Page() {
                     <ul>
                         <li>
                             <h6>{
-                                getLang({
+                                useLang({
                                     en: 'Font pack',
                                     vi: 'Gói phông chữ',
                                     fr: 'Pack de polices',
@@ -53,7 +53,7 @@ export default function Page() {
                         </li>
                         <li>
                             <h6>{
-                                getLang({
+                                useLang({
                                     en: 'Icon pack',
                                     vi: 'Gói biểu tượng',
                                     fr: "Pack d'icônes",

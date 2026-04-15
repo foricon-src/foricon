@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
-import { getLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -13,7 +13,7 @@ export default function Page() {
             <div>
                 <div name='package/settings'>
                     <h3>{
-                        getLang({
+                        useLang({
                             en: 'Package settings',
                             vi: 'Cài đặt gói',
                             fr: 'Paramètres du package',
@@ -30,7 +30,7 @@ export default function Page() {
                     }</h3>
                     <form>
                         <span>{
-                            getLang({
+                            useLang({
                                 en: 'Version',
                                 vi: 'Phiên bản',
                                 fr: 'Option de rendu',
@@ -54,7 +54,7 @@ export default function Page() {
                             </option-list>
                         </f-select>
                         <span>{
-                            getLang({
+                            useLang({
                                 en: 'Rendering option',
                                 vi: 'Tùy chọn kết xuất',
                                 fr: 'Option de rendu',
@@ -73,7 +73,7 @@ export default function Page() {
                             <text></text>
                             <option-list>
                             <f-option value='performance'>{
-                                getLang({
+                                useLang({
                                     en: 'Performance',
                                     vi: 'Hiệu suất',
                                     fr: 'Performance',
@@ -89,7 +89,7 @@ export default function Page() {
                                 })
                             }</f-option>
                             <f-option value='precision'>{
-                                getLang({
+                                useLang({
                                     en: 'Precision',
                                     vi: 'Chính xác',
                                     fr: 'Précision',
@@ -107,7 +107,7 @@ export default function Page() {
                             </option-list>
                         </f-select>
                         <span>{
-                            getLang({
+                            useLang({
                                 en: 'Allowed domains',
                                 vi: 'Tên miền được phép',
                                 fr: 'Domaines autorisés',
@@ -126,7 +126,7 @@ export default function Page() {
                             <li>
                                 <f-icon icon='plus' i-s='outline'></f-icon>
                                 <span>{
-                                    getLang({
+                                    useLang({
                                         en: 'Add a domain',
                                         vi: 'Thêm tên miền',
                                         fr: 'Ajouter un domaine',
@@ -144,7 +144,7 @@ export default function Page() {
                             </li>
                         </ul>
                         <button className='primary'>{
-                            getLang({
+                            useLang({
                                 en: 'Save changes',
                                 vi: 'Lưu thay đổi',
                                 fr: 'Enregistrer les modifications',

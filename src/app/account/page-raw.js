@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
-import { getLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -36,7 +36,7 @@ export default function Page() {
                     </ul>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'pricing')}>{
-                            getLang({
+                            useLang({
                                 en: 'Foricon Plus plans',
                                 vi: 'Các gói Foricon Plus',
                                 fr: 'Forfaits Foricon Plus',
@@ -52,7 +52,7 @@ export default function Page() {
                             })
                         }</li>
                         <li className='red'>{
-                            getLang({
+                            useLang({
                                 en: 'Remove my account',
                                 vi: 'Xoá tài khoản của tôi',
                                 fr: 'Supprimer mon compte',
