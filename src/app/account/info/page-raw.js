@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
 import { GetLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
-import 'Pag/interal-global.css'
+import 'Pag/account/interal-global.css';
 import './page.css';
 
 export default function Page() {
