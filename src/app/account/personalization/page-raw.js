@@ -6,6 +6,7 @@ import Code from "Com/code";
 import { GetLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import './page.css';
+import { UpdateRange, Range } from "Com/range";
 
 export default function Page() {
     let router = useRouter();
@@ -73,7 +74,7 @@ export default function Page() {
                                 ru: 'Пространство отступа',
                             })
                         }</span>
-                        <input name='indent' type='range' min='1' max='6' step='1' df-value='2'/>
+                        <Range name='indent' min='1' max='6' step='1' dfValue='2'/>
                         <button className='primary'>{
                             GetLang({
                                 en: 'Save changes',
