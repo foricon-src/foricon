@@ -935,8 +935,8 @@ form {
             }
         }
     }
-    > a.btn {
-        :not(span, lang) + & {
+    > button {
+        :not(span) + & {
             margin-top: 10px;
         }
         &.secondary:not(:last-child) {

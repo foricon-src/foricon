@@ -9,7 +9,4 @@
             transition: var(--df-trans), font-size 0s;
         }
     }
-    > button:last-child {
-        margin-bottom: 0;
-    }
 }
