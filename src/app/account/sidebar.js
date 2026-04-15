@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useLang } from 'Com/language';
+import { GetLang } from 'Com/language';
 
 export default function Sidebar() {
     let pathname = usePathname();
@@ -20,7 +20,7 @@ export default function Sidebar() {
             <li className='red'>
                 <f-icon icon='arrow-right-from-bracket' i-s='outline'></f-icon>
                 <span>{
-                    useLang({
+                    GetLang({
                         en: 'Log out',
                         vi: 'Đăng xuất',
                         fr: 'Se déconnecter',
@@ -39,7 +39,7 @@ export default function Sidebar() {
             <li className={`line ${stateActive()}`} onClick={() => go(router, 'account')}>
                 <f-icon icon='house' i-s={stateActive('', true)}></f-icon>
                 <span>{
-                    useLang({
+                    GetLang({
                         en: 'Home',
                         vi: 'Trang chủ',
                         fr: "Page d'accueil",
@@ -58,7 +58,7 @@ export default function Sidebar() {
             <li className={stateActive('info')} onClick={() => go(router, 'account/info')}>
                 <f-icon icon='circle-info' i-s={stateActive('info', true)}></f-icon>
                 <span>{
-                    useLang({
+                    GetLang({
                         en: 'Account info',
                         vi: 'Thông tin tài khoản',
                         fr: 'Informations sur le compte',
@@ -77,7 +77,7 @@ export default function Sidebar() {
             <li className={stateActive('security')} onClick={() => go(router, 'account/security')}>
                 <f-icon icon='shield' i-s={stateActive('security', true)}></f-icon>
                 <span>{
-                    useLang({
+                    GetLang({
                         en: 'Security',
                         vi: 'Bảo mật',
                         fr: 'Sécurité',
@@ -96,7 +96,7 @@ export default function Sidebar() {
             <li className={stateActive('personalization')} onClick={() => go(router, 'account/personalization')}>
                 <f-icon icon='palette' i-s={stateActive('personalization', true)}></f-icon>
                 <span>{
-                    useLang({
+                    GetLang({
                         en:'Personalization',
                         vi:'Cá nhân hóa',
                         fr:'Personnalisation',

@@ -4,7 +4,7 @@ import Header from 'Com/header';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-2.png';
-import { useLang, LanguageProvider } from 'Com/language';
+import { GetLang, LanguageProvider } from 'Com/language';
 import './globals.css';
 import 'Com/utils'
 
@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
                             <ul>
                                 <li>
                                     <a href='/about'>{
-                                        useLang({
+                                        GetLang({
                                             en: 'About us',
                                             vi: 'Về chúng tôi',
                                             fr: 'À propos de nous',
@@ -66,7 +66,7 @@ export default function RootLayout({ children }) {
                                 </li>
                                 <li>
                                     <a href='/tos'>{
-                                        useLang({
+                                        GetLang({
                                             en: 'Terms of Service',
                                             vi: 'Điều khoản dịch vụ',
                                             fr: 'Conditions d&#39;utilisation',
@@ -83,7 +83,7 @@ export default function RootLayout({ children }) {
                                 </li>
                                 <li>
                                     <a href='/refund-policy'>{
-                                        useLang({
+                                        GetLang({
                                             en: 'Refund Policy',
                                             vi: 'Chính sách hoàn tiền',
                                             fr: 'Politique de remboursement',
@@ -100,7 +100,7 @@ export default function RootLayout({ children }) {
                                 </li>
                                 <li>
                                     <a href='/privacy'>{
-                                        useLang({
+                                        GetLang({
                                             en: 'Privacy Policy',
                                             vi: 'Chính sách bảo mật',
                                             fr: 'Politique de Confidentialité',
@@ -117,7 +117,7 @@ export default function RootLayout({ children }) {
                                 </li>
                                 <li>
                                     <a href='/support'>{
-                                        useLang({
+                                        GetLang({
                                             en: 'Support',
                                             vi: 'Hỗ trợ',
                                             fr: 'Soutien',

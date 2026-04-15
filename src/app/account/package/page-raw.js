@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
-import { useLang } from 'Com/language';
+import { GetLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import './page.css';
 
@@ -16,7 +16,7 @@ export default function Page() {
                         <div id='main_package_pageviews_chart'>
                             <div>
                                 <span>{
-                                    useLang({
+                                    GetLang({
                                         en: 'You have used',
                                         vi: 'Bạn đã sử dụng',
                                         fr: 'Vous avez utilisé',
@@ -31,7 +31,7 @@ export default function Page() {
                                 }</span>
                                 <h4 id='main_package_pageviews_chart_count'></h4>
                                 <span>{
-                                    useLang({
+                                    GetLang({
                                         en: 'pageviews',
                                         vi: 'lượt xem trang',
                                         fr: 'pages vues',
@@ -54,7 +54,7 @@ export default function Page() {
                             <li onClick={() => go(router, 'account/package/settings')}>
                                 <f-icon icon='gear'></f-icon>
                                 <span>{
-                                    useLang({
+                                    GetLang({
                                         en: 'Settings',
                                         vi: 'Cài đặt',
                                         fr: 'Paramètres',
@@ -73,7 +73,7 @@ export default function Page() {
                             <li onClick={() => go(router, 'account/package/download')}>
                                 <f-icon icon='arrow-down-to-bracket' i-s='outline'></f-icon>
                                 <span>{
-                                    useLang({
+                                    GetLang({
                                         en: 'Download',
                                         vi: 'Tải xuống',
                                         fr: 'Télécharger',
@@ -92,7 +92,7 @@ export default function Page() {
                         </ul>
                     </div>
                     <h3>{
-                        useLang({
+                        GetLang({
                             en: 'Import',
                             vi: 'Import',
                             fr: 'Importer',
@@ -108,7 +108,7 @@ export default function Page() {
                         })
                     }</h3>
                     <p dangerouslySetInnerHTML={
-                        useLang({
+                        GetLang({
                             en: "To import Foricon Package to your site, please copy the code below and paste it into your HTML\'s <span className='small-code element'>head</span>",
                             vi: "Để import Foricon Package vào trang web của bạn, vui lòng sao chép mã bên dưới và dán vào thẻ <span className='small-code element'>head</span> của HTML của bạn",
                             fr: "Pour importer le package Foricon sur votre site, veuillez copier le code ci-dessous et le coller dans votre <span className='small-code element'>head</span> HTML",
@@ -126,7 +126,7 @@ export default function Page() {
                     <code name='HTML'></code>
                     <ul className='btn-list vertical large'>
                         <li onClick={() => go(router, 'docs/styling-icons/basics')}>{
-                            useLang({
+                            GetLang({
                                 en: 'Guide about customizing icons',
                                 vi: 'Hướng dẫn tùy chỉnh biểu tượng',
                                 fr: 'Guide sur la personnalisation des icônes',
