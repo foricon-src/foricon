@@ -1,6 +1,8 @@
+'use client';
+
 import { useRouter } from "next/navigation";
 import Sidebar from "Pag/account/sidebar";
-import { Lang } from "Com/language";
+import { GetLang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import './page.css';
 
