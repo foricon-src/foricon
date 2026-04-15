@@ -4,7 +4,7 @@ import Header from 'Com/header';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-2.png';
-import { getLang, Lang, LanguageProvider } from 'Com/language';
+import { getLang, LanguageProvider } from 'Com/language';
 import './globals.css';
 import 'Com/utils'
 

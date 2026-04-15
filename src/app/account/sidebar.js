@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { Lang } from "Com/language";
+import { getLang } from 'Com/language';
 
 export default function Sidebar() {
     let pathname = usePathname();

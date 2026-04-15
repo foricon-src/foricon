@@ -6,7 +6,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { dbFirestore, auth } from "Com/firebase";
-import { Lang } from "Com/language";
+import { getLang } from 'Com/language';
 import popUp from "Com/popup";
 import recordLogin from "Com/record-login";
 

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { getLang } from 'Com/language';
 import './page.css'
-import { getLang, Lang } from 'Com/language';
 
 export default function Search() {
     let router = useRouter();

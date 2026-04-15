@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 // import Image from 'next/image';
 // import favicon from 'Ass/foricon-f-favicon.png';
-import { getLang, Lang } from 'Com/language';
+import { getLang } from 'Com/language';
 import './page.css';
 import 'Com/utils';
 

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Pub/foricon-f-2.png';
-import { Lang } from './language';
+import { getLang } from 'Com/language';
 import 'Com/utils';
 
 export default function Header() {

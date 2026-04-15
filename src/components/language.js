@@ -5,10 +5,6 @@ import { setDoc, getDoc, doc } from "firebase/firestore";
 import { dbFirestore } from "./firebase";
 
 export const LanguageContext = createContext(null);
-export function Lang({ value, wrapped, children }) {
-    let lang = useContext(LanguageContext);
-    return lang != value ? null : wrapped ? <span>{children}</span> : children;
-}
 export function getLang(obj) {
     let lang = useContext(LanguageContext);
     return obj[lang];
