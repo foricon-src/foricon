@@ -923,6 +923,9 @@ f-select {
 }
 
 form {
+    > :first-child {
+        margin-top: 0;
+    }
     > :is(input, textarea, select, f-select) {
         display: block;
         width: 100%;
@@ -930,7 +933,7 @@ form {
     > f-select {
         display: flex;
     }
-    > :is(span, lang) {
+    > span {
         &:has(+ [disabled]) {
             opacity: .5;
         }
