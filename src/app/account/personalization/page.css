@@ -1,9 +1,3 @@
-#sidebar-page > div > div > form > input[name='avatar'] {
+div[name='personalization'] > form > input[name='avatar'] {
     display: none;
-}
-#sidebar-page > div > div > form {
-    background-color: blue;
-}
-body {
-    scale: .8;
 }
