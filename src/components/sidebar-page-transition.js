@@ -7,7 +7,7 @@ export default function SidebarPageTransition({ name, children }) {
     const pathname = usePathname();
 
     return (
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode='wait' initial={false}>
             <motion.div
                 name={name}
                 key={pathname}
