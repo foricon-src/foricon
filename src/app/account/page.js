@@ -13,7 +13,7 @@ export default function Page() {
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
 
-        let hour = new Date().getHour();
+        let hour = new Date().getHours();
 
         elemById('main_home_hero_greeting').innerText = `${
             hour < 12 ? GetLang({
