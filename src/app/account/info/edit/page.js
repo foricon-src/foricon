@@ -45,8 +45,8 @@ export default function Page() {
                         ru: 'Аватар',
                     })
                 }</span>
-                <input name='avatar'/>
                 <button type='button' className='secondary' id='main_account-info-edit_form_choose-avatar'>Choose from Media</button>
+                <input name='avatar'/>
                 <span>{
                     GetLang({
                         en: 'Name',
