@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from "Com/language";
+import { useLang } from "Com/language";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -12,7 +12,7 @@ export default function Page() {
     return (
         <div name='info/edit'>
             <h3>{
-                GetLang({
+                useLang({
                     en: 'Edit account info',
                     vi: 'Chỉnh sửa thông tin tài khoản',
                     fr: 'Modifier les informations du compte',
@@ -30,7 +30,7 @@ export default function Page() {
             </h3>
             <form>
                 <span>{
-                    GetLang({
+                    useLang({
                         en: 'Avatar',
                         vi: 'Ảnh đại diện',
                         fr: 'Avatar',
@@ -48,7 +48,7 @@ export default function Page() {
                 <button type='button' className='secondary' id='main_account-info-edit_form_choose-avatar'>Choose from Media</button>
                 <input name='avatar'/>
                 <span>{
-                    GetLang({
+                    useLang({
                         en: 'Name',
                         vi: 'Tên',
                         fr: 'Nom',
@@ -65,7 +65,7 @@ export default function Page() {
                 }</span>
                 <input name='name' type='name' maxlength='30' placeholder='John Doe'/>
                 <span>{
-                    GetLang({
+                    useLang({
                         en: 'Email',
                         vi: 'Email',
                         fr: 'Email',
@@ -82,7 +82,7 @@ export default function Page() {
                 }</span>
                 <input name='email' type='email' placeholder='user@example.com'/>
                 <button className='primary'>{
-                    GetLang({
+                    useLang({
                         en: 'Save changes',
                         vi: 'Lưu thay đổi',
                         fr: 'Enregistrer les modifications',

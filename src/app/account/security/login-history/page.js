@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -12,7 +12,7 @@ export default function Page() {
     return (
         <div name='security/login-history'>
             <h3>{
-                GetLang({
+                useLang({
                     en: 'Login history',
                     vi: 'Lịch sử đăng nhập',
                     fr: 'Historique de connexion',
@@ -29,7 +29,7 @@ export default function Page() {
             }</h3>
             <ul>
                 <button className='primary'>{
-                    GetLang({
+                    useLang({
                         en: 'Load more',
                         vi: 'Tải thêm',
                         fr: 'Charger plus',

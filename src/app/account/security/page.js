@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -12,7 +12,7 @@ export default function Page() {
     return (
         <div name='security'>
             <h3>{
-                GetLang({
+                useLang({
                     en: 'Security & Privacy',
                     vi: 'Bảo mật & Quyền riêng tư',
                     fr: 'Sécurité et confidentialité',
@@ -29,7 +29,7 @@ export default function Page() {
             }</h3>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'account/security/change-password')}>{
-                    GetLang({
+                    useLang({
                         en: 'Change password',
                         vi: 'Thay đổi mật khẩu',
                         fr: 'Changer le mot de passe',
@@ -45,7 +45,7 @@ export default function Page() {
                     })
                 }</li>
                 <li onClick={() => go(router, 'account/security/login-history')}>{
-                    GetLang({
+                    useLang({
                         en: 'Login history',
                         vi: 'Lịch sử đăng nhập',
                         fr: 'Historique de connexion',

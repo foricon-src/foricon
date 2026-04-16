@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Code from "Com/code";
-import { GetLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import { UpdateRange, Range } from "Com/range";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
@@ -15,7 +15,7 @@ export default function Page() {
         <div name='personalization'>
             <form>
                 <span>{
-                    GetLang({
+                    useLang({
                         en: "Codebox's font",
                         vi: 'Phông chữ của hộp mã',
                         fr: 'Police de caractères de Codebox',
@@ -56,7 +56,7 @@ export default function Page() {
   }
 </script>`}</Code>
                 <span>{
-                    GetLang({
+                    useLang({
                         en: 'Indentation space',
                         vi: 'Khoảng cách thụt dòng',
                         fr: 'Espace d\'indentation',
@@ -73,7 +73,7 @@ export default function Page() {
                 }</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2'/>
                 <button className='primary'>{
-                    GetLang({
+                    useLang({
                         en: 'Save changes',
                         vi: 'Lưu thay đổi',
                         fr: 'Enregistrer les modifications',

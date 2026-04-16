@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { GetLang } from "./language";
+import { useLang } from "./language";
 import logo from 'Pub/foricon-f-2.png';
 
 export default function Footer() {
@@ -26,7 +26,7 @@ export default function Footer() {
                 <ul>
                     <li>
                         <a href='/about'>{
-                            GetLang({
+                            useLang({
                                 en: 'About us',
                                 vi: 'Về chúng tôi',
                                 fr: 'À propos de nous',
@@ -43,7 +43,7 @@ export default function Footer() {
                     </li>
                     <li>
                         <a href='/tos'>{
-                            GetLang({
+                            useLang({
                                 en: 'Terms of Service',
                                 vi: 'Điều khoản dịch vụ',
                                 fr: 'Conditions d&#39;utilisation',
@@ -60,7 +60,7 @@ export default function Footer() {
                     </li>
                     <li>
                         <a href='/refund-policy'>{
-                            GetLang({
+                            useLang({
                                 en: 'Refund Policy',
                                 vi: 'Chính sách hoàn tiền',
                                 fr: 'Politique de remboursement',
@@ -77,7 +77,7 @@ export default function Footer() {
                     </li>
                     <li>
                         <a href='/privacy'>{
-                            GetLang({
+                            useLang({
                                 en: 'Privacy Policy',
                                 vi: 'Chính sách bảo mật',
                                 fr: 'Politique de Confidentialité',
@@ -94,7 +94,7 @@ export default function Footer() {
                     </li>
                     <li>
                         <a href='/support'>{
-                            GetLang({
+                            useLang({
                                 en: 'Support',
                                 vi: 'Hỗ trợ',
                                 fr: 'Soutien',

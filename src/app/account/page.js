@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { useLang } from 'Com/language';
 import { useEffect } from "react";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
@@ -16,7 +16,7 @@ export default function Page() {
         let hour = new Date().getHours();
 
         elemById('main_home_hero_greeting').innerText = `${
-            hour < 12 ? GetLang({
+            hour < 12 ? useLang({
                 en: 'Good morning',
                 vi: 'Chào buổi sáng',
                 fr: 'Bonjour',
@@ -30,7 +30,7 @@ export default function Page() {
                 es: 'Buen día',
                 ru: 'Доброе утро',
             }) :
-            hour < 18 ? GetLang({
+            hour < 18 ? useLang({
                 en: 'Good afternoon',
                 vi: 'Chào buổi chiều',
                 fr: 'Bon après-midi',
@@ -44,7 +44,7 @@ export default function Page() {
                 es: 'Buenas tardes',
                 ru: 'Добрый день',
             }) :
-            GetLang({
+            useLang({
                 en: 'Good evening',
                 vi: 'Chào buổi tối',
                 fr: 'Bonne soirée',
@@ -87,7 +87,7 @@ export default function Page() {
             </ul>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'pricing')}>{
-                    GetLang({
+                    useLang({
                         en: 'Foricon Plus plans',
                         vi: 'Các gói Foricon Plus',
                         fr: 'Forfaits Foricon Plus',
@@ -103,7 +103,7 @@ export default function Page() {
                     })
                 }</li>
                 <li className='red'>{
-                    GetLang({
+                    useLang({
                         en: 'Remove my account',
                         vi: 'Xoá tài khoản của tôi',
                         fr: 'Supprimer mon compte',
