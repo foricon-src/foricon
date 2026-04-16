@@ -15,7 +15,7 @@ export default function Page() {
     useEffect(() => {(async () => {
         while (user == null) await wait();
 
-        let { plan, pageview: { count, start } } = user;
+        let { plan, pageview: { count, start } } = user.doc;
 
         let planData = (await get(ref(db, `plans/${plan}`))).val();
 
