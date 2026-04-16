@@ -12,7 +12,53 @@ export default function Page() {
 
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
-        elemById('main_home_hero_greeting').innerText = user.doc.name;
+
+        let hour = new Date().getHour();
+
+        elemById('main_home_hero_greeting').innerText = `${
+            hour < 12 ? GetLang({
+                en: 'Good morning',
+                vi: 'Chào buổi sáng',
+                fr: 'Bonjour',
+                it: 'Buongiorno',
+                kr: '좋은 아침이에요',
+                ja: 'おはよう',
+                de: 'Guten Morgen',
+                nl: 'Goedemorgen',
+                dk: 'God morgen',
+                pt: 'Bom dia',
+                es: 'Buen día',
+                ru: 'Доброе утро',
+            }) :
+            hour < 18 ? GetLang({
+                en: 'Good afternoon',
+                vi: 'Chào buổi chiều',
+                fr: 'Bon après-midi',
+                it: 'Buon pomeriggio',
+                kr: '좋은 오후에요',
+                ja: 'こんにちは',
+                de: 'Guten Tag',
+                nl: 'Goedemiddag',
+                dk: 'God eftermiddag',
+                pt: 'Boa tarde',
+                es: 'Buenas tardes',
+                ru: 'Добрый день',
+            }) :
+            GetLang({
+                en: 'Good evening',
+                vi: 'Chào buổi tối',
+                fr: 'Bonne soirée',
+                it: 'Buonasera',
+                kr: '좋은 저녁이에요',
+                ja: 'こんばんは',
+                de: 'Guten Abend',
+                nl: 'Goedeavond',
+                dk: 'God aften',
+                pt: 'Boa noite',
+                es: 'Buenas noches',
+                ru: 'Добрый вечер',
+            })
+        }, ${user.doc.name}`;
     })()}, [])
 
     return (
