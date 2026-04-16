@@ -2,12 +2,32 @@
 
 import { useRouter } from "next/navigation";
 import { GetLang } from 'Com/language';
+import { useEffect } from "react";
+import { get, ref } from "firebase/database";
+import { db } from "Com/firebase";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
 
 export default function Page() {
     let router = useRouter();
+    
+    useEffect(() => {(async () => {
+        while (user == null) await wait();
+
+        let { plan, pageview: { count, start } } = user;
+
+        let planData = (await get(ref(db, `plans/${plan}`))).val();
+
+        let { body } = document;
+        let percent = Math.floor(count / planData.pageviews * 1000) / 1000;
+
+        body.style.setProperty('--angle', `${percent * 360}%`);
+        body.style.setProperty('--duration', `${percent * (6 - percent * 3)}s`);
+
+        elemById('main_package_pageviews_chart_count').innerText = `${count} / ${planData.pageviews}`;
+        elemById('main_package_pageviews_reset').innerText = formatDate(new Date(start.year, start.month, start.day, start.hours, start.minutes, start.seconds))
+    })()}, [])
 
     return (
         <div name='package'>

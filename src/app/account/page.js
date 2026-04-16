@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { GetLang } from 'Com/language';
+import { useEffect } from "react";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -9,11 +10,16 @@ import './page.css';
 export default function Page() {
     let router = useRouter();
 
+    useEffect(() => {(async () => {
+        while (elemById('loading')) await wait();
+        elemById('main_home_hero_greeting').innerText = user.doc.name;
+    })()}, [])
+
     return (
         <div name='home'>
             <div id='main_home_hero'>
                 <div id='main_home_hero_avatar' className='img circle square avatar'></div>
-                <h2 id='main_home_hero_greeting'>Hello</h2>
+                <h2 id='main_home_hero_greeting'></h2>
             </div>
             <ul id='main_home_services'>
                 <li name='music' onClick={() => go(router, 'stream-chilzymusic')}>

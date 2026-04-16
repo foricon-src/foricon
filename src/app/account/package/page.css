@@ -1,9 +1,18 @@
+body {
+    --angle: 0;
+}
 #sidebar-page > div > div > div#main_package_pageviews {
     padding: var(--spacing-small);
     border: 1px solid var(--gray);
     border-radius: var(--bdr-rad);
     gap: var(--spacing-small);
-
+    
+    &, > div#main_package_pageviews_chart > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
     > div#main_package_pageviews_chart {
         height: 300px;
         aspect-ratio: 1/1;
@@ -26,4 +35,13 @@
         align-self: start;
         margin: calc(-1 * var(--spacing-mili)) calc(-1 * var(--spacing-micro));
     }
+} 
+@keyframes grow {
+    from { --degree: 0deg }
+    to { --degree: var(--angle) }
+}
+@property --degree {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
 }
