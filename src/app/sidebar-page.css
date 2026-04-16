@@ -20,21 +20,23 @@
             padding-left: var(--spacing-medium);
             container: main / inline-size;
 
-            > :first-child {
-                margin-top: 0;
-            }
-            > :last-child {
-                margin-bottom: 0;
-            }
-            > div > form {
-                > :not(code) {
-                    max-width: 400px;
-                }
-                > code {
+            > div {
+                > :first-child {
                     margin-top: 0;
-                    
-                    &, * {
-                        transition: var(--df-trans), font-size 0s;
+                }
+                > :last-child {
+                    margin-bottom: 0;
+                }
+                > form {
+                    > :not(code) {
+                        max-width: 400px;
+                    }
+                    > code {
+                        margin-top: 0;
+                        
+                        &, * {
+                            transition: var(--df-trans), font-size 0s;
+                        }
                     }
                 }
             }
