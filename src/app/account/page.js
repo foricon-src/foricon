@@ -1,14 +1,15 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { useLang } from 'Com/language';
-import { useEffect } from "react";
+import { GetLang, LanguageContext } from 'Com/language';
+import { useEffect, useContext, use } from "react";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContext(LanguageContext);
 
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
@@ -16,48 +17,50 @@ export default function Page() {
         let hour = new Date().getHours();
 
         elemById('main_home_hero_greeting').innerText = `${
-            hour < 12 ? useLang({
-                en: 'Good morning',
-                vi: 'Chào buổi sáng',
-                fr: 'Bonjour',
-                it: 'Buongiorno',
-                kr: '좋은 아침이에요',
-                ja: 'おはよう',
-                de: 'Guten Morgen',
-                nl: 'Goedemorgen',
-                dk: 'God morgen',
-                pt: 'Bom dia',
-                es: 'Buen día',
-                ru: 'Доброе утро',
-            }) :
-            hour < 18 ? useLang({
-                en: 'Good afternoon',
-                vi: 'Chào buổi chiều',
-                fr: 'Bon après-midi',
-                it: 'Buon pomeriggio',
-                kr: '좋은 오후에요',
-                ja: 'こんにちは',
-                de: 'Guten Tag',
-                nl: 'Goedemiddag',
-                dk: 'God eftermiddag',
-                pt: 'Boa tarde',
-                es: 'Buenas tardes',
-                ru: 'Добрый день',
-            }) :
-            useLang({
-                en: 'Good evening',
-                vi: 'Chào buổi tối',
-                fr: 'Bonne soirée',
-                it: 'Buonasera',
-                kr: '좋은 저녁이에요',
-                ja: 'こんばんは',
-                de: 'Guten Abend',
-                nl: 'Goedeavond',
-                dk: 'God aften',
-                pt: 'Boa noite',
-                es: 'Buenas noches',
-                ru: 'Добрый вечер',
-            })
+            (
+                hour < 12 ? {
+                    en: 'Good morning',
+                    vi: 'Chào buổi sáng',
+                    fr: 'Bonjour',
+                    it: 'Buongiorno',
+                    kr: '좋은 아침이에요',
+                    ja: 'おはよう',
+                    de: 'Guten Morgen',
+                    nl: 'Goedemorgen',
+                    dk: 'God morgen',
+                    pt: 'Bom dia',
+                    es: 'Buen día',
+                    ru: 'Доброе утро',
+                } :
+                hour < 18 ? {
+                    en: 'Good afternoon',
+                    vi: 'Chào buổi chiều',
+                    fr: 'Bon après-midi',
+                    it: 'Buon pomeriggio',
+                    kr: '좋은 오후에요',
+                    ja: 'こんにちは',
+                    de: 'Guten Tag',
+                    nl: 'Goedemiddag',
+                    dk: 'God eftermiddag',
+                    pt: 'Boa tarde',
+                    es: 'Buenas tardes',
+                    ru: 'Добрый день',
+                } :
+                {
+                    en: 'Good evening',
+                    vi: 'Chào buổi tối',
+                    fr: 'Bonne soirée',
+                    it: 'Buonasera',
+                    kr: '좋은 저녁이에요',
+                    ja: 'こんばんは',
+                    de: 'Guten Abend',
+                    nl: 'Goedeavond',
+                    dk: 'God aften',
+                    pt: 'Boa noite',
+                    es: 'Buenas noches',
+                    ru: 'Добрый вечер',
+                }
+            )[lang]
         }, ${user.doc.name}`;
     })()}, [])
 
@@ -87,7 +90,7 @@ export default function Page() {
             </ul>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'pricing')}>{
-                    useLang({
+                    GetLang({
                         en: 'Foricon Plus plans',
                         vi: 'Các gói Foricon Plus',
                         fr: 'Forfaits Foricon Plus',
@@ -103,7 +106,7 @@ export default function Page() {
                     })
                 }</li>
                 <li className='red'>{
-                    useLang({
+                    GetLang({
                         en: 'Remove my account',
                         vi: 'Xoá tài khoản của tôi',
                         fr: 'Supprimer mon compte',

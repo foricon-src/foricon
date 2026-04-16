@@ -6,7 +6,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { dbFirestore, auth } from "Com/firebase";
-import { useLang } from 'Com/language';
+import { GetLang } from 'Com/language';
 import popUp from "Com/popup";
 import recordLogin from "Com/record-login";
 
@@ -168,7 +168,7 @@ export default function LogIn() {
                 <h1>{texts[language][step].h1}</h1>
                 <p>{texts[language][step].p}</p>
                 <a className='btn secondary' href='/signup'>{
-                    useLang({
+                    GetLang({
                         en: 'Create a new account',
                         vi: 'Tạo tài khoản mới',
                         fr: 'Créer un nouveau compte',
@@ -209,7 +209,7 @@ export default function LogIn() {
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
                     <button className='primary' type='submit'>{
-                        useLang({
+                        GetLang({
                             en: 'Next',
                             vi: 'Tiếp theo',
                             fr: 'Suivante',
@@ -240,7 +240,7 @@ export default function LogIn() {
                 <a href='/forgot'>Forgot password</a>
                 <div>
                     <button class='secondary' type='button' onClick={() => changePage('email')}>{
-                        useLang({
+                        GetLang({
                             en: 'Back',
                             vi: 'Trở lại',
                             fr: 'Dos',
@@ -256,7 +256,7 @@ export default function LogIn() {
                         })
                     }</button>
                     <button class='primary' type='submit'>{
-                        useLang({
+                        GetLang({
                             en: 'Log in',
                             vi: 'Đăng nhập',
                             fr: 'Se connecter',

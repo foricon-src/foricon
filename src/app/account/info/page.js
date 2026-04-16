@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { useLang } from 'Com/language';
+import { GetLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -14,7 +14,7 @@ export default function Page() {
             <table>
                 <tr>
                     <td>{
-                        useLang({
+                        GetLang({
                             en: 'Avatar',
                             vi: 'Ảnh đại diện',
                             fr: 'Avatar',
@@ -35,7 +35,7 @@ export default function Page() {
                 </tr>
                 <tr>
                     <td>{
-                        useLang({
+                        GetLang({
                             en: 'Name',
                             vi: 'Tên',
                             fr: 'Nom',
@@ -54,7 +54,7 @@ export default function Page() {
                 </tr>
                 <tr>
                     <td>{
-                        useLang({
+                        GetLang({
                             en: 'Email',
                             vi: 'Email',
                             fr: 'Email',
@@ -73,7 +73,7 @@ export default function Page() {
                 </tr>
                 <tr>
                     <td>{
-                        useLang({
+                        GetLang({
                             en: 'User ID',
                             vi: 'ID người dùng',
                             fr: "ID de l'utilisateur",
@@ -92,7 +92,7 @@ export default function Page() {
                 </tr>
                 <tr>
                     <td>{
-                        useLang({
+                        GetLang({
                             en: 'Joining date',
                             vi: 'Ngày tham gia',
                             fr: "Date d'adhésion",
@@ -112,7 +112,7 @@ export default function Page() {
             </table>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'account/info/edit')}>{
-                    useLang({
+                    GetLang({
                         en: 'Edit account info',
                         vi: 'Chỉnh sửa thông tin tài khoản',
                         fr: 'Modifier les informations du compte',

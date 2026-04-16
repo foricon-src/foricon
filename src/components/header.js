@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Pub/foricon-f-2.png';
-import { useLang } from 'Com/language';
+import { GetLang } from 'Com/language';
 import 'Com/utils';
 
 export default function Header() {
@@ -23,7 +23,7 @@ export default function Header() {
             <ul name='center'>
                 <li>
                     <Link href='/'>{
-                        useLang({
+                        GetLang({
                             en: 'Home',
                             vi: 'Trang chủ',
                             fr: 'Page d\'accueil',
@@ -41,7 +41,7 @@ export default function Header() {
                 </li>
                 <li>
                     <Link href='/search'>{
-                        useLang({
+                        GetLang({
                             en: 'Search',
                             vi: 'Tìm kiếm',
                             fr: 'Recherche',
@@ -59,7 +59,7 @@ export default function Header() {
                 </li>
                 <li>
                     <Link href='/docs'>{
-                        useLang({
+                        GetLang({
                             en: 'Docs',
                             vi: 'Tài liệu',
                             fr: 'Documents',
@@ -77,7 +77,7 @@ export default function Header() {
                 </li>
                 <li>
                     <Link href='/support'>{
-                        useLang({
+                        GetLang({
                             en: 'Support',
                             vi: 'Hỗ trợ',
                             fr: 'Soutien',
@@ -98,7 +98,7 @@ export default function Header() {
                 <li className='chip bottom' onClick={() => go(router, 'languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
                     <span>{
-                        useLang({
+                        GetLang({
                             en: 'Languages',
                             vi: 'Ngôn ngữ',
                             fr: 'Langues',
@@ -117,7 +117,7 @@ export default function Header() {
                 <li className={`chip bottom${open ? ' active' : ''}`} onClick={() => setOpen(!open)}>
                     <f-icon icon='bars' i-s='outline'></f-icon>
                     <span>{
-                        useLang({
+                        GetLang({
                             en: 'All',
                             vi: 'Tất cả',
                             fr: 'Tout',
@@ -141,7 +141,7 @@ export default function Header() {
             <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
                 <li>Foricon Plus</li>
                 <li className='line'>{
-                    useLang({
+                    GetLang({
                         en: 'Home',
                         vi: 'Trang chủ',
                         fr: 'Page d\'accueil',
@@ -157,7 +157,7 @@ export default function Header() {
                     })
                 }</li>
                 <li>{
-                    useLang({
+                    GetLang({
                         en: 'Search',
                         vi: 'Tìm kiếm',
                         fr: 'Recherche',
@@ -173,7 +173,7 @@ export default function Header() {
                     })
                 }</li>
                 <li>{
-                    useLang({
+                    GetLang({
                         en: 'Docs',
                         vi: 'Tài liệu',
                         fr: 'Documents',
@@ -189,7 +189,7 @@ export default function Header() {
                     })
                 }</li>
                 <li>{
-                    useLang({
+                    GetLang({
                         en: 'Support',
                         vi: 'Hỗ trợ',
                         fr: 'Soutien',
@@ -211,7 +211,7 @@ export default function Header() {
                 <li className='line' name='dark-toggle' onClick={toggleTheme}>
                     <div/>
                     <span dangerouslySetInnerHTML={{
-                        __html: `${useLang({
+                        __html: `${GetLang({
                             en: 'Dark mode',
                             vi: 'Chế độ tối',
                             fr: 'Mode sombre',

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { useLang } from 'Com/language';
+import { GetLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -12,7 +12,7 @@ export default function Page() {
     return (
         <div name='security/change-password'>
             <h3>{
-                useLang({
+                GetLang({
                     en: 'Change password',
                     vi: 'Thay đổi mật khẩu',
                     fr: 'Changer le mot de passe',
@@ -29,7 +29,7 @@ export default function Page() {
             }</h3>
             <form>
                 <span>{
-                    useLang({
+                    GetLang({
                         en: 'Your current password',
                         vi: 'Mật khẩu hiện tại của bạn',
                         fr: 'Votre mot de passe actuel',
@@ -45,7 +45,7 @@ export default function Page() {
                     })
                 }</span>
                 <input name='current' type='password' placeholder={
-                    useLang({
+                    GetLang({
                         en: 'Enter password',
                         vi: 'Nhập mật khẩu',
                         fr: 'Entrez le mot de passe',
@@ -61,7 +61,7 @@ export default function Page() {
                     })
                 }/>
                 <span>{
-                    useLang({
+                    GetLang({
                         en: 'Your new password',
                         vi: 'Mật khẩu mới',
                         fr: 'Votre nouveau mot de passe',
@@ -77,7 +77,7 @@ export default function Page() {
                     })
                 }</span>
                 <input name='new' type='password' placeholder={
-                    useLang({
+                    GetLang({
                         en: 'Enter password',
                         vi: 'Nhập mật khẩu',
                         fr: 'Entrez le mot de passe',
@@ -93,7 +93,7 @@ export default function Page() {
                     })
                 }/>
                 <span>{
-                    useLang({
+                    GetLang({
                         en: 'Repeat your new password',
                         vi: 'Nhập lại mật khẩu mới',
                         fr: 'Répétez votre nouveau mot de passe',
@@ -109,7 +109,7 @@ export default function Page() {
                     })
                 }</span>
                 <input name='repeat' type='password' placeholder={
-                    useLang({
+                    GetLang({
                         en: 'Enter password',
                         vi: 'Nhập mật khẩu',
                         fr: 'Entrez le mot de passe',
@@ -125,7 +125,7 @@ export default function Page() {
                     })
                 }/>
                 <button className='primary'>{
-                    useLang({
+                    GetLang({
                         en: 'Change',
                         vi: 'Thay đổi',
                         fr: 'Changement',

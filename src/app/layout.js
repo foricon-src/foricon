@@ -5,7 +5,7 @@ import Footer from 'Com/footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-2.png';
-import { useLang, LanguageProvider } from 'Com/language';
+import { GetLang, LanguageProvider } from 'Com/language';
 import './globals.css';
 import 'Com/utils'
 

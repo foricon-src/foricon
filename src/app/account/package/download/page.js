@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { useLang } from 'Com/language';
+import { GetLang } from 'Com/language';
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -12,7 +12,7 @@ export default function Page() {
     return (
         <div name='package/download'>
             <h3>{
-                useLang({
+                GetLang({
                     en: 'Download',
                     vi: 'Tải xuống',
                     fr: 'Télécharger',
@@ -30,7 +30,7 @@ export default function Page() {
             <ul>
                 <li>
                     <h6>{
-                        useLang({
+                        GetLang({
                             en: 'Font pack',
                             vi: 'Gói phông chữ',
                             fr: 'Pack de polices',
@@ -52,7 +52,7 @@ export default function Page() {
                 </li>
                 <li>
                     <h6>{
-                        useLang({
+                        GetLang({
                             en: 'Icon pack',
                             vi: 'Gói biểu tượng',
                             fr: "Pack d'icônes",
