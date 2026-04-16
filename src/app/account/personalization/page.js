@@ -47,13 +47,13 @@ export default function Page() {
 <!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
-let a = JSON.parse(localStorage.getItem('a'));
-if (a.length) {
-a.map(i => i == 'data' || i != 'money');
-}
-for (let i in a) {
-a[i] += '_str'
-}
+  let a = JSON.parse(localStorage.getItem('a'));
+  if (a.length) {
+    a.map(i => i == 'data' || i != 'money');
+  }
+  for (let i in a) {
+    a[i] += '_str'
+  }
 </script>`}</Code>
                 <span>{
                     GetLang({

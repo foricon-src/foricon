@@ -19,6 +19,7 @@
             padding-right: calc(var(--spacing-default) - 16px);
             padding-left: var(--spacing-medium);
             container: main / inline-size;
+            opacity: 0;
 
             > :first-child {
                 margin-top: 0;
