@@ -12,6 +12,7 @@ export default function SidebarPageTransition({ name, children }) {
     useState(() => {(async () => {
         if (current == children) return;
         setPrev(current);
+        console.log(current);
         await wait(10);
         setCurrent(children);
         setPrev(null);
