@@ -1836,16 +1836,16 @@ div.message.offline:before {
 
 header {
     background:
-    var(--bg-color)
-    linear-gradient(
-    to right,
-    var(--tr-main-color),
-    rgba(var(--main-color-rgb), .2) .5%,
-    rgba(var(--main-color-rgb), .15) 1.5%,
-    rgba(var(--main-color-rgb), .1) 3%,
-    rgba(var(--main-color-rgb), .05) 5%,
-    transparent 30%
-    );
+        var(--bg-color)
+        linear-gradient(
+            to right,
+            var(--tr-main-color),
+            rgba(var(--main-color-rgb), .2) .5%,
+            rgba(var(--main-color-rgb), .15) 1.5%,
+            rgba(var(--main-color-rgb), .1) 3%,
+            rgba(var(--main-color-rgb), .05) 5%,
+            transparent 30%
+        );
     height: 70px;
     width: 100%;
     padding: 10px var(--spacing-default);
@@ -1857,6 +1857,9 @@ header {
     grid-template-columns: 167px auto 167px;
     align-items: center;
     
+    body.hide-header & {
+        display: none;
+    }
     > div {
         grid-area: left;
         display: grid;
@@ -2005,33 +2008,38 @@ header {
         }
     }
 }
-footer > div {
-    &, &:last-child > ul {
-        display: flex;
-        align-items: center;
+footer {
+    body.hide-header & {
+        display: none;
     }
-    &:first-child {
-        padding: 0 var(--spacing-default) 0 calc(var(--spacing-default) + var(--spacing-small));
-        justify-content: space-between;
-        height: 180px;
+    > div {
+        &, &:last-child > ul {
+            display: flex;
+            align-items: center;
+        }
+        &:first-child {
+            padding: 0 var(--spacing-default) 0 calc(var(--spacing-default) + var(--spacing-small));
+            justify-content: space-between;
+            height: 180px;
 
-        > a {
-            background: none;
-            padding: 0;
+            > a {
+                background: none;
+                padding: 0;
 
-            > img {
-                height: 60px;
-                width: unset;
+                > img {
+                    height: 60px;
+                    width: unset;
+                }
             }
         }
-    }
-    &:last-child {
-        border-top-right-radius: var(--bdr-rad);
-        justify-content: space-between;
-        padding: var(--spacing-xxsmall) var(--spacing-default);
-        
-        > ul > li + li {
-            margin-left: 20px;
+        &:last-child {
+            border-top-right-radius: var(--bdr-rad);
+            justify-content: space-between;
+            padding: var(--spacing-xxsmall) var(--spacing-default);
+            
+            > ul > li + li {
+                margin-left: 20px;
+            }
         }
     }
 }
