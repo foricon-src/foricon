@@ -1,4 +1,3 @@
-globalThis.pageLoaded = false;
 globalThis.webData = {
     isBeta: true,
     verNum: '3.0',

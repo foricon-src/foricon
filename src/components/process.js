@@ -15,6 +15,7 @@ export default function Process() {
     useEffect(() => {(async () => {
         let { body, documentElement: html } = document;
         let theme = localStorage.getItem('theme');
+        let visited = localStorage.getItem('visited') == 'true';
 
         body.classList.remove('hide-header', 'hide-footer');
         [
@@ -43,7 +44,7 @@ export default function Process() {
 
         timezone = new Date().getTimezoneOffset() / 60;
         
-        if (!pageLoaded) {
+        if (!visited) {
             onAuthStateChanged(auth, async res => {
                 let locked = (await get(ref(db, 'locked'))).val();
                 let admin;
@@ -691,7 +692,7 @@ export default function Process() {
             ) / 100) * 100}`
         )
         
-        if (!pageLoaded)
+        if (!visited)
             if (user) {
                 header_right_accBtn.replaceChild(
                     newElem('img', { src: user.doc.avatar }),
@@ -715,7 +716,8 @@ export default function Process() {
             }[language]
             
 
-        pageLoaded = true;
+        visited = true;
+        localStorage.setItem('visited', visited);
     })()}, [ pathname ])
     
     return null;
