@@ -16,6 +16,8 @@ export default function Process() {
         let { pathname } = location;
         let theme = localStorage.getItem('theme');
 
+        body.classList.remove('hide-header', 'hide-footer');
+
         while (!qSelec(false, 'header')) await wait();
         
         let header = qSelec(false, 'header');
@@ -37,7 +39,6 @@ export default function Process() {
             onAuthStateChanged(auth, async res => {
                 let locked = (await get(ref(db, 'locked'))).val();
                 let admin;
-                let { body } = document;
                 
                 if (res) {
                     user = res;
