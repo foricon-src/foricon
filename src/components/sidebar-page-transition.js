@@ -12,7 +12,7 @@ export default function SidebarPageTransition({ name, children }) {
     useState(() => {(async () => {
         if (current == children) return;
         setPrev(current);
-        await wait(.2);
+        await wait(10);
         setCurrent(children);
         setPrev(null);
     })()}, [ children ])
@@ -25,7 +25,7 @@ export default function SidebarPageTransition({ name, children }) {
                     key={pathname}
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 0 }}
-                    transition={{ duration: .2, ease: 'ease' }}
+                    transition={{ duration: 10, ease: 'ease' }}
                 >
                     {prev}
                 </motion.div>
@@ -35,7 +35,7 @@ export default function SidebarPageTransition({ name, children }) {
                 key={pathname}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: .2, ease: 'ease' }}
+                transition={{ duration: 10, ease: 'ease' }}
             >
                 {current}
             </motion.div>
