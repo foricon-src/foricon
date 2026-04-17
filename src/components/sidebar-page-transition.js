@@ -21,18 +21,16 @@ export default function SidebarPageTransition({ name, children }) {
     })()}, [ children ])
 
     return (
-        <div>
-            {prev && (
-                <motion.div
-                    name={name}
-                    key={pathname}
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 0 }}
-                    transition={{ duration, ease: 'ease' }}
-                >
-                    {prev}
-                </motion.div>
-            )}
+        <>
+            <motion.div
+                name={name}
+                key={pathname}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 0 }}
+                transition={{ duration, ease: 'ease' }}
+            >
+                {prev}
+            </motion.div>
             <motion.div
                 name={name}
                 key={pathname}
@@ -42,6 +40,6 @@ export default function SidebarPageTransition({ name, children }) {
             >
                 {current}
             </motion.div>
-        </div>
+        </>
     )
 }
