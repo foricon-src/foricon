@@ -6,7 +6,12 @@ export default function usePage(func) {
 
     useEffect(() => {(async () => {
         while (user == null) await wait();
-        user ? func() : go(router, 'login');
+        if (!user) {
+            go(router, 'login');
+            return;
+        }
+        while (!user.doc) await wait();
+        func();
         document.body.classList.add('hide-footer');
     })()}, [])
 }
