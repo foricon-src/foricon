@@ -1,37 +1,47 @@
 'use client'
 
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react';
 
 let duration = .2;
 
-export default function AccountTemplate({ children }) {
-    let [ pages, setPages ] = useState([children])
+export default function SidebarPageTransition({ name, children }) {
+    let pathname = usePathname();
+    let [ prev, setPrev ] = useState(null);
+    let [ current, setCurrent ] = useState(children);
 
     useEffect(() => {(async () => {
-        setPages(prev => {
-            return prev[prev.length - 1] === children ? prev : [ ...prev, children ];
-        })
+        if (current == children) return;
+        setPrev(current);
+        console.log(current, children);
         await wait(duration);
-        setPages(prev => prev.slice(-1))
+        setCurrent(children);
+        setPrev(null);
     })()}, [ children ])
 
     return (
         <>
-            {pages.map((page, i) => {
-                let isTop = i == pages.length - 1;
-
-                return (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: isTop ? 0 : 1 }}
-                        animate={{ opacity: isTop ? 1 : 0 }}
-                        transition={{ duration }}
-                    >
-                        {page}
-                    </motion.div>
-                )
-            })}
+            {prev && (
+                <motion.div
+                    name={name}
+                    key={pathname}
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{ duration, ease: 'ease' }}
+                >
+                    {prev}
+                </motion.div>
+            )}
+            <motion.div
+                name={name}
+                key={pathname}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration, ease: 'ease' }}
+            >
+                {current}
+            </motion.div>
         </>
     )
 }
