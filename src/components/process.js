@@ -692,28 +692,30 @@ export default function Process() {
             ) / 100) * 100}`
         )
         
-        if (!visited)
-            if (user) {
+        if (user) {
+            let icon = qSelec(false, header_right_accBtn, 'f-icon');
+            if (icon) {
                 header_right_accBtn.replaceChild(
                     newElem('img', { src: user.doc.avatar }),
-                    qSelec(false, header_right_accBtn, 'f-icon')
+                    qSelec(false, icon)
                 )
                 header_right_accBtn_span.innerText = user.doc.name;
             }
-            else header_right_accBtn_span.innerText = {
-                en: 'Log in',
-                vi: 'Đăng nhập',
-                fr: 'Se connecter',
-                it: 'Login',
-                kr: '로그인',
-                ja: 'ログイン',
-                de: 'Einloggen',
-                nl: 'Inloggen',
-                dk: 'Log ind',
-                pt: 'Conecte-se',
-                es: 'Acceso',
-                ru: 'Авторизоваться',
-            }[language]
+        }
+        else header_right_accBtn_span.innerText = {
+            en: 'Log in',
+            vi: 'Đăng nhập',
+            fr: 'Se connecter',
+            it: 'Login',
+            kr: '로그인',
+            ja: 'ログイン',
+            de: 'Einloggen',
+            nl: 'Inloggen',
+            dk: 'Log ind',
+            pt: 'Conecte-se',
+            es: 'Acceso',
+            ru: 'Авторизоваться',
+        }[language]
             
 
         visited = true;
