@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Pub/foricon-f-2.png';
@@ -10,6 +10,7 @@ import 'Com/utils';
 
 export default function Header() {
     let [ open, setOpen ] = useState(false);
+    let pathname = usePathname();
     let router = useRouter();
 
     return (
@@ -95,7 +96,7 @@ export default function Header() {
                 </li>
             </ul>
             <ul className='btn-list' name='right'>
-                <li className='chip bottom' onClick={() => go(router, 'languages')}>
+                <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => go(router, 'languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
                     <span>{
                         GetLang({
@@ -133,7 +134,7 @@ export default function Header() {
                         })
                     }</span>
                 </li>
-                <li className='chip bottom line' onClick={() => go(router, user ? 'account' : 'login')}>
+                <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => go(router, user ? 'account' : 'login')}>
                     <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>
                     <span/>
                 </li>
