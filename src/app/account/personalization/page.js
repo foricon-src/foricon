@@ -13,7 +13,7 @@ export default function Page() {
     let router = useRouter();
 
     usePage(() => {
-        let { personalization: { font, indent } } = user.doc;
+        let { font, indent } = user.doc.personalization;
         let form = qSelec(false, 'div[name="personalization"] > form');
         let form_fSelect = qSelec(false, form, 'f-select');
         let form_indent = form.indent;
