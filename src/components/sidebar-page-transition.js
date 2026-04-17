@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();
