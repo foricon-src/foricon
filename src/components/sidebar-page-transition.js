@@ -21,7 +21,7 @@ export default function SidebarPageTransition({ name, children }) {
     })()}, [ children ])
 
     return (
-        <>
+        <div>
             {prev && (
                 <motion.div
                     name={name}
@@ -42,6 +42,6 @@ export default function SidebarPageTransition({ name, children }) {
             >
                 {current}
             </motion.div>
-        </>
+        </div>
     )
 }
