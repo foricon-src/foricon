@@ -10,10 +10,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Process() {
     let router = useRouter();
+    let pathname = usePathname();
 
     useEffect(() => {(async () => {
         let { body, documentElement: html } = document;
-        let pathname = usePathname();
         let theme = localStorage.getItem('theme');
 
         body.classList.remove('hide-header', 'hide-footer');
