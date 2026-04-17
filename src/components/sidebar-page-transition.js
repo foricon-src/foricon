@@ -9,7 +9,9 @@ export default function AccountTemplate({ children }) {
     let [ pages, setPages ] = useState([children])
 
     useEffect(() => {(async () => {
-        setPages(prev[prev.length - 1] === children ? prev : [ ...prev, children ]);
+        setPages(prev => {
+            return prev[prev.length - 1] === children ? prev : [ ...prev, children ];
+        })
         await wait(duration);
         setPages(prev => prev.slice(-1))
     })()}, [ children ])
