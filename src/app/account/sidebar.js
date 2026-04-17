@@ -2,7 +2,10 @@
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { GetLang } from 'Com/language';
+import { signOut } from "firebase/auth";
+import { auth } from "Com/firebase";
 
 export default function Sidebar() {
     let pathname = usePathname();
@@ -14,9 +17,22 @@ export default function Sidebar() {
             : isIcon ? 'outline' : '';
     }
 
+    useEffect(() => {(async () => {
+        while (user == null) await wait();
+        !user && go(router, 'login');
+    })()}, [])
+
     return (
         <ul className='btn-list vertical line-active'>
-            <li className='red'>
+            <li className='red' onClick={async () => {
+                try {
+                    await signOut(auth);
+                    location.reload();
+                }
+                catch ({ message }) {
+                    notify('error', message)
+                }
+            }}>
                 <f-icon icon='arrow-right-from-bracket' i-s='outline'></f-icon>
                 <span>{
                     GetLang({
