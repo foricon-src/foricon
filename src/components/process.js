@@ -13,8 +13,18 @@ export default function Process() {
 
     useEffect(() => {(async () => {
         let { body, documentElement: html } = document;
-        let { pathname } = location;
+        let pathname = usePathname();
         let theme = localStorage.getItem('theme');
+
+        body.classList.remove('hide-header', 'hide-footer');
+        [
+            [
+                '/account', [ 'hide-footer' ]
+            ],
+            [
+                '/login', [ 'hide-header', 'hide-footer' ]
+            ]
+        ].forEach(([ p, classes ]) => pathname.startsWith(p) && body.classList.add(...classes));
 
         while (!qSelec(false, 'header')) await wait();
         
@@ -706,7 +716,7 @@ export default function Process() {
             
 
         pageLoaded = true;
-    })()}, [ usePathname() ])
+    })()}, [ pathname ])
     
     return null;
 }
