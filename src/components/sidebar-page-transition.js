@@ -2,22 +2,20 @@
 
 import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 export default function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();
-    let [ current, setCurrent ] = useState(children);
     let [ prev, setPrev ] = useState(null);
-    let childrenRef = useRef(children);
+    let [ current, setCurrent ] = useState(children);
 
     useState(() => {(async () => {
-        if (childrenRef.current == children) return;
-        setPrev(childrenRef.current);
+        if (current == children) return;
+        setPrev(current);
         await wait(.2);
         setCurrent(children);
         setPrev(null);
-        childrenRef.current = children;
-    })()}, [])
+    })()}, [ children ])
 
     return (
         <>
