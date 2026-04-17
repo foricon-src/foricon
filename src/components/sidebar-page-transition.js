@@ -9,7 +9,7 @@ export default function SidebarPageTransition({ name, children }) {
     let [ prev, setPrev ] = useState(null);
     let [ current, setCurrent ] = useState(children);
 
-    useState(() => {(async () => {
+    useEffect(() => {(async () => {
         if (current == children) return;
         setPrev(current);
         console.log(current);
