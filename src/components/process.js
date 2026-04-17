@@ -694,10 +694,7 @@ export default function Process() {
         if (user) {
             let icon = qSelec(false, header_right_accBtn, 'f-icon');
             if (icon) {
-                header_right_accBtn.replaceChild(
-                    newElem('img', { src: user.doc.avatar }),
-                    qSelec(false, icon)
-                )
+                header_right_accBtn.replaceChild(newElem('img', { src: user.doc.avatar }), icon)
                 header_right_accBtn_span.innerText = user.doc.name;
             }
         }
