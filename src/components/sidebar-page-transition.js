@@ -8,7 +8,7 @@ let duration = .2;
 
 export default function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();
-    let [ prev, setPrev ] = useState(null);
+    let [ prev, setPrev ] = useState(children);
     let [ toShow, show ] = useState(children);
     let [ opacity, setOpacity ] = useState([0, 1]);
 
