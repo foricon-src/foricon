@@ -14,23 +14,24 @@ export default function SidebarPageTransition({ name, children }) {
     useEffect(() => {(async () => {
         if (current == children) return;
         setPrev(current);
-        console.log(current, children);
-        await wait(duration);
         setCurrent(children);
+        await wait(duration);
         setPrev(null);
     })()}, [ children ])
 
     return (
         <>
-            <motion.div
-                name={name}
-                key={pathname}
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ duration, ease: 'ease' }}
-            >
-                {prev}
-            </motion.div>
+            {prev && (
+                <motion.div
+                    name={name}
+                    key={pathname}
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{ duration, ease: 'ease' }}
+                >
+                    {prev}
+                </motion.div>
+            )}
             <motion.div
                 name={name}
                 key={pathname}
