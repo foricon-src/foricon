@@ -1,45 +1,35 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-export default function SidebarPageTransition({ name, children }) {
-    let pathname = usePathname();
-    let [ prev, setPrev ] = useState(null);
-    let [ current, setCurrent ] = useState(children);
+let duration = .2;
+
+export default function AccountTemplate({ children }) {
+    let [ pages, setPages ] = useState([children])
 
     useEffect(() => {(async () => {
-        if (current == children) return;
-        setPrev(current);
-        console.log(current);
-        await wait(10);
-        setCurrent(children);
-        setPrev(null);
+        setPages(prev[prev.length - 1] === children ? prev : [ ...prev, children ]);
+        await wait(duration);
+        setPages(prev => prev.slice(-1))
     })()}, [ children ])
 
     return (
         <>
-            {prev && (
-                <motion.div
-                    name={name}
-                    key={pathname}
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 0 }}
-                    transition={{ duration: 10, ease: 'ease' }}
-                >
-                    {prev}
-                </motion.div>
-            )}
-            <motion.div
-                name={name}
-                key={pathname}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 10, ease: 'ease' }}
-            >
-                {current}
-            </motion.div>
+            {pages.map((page, i) => {
+                let isTop = i == pages.length - 1;
+
+                return (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: isTop ? 0 : 1 }}
+                        animate={{ opacity: isTop ? 1 : 0 }}
+                        transition={{ duration }}
+                    >
+                        {page}
+                    </motion.div>
+                )
+            })}
         </>
     )
 }
