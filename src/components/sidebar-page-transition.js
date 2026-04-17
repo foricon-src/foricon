@@ -4,11 +4,11 @@ import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react';
 
-let duration = .2;
+let duration = 10;
 
 export default function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();
-    let [ prev, setPrev ] = useState(children);
+    let [ prev, setPrev ] = useState(null);
     let [ toShow, show ] = useState(children);
     let [ opacity, setOpacity ] = useState([0, 1]);
 
