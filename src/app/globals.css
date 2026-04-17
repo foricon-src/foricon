@@ -2009,7 +2009,7 @@ header {
     }
 }
 footer {
-    body.hide-header & {
+    body.hide-footer & {
         display: none;
     }
     > div {

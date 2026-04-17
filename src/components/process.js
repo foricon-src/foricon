@@ -16,8 +16,6 @@ export default function Process() {
         let { pathname } = location;
         let theme = localStorage.getItem('theme');
 
-        body.classList.remove('hide-header', 'hide-footer');
-
         while (!qSelec(false, 'header')) await wait();
         
         let header = qSelec(false, 'header');
