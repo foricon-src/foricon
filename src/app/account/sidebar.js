@@ -17,11 +17,6 @@ export default function Sidebar() {
             : isIcon ? 'outline' : '';
     }
 
-    useEffect(() => {(async () => {
-        while (user == null) await wait();
-        !user && go(router, 'login');
-    })()}, [])
-
     return (
         <ul className='btn-list vertical line-active'>
             <li className='red' onClick={async () => {

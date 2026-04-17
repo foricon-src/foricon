@@ -5,16 +5,15 @@ import { GetLang } from 'Com/language';
 import { useEffect } from "react";
 import { get, ref } from "firebase/database";
 import { db } from "Com/firebase";
+import usePage from "Pag/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
 
 export default function Page() {
     let router = useRouter();
-    
-    useEffect(() => {(async () => {
-        while (user == null) await wait();
 
+    usePage(async () => {
         let { plan, pageview: { count, start } } = user.doc;
 
         let planData = (await get(ref(db, `plans/${plan}`))).val();
@@ -30,7 +29,7 @@ export default function Page() {
 
         elemById('main_package_pageviews_chart_count').innerText = `${count} / ${planData.pageviews}`;
         elemById('main_package_pageviews_reset').innerText = formatDate(reset);
-    })()}, [])
+    })
 
     return (
         <div name='package'>

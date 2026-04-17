@@ -4,12 +4,23 @@ import { useRouter } from "next/navigation";
 import Code from "Com/code";
 import { GetLang } from 'Com/language';
 import { UpdateRange, Range } from "Com/range";
+import usePage from "Pag/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
 
 export default function Page() {
     let router = useRouter();
+
+    usePage(() => {
+        let { personalization: { font, indent } } = user;
+        let form = qSelec(false, 'div[name="personalization"] > form');
+        let form_fSelect = qSelec(false, form, 'f-select');
+        let form_indent = form.indent;
+
+        form_fSelect.setValue(font);
+        UpdateRange(form_indent, indent);
+    })
 
     return (
         <div name='personalization'>

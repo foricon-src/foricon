@@ -2,12 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { GetLang } from 'Com/language';
+import usePage from "Pag/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
 
 export default function Page() {
     let router = useRouter();
+
+    usePage(() => {})
 
     return (
         <div name='security/change-password'>

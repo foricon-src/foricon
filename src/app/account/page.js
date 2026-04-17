@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { GetLang, LanguageContext } from 'Com/language';
-import { useEffect, useContext, use } from "react";
+import { useContext } from "react";
+import usePage from "Pag/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
@@ -11,9 +12,7 @@ export default function Page() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
 
-    useEffect(() => {(async () => {
-        while (elemById('loading')) await wait();
-
+    usePage(async () => {
         let hour = new Date().getHours();
 
         elemById('main_home_hero_greeting').innerText = `${
@@ -62,7 +61,7 @@ export default function Page() {
                 }
             )[lang]
         }, ${user.doc.name}`;
-    })()}, [])
+    })
 
     return (
         <div name='home'>
