@@ -9,37 +9,29 @@ let duration = .2;
 export default function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();
     let [ prev, setPrev ] = useState(null);
-    let [ current, setCurrent ] = useState(children);
+    let [ toShow, show ] = useState(children);
+    let [ opacity, setOpacity ] = useState([0, 1]);
 
     useEffect(() => {(async () => {
-        if (current == children) return;
-        setPrev(current);
-        setCurrent(children);
+        if (prev == children) return;
+        show(prev);
+        setOpacity([1, 0]);
         await wait(duration);
-        setPrev(null);
+        show(children);
+        setOpacity([0, 1]);
+        setPrev(children);
     })()}, [ children ])
 
     return (
         <>
-            {prev && (
-                <motion.div
-                    name={name}
-                    key={pathname}
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 0 }}
-                    transition={{ duration, ease: 'ease' }}
-                >
-                    {prev}
-                </motion.div>
-            )}
             <motion.div
                 name={name}
                 key={pathname}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: opacity[0] }}
+                animate={{ opacity: opacity[1] }}
                 transition={{ duration, ease: 'ease' }}
             >
-                {current}
+                {toShow}
             </motion.div>
         </>
     )
