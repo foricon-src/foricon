@@ -44,37 +44,37 @@ export default function Process() {
 
         timezone = new Date().getTimezoneOffset() / 60;
         
-        if (!visited) {
-            onAuthStateChanged(auth, async res => {
-                let locked = (await get(ref(db, 'locked'))).val();
-                let admin;
-                
-                if (res) {
-                    user = res;
-                    let d = await getDoc(doc(dbFirestore, 'users', user.uid));
-                    user.doc = d.data();
-                    
-                    qSelec(true, '.signup').forEach(each => each.remove());
-                    if (user.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
-                        addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
-                            ctrlKey && key == '/' && location.pathname != '/p/management-center.html' && !document.activeElement.matches('textarea, input') &&
-                            go(router, 'admin', true);
-                        }, false)
-                        admin = true;
-                    }
-                    
-                    let { font, indent } = user.doc.personalization;
-                    body.classList.remove('cons');
-                    body.classList.add(font);
-                    body.indentSize = indent;
-                }
-                else user = false;
-                // if (!admin) {
-                //     if (['manager', 'management-center', 'admin'].some(path => location.pathname == `/p/${path}.html`)) document.documentElement.innerHTML = '403 Forbidden';
-                //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
-                // }
-            })
+        user == null && onAuthStateChanged(auth, async res => {
+            let locked = (await get(ref(db, 'locked'))).val();
+            let admin;
             
+            if (res) {
+                user = res;
+                let d = await getDoc(doc(dbFirestore, 'users', user.uid));
+                user.doc = d.data();
+                
+                qSelec(true, '.signup').forEach(each => each.remove());
+                if (user.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
+                    addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
+                        ctrlKey && key == '/' && location.pathname != '/p/management-center.html' && !document.activeElement.matches('textarea, input') &&
+                        go(router, 'admin', true);
+                    }, false)
+                    admin = true;
+                }
+                
+                let { font, indent } = user.doc.personalization;
+                body.classList.remove('cons');
+                body.classList.add(font);
+                body.indentSize = indent;
+            }
+            else user = false;
+            // if (!admin) {
+            //     if (['manager', 'management-center', 'admin'].some(path => location.pathname == `/p/${path}.html`)) document.documentElement.innerHTML = '403 Forbidden';
+            //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
+            // }
+        })
+        
+        if (!visited) {
             let icons = (await get(ref(db, 'icons/'))).val();
             for (let name in icons) {
                 let icon = icons[name];
