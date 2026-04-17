@@ -137,6 +137,7 @@ export default function LogIn() {
     useEffect(() => {(async () => {
         while (user == null) await wait();
         user && go(router, 'account');
+        document.body.classList.add('hide-header', 'hide-footer');
     })()}, [ usePathname() ])
 
     async function changePage(page, e, func) {
