@@ -15,7 +15,6 @@ export default function Process() {
     useEffect(() => {(async () => {
         let { body, documentElement: html } = document;
         let theme = localStorage.getItem('theme');
-        let visited = localStorage.getItem('visited') == 'true';
 
         body.classList.remove('hide-header', 'hide-footer');
         [
@@ -74,7 +73,7 @@ export default function Process() {
             // }
         })
         
-        if (!visited) {
+        if (!customElements.get('f-upload')) {
             let icons = (await get(ref(db, 'icons/'))).val();
             for (let name in icons) {
                 let icon = icons[name];
@@ -715,11 +714,7 @@ export default function Process() {
             pt: 'Conecte-se',
             es: 'Acceso',
             ru: 'Авторизоваться',
-        }[language]
-            
-
-        visited = true;
-        localStorage.setItem('visited', visited);
+        }[language];
     })()}, [ pathname ])
     
     return null;
