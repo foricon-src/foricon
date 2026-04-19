@@ -18,7 +18,7 @@ export default function SidebarComponent({ items, home }) {
     let router = useRouter();
 
     function stateActive(path = '', isIcon) {
-        return pathname.startsWith(path)
+        return pathname.startsWith(`/${path}`)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
     }
@@ -27,7 +27,7 @@ export default function SidebarComponent({ items, home }) {
         <ul className='btn-list vertical line-active'>
             {items.map(item => {
                 let { page, text, texts, action, hasLine, icon: { name, keepState } } = item;
-                let path = `/${home}${page ? `/${page}` : ''}`;
+                let path = `${home}${page ? `/${page}` : ''}`;
                 return <li
                     key={page}
                     className={[ hasLine && 'line', page && stateActive(path) ].filter(Boolean).join(' ')}
