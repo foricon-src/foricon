@@ -585,6 +585,7 @@ export default function Process() {
                         target != optList && ![...optList.children].some(child => child.contains(target)) && hide() :
                         target != optList && hide();
                     })
+                    console.log(optList)
                     optList_option.forEach(each => elem.formatOption(each))
                 }
                 formatOption(opt) {
