@@ -661,8 +661,8 @@ export default function Process() {
                     else {
                         this.querySelectorAll('f-option').forEach(async opt => {
                             let val = getAttr(opt, 'value') || opt.innerText;
-                            console.log(val, value)
                             if (val == value || (multiple && value.includes(val))) {
+                                console.log(opt)
                                 opt.click();
                             }
                         })
