@@ -20,7 +20,7 @@ export default function SidebarPageTransition({ name, children }) {
     })()}, [ children ])
 
     return (
-        <>
+        <div style={{ 'position': 'relative' }}>
             {prev && (
                 <motion.div
                     name={name}
@@ -28,6 +28,7 @@ export default function SidebarPageTransition({ name, children }) {
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 0 }}
                     transition={{ duration, ease: 'ease' }}
+                    style={{ 'position': 'absolute' }}
                 >
                     {prev}
                 </motion.div>
@@ -38,9 +39,10 @@ export default function SidebarPageTransition({ name, children }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration, ease: 'ease' }}
+                style={{ 'position': 'absolute' }}
             >
                 {current}
             </motion.div>
-        </>
+        </div>
     )
 }
