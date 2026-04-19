@@ -141,6 +141,7 @@ export default function Sidebar() {
                     }
                 },
                 icon: { name: 'arrow-right-to-bracket' },
+                className: 'red',
                 texts: {
                     en: 'Log out',
                     vi: 'Đăng xuất',
@@ -159,6 +160,7 @@ export default function Sidebar() {
             {
                 page: '',
                 icon: { name: 'house' },
+                hasLine: true,
                 texts: {
                     en: 'Home',
                     vi: 'Trang chủ',

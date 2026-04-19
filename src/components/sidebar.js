@@ -26,11 +26,11 @@ export default function SidebarComponent({ items, home }) {
     return (
         <ul className='btn-list vertical line-active'>
             {items.map(item => {
-                let { page, text, texts, action, hasLine, icon: { name, keepState } } = item;
+                let { page, text, texts, action, hasLine, icon: { name, keepState }, className } = item;
                 let path = `${home}${page ? `/${page}` : ''}`;
                 return <li
                     key={page}
-                    className={[ hasLine && 'line', page && stateActive(path) ].filter(Boolean).join(' ')}
+                    className={[ hasLine && 'line', page && stateActive(path), className ].filter(Boolean).join(' ')}
                     onClick={() => action ? action() : GoPage(router, path)}
                 >
                     <f-icon icon={name} i-s={!page || keepState ? 'outline' : stateActive(path, true)}/>
