@@ -55,7 +55,7 @@ export default function Page() {
                     </option-list>
                 </f-select>
                 <Code lang='HTML'>{`<div class='box'>
-<!--<p>Hello World!</p>-->
+  <!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
   let a = JSON.parse(localStorage.getItem('a'));

@@ -596,7 +596,7 @@ export default function Process() {
                     
                     async function setOption() {
                         while (document.getElementById('loading')) await wait();
-                        
+                        console.log('clicked')
                         let optList_option = [...optList.children];
                         let { innerText } = opt;
                         let val = getAttr(opt, 'value') ?? innerText;
@@ -632,7 +632,7 @@ export default function Process() {
                         }
                     }
                     addEvLis(opt, 'click', setOption);
-                    getAttr(opt, ) == '' && setOption();
+                    getAttr(opt, 'selected') == '' && setOption();
                 }
                 createOption(innerHTML, value, options) {
                     let opt = document.createElement('f-option');
