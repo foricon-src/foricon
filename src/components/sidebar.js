@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { GetLang } from "./language";
 import { GoPage } from "./sidebar-page-transition";
+import { useRouter } from "next/navigation";
 
 /**
  * Creates a sidebar
@@ -14,6 +15,7 @@ import { GoPage } from "./sidebar-page-transition";
  */
 export default function SidebarComponent({ items, home }) {
     let pathname = usePathname();
+    let router = useRouter();
 
     function stateActive(path = '', isIcon) {
         return pathname.startsWith(path)
@@ -29,9 +31,9 @@ export default function SidebarComponent({ items, home }) {
                 return <li
                     key={page}
                     className={[ hasLine && 'line', page && stateActive(path) ].filter(Boolean).join(' ')}
-                    onClick={() => action ? action() : GoPage(path)}
+                    onClick={() => action ? action() : GoPage(router, path)}
                 >
-                    <f-icon icon={name} i-s={keepState ? 'outline' : stateActive(path, true)}/>
+                    <f-icon icon={name} i-s={!page || keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || GetLang(texts)}</span>
                 </li>
             })}

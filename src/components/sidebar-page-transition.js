@@ -4,14 +4,11 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 
-export function GoPage(page) {
-    let router = useRouter();
-    (async () => {
-        let main = qSelec(false, '#sidebar-page > div:last-child');
-        main.style.opacity = 0;
-        await wait(.2);
-        go(router, page);
-    })()
+export async function GoPage(router, page) {
+    let main = qSelec(false, '#sidebar-page > div:last-child');
+    main.style.opacity = 0;
+    await wait(.2);
+    go(router, page);
 }
 export function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();

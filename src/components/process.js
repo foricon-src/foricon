@@ -140,14 +140,14 @@ export default function Process() {
                     })
                     
                     elem.addEventListener('dragover', e => {
-                        if (multiple || !multiple && !elem.files.length) {
+                        if (multiple || !elem.files.length) {
                             e.preventDefault();
                             elem.classList.add('drag');
                         }
                     })
                     elem.addEventListener('dragleave', () => elem.classList.remove('drag'));
                     elem.addEventListener('drop', e => {
-                        if (multiple || !multiple && !elem.files.length) {
+                        if (multiple || !elem.files.length) {
                             e.preventDefault();
                             
                             elem.classList.remove('drag');
@@ -605,7 +605,7 @@ export default function Process() {
                             let { children } = txt;
                             if (
                                 isActive(opt) && (
-                                    !required || required && querySelecAll(optList, '.active').length > 1
+                                    !required || querySelecAll(optList, '.active').length > 1
                                 )
                             ) {
                                 for (let span of children) span.innerText == innerText && span.remove();
