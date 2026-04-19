@@ -17,7 +17,9 @@ export default function SidebarComponent({ items, home }) {
     let pathname = usePathname();
     let router = useRouter();
 
-    function stateActive(path = '', isIcon) {
+    function stateActive(path, isIcon) {
+        console.log(path);
+        
         return pathname.startsWith(`/${path}`)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
