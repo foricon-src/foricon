@@ -1054,7 +1054,7 @@ globalThis.formatDate = (date, lang = language) => {
 
 /**
  * Goes to a page
- * @param {Router} router - Router
+ * @param {AppRouterInstance} router - Router
  * @param {str | undefined} value - Page to go to
  * @param {Boolean} openInNewTab - Whether the new page should be opened in new tab
  */
