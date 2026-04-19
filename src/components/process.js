@@ -552,7 +552,7 @@ export default function Process() {
                         }
                     })
                     
-                    elem.addEventListener('click', async e => {
+                    addEvLis(elem, 'click', async e => {
                         if (!optList) console.error('Missing element: &quot;option-list&quot; is not found');
                         else if (e.target == elem) {
                             if (!isActive(optList)) {
@@ -589,10 +589,10 @@ export default function Process() {
                     optList_option.forEach(each => elem.formatOption(each));
                 }
                 async ready() {
-                    let optList = qSelec(false, elem, 'option-list');
+                    let optList = qSelec(false, this, 'option-list');
                     while (!optList || !optList.children.length) {
                         await wait();
-                        optList = qSelec(false, elem, 'option-list');
+                        optList = qSelec(false, this, 'option-list');
                     }
                 }
                 formatOption(opt) {
@@ -603,7 +603,7 @@ export default function Process() {
                     let required = getAttr(elem, 'required') != undefined;
                     
                     async function setOption() {
-                        while (document.getElementById('loading')) await wait();
+                        while (elemById('loading')) await wait();
                         console.log('clicked')
                         let optList_option = [...optList.children];
                         let { innerText } = opt;
