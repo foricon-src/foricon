@@ -13,13 +13,19 @@ export default function SidebarPageTransition({ name, children }) {
     let [ opacity, setOpacity ] = useState([0, 1]);
 
     useEffect(() => {(async () => {
-        if (prev == children) return;
-        show(prev);
-        setOpacity([1, 0]);
-        await wait(duration);
+        let currentPage = pathname.split('/')[1];
+        let { elements, page } = previousPage;
+        if (page != currentPage) {
+            show(elements);
+            setOpacity([1, 0]);
+            await wait(duration);
+        }
         show(children);
         setOpacity([0, 1]);
-        setPrev(children);
+        previousPage = {
+            page: currentPage,
+            elements: children,
+        }
     })()}, [ children ])
 
     return (

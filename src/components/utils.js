@@ -673,6 +673,10 @@ globalThis.user = null;
 globalThis.language = null;
 globalThis.country = null;
 globalThis.timezone = null;
+globalThis.previousPage = {
+    page: '',
+    elements: null,
+}
 
 /**
  * Appends pairs of keys and values to a specific object
