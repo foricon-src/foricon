@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function usePage(func) {
     let router = useRouter();
+    let pathname = usePathname();
 
     useEffect(() => {(async () => {
         while (user == null) await wait();
@@ -13,5 +14,5 @@ export default function usePage(func) {
         while (!user.doc) await wait();
         func();
         document.body.classList.add('hide-footer');
-    })()}, [])
+    })()}, [ pathname ])
 }

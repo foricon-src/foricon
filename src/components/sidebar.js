@@ -35,7 +35,7 @@ export default function SidebarComponent({ items, home }) {
                 >
                     <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || GetLang(texts)}</span>
-                    {badge && <span>{GetLang(badge)}</span>}
+                    {badge && <span className='badge'>{GetLang(badge)}</span>}
                 </li>
             })}
         </ul>
