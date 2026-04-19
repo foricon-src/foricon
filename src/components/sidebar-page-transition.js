@@ -1,12 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 export async function goPage(page) {
     let main = qSelec(false, '#sidebar-page > div:last-child');
     main.style.opacity = 0;
     await wait(.2);
-    go(router, page);
+    go(useRouter(), page);
 }
 export function SidebarPageTransition({ name, children }) {
     return (
