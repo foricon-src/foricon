@@ -1,48 +1,23 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
-let duration = .2;
-
-export default function SidebarPageTransition({ name, children }) {
-    let pathname = usePathname();
-    let [ prev, setPrev ] = useState(null);
-    let [ current, setCurrent ] = useState(children);
-
-    useEffect(() => {(async () => {
-        if (current == children) return;
-        setPrev(current);
-        setCurrent(children);
-        await wait(duration);
-        setPrev(null);
-    })()}, [ children ])
-
+export async function goPage(page) {
+    let main = qSelec(false, '#sidebar-page > div:last-child');
+    main.style.opacity = 0;
+    await wait(.2);
+    go(router, page);
+}
+export function SidebarPageTransition({ name, children }) {
     return (
-        <div style={{ 'position': 'relative' }}>
-            {prev && (
-                <motion.div
-                    name={name}
-                    key={pathname}
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 0 }}
-                    transition={{ duration, ease: 'ease' }}
-                    style={{ 'position': 'absolute' }}
-                >
-                    {prev}
-                </motion.div>
-            )}
-            <motion.div
-                name={name}
-                key={pathname}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration, ease: 'ease' }}
-                style={{ 'position': 'absolute' }}
-            >
-                {current}
-            </motion.div>
-        </div>
+        <motion.div
+            name={name}
+            key={pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: .2, ease: 'ease' }}
+        >
+            {children}
+        </motion.div>
     )
 }
