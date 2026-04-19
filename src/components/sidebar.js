@@ -18,8 +18,6 @@ export default function SidebarComponent({ items, home }) {
     let router = useRouter();
 
     function stateActive(path, isIcon) {
-        console.log(path);
-        
         return pathname.startsWith(`/${path}`)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
@@ -32,10 +30,10 @@ export default function SidebarComponent({ items, home }) {
                 let path = `${home}${page ? `/${page}` : ''}`;
                 return <li
                     key={page}
-                    className={[ hasLine && 'line', page && stateActive(path), className ].filter(Boolean).join(' ')}
+                    className={[ hasLine && 'line', page != undefined && stateActive(path), className ].filter(Boolean).join(' ')}
                     onClick={() => action ? action() : GoPage(router, path)}
                 >
-                    <f-icon icon={name} i-s={!page || keepState ? 'outline' : stateActive(path, true)}/>
+                    <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || GetLang(texts)}</span>
                 </li>
             })}
