@@ -26,7 +26,11 @@ export default function SidebarComponent({ items, home }) {
             {items.map(item => {
                 let { page, text, texts, action, hasLine, icon: { name, keepState } } = item;
                 let path = `/${home}${page ? `/${page}` : ''}`;
-                return <li key={page} className={`${hasLine && 'line'} ${page && stateActive(path)}`} onClick={() => action || GoPage(path)}>
+                return <li
+                    key={page}
+                    className={[ hasLine && 'line', page && stateActive(path) ].filter(Boolean).join(' ')}
+                    onClick={() => action ? action() : GoPage(path)}
+                >
                     <f-icon icon={name} i-s={keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || GetLang(texts)}</span>
                 </li>
