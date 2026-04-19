@@ -26,7 +26,7 @@ export default function SidebarComponent({ items, home }) {
     return (
         <ul className='btn-list vertical line-active'>
             {items.map(item => {
-                let { page, text, texts, action, hasLine, icon: { name, keepState }, className } = item;
+                let { page, text, texts, action, hasLine, icon: { name, keepState }, badge, className } = item;
                 let path = `${home}${page ? `/${page}` : ''}`;
                 return <li
                     key={page}
@@ -35,6 +35,7 @@ export default function SidebarComponent({ items, home }) {
                 >
                     <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || GetLang(texts)}</span>
+                    {badge && <span>{GetLang(badge)}</span>}
                 </li>
             })}
         </ul>

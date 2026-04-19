@@ -140,7 +140,7 @@ export default function Sidebar() {
                         notify('error', message)
                     }
                 },
-                icon: { name: 'arrow-right-to-bracket' },
+                icon: { name: 'arrow-right-from-bracket' },
                 className: 'red',
                 texts: {
                     en: 'Log out',
