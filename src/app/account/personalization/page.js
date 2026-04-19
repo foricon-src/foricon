@@ -12,14 +12,14 @@ import './page.css';
 export default function Page() {
     let router = useRouter();
 
-    usePage(async () => {
+    usePage(() => {
         let { font, indent } = user.doc.personalization;
         let form = qSelec(false, 'div[name="personalization"] > form');
         let form_fSelect = qSelec(false, form, 'f-select');
         let form_indent = form.indent;
 
         form_fSelect.setValue(font);
-        console.log('run');
+        console.log(form_fSelect, form_fSelect.setValue, font);
         UpdateRange(form_indent, indent);
     })
 
