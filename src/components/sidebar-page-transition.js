@@ -15,7 +15,7 @@ export default function SidebarPageTransition({ name, children }) {
     useEffect(() => {(async () => {
         let currentPage = pathname.split('/')[1];
         let { elements, page } = previousPage;
-        if (page != currentPage) {
+        if (page == currentPage) {
             show(elements);
             setOpacity([1, 0]);
             await wait(duration);
