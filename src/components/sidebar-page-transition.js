@@ -4,40 +4,42 @@ import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react';
 
-let duration = 10;
+let duration = .2;
 
 export default function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();
-    let [ prev, setPrev ] = useState(children);
-    let [ toShow, show ] = useState(children);
-    let [ opacity, setOpacity ] = useState([0, 1]);
+    let [ prev, setPrev ] = useState(null);
+    let [ current, setCurrent ] = useState(children);
 
     useEffect(() => {(async () => {
-        let currentPage = pathname.split('/')[1];
-        let { elements, page } = previousPage;
-        if (page == currentPage) {
-            show(elements);
-            setOpacity([1, 0]);
-            await wait(duration);
-        }
-        show(children);
-        setOpacity([0, 1]);
-        previousPage = {
-            page: currentPage,
-            elements: children,
-        }
+        if (current == children) return;
+        setPrev(current);
+        setCurrent(children);
+        await wait(duration);
+        setPrev(null);
     })()}, [ children ])
 
     return (
         <>
+            {prev && (
+                <motion.div
+                    name={name}
+                    key={pathname}
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{ duration, ease: 'ease' }}
+                >
+                    {prev}
+                </motion.div>
+            )}
             <motion.div
                 name={name}
                 key={pathname}
-                initial={{ opacity: opacity[0] }}
-                animate={{ opacity: opacity[1] }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration, ease: 'ease' }}
             >
-                {toShow}
+                {current}
             </motion.div>
         </>
     )
