@@ -534,8 +534,8 @@ export default function Process() {
                 async connectedCallback() {
                     let elem = this;
                     let multiple = getAttr(elem, 'multiple') != undefined;
-                    
-                    await wait(.1);
+
+                    await this.ready();
                     
                     let txt = qSelec(false, elem, 'text');
                     let optList = qSelec(false, elem, 'option-list');
@@ -585,8 +585,15 @@ export default function Process() {
                         target != optList && ![...optList.children].some(child => child.contains(target)) && hide() :
                         target != optList && hide();
                     })
-                    console.log(optList)
-                    optList_option.forEach(each => elem.formatOption(each))
+                    
+                    optList_option.forEach(each => elem.formatOption(each));
+                }
+                async ready() {
+                    let optList = qSelec(false, elem, 'option-list');
+                    while (!optList || !optList.children.length) {
+                        await wait();
+                        optList = qSelec(false, elem, 'option-list');
+                    }
                 }
                 formatOption(opt) {
                     let elem = this;
@@ -650,7 +657,7 @@ export default function Process() {
                     clear(this.querySelector('text'), this.querySelector('option-list'));
                 }
                 async setValue(value) {
-                    while (document.getElementById('loading')) await wait();
+                    await this.ready();
                     
                     let multiple = getAttr(this, 'multiple') != undefined;
                     
