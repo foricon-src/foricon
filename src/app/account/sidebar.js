@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { GetLang } from 'Com/language';
 import { signOut } from "firebase/auth";
 import { auth } from "Com/firebase";
-import { goPage } from "Com/sidebar-page-transition";
+import { GoPage } from "Com/sidebar-page-transition";
 
 export default function Sidebar() {
     let pathname = usePathname();
@@ -44,7 +44,7 @@ export default function Sidebar() {
                     })
                 }</span>
             </li>
-            <li className={`line ${stateActive()}`} onClick={() => goPage('account')}>
+            <li className={`line ${stateActive()}`} onClick={() => GoPage('account')}>
                 <f-icon icon='house' i-s={stateActive('', true)}></f-icon>
                 <span>{
                     GetLang({
@@ -63,7 +63,7 @@ export default function Sidebar() {
                     })
                 }</span>
             </li>
-            <li className={stateActive('info')} onClick={() => goPage('account/info')}>
+            <li className={stateActive('info')} onClick={() => GoPage('account/info')}>
                 <f-icon icon='circle-info' i-s={stateActive('info', true)}></f-icon>
                 <span>{
                     GetLang({
@@ -82,7 +82,7 @@ export default function Sidebar() {
                     })
                 }</span>
             </li>
-            <li className={stateActive('security')} onClick={() => goPage('account/security')}>
+            <li className={stateActive('security')} onClick={() => GoPage('account/security')}>
                 <f-icon icon='shield' i-s={stateActive('security', true)}></f-icon>
                 <span>{
                     GetLang({
@@ -101,7 +101,7 @@ export default function Sidebar() {
                     })
                 }</span>
             </li>
-            <li className={stateActive('personalization')} onClick={() => goPage('account/personalization')}>
+            <li className={stateActive('personalization')} onClick={() => GoPage('account/personalization')}>
                 <f-icon icon='palette' i-s={stateActive('personalization', true)}></f-icon>
                 <span>{
                     GetLang({
@@ -136,7 +136,7 @@ export default function Sidebar() {
                     })
                 }</span>
             </li>
-            <li className={stateActive('package')} onClick={() => goPage('account/package')}>
+            <li className={stateActive('package')} onClick={() => GoPage('account/package')}>
                 <f-icon icon='code' i-s='outline'></f-icon><span>Foricon Package</span>
             </li>
         </ul>
