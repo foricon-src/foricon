@@ -659,12 +659,11 @@ export default function Process() {
                         this._v = multiple ? [] : '';
                     }
                     else {
-                        let found;
                         this.querySelectorAll('f-option').forEach(async opt => {
                             let val = getAttr(opt, 'value') || opt.innerText;
+                            console.log(val, value)
                             if (val == value || (multiple && value.includes(val))) {
                                 opt.click();
-                                found = true;
                             }
                         })
                     }

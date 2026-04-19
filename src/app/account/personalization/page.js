@@ -19,7 +19,6 @@ export default function Page() {
         let form_indent = form.indent;
 
         form_fSelect.setValue(font);
-        console.log(form_fSelect, form_fSelect.setValue, font);
         UpdateRange(form_indent, indent);
     })
 
