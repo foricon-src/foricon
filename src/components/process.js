@@ -569,7 +569,7 @@ export default function Process() {
                             ]('bottom')
                         }
                     })
-                    document.addEventListener('click', e => {
+                    addEvLis(document, 'click', e => {
                         let { target } = e;
                         async function hide() {
                             let hei = optList.offsetHeight;
@@ -580,10 +580,11 @@ export default function Process() {
                             await wait(.2);
                             optList.style = '';
                         }
-                        if (isActive(optList))
-                            multiple ?
-                        target != optList && ![...optList.children].some(child => child.contains(target)) && hide() :
-                        target != optList && hide();
+                        isActive(optList) && (
+                            multiple
+                                ? target != optList && ![...optList.children].some(child => child.contains(target)) && hide()
+                                : target != optList && hide()
+                        )
                     })
                     
                     optList_option.forEach(each => elem.formatOption(each));
@@ -603,8 +604,6 @@ export default function Process() {
                     let required = getAttr(elem, 'required') != undefined;
                     
                     async function setOption() {
-                        while (elemById('loading')) await wait();
-                        console.log('clicked')
                         let optList_option = [...optList.children];
                         let { innerText } = opt;
                         let val = getAttr(opt, 'value') ?? innerText;
@@ -625,14 +624,11 @@ export default function Process() {
                                     return getAttr(opt, 'value') ?? opt.innerText;
                             }).filter(item => (item))
                             clear(txt);
-                            optList_option.forEach(opt => {
-                                if (isActive(opt))
-                                    txt.innerHTML += `<span>${opt.innerText}</span>`
-                            })
+                            optList_option.forEach(opt => isActive(opt) && (txt.innerHTML += `<span>${opt.innerText}</span>`));
                         }
                         else {
-                            let act = optList.querySelector('.active');
-                            let lang = opt.querySelector('lang');
+                            let act = qSelec(false, optList, '.active');
+                            let lang = qSelec(false, opt, 'lang');
                             act && inactivate(act);
                             txt.innerText = (lang || opt).innerText;
                             activate(opt);
@@ -643,38 +639,34 @@ export default function Process() {
                     getAttr(opt, 'selected') == '' && setOption();
                 }
                 createOption(innerHTML, value, options) {
-                    let opt = document.createElement('f-option');
+                    let opt = newElem('f-option', {
+                        className: options?.selected && 'selected',
+                        attrs: { value, disabled: options?.disabled },
+                        innerHTML,
+                    })
                     
-                    options?.disabled && disable(opt);
-                    options?.selected && (opt.className = 'selected');
-                    value && opt.setAttribute('value', value);
-                    opt.innerHTML = innerHTML;
-                    
-                    this.querySelector('option-list').append(opt);
+                    qSelec(false, this, 'option-list').append(opt);
                     this.formatOption(opt);
                 }
                 clearOptions() {
-                    clear(this.querySelector('text'), this.querySelector('option-list'));
+                    clear(qSelec(false, this, 'text'), qSelec(false, this, 'option-list'));
                 }
                 async setValue(value) {
                     await this.ready();
                     
                     let multiple = getAttr(this, 'multiple') != undefined;
+                    let opts = qSelec(true, this, 'f-option');
                     
                     if (value == null) {
-                        clear(this.querySelector('text'));
-                        this.querySelectorAll('f-option').forEach(opt => inactivate(opt));
+                        clear(qSelec(false, this, 'text'));
+                        opts.forEach(opt => inactivate(opt));
                         this._v = multiple ? [] : '';
                     }
-                    else {
-                        this.querySelectorAll('f-option').forEach(async opt => {
+                    else
+                        opts.forEach(async opt => {
                             let val = getAttr(opt, 'value') || opt.innerText;
-                            if (val == value || (multiple && value.includes(val))) {
-                                console.log(opt)
-                                opt.click();
-                            }
+                            (val == value || (multiple && value.includes(val))) && opt.click();
                         })
-                    }
                 }
             })
         }
