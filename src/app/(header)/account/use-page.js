@@ -13,6 +13,5 @@ export default function usePage(func) {
         }
         while (!user.doc) await wait();
         func();
-        document.body.classList.add('hide-footer');
     })()}, [ pathname ])
 }

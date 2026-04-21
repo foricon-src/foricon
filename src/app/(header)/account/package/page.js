@@ -5,7 +5,7 @@ import { GetLang } from 'Com/language';
 import { useEffect } from "react";
 import { get, ref } from "firebase/database";
 import { db } from "Com/firebase";
-import usePage from "Pag/account/use-page";
+import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';

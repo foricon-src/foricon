@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Code from "Com/code";
 import { GetLang } from 'Com/language';
 import { UpdateRange, Range } from "Com/range";
-import usePage from "Pag/account/use-page";
+import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';

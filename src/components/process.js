@@ -16,16 +16,6 @@ export default function Process() {
         let { body, documentElement: html } = document;
         let theme = localStorage.getItem('theme');
 
-        body.classList.remove('hide-header', 'hide-footer');
-        [
-            [
-                '/account', [ 'hide-footer' ]
-            ],
-            [
-                '/login', [ 'hide-header', 'hide-footer' ]
-            ]
-        ].forEach(([ p, classes ]) => pathname.startsWith(p) && body.classList.add(...classes));
-
         while (!qSelec(false, 'header')) await wait();
         
         let header = qSelec(false, 'header');

@@ -476,8 +476,8 @@ export default function Search() {
                 <f-select>
                     <text></text>
                     <option-list>
-                    <f-option value='b2'>Beta 2+</f-option>
-                    <f-option value='b1'>Beta 1.7.5</f-option>
+                        <f-option value='b2'>Beta 2+</f-option>
+                        <f-option value='b1'>Beta 1.7.5</f-option>
                     </option-list>
                 </f-select>
                 <div id='options'>

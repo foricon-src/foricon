@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { GetLang } from "Com/language";
-import usePage from "Pag/account/use-page";
+import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/account/internal-global.css';
 import './page.css';
