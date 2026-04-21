@@ -555,7 +555,8 @@ export default function Process() {
                     )
                     
                     function init() {
-                        getChild(this.list).forEach(each => elem.formatOption(each));
+                        console.log(this)
+                        getChild(this.list).forEach(each => this.toggleOption(each));
                     }
                     init();
                     new MutationObserver(init).observe(this.list, { childList: true });
@@ -590,7 +591,7 @@ export default function Process() {
 
                     this.list.style.height = values[0];
                     await wait();
-                    func(optList);
+                    func(this.list);
                     this.list.style.height = values[1];
                     await wait(.2);
                     this.list.style = '';
