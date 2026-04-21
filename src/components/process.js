@@ -549,10 +549,10 @@ export default function Process() {
                         opt && elem.toggleOption(opt);
                     })
                     addEvLis(document, 'click',({ target }) => 
-                        isActive(optList) && (
+                        isActive(elem.list) && (
                             isMultiple
-                                ? target != optList && ![...optList.children].some(child => child.contains(target))
-                                : target != optList
+                                ? target != elem.list && !getChild(elem.list).some(child => child.contains(target))
+                                : target != elem.list
                         ) && elem.toggleList()
                     )
                     
