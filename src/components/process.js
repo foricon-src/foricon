@@ -532,140 +532,93 @@ export default function Process() {
             })
             customElements.define('f-select', class extends HTMLElement {
                 async connectedCallback() {
-                    let elem = this;
-                    let multiple = getAttr(elem, 'multiple') != undefined;
+                    let isMultiple = hasAttr(this, 'multiple');
+                    appendData(this, {
+                        text: qSelec(false, this, 'text'),
+                        list: qSelec(false, this, 'option-list'),
+                        isMultiple,
+                        value: isMultiple ? [] : null,
+                        required: hasAttr(this, 'required'),
+                    })
 
-                    await this.ready();
-                    
-                    let txt = qSelec(false, elem, 'text');
-                    let optList = qSelec(false, elem, 'option-list');
-                    let optList_option = [...optList.children];
-                    
-                    !txt && console.error('Missing element: &quot;text&quot; is not found');
-                    
-                    elem.value = multiple ? [] : '';
-                    
-                    Object.defineProperty(elem, '_v', {
-                        set(newValue) {
-                            elem.value = newValue;
-                            elem.dispatchEvent(new Event('change'));
-                        }
+                    addEvLis(this, 'click', ({ target }) => target == this && this.toggleList(!isActive(this.list)));
+                    addEvLis(this.list, 'click', ({ target }) => {
+                        let opt = target.closest('f-option');
+                        opt && this.toggleOption(opt);
                     })
-                    
-                    addEvLis(elem, 'click', async e => {
-                        if (!optList) console.error('Missing element: &quot;option-list&quot; is not found');
-                        else if (e.target == elem) {
-                            if (!isActive(optList)) {
-                                let hei = optList.offsetHeight;
-                                optList.style.height = '0';
-                                await wait();
-                                activate(optList);
-                                optList.style.height = `${hei}px`;
-                                await wait(.2);
-                                optList.style = '';
-                            }
-                            optList.classList[
-                                elem.getBoundingClientRect().top + optList.offsetHeight > window.innerHeight ? 'add' : 'remove'
-                            ]('bottom')
-                        }
-                    })
-                    addEvLis(document, 'click', e => {
-                        let { target } = e;
-                        async function hide() {
-                            let hei = optList.offsetHeight;
-                            inactivate(optList);
-                            optList.style.height = `${hei}px`;
-                            await wait();
-                            optList.style.height = '0';
-                            await wait(.2);
-                            optList.style = '';
-                        }
+                    addEvLis(document, 'click',({ target }) => 
                         isActive(optList) && (
-                            multiple
-                                ? target != optList && ![...optList.children].some(child => child.contains(target)) && hide()
-                                : target != optList && hide()
-                        )
+                            isMultiple
+                                ? target != optList && ![...optList.children].some(child => child.contains(target))
+                                : target != optList
+                        ) && this.toggleList()
+                    )
+                    
+                    function init() {
+                        getChild(this.list).forEach(each => elem.formatOption(each));
+                    }
+                    init();
+                    new MutationObserver(init).observe(this.list, { childList: true });
+                }
+                toggleOption(opt) {
+                    let value = getAttr(opt, 'value') ?? opt.innerText;
+
+                    if (this.isMultiple) {
+                        if (this.value.includes(value)) {
+                            if (this.required && qSelec(true, this.list, '.active').length == 1) return;
+                            inactivate(opt);
+                        }
+                        else activate(opt);
+                    }
+                    else {
+                        inactivate(...this.list.children);
+                        activate(opt);
+                        this.toggleList();
+                    }
+
+                    clear(this.text);
+                    qSelec(true, this.list, '.active').forEach(each => {
+                        let span = newElem('span', each.innerText);
+                        this.text.append(span);
                     })
-                    
-                    optList_option.forEach(each => elem.formatOption(each));
                 }
-                async ready() {
-                    let optList = qSelec(false, this, 'option-list');
-                    while (!optList || !optList.children.length) {
-                        await wait();
-                        optList = qSelec(false, this, 'option-list');
-                    }
+                async toggleList(toOpen) {
+                    let { offsetHeight } = this.list;
+                    let values = [ `${offsetHeight}px`, '0' ];
+                    toOpen && (values = values.reverse());
+                    let func = toOpen ? activate : inactivate;
+
+                    this.list.style.height = values[0];
+                    await wait();
+                    func(optList);
+                    this.list.style.height = values[1];
+                    await wait(.2);
+                    this.list.style = '';
+
+                    this.list.classList[
+                        this.getBoundingClientRect().top + this.list.offsetHeight > window.innerHeight ? 'add' : 'remove'
+                    ]('bottom')
                 }
-                formatOption(opt) {
-                    let elem = this;
-                    let txt = qSelec(false, elem, 'text');
-                    let optList = qSelec(false, elem, 'option-list');
-                    let multiple = getAttr(elem, 'multiple') != undefined;
-                    let required = getAttr(elem, 'required') != undefined;
-                    
-                    async function setOption() {
-                        let optList_option = [...optList.children];
-                        let { innerText } = opt;
-                        let val = getAttr(opt, 'value') ?? innerText;
-                        
-                        if (multiple) {
-                            let { children } = txt;
-                            if (
-                                isActive(opt) && (
-                                    !required || querySelecAll(optList, '.active').length > 1
-                                )
-                            ) {
-                                for (let span of children) span.innerText == innerText && span.remove();
-                                inactivate(opt);
-                            }
-                            else activate(opt);
-                            elem._v = optList_option.map(opt => {
-                                if (isActive(opt))
-                                    return getAttr(opt, 'value') ?? opt.innerText;
-                            }).filter(item => (item))
-                            clear(txt);
-                            optList_option.forEach(opt => isActive(opt) && (txt.innerHTML += `<span>${opt.innerText}</span>`));
-                        }
-                        else {
-                            let act = qSelec(false, optList, '.active');
-                            let lang = qSelec(false, opt, 'lang');
-                            act && inactivate(act);
-                            txt.innerText = (lang || opt).innerText;
-                            activate(opt);
-                            elem._v = val;
-                        }
-                    }
-                    addEvLis(opt, 'click', setOption);
-                    getAttr(opt, 'selected') == '' && setOption();
-                }
-                createOption(innerHTML, value, options) {
+                createOption(innerHTML, value, options = {}) {
                     let opt = newElem('f-option', {
-                        className: options?.selected && 'selected',
-                        attrs: { value, disabled: options?.disabled },
+                        className: options.selected && 'selected',
+                        attrs: { value, disabled: options.disabled },
                         innerHTML,
                     })
-                    
                     qSelec(false, this, 'option-list').append(opt);
-                    this.formatOption(opt);
                 }
                 clearOptions() {
-                    clear(qSelec(false, this, 'text'), qSelec(false, this, 'option-list'));
+                    clear(
+                        qSelec(false, this, 'text'),
+                        qSelec(false, this, 'option-list')
+                    )
                 }
                 async setValue(value) {
-                    await this.ready();
-                    
-                    let multiple = getAttr(this, 'multiple') != undefined;
-                    let opts = qSelec(true, this, 'f-option');
-                    
-                    if (value == null) {
-                        clear(qSelec(false, this, 'text'));
-                        opts.forEach(opt => inactivate(opt));
-                        this._v = multiple ? [] : '';
-                    }
+                    if (value == null) this.clearOptions();
                     else
-                        opts.forEach(async opt => {
-                            let val = getAttr(opt, 'value') || opt.innerText;
-                            (val == value || (multiple && value.includes(val))) && opt.click();
+                        getChild(this.list).forEach(async opt => {
+                            let v = getAttr(opt, 'value') || opt.innerText;
+                            (v == value || (this.isMultiple && value.includes(v))) && this.toggleOption(opt);
                         })
                 }
             })

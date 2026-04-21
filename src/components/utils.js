@@ -821,6 +821,15 @@ globalThis.getChild = elem => {
 globalThis.getAttr = (elem, attr) => {
     return elem?.getAttribute(attr);
 }
+/**
+ * Checks an element whether it has the specified attribute
+ * @param {HTMLElement} elem - Element to get attribute
+ * @param {string} attr - Attribute to check
+ * @returns {Boolean} Whether the element has the specified attribute or not
+ */
+globalThis.hasAttr = (elem, attr) => {
+    return elem?.hasAttribute(attr);
+}
 const listenerMap = new Map();
 /**
  * Adds event listener(s) to element(s)
