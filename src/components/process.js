@@ -590,7 +590,7 @@ export default function Process() {
                         let span = newElem('span', each.innerText);
                         elem.text.append(span);
                         let value = getAttr(opt, 'value') ?? each.innerText;
-                        isMultiple ? elem.value.push(value) : (elem.value = value);
+                        elem.isMultiple ? elem.value.push(value) : (elem.value = value);
                     }
                 }
                 reset() {
