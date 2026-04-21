@@ -7,7 +7,7 @@ import { get, ref } from "firebase/database";
 import { db } from "Com/firebase";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
-import 'Pag/account/internal-global.css';
+import 'Pag/(header)/account/internal-global.css';
 import './page.css';
 
 export default function Page() {
