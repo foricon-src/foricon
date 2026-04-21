@@ -585,6 +585,7 @@ export default function Process() {
 
                     let actives = qSelec(true, elem.list, '.active');
                     for (let i in actives) {
+                        console.log(i)
                         if (elem.isMultiple && i > 0) break;
                         let each = actives[i];
                         let span = newElem('span', each.innerText);
