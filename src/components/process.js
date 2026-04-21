@@ -546,11 +546,12 @@ export default function Process() {
                         ) && elem.toggleList()
                     )
                     
-                    function init() {
+                    let selected = qSelec(false, elem.list, '[selected]');
+                    selected && elem.toggleOption(selected);
+
+                    new MutationObserver(() => {
                         getChild(elem.list).forEach(each => elem.toggleOption(each));
-                    }
-                    init();
-                    new MutationObserver(init).observe(elem.list, { childList: true });
+                    }).observe(elem.list, { childList: true });
                 }
                 toggleOption(opt) {
                     let elem = this;
