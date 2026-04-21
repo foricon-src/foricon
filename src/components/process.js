@@ -583,16 +583,13 @@ export default function Process() {
                     elem.dispatchEvent(new Event('change'));
                     clear(elem.text);
 
-                    let actives = qSelec(true, elem.list, '.active');
-                    for (let i in actives) {
-                        console.log(i)
-                        if (elem.isMultiple && i > 0) break;
-                        let each = actives[i];
+                    qSelec(true, elem.list, '.active').forEach(each => {
+                        if (elem.isMultiple && i > 0) return;
                         let span = newElem('span', each.innerText);
                         elem.text.append(span);
                         let value = getAttr(opt, 'value') ?? each.innerText;
                         elem.isMultiple ? elem.value.push(value) : (elem.value = value);
-                    }
+                    })
                 }
                 reset() {
                     this.value = this.isMultiple ? [] : null;
