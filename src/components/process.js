@@ -532,94 +532,100 @@ export default function Process() {
             })
             customElements.define('f-select', class extends HTMLElement {
                 async connectedCallback() {
-                    let isMultiple = hasAttr(this, 'multiple');
-                    appendData(this, {
-                        text: qSelec(false, this, 'text'),
-                        list: qSelec(false, this, 'option-list'),
+                    let elem = this;
+                    let isMultiple = hasAttr(elem, 'multiple');
+
+                    appendData(elem, {
+                        text: qSelec(false, elem, 'text'),
+                        list: qSelec(false, elem, 'option-list'),
                         isMultiple,
                         value: isMultiple ? [] : null,
-                        required: hasAttr(this, 'required'),
+                        required: hasAttr(elem, 'required'),
                     })
 
-                    addEvLis(this, 'click', ({ target }) => target == this && this.toggleList(!isActive(this.list)));
-                    addEvLis(this.list, 'click', ({ target }) => {
+                    addEvLis(elem, 'click', ({ target }) => target == elem && elem.toggleList(!isActive(elem.list)));
+                    addEvLis(elem.list, 'click', ({ target }) => {
                         let opt = target.closest('f-option');
-                        opt && this.toggleOption(opt);
+                        opt && elem.toggleOption(opt);
                     })
                     addEvLis(document, 'click',({ target }) => 
                         isActive(optList) && (
                             isMultiple
                                 ? target != optList && ![...optList.children].some(child => child.contains(target))
                                 : target != optList
-                        ) && this.toggleList()
+                        ) && elem.toggleList()
                     )
                     
                     function init() {
-                        console.log(this)
-                        getChild(this.list).forEach(each => this.toggleOption(each));
+                        getChild(elem.list).forEach(each => elem.toggleOption(each));
                     }
                     init();
-                    new MutationObserver(init).observe(this.list, { childList: true });
+                    new MutationObserver(init).observe(elem.list, { childList: true });
                 }
                 toggleOption(opt) {
+                    let elem = this;
                     let value = getAttr(opt, 'value') ?? opt.innerText;
 
-                    if (this.isMultiple) {
-                        if (this.value.includes(value)) {
-                            if (this.required && qSelec(true, this.list, '.active').length == 1) return;
+                    if (elem.isMultiple) {
+                        if (elem.value.includes(value)) {
+                            if (elem.required && qSelec(true, elem.list, '.active').length == 1) return;
                             inactivate(opt);
                         }
                         else activate(opt);
                     }
                     else {
-                        inactivate(...this.list.children);
+                        inactivate(...elem.list.children);
                         activate(opt);
-                        this.toggleList();
+                        elem.toggleList();
                     }
 
-                    clear(this.text);
-                    qSelec(true, this.list, '.active').forEach(each => {
+                    clear(elem.text);
+                    qSelec(true, elem.list, '.active').forEach(each => {
                         let span = newElem('span', each.innerText);
-                        this.text.append(span);
+                        elem.text.append(span);
                     })
                 }
                 async toggleList(toOpen) {
-                    let { offsetHeight } = this.list;
+                    let elem = this;
+                    let { offsetHeight } = elem.list;
                     let values = [ `${offsetHeight}px`, '0' ];
                     toOpen && (values = values.reverse());
                     let func = toOpen ? activate : inactivate;
 
-                    this.list.style.height = values[0];
+                    elem.list.style.height = values[0];
                     await wait();
-                    func(this.list);
-                    this.list.style.height = values[1];
+                    func(elem.list);
+                    elem.list.style.height = values[1];
                     await wait(.2);
-                    this.list.style = '';
+                    elem.list.style = '';
 
-                    this.list.classList[
-                        this.getBoundingClientRect().top + this.list.offsetHeight > window.innerHeight ? 'add' : 'remove'
+                    elem.list.classList[
+                        elem.getBoundingClientRect().top + elem.list.offsetHeight > window.innerHeight ? 'add' : 'remove'
                     ]('bottom')
                 }
                 createOption(innerHTML, value, options = {}) {
+                    let elem = this;
                     let opt = newElem('f-option', {
                         className: options.selected && 'selected',
                         attrs: { value, disabled: options.disabled },
                         innerHTML,
                     })
-                    qSelec(false, this, 'option-list').append(opt);
+                    qSelec(false, elem, 'option-list').append(opt);
                 }
                 clearOptions() {
+                    let elem = this;
                     clear(
-                        qSelec(false, this, 'text'),
-                        qSelec(false, this, 'option-list')
+                        qSelec(false, elem, 'text'),
+                        qSelec(false, elem, 'option-list')
                     )
                 }
                 async setValue(value) {
-                    if (value == null) this.clearOptions();
+                    let elem = this;
+                    if (value == null) elem.clearOptions();
                     else
-                        getChild(this.list).forEach(async opt => {
+                        getChild(elem.list).forEach(async opt => {
                             let v = getAttr(opt, 'value') || opt.innerText;
-                            (v == value || (this.isMultiple && value.includes(v))) && this.toggleOption(opt);
+                            (v == value || (elem.isMultiple && value.includes(v))) && elem.toggleOption(opt);
                         })
                 }
             })
