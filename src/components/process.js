@@ -620,6 +620,7 @@ export default function Process() {
                 }
                 async setValue(value) {
                     let elem = this;
+                    console.log('set value');
                     if (value == null) elem.clearOptions();
                     else
                         getChild(elem.list).forEach(async opt => {
