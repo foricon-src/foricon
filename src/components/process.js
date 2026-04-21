@@ -539,9 +539,9 @@ export default function Process() {
                         text: qSelec(false, elem, 'text'),
                         list: qSelec(false, elem, 'option-list'),
                         isMultiple,
-                        value: isMultiple ? [] : null,
                         required: hasAttr(elem, 'required'),
                     })
+                    elem.reset();
 
                     addEvLis(elem, 'click', ({ target }) => target == elem && elem.toggleList(!isActive(elem.list)));
                     addEvLis(elem.list, 'click', ({ target }) => {
@@ -579,11 +579,22 @@ export default function Process() {
                         elem.toggleList();
                     }
 
+                    elem.reset();
+                    elem.dispatchEvent(new Event('change'));
                     clear(elem.text);
-                    qSelec(true, elem.list, '.active').forEach(each => {
+
+                    let actives = qSelec(true, elem.list, '.active');
+                    for (let i in actives) {
+                        if (elem.isMultiple && i > 0) break;
+                        let each = actives[i];
                         let span = newElem('span', each.innerText);
                         elem.text.append(span);
-                    })
+                        let value = getAttr(opt, 'value') ?? each.innerText;
+                        isMultiple ? elem.value.push(value) : (elem.value = value);
+                    }
+                }
+                reset() {
+                    this.value = this.isMultiple ? [] : null;
                 }
                 async toggleList(toOpen) {
                     let elem = this;
