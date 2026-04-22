@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { GetLang } from 'Com/language';
 import './page.css'
@@ -8,333 +8,414 @@ import './page.css'
 export default function Search() {
     let router = useRouter();
 
-    let [ count, setCount ] = useState(0);
-    let [ type, setType ] = useState('');
+    // let [ count, setCount ] = useState(0);
+    // let [ type, setType ] = useState('');
 
+    // useEffect(() => {(async () => {
+    //     while (elemById('loading')) await wait();
+  
+    //     let chooseLayers = elemById('choose-layers');
+    //     let chooseLayers_checkboxes = getChild(qSelec(false, chooseLayers, 'div.checkboxes'));
+        
+    //     let selectedCategories = [];
+    //     let timeoutSearch;
+    //     let currentView = localStorage.getItem('view') || 'large';
+    //     let quickSearch = sessionStorage.getItem('search');
+    //     let top = elemById('top');
+    //     let top_search = qSelec(false, top, 'input');
+    //     let top_versions = qSelec(false, top, 'f-select');
+    //     let top_options = qSelec(false, top, '#options');
+    //     let top_options_families = qSelec(false, options, '#top_options_families');
+    //     let top_options_styles = qSelec(false, options, '#top_options_styles');
+    //     let top_options_views = qSelec(false, options, '#top_options_views');
+    //     let categories = elemById('categories');
+    //     let results = elemById('results');
+    //     let pages = elemById('pages');
+    //     let bar = elemById('bar');
+    //     let bar_code = qSelec(false, bar, 'code');
+    //     let bar_glyphs = qSelec(false, bar, '#bar_glyphs');
+    //     let bar_glyphs_primary = qSelec(false, bar_glyphs, 'div[name="Primary"]');
+    //     let bar_glyphs_secondary = qSelec(false, bar_glyphs, 'div[name="Secondary"]');
+    //     let bar_unicodes = qSelec(false, bar, '#bar_unicodes');
+    //     let bar_unicodes_primary = qSelec(false, bar_unicodes, 'div[name="Primary"]');
+    //     let bar_unicodes_secondary = qSelec(false, bar_unicodes, 'div[name="Secondary"]');
+    //     let bar_categories = qSelec(false, bar, '#bar_categories > ul');
+    //     let bar_download = qSelec(false, bar, '#bar_download');
+    //     let bar_download_ul = qSelec(false, bar_download, 'ul');
+        
+    //     let charNameList = [], isBarOpened = false;
+        
+    //     try {
+    //         let res = await fetch('/api/get-glyphs');
+    //         let icons = await res.json();
+    //         charNameList.push(...icons);
+    //     }
+    //     catch ({ message }) {
+    //         notify('error', message);
+    //     }
+        
+    //     if (quickSearch) {
+    //         sessionStorage.removeItem('search');
+    //         top_search.value = quickSearch;
+    //         show();
+    //     }
+        
+    //     function formatKeyword(value, reversed) {
+    //         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
+    //     }
+    //     function goLink() {
+    //         go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}&s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`);
+    //     }
+    //     function show() {
+    //         let value = normalize(top_search.value);
+    //         let currentStyle = lower(qSelec(false, top_options_styles, '.active').dataset.value);
+    //         let currentFamily = lower(qSelec(false, top_options_families, '.active').dataset.value);
+    //         let obj = structuredClone(webData.categories);
+    //         let style = '', resultCount = 0, children = [];
+            
+    //         clear(categories, results, pages);
+            
+    //         function normalize(value) {
+    //             return lower(value).replace(/[+-]/g, ' ');
+    //         }
+    //         function showIcon(icon, style) {
+    //             let normalized = normalize(icon.name);
+                
+    //             if (
+    //                 icon.styles.includes(style) &&
+    //                 (normalized.includes(value) || similarity(normalized, value) > .65) &&
+    //                 (!selectedCategories.length || selectedCategories.every(category => icon.categories.includes(category)))
+    //             ) {
+    //                 icon.categories.forEach(cate => {
+    //                     obj[cate].count = (obj[cate].count || 0) + 1
+    //                 })
+                    
+    //                 let num = Math.ceil(++resultCount / 150);
+    //                 let li = newElem('li', `
+    //                     <f-icon icon='${icon.name}' i-s='${style}' ${top_versions.value}></f-icon>
+    //                     <span>${icon.name}</span>`)
+    //                 li.page = num;
+    //                 resultCount > 150 && (li.style.display = 'none');
+    //                 addEvLis(li, 'click', async () => {
+    //                     if (isActive(li)) return;
+
+    //                     isBarOpened && await wait(.2);
+    //                     activate(li);
+                        
+    //                     isBarOpened = true;
+                        
+    //                     let isB1 = top_versions.value == 'b1';
+    //                     let isDuotone = style.startsWith('duotone/');
+            
+    //                     let { name, categories } = icon;
+    //                     let glyphs = icon.glyphs[style.replace('/', '-')];
+    //                     let unicodes = icon.unicodes[style.replace('/', '-')].split('|');
+            
+    //                     clear(bar_categories);
+    //                     activate(bar);
+                        
+    //                     qSelec(false, bar, 'h6').innerText = name;
+    //                     qSelec(false, bar, 'f-icon[icon="circle-info"]').onclick = () => notify(
+    //                         'info', '<span class="key">Ctrl</span> + <b>Click</b> to copy the code'
+    //                     )
+    //                     bar_code.innerHTML = formatCode(
+    //                         `<f-icon icon='${name}'${style == 'solid' ? '' : ` i-s='${style}'`}${isB1 ? ' b1' : ''}></f-icon>`
+    //                     )
+    //                     bar_glyphs_primary.innerHTML = glyphs[0];
+    //                     bar_unicodes_primary.innerHTML = unicodes[0];
+    //                     if (isDuotone) {
+    //                         bar_glyphs_secondary.innerText = glyphs[1];
+    //                         bar_unicodes_secondary.innerText = unicodes[1];
+    //                     }
+    //                     else bar_glyphs_secondary.innerText = bar_unicodes_secondary.innerText = '';
+    //                     bar_categories.append(
+    //                         ...categories.map(cate => {
+    //                             let category = webData.categories[cate];
+    //                             return newElem('li', `${category.icon}<span>${category[language]}</span>`);
+    //                         }).sort((a, b) => a.innerText.localeCompare(b.innerText))
+    //                     )
+            
+    //                     getChild(bar_download_ul).forEach(btn => btn.onclick = ({currentTarget}) => {
+    //                         if (isB1) {
+    //                             notify('warn', 'This feature does not support Beta 1.x icons');
+    //                             return;
+    //                         }
+    //                         let type = getAttr(currentTarget, 'name');
+    //                         setType(currentTarget.innerText);
+    //                         isDuotone ? enable(chooseLayers_checkboxes[1]) : disable(chooseLayers_checkboxes[1]);
+    //                         modal(chooseLayers, layers =>
+    //                             layers.forEach(layer => {
+    //                                 let { name } = charNameList.find(i => i.unicode == unicodes[layer == 'pri' ? 0 : 1]);
+    //                                 go(router, `//foricon-server-side.onrender.com/get-icon/${type}/${name}`, true);
+    //                             })
+    //                         )
+    //                     })
+    //                 })
+    //                 results.append(li);
+                    
+    //                 if (resultCount % 150 - 1 == 0) {
+    //                     let li_page = newElem('li');
+    //                     num == 1 && activate(li_page);
+    //                     li_page.innerText = num;
+    //                     addEvLis(li_page, 'click',() =>
+    //                         getChild(results).forEach(each => {
+    //                             each.style.display = each.page == num ? '' : 'none';
+    //                             inactivate(...pages.children);
+    //                             activate(li_page);
+    //                         })
+    //                     )
+    //                     pages.append(li_page);
+    //                 }
+    //             }
+    //         }
+    //         function getStyles(icon) {
+    //             if (currentFamily == 'all' && currentStyle == 'all')
+    //                 return icon.styles;
+    //             if (currentFamily == 'all')
+    //                 return ['', 'duotone/', 'sharp/'].map(prefix => `${prefix}${currentStyle}`);
+    //             if (currentStyle == 'all')
+    //                 return ['solid', 'outline'].map(
+    //                     style => `${currentFamily == 'regular' ? '' : currentFamily + '/'}${style}`
+    //                 );
+    //             return [`${currentFamily == 'regular' ? '' : currentFamily + '/'}${currentStyle}`];
+    //         }
+            
+    //         let icons = webData[top_versions.value == 'b1' ? 'icons' : 'iconsB2'];
+    //         (value ? icons : icons.toSorted(
+    //             (a, b) => similarity(b.name, value) - similarity(a.name, value)
+    //         )).forEach(icon => getStyles(icon).forEach(style => showIcon(icon, style)));
+            
+    //         setCount(resultCount);
+            
+    //         for (let item in obj) {
+    //             let li_category = document.createElement('li');
+    //             selectedCategories.includes(item) && activate(li_category);
+    //             li_category.innerHTML = `<span>${obj[item].icon}${obj[item][language]}</span><span>${abbreviateNumber(obj[item].count || 0)}</span>`;
+                
+    //             addEvLis(li_category, 'click', () => {
+    //                 let i = selectedCategories.indexOf(item);
+    //                 i + 1 ? selectedCategories.splice(i, 1) : selectedCategories.push(item);
+    //                 goLink();
+    //                 show();
+    //             });
+                
+    //             (obj[item].count || isActive(li_category)) && children.push(li_category);
+    //         }
+    //         children.sort(
+    //             (a, b) => qSelec(false, a, 'span').innerText.localeCompare(qSelec(false, b, 'span').innerText)
+    //         )
+    //         categories.append(...children);
+    //     }
+        
+    //     top_versions.setValue('b2');
+    //     location.hash.slice(1).split('&').forEach(each => {
+    //         const prefix = each.slice(0, 2);
+    //         const value = each.slice(2);
+    //         ({
+    //             'k=': value => top_search.value = formatKeyword(value, true),
+    //             'c=': value => selectedCategories = value.split(';'),
+    //             's=': value => getChild(top_options_styles).forEach(style => value == lower(style.dataset.value) && activate(style)),
+    //             'f=': value => getChild(top_options_families).forEach(family => value == lower(family.dataset.value) && activate(family)),
+    //             'v=': value => value == 'b1' && top_versions.setValue(value)
+    //         })[prefix]?.(value);
+    //     })
+    //     !qSelec(false, top_options_styles, '.active') && activate(top_options_styles.children[0]);
+    //     !qSelec(false, top_options_families, '.active') && activate(top_options_families.children[0]);
+    //     show();
+    //     goLink();
+        
+    //     let animating = false;
+    //     let isHovered = false;
+    //     let topPos = `${-top.offsetHeight + 70}px`;
+    //     let lastPos = 0;
+    //     addEvLis(document, 'click', ({target}) => {
+    //         if (!qSelec(false, results, '.active')?.contains(target) && !bar.contains(target) && !chooseLayers.contains(target) && isActive(bar)) {
+    //             inactivate(...results.children, bar);
+    //             isBarOpened = false;
+    //         }
+    //         !top.contains(target) && hideTop();
+    //     })
+    //     addEvLis(document, 'scroll', async () => {
+    //         if (animating) return;
+    //         animating = true;
+    //         let calculated = document.documentElement.scrollTop - window.innerHeight;
+    //         lastPos = calculated;
+    //         if (calculated > 0) {
+    //             activate(top);
+    //             appendData(top.style, {
+    //                 top: topPos,
+    //                 translate: '0 18px',
+    //             })
+    //             if (document.activeElement == top_search) {
+    //                 openTop();
+    //                 top.classList.add('slow-trans');
+    //                 await wait(.5);
+    //                 top.classList.remove('slow-trans');
+    //             }
+    //             else await wait(.2);
+    //         }
+    //         else {
+    //             let waitTime = .5;
+    //             if (isHovered) top.style.top = topPos;
+    //             else waitTime = .2;
+    //             top.style.translate = 0;
+    //             isHovered = false;
+    //             await wait(waitTime);
+    //             inactivate(top);
+    //         }
+    //         animating = false;
+    //     })
+        
+    //     addEvLis(
+    //         [ bar_glyphs_primary, bar_glyphs_secondary, bar_unicodes_primary, bar_unicodes_secondary ],
+    //         'click',
+    //         async ({currentTarget}) => {
+    //             currentTarget.className = 'copied';
+    //             navigator.clipboard.writeText(currentTarget.innerText);
+    //             await wait(1);
+    //             currentTarget.className = '';
+    //         }
+    //     )
+        
+    //     async function openTop() {
+    //         if (!isActive(top)) return;
+    //         top.style.top = '20px';
+    //         isHovered = true;
+    //     }
+    //     async function hideTop() {
+    //         if (!isHovered || !isActive(top)) return;
+    //         if (document.activeElement != top_search) {
+    //             top.style.top = topPos;
+    //             top.classList.add('slow-trans');
+    //             isHovered = false;
+    //         }
+    //         await wait(.5);
+    //         top.classList.remove('slow-trans');
+    //     }
+    //     addEvLis(top, 'mouseenter', openTop);
+    //     addEvLis(top, 'mouseleave', hideTop);
+    //     addEvLis(top_search, 'input', () => {
+    //         clearTimeout(timeoutSearch)
+    //         timeoutSearch = setTimeout(show, 250);
+    //         goLink();
+    //     })
+    //     addEvLis(top_versions, 'change', () => {
+    //         show();
+    //         results.dataset.version = top_versions.value;
+    //         goLink();
+    //     })
+    //     qSelec(true, top_options_styles, 'li').forEach(each => {
+    //         addEvLis(each,'click', () => {
+    //             inactivate(...top_options_styles.children);
+    //             activate(each);
+    //             goLink();
+    //             show();
+    //         })
+    //     })
+    //     qSelec(true, top_options_families, 'li').forEach(each => {
+    //         addEvLis(each, 'click', () => {
+    //             inactivate(...top_options_families.children);
+    //             activate(each);
+    //             goLink();
+    //             show();
+    //         })
+    //     })
+    //     qSelec(true, top_options_views, 'li').forEach(each => {
+    //         let name = getAttr(each, 'name');
+    //         addEvLis(each, 'click', () => {
+    //             inactivate(...top_options_views.children);
+    //             activate(each);
+    //             results.className = name;
+    //             localStorage.setItem('view', name);
+    //         })
+    //         currentView == name && each.click();
+    //     })
+        
+    //     addEvLis(qSelec(false, '#main > h5:first-of-type'), 'click', () => {
+    //       let item = qSelec(false, '#main > h5:first-of-type');
+    //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
+    //     })
+    // })()}, [])
+    
+    let perPage = 150;
+
+    let [ loaded, setLoaded ] = useState(false);
+    let [ search, setSearch ] = useState('');
+    let [ family, setFamily ] = useState('all');
+    let [ style, setStyle ] = useState('all');
+    let [ selectedCategories, selectCategories ] = useState([]);
+    let [ version, setVersion ] = useState('b2');
+    let [ currentPage, setPage ] = useState(1);
+    let [ view, setView ] = useState('large');
+    let [ selectedIcon, selectIcon ] = useState(null);
+
+    !location.hash && go(router)
+    location.hash.slice(1).split('&').forEach(each => {
+        const prefix = each.slice(0, 2);
+        const value = each.slice(2);
+        ({
+            'k=': setSearch,
+            'c=': value => selectCategories(value.split(';')),
+            's=': setStyle,
+            'f=': setFamily,
+            'v=': setVersion
+        })[prefix]?.(value);
+    })
+
+    let filtered = useMemo(() => {
+        let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
+        if (iconSet) return [];
+
+        function getStyles(icon) {
+            if (family == 'all' && style == 'all')
+                return icon.styles;
+            if (family == 'all')
+                return [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`);
+            if (style == 'all')
+                return [ 'solid', 'outline' ].map(
+                    style => `${family == 'regular' ? '' : `${family}/`}${style}`
+                );
+            return [ `${family == 'regular' ? '' : `${family}/`}${style}` ];
+        }
+        function normalize(value) {
+            return lower(value).replace(/[+-]/g, ' ');
+        }
+
+        return iconSet.flatMap(icon => {
+            return getStyles(icon)
+                .filter(style => icon.styles.includes(style))
+                .filter(() => {
+                    const normalized = normalize(icon.name);
+            
+                    return (
+                        (normalized.includes(value) ||
+                            similarity(normalized, value) > 0.65) &&
+                        (!selectedCategories.length ||
+                            selectedCategories.every(c =>
+                                icon.categories.includes(c)
+                            ))
+                    )
+                })
+                .map(style => ({ icon, style }))
+        })
+    }, [ loaded, search, family, style, selectedCategories, version ]);
+    let currentIcons = useMemo(() => {
+        let start = perPage * currentPage;
+        return filtered.slice(start, start + perPage);
+    }, [ filtered, currentPage ])
+    let categoryCounts = useMemo(() => {
+        let cloned = structuredClone(webData.categories);
+
+        filtered.forEach(({ categories }) => 
+            categories.forEach(c => cloned[c].count = (cloned[c].count || 0) + 1)
+        )
+
+        return cloned;
+    })
+    
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
-  
-        let chooseLayers = elemById('choose-layers');
-        let chooseLayers_checkboxes = getChild(qSelec(false, chooseLayers, 'div.checkboxes'));
-        
-        let selectedCategories = [];
-        let timeoutSearch;
-        let currentView = localStorage.getItem('view') || 'large';
-        let quickSearch = sessionStorage.getItem('search');
-        let top = elemById('top');
-        let top_search = qSelec(false, top, 'input');
-        let top_versions = qSelec(false, top, 'f-select');
-        let top_options = qSelec(false, top, '#options');
-        let top_options_families = qSelec(false, options, '#top_options_families');
-        let top_options_styles = qSelec(false, options, '#top_options_styles');
-        let top_options_views = qSelec(false, options, '#top_options_views');
-        let categories = elemById('categories');
-        let results = elemById('results');
-        let pages = elemById('pages');
-        let bar = elemById('bar');
-        let bar_code = qSelec(false, bar, 'code');
-        let bar_glyphs = qSelec(false, bar, '#bar_glyphs');
-        let bar_glyphs_primary = qSelec(false, bar_glyphs, 'div[name="Primary"]');
-        let bar_glyphs_secondary = qSelec(false, bar_glyphs, 'div[name="Secondary"]');
-        let bar_unicodes = qSelec(false, bar, '#bar_unicodes');
-        let bar_unicodes_primary = qSelec(false, bar_unicodes, 'div[name="Primary"]');
-        let bar_unicodes_secondary = qSelec(false, bar_unicodes, 'div[name="Secondary"]');
-        let bar_categories = qSelec(false, bar, '#bar_categories > ul');
-        let bar_download = qSelec(false, bar, '#bar_download');
-        let bar_download_ul = qSelec(false, bar_download, 'ul');
-        
-        let charNameList = [], isBarOpened = false;
-        
-        try {
-            let res = await fetch('/api/get-glyphs');
-            let icons = await res.json();
-            charNameList.push(...icons);
-        }
-        catch ({ message }) {
-            notify('error', message);
-        }
-        
-        if (quickSearch) {
-            sessionStorage.removeItem('search');
-            top_search.value = quickSearch;
-            show();
-        }
-        
-        function formatKeyword(value, reversed) {
-            return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
-        }
-        function goLink() {
-            go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}&s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`);
-        }
-        function show() {
-            let value = normalize(top_search.value);
-            let currentStyle = lower(qSelec(false, top_options_styles, '.active').dataset.value);
-            let currentFamily = lower(qSelec(false, top_options_families, '.active').dataset.value);
-            let obj = structuredClone(webData.categories);
-            let style = '', resultCount = 0, children = [];
-            
-            clear(categories, results, pages);
-            
-            function normalize(value) {
-                return lower(value).replace(/[+-]/g, ' ');
-            }
-            function showIcon(icon, style) {
-                let normalized = normalize(icon.name);
-                
-                if (
-                    icon.styles.includes(style) &&
-                    (normalized.includes(value) || similarity(normalized, value) > .65) &&
-                    (!selectedCategories.length || selectedCategories.every(category => icon.categories.includes(category)))
-                ) {
-                    icon.categories.forEach(cate => {
-                        obj[cate].count = (obj[cate].count || 0) + 1
-                    })
-                    
-                    let num = Math.ceil(++resultCount / 150);
-                    let li = newElem('li', `
-                        <f-icon icon='${icon.name}' i-s='${style}' ${top_versions.value}></f-icon>
-                        <span>${icon.name}</span>`)
-                    li.page = num;
-                    resultCount > 150 && (li.style.display = 'none');
-                    addEvLis(li, 'click', async () => {
-                        if (isActive(li)) return;
-
-                        isBarOpened && await wait(.2);
-                        activate(li);
-                        
-                        isBarOpened = true;
-                        
-                        let isB1 = top_versions.value == 'b1';
-                        let isDuotone = style.startsWith('duotone/');
-            
-                        let { name, categories } = icon;
-                        let glyphs = icon.glyphs[style.replace('/', '-')];
-                        let unicodes = icon.unicodes[style.replace('/', '-')].split('|');
-            
-                        clear(bar_categories);
-                        activate(bar);
-                        
-                        qSelec(false, bar, 'h6').innerText = name;
-                        qSelec(false, bar, 'f-icon[icon="circle-info"]').onclick = () => notify(
-                            'info', '<span class="key">Ctrl</span> + <b>Click</b> to copy the code'
-                        )
-                        bar_code.innerHTML = formatCode(
-                            `<f-icon icon='${name}'${style == 'solid' ? '' : ` i-s='${style}'`}${isB1 ? ' b1' : ''}></f-icon>`
-                        )
-                        bar_glyphs_primary.innerHTML = glyphs[0];
-                        bar_unicodes_primary.innerHTML = unicodes[0];
-                        if (isDuotone) {
-                            bar_glyphs_secondary.innerText = glyphs[1];
-                            bar_unicodes_secondary.innerText = unicodes[1];
-                        }
-                        else bar_glyphs_secondary.innerText = bar_unicodes_secondary.innerText = '';
-                        bar_categories.append(
-                            ...categories.map(cate => {
-                                let category = webData.categories[cate];
-                                return newElem('li', `${category.icon}<span>${category[language]}</span>`);
-                            }).sort((a, b) => a.innerText.localeCompare(b.innerText))
-                        )
-            
-                        getChild(bar_download_ul).forEach(btn => btn.onclick = ({currentTarget}) => {
-                            if (isB1) {
-                                notify('warn', 'This feature does not support Beta 1.x icons');
-                                return;
-                            }
-                            let type = getAttr(currentTarget, 'name');
-                            setType(currentTarget.innerText);
-                            isDuotone ? enable(chooseLayers_checkboxes[1]) : disable(chooseLayers_checkboxes[1]);
-                            modal(chooseLayers, layers =>
-                                layers.forEach(layer => {
-                                    let { name } = charNameList.find(i => i.unicode == unicodes[layer == 'pri' ? 0 : 1]);
-                                    go(router, `//foricon-server-side.onrender.com/get-icon/${type}/${name}`, true);
-                                })
-                            )
-                        })
-                    })
-                    results.append(li);
-                    
-                    if (resultCount % 150 - 1 == 0) {
-                        let li_page = newElem('li');
-                        num == 1 && activate(li_page);
-                        li_page.innerText = num;
-                        addEvLis(li_page, 'click',() =>
-                            getChild(results).forEach(each => {
-                                each.style.display = each.page == num ? '' : 'none';
-                                inactivate(...pages.children);
-                                activate(li_page);
-                            })
-                        )
-                        pages.append(li_page);
-                    }
-                }
-            }
-            function getStyles(icon) {
-                if (currentFamily == 'all' && currentStyle == 'all')
-                    return icon.styles;
-                if (currentFamily == 'all')
-                    return ['', 'duotone/', 'sharp/'].map(prefix => `${prefix}${currentStyle}`);
-                if (currentStyle == 'all')
-                    return ['solid', 'outline'].map(
-                        style => `${currentFamily == 'regular' ? '' : currentFamily + '/'}${style}`
-                    );
-                return [`${currentFamily == 'regular' ? '' : currentFamily + '/'}${currentStyle}`];
-            }
-            
-            let icons = webData[top_versions.value == 'b1' ? 'icons' : 'iconsB2'];
-            (value ? icons : icons.toSorted(
-                (a, b) => similarity(b.name, value) - similarity(a.name, value)
-            )).forEach(icon => getStyles(icon).forEach(style => showIcon(icon, style)));
-            
-            setCount(resultCount);
-            
-            for (let item in obj) {
-                let li_category = document.createElement('li');
-                selectedCategories.includes(item) && activate(li_category);
-                li_category.innerHTML = `<span>${obj[item].icon}${obj[item][language]}</span><span>${abbreviateNumber(obj[item].count || 0)}</span>`;
-                
-                addEvLis(li_category, 'click', () => {
-                    let i = selectedCategories.indexOf(item);
-                    i + 1 ? selectedCategories.splice(i, 1) : selectedCategories.push(item);
-                    goLink();
-                    show();
-                });
-                
-                (obj[item].count || isActive(li_category)) && children.push(li_category);
-            }
-            children.sort(
-                (a, b) => qSelec(false, a, 'span').innerText.localeCompare(qSelec(false, b, 'span').innerText)
-            )
-            categories.append(...children);
-        }
-        
-        top_versions.setValue('b2');
-        location.hash.slice(1).split('&').forEach(each => {
-            const prefix = each.slice(0, 2);
-            const value = each.slice(2);
-            ({
-                'k=': value => top_search.value = formatKeyword(value, true),
-                'c=': value => selectedCategories = value.split(';'),
-                's=': value => getChild(top_options_styles).forEach(style => value == lower(style.dataset.value) && activate(style)),
-                'f=': value => getChild(top_options_families).forEach(family => value == lower(family.dataset.value) && activate(family)),
-                'v=': value => value == 'b1' && top_versions.setValue(value)
-            })[prefix]?.(value);
-        })
-        !qSelec(false, top_options_styles, '.active') && activate(top_options_styles.children[0]);
-        !qSelec(false, top_options_families, '.active') && activate(top_options_families.children[0]);
-        show();
-        goLink();
-        
-        let animating = false;
-        let isHovered = false;
-        let topPos = `${-top.offsetHeight + 70}px`;
-        let lastPos = 0;
-        addEvLis(document, 'click', ({target}) => {
-            if (!qSelec(false, results, '.active')?.contains(target) && !bar.contains(target) && !chooseLayers.contains(target) && isActive(bar)) {
-                inactivate(...results.children, bar);
-                isBarOpened = false;
-            }
-            !top.contains(target) && hideTop();
-        })
-        addEvLis(document, 'scroll', async () => {
-            if (animating) return;
-            animating = true;
-            let calculated = document.documentElement.scrollTop - window.innerHeight;
-            lastPos = calculated;
-            if (calculated > 0) {
-                activate(top);
-                appendData(top.style, {
-                    top: topPos,
-                    translate: '0 18px',
-                })
-                if (document.activeElement == top_search) {
-                    openTop();
-                    top.classList.add('slow-trans');
-                    await wait(.5);
-                    top.classList.remove('slow-trans');
-                }
-                else await wait(.2);
-            }
-            else {
-                let waitTime = .5;
-                if (isHovered) top.style.top = topPos;
-                else waitTime = .2;
-                top.style.translate = 0;
-                isHovered = false;
-                await wait(waitTime);
-                inactivate(top);
-            }
-            animating = false;
-        })
-        
-        addEvLis(
-            [ bar_glyphs_primary, bar_glyphs_secondary, bar_unicodes_primary, bar_unicodes_secondary ],
-            'click',
-            async ({currentTarget}) => {
-                currentTarget.className = 'copied';
-                navigator.clipboard.writeText(currentTarget.innerText);
-                await wait(1);
-                currentTarget.className = '';
-            }
-        )
-        
-        async function openTop() {
-            if (!isActive(top)) return;
-            top.style.top = '20px';
-            isHovered = true;
-        }
-        async function hideTop() {
-            if (!isHovered || !isActive(top)) return;
-            if (document.activeElement != top_search) {
-                top.style.top = topPos;
-                top.classList.add('slow-trans');
-                isHovered = false;
-            }
-            await wait(.5);
-            top.classList.remove('slow-trans');
-        }
-        addEvLis(top, 'mouseenter', openTop);
-        addEvLis(top, 'mouseleave', hideTop);
-        addEvLis(top_search, 'input', () => {
-            clearTimeout(timeoutSearch)
-            timeoutSearch = setTimeout(show, 250);
-            goLink();
-        })
-        addEvLis(top_versions, 'change', () => {
-            show();
-            results.dataset.version = top_versions.value;
-            goLink();
-        })
-        qSelec(true, top_options_styles, 'li').forEach(each => {
-            addEvLis(each,'click', () => {
-                inactivate(...top_options_styles.children);
-                activate(each);
-                goLink();
-                show();
-            })
-        })
-        qSelec(true, top_options_families, 'li').forEach(each => {
-            addEvLis(each, 'click', () => {
-                inactivate(...top_options_families.children);
-                activate(each);
-                goLink();
-                show();
-            })
-        })
-        qSelec(true, top_options_views, 'li').forEach(each => {
-            let name = getAttr(each, 'name');
-            addEvLis(each, 'click', () => {
-                inactivate(...top_options_views.children);
-                activate(each);
-                results.className = name;
-                localStorage.setItem('view', name);
-            })
-            currentView == name && each.click();
-        })
-        
-        addEvLis(qSelec(false, '#main > h5:first-of-type'), 'click', () => {
-          let item = qSelec(false, '#main > h5:first-of-type');
-          window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
-        })
+        setLoaded(true);
     })()}, [])
 
     return (
@@ -456,7 +537,7 @@ export default function Search() {
             <div id='top' class='outer-corner'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
-                    <input placeholder={
+                    <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
                         GetLang({
                             en: 'Find the perfect icon for your next masterpiece…',
                             vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
@@ -482,7 +563,7 @@ export default function Search() {
                 </f-select>
                 <div id='options'>
                     <ul class='btn-list line-active' id='top_options_families'>
-                        <li data-value='all'>{
+                        <li className={family == 'all' && 'active'} onClick={() => setFamily('all')}>{
                             GetLang({
                                 en: 'All',
                                 vi: 'Tất cả',
@@ -498,7 +579,7 @@ export default function Search() {
                                 ru: 'Все',
                             })
                         }</li>
-                        <li data-value='regular'>{
+                        <li className={family == 'regular' && 'active'} onClick={() => setFamily('regular')}>{
                             GetLang({
                                 en: 'Regular',
                                 vi: 'Thường',
@@ -514,7 +595,7 @@ export default function Search() {
                                 ru: 'Обычный',
                             })
                         }</li>
-                        <li data-value='duotone'>{
+                        <li className={family == 'duotone' && 'active'} onClick={() => setFamily('duotone')}>{
                             GetLang({
                                 en: 'Duotone',
                                 vi: 'Duotone',
@@ -532,7 +613,7 @@ export default function Search() {
                         }</li>
                     </ul>
                     <ul class='btn-list line-active line' id='top_options_styles'>
-                        <li data-value='all'>{
+                        <li className={style == 'all' && 'active'} onClick={() => setStyle('all')}>{
                             GetLang({
                                 en: 'All',
                                 vi: 'Tất cả',
@@ -548,7 +629,7 @@ export default function Search() {
                                 ru: 'Все',
                             })
                         }</li>
-                        <li data-value='solid'>{
+                        <li className={style == 'solid' && 'active'} onClick={() => setStyle('solid')}>{
                             GetLang({
                                 en: 'Solid',
                                 vi: 'Đặc',
@@ -564,7 +645,7 @@ export default function Search() {
                                 ru: 'Твердый',
                             })
                         }</li>
-                        <li data-value='outline'>{
+                        <li className={style == 'outline' && 'active'} onClick={() => setStyle('outline')}>{
                             GetLang({
                                 en: 'Outline',
                                 vi: 'Đường viền',
@@ -582,63 +663,63 @@ export default function Search() {
                         }</li>
                     </ul>
                     <ul class='btn-list line-active' id='top_options_views'>
-                    <li name='large' class='chip top'>
-                        <f-icon icon='grid-4'></f-icon>
-                        <span>{
-                            GetLang({
-                                en: 'Large icons',
-                                vi: 'Biểu tượng lớn',
-                                fr: 'Grandes icônes',
-                                it: 'Icone grandi',
-                                kr: '큰 아이콘',
-                                ja: '大きなアイコン',
-                                de: 'Große Symbole',
-                                nl: 'Grote iconen',
-                                dk: 'Store ikoner',
-                                pt: 'Ícones grandes',
-                                es: 'Iconos grandes',
-                                ru: 'Большие значки',
-                            })
-                        }</span>
-                    </li>
-                    <li name='small' class='chip top'>
-                        <f-icon icon='grid-9'></f-icon>
-                        <span>{
-                            GetLang({
-                                en: 'Small icons',
-                                vi: 'Biểu tượng nhỏ',
-                                fr: 'Petites icônes',
-                                it: 'Piccole icone',
-                                kr: '작은 아이콘',
-                                ja: '小さいアイコン',
-                                de: 'Kleine Symbole',
-                                nl: 'Kleine iconen',
-                                dk: 'Små ikoner',
-                                pt: 'Ícones pequenos',
-                                es: 'Iconos pequeños',
-                                ru: 'Маленькие значки',
-                            })
-                        }</span>
-                    </li>
-                    <li name='tiles' class='chip top'>
-                        <f-icon icon='list' i-s='outline'></f-icon>
-                        <span>{
-                            GetLang({
-                                en: 'Tiles',
-                                vi: 'Ô gạch',
-                                fr: 'Carrelage',
-                                it: 'Piastrelle',
-                                kr: '타일',
-                                ja: 'タイル',
-                                de: 'Fliesen',
-                                nl: 'Tegels',
-                                dk: 'Fliser',
-                                pt: 'Azulejos',
-                                es: 'Azulejos',
-                                ru: 'Плитка',
-                            })
-                        }</span>
-                    </li>
+                        <li className={`chip top ${view == 'large' ? 'active' : ''}`} onClick={() => setView('large')}>
+                            <f-icon icon='grid-4'></f-icon>
+                            <span>{
+                                GetLang({
+                                    en: 'Large icons',
+                                    vi: 'Biểu tượng lớn',
+                                    fr: 'Grandes icônes',
+                                    it: 'Icone grandi',
+                                    kr: '큰 아이콘',
+                                    ja: '大きなアイコン',
+                                    de: 'Große Symbole',
+                                    nl: 'Grote iconen',
+                                    dk: 'Store ikoner',
+                                    pt: 'Ícones grandes',
+                                    es: 'Iconos grandes',
+                                    ru: 'Большие значки',
+                                })
+                            }</span>
+                        </li>
+                        <li className={`chip top ${view == 'small' ? 'active' : ''}`} onClick={() => setView('small')}>
+                            <f-icon icon='grid-9'></f-icon>
+                            <span>{
+                                GetLang({
+                                    en: 'Small icons',
+                                    vi: 'Biểu tượng nhỏ',
+                                    fr: 'Petites icônes',
+                                    it: 'Piccole icone',
+                                    kr: '작은 아이콘',
+                                    ja: '小さいアイコン',
+                                    de: 'Kleine Symbole',
+                                    nl: 'Kleine iconen',
+                                    dk: 'Små ikoner',
+                                    pt: 'Ícones pequenos',
+                                    es: 'Iconos pequeños',
+                                    ru: 'Маленькие значки',
+                                })
+                            }</span>
+                        </li>
+                        <li className={`chip top ${view == 'tiles' ? 'active' : ''}`} onClick={() => setView('tiles')}>
+                            <f-icon icon='list' i-s='outline'></f-icon>
+                            <span>{
+                                GetLang({
+                                    en: 'Tiles',
+                                    vi: 'Ô gạch',
+                                    fr: 'Carrelage',
+                                    it: 'Piastrelle',
+                                    kr: '타일',
+                                    ja: 'タイル',
+                                    de: 'Fliesen',
+                                    nl: 'Tegels',
+                                    dk: 'Fliser',
+                                    pt: 'Azulejos',
+                                    es: 'Azulejos',
+                                    ru: 'Плитка',
+                                })
+                            }</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -676,10 +757,27 @@ export default function Search() {
                     })
                 }
                 </h5>
-                <ul class='btn-list vertical' id='categories'></ul>
+                <ul class='btn-list vertical' id='categories'>{
+                    Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
+                        <li>
+                            <span>{icon + GetLang(...lang)}</span>
+                        </li>
+                    ))
+                }</ul>
                 <div>
-                    <ul id='results'></ul>
-                    <ul class='btn-list line-active top' id='pages'></ul>
+                    <ul id='results'>{
+                        currentIcons.map(({ icon: { name }, style }) => (
+                            <li key={name}>
+                                <f-icon icon={name} i-s={style} {...version}></f-icon>
+                                <span>${name}</span>
+                            </li>
+                        ))
+                    }</ul>
+                    <ul class='btn-list line-active top' id='pages'>{
+                        Array.from({ length: Math.ceil(filtered.lenght / perPage) }).map((_, i) => (
+                            <button onClick={() => setPage(i + 1)}>{i + 1}</button>
+                        ))
+                    }</ul>
                 </div>
             </div>
             <div id='bar'>

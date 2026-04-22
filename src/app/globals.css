@@ -860,7 +860,7 @@ f-select {
         
         :not(:has(f-option.active)) > &:before {
             content: attr(placeholder);
-            opacity: .49;
+            opacity: .5;
         }
         > span:has(+ span):after {
             content: ', ';
