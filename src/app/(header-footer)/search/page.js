@@ -807,7 +807,7 @@ export default function Search() {
                     }</ul>
                 </div>
             </div>
-            <div id='bar'>
+            {/* <div id='bar'>
                 <h6></h6>
                 <div id='bar_code'>{
                     `${GetLang({
@@ -910,7 +910,7 @@ export default function Search() {
                         <li name='webp'>WebP</li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }
