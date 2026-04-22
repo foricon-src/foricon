@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { GetLang } from 'Com/language';
 import './page.css'
 
-export default function Search() {
+/*export default function Search() {
     let router = useRouter();
 
     let [ type, setType ] = useState('');
@@ -522,7 +522,6 @@ export default function Search() {
                     </div>
                 </div>
             </div>
-            {/* <ins className='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
             <div className='banner blue signup'>
                 <div>{
                     GetLang({
@@ -792,11 +791,7 @@ export default function Search() {
                     ))
                 }</ul>
                 <div>
-                    <ul
-                        key={`${view}-${currentPage}-${search}-${family}-${style}-${version}-${selectedCategories.join(',')}`}
-                        id='results'
-                        className={view}
-                    >{
+                    <ul id='results' className={view}>{
                         currentIcons.map(({ icon: { name }, style }) => (
                             <li key={`${name} | ${style}`}>
                                 <f-icon icon={name} i-s={style} {...version}></f-icon>
@@ -917,4 +912,7 @@ export default function Search() {
             </div>
         </>
     )
+}*/
+export default function Search() {
+    return <div></div>
 }
