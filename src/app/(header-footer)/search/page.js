@@ -578,13 +578,13 @@ export default function Search() {
                         })
                     }/>
                 </label>
-                {/* <f-select>
+                <f-select>
                     <text></text>
                     <option-list>
                         <f-option value='b2'>Beta 2+</f-option>
                         <f-option value='b1'>Beta 1.7.5</f-option>
                     </option-list>
-                </f-select> */}
+                </f-select>
                 <div id='options'>
                     <ul className='btn-list line-active' id='top_options_families'>
                         <li className={family == 'all' && 'active'} onClick={() => setFamily('all')}>{
