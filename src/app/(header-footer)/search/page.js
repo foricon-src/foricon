@@ -406,18 +406,14 @@ export default function Search() {
     }, [ filtered, currentPage ])
     let categoryCounts = useMemo(() => {
         let cloned = structuredClone(webData.categories);
-
+        console.log(filtered);
         filtered.forEach(({ icon: { categories } }) => 
             categories.forEach(c => cloned[c].count = (cloned[c].count || 0) + 1)
         )
-
         return cloned;
     }, [ filtered ])
     
     useEffect(() => {(async () => {
-        while (elemById('loading')) await wait();
-        setLoaded(true);
-
         !location.hash && goLink();
         location.hash.slice(1).split('&').forEach(each => {
             const prefix = each.slice(0, 2);
@@ -430,6 +426,9 @@ export default function Search() {
                 'v=': setVersion
             })[prefix]?.(value);
         })
+
+        while (elemById('loading')) await wait();
+        setLoaded(true);
     })()}, [])
 
     return (
@@ -677,7 +676,7 @@ export default function Search() {
                         }</li>
                     </ul>
                     <ul class='btn-list line-active' id='top_options_views'>
-                        <li className={`chip top ${view == 'large' ? 'active' : ''}`} onClick={() => setView('large')}>
+                        <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
                             <f-icon icon='grid-4'></f-icon>
                             <span>{
                                 GetLang({
@@ -696,7 +695,7 @@ export default function Search() {
                                 })
                             }</span>
                         </li>
-                        <li className={`chip top ${view == 'small' ? 'active' : ''}`} onClick={() => setView('small')}>
+                        <li className={`chip top${view == 'small' ? ' active' : ''}`} onClick={() => setView('small')}>
                             <f-icon icon='grid-9'></f-icon>
                             <span>{
                                 GetLang({
@@ -715,7 +714,7 @@ export default function Search() {
                                 })
                             }</span>
                         </li>
-                        <li className={`chip top ${view == 'tiles' ? 'active' : ''}`} onClick={() => setView('tiles')}>
+                        <li className={`chip top${view == 'tiles' ? ' active' : ''}`} onClick={() => setView('tiles')}>
                             <f-icon icon='list' i-s='outline'></f-icon>
                             <span>{
                                 GetLang({
