@@ -759,7 +759,7 @@ export default function Search() {
                 </h5>
                 <ul class='btn-list vertical' id='categories'>{
                     Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
-                        <li>
+                        <li key={key}>
                             <span>{icon + GetLang(...lang)}</span>
                         </li>
                     ))
@@ -775,7 +775,7 @@ export default function Search() {
                     }</ul>
                     <ul class='btn-list line-active top' id='pages'>{
                         Array.from({ length: Math.ceil(filtered.lenght / perPage) }).map((_, i) => (
-                            <button onClick={() => setPage(i + 1)}>{i + 1}</button>
+                            <button key={i} onClick={() => setPage(i + 1)}>{i + 1}</button>
                         ))
                     }</ul>
                 </div>
