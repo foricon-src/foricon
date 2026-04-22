@@ -42,7 +42,7 @@ export default function Process() {
                 let d = await getDoc(doc(dbFirestore, 'users', user.uid));
                 user.doc = d.data();
                 
-                qSelec(true, '.signup').forEach(each => each.remove());
+                qSelec(true, '.signup').forEach(each => each.style.display = 'none');
                 if (user.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
                     addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
                         ctrlKey && key == '/' && location.pathname != '/p/management-center.html' && !document.activeElement.matches('textarea, input') &&
