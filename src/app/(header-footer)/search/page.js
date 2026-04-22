@@ -387,7 +387,14 @@ export default function Search() {
                 .filter(style => icon.styles.includes(style))
                 .filter(() => {
                     const normalized = normalize(icon.name);
-            
+                    console.log(
+                        (normalized.includes(search) ||
+                            similarity(normalized, search) > 0.65) &&
+                        (!selectedCategories.length ||
+                            selectedCategories.every(c =>
+                                icon.categories.includes(c)
+                            ))
+                    )
                     return (
                         (normalized.includes(search) ||
                             similarity(normalized, search) > 0.65) &&
@@ -406,7 +413,6 @@ export default function Search() {
     }, [ filtered, currentPage ])
     let categoryCounts = useMemo(() => {
         let cloned = structuredClone(webData.categories);
-        console.log(filtered);
         filtered.forEach(({ icon: { categories } }) => 
             categories.forEach(c => cloned[c].count = (cloned[c].count || 0) + 1)
         )
