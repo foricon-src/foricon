@@ -390,7 +390,7 @@ export default function Search() {
                     console.log(
                         normalized.includes(search),
                         similarity(normalized, search),
-                        selectedCategories.length
+                        selectedCategories
                     )
                     return (
                         (normalized.includes(search) ||
