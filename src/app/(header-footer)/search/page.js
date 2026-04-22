@@ -558,7 +558,7 @@ export default function Search() {
                     }</a>
                 </div>
             </div>
-            {/* <div id='top' className='outer-corner'>
+            <div id='top' className='outer-corner'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
@@ -746,8 +746,8 @@ export default function Search() {
                         </li>
                     </ul>
                 </div>
-            </div> */}
-            <div id='main'>
+            </div>
+            {/* <div id='main'>
                 <h5>{
                     GetLang({
                         en: 'Categories',
@@ -806,7 +806,7 @@ export default function Search() {
                         ))
                     }</ul>
                 </div>
-            </div>
+            </div> */}
             <div id='bar'>
                 <h6></h6>
                 <div id='bar_code'>{
