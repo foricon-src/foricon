@@ -351,17 +351,6 @@ export default function Search() {
     function formatKeyword(value, reversed) {
         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
     }
-    function goLink() {
-        go(router, `#${
-            [
-                `v=${version}`,
-                search && `k=${formatKeyword(search)}`,
-                selectedCategories.length && `c=${selectedCategories.join(';')}`,
-                `f=${family}`,
-                `s=${style}`
-            ].filter(Boolean).join('&')
-        }`)
-    }
 
     let filtered = useMemo(() => {
         let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
@@ -412,22 +401,21 @@ export default function Search() {
     }, [ filtered ])
     
     useEffect(() => {(async () => {
-        !location.hash && goLink();
-        location.hash.slice(1).split('&').forEach(each => {
-            const prefix = each.slice(0, 2);
-            const value = each.slice(2);
-            ({
-                'k=': setSearch,
-                'c=': value => selectCategories(value.split(';')),
-                's=': setStyle,
-                'f=': setFamily,
-                'v=': setVersion
-            })[prefix]?.(value);
-        })
-
         while (elemById('loading')) await wait();
         setLoaded(true);
     })()}, [])
+    useEffect(() => {
+        let hash = `#${
+            [
+                `v=${version}`,
+                search && `k=${formatKeyword(search)}`,
+                selectedCategories.length && `c=${selectedCategories.join(';')}`,
+                `f=${family}`,
+                `s=${style}`
+            ].filter(Boolean).join('&')
+        }`
+        location.hash != hash && history.replaceState(null, '', hash);
+    }, [ search, family, style, version, selectedCategories ])
 
     return (
         <>
