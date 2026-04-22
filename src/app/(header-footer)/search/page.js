@@ -774,7 +774,7 @@ export default function Search() {
                 <ul class='btn-list vertical' id='categories'>{
                     Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
                         <li key={key}>
-                            <span dangerouslySetInnerHTML={icon + GetLang(lang)}/>
+                            {/* <span dangerouslySetInnerHTML={icon + GetLang(lang)}/> */}
                             <span>{count}</span>
                         </li>
                     ))
