@@ -353,7 +353,15 @@ export default function Search() {
         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
     }
     function goLink() {
-        go(router, `#v=${version}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}&s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`);
+        go(router, `#${
+            [
+                `v=${version}`,
+                search && `k=${formatKeyword(search)}`,
+                selectCategories.length && `c=${selectedCategories.join(';')}`,
+                `f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}`,
+                `s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`
+            ].filter(Boolean).join('&')
+        }`)
     }
 
     let filtered = useMemo(() => {
@@ -767,12 +775,13 @@ export default function Search() {
                 <ul class='btn-list vertical' id='categories'>{
                     Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
                         <li key={key}>
-                            <span>{icon + GetLang(lang)}</span>
+                            <span dangerouslySetInnerHTML={icon + GetLang(lang)}/>
+                            <span>{count}</span>
                         </li>
                     ))
                 }</ul>
                 <div>
-                    <ul id='results'>{
+                    <ul id='results' className={view}>{
                         currentIcons.map(({ icon: { name }, style }) => (
                             <li key={name}>
                                 <f-icon icon={name} i-s={style} {...version}></f-icon>
