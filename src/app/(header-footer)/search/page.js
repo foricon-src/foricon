@@ -8,7 +8,6 @@ import './page.css'
 export default function Search() {
     let router = useRouter();
 
-    let [ count, setCount ] = useState(0);
     let [ type, setType ] = useState('');
 
     // useEffect(() => {(async () => {
@@ -413,7 +412,7 @@ export default function Search() {
         )
 
         return cloned;
-    })
+    }, [ filtered ])
     
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
@@ -757,18 +756,18 @@ export default function Search() {
                 }</h5>
                 <h5>{
                     GetLang({
-                        en: `Showing ${count} results`,
-                        vi: `Đang hiển thị ${count} kết quả`,
-                        fr: `Affichage de ${count} résultats`,
-                        it: `Visualizzazione di ${count} risultati`,
-                        kr: `${count} 개의 결과 표시 중`,
-                        ja: `${count} 件の結果を表示`,
-                        de: `Zeigt ${count} ergebnisse`,
-                        nl: `Er worden ${count} resultaten weergegeven`,
-                        dk: `Viser ${count} resultater`,
-                        pt: `Mostrando ${count} resultados`,
-                        es: `Mostrando ${count} resultados`,
-                        ru: `Показано ${count} результата`,
+                        en: `Showing ${filtered.length} results`,
+                        vi: `Đang hiển thị ${filtered.length} kết quả`,
+                        fr: `Affichage de ${filtered.length} résultats`,
+                        it: `Visualizzazione di ${filtered.length} risultati`,
+                        kr: `${filtered.length} 개의 결과 표시 중`,
+                        ja: `${filtered.length} 件の結果を表示`,
+                        de: `Zeigt ${filtered.length} ergebnisse`,
+                        nl: `Er worden ${filtered.length} resultaten weergegeven`,
+                        dk: `Viser ${filtered.length} resultater`,
+                        pt: `Mostrando ${filtered.length} resultados`,
+                        es: `Mostrando ${filtered.length} resultados`,
+                        ru: `Показано ${filtered.length} результата`,
                     })
                 }
                 </h5>
