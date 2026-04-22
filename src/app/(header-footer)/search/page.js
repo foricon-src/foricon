@@ -792,10 +792,14 @@ export default function Search() {
                     ))
                 }</ul>
                 <div>
-                    <ul id='results' className={view}>{
+                    <ul
+                        key={`${view}-${currentPage}-${search}-${family}-${style}-${version}-${selectedCategories.join(',')}`}
+                        id='results'
+                        className={view}
+                    >{
                         currentIcons.map(({ icon: { name }, style }) => (
                             <li key={`${name} | ${style}`}>
-                                <div><f-icon icon={name} i-s={style} {...version}></f-icon></div>
+                                <f-icon icon={name} i-s={style} {...version}></f-icon>
                                 <span>${name}</span>
                             </li>
                         ))
