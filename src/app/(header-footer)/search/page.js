@@ -8,8 +8,8 @@ import './page.css'
 export default function Search() {
     let router = useRouter();
 
-    // let [ count, setCount ] = useState(0);
-    // let [ type, setType ] = useState('');
+    let [ count, setCount ] = useState(0);
+    let [ type, setType ] = useState('');
 
     // useEffect(() => {(async () => {
     //     while (elemById('loading')) await wait();
