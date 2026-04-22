@@ -523,7 +523,7 @@ export default function Search() {
                 </div>
             </div>
             {/* <ins className='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
-            <div className='banner blue signup'>
+            {/* <div className='banner blue signup'>
                 <div>{
                     GetLang({
                         en: 'Enjoy free icons - sign up to access the entire set!',
@@ -746,7 +746,7 @@ export default function Search() {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
             <div id='main'>
                 <h5>{
                     GetLang({
