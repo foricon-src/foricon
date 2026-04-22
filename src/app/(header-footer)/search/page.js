@@ -115,7 +115,7 @@ export default function Search() {
                         
     //                     qSelec(false, bar, 'h6').innerText = name;
     //                     qSelec(false, bar, 'f-icon[icon="circle-info"]').onclick = () => notify(
-    //                         'info', '<span class="key">Ctrl</span> + <b>Click</b> to copy the code'
+    //                         'info', '<span className="key">Ctrl</span> + <b>Click</b> to copy the code'
     //                     )
     //                     bar_code.innerHTML = formatCode(
     //                         `<f-icon icon='${name}'${style == 'solid' ? '' : ` i-s='${style}'`}${isB1 ? ' b1' : ''}></f-icon>`
@@ -387,11 +387,6 @@ export default function Search() {
                 .filter(style => icon.styles.includes(style))
                 .filter(() => {
                     const normalized = normalize(icon.name);
-                    console.log(
-                        normalized.includes(search),
-                        similarity(normalized, search),
-                        selectedCategories
-                    )
                     return (
                         (normalized.includes(search) ||
                             similarity(normalized, search) > 0.65) &&
@@ -436,7 +431,7 @@ export default function Search() {
 
     return (
         <>
-            <div class='modal confirm' id='choose-layers'>
+            <div className='modal confirm' id='choose-layers'>
                 <div>
                     <h3>{
                         GetLang({
@@ -470,16 +465,16 @@ export default function Search() {
                             ru: `Скачать выбранный(е) слой(и) как ${type}`,
                         })
                     }</p>
-                    <div class='checkboxes'>
+                    <div className='checkboxes'>
                         <label>
-                            <input type='checkbox' value='pri'/><div class='checkmark'></div>Primary
+                            <input type='checkbox' value='pri'/><div className='checkmark'></div>Primary
                         </label>
                         <label>
-                            <input type='checkbox' value='sec'/><div class='checkmark'></div>Secondary
+                            <input type='checkbox' value='sec'/><div className='checkmark'></div>Secondary
                         </label>
                     </div>
                     <div>
-                        <a href='javascript:void(0)' class='btn secondary'>{
+                        <a href='javascript:void(0)' className='btn secondary'>{
                             GetLang({
                                 en: 'Cancel',
                                 vi: 'Hủy',
@@ -495,7 +490,7 @@ export default function Search() {
                                 ru: 'Отмена',
                             })
                         }</a>
-                        <a href='javascript:void(0)' class='btn primary'>{
+                        <a href='javascript:void(0)' className='btn primary'>{
                             GetLang({
                                 en: 'Download',
                                 vi: 'Tải xuống',
@@ -514,8 +509,8 @@ export default function Search() {
                     </div>
                 </div>
             </div>
-            {/* <ins class='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
-            <div class='banner blue signup'>
+            {/* <ins className='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
+            <div className='banner blue signup'>
                 <div>{
                     GetLang({
                         en: 'Enjoy free icons - sign up to access the entire set!',
@@ -532,7 +527,7 @@ export default function Search() {
                         ru: 'Наслаждайтесь бесплатными иконками - зарегистрируйтесь для доступа ко всем!',
                     })
                 }
-                    <a href='/p/sign-up.html' class='btn'>{
+                    <a href='/p/sign-up.html' className='btn'>{
                         GetLang({
                             en: 'Sign up',
                             vi: 'Đăng ký',
@@ -550,7 +545,7 @@ export default function Search() {
                     }</a>
                 </div>
             </div>
-            <div id='top' class='outer-corner'>
+            <div id='top' className='outer-corner'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
@@ -578,7 +573,7 @@ export default function Search() {
                     </option-list>
                 </f-select>
                 <div id='options'>
-                    <ul class='btn-list line-active' id='top_options_families'>
+                    <ul className='btn-list line-active' id='top_options_families'>
                         <li className={family == 'all' && 'active'} onClick={() => setFamily('all')}>{
                             GetLang({
                                 en: 'All',
@@ -628,7 +623,7 @@ export default function Search() {
                             })
                         }</li>
                     </ul>
-                    <ul class='btn-list line-active line' id='top_options_styles'>
+                    <ul className='btn-list line-active line' id='top_options_styles'>
                         <li className={style == 'all' && 'active'} onClick={() => setStyle('all')}>{
                             GetLang({
                                 en: 'All',
@@ -678,7 +673,7 @@ export default function Search() {
                             })
                         }</li>
                     </ul>
-                    <ul class='btn-list line-active' id='top_options_views'>
+                    <ul className='btn-list line-active' id='top_options_views'>
                         <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
                             <f-icon icon='grid-4'></f-icon>
                             <span>{
@@ -773,7 +768,7 @@ export default function Search() {
                     })
                 }
                 </h5>
-                <ul class='btn-list vertical' id='categories'>{
+                <ul className='btn-list vertical' id='categories'>{
                     Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
                         <li key={key}>
                             <span dangerouslySetInnerHTML={{
@@ -786,15 +781,15 @@ export default function Search() {
                 <div>
                     <ul id='results' className={view}>{
                         currentIcons.map(({ icon: { name }, style }) => (
-                            <li key={name}>
+                            <li key={`${name} | ${style}`}>
                                 <f-icon icon={name} i-s={style} {...version}></f-icon>
                                 <span>${name}</span>
                             </li>
                         ))
                     }</ul>
-                    <ul class='btn-list line-active top' id='pages'>{
+                    <ul className='btn-list line-active top' id='pages'>{
                         Array.from({ length: Math.ceil(filtered.length / perPage) }).map((_, i) => (
-                            <li key={i} onClick={() => setPage(i + 1)} className={currentPage == i && 'active'}>{i + 1}</li>
+                            <li key={i} onClick={() => setPage(i)} className={currentPage == i ? 'active' : ''}>{i + 1}</li>
                         ))
                     }</ul>
                 </div>
@@ -878,7 +873,7 @@ export default function Search() {
                         ru: 'Категории:',
                     })
                 }
-                    <ul class='btn-list'></ul>
+                    <ul className='btn-list'></ul>
                 </div>
                 <div id='bar_download'>{
                     GetLang({
@@ -896,7 +891,7 @@ export default function Search() {
                         ru: 'Скачать:',
                     })
                 }
-                    <ul class='btn-list'>
+                    <ul className='btn-list'>
                         <li name='svg'>SVG</li>
                         <li name='png'>PNG</li>
                         <li name='webp'>WebP</li>
