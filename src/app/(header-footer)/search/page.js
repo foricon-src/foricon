@@ -345,7 +345,7 @@ export default function Search() {
     let [ style, setStyle ] = useState('all');
     let [ selectedCategories, selectCategories ] = useState([]);
     let [ version, setVersion ] = useState('b2');
-    let [ currentPage, setPage ] = useState(1);
+    let [ currentPage, setPage ] = useState(0);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
     
@@ -400,7 +400,7 @@ export default function Search() {
     let categoryCounts = useMemo(() => {
         let cloned = structuredClone(webData.categories);
 
-        filtered.forEach(({ categories }) => 
+        filtered.forEach(({ icon: { categories } }) => 
             categories.forEach(c => cloned[c].count = (cloned[c].count || 0) + 1)
         )
 
@@ -782,7 +782,7 @@ export default function Search() {
                     }</ul>
                     <ul class='btn-list line-active top' id='pages'>{
                         Array.from({ length: Math.ceil(filtered.length / perPage) }).map((_, i) => (
-                            <button key={i} onClick={() => setPage(i + 1)}>{i + 1}</button>
+                            <li key={i} onClick={() => setPage(i + 1)} className={currentPage == i && 'active'}>{i + 1}</li>
                         ))
                     }</ul>
                 </div>
