@@ -337,13 +337,38 @@ export default function Search() {
     // })()}, [])
     
     let perPage = 150;
+    
+    let initial = (() => {
+        if (typeof window == 'undefined') {
+            return {
+                search: '',
+                family: 'all',
+                style: 'all',
+                version: 'b2',
+                categories: [],
+            }
+        }
+      
+        const hash = location.hash.slice(1);
+        const map = Object.fromEntries(
+            hash.split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
+        )
+      
+        return {
+            search: map['k='] ?? '',
+            family: map['f='] ?? 'all',
+            style: map['s='] ?? 'all',
+            version: map['v='] ?? 'b2',
+            categories: map['c='] ? map['c='].split(';') : [],
+        }
+    })()
 
     let [ loaded, setLoaded ] = useState(false);
-    let [ search, setSearch ] = useState('');
-    let [ family, setFamily ] = useState('all');
-    let [ style, setStyle ] = useState('all');
-    let [ selectedCategories, selectCategories ] = useState([]);
-    let [ version, setVersion ] = useState('b2');
+    let [ search, setSearch ] = useState(initial.search);
+    let [ family, setFamily ] = useState(initial.family);
+    let [ style, setStyle ] = useState(initial.style);
+    let [ selectedCategories, selectCategories ] = useState(initial.categories);
+    let [ version, setVersion ] = useState(initial.version);
     let [ currentPage, setPage ] = useState(0);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
