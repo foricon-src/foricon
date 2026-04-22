@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { GetLang } from 'Com/language';
 import './page.css'
 
-/*export default function Search() {
+export default function Search() {
     let router = useRouter();
 
     let [ type, setType ] = useState('');
@@ -522,6 +522,7 @@ import './page.css'
                     </div>
                 </div>
             </div>
+            {/* <ins className='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
             <div className='banner blue signup'>
                 <div>{
                     GetLang({
@@ -557,7 +558,7 @@ import './page.css'
                     }</a>
                 </div>
             </div>
-            <div id='top' className='outer-corner'>
+            {/* <div id='top' className='outer-corner'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
@@ -745,7 +746,7 @@ import './page.css'
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
             <div id='main'>
                 <h5>{
                     GetLang({
@@ -912,7 +913,4 @@ import './page.css'
             </div>
         </>
     )
-}*/
-export default function Search() {
-    return <div></div>
 }
