@@ -357,8 +357,8 @@ export default function Search() {
                 `v=${version}`,
                 search && `k=${formatKeyword(search)}`,
                 selectCategories.length && `c=${selectedCategories.join(';')}`,
-                `f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}`,
-                `s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`
+                `f=${family}`,
+                `s=${style}`
             ].filter(Boolean).join('&')
         }`)
     }
