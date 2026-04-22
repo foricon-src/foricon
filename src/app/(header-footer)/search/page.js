@@ -795,7 +795,7 @@ export default function Search() {
                     <ul id='results' className={view}>{
                         currentIcons.map(({ icon: { name }, style }) => (
                             <li key={`${name} | ${style}`}>
-                                <f-icon icon={name} i-s={style} {...version}></f-icon>
+                                <div><f-icon icon={name} i-s={style} {...version}></f-icon></div>
                                 <span>${name}</span>
                             </li>
                         ))
