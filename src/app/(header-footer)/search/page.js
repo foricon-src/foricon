@@ -348,23 +348,17 @@ export default function Search() {
     let [ currentPage, setPage ] = useState(1);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
-
-    !location.hash && go(router)
-    location.hash.slice(1).split('&').forEach(each => {
-        const prefix = each.slice(0, 2);
-        const value = each.slice(2);
-        ({
-            'k=': setSearch,
-            'c=': value => selectCategories(value.split(';')),
-            's=': setStyle,
-            'f=': setFamily,
-            'v=': setVersion
-        })[prefix]?.(value);
-    })
+    
+    function formatKeyword(value, reversed) {
+        return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
+    }
+    function goLink() {
+        go(router, `#v=${version}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}&s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`);
+    }
 
     let filtered = useMemo(() => {
         let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
-        if (iconSet) return [];
+        if (!iconSet) return [];
 
         function getStyles(icon) {
             if (family == 'all' && style == 'all')
@@ -388,8 +382,8 @@ export default function Search() {
                     const normalized = normalize(icon.name);
             
                     return (
-                        (normalized.includes(value) ||
-                            similarity(normalized, value) > 0.65) &&
+                        (normalized.includes(search) ||
+                            similarity(normalized, search) > 0.65) &&
                         (!selectedCategories.length ||
                             selectedCategories.every(c =>
                                 icon.categories.includes(c)
@@ -416,6 +410,19 @@ export default function Search() {
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
         setLoaded(true);
+
+        !location.hash && goLink();
+        location.hash.slice(1).split('&').forEach(each => {
+            const prefix = each.slice(0, 2);
+            const value = each.slice(2);
+            ({
+                'k=': setSearch,
+                'c=': value => selectCategories(value.split(';')),
+                's=': setStyle,
+                'f=': setFamily,
+                'v=': setVersion
+            })[prefix]?.(value);
+        })
     })()}, [])
 
     return (
@@ -774,7 +781,7 @@ export default function Search() {
                         ))
                     }</ul>
                     <ul class='btn-list line-active top' id='pages'>{
-                        Array.from({ length: Math.ceil(filtered.lenght / perPage) }).map((_, i) => (
+                        Array.from({ length: Math.ceil(filtered.length / perPage) }).map((_, i) => (
                             <button key={i} onClick={() => setPage(i + 1)}>{i + 1}</button>
                         ))
                     }</ul>
