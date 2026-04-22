@@ -356,7 +356,7 @@ export default function Search() {
             [
                 `v=${version}`,
                 search && `k=${formatKeyword(search)}`,
-                selectCategories.length && `c=${selectedCategories.join(';')}`,
+                selectedCategories.length && `c=${selectedCategories.join(';')}`,
                 `f=${family}`,
                 `s=${style}`
             ].filter(Boolean).join('&')
