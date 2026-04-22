@@ -388,12 +388,9 @@ export default function Search() {
                 .filter(() => {
                     const normalized = normalize(icon.name);
                     console.log(
-                        (normalized.includes(search) ||
-                            similarity(normalized, search) > 0.65) &&
-                        (!selectedCategories.length ||
-                            selectedCategories.every(c =>
-                                icon.categories.includes(c)
-                            ))
+                        normalized.includes(search),
+                        similarity(normalized, search),
+                        selectedCategories.length
                     )
                     return (
                         (normalized.includes(search) ||
