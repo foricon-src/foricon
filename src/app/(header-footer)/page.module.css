@@ -126,7 +126,7 @@
                 box-shadow: inset var(--shadow);
                 aspect-ratio: 4/3;
                 
-                body.dark & {
+                :global(body.dark) & {
                     background-color: var(--xdk-blue);
                 }
                 & > img {
