@@ -117,7 +117,7 @@
                 &.copied:before {
                     content: 'Copied';
                 }
-                + div {
+                & + div {
                     margin-left: 5px;
                 }
             }
