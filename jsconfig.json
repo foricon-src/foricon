@@ -1,12 +1,11 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "paths": {
-            "Pag/*": ["src/app/*"],
-            "Api/*": ["Pag/api/*"],
-            "Pub/*": ["public/*"],
-            "Com/*": ["src/components/*"],
-            "Uti/*": ["src/utils/*"]
+            "Pag/*": ["./src/app/*"],
+            "Api/*": ["./Pag/api/*"],
+            "Pub/*": ["./public/*"],
+            "Com/*": ["./src/components/*"],
+            "Uti/*": ["./src/utils/*"]
         }
     }
 }

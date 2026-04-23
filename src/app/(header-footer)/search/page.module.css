@@ -1,25 +1,25 @@
 
-#bar,
-#top,
-#top > div#search,
-#top > div#options,
-#main, 
-#main > div > ul#results:has(> li),
-#main > div > ul#results.tiles > li {
+.bar,
+.top,
+.top > div.search,
+.top > div.options,
+.main, 
+.main > div > ul.results:has(> li),
+.main > div > ul.results.tiles > li {
     display: grid;
 }
-#bar > div,
-#bar > div > div,
-#bar > div > div > div,
-#top > div#options > ul,
-#main > div > ul#results:not(:has(> li)),
-#main > div > ul#results > li,
-#main > div > ul#results.large > li,
-#read-docs {
+.bar > div,
+.bar > div > div,
+.bar > div > div > div,
+.top > div.options > ul,
+.main > div > ul.results:not(:has(> li)),
+.main > div > ul.results > li,
+.main > div > ul.results.large > li,
+.read-docs {
     display: flex;
 }
 
-#bar {
+.bar {
     position: fixed;
     bottom: 10px;
     left: var(--spacing-default);
@@ -49,7 +49,7 @@
     > div {
         align-items: center;
         
-        &#bar_code {
+        &.code {
             grid-area: code;
             
             > lang > f-icon {
@@ -71,7 +71,7 @@
                 }
             }
         }
-        &#bar_glyphs, &#bar_unicodes {
+        &.glyphs, &.unicodes {
             width: max-content;
             
             > div > div {
@@ -122,7 +122,7 @@
                 }
             }
         }
-        &#bar_glyphs {
+        &.glyphs {
             grid-area: glyphs;
             
             > div > div {
@@ -134,7 +134,7 @@
                 }
             }
         }
-        &#bar_unicodes {
+        &.unicodes {
             grid-area: unicodes;
             
             > div > div {
@@ -145,10 +145,10 @@
                 }
             }
         }
-        &#bar_categories {
+        &.categories {
             grid-area: categories;
         }
-        &#bar_download {
+        &.download {
             grid-area: download;
         }
         > lang {
@@ -163,13 +163,13 @@
     
 }
 
-:is(#top, #main) > * {
+:is(.top, .main) > * {
     margin: auto;
 }
-#top {
+.top {
     grid-template-areas:
-    'searchBar versions'
-    'options options';
+        'searchBar versions'
+        'options options';
     grid-template-columns: calc(100% - min(200px, 30%) - 5px) min(200px, 30%);
     padding: var(--spacing-default) calc(50vw - 500px) var(--spacing-xxsmall);
     gap: var(--spacing-small) 5px;
@@ -214,7 +214,7 @@
     > f-select {
         grid-area: versions;
     }
-    > div#options {
+    > .options {
         grid-area: options;
         margin: 0 -12px 0 -15px;
         grid-template-columns: max-content max-content auto;
@@ -227,7 +227,7 @@
     }
 }
 
-#main {
+.main {
     padding: var(--spacing-medium) var(--spacing-default) var(--spacing-default);
     border-bottom-right-radius: var(--bdr-rad);
     background-color: var(--dk-bg-color);
@@ -260,7 +260,7 @@
             color: inherit;
         }
     }
-    > ul#categories {
+    > .categories {
         grid-area: categories;
         overflow: hidden;
         grid-template-columns: repeat(2, 1fr);
@@ -293,7 +293,7 @@
         container: results / inline-size;
         
         > ul {
-            &#results {
+            &.results {
                 &:has(> li) {
                     gap: 20px;
                     margin: auto;
@@ -427,7 +427,7 @@
                     }
                 }
             }
-            &#pages {
+            &.pages {
                 margin-top: var(--spacing-small);
                 justify-content: center;
                 
@@ -441,14 +441,14 @@
 }
 
 @media screen and (max-width: 1200px) {
-    #bar {
+    .bar {
         padding-top: 20px;
         grid-template-areas:
-        'name name'
-        'code code'
-        'glyphs unicodes'
-        'categories categories'
-        'download download';
+            'name name'
+            'code code'
+            'glyphs unicodes'
+            'categories categories'
+            'download download';
         grid-template-columns: repeat(2, calc(50% - 15px));
         
         > h5, > div:first-of-type {
@@ -460,22 +460,22 @@
     }
 }
 @media screen and (max-width: 1070px) {
-    #top {
+    .top {
         padding: var(--spacing-medium) var(--spacing-default) var(--spacing-xxsmall);
     }
 }
 @media screen and (max-width: 1020px) {
-    #top {
+    .top {
         padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-xxsmall);
     }
 }
 @media screen and (max-width: 900px) {
-    #main {
+    .main {
         grid-template-areas:
-        'categoryTitle'
-        'categories'
-        'resultTitle'
-        'results';
+            'categoryTitle'
+            'categories'
+            'resultTitle'
+            'results';
         grid-template-columns: 100%;
         
         > h5:first-of-type {
@@ -493,7 +493,7 @@
                 rotate: 90deg;
             }
         }
-        > ul#categories {
+        > ul.categories {
             height: calc-size(auto, size);
             display: grid;
             
@@ -502,13 +502,13 @@
             }
         }
     }
-    #top > div#options {
+    .top > div.options {
         margin: 40px auto 0;
         display: grid;
         grid-template-columns: max-content;
         width: max-content;
         
-        > ul#views {
+        > ul.views {
             grid-column-end: span 2;
             justify-content: center;
         }
@@ -516,43 +516,43 @@
 }
 
 @container main (max-width: 700px) {
-    #main > ul#categories {
+    .main > ul.categories {
         grid-template-columns: 100%;
     }
 }
 
 @container results (max-width: 980px) {
-    #main > div > ul#results.large:has(> li) {
+    .main > div > ul.results.large:has(> li) {
         grid-template-columns: repeat(7, calc(100% / 7 - 20px * 6/7));
     }
 }
 @container results (max-width: 950px) {
-    #main > div > ul#results.small:has(> li) {
+    .main > div > ul.results.small:has(> li) {
         grid-template-columns: repeat(9, calc(100% / 9 - 20px * 8/9));
     }
 }
 @container results (max-width: 860px) {
-    #main > div > ul#results.large:has(> li) {
+    .main > div > ul.results.large:has(> li) {
         grid-template-columns: repeat(6, calc(100% / 6 - 20px * 5/6));
     }
 }
 @container results (max-width: 730px) {
-    #main > div > ul#results.large:has(> li) {
+    .main > div > ul.results.large:has(> li) {
         grid-template-columns: repeat(5, calc(20% - 16px));
     }
 }
 @container results (max-width: 600px) {
-    #main > div > ul#results.large:has(> li) {
+    .main > div > ul.results.large:has(> li) {
         grid-template-columns: repeat(4, calc(25% - 15px));
     }
 }
 @container results (max-width: 480px) {
-    #main > div > ul#results.large:has(> li) {
+    .main > div > ul.results.large:has(> li) {
         grid-template-columns: repeat(3, calc(100% / 3 - 20px * 2/3));
     }
 }
 @container results (max-width: 350px) {
-    #main > div > ul#results.large:has(> li) {
+    .main > div > ul.results.large:has(> li) {
         grid-template-columns: repeat(2, calc(50% - 10px));
     }
 }

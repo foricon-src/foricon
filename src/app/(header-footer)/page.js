@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 // import Image from 'next/image';
 // import favicon from 'Ass/foricon-f-favicon.png';
 import { GetLang } from 'Com/language';
-import './page.css';
+import cssStyle from './page.module.css';
 import 'Com/utils';
 
 export default function Home() {
@@ -29,8 +29,8 @@ export default function Home() {
     })()}, [])
 
     return (
-        <>
-            <div className='section' id='hero'>
+        <div className={cssStyle.page}>
+            <div className='hero'>
                 <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBX39PGrjfEdpF2RTkpAaKi84zc4JJ5cs7MzKgtnPH6jepJLRGh8zTwACp0VH2Dt5dj7AZH39t4pvfY69Fc8yt_6W2Ya0iwT432qMJURupVCcq6ZHAPAjaJO85Dw8Gj2LppRLBKkJYUTbq6yAFFRc2ezL66KkHDXR0ksoDroknEakKo0PlBODWcq3aXCc/s1600/foricon-f.png'/>
                 <a href='/p/new-changelog.html'>
                     <f-icon i-s='outline' icon='hashtag'/><span>{webData.verFull}</span>
@@ -87,7 +87,7 @@ export default function Home() {
                     }/>
                 </label>
             </div>
-            <div class='content-section' id='icons'>
+            <div className='content-section icons'>
                 <div>
                     <h1>
                         <span class='icon-count'/>{
@@ -124,7 +124,7 @@ export default function Home() {
                     }</p>
                 </div>
             </div>
-            <div class='content-section' id='integration'>
+            <div className='content-section integration'>
                 <div>
                     <h6 class='tagline'>{
                         GetLang({
@@ -195,7 +195,7 @@ export default function Home() {
                     <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuciTIEKRlA_20KiNnOyUeny9fCvNkfD33iTLIYl3YOtT8Z3Fyiu5GJ08jCaJI5Pef-2mPUn34O0y0WIF83RUojLoh_B1nVU8wpTu9QbLdjq5alkzCoXDnNg5_O9uS8XBHbozp7evFgFEumm4ZRfkSC4t8naEuOYntcT4Afwdig2qh5lCYCx0hFBteOpU/s1600/screenshot.png'/>
                 </div>
             </div>
-            <div class='content-section' id='icon-families'>
+            <div className='content-section icon-families'>
                 <h6 class='tagline'>{
                     GetLang({
                         en: 'Icon Families',
@@ -323,7 +323,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
-            <div class='content-section' id='customizable'>
+            <div className='content-section customizable'>
                 <h6 class='tagline'>{
                     GetLang({
                         en: 'Easy to Customize',
@@ -523,7 +523,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div class='content-section' id='more-styling'>
+            <div className='content-section more-styling'>
                 <h1>{
                     GetLang({
                         en: 'Explore More Styling Options!',
@@ -574,7 +574,7 @@ export default function Home() {
                     })
                 }</a>
             </div>
-            <div class='content-section dk-bg' id='compatible'>
+            <div className='content-section dk-bg compatible'>
                 <div>
                     <h5>{
                         GetLang({
@@ -694,7 +694,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
-            <div class='content-section signup' id='get-started'>
+            <div className='content-section signup get-started'>
                 <div>
                     <h1>Get started</h1>
                     <p>Get access to the power of the Foricon</p>
@@ -705,7 +705,7 @@ export default function Home() {
                     </a>
                 </div>
             </div>
-            <div class='content-section' id='pages'>
+            <div className='content-section pages'>
                 <a href='/p/hub.html'>
                     <div>
                         <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgu2RsPztgjhUls5ZfAiJvxJ95dXULPYSARYYoJYP-73-qp6GnkN09zQ7Lohja3UMJhq2Zjv78rM2LUOiKMuiE2ZT0xjPKKDw2CQqp5-r7ippkOzKrNWSXtLlMkcnd9K-z-QHo2o8GMbJnGTXd69U5TXvMKCrZZCb99XZZaOlJ9kcEQqa_EbY5qh3JhK0/s320/foricon-hub.png'/>
@@ -735,6 +735,6 @@ export default function Home() {
                     <p>Have a question about us? Find your answers here</p>
                 </a>
             </div>
-        </>
+        </div>
     );
 }

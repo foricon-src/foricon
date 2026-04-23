@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { GetLang } from 'Com/language';
-import './page.css'
+import cssStyle from './page.module.css';
 
 export default function Search() {
     let router = useRouter();
@@ -558,7 +558,7 @@ export default function Search() {
                     }</a>
                 </div>
             </div>
-            <div id='top' className='outer-corner'>
+            <div className={`outer-corner ${cssStyle.top}`}>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
@@ -747,7 +747,7 @@ export default function Search() {
                     </ul>
                 </div>
             </div>
-            <div id='main'>
+            <div className={cssStyle.main}>
                 <h5>{
                     GetLang({
                         en: 'Categories',
@@ -807,7 +807,7 @@ export default function Search() {
                     }</ul>
                 </div>
             </div>
-            <div id='bar'>
+            <div className={cssStyle.bar}>
                 <h6></h6>
                 <div id='bar_code'>{
                     `${GetLang({
