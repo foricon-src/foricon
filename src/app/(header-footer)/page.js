@@ -10,7 +10,7 @@ import 'Com/utils';
 export default function Home() {
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
-        let icons = elemById('icons');
+        let icons = qSelec(false, '.contentSection.icons');
         let added = [];
         for (let i = 0; i < 4; i++) {
             let div = newElem('div');
@@ -24,7 +24,7 @@ export default function Home() {
                     added.push(`${name} ${style}`);
                 }
             }
-            icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
+            icons.insertBefore(div, qSelec(false, '.contentSection.icons > div:last-child'));
         }
     })()}, [])
 
@@ -87,7 +87,7 @@ export default function Home() {
                     }/>
                 </label>
             </div>
-            <div className={cssStyle.contentSection + cssStyle.icons}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.icons}`}>
                 <div>
                     <h1>
                         <span class='icon-count'/>{
@@ -124,7 +124,7 @@ export default function Home() {
                     }</p>
                 </div>
             </div>
-            <div className={cssStyle.contentSection + cssStyle.integration}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.integration}`}>
                 <div>
                     <h6 class='tagline'>{
                         GetLang({
@@ -195,7 +195,7 @@ export default function Home() {
                     <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuciTIEKRlA_20KiNnOyUeny9fCvNkfD33iTLIYl3YOtT8Z3Fyiu5GJ08jCaJI5Pef-2mPUn34O0y0WIF83RUojLoh_B1nVU8wpTu9QbLdjq5alkzCoXDnNg5_O9uS8XBHbozp7evFgFEumm4ZRfkSC4t8naEuOYntcT4Afwdig2qh5lCYCx0hFBteOpU/s1600/screenshot.png'/>
                 </div>
             </div>
-            <div className={cssStyle.contentSection + cssStyle.iconFamilies}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.iconFamilies}`}>
                 <h6 class='tagline'>{
                     GetLang({
                         en: 'Icon Families',
@@ -323,7 +323,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
-            <div className={cssStyle.contentSection + cssStyle.customizable}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.customizable}`}>
                 <h6 class='tagline'>{
                     GetLang({
                         en: 'Easy to Customize',
@@ -523,7 +523,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className={cssStyle.contentSection + cssStyle.moreStyling}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling}`}>
                 <h1>{
                     GetLang({
                         en: 'Explore More Styling Options!',
@@ -705,7 +705,7 @@ export default function Home() {
                     </a>
                 </div>
             </div>
-            <div className={cssStyle.contentSection + cssStyle.pages}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.pages}`}>
                 <a href='/p/hub.html'>
                     <div>
                         <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgu2RsPztgjhUls5ZfAiJvxJ95dXULPYSARYYoJYP-73-qp6GnkN09zQ7Lohja3UMJhq2Zjv78rM2LUOiKMuiE2ZT0xjPKKDw2CQqp5-r7ippkOzKrNWSXtLlMkcnd9K-z-QHo2o8GMbJnGTXd69U5TXvMKCrZZCb99XZZaOlJ9kcEQqa_EbY5qh3JhK0/s320/foricon-hub.png'/>
