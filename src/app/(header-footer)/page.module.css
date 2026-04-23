@@ -171,7 +171,7 @@
                             :hover > & {
                                 background: var(--main-color);
                                 
-                                > * {
+                                & > * {
                                     color: var(--dk-main-color);
                                 }
                             }
@@ -277,13 +277,13 @@
                 background-color: var(--bg-color);
                 box-shadow: var(--shadow);
                 
-                + li {
+                & + li {
                     margin-top: var(--spacing-medium);
                 }
-                > h3 {
+                & > h3 {
                     margin: 0 0 20px;
                 }
-                > ul > li {
+                & > ul > li {
                     margin-top: 5px;
                 }
             }
