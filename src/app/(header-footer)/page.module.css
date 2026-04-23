@@ -36,10 +36,10 @@
             }
         }
     }
-    .content-section {
+    .contentSection {
         padding: var(--spacing-default);
         
-        /*.content-section#anniversary {
+        /*.contentSection#anniversary {
         display: grid;
         align-items: center;
         justify-content: center;
@@ -48,13 +48,13 @@
         background-color: var(--dk-bg-color);
         border-radius: 0 var(--bdr-rad) var(--bdr-rad) 0;
         }
-        .content-section#anniversary > div > h3 {
+        .contentSection#anniversary > div > h3 {
         margin: 0;
         }
-        .content-section#anniversary > div > p {
+        .contentSection#anniversary > div > p {
         margin-bottom: 0;
         }
-        .content-section#anniversary > div > img {
+        .contentSection#anniversary > div > img {
         width: 50px;
         display: block;
         margin: auto;
@@ -139,7 +139,7 @@
                 }
             }
         }
-        &.icon-families {
+        &.iconFamilies {
             & > ul {
                 grid-template-columns: repeat(2, calc(50% - .5 * var(--spacing-small)));
                 gap: var(--spacing-xxsmall);
@@ -247,7 +247,7 @@
                 }
             }
         }
-        &.more-styling {
+        &.moreStyling {
             padding-top: 0;
             text-align: center;
             
@@ -288,7 +288,7 @@
                 }
             }
         }
-        &.get-started {
+        &.getStarted {
             padding-bottom: 0;
             
             & > div {
