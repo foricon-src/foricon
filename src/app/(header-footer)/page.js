@@ -10,7 +10,7 @@ import 'Com/utils';
 export default function Home() {
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
-        let icons = qSelec(false, '.contentSection.icons');
+        let icons = elemById('icons');
         let added = [];
         for (let i = 0; i < 4; i++) {
             let div = newElem('div');
@@ -24,7 +24,7 @@ export default function Home() {
                     added.push(`${name} ${style}`);
                 }
             }
-            icons.insertBefore(div, qSelec(false, '.contentSection.icons > div:last-child'));
+            icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
         }
     })()}, [])
 
