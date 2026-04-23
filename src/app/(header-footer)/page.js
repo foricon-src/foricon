@@ -87,7 +87,7 @@ export default function Home() {
                     }/>
                 </label>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.icons}`}>
+            <div className={cssStyle.contentSection} id='icons'>
                 <div>
                     <h1>
                         <span class='icon-count'/>{
@@ -124,7 +124,7 @@ export default function Home() {
                     }</p>
                 </div>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.integration}`}>
+            <div className={cssStyle.contentSection} id='integration'>
                 <div>
                     <h6 class='tagline'>{
                         GetLang({
@@ -195,7 +195,7 @@ export default function Home() {
                     <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuciTIEKRlA_20KiNnOyUeny9fCvNkfD33iTLIYl3YOtT8Z3Fyiu5GJ08jCaJI5Pef-2mPUn34O0y0WIF83RUojLoh_B1nVU8wpTu9QbLdjq5alkzCoXDnNg5_O9uS8XBHbozp7evFgFEumm4ZRfkSC4t8naEuOYntcT4Afwdig2qh5lCYCx0hFBteOpU/s1600/screenshot.png'/>
                 </div>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.iconFamilies}`}>
+            <div className={cssStyle.contentSection} id='icon-families'>
                 <h6 class='tagline'>{
                     GetLang({
                         en: 'Icon Families',
@@ -323,7 +323,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.customizable}`}>
+            <div className={cssStyle.contentSection} id='customizable'>
                 <h6 class='tagline'>{
                     GetLang({
                         en: 'Easy to Customize',
@@ -523,7 +523,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling}`}>
+            <div className={cssStyle.contentSection} id='more-styling'>
                 <h1>{
                     GetLang({
                         en: 'Explore More Styling Options!',
@@ -574,7 +574,7 @@ export default function Home() {
                     })
                 }</a>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.compatible} dk-bg`}>
+            <div className={`${cssStyle.contentSection} dk-bg`} id='compatible'>
                 <div>
                     <h5>{
                         GetLang({
@@ -694,7 +694,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.getStarted} signup`}>
+            <div className={`${cssStyle.contentSection} signup`} id='get-started'>
                 <div>
                     <h1>Get started</h1>
                     <p>Get access to the power of the Foricon</p>
