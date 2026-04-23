@@ -43,16 +43,16 @@
         opacity: 0;
         pointer-events: none;
     }
-    * {
+    & * {
         margin: 0;
     }
-    > div {
+    & > div {
         align-items: center;
         
         &.code {
             grid-area: code;
             
-            > lang > f-icon {
+            & > lang > f-icon {
                 color: var(--main-color);
                 cursor: var(--cursor-pointer);
                 
@@ -63,7 +63,7 @@
                     scale: var(--btn-scale);
                 }
             }
-            > code {
+            & > code {
                 padding: 15px 20px;
                 
                 &::-webkit-scrollbar {
@@ -74,7 +74,7 @@
         &.glyphs, &.unicodes {
             width: max-content;
             
-            > div > div {
+            & > div > div {
                 align-items: center;
                 justify-content: center;
                 cursor: var(--cursor-pointer);
@@ -125,7 +125,7 @@
         &.glyphs {
             grid-area: glyphs;
             
-            > div > div {
+            & > div > div {
                 font-family: 'Foricon Beta', 'Foricon Beta 1';
                 aspect-ratio: 1/1;
                 
@@ -137,7 +137,7 @@
         &.unicodes {
             grid-area: unicodes;
             
-            > div > div {
+            & > div > div {
                 aspect-ratio: 5/4;
                 
                 &:before {
@@ -151,12 +151,12 @@
         &.download {
             grid-area: download;
         }
-        > lang {
+        & > lang {
             margin-right: 10px;
             color: rgba(var(--text-color-rgb), .6);
             white-space: nowrap;
         }
-        > div {
+        & > div {
             height: 51.25px;
         }
     }
@@ -187,7 +187,7 @@
             &:after {
                 opacity: 1;
             }
-            > * {
+            & > * {
                 opacity: 0;
             }
         }
@@ -205,22 +205,22 @@
         opacity: 0;
         pointer-events: none;
     }
-    > :is(label, f-select) {
+    & > :is(label, f-select) {
         width: 100%;
     }
-    > label {
+    & > label {
         grid-area: searchBar;
     }
-    > f-select {
+    & > f-select {
         grid-area: versions;
     }
-    > .options {
+    & > .options {
         grid-area: options;
         margin: 0 -12px 0 -15px;
         grid-template-columns: max-content max-content auto;
         gap: 10px 0;
         
-        > ul {
+        & > ul {
             justify-content: flex-end;
             user-select: none;
         }
@@ -233,16 +233,16 @@
     background-color: var(--dk-bg-color);
     gap: var(--spacing-small);
     grid-template-areas:
-    'categoryTitle resultTitle'
-    'categories results';
+        'categoryTitle resultTitle'
+        'categories results';
     grid-template-columns: 270px calc(100% - 300px);
     container: main / inline-size;
     
-    > * {
+    & > * {
         height: 100%;
         width: 100%;
     }
-    > h5 {
+    & > h5 {
         margin: 0;
         
         &:first-of-type {
@@ -256,16 +256,16 @@
         &:last-of-type {
             grid-area: resultTitle;
         }
-        > lang > span {
+        & > lang > span {
             color: inherit;
         }
     }
-    > .categories {
+    & > .categories {
         grid-area: categories;
         overflow: hidden;
         grid-template-columns: repeat(2, 1fr);
         
-        > li {
+        & > li {
             justify-content: space-between;
             flex-direction: row;
             
@@ -288,11 +288,11 @@
             }
         }
     }
-    > div {
+    & > div {
         grid-area: results;
         container: results / inline-size;
         
-        > ul {
+        & > ul {
             &.results {
                 &:has(> li) {
                     gap: 20px;
@@ -353,7 +353,7 @@
                 &.tiles:has(> li) {
                     grid-template-columns: repeat(4, calc((100vw - var(--spacing-default) * 2 - 316px) / 4 - 20px * 3/4));
                 }
-                > li {
+                & > li {
                     border-radius: var(--bdr-rad);
                     background-color: var(--bg-color);
                     align-items: center;
@@ -380,10 +380,10 @@
                         grid-template-columns: 35px auto;
                         gap: 10px;
                         
-                        > span {
+                        & > span {
                             text-align: left;
                         }
-                        > f-icon {
+                        & > f-icon {
                             font-size: 1.1rem;
                         }
                     }
@@ -405,15 +405,15 @@
                         body.dark & {
                             background-color: var(--xdk-main-color);
                         }
-                        > * {
+                        & > * {
                             color: var(--main-color);
                         }
                     }
-                    > f-icon {
+                    & > f-icon {
                         font-size: 1.25rem;
                         color: var(--title-color);
                     }
-                    > span {
+                    & > span {
                         font-size: .8rem;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -431,7 +431,7 @@
                 margin-top: var(--spacing-small);
                 justify-content: center;
                 
-                > li {
+                & > li {
                     width: 47px;
                     justify-content: center;
                 }
@@ -451,7 +451,7 @@
             'download download';
         grid-template-columns: repeat(2, calc(50% - 15px));
         
-        > h5, > div:first-of-type {
+        & > h5, & > div:first-of-type {
             grid-column-end: span 2;
         }
         code  {
@@ -478,7 +478,7 @@
             'results';
         grid-template-columns: 100%;
         
-        > h5:first-of-type {
+        & > h5:first-of-type {
             cursor: var(--cursor-pointer);
             user-select: none;
             
@@ -493,7 +493,7 @@
                 rotate: 90deg;
             }
         }
-        > ul.categories {
+        & > ul.categories {
             height: calc-size(auto, size);
             display: grid;
             
@@ -508,7 +508,7 @@
         grid-template-columns: max-content;
         width: max-content;
         
-        > ul.views {
+        & > ul.views {
             grid-column-end: span 2;
             justify-content: center;
         }
