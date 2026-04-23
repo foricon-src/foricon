@@ -277,8 +277,8 @@
                     background-color: var(--dk-gray);
                 }
             }
-            > span {
-                > f-icon {
+            & > span {
+                & > f-icon {
                     width: var(--bn-li-icon-width);
                     margin-right: 10px;
                 }
@@ -371,7 +371,7 @@
                     .small > & {
                         justify-content: center;
                         
-                        > span {
+                        & > span {
                             display: none;
                         }
                     }
