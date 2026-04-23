@@ -574,7 +574,7 @@ export default function Home() {
                     })
                 }</a>
             </div>
-            <div className={`${cssStyle.contentSection + cssStyle.compatible} dk-bg`}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.compatible} dk-bg`}>
                 <div>
                     <h5>{
                         GetLang({
@@ -694,7 +694,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
-            <div className={`${cssStyle.contentSection + cssStyle.getStarted} signup`}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.getStarted} signup`}>
                 <div>
                     <h1>Get started</h1>
                     <p>Get access to the power of the Foricon</p>
