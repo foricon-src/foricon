@@ -796,6 +796,7 @@ export default function Search() {
                             let i = selectedCategories.indexOf(key);
                             i < 0 ? selectedCategories.push(key) : selectedCategories.splice(i, 1);
                             selectCategories(selectedCategories);
+                            console.log(selectedCategories)
                         }}>
                             <span key={key} dangerouslySetInnerHTML={{
                                 __html: icon + GetLang(lang)
