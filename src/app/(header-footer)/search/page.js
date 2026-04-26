@@ -837,7 +837,7 @@ export default function Search() {
                     })} `
                 }
                     <f-icon icon='circle-info'></f-icon>:
-                    <Code name='HTML'>{
+                    <Code lang='HTML'>{
                         `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
                     }</Code>
                 </div>
