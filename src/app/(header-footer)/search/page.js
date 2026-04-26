@@ -793,10 +793,10 @@ export default function Search() {
                 <ul className={`btn-list vertical ${cssStyle.categories}`}>{
                     Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
                         <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
-                            let i = selectedCategories.indexOf(key);
-                            i < 0 ? selectedCategories.push(key) : selectedCategories.splice(i, 1);
-                            selectCategories(selectedCategories);
-                            console.log(selectedCategories)
+                            let arr = [ ...selectedCategories ];
+                            let i = arr.indexOf(key);
+                            i < 0 ? arr.push(key) : arr.splice(i, 1);
+                            selectCategories(arr);
                         }}>
                             <span key={key} dangerouslySetInnerHTML={{
                                 __html: icon + GetLang(lang)
@@ -815,6 +815,7 @@ export default function Search() {
                                     style,
                                     glyphs: icon.glyphs[style.replace('/', '-')],
                                     unicodes: icon.unicodes[style.replace('/', '-')].split('|'),
+                                    categories: icon.categories,
                                 })
                             }}>
                                 <f-icon icon={icon.name} i-s={style} {...version}></f-icon>
