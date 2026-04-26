@@ -1,4 +1,4 @@
-export default function Code({ children, lang, nameless }) {
+export default function Code({ children, lang = 'HTML', nameless }) {
     return (
         <code name={!nameless && lang}
             dangerouslySetInnerHTML={{
