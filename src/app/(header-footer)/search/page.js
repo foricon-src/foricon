@@ -444,12 +444,11 @@ export default function Search() {
     }, [ search, family, style, version, selectedCategories ])
 
     addEvLis(document, 'click', ({ target }) =>
-        !target.matches(`
-            .${cssStyle.bar},
-            .${cssStyle.bar} *,
-            .${cssStyle.results} > .active,
-            .${cssStyle.results} > .active *
-        `) && selectIcon(null)
+        [
+            qSelec(false, `.${cssStyle.bar}`),
+            qSelec(false, `.${cssStyle.results} > .active,`)
+        ].some(i => i.contains(target)) &&
+            !qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target) && selectIcon(null)
     )
 
     return (
@@ -793,7 +792,11 @@ export default function Search() {
                 </h5>
                 <ul className={`btn-list vertical ${cssStyle.categories}`}>{
                     Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
-                        <li key={key}>
+                        <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
+                            let i = selectedCategories.indexOf(key);
+                            i < 0 ? selectedCategories.push(key) : selectedCategories.splice(i, 1);
+                            selectCategories(selectedCategories);
+                        }}>
                             <span key={key} dangerouslySetInnerHTML={{
                                 __html: icon + GetLang(lang)
                             }}/>
@@ -911,11 +914,11 @@ export default function Search() {
                         })
                     }</span>
                     <ul className='btn-list'>{
-                        (selectedIcon?.categories || []).map(c => {
-                            let { icon, ...lang } = webData.categories[c];
-                            return <li key={c} dangerouslySetInnerHTML={{
+                        (selectedIcon?.categories || []).map(category => {
+                            let { icon, ...lang } = webData.categories[category];
+                            return <li key={category} dangerouslySetInnerHTML={{
                                 __html: icon + GetLang(lang),
-                            }}/>
+                            }} onClick={() => selectCategories([ category ])}/>
                         })
                     }</ul>
                 </div>
