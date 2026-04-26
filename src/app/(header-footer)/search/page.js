@@ -442,6 +442,8 @@ export default function Search() {
         location.hash != hash && history.replaceState(null, '', hash);
     }, [ search, family, style, version, selectedCategories ])
 
+    addEvLis(document, 'click', () => selectIcon(null));
+
     return (
         <>
             <div className='modal confirm' id='choose-layers'>
@@ -830,7 +832,7 @@ export default function Search() {
                 }
                     <f-icon icon='circle-info'></f-icon>:
                     <code dangerouslySetInnerHTML={{
-                        __html: `<f-icon icon='${selectedIcon.icon.name}' ${selectedIcon.style == 'solid' ? '' : `i-s='${selectedIcon.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
+                        __html: `<f-icon icon='${selectedIcon?.icon.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
                     }}/>
                 </div>
                 <div id='glyphs'>{
