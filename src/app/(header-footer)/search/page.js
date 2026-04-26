@@ -431,7 +431,7 @@ export default function Search() {
         while (elemById('loading')) await wait();
         fSelect.setValue(version);
         setLoaded(true);
-        
+
         let params = [ fSelect, 'change', ({ currentTarget }) => setVersion(currentTarget.value) ];
         addEvLis(...params);
         return () => remvEvLis(...params);
@@ -827,7 +827,11 @@ export default function Search() {
                                     categories: icon.categories,
                                 })
                             }}>
-                                <f-icon icon={icon.name} i-s={style} {...version}></f-icon>
+                                <f-icon icon={icon.name} i-s={style}{...(() => {
+                                    let obj = {};
+                                    version == b1 && (obj.b1 = '');
+                                    return obj;
+                                })()}></f-icon>
                                 <span>{icon.name}</span>
                             </li>
                         ))
