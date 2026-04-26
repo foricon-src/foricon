@@ -90,7 +90,7 @@ export default function Home() {
             <div className={`${cssStyle.contentSection} ${cssStyle.icons}`} id='icons'>
                 <div>
                     <h1>
-                        <span class='icon-count'/>{
+                        <span class='icon-count'/>+{
                         ` ${GetLang({
                             en: 'icons',
                             vi: 'biểu tượng',
@@ -144,18 +144,18 @@ export default function Home() {
                     }</h6>
                     <h1>{
                         GetLang({
-                            en: 'Easy Integration,\nStunning Results',
-                            vi: 'Dễ dàng tích hợp,\nKết quả bắt mắt',
-                            fr: 'Intégration facile,\nRésultats époustouflants',
-                            it: 'Facile integrazione,\nRisultati sorprendenti',
-                            kr: '쉬운 통합,\n놀라운 결과',
-                            ja: '簡単な統合&#12289;\n素晴らしい結果',
-                            de: 'Einfache Integration,\numwerfende Ergebnisse',
-                            nl: 'Eenvoudige integratie,\nVerbluffende resultaten',
-                            dk: 'Nem integration,\nFantastiske resultater',
-                            pt: 'Fácil Integração,\nResultados impressionantes',
-                            es: 'Fácil integración,\nresultados sorprendentes',
-                            ru: 'Простая интеграция,\nПотрясающие результаты',
+                            en: 'Easy Integration,&nbsp;Stunning Results',
+                            vi: 'Dễ dàng tích hợp,&nbsp;Kết quả bắt mắt',
+                            fr: 'Intégration facile,&nbsp;Résultats époustouflants',
+                            it: 'Facile integrazione,&nbsp;Risultati sorprendenti',
+                            kr: '쉬운 통합,&nbsp;놀라운 결과',
+                            ja: '簡単な統合&#12289;&nbsp;素晴らしい結果',
+                            de: 'Einfache Integration,&nbsp;umwerfende Ergebnisse',
+                            nl: 'Eenvoudige integratie,&nbsp;Verbluffende resultaten',
+                            dk: 'Nem integration,&nbsp;Fantastiske resultater',
+                            pt: 'Fácil Integração,&nbsp;Resultados impressionantes',
+                            es: 'Fácil integración,&nbsp;resultados sorprendentes',
+                            ru: 'Простая интеграция,&nbsp;Потрясающие результаты',
                         })
                     }</h1>
                     <p>{

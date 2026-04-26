@@ -38,7 +38,7 @@
     gap: 15px 30px;
     box-shadow: var(--shadow);
     
-    &:not(.active) {
+    :global(:not(.active))& {
         bottom: -94px;
         opacity: 0;
         pointer-events: none;
@@ -177,7 +177,7 @@
     z-index: 1;
     translate: 0;
     
-    &.active {
+    :global(.active)& {
         position: sticky;
         
         &.slow-trans, &:hover {
@@ -269,7 +269,7 @@
             justify-content: space-between;
             flex-direction: row;
             
-            body:not(.dark) & {
+            :global(body:not(.dark)) & {
                 &:hover {
                     background-color: var(--gray);
                 }
@@ -395,14 +395,14 @@
                         border-color: var(--dk-gray);
                         background-color: var(--gray);
                     }
-                    &.active {
+                    :global(.active)& {
                         background-color: var(--lt-main-color);
                         translate: 0 -5px;
                         box-shadow: var(--s-shadow);
                         border-color: var(--main-color);
                         outline-width: 5px;
                         
-                        body.dark & {
+                        :global(body.dark) & {
                             background-color: var(--xdk-main-color);
                         }
                         & > * {
@@ -421,7 +421,7 @@
                         width: 100%;
                         text-align: center;
                         
-                        :not(.active):hover > & {
+                        :global(:not(.active):hover) > & {
                             color: var(--title-color);
                         }
                     }
@@ -482,14 +482,14 @@
             cursor: var(--cursor-pointer);
             user-select: none;
             
-            &:not(.active) {
+            :global(:not(.active))& {
                 margin-bottom: calc(-1 * var(--spacing-small));
             }
             &:before {
                 content: '\e0ae';
                 display: inline-block;
             }
-            &.active:before {
+            :global(.active)&:before {
                 rotate: 90deg;
             }
         }
@@ -497,7 +497,7 @@
             height: calc-size(auto, size);
             display: grid;
             
-            :not(:has(h5:first-of-type.active)) > & {
+            :global(:not(:has(h5:first-of-type.active)) > &) {
                 height: 0;
             }
         }

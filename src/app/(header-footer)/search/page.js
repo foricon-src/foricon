@@ -585,8 +585,8 @@ export default function Search() {
                         <f-option value='b1'>Beta 1.7.5</f-option>
                     </option-list>
                 </f-select>
-                <div id='options'>
-                    <ul className='btn-list line-active' id='top_options_families'>
+                <div className={cssStyle.options}>
+                    <ul className='btn-list line-active' id='families'>
                         <li className={family == 'all' && 'active'} onClick={() => setFamily('all')}>{
                             GetLang({
                                 en: 'All',
@@ -636,7 +636,7 @@ export default function Search() {
                             })
                         }</li>
                     </ul>
-                    <ul className='btn-list line-active line' id='top_options_styles'>
+                    <ul className='btn-list line-active line' id='styles'>
                         <li className={style == 'all' && 'active'} onClick={() => setStyle('all')}>{
                             GetLang({
                                 en: 'All',
@@ -686,7 +686,7 @@ export default function Search() {
                             })
                         }</li>
                     </ul>
-                    <ul className='btn-list line-active' id='top_options_views'>
+                    <ul className='btn-list line-active' id='views'>
                         <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
                             <f-icon icon='grid-4'></f-icon>
                             <span>{
@@ -781,7 +781,7 @@ export default function Search() {
                     })
                 }
                 </h5>
-                <ul className='btn-list vertical' id='categories'>{
+                <ul className={`btn-list vertical ${cssStyle.categories}`}>{
                     Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
                         <li key={key}>
                             <span key={key} dangerouslySetInnerHTML={{
@@ -792,24 +792,27 @@ export default function Search() {
                     ))
                 }</ul>
                 <div>
-                    <ul id='results' className={view}>{
-                        currentIcons.map(({ icon: { name }, style }) => (
-                            <li key={`${name} | ${style}`}>
-                                <f-icon icon={name} i-s={style} {...version}></f-icon>
-                                <span>${name}</span>
+                    <ul id='results' className={cssStyle[view]}>{
+                        currentIcons.map(({ icon, style }) => (
+                            <li key={`${icon.name} | ${style}`} onClick={async () => {
+                                await wait(.2);
+                                selectIcon({ icon, style });
+                            }}>
+                                <f-icon icon={icon.name} i-s={style} {...version}></f-icon>
+                                <span>{icon.name}</span>
                             </li>
                         ))
                     }</ul>
-                    <ul className='btn-list line-active top' id='pages'>{
+                    <ul className={`btn-list line-active top ${cssStyle.pages}`}>{
                         Array.from({ length: Math.ceil(filtered.length / perPage) }).map((_, i) => (
                             <li key={i} onClick={() => setPage(i)} className={currentPage == i ? 'active' : ''}>{i + 1}</li>
                         ))
                     }</ul>
                 </div>
             </div>
-            <div className={cssStyle.bar}>
+            <div className={cssStyle.bar + (selectedIcon ? 'active' : '')}>
                 <h6></h6>
-                <div id='bar_code'>{
+                <div id='code'>{
                     `${GetLang({
                         en: 'Code',
                         vi: 'Mã',
@@ -826,9 +829,11 @@ export default function Search() {
                     })} `
                 }
                     <f-icon icon='circle-info'></f-icon>:
-                    <code></code>
+                    <code dangerouslySetInnerHTML={{
+                        __html: `<f-icon icon='${selectedIcon.icon.name}' ${selectedIcon.style == 'solid' ? '' : `i-s='${selectedIcon.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
+                    }}/>
                 </div>
-                <div id='bar_glyphs'>{
+                <div id='glyphs'>{
                     GetLang({
                         en: 'Glyphs:',
                         vi: 'Glyph:',
@@ -849,7 +854,7 @@ export default function Search() {
                         <div name='Secondary'></div>
                     </div>
                 </div>
-                <div id='bar_unicodes'>{
+                <div id='unicodes'>{
                     GetLang({
                         en: 'Unicodes:',
                         vi: 'Unicode:',
@@ -870,7 +875,7 @@ export default function Search() {
                         <div name='Secondary'></div>
                     </div>
                 </div>
-                <div id='bar_categories'>{
+                <div id='categories'>{
                     GetLang({
                         en: 'Categories:',
                         vi: 'Thể loại:',
@@ -888,7 +893,7 @@ export default function Search() {
                 }
                     <ul className='btn-list'></ul>
                 </div>
-                <div id='bar_download'>{
+                <div id='download'>{
                     GetLang({
                         en: 'Download:',
                         vi: 'Tải xuống:',
