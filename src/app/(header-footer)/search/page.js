@@ -428,6 +428,7 @@ export default function Search() {
     
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
+        qSelec(false, 'f-select').setValue(version);
         setLoaded(true);
     })()}, [])
     useEffect(() => {
@@ -441,7 +442,6 @@ export default function Search() {
             ].filter(Boolean).join('&')
         }`
         location.hash != hash && history.replaceState(null, '', hash);
-        qSelec(false, 'f-select').setValue(version);
     }, [ search, family, style, version, selectedCategories ])
 
     addEvLis(document, 'click', ({ target }) =>
