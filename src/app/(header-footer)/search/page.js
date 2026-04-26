@@ -432,7 +432,7 @@ export default function Search() {
         fSelect.setValue(version);
         setLoaded(true);
 
-        let params = [ fSelect, 'change', ({ currentTarget }) => setVersion(currentTarget.value) ];
+        let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
         addEvLis(...params);
         return () => remvEvLis(...params);
     })()}, [])
