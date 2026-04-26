@@ -829,7 +829,7 @@ export default function Search() {
                             }}>
                                 <f-icon icon={icon.name} i-s={style}{...(() => {
                                     let obj = {};
-                                    version == b1 && (obj.b1 = '');
+                                    version == 'b1' && (obj.b1 = '');
                                     return obj;
                                 })()}></f-icon>
                                 <span>{icon.name}</span>
