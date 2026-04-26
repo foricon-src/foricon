@@ -13,5 +13,18 @@ export default function usePage(func) {
         }
         while (!user.doc) await wait();
         func();
+
+        [
+            '/account',
+            '/account/info',
+            '/account/info/edit',
+            '/account/security',
+            '/account/security/change-password',
+            '/account/security/login-history',
+            '/account/personalization',
+            '/account/package',
+            '/account/package/settings',
+            '/account/package/download',
+        ].forEach(router.prefetch);
     })()}, [ pathname ])
 }
