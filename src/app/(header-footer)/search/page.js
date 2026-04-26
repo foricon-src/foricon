@@ -432,9 +432,12 @@ export default function Search() {
         fSelect.setValue(version);
         setLoaded(true);
 
-        let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
+        let params = [ fSelect, 'change', () => {
+            console.log(fSelect.value);
+            setVersion(fSelect.value)
+        } ];
         addEvLis(...params);
-        // return () => remvEvLis(...params);
+        return () => remvEvLis(...params);
     })()}, [])
     useEffect(() => {
         let hash = `#${
