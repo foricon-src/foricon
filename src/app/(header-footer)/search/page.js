@@ -433,7 +433,7 @@ export default function Search() {
         setLoaded(true);
 
         let params = [ fSelect, 'change', () => {
-            console.log(fSelect.value);
+            console.log(fSelect.value, qSelec(false, 'f-select').value);
             setVersion(fSelect.value)
         } ];
         addEvLis(...params);
