@@ -846,23 +846,25 @@ export default function Search() {
             <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
                 <h6></h6>
                 <div className={cssStyle.code}>
-                    <span>{
-                        `${GetLang({
-                            en: 'Code',
-                            vi: 'Mã',
-                            fr: 'Code',
-                            it: 'Codice',
-                            kr: '암호',
-                            ja: 'コード',
-                            de: 'Code',
-                            nl: 'Code',
-                            dk: 'Kode',
-                            pt: 'Código',
-                            es: 'Código',
-                            ru: 'Код',
-                        })} `
-                    }</span>
-                    <f-icon icon='circle-info'></f-icon>:
+                    <span>
+                        {
+                            `${GetLang({
+                                en: 'Code',
+                                vi: 'Mã',
+                                fr: 'Code',
+                                it: 'Codice',
+                                kr: '암호',
+                                ja: 'コード',
+                                de: 'Code',
+                                nl: 'Code',
+                                dk: 'Kode',
+                                pt: 'Código',
+                                es: 'Código',
+                                ru: 'Код',
+                            })} `
+                        }
+                        <f-icon icon='circle-info'></f-icon>:
+                    </span>
                     <Code nameless={true}>{
                         `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`}${version == 'b1' ? ' b1' : ''}></f-icon>`
                     }</Code>
