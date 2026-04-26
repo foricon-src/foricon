@@ -846,7 +846,7 @@ export default function Search() {
                     }</span>
                     <f-icon icon='circle-info'></f-icon>:
                     <Code nameless={true}>{
-                        `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
+                        `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`}${version == 'b1' ? ' b1' : ''}></f-icon>`
                     }</Code>
                 </div>
                 <div className={cssStyle.glyphs}>
