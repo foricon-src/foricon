@@ -49,7 +49,7 @@
     & > div {
         align-items: center;
         
-        :global(#code)& {
+        &.code {
             grid-area: code;
             
             & > lang > f-icon {
@@ -71,7 +71,7 @@
                 }
             }
         }
-        :global(#glyphs)&, :global(#unicodes)& {
+        &.glyphs, &.unicodes {
             width: max-content;
             
             & > div > div {
@@ -122,7 +122,7 @@
                 }
             }
         }
-        :global(#glyphs)& {
+        &.glyphs {
             grid-area: glyphs;
             
             & > div > div {
@@ -134,7 +134,7 @@
                 }
             }
         }
-        :global(#unicodes)& {
+        &.unicodes {
             grid-area: unicodes;
             
             & > div > div {
@@ -145,13 +145,13 @@
                 }
             }
         }
-        :global(#categories)& {
+        &.categories {
             grid-area: categories;
         }
-        :global(#download)& {
+        &.download {
             grid-area: download;
         }
-        & > lang {
+        & > span {
             margin-right: 10px;
             color: rgba(var(--text-color-rgb), .6);
             white-space: nowrap;

@@ -443,7 +443,11 @@ export default function Search() {
         location.hash != hash && history.replaceState(null, '', hash);
     }, [ search, family, style, version, selectedCategories ])
 
-    addEvLis(document, 'click', () => selectIcon(null));
+    addEvLis(document, 'click', ({ target }) => {
+        target.matches(`.${cssStyle.bar}, .${cssStyle.results} > .active`)
+        selectIcon(null);
+
+    })
 
     return (
         <>
@@ -589,7 +593,7 @@ export default function Search() {
                     </option-list>
                 </f-select>
                 <div className={cssStyle.options}>
-                    <ul className='btn-list line-active' id='families'>
+                    <ul className='btn-list line-active'>
                         <li className={family == 'all' && 'active'} onClick={() => setFamily('all')}>{
                             GetLang({
                                 en: 'All',
@@ -639,7 +643,7 @@ export default function Search() {
                             })
                         }</li>
                     </ul>
-                    <ul className='btn-list line-active line' id='styles'>
+                    <ul className='btn-list line-active line'>
                         <li className={style == 'all' && 'active'} onClick={() => setStyle('all')}>{
                             GetLang({
                                 en: 'All',
@@ -689,7 +693,7 @@ export default function Search() {
                             })
                         }</li>
                     </ul>
-                    <ul className='btn-list line-active' id='views'>
+                    <ul className='btn-list line-active'>
                         <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
                             <f-icon icon='grid-4'></f-icon>
                             <span>{
@@ -820,85 +824,89 @@ export default function Search() {
             </div>
             <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
                 <h6></h6>
-                <div id='code'>{
-                    `${GetLang({
-                        en: 'Code',
-                        vi: 'Mã',
-                        fr: 'Code',
-                        it: 'Codice',
-                        kr: '암호',
-                        ja: 'コード',
-                        de: 'Code',
-                        nl: 'Code',
-                        dk: 'Kode',
-                        pt: 'Código',
-                        es: 'Código',
-                        ru: 'Код',
-                    })} `
-                }
+                <div className={cssStyle.code}>
+                    <span>{
+                        `${GetLang({
+                            en: 'Code',
+                            vi: 'Mã',
+                            fr: 'Code',
+                            it: 'Codice',
+                            kr: '암호',
+                            ja: 'コード',
+                            de: 'Code',
+                            nl: 'Code',
+                            dk: 'Kode',
+                            pt: 'Código',
+                            es: 'Código',
+                            ru: 'Код',
+                        })} `
+                    }</span>
                     <f-icon icon='circle-info'></f-icon>:
                     <Code nameless={true}>{
                         `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
                     }</Code>
                 </div>
-                <div id='glyphs'>{
-                    GetLang({
-                        en: 'Glyphs:',
-                        vi: 'Glyph:',
-                        fr: 'Glyphes:',
-                        it: 'Glifi:',
-                        kr: '글리프:',
-                        ja: 'グリフ:',
-                        de: 'Glyphen:',
-                        nl: 'Tekens:',
-                        dk: 'Glyffer:',
-                        pt: 'Glifos:',
-                        es: 'Glifos:',
-                        ru: 'Глифы:',
-                    })
-                }
+                <div className={cssStyle.glyphs}>
+                    <span>{
+                        GetLang({
+                            en: 'Glyphs:',
+                            vi: 'Glyph:',
+                            fr: 'Glyphes:',
+                            it: 'Glifi:',
+                            kr: '글리프:',
+                            ja: 'グリフ:',
+                            de: 'Glyphen:',
+                            nl: 'Tekens:',
+                            dk: 'Glyffer:',
+                            pt: 'Glifos:',
+                            es: 'Glifos:',
+                            ru: 'Глифы:',
+                        })
+                    }</span>
                     <div>
                         <div name='Primary'>{selectedIcon?.glyphs[0]}</div>
                         <div name='Secondary'>{selectedIcon?.glyphs[1]}</div>
                     </div>
                 </div>
-                <div id='unicodes'>{
-                    GetLang({
-                        en: 'Unicodes:',
-                        vi: 'Unicode:',
-                        fr: 'Unicodes:',
-                        it: 'Unicode:',
-                        kr: '유니코드:',
-                        ja: 'ユニコード:',
-                        de: 'Unicodes:',
-                        nl: 'Unicodes:',
-                        dk: 'Unicodes:',
-                        pt: 'Unicodes:',
-                        es: 'Unicodes:',
-                        ru: 'Юникоды:',
-                    })
-                }
+                <div className={cssStyle.unicodes}>
+                    <span>{
+                        GetLang({
+                            en: 'Unicodes:',
+                            vi: 'Unicode:',
+                            fr: 'Unicodes:',
+                            it: 'Unicode:',
+                            kr: '유니코드:',
+                            ja: 'ユニコード:',
+                            de: 'Unicodes:',
+                            nl: 'Unicodes:',
+                            dk: 'Unicodes:',
+                            pt: 'Unicodes:',
+                            es: 'Unicodes:',
+                            ru: 'Юникоды:',
+                        })
+                    }</span>
                     <div>
                         <div name='Primary'>{selectedIcon?.unicodes[0]}</div>
                         <div name='Secondary'>{selectedIcon?.unicodes[1]}</div>
                     </div>
                 </div>
-                <div id='categories'>{
-                    GetLang({
-                        en: 'Categories:',
-                        vi: 'Thể loại:',
-                        fr: 'Catégories:',
-                        it: 'Categorie:',
-                        kr: '카테고리:',
-                        ja: 'カテゴリー:',
-                        de: 'Kategorien:',
-                        nl: 'Categorieën:',
-                        dk: 'Kategorier:',
-                        pt: 'Categorias:',
-                        es: 'Categorías:',
-                        ru: 'Категории:',
-                    })
-                }
+                <div className={cssStyle.categories}>
+                    <span>{
+                        GetLang({
+                            en: 'Categories:',
+                            vi: 'Thể loại:',
+                            fr: 'Catégories:',
+                            it: 'Categorie:',
+                            kr: '카테고리:',
+                            ja: 'カテゴリー:',
+                            de: 'Kategorien:',
+                            nl: 'Categorieën:',
+                            dk: 'Kategorier:',
+                            pt: 'Categorias:',
+                            es: 'Categorías:',
+                            ru: 'Категории:',
+                        })
+                    }</span>
                     <ul className='btn-list'>{
                         (selectedIcon?.categories || []).map(c => {
                             let { icon, ...lang } = webData.categories[c];
@@ -908,22 +916,23 @@ export default function Search() {
                         })
                     }</ul>
                 </div>
-                <div id='download'>{
-                    GetLang({
-                        en: 'Download:',
-                        vi: 'Tải xuống:',
-                        fr: 'Télécharger:',
-                        it: 'Scaricamento:',
-                        kr: '다운로드:',
-                        ja: 'ダウンロード:',
-                        de: 'Herunterladen:',
-                        nl: 'Download:',
-                        dk: 'Download:',
-                        pt: 'Transferir:',
-                        es: 'Descargar:',
-                        ru: 'Скачать:',
-                    })
-                }
+                <div className={cssStyle.download}>
+                    <span>{
+                        GetLang({
+                            en: 'Download:',
+                            vi: 'Tải xuống:',
+                            fr: 'Télécharger:',
+                            it: 'Scaricamento:',
+                            kr: '다운로드:',
+                            ja: 'ダウンロード:',
+                            de: 'Herunterladen:',
+                            nl: 'Download:',
+                            dk: 'Download:',
+                            pt: 'Transferir:',
+                            es: 'Descargar:',
+                            ru: 'Скачать:',
+                        })
+                    }</span>
                     <ul className='btn-list'>
                         <li name='svg'>SVG</li>
                         <li name='png'>PNG</li>
