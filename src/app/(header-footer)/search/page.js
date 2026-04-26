@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { GetLang } from 'Com/language';
+import Code from 'Com/code';
 import cssStyle from './page.module.css';
 
 export default function Search() {
@@ -796,9 +797,14 @@ export default function Search() {
                 <div>
                     <ul className={`${cssStyle.results} ${cssStyle[view]}`}>{
                         currentIcons.map(({ icon, style }) => (
-                            <li key={`${icon.name} | ${style}`} className={icon.name == selectedIcon?.icon.name && style == selectedIcon?.style && 'active'} onClick={async () => {
+                            <li key={`${icon.name} | ${style}`} className={icon.name == selectedIcon?.name && style == selectedIcon?.style && 'active'} onClick={async () => {
                                 await wait(.2);
-                                selectIcon({ icon, style });
+                                selectIcon({
+                                    name: icon.name,
+                                    style,
+                                    glyphs: icon.glyphs[style.replace('/', '-')],
+                                    unicodes: icon.unicodes[style.replace('/', '-')],
+                                })
                             }}>
                                 <f-icon icon={icon.name} i-s={style} {...version}></f-icon>
                                 <span>{icon.name}</span>
@@ -831,9 +837,9 @@ export default function Search() {
                     })} `
                 }
                     <f-icon icon='circle-info'></f-icon>:
-                    <code dangerouslySetInnerHTML={{
-                        __html: `<f-icon icon='${selectedIcon?.icon.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
-                    }}/>
+                    <Code name='HTML'>{
+                        `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
+                    }</Code>
                 </div>
                 <div id='glyphs'>{
                     GetLang({
@@ -852,8 +858,8 @@ export default function Search() {
                     })
                 }
                     <div>
-                        <div name='Primary'></div>
-                        <div name='Secondary'></div>
+                        <div name='Primary'>{selectedIcon?.glyphs[0]}</div>
+                        <div name='Secondary'>{selectedIcon?.glyphs[1]}</div>
                     </div>
                 </div>
                 <div id='unicodes'>{
@@ -873,8 +879,8 @@ export default function Search() {
                     })
                 }
                     <div>
-                        <div name='Primary'></div>
-                        <div name='Secondary'></div>
+                        <div name='Primary'>{selectedIcon?.unicodes[0]}</div>
+                        <div name='Secondary'>{selectedIcon?.unicodes[0]}</div>
                     </div>
                 </div>
                 <div id='categories'>{
@@ -893,7 +899,14 @@ export default function Search() {
                         ru: 'Категории:',
                     })
                 }
-                    <ul className='btn-list'></ul>
+                    <ul className='btn-list'>{
+                        (selectedIcon?.categories || []).map(c => {
+                            let { icon, ...lang } = webData.categories[c];
+                            return <li dangerouslySetInnerHTML={{
+                                __html: icon + GetLang(lang),
+                            }}/>
+                        })
+                    }</ul>
                 </div>
                 <div id='download'>{
                     GetLang({
