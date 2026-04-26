@@ -792,7 +792,7 @@ export default function Search() {
                     ))
                 }</ul>
                 <div>
-                    <ul id='results' className={cssStyle[view]}>{
+                    <ul className={cssStyle.results + cssStyle[view]}>{
                         currentIcons.map(({ icon, style }) => (
                             <li key={`${icon.name} | ${style}`} onClick={async () => {
                                 await wait(.2);

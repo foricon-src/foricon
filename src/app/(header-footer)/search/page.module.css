@@ -497,7 +497,7 @@
             height: calc-size(auto, size);
             display: grid;
             
-            :global(:not(:has(h5:first-of-type.active)) > &) {
+            :global(:not(:has(h5:first-of-type.active))) > & {
                 height: 0;
             }
         }
