@@ -791,19 +791,21 @@ export default function Search() {
                 }
                 </h5>
                 <ul className={`btn-list vertical ${cssStyle.categories}`}>{
-                    Object.entries(categoryCounts).map(([ key, { icon, count, ...lang } ]) => (
-                        <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
-                            let arr = [ ...selectedCategories ];
-                            let i = arr.indexOf(key);
-                            i < 0 ? arr.push(key) : arr.splice(i, 1);
-                            selectCategories(arr);
-                        }}>
-                            <span key={key} dangerouslySetInnerHTML={{
-                                __html: icon + GetLang(lang)
-                            }}/>
-                            <span>{count}</span>
-                        </li>
-                    ))
+                    Object.entries(categoryCounts)
+                        .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
+                        .map(([ key, { icon, count, ...lang } ]) => (
+                            <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
+                                let arr = [ ...selectedCategories ];
+                                let i = arr.indexOf(key);
+                                i < 0 ? arr.push(key) : arr.splice(i, 1);
+                                selectCategories(arr);
+                            }}>
+                                <span key={key} dangerouslySetInnerHTML={{
+                                    __html: icon + GetLang(lang)
+                                }}/>
+                                <span>{count || 0}</span>
+                            </li>
+                        ))
                 }</ul>
                 <div>
                     <ul className={`${cssStyle.results} ${cssStyle[view]}`}>{
