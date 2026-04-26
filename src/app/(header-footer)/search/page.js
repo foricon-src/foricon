@@ -427,9 +427,14 @@ export default function Search() {
     }, [ filtered ])
     
     useEffect(() => {(async () => {
+        let fSelect = qSelec(false, 'f-select');
         while (elemById('loading')) await wait();
-        qSelec(false, 'f-select').setValue(version);
+        fSelect.setValue(version);
         setLoaded(true);
+        
+        let params = [ fSelect, 'change', ({ currentTarget }) => setVersion(currentTarget.value) ];
+        addEvLis(...params);
+        return () => remvEvLis(...params);
     })()}, [])
     useEffect(() => {
         let hash = `#${
@@ -589,7 +594,7 @@ export default function Search() {
                         })
                     }/>
                 </label>
-                <f-select onChange={({ currentTarget }) => setVersion(currentTarget.value)}>
+                <f-select>
                     <text></text>
                     <option-list>
                         <f-option value='b2'>Beta 2+</f-option>
