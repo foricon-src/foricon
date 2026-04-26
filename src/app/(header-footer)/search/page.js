@@ -803,7 +803,7 @@ export default function Search() {
                                     name: icon.name,
                                     style,
                                     glyphs: icon.glyphs[style.replace('/', '-')],
-                                    unicodes: icon.unicodes[style.replace('/', '-')],
+                                    unicodes: icon.unicodes[style.replace('/', '-')].split('|'),
                                 })
                             }}>
                                 <f-icon icon={icon.name} i-s={style} {...version}></f-icon>
@@ -837,7 +837,7 @@ export default function Search() {
                     })} `
                 }
                     <f-icon icon='circle-info'></f-icon>:
-                    <Code lang='HTML'>{
+                    <Code nameless={true}>{
                         `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`} ${version == 'b1' ? 'b1' : ''}></f-icon>`
                     }</Code>
                 </div>
@@ -880,7 +880,7 @@ export default function Search() {
                 }
                     <div>
                         <div name='Primary'>{selectedIcon?.unicodes[0]}</div>
-                        <div name='Secondary'>{selectedIcon?.unicodes[0]}</div>
+                        <div name='Secondary'>{selectedIcon?.unicodes[1]}</div>
                     </div>
                 </div>
                 <div id='categories'>{

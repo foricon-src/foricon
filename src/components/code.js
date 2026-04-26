@@ -1,6 +1,6 @@
-export default function Code({ children, lang }) {
+export default function Code({ children, lang, nameless }) {
     return (
-        <code name={lang}
+        <code name={!nameless && lang}
             dangerouslySetInnerHTML={{
                 __html: formatCode(children, lower(lang))
             }}
