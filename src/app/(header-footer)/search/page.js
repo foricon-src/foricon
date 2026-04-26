@@ -434,7 +434,7 @@ export default function Search() {
 
         let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
         addEvLis(...params);
-        return () => remvEvLis(...params);
+        // return () => remvEvLis(...params);
     })()}, [])
     useEffect(() => {
         let hash = `#${
