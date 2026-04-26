@@ -794,9 +794,9 @@ export default function Search() {
                     ))
                 }</ul>
                 <div>
-                    <ul className={cssStyle.results + cssStyle[view]}>{
+                    <ul className={`${cssStyle.results} ${cssStyle[view]}`}>{
                         currentIcons.map(({ icon, style }) => (
-                            <li key={`${icon.name} | ${style}`} onClick={async () => {
+                            <li key={`${icon.name} | ${style}`} className={icon.name == selectedIcon?.icon.name && style == selectedIcon?.style && 'active'} onClick={async () => {
                                 await wait(.2);
                                 selectIcon({ icon, style });
                             }}>
@@ -807,12 +807,12 @@ export default function Search() {
                     }</ul>
                     <ul className={`btn-list line-active top ${cssStyle.pages}`}>{
                         Array.from({ length: Math.ceil(filtered.length / perPage) }).map((_, i) => (
-                            <li key={i} onClick={() => setPage(i)} className={currentPage == i ? 'active' : ''}>{i + 1}</li>
+                            <li key={i} onClick={() => setPage(i)} className={currentPage == i && 'active'}>{i + 1}</li>
                         ))
                     }</ul>
                 </div>
             </div>
-            <div className={cssStyle.bar + (selectedIcon ? 'active' : '')}>
+            <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
                 <h6></h6>
                 <div id='code'>{
                     `${GetLang({
