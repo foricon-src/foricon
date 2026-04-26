@@ -444,7 +444,7 @@ export default function Search() {
     }, [ search, family, style, version, selectedCategories ])
 
     addEvLis(document, 'click', ({ target }) =>
-        !([
+        (![
             qSelec(false, `.${cssStyle.bar}`),
             qSelec(false, `.${cssStyle.results} > .active`)
         ].filter(Boolean).some(i => i.contains(target)) ||
@@ -922,7 +922,7 @@ export default function Search() {
                         (selectedIcon?.categories || []).map(category => {
                             let { icon, ...lang } = webData.categories[category];
                             return <li key={category} dangerouslySetInnerHTML={{
-                                __html: icon + GetLang(lang),
+                                __html: `${icon}<span>${GetLang(lang)}</span>`,
                             }} onClick={() => selectCategories([ category ])}/>
                         })
                     }</ul>
