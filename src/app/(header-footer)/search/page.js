@@ -800,6 +800,7 @@ export default function Search() {
                 <ul className={`btn-list vertical ${cssStyle.categories}`}>{
                     Object.entries(categoryCounts)
                         .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
+                        .sort((a, b) => a[0].localeCompare(b[0]))
                         .map(([ key, { icon, count, ...lang } ]) => (
                             <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
                                 let arr = [ ...selectedCategories ];
