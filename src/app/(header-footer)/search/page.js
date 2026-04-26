@@ -446,7 +446,7 @@ export default function Search() {
     addEvLis(document, 'click', ({ target }) =>
         [
             qSelec(false, `.${cssStyle.bar}`),
-            qSelec(false, `.${cssStyle.results} > .active,`)
+            qSelec(false, `.${cssStyle.results} > .active`)
         ].some(i => i.contains(target)) &&
             !qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target) && selectIcon(null)
     )
