@@ -441,6 +441,7 @@ export default function Search() {
             ].filter(Boolean).join('&')
         }`
         location.hash != hash && history.replaceState(null, '', hash);
+        qSelec(false, 'f-select').setValue(version);
     }, [ search, family, style, version, selectedCategories ])
 
     addEvLis(document, 'click', ({ target }) =>
@@ -588,7 +589,7 @@ export default function Search() {
                         })
                     }/>
                 </label>
-                <f-select>
+                <f-select onChange={({ currentTarget }) => setVersion(currentTarget.value)}>
                     <text></text>
                     <option-list>
                         <f-option value='b2'>Beta 2+</f-option>
