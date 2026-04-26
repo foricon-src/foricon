@@ -902,7 +902,7 @@ export default function Search() {
                     <ul className='btn-list'>{
                         (selectedIcon?.categories || []).map(c => {
                             let { icon, ...lang } = webData.categories[c];
-                            return <li dangerouslySetInnerHTML={{
+                            return <li key={c} dangerouslySetInnerHTML={{
                                 __html: icon + GetLang(lang),
                             }}/>
                         })
