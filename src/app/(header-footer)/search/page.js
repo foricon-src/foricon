@@ -443,11 +443,9 @@ export default function Search() {
         location.hash != hash && history.replaceState(null, '', hash);
     }, [ search, family, style, version, selectedCategories ])
 
-    addEvLis(document, 'click', ({ target }) => {
-        target.matches(`.${cssStyle.bar}, .${cssStyle.results} > .active`)
-        selectIcon(null);
-
-    })
+    addEvLis(document, 'click', ({ target }) =>
+        !target.matches(`.${cssStyle.bar}, .${cssStyle.results} > .active`) && selectIcon(null)
+    )
 
     return (
         <>
