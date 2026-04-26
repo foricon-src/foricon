@@ -444,7 +444,12 @@ export default function Search() {
     }, [ search, family, style, version, selectedCategories ])
 
     addEvLis(document, 'click', ({ target }) =>
-        !target.matches(`.${cssStyle.bar}, .${cssStyle.results} > .active`) && selectIcon(null)
+        !target.matches(`
+            .${cssStyle.bar},
+            .${cssStyle.bar} *,
+            .${cssStyle.results} > .active,
+            .${cssStyle.results} > .active *
+        `) && selectIcon(null)
     )
 
     return (
