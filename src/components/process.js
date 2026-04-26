@@ -571,7 +571,6 @@ export default function Process() {
                     }
 
                     elem.reset();
-                    elem.dispatchEvent(new Event('change'));
                     clear(elem.text);
 
                     qSelec(true, elem.list, '.active').forEach(each => {
@@ -581,6 +580,8 @@ export default function Process() {
                         let value = getAttr(opt, 'value') ?? each.innerText;
                         elem.isMultiple ? elem.value.push(value) : (elem.value = value);
                     })
+                    
+                    elem.dispatchEvent(new Event('change'));
                 }
                 reset() {
                     this.value = this.isMultiple ? [] : null;
