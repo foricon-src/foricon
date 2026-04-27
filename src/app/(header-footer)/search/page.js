@@ -509,7 +509,7 @@ export default function Search() {
             animating = false;
         }
 
-        function reset() {
+        function reset({ target }) {
             (![
                 qSelec(false, `.${cssStyle.bar}`),
                 qSelec(false, `.${cssStyle.results} > .active`)
