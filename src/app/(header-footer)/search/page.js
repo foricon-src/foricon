@@ -416,7 +416,7 @@ export default function Search() {
     let currentIcons = useMemo(() => {
         let start = perPage * currentPage;
         return filtered.slice(start, start + perPage);
-    }, [ filtered, currentPage ])
+    }, [ filtered, currentPage, perPage ])
     let categoryCounts = useMemo(() => {
         let cloned = structuredClone(webData.categories);
         filtered.forEach(({ icon: { categories } }) => 
@@ -453,7 +453,7 @@ export default function Search() {
 
     function check() {
         let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
-        let rows = Math.floor((view == 'large' ? 150 : view == 'small' ? 300 : 200) / columns);
+        let rows = Math.floor((view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns);
         let itemsPerPage = columns * rows;
         setPerPage(itemsPerPage);
     }
