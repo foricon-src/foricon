@@ -352,13 +352,29 @@ export default function Search() {
         let map = Object.fromEntries(
             hash.split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
         )
+        
+        function verify(param) {
+            if (param == 'k') return map['k='] || '';
+            if (param == 'f') return {
+                regular: 'regular',
+                duotone: 'duotone',
+            }[map['f=']] || 'all';
+            if (param == 's') return {
+                solid: 'solid',
+                outline: 'outline'
+            }[map['s=']] || 'all';
+            if (param == 'v') return {
+                b1: 'b1',
+            }[map['v=']] || 'b2';
+            if (param == 'c') return (map['c=']?.split(';') || []).filter(category => webData.categories[category]);
+        }
       
         return {
-            search: map['k='] ?? '',
-            family: map['f='] ?? 'all',
-            style: map['s='] ?? 'all',
-            version: map['v='] ?? 'b2',
-            categories: map['c='] ? map['c='].split(';') : [],
+            search: verify('k'),
+            family: verify('f'),
+            style: verify('s'),
+            version: verify('v'),
+            categories: verify('c'),
         }
     })()
 
