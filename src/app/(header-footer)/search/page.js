@@ -454,7 +454,87 @@ export default function Search() {
 
         let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
         addEvLis(...params);
-        return () => remvEvLis(...params);
+
+        function reset() {
+            (![
+                qSelec(false, `.${cssStyle.bar}`),
+                qSelec(false, `.${cssStyle.results} > .active`)
+            ].filter(Boolean).some(i => i.contains(target)) ||
+                qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
+                selectIcon(null);
+        }
+        
+        addEvLis(window, 'resize', check);
+        addEvLis(document, 'click', reset);
+        
+        let top = qSelec(false, `.${cssStyle.top}`);
+        let top_search = qSelec(false, top, 'input');
+
+        let animating = false;
+        let isHovered = false;
+        let topPos = `${-top.offsetHeight + 70}px`;
+        let lastPos = 0;
+
+        function openTop() {
+            if (!isActive(top)) return;
+            top.style.top = '20px';
+            isHovered = true;
+        }
+        async function hideTop() {
+            if (!isHovered || !isActive(top)) return;
+            if (document.activeElement != top_search) {
+                top.style.top = topPos;
+                top.classList.add('slow-trans');
+                isHovered = false;
+            }
+            await wait(.5);
+            top.classList.remove('slow-trans');
+        }
+        async function onScroll() {
+            if (animating) return;
+            animating = true;
+            let calculated = document.documentElement.scrollTop - window.innerHeight;
+            lastPos = calculated;
+            if (calculated > 0) {
+                activate(top);
+                appendData(top.style, {
+                    top: topPos,
+                    translate: '0 18px',
+                })
+                if (document.activeElement == top_search) {
+                    openTop();
+                    top.classList.add('slow-trans');
+                    await wait(.5);
+                    top.classList.remove('slow-trans');
+                }
+                else await wait(.2);
+            }
+            else {
+                let waitTime = .5;
+                if (isHovered) top.style.top = topPos;
+                else waitTime = .2;
+                top.style.translate = 0;
+                isHovered = false;
+                await wait(waitTime);
+                inactivate(top);
+            }
+            animating = false;
+        }
+
+        addEvLis(document, 'scroll', onScroll);
+        addEvLis(top, 'mouseenter', openTop);
+        addEvLis(top, 'mouseleave', hideTop);
+
+        return () => {
+            remvEvLis(...params);
+
+            remvEvLis(window, 'resize', check);
+            remvEvLis(document, 'click', reset);
+
+            remvEvLis(document, 'scroll', onScroll);
+            remvEvLis(top, 'mouseenter', openTop);
+            remvEvLis(top, 'mouseleave', hideTop);
+        }
     })()}, [])
     useEffect(() => {
         let hash = `#${
@@ -476,16 +556,6 @@ export default function Search() {
         let itemsPerPage = columns * rows;
         setPerPage(itemsPerPage);
     }
-
-    addEvLis(window, 'resize', check);
-    addEvLis(document, 'click', ({ target }) =>
-        (![
-            qSelec(false, `.${cssStyle.bar}`),
-            qSelec(false, `.${cssStyle.results} > .active`)
-        ].filter(Boolean).some(i => i.contains(target)) ||
-            qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
-            selectIcon(null)
-    )
 
     return (
         <>
