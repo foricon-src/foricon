@@ -415,8 +415,9 @@ export default function Search() {
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let currentIcons = useMemo(() => {
         let maxPage = Math.floor(filtered.length / perPage);
+        console.log(maxPage, currentPage)
         setPage(Math.min(maxPage, currentPage));
-        
+
         let start = perPage * currentPage;
         return filtered.slice(start, start + perPage);
     }, [ filtered, currentPage, perPage ])
