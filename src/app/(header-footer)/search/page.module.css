@@ -52,7 +52,7 @@
         &.code {
             grid-area: code;
             
-            & > lang > f-icon {
+            & > span > f-icon {
                 color: var(--main-color);
                 cursor: var(--cursor-pointer);
                 
@@ -256,7 +256,7 @@
         &:last-of-type {
             grid-area: resultTitle;
         }
-        & > lang > span {
+        & > span > span {
             color: inherit;
         }
     }
@@ -278,12 +278,17 @@
                 }
             }
             & > span {
-                & > f-icon {
-                    width: var(--bn-li-icon-width);
-                    margin-right: 10px;
+                &:is(:first-child) {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
                 }
                 &:is(:last-child) {
                     opacity: .5;
+                }
+                & > f-icon {
+                    width: var(--bn-li-icon-width);
+                    margin-right: 10px;
                 }
             }
         }
@@ -343,15 +348,15 @@
                     }
                 }
                 &.large:has(> li) {
-                    grid-template-columns: repeat(8, calc((100vw - var(--spacing-default) * 2 - 316px) / 8 - 20px * 7/8));
+                    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                     grid-auto-rows: 120px;
                 }
                 &.small:has(> li) {
-                    grid-template-columns: repeat(10, calc((100vw - var(--spacing-default) * 2 - 316px) / 10 - 20px * .9));
+                    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
                     grid-auto-rows: 80px;
                 }
                 &.tiles:has(> li) {
-                    grid-template-columns: repeat(4, calc((100vw - var(--spacing-default) * 2 - 316px) / 4 - 20px * 3/4));
+                    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
                 }
                 & > li {
                     border-radius: var(--bdr-rad);
@@ -362,6 +367,7 @@
                     user-select: none;
                     box-shadow: var(--xs-shadow);
                     outline: 0 solid var(--tr-main-color);
+                    min-width: 0;
                     
                     .large > & {
                         padding: 30px 15px 15px;
@@ -518,41 +524,5 @@
 @container main (max-width: 700px) {
     .main > ul.categories {
         grid-template-columns: 100%;
-    }
-}
-
-@container results (max-width: 980px) {
-    .main > div > ul.results.large:has(> li) {
-        grid-template-columns: repeat(7, calc(100% / 7 - 20px * 6/7));
-    }
-}
-@container results (max-width: 950px) {
-    .main > div > ul.results.small:has(> li) {
-        grid-template-columns: repeat(9, calc(100% / 9 - 20px * 8/9));
-    }
-}
-@container results (max-width: 860px) {
-    .main > div > ul.results.large:has(> li) {
-        grid-template-columns: repeat(6, calc(100% / 6 - 20px * 5/6));
-    }
-}
-@container results (max-width: 730px) {
-    .main > div > ul.results.large:has(> li) {
-        grid-template-columns: repeat(5, calc(20% - 16px));
-    }
-}
-@container results (max-width: 600px) {
-    .main > div > ul.results.large:has(> li) {
-        grid-template-columns: repeat(4, calc(25% - 15px));
-    }
-}
-@container results (max-width: 480px) {
-    .main > div > ul.results.large:has(> li) {
-        grid-template-columns: repeat(3, calc(100% / 3 - 20px * 2/3));
-    }
-}
-@container results (max-width: 350px) {
-    .main > div > ul.results.large:has(> li) {
-        grid-template-columns: repeat(2, calc(50% - 10px));
     }
 }
