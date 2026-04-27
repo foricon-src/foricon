@@ -454,18 +454,6 @@ export default function Search() {
 
         let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
         addEvLis(...params);
-
-        function reset() {
-            (![
-                qSelec(false, `.${cssStyle.bar}`),
-                qSelec(false, `.${cssStyle.results} > .active`)
-            ].filter(Boolean).some(i => i.contains(target)) ||
-                qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
-                selectIcon(null);
-        }
-        
-        addEvLis(window, 'resize', check);
-        addEvLis(document, 'click', reset);
         
         let top = qSelec(false, `.${cssStyle.top}`);
         let top_search = qSelec(false, top, 'input');
@@ -520,6 +508,19 @@ export default function Search() {
             }
             animating = false;
         }
+
+        function reset() {
+            (![
+                qSelec(false, `.${cssStyle.bar}`),
+                qSelec(false, `.${cssStyle.results} > .active`)
+            ].filter(Boolean).some(i => i.contains(target)) ||
+                qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
+                selectIcon(null);
+            !top.contains(target) && hideTop();
+        }
+        
+        addEvLis(window, 'resize', check);
+        addEvLis(document, 'click', reset);
 
         addEvLis(document, 'scroll', onScroll);
         addEvLis(top, 'mouseenter', openTop);
