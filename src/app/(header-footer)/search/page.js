@@ -855,7 +855,7 @@ export default function Search() {
                 </div>
             </div>
             <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
-                <h6></h6>
+                <h6>{selectedIcon?.name || ''}</h6>
                 <div className={cssStyle.code}>
                     <span>
                         {
