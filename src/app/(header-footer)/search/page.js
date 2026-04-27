@@ -337,8 +337,6 @@ export default function Search() {
     //     })
     // })()}, [])
     
-    let perPage = 150;
-    
     let initial = (() => {
         if (typeof window == 'undefined') {
             return {
@@ -373,6 +371,7 @@ export default function Search() {
     let [ currentPage, setPage ] = useState(0);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
+    let [ perPage, setPerPage ] = useState();
     
     function formatKeyword(value, reversed) {
         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
@@ -431,6 +430,8 @@ export default function Search() {
         while (elemById('loading')) await wait();
         fSelect.setValue(version);
         setLoaded(true);
+        
+        check();
 
         let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
         addEvLis(...params);
@@ -449,6 +450,14 @@ export default function Search() {
         location.hash != hash && history.replaceState(null, '', hash);
     }, [ search, family, style, version, selectedCategories ])
 
+    function check() {
+        let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
+        let rows = Math.floor(150 / columns);
+        let itemsPerPage = columns * rows;
+        setPerPage(itemsPerPage);
+    }
+
+    addEvLis(window, 'resize', check);
     addEvLis(document, 'click', ({ target }) =>
         (![
             qSelec(false, `.${cssStyle.bar}`),
