@@ -348,8 +348,8 @@ export default function Search() {
             }
         }
       
-        const hash = location.hash.slice(1);
-        const map = Object.fromEntries(
+        let hash = location.hash.slice(1);
+        let map = Object.fromEntries(
             hash.split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
         )
       
@@ -400,7 +400,7 @@ export default function Search() {
             return getStyles(icon)
                 .filter(style => icon.styles.includes(style))
                 .filter(() => {
-                    const normalized = normalize(icon.name);
+                    let normalized = normalize(icon.name);
                     return (
                         (normalized.includes(search) ||
                             similarity(normalized, search) > 0.65) &&
@@ -415,7 +415,6 @@ export default function Search() {
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let currentIcons = useMemo(() => {
         let maxPage = Math.floor(filtered.length / perPage);
-        console.log(filtered.length, perPage, currentPage)
         setPage(Math.min(maxPage, currentPage));
 
         let start = perPage * currentPage;

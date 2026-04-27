@@ -22,7 +22,7 @@ export default function Footer() {
                 </div>
             </div>
             <div class='dk-bg first'>
-                <span>&#169;2023 - 2026 Foricon</span>
+                <span>©2023 - {new Date().getFullYear()} Foricon</span>
                 <ul>
                     <li>
                         <a href='/about'>{
