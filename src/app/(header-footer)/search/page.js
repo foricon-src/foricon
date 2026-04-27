@@ -371,7 +371,7 @@ export default function Search() {
     let [ currentPage, setPage ] = useState(0);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
-    let [ perPage, setPerPage ] = useState();
+    let [ perPage, setPerPage ] = useState(1);
     
     function formatKeyword(value, reversed) {
         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
@@ -415,7 +415,7 @@ export default function Search() {
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let currentIcons = useMemo(() => {
         let maxPage = Math.floor(filtered.length / perPage);
-        console.log(maxPage, currentPage)
+        console.log(filtered.length, perPage, currentPage)
         setPage(Math.min(maxPage, currentPage));
 
         let start = perPage * currentPage;
