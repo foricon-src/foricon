@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
+import { Ad } from 'Com/ad';
 import { GetLang } from 'Com/language';
 import Code from 'Com/code';
 import cssStyle from './page.module.css';
@@ -638,6 +639,7 @@ export default function Search() {
                     </div>
                 </div>
             </div>
+            <Ad/>
             {/* <ins className='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
             <div className='banner blue signup'>
                 <div>{
