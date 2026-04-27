@@ -472,11 +472,11 @@ export default function Search() {
             if (!isHovered || !isActive(top)) return;
             if (document.activeElement != top_search) {
                 top.style.top = topPos;
-                top.classList.add('slow-trans');
+                top.classList.add(cssStyle.slowTrans);
                 isHovered = false;
             }
             await wait(.5);
-            top.classList.remove('slow-trans');
+            top.classList.remove(cssStyle.slowTrans);
         }
         async function onScroll() {
             if (animating) return;
