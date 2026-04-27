@@ -180,7 +180,7 @@
     :global(.active)& {
         position: sticky;
         
-        &.slow-trans, &:hover {
+        &.slowTrans, &:hover {
             transition: var(--df-trans), top .5s ease, translate .5s ease;
         }
         &:not(:has(input:focus), :hover) {

@@ -491,9 +491,9 @@ export default function Search() {
                 })
                 if (document.activeElement == top_search) {
                     openTop();
-                    top.classList.add('slow-trans');
+                    top.classList.add(cssStyle.slowTrans);
                     await wait(.5);
-                    top.classList.remove('slow-trans');
+                    top.classList.remove(cssStyle.slowTrans);
                 }
                 else await wait(.2);
             }
