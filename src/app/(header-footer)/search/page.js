@@ -430,7 +430,7 @@ export default function Search() {
         while (elemById('loading')) await wait();
         fSelect.setValue(version);
         setLoaded(true);
-        
+
         check();
 
         let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
@@ -449,10 +449,11 @@ export default function Search() {
         }`
         location.hash != hash && history.replaceState(null, '', hash);
     }, [ search, family, style, version, selectedCategories ])
+    useEffect(() => { check() }, [ view ])
 
     function check() {
         let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
-        let rows = Math.floor(150 / columns);
+        let rows = Math.floor((view == 'large' ? 150 : view == 'small' ? 300 : 200) / columns);
         let itemsPerPage = columns * rows;
         setPerPage(itemsPerPage);
     }
