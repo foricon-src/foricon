@@ -765,7 +765,7 @@ globalThis.enable = (...elems) => {
 /**
  * Checks whether an element is enabled
  * @param {HTMLElement} elem - Element to check
- * @returns {Boolean} Boolean
+ * @returns Boolean
  */
 globalThis.isEnabled = (elem) => {
     return elem.getAttribute('disabled') == undefined;
@@ -786,7 +786,7 @@ globalThis.remove = (...elems) => {
 }
 /**
  * Selects element(s)
- * @param {Boolean} all - `true` to `querySelectorAll`
+ * @param {Boolean} all - Whether to select all instances or just the first instance
  * @param {HTMLElement | string} param1 - The element to query from, or query string
  * @param {string} [param2] - Query string
  * @returns {HTMLElement | HTMLElement[] | undefined} Returns an `Array` if `all` is `true`, otherwise returns a `HTMLElement`, or `undefined` if nothing matches
@@ -833,9 +833,9 @@ globalThis.hasAttr = (elem, attr) => {
 const listenerMap = new Map();
 /**
  * Adds event listener(s) to element(s)
- * @param {HTMLElement | HTMLElement[]} elems - Element(s) to add event
- * @param {string | string[]} types - Type(s) of event to add
- * @param {Function} func - Event handler
+ * @param {HTMLElement | Document | Window | (HTMLElement | Document | Window)[]} elems - Element(s) to add event
+ * @param {keyof HTMLElementEventMap | (keyof HTMLElementEventMap)[]} types - Type(s) of event to add
+ * @param {(e: Event & { i: number }) => void} func - Event handler
  */
 globalThis.addEvLis = (elems, types, func) => {
     elems = Array.isArray(elems) ? elems : [elems];
@@ -843,32 +843,46 @@ globalThis.addEvLis = (elems, types, func) => {
     
     elems.forEach((elem, i) => 
         (elem instanceof HTMLElement || elem == document || elem == window) && types.forEach(type => {
-        let wrapped = e => func((e => {
-            appendData(e, { i });
-            return e;
-        })(e), elem);
-        
-        !listenerMap.has(elem) && listenerMap.set(elem, new Map());
-        !listenerMap.get(elem).has(type) && listenerMap.get(elem).set(type, new Map());
-        
-        listenerMap.get(elem).get(type).set(func, wrapped);
-        elem.addEventListener(type, wrapped);
-    })
-)
+            if (listenerMap.get(elem)?.get(type)?.has(func)) return;
+
+            let wrapped = e => {
+                appendData(e, { i });
+                func(e);
+            }
+            
+            !listenerMap.has(elem) && listenerMap.set(elem, new Map());
+            !listenerMap.get(elem).has(type) && listenerMap.get(elem).set(type, new Map());
+            
+            listenerMap.get(elem).get(type).set(func, wrapped);
+            elem.addEventListener(type, wrapped);
+        })
+    )
 }
 /**
  * Removes added event listener
- * @param {HTMLElement} elem - Element to remove even
- * @param {string} type - Type of event to remove
- * @param {Function} func - Event handler
+ * @param {HTMLElement | Document | Window} elem - Element to remove even
+ * @param {keyof HTMLElementEventMap} type - Type of event to remove
+ * @param {(e: Event) => void} func - Event handler
  */
 globalThis.remvEvLis = (elem, type, func) => {
-    const wrapped = listenerMap.get(elem)?.get(type)?.get(func);
-    
-    if (wrapped) {
-        elem.removeEventListener(type, wrapped);
-        listenerMap.get(elem).get(type).delete(func);
-    }
+    let wrapped = listenerMap.get(elem)?.get(type)?.get(func);
+    if (!wrapped) return;
+    elem.removeEventListener(type, wrapped);
+    listenerMap.get(elem).get(type).delete(func);
+}
+/**
+ * Return an object containing useful functions to manage event listeners
+ * @param {HTMLElement} elem - Element
+ * @param {keyof HTMLElementEventMap} type - Type of event
+ * @param {(e: Event) => void} func - Event handler
+ * @param {Boolean} [isAddedInstantly] - Whether the event listener should be added instantly
+ * @returns An object
+ */
+globalThis.evLisMan = (elem, type, func, isAddedInstantly) => {
+    function add() { addEvLis(elem, type, func) };
+    function remv() { remvEvLis(elem, type, func) };
+    isAddedInstantly && add();
+    return { add, remv };
 }
 /**
  * @typedef {HTMLElement & {
@@ -1145,7 +1159,7 @@ globalThis.similarity = (s1, s2) => {
 
 /**
  * Shows a toast notification
- * @param {'success' | 'info' | 'warn' | 'error'} type - Type of notification
+ * @param {'success' | 'info' | 'warn' | 'error' | 'online' | 'offline'} type - Type of notification
  * @param {string} message - Content for notification
  */
 globalThis.notify = async (type, message) => {

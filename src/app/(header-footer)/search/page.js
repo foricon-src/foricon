@@ -452,9 +452,6 @@ export default function Search() {
         setLoaded(true);
 
         check();
-
-        let params = [ fSelect, 'change', () => setVersion(fSelect.value) ];
-        addEvLis(...params);
         
         let top = qSelec(false, `.${cssStyle.top}`);
         let top_search = qSelec(false, top, 'input');
@@ -479,10 +476,22 @@ export default function Search() {
             await wait(.5);
             top.classList.remove(cssStyle.slowTrans);
         }
-        async function onScroll() {
+        
+        addEvLis(window, 'resize', check);
+        
+        addEvLis(document, 'click', ({ target }) => {
+            (![
+                qSelec(false, `.${cssStyle.bar}`),
+                qSelec(false, `.${cssStyle.results} > .active`)
+            ].filter(Boolean).some(i => i.contains(target)) ||
+                qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
+                selectIcon(null);
+            !top.contains(target) && hideTop();
+        })
+        addEvLis(document, 'scroll', async () => {
             if (animating) return;
             animating = true;
-            let calculated = document.documentElement.scrollTop - window.innerHeight;
+            let calculated = document.documentElement.scrollTop - innerHeight;
             lastPos = calculated;
             if (calculated > 0) {
                 activate(top);
@@ -508,35 +517,10 @@ export default function Search() {
                 inactivate(top);
             }
             animating = false;
-        }
-
-        function reset({ target }) {
-            (![
-                qSelec(false, `.${cssStyle.bar}`),
-                qSelec(false, `.${cssStyle.results} > .active`)
-            ].filter(Boolean).some(i => i.contains(target)) ||
-                qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
-                selectIcon(null);
-            !top.contains(target) && hideTop();
-        }
+        })
         
-        addEvLis(window, 'resize', check);
-        addEvLis(document, 'click', reset);
-
-        addEvLis(document, 'scroll', onScroll);
         addEvLis(top, 'mouseenter', openTop);
         addEvLis(top, 'mouseleave', hideTop);
-
-        return () => {
-            remvEvLis(...params);
-
-            remvEvLis(window, 'resize', check);
-            remvEvLis(document, 'click', reset);
-
-            remvEvLis(document, 'scroll', onScroll);
-            remvEvLis(top, 'mouseenter', openTop);
-            remvEvLis(top, 'mouseleave', hideTop);
-        }
     })()}, [])
     useEffect(() => {
         let hash = `#${
@@ -640,7 +624,6 @@ export default function Search() {
                 </div>
             </div>
             {loaded && <Ad/>}
-            {/* <ins className='adsbygoogle' style='display:block' data-ad-client='ca-pub-8532596750508498' data-ad-slot='2221389210' data-ad-format='auto' data-full-width-responsive='true'></ins> */}
             <div className='banner blue signup'>
                 <div>{
                     GetLang({
@@ -696,7 +679,7 @@ export default function Search() {
                         })
                     }/>
                 </label>
-                <f-select>
+                <f-select onChange={e => setVersion(e.currentTarget.value)}>
                     <text></text>
                     <option-list>
                         <f-option value='b2'>Beta 2+</f-option>
