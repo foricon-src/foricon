@@ -14,12 +14,14 @@ export default function Header() {
     let router = useRouter();
 
     useEffect(() => {
-        let params = [ document, 'click', ({ target }) =>
-            ![
+        let params = [ document, 'click', ({ target }) => {
+            let arr = [
                 qSelec(false, 'header > ul[name="right"] > :last-child'),
                 qSelec(false, 'header > ul[name="all"]')
-            ].some(i => i.contains(target)) && setOpen(false)
-        ]
+            ]
+            console.log(arr, arr.some(i => i.contains(target)))
+            !arr.some(i => i.contains(target)) && setOpen(false)
+        } ]
         addEvLis(...params);
 
         return () => remvEvLis(...params);
