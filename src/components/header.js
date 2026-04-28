@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,6 +12,18 @@ export default function Header() {
     let [ open, setOpen ] = useState(false);
     let pathname = usePathname();
     let router = useRouter();
+
+    useEffect(() => {
+        let params = [ document, 'click', ({ target }) =>
+            ![
+                qSelec(false, 'header > ul[name="right"] > :last-child'),
+                qSelec(false, 'header > ul[name="all"]')
+            ].some(i => i.contains(target)) && setOpen(false)
+        ]
+        addEvLis(...params);
+
+        return () => remvEvLis(...params);
+    }, [])
 
     return (
         <header className='outer-corner'>
