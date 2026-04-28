@@ -789,7 +789,7 @@ export default function Search() {
                     </ul>
                     <ul className='btn-list line-active'>
                         <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
-                            <f-icon icon='grid-4'></f-icon>
+                            <f-icon icon='grid-4' i-s={view != 'large' && 'outline'}></f-icon>
                             <span>{
                                 GetLang({
                                     en: 'Large icons',
@@ -808,7 +808,7 @@ export default function Search() {
                             }</span>
                         </li>
                         <li className={`chip top${view == 'small' ? ' active' : ''}`} onClick={() => setView('small')}>
-                            <f-icon icon='grid-9'></f-icon>
+                            <f-icon icon='grid-9' i-s={view != 'small' && 'outline'}></f-icon>
                             <span>{
                                 GetLang({
                                     en: 'Small icons',
