@@ -18,6 +18,8 @@ export default function Process() {
 
         while (!qSelec(false, 'header')) await wait();
         
+        user && qSelec(true, '.signup').forEach(each => each.style.display = 'none');
+        
         let header = qSelec(false, 'header');
         let header_center = qSelec(false, header, 'ul[name="center"]');
         let header_right = qSelec(false, header, 'ul[name="right"]');
@@ -580,7 +582,7 @@ export default function Process() {
                         let value = getAttr(opt, 'value') ?? each.innerText;
                         elem.isMultiple ? elem.value.push(value) : (elem.value = value);
                     })
-                    
+
                     elem.dispatchEvent(new Event('change'));
                 }
                 reset() {
