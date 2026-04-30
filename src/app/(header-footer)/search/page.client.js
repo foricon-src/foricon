@@ -454,15 +454,13 @@ export default function Search({ searchParams }) {
         addEvLis(top, 'mouseleave', hideTop);
     })()}, [])
     useEffect(() => {
-        let value = `?${
-            [
-                `v=${version}`,
-                search && `k=${formatKeyword(search)}`,
-                selectedCategories.length && `c=${selectedCategories.join(';')}`,
-                `f=${family}`,
-                `s=${style}`
-            ].filter(Boolean).join('&')
-        }`
+        let value = [
+            `v=${version}`,
+            search && `k=${formatKeyword(search)}`,
+            selectedCategories.length && `c=${selectedCategories.join(';')}`,
+            `f=${family}`,
+            `s=${style}`
+        ].filter(Boolean).join('&')
         location.search != value && router.replace(`/search?${value}`);
     }, [ search, family, style, version, selectedCategories ])
     useEffect(() => { check() }, [ view ])
