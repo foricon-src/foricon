@@ -850,10 +850,10 @@ table {
     margin: var(--spacing-small) 0;
     overflow: hidden;
     
-    & th {
+    th {
       color: var(--title-color);
     }
-    & :is(th, td) {
+    :is(th, td) {
         padding: 7px 20px;
         
         > f-icon {
