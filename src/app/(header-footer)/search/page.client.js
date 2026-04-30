@@ -554,7 +554,7 @@ export default function Search({ initial }) {
                     </div>
                 </div>
             </div>
-            {loaded && <Ad/>}
+            <Ad/>
             <div className='banner blue signup'>
                 <div>{
                     GetLang({
