@@ -1,7 +1,6 @@
 import Search from "./page.client";
 import FilterIcon from "./filter-icon";
-import { get, ref } from "firebase/database";
-import { db } from "Com/firebase";
+import { db } from "Uti/firebase-admin";
 
 export async function Page({ searchParams }) {
     let initial = (search => {
@@ -25,8 +24,7 @@ export async function Page({ searchParams }) {
             categories: map['=c']?.split(';') || [],
         }
     })(searchParams)
-
-    let snap = await get(ref(db, `icons${initial.version == 'b2' ? 'B2' : ''}/`))
+    let snap = await db.ref(`icons${initial.version == 'b2' ? 'B2' : ''}/`).once('value');
     let icons = snap.val();
 
     let filtered = FilterIcon(Object.entries(icons).map(([ name, icon ]) => ({

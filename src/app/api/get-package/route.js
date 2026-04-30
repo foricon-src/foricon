@@ -1,4 +1,4 @@
-import { admin, db } from 'Uti/firebase-admin';
+import { admin, fs } from 'Uti/firebase-admin';
 import { getFile } from 'Uti/cloudinary';
 
 export async function GET(req) {
@@ -11,7 +11,7 @@ export async function GET(req) {
         if (!uid) return Response.json({ message: 'Missing UID' }, { status: 400 });
         if (Number.isNaN(timezone)) return Response.json({ message: 'Timezone must be a number' }, { status: 400 });
         
-        let userDoc = await db.collection('users').doc(uid).get();
+        let userDoc = await fs.collection('users').doc(uid).get();
         if (!userDoc.exists) return Response.json({ message: 'User not found' }, { status: 404 });
         let user = userDoc.data();
         
@@ -46,7 +46,7 @@ export async function GET(req) {
             while (checkpoint >= latestStartDate)
                 latestStartDate.setDate(latestStartDate.getDate() + 30);
             
-            await db.doc(`users/${uid}`).update({
+            await fs.doc(`users/${uid}`).update({
                 pageview: {
                     count: 1,
                     start: {
@@ -63,7 +63,7 @@ export async function GET(req) {
         }
         else {
             if (count >= plans[plan].pageviews) return Response.json({ message: 'Plan limit exceeded' }, { status: 403 });
-            await db.doc(`users/${uid}`).update({
+            await fs.doc(`users/${uid}`).update({
                 'pageview.count': ++count,
             })
         }
