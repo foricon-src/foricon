@@ -1,4 +1,4 @@
-body {
+:global(body) {
     --angle: 0;
 }
 .pageviews {
