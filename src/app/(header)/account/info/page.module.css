@@ -16,8 +16,15 @@
         &[icon='circle-exclamination'] {
             color: var(--yellow);
         }
-        &[icon='clone']:active {
-            scale: var(--btn-scale);
+        &[icon='clone'] {
+            cursor: var(--cursor-pointer);
+
+            &:hover {
+                opacity: .75;
+            }
+            &:active {
+                scale: var(--btn-scale);
+            }
         }
     }
 }

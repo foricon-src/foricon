@@ -99,7 +99,7 @@ export default function Page() {
                             navigator.clipboard.writeText(u.uid);
                             notify('success', {
                                 en: 'Copied to clipboard',
-                                vi: 'Đã sao chép vào bộ nhơ tạm',
+                                vi: 'Đã sao chép vào bộ nhớ tạm',
                                 fr: 'Copié dans le presse-papiers',
                                 it: 'Copiato negli appunti',
                                 kr: '클립보드에 복사됨',
