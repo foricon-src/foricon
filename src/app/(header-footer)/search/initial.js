@@ -1,5 +1,5 @@
 export default function Initial(params, toFilter) {
-    if (!search) return {
+    if (!params) return {
         search: '',
         family: 'all',
         style: 'all',
@@ -21,9 +21,7 @@ export default function Initial(params, toFilter) {
             b1: 'b1',
         }[params['v=']] || 'b2';
         if (param == 'c') {
-            let arr = params['c=']?.split(';') || []
-            return toFilter ? arr : arr.filter(category => toFilter[category]);
-        }
+            return (params['c=']?.split(';') || []).filter(category => toFilter[category]);
     }
     
     return {
