@@ -16,6 +16,8 @@ export default async function Page({ searchParams }) {
         glyphs: icon.glyphs,
         unicodes: icon.unicodes,
     })), initial.search, initial.family, initial.search, initial.categories)
+    console.log('TOTAL ICONS:', Object.keys(icons).length);
+    console.log('FILTERED:', filtered.length);
 
     return (
         <>
@@ -27,7 +29,7 @@ export default async function Page({ searchParams }) {
                     )
                 }</ul>
             </div>
-            <Search/>
+            <Search initial={initial}/>
         </>
     )
 }
