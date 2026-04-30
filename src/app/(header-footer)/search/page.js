@@ -5,7 +5,27 @@ import { db } from "Com/firebase";
 import Initial from "./initial";
 
 export async function Page({ searchParams }) {
-    let initial = Initial(searchParams, true);
+    let initial = (search => {
+        if (!search) return {
+            search: '',
+            family: 'all',
+            style: 'all',
+            version: 'b2',
+            categories: [],
+        }
+        
+        let map = Object.fromEntries(
+            search.slice(1).split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
+        )
+        
+        return {
+            search: map['=k'],
+            family: map['=f'],
+            style: map['=s'],
+            version: map['=v'],
+            categories: map['=c']?.split(';') || [],
+        }
+    })(searchParams)
 
     let snap = await get(ref(db, `icons${initial.version == 'b2' ? 'B2' : ''}/`))
     let icons = snap.val();
