@@ -2,10 +2,10 @@
     width: 100%;
 
     & td:first-child {
-      width: 200px;
+        width: 200px;
     }
-    & div.img {
-      height: 50px;
+    & :global(.img)div {
+        height: 50px;
     }
     & f-icon {
         margin-left: 7px;
