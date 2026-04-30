@@ -1,27 +1,27 @@
 .home {
-    > .hero {
+    & > .hero {
         height: min(500px, 40vh);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         
-        > :global(.img) {
+        & > :global(.img) {
             height: 90px;
         }
-        > h2 {
+        & > h2 {
             margin: var(--spacing-small) 0 0;
         }
     }
-    > .services {
+    & > .services {
         grid-template-columns: repeat(4, 1fr);
         gap: var(--spacing-xxsmall);
         margin-bottom: var(--spacing-small);
         
-        &, > li {
+        &, & > li {
             display: grid;
         }
-        > li {
+        & > li {
             padding: var(--spacing-small) var(--spacing-xxsmall) var(--spacing-xsmall);
             border-radius: var(--bdr-rad);
             background-color: var(--lt-gray);
@@ -47,7 +47,7 @@
             &:last-child {
                 animation-delay: .5s;
             }
-            > span {
+            & > span {
                 top: 0;
                 left: var(--spacing-xsmall);
                 translate: 0 -25%;
@@ -60,7 +60,7 @@
             &:active > img {
                 scale: .9;
             }
-            > h6 {
+            & > h6 {
                 margin: 0;
             }
         }
