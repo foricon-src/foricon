@@ -1,6 +1,5 @@
 import Search from "./pageClient";
 import FilterIcon from "./toIconMap";
-import { init } from "next/dist/compiled/webpack/webpack";
 import { get, ref } from "firebase/database";
 import { db } from "Com/firebase";
 
