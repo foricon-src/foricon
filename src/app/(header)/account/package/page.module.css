@@ -1,19 +1,19 @@
 body {
     --angle: 0;
 }
-#sidebar-page > div > div > div#main_package_pageviews {
+.pageviews {
     padding: var(--spacing-small);
     border: 1px solid var(--gray);
     border-radius: var(--bdr-rad);
     gap: var(--spacing-small);
     
-    &, > div#main_package_pageviews_chart > div {
+    &, & > .chart > div {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-    > div#main_package_pageviews_chart {
+    & > .chart {
         height: 300px;
         aspect-ratio: 1/1;
         padding: var(--spacing-xxsmall);

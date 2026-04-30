@@ -784,6 +784,23 @@ div.checkboxes > label {
     }
 }
 
+div.img {
+    background: no-repeat center/cover;
+    
+    &.round {
+        border-radius: var(--bdr-rad);
+    }
+    &.circle {
+        border-radius: 50%;
+    }
+    &.small {
+        border-radius: var(--s-bdr-rad);
+    }
+    &.square {
+        aspect-ratio: 1/1;
+    }
+}
+
 f-upload {
     display: flex;
     justify-content: center;

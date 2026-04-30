@@ -8,7 +8,7 @@ import { db } from "Com/firebase";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
-import './page.css';
+import cssStyle from './page.module.css';
 
 export default function Page() {
     let router = useRouter();
@@ -27,14 +27,14 @@ export default function Page() {
         let reset = new Date(start.year, start.month, start.day, start.hours, start.minutes, start.seconds);
         reset.setDate(reset.getDate() + 30)
 
-        elemById('main_package_pageviews_chart_count').innerText = `${count} / ${planData.pageviews}`;
-        elemById('main_package_pageviews_reset').innerText = formatDate(reset);
+        elemById('count').innerText = `${count} / ${planData.pageviews}`;
+        elemById('reset').innerText = formatDate(reset);
     })
 
     return (
-        <div name='package'>
-            <div id='main_package_pageviews'>
-                <div id='main_package_pageviews_chart'>
+        <div>
+            <div className={cssStyle.pageviews}>
+                <div className={cssStyle.chart}>
                     <div>
                         <span>{
                             GetLang({
@@ -50,7 +50,7 @@ export default function Page() {
                                 ru: 'Вы использовали',
                             })
                         }</span>
-                        <h4 id='main_package_pageviews_chart_count'></h4>
+                        <h4 id='count'></h4>
                         <span>{
                             GetLang({
                                 en: 'pageviews',
@@ -69,7 +69,7 @@ export default function Page() {
                         }</span>
                     </div>
                 </div>
-                <span id='main_package_pageviews_reset'></span>
+                <span id='reset'></span>
                 <hr/>
                 <ul className='btn-list'>
                     <li onClick={() => go(router, 'account/package/settings')}>

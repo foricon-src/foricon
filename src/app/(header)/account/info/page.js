@@ -13,7 +13,7 @@ export default function Page() {
     usePage(() => {})
 
     return (
-        <div name='info'>
+        <div>
             <table>
                 <tr>
                     <td>{

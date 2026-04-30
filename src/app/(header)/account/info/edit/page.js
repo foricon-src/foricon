@@ -5,7 +5,7 @@ import { GetLang } from "Com/language";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
-import './page.css';
+import cssStyle from './page.module.css';
 
 export default function Page() {
     let router = useRouter();
@@ -13,7 +13,7 @@ export default function Page() {
     usePage(() => {})
 
     return (
-        <div name='info/edit'>
+        <div className={cssStyle.edit}>
             <h3>{
                 GetLang({
                     en: 'Edit account info',

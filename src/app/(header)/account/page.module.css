@@ -1,19 +1,19 @@
-#sidebar-page > div > div {
-    > div#main_home_hero {
+.home {
+    > .hero {
         height: min(500px, 40vh);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         
-        > div.img {
+        > :global(.img) {
             height: 90px;
         }
         > h2 {
             margin: var(--spacing-small) 0 0;
         }
     }
-    > ul#main_home_services {
+    > .services {
         grid-template-columns: repeat(4, 1fr);
         gap: var(--spacing-xxsmall);
         margin-bottom: var(--spacing-small);
@@ -47,7 +47,7 @@
             &:last-child {
                 animation-delay: .5s;
             }
-            > lang {
+            > span {
                 top: 0;
                 left: var(--spacing-xsmall);
                 translate: 0 -25%;
