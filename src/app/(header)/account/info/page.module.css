@@ -4,7 +4,7 @@
     & td:first-child {
         width: 200px;
     }
-    & :global(.img)div {
+    & :global(div.img) {
         height: 50px;
     }
     & f-icon {
