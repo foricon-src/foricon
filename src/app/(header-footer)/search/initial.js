@@ -20,8 +20,7 @@ export default function Initial(params, toFilter) {
         if (param == 'v') return {
             b1: 'b1',
         }[params['v=']] || 'b2';
-        if (param == 'c')
-            return (params['c=']?.split(';') || []).filter(category => toFilter[category]);
+        if (param == 'c') return (params['c=']?.split(';') || []).filter(category => webData.categories[category]);
     }
     
     return {
