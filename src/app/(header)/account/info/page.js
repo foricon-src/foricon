@@ -11,6 +11,7 @@ import { useContext, useState } from "react";
 export default function Page() {
     let router = useRouter();
     let [ u, setU ] = useState();
+    let lang = useContext(LanguageContext);
 
     usePage(() => { setU(user) });
 
@@ -109,7 +110,7 @@ export default function Page() {
                                 pt: 'Copiado para a área de transferência',
                                 es: 'Copiado al portapapeles',
                                 ru: 'Скопировано в буфер обмена',
-                            }[ useContext(LanguageContext) ])
+                            }[lang])
                         }}/></td>
                     </tr>
                     <tr>
