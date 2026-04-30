@@ -7,8 +7,9 @@ import { GetLang } from 'Com/language';
 import Code from 'Com/code';
 import FilterIcon from './toIconMap';
 import cssStyle from './page.module.css';
+import Initial from './initial';
 
-export default function Search({ initial }) {
+export default function Search() {
     let router = useRouter();
 
     let [ type, setType ] = useState('');
@@ -338,6 +339,8 @@ export default function Search({ initial }) {
     //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
     //     })
     // })()}, [])
+
+    let initial = Initial(location.search)
 
     let [ loaded, setLoaded ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
