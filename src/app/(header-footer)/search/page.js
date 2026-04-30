@@ -2,29 +2,10 @@
 import Search from "./page.client";
 import FilterIcon from "./filter-icon";
 import { db } from "Uti/firebase-admin";
+import Initial from "./initial";
 
 export default async function Page({ searchParams }) {
-    let initial = (search => {
-        if (!search) return {
-            search: '',
-            family: 'all',
-            style: 'all',
-            version: 'b2',
-            categories: [],
-        }
-        
-        let map = Object.fromEntries(
-            search.slice(1).split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
-        )
-        
-        return {
-            search: map['=k'] || '',
-            family: map['=f'] || 'all',
-            style: map['=s'] || 'all',
-            version: map['=v'] || 'b2',
-            categories: map['=c']?.split(';') || [],
-        }
-    })(searchParams)
+    let initial = Initial(searchParams);
     let snap = await db.ref(`icons${initial.version == 'b2' ? 'B2' : ''}/`).once('value');
     let icons = snap.val();
 
