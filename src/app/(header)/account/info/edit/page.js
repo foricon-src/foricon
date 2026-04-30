@@ -13,7 +13,7 @@ export default function Page() {
     usePage(() => {})
 
     return (
-        <div className={cssStyle.edit}>
+        <div className={cssStyle.account_info_edit}>
             <h3>{
                 GetLang({
                     en: 'Edit account info',

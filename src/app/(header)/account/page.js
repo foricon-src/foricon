@@ -65,7 +65,7 @@ export default function Page() {
     })
 
     return (
-        <div className={cssStyle.home}>
+        <div className={cssStyle.account_home}>
             <div className={cssStyle.hero}>
                 <div id='avatar' className='img circle square'></div>
                 <h2 id='greeting'></h2>

@@ -5,7 +5,7 @@ import { GetLang } from 'Com/language';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
-import './page.css';
+import cssStyle from './page.module.css';
 
 export default function Page() {
     let router = useRouter();
@@ -15,7 +15,7 @@ export default function Page() {
     })
 
     return (
-        <div>
+        <div className={cssStyle.account_info}>
             <table>
                 <tr>
                     <td>{

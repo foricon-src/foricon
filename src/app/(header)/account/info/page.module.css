@@ -1,0 +1,20 @@
+.account_info > table {
+    width: 100%;
+
+    td:first-child {
+      width: 200px;
+    }
+    div.img {
+      height: 50px;
+    }
+    f-icon {
+        margin-left: 7px;
+
+        &[icon='circle-check'] {
+            color: var(--green);
+        }
+        &[icon='circle-exclamination'] {
+            color: var(--yellow);
+        }
+    }
+}
