@@ -15,10 +15,7 @@ export default async function Page({ searchParams }) {
         styles: icon.styles,
         glyphs: icon.glyphs,
         unicodes: icon.unicodes,
-    })), initial.search, initial.family, initial.search, initial.categories)
-    console.log('TOTAL ICONS:', Object.keys(icons).length);
-    console.log('PARAMS:', initial);
-    console.log('FILTERED:', filtered.length);
+    })), initial.search, initial.family, initial.style, initial.categories)
 
     return (
         <>
