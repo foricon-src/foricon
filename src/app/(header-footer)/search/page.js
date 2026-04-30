@@ -17,6 +17,7 @@ export default async function Page({ searchParams }) {
         unicodes: icon.unicodes,
     })), initial.search, initial.family, initial.search, initial.categories)
     console.log('TOTAL ICONS:', Object.keys(icons).length);
+    console.log('PARAMS:', initial);
     console.log('FILTERED:', filtered.length);
 
     return (
