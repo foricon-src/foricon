@@ -23,7 +23,7 @@ export default async function Page({ searchParams }) {
                 <h1>{filtered.length} icons</h1>
                 <ul>{
                     filtered.slice(0,100).map(i =>
-                        <li key={i.name}>{i.name}</li>
+                        <li key={i.icon.name}>{i.icon.name}</li>
                     )
                 }</ul>
             </div>
