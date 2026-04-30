@@ -1,20 +1,18 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { GetLang, LanguageContext } from 'Com/language';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
 import cssStyle from './page.module.css';
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export default function Page() {
     let router = useRouter();
     let [ u, setU ] = useState();
 
-    usePage(() => {
-        setU(user);
-    })
+    usePage(() => { setU(user) });
 
     return (
         <div className={cssStyle.account_info}>
@@ -98,7 +96,7 @@ export default function Page() {
                         }</td>
                         <td>{u?.uid}<f-icon icon='clone' onClick={() => {
                             navigator.clipboard.writeText(u.uid);
-                            notify('success', GetLang({
+                            notify('success', {
                                 en: 'Copied to clipboard',
                                 vi: 'Đã sao chép vào bộ nhơ tạm',
                                 fr: 'Copié dans le presse-papiers',
@@ -111,7 +109,7 @@ export default function Page() {
                                 pt: 'Copiado para a área de transferência',
                                 es: 'Copiado al portapapeles',
                                 ru: 'Скопировано в буфер обмена',
-                            }))
+                            }[ useContext(LanguageContext) ])
                         }}/></td>
                     </tr>
                     <tr>
