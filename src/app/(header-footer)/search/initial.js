@@ -1,4 +1,4 @@
-export default function Initial(search, toFilter) {
+export default function Initial(params, toFilter) {
     if (!search) return {
         search: '',
         family: 'all',
@@ -7,25 +7,21 @@ export default function Initial(search, toFilter) {
         categories: [],
     }
     
-    let map = Object.fromEntries(
-        search.slice(1).split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
-    )
-    
     function verify(param) {
-        if (param == 'k') return map['k='] || '';
+        if (param == 'k') return params['k='] || '';
         if (param == 'f') return {
             regular: 'regular',
             duotone: 'duotone',
-        }[map['f=']] || 'all';
+        }[params['f=']] || 'all';
         if (param == 's') return {
             solid: 'solid',
             outline: 'outline'
-        }[map['s=']] || 'all';
+        }[params['s=']] || 'all';
         if (param == 'v') return {
             b1: 'b1',
-        }[map['v=']] || 'b2';
+        }[params['v=']] || 'b2';
         if (param == 'c') {
-            let arr = map['c=']?.split(';') || []
+            let arr = params['c=']?.split(';') || []
             return toFilter ? arr : arr.filter(category => toFilter[category]);
         }
     }

@@ -9,7 +9,7 @@ import FilterIcon from './filter-icon';
 import cssStyle from './page.module.css';
 import Initial from './initial';
 
-export default function Search() {
+export default function Search({ searchParams }) {
     let router = useRouter();
 
     let [ type, setType ] = useState('');
@@ -340,7 +340,7 @@ export default function Search() {
     //     })
     // })()}, [])
 
-    let initial = Initial(location.search, webData.categories);
+    let initial = Initial(searchParams, webData.categories);
 
     let [ loaded, setLoaded ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
