@@ -1,8 +1,7 @@
-import Search from "./pageClient";
+import Search from "./page.client";
 import FilterIcon from "./toIconMap";
 import { get, ref } from "firebase/database";
 import { db } from "Com/firebase";
-import Initial from "./initial";
 
 export async function Page({ searchParams }) {
     let initial = (search => {
