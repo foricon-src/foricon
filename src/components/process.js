@@ -34,9 +34,10 @@ export default function Process() {
         ) && !body.classList.contains('dark') && toggleTheme();
 
         timezone = new Date().getTimezoneOffset() / 60;
-        
+        console.log(user)
         user == null && onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
+            console.log('Got user')
             let admin;
             
             if (res) {
