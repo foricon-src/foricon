@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Ad } from 'Com/ad';
 import { GetLang } from 'Com/language';
 import Code from 'Com/code';
-import FilterIcon from './toIconMap';
+import FilterIcon from './filter-icon';
 import cssStyle from './page.module.css';
 
 export default function Search() {

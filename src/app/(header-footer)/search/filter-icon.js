@@ -1,3 +1,5 @@
+import Similarity from "Com/similarity";
+
 export default function FilterIcon(set, family, style, categories) {
     function getStyles(icon) {
         if (family == 'all' && style == 'all')
@@ -15,10 +17,10 @@ export default function FilterIcon(set, family, style, categories) {
         getStyles(icon)
             .filter(s => icon.styles.includes(s))
             .filter(() => {
-                let normalized = lower(icon.name).replace(/[+-]/g, ' ');
+                let normalized = icon.name.toLowerCase().replace(/[+-]/g, ' ');
                 return (
                     (
-                        normalized.includes(search) || similarity(normalized, search) > 0.65
+                        normalized.includes(search) || Similarity(normalized, search) > 0.65
                     ) && (
                         !categories.length || categories.every(c => icon.categories.includes(c))
                     )

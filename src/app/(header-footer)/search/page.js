@@ -1,5 +1,5 @@
 import Search from "./page.client";
-import FilterIcon from "./toIconMap";
+import FilterIcon from "./filter-icon";
 import { get, ref } from "firebase/database";
 import { db } from "Com/firebase";
 
