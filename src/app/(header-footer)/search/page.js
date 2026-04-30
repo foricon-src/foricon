@@ -1,8 +1,9 @@
-import SearchWrapped from "./page.wrapped";
+// import SearchWrapped from "./page.wrapped";
+import Search from "./page.client";
 import FilterIcon from "./filter-icon";
 import { db } from "Uti/firebase-admin";
 
-export async function Page({ searchParams }) {
+export default async function Page({ searchParams }) {
     let initial = (search => {
         if (!search) return {
             search: '',
@@ -45,7 +46,7 @@ export async function Page({ searchParams }) {
                     )
                 }</ul>
             </div>
-            <SearchWrapped/>
+            <Search/>
         </>
     )
 }
