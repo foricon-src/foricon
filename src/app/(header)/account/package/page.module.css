@@ -1,5 +1,7 @@
-:global(body) {
-    --angle: 0;
+:global {
+    body {
+        --angle: 0;
+    }
 }
 .pageviews {
     padding: var(--spacing-small);
