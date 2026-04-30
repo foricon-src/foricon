@@ -1,9 +1,6 @@
-:global {
-    body {
-        --angle: 0;
-    }
-}
 .pageviews {
+    --angle: 0;
+    
     padding: var(--spacing-small);
     border: 1px solid var(--gray);
     border-radius: var(--bdr-rad);

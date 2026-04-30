@@ -18,11 +18,11 @@ export default function Page() {
 
         let planData = (await get(ref(db, `plans/${plan}`))).val();
 
-        let { body } = document;
         let percent = Math.floor(count / planData.pageviews * 1000) / 1000;
 
-        body.style.setProperty('--angle', `${percent * 360}%`);
-        body.style.setProperty('--duration', `${percent * (6 - percent * 3)}s`);
+        let pageviews = qSelec(false, `.${cssStyle.pageviews}`);
+        pageviews.style.setProperty('--angle', `${percent * 360}%`);
+        pageviews.style.setProperty('--duration', `${percent * (6 - percent * 3)}s`);
 
         let reset = new Date(start.year, start.month, start.day, start.hours, start.minutes, start.seconds);
         reset.setDate(reset.getDate() + 30)
