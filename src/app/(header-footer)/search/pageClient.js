@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation';
 import { Ad } from 'Com/ad';
 import { GetLang } from 'Com/language';
 import Code from 'Com/code';
+import FilterIcon from './filter-icon';
 import cssStyle from './page.module.css';
 
-export default function Search() {
+export default function Search({ initial }) {
     let router = useRouter();
 
     let [ type, setType ] = useState('');
@@ -337,47 +338,6 @@ export default function Search() {
     //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
     //     })
     // })()}, [])
-    
-    let initial = (() => {
-        if (typeof window == 'undefined') {
-            return {
-                search: '',
-                family: 'all',
-                style: 'all',
-                version: 'b2',
-                categories: [],
-            }
-        }
-      
-        let params = location.params.slice(1);
-        let map = Object.fromEntries(
-            params.split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
-        )
-        
-        function verify(param) {
-            if (param == 'k') return map['k='] || '';
-            if (param == 'f') return {
-                regular: 'regular',
-                duotone: 'duotone',
-            }[map['f=']] || 'all';
-            if (param == 's') return {
-                solid: 'solid',
-                outline: 'outline'
-            }[map['s=']] || 'all';
-            if (param == 'v') return {
-                b1: 'b1',
-            }[map['v=']] || 'b2';
-            if (param == 'c') return (map['c=']?.split(';') || []).filter(category => webData.categories[category]);
-        }
-      
-        return {
-            search: verify('k'),
-            family: verify('f'),
-            style: verify('s'),
-            version: verify('v'),
-            categories: verify('c'),
-        }
-    })()
 
     let [ loaded, setLoaded ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
@@ -396,39 +356,7 @@ export default function Search() {
 
     let filtered = useMemo(() => {
         let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
-        if (!iconSet) return [];
-
-        function getStyles(icon) {
-            if (family == 'all' && style == 'all')
-                return icon.styles;
-            if (family == 'all')
-                return [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`);
-            if (style == 'all')
-                return [ 'solid', 'outline' ].map(
-                    style => `${family == 'regular' ? '' : `${family}/`}${style}`
-                );
-            return [ `${family == 'regular' ? '' : `${family}/`}${style}` ];
-        }
-        function normalize(value) {
-            return lower(value).replace(/[+-]/g, ' ');
-        }
-
-        return iconSet.flatMap(icon => {
-            return getStyles(icon)
-                .filter(style => icon.styles.includes(style))
-                .filter(() => {
-                    let normalized = normalize(icon.name);
-                    return (
-                        (normalized.includes(search) ||
-                            similarity(normalized, search) > 0.65) &&
-                        (!selectedCategories.length ||
-                            selectedCategories.every(c =>
-                                icon.categories.includes(c)
-                            ))
-                    )
-                })
-                .map(style => ({ icon, style }))
-        })
+        return iconSet ? FilterIcon(iconSet) : [];
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let currentIcons = useMemo(() => {
         let maxPage = Math.floor(filtered.length / perPage);
