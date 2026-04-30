@@ -5,7 +5,7 @@ import { db } from "Com/firebase";
 
 export async function Page({ searchParams }) {
     let initial = (() => {
-        if (typeof window == 'undefined') {
+        if (!searchParams) {
             return {
                 search: '',
                 family: 'all',
@@ -15,7 +15,7 @@ export async function Page({ searchParams }) {
             }
         }
         
-        let params = location.params.slice(1);
+        let params = searchParams.slice(1);
         let map = Object.fromEntries(
             params.split('&').map(p => [ p.slice(0, 2), p.slice(2) ])
         )
