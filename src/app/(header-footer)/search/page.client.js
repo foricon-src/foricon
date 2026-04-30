@@ -394,7 +394,7 @@ export default function Search() {
 
     let filtered = useMemo(() => {
         let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
-        return iconSet ? FilterIcon(iconSet) : [];
+        return iconSet ? FilterIcon(iconSet, search, family, style, selectedCategories) : [];
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let currentIcons = useMemo(() => {
         let maxPage = Math.floor(filtered.length / perPage);

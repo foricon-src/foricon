@@ -1,6 +1,6 @@
 import Similarity from "Com/similarity";
 
-export default function FilterIcon(set, family, style, categories) {
+export default function FilterIcon(set, search, family, style, categories) {
     function getStyles(icon) {
         if (family == 'all' && style == 'all')
             return icon.styles;

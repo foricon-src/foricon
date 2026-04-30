@@ -35,7 +35,7 @@ export async function Page({ searchParams }) {
         styles: icon.styles,
         glyphs: icon.glyphs,
         unicodes: icon.unicodes,
-    })), initial.family, initial.search, initial.categories)
+    })), initial.search, initial.family, initial.search, initial.categories)
 
     return (
         <>
