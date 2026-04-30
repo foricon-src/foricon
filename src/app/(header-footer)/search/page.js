@@ -5,7 +5,7 @@ import { db } from "Com/firebase";
 import Initial from "./initial";
 
 export async function Page({ searchParams }) {
-    let initial = Initial(searchParams);
+    let initial = Initial(searchParams, true);
 
     let snap = await get(ref(db, `icons${initial.version == 'b2' ? 'B2' : ''}/`))
     let icons = snap.val();

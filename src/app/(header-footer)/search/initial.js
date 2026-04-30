@@ -1,4 +1,4 @@
-export default function Initial(search) {
+export default function Initial(search, isOnServer) {
     if (!searchParams) {
         return {
             search: '',
@@ -26,7 +26,10 @@ export default function Initial(search) {
         if (param == 'v') return {
             b1: 'b1',
         }[map['v=']] || 'b2';
-        if (param == 'c') return (map['c=']?.split(';') || []).filter(category => webData.categories[category]);
+        if (param == 'c') {
+            let arr = (map['c=']?.split(';') || []);
+            return isOnServer ? arr : arr.filter(category => webData.categories[category]);
+        }
     }
     
     return {
