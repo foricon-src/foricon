@@ -1,4 +1,4 @@
-import Search from "./page.client";
+import SearchWrapped from "./page.wrapped";
 import FilterIcon from "./filter-icon";
 import { db } from "Uti/firebase-admin";
 
@@ -45,7 +45,7 @@ export async function Page({ searchParams }) {
                     )
                 }</ul>
             </div>
-            <Search/>
+            <SearchWrapped/>
         </>
     )
 }
