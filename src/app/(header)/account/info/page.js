@@ -96,7 +96,23 @@ export default function Page() {
                                 ru: 'ID пользователя',
                             })
                         }</td>
-                        <td>{u?.uid}</td>
+                        <td>{u?.uid}<f-icon icon='clone' onClick={() => {
+                            navigator.clipboard.writeText(u.uid);
+                            notify('success', GetLang({
+                                en: 'Copied to clipboard',
+                                vi: 'Đã sao chép vào bộ nhơ tạm',
+                                fr: 'Copié dans le presse-papiers',
+                                it: 'Copiato negli appunti',
+                                kr: '클립보드에 복사됨',
+                                ja: 'クリップボードにコピーされました',
+                                de: 'In die Zwischenablage kopiert',
+                                nl: 'Gekopieerd naar het klembord',
+                                dk: 'Kopieret til udklipsholderen',
+                                pt: 'Copiado para a área de transferência',
+                                es: 'Copiado al portapapeles',
+                                ru: 'Скопировано в буфер обмена',
+                            }))
+                        }}/></td>
                     </tr>
                     <tr>
                         <td>{

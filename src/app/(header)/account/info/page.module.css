@@ -8,13 +8,16 @@
         height: 50px;
     }
     & f-icon {
-        margin-left: 7px;
+        margin-left: 5px;
 
         &[icon='circle-check'] {
             color: var(--green);
         }
         &[icon='circle-exclamination'] {
             color: var(--yellow);
+        }
+        &[icon='clone']:active {
+            scale: var(--btn-scale);
         }
     }
 }
