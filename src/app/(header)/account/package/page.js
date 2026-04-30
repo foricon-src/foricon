@@ -19,6 +19,7 @@ export default function Page() {
         let planData = (await get(ref(db, `plans/${plan}`))).val();
 
         let percent = Math.floor(count / planData.pageviews * 1000) / 1000;
+        console.log(planData, count, percent)
 
         let pageviews = qSelec(false, `.${cssStyle.pageviews}`);
         pageviews.style.setProperty('--angle', `${percent * 360}%`);

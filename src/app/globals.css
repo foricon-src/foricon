@@ -853,7 +853,7 @@ table {
     th {
       color: var(--title-color);
     }
-    :is(th, td) {
+    & :is(th, td) {
         padding: 7px 20px;
         
         > f-icon {
