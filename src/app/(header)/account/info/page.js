@@ -10,7 +10,9 @@ import './page.css';
 export default function Page() {
     let router = useRouter();
 
-    usePage(() => {})
+    usePage(() => {
+        elemById('avatar').style.backgroundImage = `url(${user.doc.avatar})`;
+    })
 
     return (
         <div>
@@ -33,7 +35,7 @@ export default function Page() {
                         })
                     }</td>
                     <td>
-                    <div id='main_account-info_avatar' className='img circle square avatar'></div>
+                    <div id='avatar' className='img circle square'></div>
                     </td>
                 </tr>
                 <tr>

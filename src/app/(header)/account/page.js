@@ -14,7 +14,8 @@ export default function Page() {
 
     usePage(async () => {
         let hour = new Date().getHours();
-
+        
+        elemById('avatar').style.backgroundImage = `url(${user.doc.avatar})`;
         elemById('greeting').innerText = `${
             (
                 hour < 12 ? {
@@ -61,7 +62,6 @@ export default function Page() {
                 }
             )[lang]
         }, ${user.doc.name}`;
-        elemById('greeting').style.backgroundImage = `url(${user.doc.avatar})`;
     })
 
     return (
