@@ -19,10 +19,10 @@ export async function Page({ searchParams }) {
         )
         
         return {
-            search: map['=k'],
-            family: map['=f'],
-            style: map['=s'],
-            version: map['=v'],
+            search: map['=k'] || '',
+            family: map['=f'] || 'all',
+            style: map['=s'] || 'all',
+            version: map['=v'] || 'b2',
             categories: map['=c']?.split(';') || [],
         }
     })(searchParams)
