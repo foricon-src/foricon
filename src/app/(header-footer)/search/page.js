@@ -14,7 +14,7 @@ export async function Page({ searchParams }) {
     return (
         <>
             <div id='adsense-content'>
-                <h1>{icons.length} icons for "{searchParams.k}"</h1>
+                <h1>{icons.length} icons</h1>
                 <ul>{
                     icons.slice(0,100).map(i =>
                         <li key={i.name}>{i.name}</li>

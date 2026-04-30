@@ -535,6 +535,10 @@ export default function Search() {
         location.search != value && router.replace(`/search?${value}`);
     }, [ search, family, style, version, selectedCategories ])
     useEffect(() => { check() }, [ view ])
+    useEffect(() => {
+        let adsenseContent = elemById('adsense-content');
+        adsenseContent && (adsenseContent.style.display = 'none');
+    })
 
     function check() {
         let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
