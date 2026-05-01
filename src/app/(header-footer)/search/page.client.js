@@ -464,7 +464,7 @@ export default function Search({ searchParams }) {
             `f=${family}`,
             `s=${style}`
         ].filter(Boolean).join('&')
-        location.search != value && router.replace(`/search?${value}`);
+        location.search != value && history.replaceState(null, '', `?${value}`);
     }, [ search, family, style, version, selectedCategories ])
     useEffect(() => { check() }, [ view ])
     useEffect(() => {
