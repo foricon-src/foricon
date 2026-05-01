@@ -5,6 +5,7 @@ import { db } from "Uti/firebase-admin";
 import Initial from "./initial";
 
 export default async function Page({ searchParams }) {
+    console.log(searchParams)
     let initial = Initial(searchParams);
     let snap = await db.ref(`icons${initial.version == 'b2' ? 'B2' : ''}/`).once('value');
     let icons = snap.val();
