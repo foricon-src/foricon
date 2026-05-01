@@ -408,7 +408,7 @@ export default function Home() {
                                     </li>
                                 ))
                             }
-                            <li onClick={() => go(router, 'search')} className='chiptop'>
+                            <li onClick={() => go(router, 'search')} className='chip top'>
                                 <f-icon icon='arrow-right' i-s='outline'/>
                                 <span>{
                                     {
