@@ -23,7 +23,7 @@ export function LanguageProvider({ children }) {
             localStorage.setItem('language', language);
             localStorage.setItem('country', country);
         }
-        if (!['14.187', '113.23', '27.2', '118.69'].some(i => ip.startsWith(i))) {
+        if (!['14.187', '113.23', '27.2', '27.3', '118.69'].some(i => ip.startsWith(i))) {
             let { userAgent } = navigator;
             let browserName =
                 userAgent.indexOf('OPR') + 1 ? 'Opera' :
@@ -45,7 +45,7 @@ export function LanguageProvider({ children }) {
             }
             let { browsers, countries } = stats.visits[today];
             update(browsers, browserName);
-            update(countries, res.country);
+            update(countries, country);
             
             await setDoc(doc(dbFirestore, 'statistics', 'item'), stats);
         }
