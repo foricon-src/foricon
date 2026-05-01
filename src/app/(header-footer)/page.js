@@ -23,12 +23,13 @@ export default function Home() {
         setHTML(
             `<f-icon icon='${icon}'${
                 [
+                    '',
                     `i-s='${style}'`,
-                    `scale='${scale}'`
-                    `size='${size}'`
-                    `rotate='${rotate}'`
-                    `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`
-                ]
+                    `scale='${scale}'`,
+                    `size='${size}'`,
+                    `rotate='${rotate}'`,
+                    `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`,
+                ].filter(i => i.includes("''")).join(' ')
             }`
         )
     }
