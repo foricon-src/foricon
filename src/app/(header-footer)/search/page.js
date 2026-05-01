@@ -1,6 +1,6 @@
 import Search from "./page.client";
 
-export default function Page() {
+export default async function Page() {
     return (
         <>
             <Search/>
