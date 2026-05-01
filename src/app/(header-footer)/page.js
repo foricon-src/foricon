@@ -493,7 +493,7 @@ export default function Home() {
                         }</h6>
                         <ul className='btn-list darker'>{
                             [ '', '90', '180', '270', 'flipX', 'flipY' ].map(i => (
-                                <li key={i} onClick={() => setSize(i)} className={size == i && 'active'}>{
+                                <li key={i} onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
                             ))
