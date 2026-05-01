@@ -527,33 +527,35 @@ export default function Home() {
                                 }</li>
                             ))
                         }</ul>
-                        <h6>{
-                            {
-                                en: 'Animation speed',
-                                vi: 'Tốc độ hoạt ảnh',
-                                fr: "Vitesse d'animation",
-                                it: 'Velocità di animazione',
-                                kr: '애니메이션 속도',
-                                ja: 'アニメーション速度',
-                                de: 'Animationsgeschwindigkeit',
-                                nl: 'Animatiesnelheid',
-                                dk: 'Animationshastighed',
-                                pt: 'Velocidade da animação',
-                                es: 'Velocidad de animación',
-                                ru: 'скорость анимации',
-                            }[lang]
-                        }</h6>
-                        <ul className='btn-list darker'>{
-                            [
-                                'xxslow', 'xslow', 'slow', 'semislow',
-                                '',
-                                'semi-fast', 'fast', 'xfast', 'xxfast',
-                            ].map(i => (
-                                <li key={i} onClick={() => setAnimationSpeed(i)} className={animationSpeed == i && 'active'}>{
-                                    i || <f-icon icon='empty-set' i-s='outline'/>
-                                }</li>
-                            ))
-                        }</ul>
+                        {animation && <>
+                            <h6>{
+                                {
+                                    en: 'Animation speed',
+                                    vi: 'Tốc độ hoạt ảnh',
+                                    fr: "Vitesse d'animation",
+                                    it: 'Velocità di animazione',
+                                    kr: '애니메이션 속도',
+                                    ja: 'アニメーション速度',
+                                    de: 'Animationsgeschwindigkeit',
+                                    nl: 'Animatiesnelheid',
+                                    dk: 'Animationshastighed',
+                                    pt: 'Velocidade da animação',
+                                    es: 'Velocidad de animación',
+                                    ru: 'скорость анимации',
+                                }[lang]
+                            }</h6>
+                            <ul className='btn-list darker'>{
+                                [
+                                    'xxslow', 'xslow', 'slow', 'semislow',
+                                    '',
+                                    'semi-fast', 'fast', 'xfast', 'xxfast',
+                                ].map(i => (
+                                    <li key={i} onClick={() => setAnimationSpeed(i)} className={animationSpeed == i && 'active'}>{
+                                        i || <f-icon icon='empty-set' i-s='outline'/>
+                                    }</li>
+                                ))
+                            }</ul>
+                        </>}
                     </div>
                     <div className='dk-bg' dangerouslySetInnerHTML={{
                         __html: `<f-icon
