@@ -548,7 +548,7 @@ export default function Home() {
                                 [
                                     'xxslow', 'xslow', 'slow', 'semislow',
                                     '',
-                                    'semi-fast', 'fast', 'xfast', 'xxfast',
+                                    'semifast', 'fast', 'xfast', 'xxfast',
                                 ].map(i => (
                                     <li key={i} onClick={() => setAnimationSpeed(i)} className={animationSpeed == i && 'active'}>{
                                         i || <f-icon icon='empty-set' i-s='outline'/>
