@@ -13,16 +13,10 @@ export default function Initial(params, toFilter) {
             regular: 'regular',
             duotone: 'duotone',
         }[params.f] || 'all';
-        if (param == 's') {
-            console.log(params.s, {
-                solid: 'solid',
-                outline: 'outline'
-            }[params.s])
-            return {
-                solid: 'solid',
-                outline: 'outline'
-            }[params.s] || 'all';
-        }
+        if (param == 's') return {
+            solid: 'solid',
+            outline: 'outline'
+        }[params.s] || 'all';
         if (param == 'v') return {
             b1: 'b1',
         }[params.v] || 'b2';
