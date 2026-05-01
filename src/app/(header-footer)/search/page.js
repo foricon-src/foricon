@@ -27,7 +27,7 @@ export default async function Page({ searchParams }) {
                     )
                 }</ul>
             </div>
-            <Search initial={initial}/>
+            <Search/>
         </>
     )
 }

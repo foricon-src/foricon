@@ -1,4 +1,4 @@
-export default function Initial(params) {
+export default function Initial(params, toFilter) {
     if (!params) return {
         search: '',
         family: 'all',
@@ -20,7 +20,10 @@ export default function Initial(params) {
         if (param == 'v') return {
             b1: 'b1',
         }[params.v] || 'b2';
-        if (param == 'c') return (params.c?.split(';') || []).filter(category => webData.categories[category]);
+        if (param == 'c') {
+            let arr = params.c?.split(';') || [];
+            return toFilter ? arr : arr.filter(category => toFilter[category]);
+        }
     }
     
     return {

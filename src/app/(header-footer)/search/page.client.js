@@ -7,8 +7,9 @@ import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import FilterIcon from './filter-icon';
 import cssStyle from './page.module.css';
+import Initial from './initial';
 
-export default function Search({ initial }) {
+export default function Search({ searchParams }) {
     let router = useRouter();
     let lang = useContext(LanguageContext);
 
@@ -339,6 +340,8 @@ export default function Search({ initial }) {
     //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
     //     })
     // })()}, [])
+
+    let initial = Initial(searchParams, webData.categories);
     
     let [ loaded, setLoaded ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
@@ -465,7 +468,7 @@ export default function Search({ initial }) {
     useEffect(() => {
         let adsenseContent = elemById('adsense-content');
         adsenseContent && (adsenseContent.style.display = 'none');
-    })
+    }, [])
 
     function check() {
         let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
