@@ -29,7 +29,7 @@ export default function Home() {
                     `size='${size}'`,
                     `rotate='${rotate}'`,
                     `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`,
-                ].filter(i => i.includes("''")).join(' ')
+                ].filter(i => !i.includes("''")).join(' ')
             }`
         )
     }
