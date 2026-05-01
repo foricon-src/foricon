@@ -1133,6 +1133,18 @@ globalThis.capital = str => {
 }
 
 /**
+ * 
+ * @param {string} str 
+ * @param {Array[]} replacements 
+ */
+globalThis.replace = (str, replacements) => {
+    return replacements.reduce(
+        (s, [ pattern, replacement ]) => s.replace(pattern, replacement),
+        str
+    )
+}
+
+/**
  * Shows a toast notification
  * @param {'success' | 'info' | 'warn' | 'error' | 'online' | 'offline'} type - Type of notification
  * @param {string} message - Content for notification
@@ -1141,13 +1153,18 @@ globalThis.notify = async (type, message) => {
     let toast = qSelec(false, '#toast');
     while (toast.children.length > 4) await wait();
     let div = newElem('div', {
-        innerHTML: message,
+        innerHTML: replace(message, [
+            [ '<', '&lt;' ],
+            [ '>', '&gt;' ],
+            [ /key\((.*?)\)/g, "<span class='key'>$1</span>" ],
+            [ /bold\((.*?)\)/g, '<b>$1</b>' ]
+        ]),
         className: `message ${type}`,
         style: 'opacity: 0; translate: 100%; transition: all .5s ease, margin-bottom 0s;',
     })
     toast.append(div);
     div.style = `height: ${div.offsetHeight}px; transition: all .5s ease, margin-bottom 0s;`;
-    await wait(message.length < 40 ? message.length < 80 ? 5 : 4 : 3);
+    await wait(message.length < 80 ? message.length < 40 ? 3 : 4 : 5);
     div.style = 'opacity: 0; height: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0;';
     await wait(.5);
     div.remove();

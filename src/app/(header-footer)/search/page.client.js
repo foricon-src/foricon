@@ -880,7 +880,7 @@ export default function Search({ initial }) {
                                 ru: 'Код',
                             }[lang]} `
                         }
-                        <f-icon icon='circle-info'></f-icon>:
+                        <f-icon icon='circle-info' onClick={() => notify('info', 'key(Ctrl) + bold(Click) to copy the code')}></f-icon>:
                     </span>
                     <Code nameless={true}>{
                         `<f-icon icon='${selectedIcon?.name}' ${selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`}${version == 'b1' ? ' b1' : ''}></f-icon>`
