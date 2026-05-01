@@ -453,6 +453,8 @@ export default function Search({ searchParams }) {
         
         addEvLis(top, 'mouseenter', openTop);
         addEvLis(top, 'mouseleave', hideTop);
+
+        addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
     })()}, [])
     useEffect(() => {
         let value = [
@@ -613,7 +615,7 @@ export default function Search({ searchParams }) {
                         }[lang]
                     }/>
                 </label>
-                <f-select onChange={e => setVersion(e.currentTarget.value)}>
+                <f-select>
                     <text></text>
                     <option-list>
                         <f-option value='b2'>Beta 2+</f-option>
