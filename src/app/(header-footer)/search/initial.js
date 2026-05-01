@@ -1,5 +1,4 @@
 export default function Initial(params, toFilter) {
-    console.log(Boolean(params))
     if (!params) return {
         search: '',
         family: 'all',
