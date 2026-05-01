@@ -672,9 +672,7 @@ export default function Search({ searchParams }) {
                                 ru: 'Дуотон',
                             }[lang]
                         }</li>
-                    </ul>
-                    <ul className='btn-list line-active line'>
-                        <li className={style == 'all' && 'active'} onClick={() => setStyle('all')}>{
+                        <li className={`line${style == 'all' ? ' active' : ''}`} onClick={() => setStyle('all')}>{
                             {
                                 en: 'All',
                                 vi: 'Tất cả',
@@ -778,6 +776,27 @@ export default function Search({ searchParams }) {
                                     pt: 'Azulejos',
                                     es: 'Azulejos',
                                     ru: 'Плитка',
+                                }[lang]
+                            }</span>
+                        </li>
+                    </ul>
+                    <ul className='btn-list'>
+                        <li className={`chip top`}>
+                            <f-icon icon='rectangle-stack'/>
+                            <span>{
+                                {
+                                    en: 'My collection',
+                                    vi: 'Bộ sưu tập của tôi',
+                                    fr: 'Ma collection',
+                                    it: 'La mia collezione',
+                                    kr: '내 컬렉션',
+                                    ja: '私のコレクション',
+                                    de: 'Meine Sammlung',
+                                    nl: 'Mijn verzameling',
+                                    dk: 'Min samling',
+                                    pt: 'A minha coleção',
+                                    es: 'Mi colección',
+                                    ru: 'Моя коллекция',
                                 }[lang]
                             }</span>
                         </li>
