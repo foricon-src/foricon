@@ -556,7 +556,14 @@ export default function Home() {
                         }</ul>
                     </div>
                     <div className='dk-bg'>
-                        <f-icon icon={icon} i-s={style} scale={scale} size={size} rotate={rotate} rotae={rotate} animation={[ animation, animationSpeed ].filter(Boolean).join('-')}/>
+                        <f-icon
+                            icon={icon}
+                            i-s={style}
+                            scale={scale}
+                            size={size}
+                            {...{ rotate }}
+                            animation={[ animation, animationSpeed ].filter(Boolean).join('-')}
+                        />
                     </div>
                 </div>
             </div>
