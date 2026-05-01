@@ -422,9 +422,15 @@ export default function Home() {
                                 ru: 'Стиль',
                             }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='i-s'>{
+                        <ul className='btn-list darker'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
-                                <li key={i} onClick={() => setStyle(i)} i-s={style == i && 'active'}>
+                                <li key={i} onClick={() => setStyle(i)} i-s={
+                                    (() =>{
+                                        let cond = style == i;
+                                        console.log(cond);
+                                        return cond ? 'active' : false;
+                                    })()
+                                }>
                                     <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
                                 </li>
                             ))
@@ -445,7 +451,7 @@ export default function Home() {
                                 ru: 'Шкала',
                             }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='scale'>{
+                        <ul className='btn-list darker'>{
                             [ 'xsmaller', 'smaller', '', 'larger', 'xlarger' ].map(i => (
                                 <li key={i} onClick={() => setScale(i)} className={scale == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
@@ -468,7 +474,7 @@ export default function Home() {
                                 ru: 'Размер',
                             }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='size'>{
+                        <ul className='btn-list darker'>{
                             [ 'smallest', 'smaller', 'small', '', 'large', 'larger', 'largest' ].map(i => (
                                 <li key={i} onClick={() => setSize(i)} className={size == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
@@ -491,7 +497,7 @@ export default function Home() {
                                 ru: 'Повернуть',
                             }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='rotate'>{
+                        <ul className='btn-list darker'>{
                             [ '', 90, 180, 270, 'flipX', 'flipY' ].map(i => (
                                 <li key={i} onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
@@ -514,7 +520,7 @@ export default function Home() {
                                 ru: 'Анимация',
                             }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='animation'>{
+                        <ul className='btn-list darker'>{
                             [
                                 '',
                                 'ltfade', 'fade', 'hvfade', 'ulfade',
@@ -543,7 +549,7 @@ export default function Home() {
                                 ru: 'скорость анимации',
                             }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='animation'>{
+                        <ul className='btn-list darker'>{
                             [
                                 'xxslow', 'xslow', 'slow', 'semislow',
                                 '',
@@ -556,7 +562,10 @@ export default function Home() {
                         }</ul>
                     </div>
                     <div class='dk-bg'>
-                        <f-icon icon={icon} i-s={style} scale={scale} size={size} rotate={rotate} animation={[ animation, animationSpeed ].filter(Boolean).join('-')}/>
+                        <f-icon icon={icon} i-s={style} scale={scale} size={size} rotate={(() => {
+                            console.log(rotate);
+                            return rotate;
+                        })()} animation={[ animation, animationSpeed ].filter(Boolean).join('-')}/>
                     </div>
                 </div>
             </div>
