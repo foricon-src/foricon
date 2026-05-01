@@ -402,7 +402,7 @@ export default function Home() {
                         <ul className='btn-list darker'>
                             {
                                 [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
-                                    <li key={i} onClick={() => setIcon(i)} className={`chip top${icon == i && ' active'}`}>
+                                    <li key={i} onClick={() => setIcon(i)} className={`chip top${icon == i ? ' active' : ''}`}>
                                         <f-icon icon={i}/>
                                         <span>{i}</span>
                                     </li>
@@ -446,7 +446,7 @@ export default function Home() {
                         }</h6>
                         <ul className='btn-list darker'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
-                                <li key={i} onClick={() => setStyle(i)} className={`chip top${style == i && 'active'}`}>
+                                <li key={i} onClick={() => setStyle(i)} className={`chip top${style == i ? ' active' : ''}`}>
                                     <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
                                     {
                                         i == 'outline' ? 'Outline' :
