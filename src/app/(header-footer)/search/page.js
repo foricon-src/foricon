@@ -6,7 +6,6 @@ import { Ad } from 'Com/ad';
 import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import cssStyle from './page.module.css';
-import Initial from './initial';
 
 export default function Search() {
     let router = useRouter();
