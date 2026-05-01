@@ -231,6 +231,10 @@
                             padding: 15px 0;
                             width: 57px;
                         }
+                        & > code {
+                            position: sticky;
+                            bottom: var(--spacing-xxsmall);
+                        }
                     }
                     &:last-child {
                         border-radius: var(--bdr-rad);

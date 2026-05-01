@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import cssStyle from './page.module.css';
+import Code from 'Com/code';
 
 export default function Home() {
     let router = useRouter();
@@ -16,6 +17,22 @@ export default function Home() {
     let [ rotate, setRotate ] = useState('');
     let [ animation, setAnimation ] = useState('');
     let [ animationSpeed, setAnimationSpeed ] = useState('');
+    let [ HTML, setHTML ] = useState('');
+
+    function setIconHTML() {
+        setHTML(
+            `<f-icon icon='${icon}'${
+                [
+                    `i-s='${style}'`,
+                    `scale='${scale}'`
+                    `size='${size}'`
+                    `rotate='${rotate}'`
+                    `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`
+                ]
+            }`
+        )
+    }
+    setIconHTML();
 
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
@@ -36,6 +53,9 @@ export default function Home() {
             icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
         }
     })()}, [])
+    useEffect(() => {
+        setIconHTML();
+    }, [ icon, style, scale, size, rotate, animation, animationSpeed ])
 
     return (
         <div className={cssStyle.page}>
@@ -448,12 +468,12 @@ export default function Home() {
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
                                 <li key={i} onClick={() => setStyle(i)} className={`chip top${style == i ? ' active' : ''}`}>
                                     <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
-                                    {
+                                    <span>{
                                         i == 'outline' ? 'Outline' :
                                         i == 'duotone/solid' ? 'Duotone Solid' :
                                         i == 'duotone/outline' ? 'Duotone Outline' :
                                         'Solid'
-                                    }
+                                    }</span>
                                 </li>
                             ))
                         }</ul>
@@ -584,17 +604,9 @@ export default function Home() {
                                 ))
                             }</ul>
                         </>}
+                        <Code lang='HTML'>{HTML}</Code>
                     </div>
-                    <div className='dk-bg' dangerouslySetInnerHTML={{
-                        __html: `<f-icon
-                            icon='${icon}'
-                            i-s='${style}'
-                            scale='${scale}'
-                            size='${size}'
-                            rotate='${rotate}'
-                            animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'
-                        />`
-                    }}/>
+                    <div className='dk-bg' dangerouslySetInnerHTML={{ __html: HTML }}/>
                 </div>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling}`}>
