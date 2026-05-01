@@ -8,7 +8,6 @@ export default async function Page({ searchParams }) {
     let initial = Initial(searchParams);
     let snap = await db.ref(`icons${initial.version == 'b2' ? 'B2' : ''}/`).once('value');
     let icons = snap.val();
-    console.log(initial)
 
     let filtered = FilterIcon(Object.entries(icons).map(([ name, icon ]) => ({
         name,

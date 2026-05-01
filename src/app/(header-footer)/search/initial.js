@@ -1,4 +1,4 @@
-export default function Initial(params, toFilter) {
+export default function Initial(params) {
     if (!params) return {
         search: '',
         family: 'all',
@@ -6,21 +6,21 @@ export default function Initial(params, toFilter) {
         version: 'b2',
         categories: [],
     }
-    console.log(params, params['s='])
+    
     function verify(param) {
         if (param == 'k') return params['k='] || '';
         if (param == 'f') return {
             regular: 'regular',
             duotone: 'duotone',
-        }[params['f=']] || 'all';
+        }[params.f] || 'all';
         if (param == 's') return {
             solid: 'solid',
             outline: 'outline'
-        }[params['s=']] || 'all';
+        }[params.s] || 'all';
         if (param == 'v') return {
             b1: 'b1',
-        }[params['v=']] || 'b2';
-        if (param == 'c') return (params['c=']?.split(';') || []).filter(category => webData.categories[category]);
+        }[params.v] || 'b2';
+        if (param == 'c') return (params.c?.split(';') || []).filter(category => webData.categories[category]);
     }
     
     return {

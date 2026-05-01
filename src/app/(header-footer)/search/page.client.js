@@ -339,7 +339,7 @@ export default function Search({ initial }) {
     //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
     //     })
     // })()}, [])
-console.log(initial)
+    
     let [ loaded, setLoaded ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
     let [ family, setFamily ] = useState(initial.family);
