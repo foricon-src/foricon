@@ -342,7 +342,7 @@ export default function Search({ searchParams }) {
     // })()}, [])
 
     let initial = Initial(searchParams, webData.categories);
-    
+    console.log(initial)
     let [ loaded, setLoaded ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
     let [ family, setFamily ] = useState(initial.family);
