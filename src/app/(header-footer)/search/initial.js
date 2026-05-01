@@ -8,7 +8,7 @@ export default function Initial(params) {
     }
     
     function verify(param) {
-        if (param == 'k') return params['k='] || '';
+        if (param == 'k') return params.k || '';
         if (param == 'f') return {
             regular: 'regular',
             duotone: 'duotone',

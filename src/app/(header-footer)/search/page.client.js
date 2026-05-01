@@ -468,6 +468,7 @@ export default function Search({ initial }) {
     })
 
     function check() {
+        console.log(cssStyle.results)
         let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
         let rows = Math.floor((view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns);
         let itemsPerPage = columns * rows;
