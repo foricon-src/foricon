@@ -428,6 +428,16 @@ export default function Search() {
         return cloned;
     }, [ filtered ])
     
+    function formatKeyword(value, reversed) {
+        return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
+    }
+    function check() {
+        let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
+        let rows = Math.floor((view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns);
+        let itemsPerPage = columns * rows;
+        setPerPage(itemsPerPage);
+    }
+    
     useEffect(() => {(async () => {
         let fSelect = qSelec(false, 'f-select');
         while (elemById('loading')) await wait();
@@ -522,16 +532,6 @@ export default function Search() {
         let adsenseContent = elemById('adsense-content');
         adsenseContent && (adsenseContent.style.display = 'none');
     }, [])
-    
-    function formatKeyword(value, reversed) {
-        return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
-    }
-    function check() {
-        let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
-        let rows = Math.floor((view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns);
-        let itemsPerPage = columns * rows;
-        setPerPage(itemsPerPage);
-    }
 
     return (
         <>
