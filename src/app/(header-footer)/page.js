@@ -19,22 +19,6 @@ export default function Home() {
     let [ animationSpeed, setAnimationSpeed ] = useState('');
     let [ HTML, setHTML ] = useState('');
 
-    function setIconHTML() {
-        setHTML(
-            `<f-icon icon='${icon}'${
-                [
-                    '',
-                    `i-s='${style}'`,
-                    `scale='${scale}'`,
-                    `size='${size}'`,
-                    `rotate='${rotate}'`,
-                    `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`,
-                ].filter(i => !i.includes("''")).join(' ')
-            }`
-        )
-    }
-    setIconHTML();
-
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
         let icons = elemById('icons');
@@ -55,7 +39,18 @@ export default function Home() {
         }
     })()}, [])
     useEffect(() => {
-        setIconHTML();
+        setHTML(
+            `<f-icon icon='${icon}'${
+                [
+                    '',
+                    `i-s='${style}'`,
+                    `scale='${scale}'`,
+                    `size='${size}'`,
+                    `rotate='${rotate}'`,
+                    `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`,
+                ].filter(i => !i.includes("''")).join(' ')
+            }`
+        )
     }, [ icon, style, scale, size, rotate, animation, animationSpeed ])
 
     return (
