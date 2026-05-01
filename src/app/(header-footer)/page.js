@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import cssStyle from './page.module.css';
@@ -17,7 +17,6 @@ export default function Home() {
     let [ rotate, setRotate ] = useState('');
     let [ animation, setAnimation ] = useState('');
     let [ animationSpeed, setAnimationSpeed ] = useState('');
-    let [ HTML, setHTML ] = useState('');
 
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
@@ -38,8 +37,9 @@ export default function Home() {
             icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
         }
     })()}, [])
-    useEffect(() => {
-        setHTML(
+
+    let html = useMemo(() => {
+        return (
             `<f-icon icon='${icon}'${
                 [
                     '',
@@ -600,9 +600,9 @@ export default function Home() {
                                 ))
                             }</ul>
                         </>}
-                        <Code lang='HTML'>{HTML}</Code>
+                        <Code lang='HTML'>{html}</Code>
                     </div>
-                    <div className='dk-bg' dangerouslySetInnerHTML={{ __html: HTML }}/>
+                    <div className='dk-bg' dangerouslySetInnerHTML={{ __html: html }}/>
                 </div>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling}`}>
