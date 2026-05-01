@@ -6,17 +6,23 @@ export default function Initial(params, toFilter) {
         version: 'b2',
         categories: [],
     }
-    console.log(params, params.f)
+    
     function verify(param) {
         if (param == 'k') return params.k || '';
         if (param == 'f') return {
             regular: 'regular',
             duotone: 'duotone',
         }[params.f] || 'all';
-        if (param == 's') return {
-            solid: 'solid',
-            outline: 'outline'
-        }[params.s] || 'all';
+        if (param == 's') {
+            console.log(params.s, {
+                solid: 'solid',
+                outline: 'outline'
+            }[params.s])
+            return {
+                solid: 'solid',
+                outline: 'outline'
+            }[params.s] || 'all';
+        }
         if (param == 'v') return {
             b1: 'b1',
         }[params.v] || 'b2';

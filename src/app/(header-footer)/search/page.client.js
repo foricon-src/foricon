@@ -340,7 +340,7 @@ export default function Search({ searchParams }) {
     //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
     //     })
     // })()}, [])
-
+    console.log(searchParams)
     let initial = Initial(searchParams, webData.categories);
     console.log(initial)
     let [ loaded, setLoaded ] = useState(false);
