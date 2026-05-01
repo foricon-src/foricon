@@ -160,7 +160,7 @@ export default function Page() {
                     ru: "Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.",
                 }[lang]
             }}/>
-            <code name='HTML'></code>
+            <code></code>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'docs/styling-icons/basics')}>{
                     {

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LanguageContext } from "./language";
 
 export default function Code({ children, lang = 'HTML', nameless }) {
-    let lang = useContext(LanguageContext);
+    let language = useContext(LanguageContext);
 
     return (
         <code name={!nameless && lang} onClick={e => {
@@ -21,7 +21,7 @@ export default function Code({ children, lang = 'HTML', nameless }) {
                 pt: 'Copiado para a área de transferência',
                 es: 'Copiado al portapapeles',
                 ru: 'Скопировано в буфер обмена',
-            }[lang])
+            }[language])
         }}
             dangerouslySetInnerHTML={{
                 __html: formatCode(children, lower(lang))

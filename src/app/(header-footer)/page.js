@@ -600,7 +600,7 @@ export default function Home() {
                                 ))
                             }</ul>
                         </>}
-                        <Code lang='HTML'>{html}</Code>
+                        <Code>{html}</Code>
                     </div>
                     <div className='dk-bg' dangerouslySetInnerHTML={{ __html: html }}/>
                 </div>
