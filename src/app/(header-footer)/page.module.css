@@ -76,7 +76,7 @@
                 mask-image: linear-gradient(to right, black, transparent 50%, black);
                 padding: 3.5vw;
                 
-                & > f-icon {
+                & > f-icon:not([icon='empty-set']) {
                     font-size: 2rem;
                     width: 50px;
                 }

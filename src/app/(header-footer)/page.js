@@ -527,6 +527,22 @@ export default function Home() {
                                 }</li>
                             ))
                         }</ul>
+                        <h6>{
+                            {
+                                en: 'Animation speed',
+                                vi: 'Tốc độ hoạt ảnh',
+                                fr: "Vitesse d'animation",
+                                it: 'Velocità di animazione',
+                                kr: '애니메이션 속도',
+                                ja: 'アニメーション速度',
+                                de: 'Animationsgeschwindigkeit',
+                                nl: 'Animatiesnelheid',
+                                dk: 'Animationshastighed',
+                                pt: 'Velocidade da animação',
+                                es: 'Velocidad de animación',
+                                ru: 'скорость анимации',
+                            }[lang]
+                        }</h6>
                         <ul class='btn-list darker' data-attr='animation'>{
                             [
                                 'xxslow', 'xslow', 'slow', 'semislow',
