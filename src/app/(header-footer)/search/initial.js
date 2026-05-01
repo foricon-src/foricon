@@ -6,7 +6,10 @@ export default function Initial(params, toFilter) {
         version: 'b2',
         categories: [],
     }
-    
+    console.log(params['f='], params['s='], {
+        regular: 'regular',
+        duotone: 'duotone',
+    }[params['f=']])
     function verify(param) {
         if (param == 'k') return params['k='] || '';
         if (param == 'f') return {
