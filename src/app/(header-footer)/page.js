@@ -399,7 +399,7 @@ export default function Home() {
                                 ru: 'Икона',
                             }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='icon'>{
+                        <ul className='btn-list darker'>{
                             [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
                                 <li key={i} onClick={() => setIcon(i)} className={icon == i && 'active'}>
                                     <f-icon icon={i}/>
@@ -424,13 +424,7 @@ export default function Home() {
                         }</h6>
                         <ul className='btn-list darker'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
-                                <li key={i} onClick={() => setStyle(i)} i-s={
-                                    (() =>{
-                                        let cond = style == i;
-                                        console.log(cond);
-                                        return cond ? 'active' : false;
-                                    })()
-                                }>
+                                <li key={i} onClick={() => setStyle(i)} className={style == i && 'active'}>
                                     <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
                                 </li>
                             ))
@@ -498,7 +492,7 @@ export default function Home() {
                             }[lang]
                         }</h6>
                         <ul className='btn-list darker'>{
-                            [ '', 90, 180, 270, 'flipX', 'flipY' ].map(i => (
+                            [ '', '90', '180', '270', 'flipX', 'flipY' ].map(i => (
                                 <li key={i} onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
@@ -561,11 +555,8 @@ export default function Home() {
                             ))
                         }</ul>
                     </div>
-                    <div class='dk-bg'>
-                        <f-icon icon={icon} i-s={style} scale={scale} size={size} rotate={(() => {
-                            console.log(rotate);
-                            return rotate;
-                        })()} animation={[ animation, animationSpeed ].filter(Boolean).join('-')}/>
+                    <div className='dk-bg'>
+                        <f-icon icon={icon} i-s={style} scale={scale} size={size} rotate={rotate} animation={[ animation, animationSpeed ].filter(Boolean).join('-')}/>
                     </div>
                 </div>
             </div>
