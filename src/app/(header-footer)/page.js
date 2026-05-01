@@ -555,16 +555,16 @@ export default function Home() {
                             ))
                         }</ul>
                     </div>
-                    <div className='dk-bg'>
-                        <f-icon
-                            icon={icon}
-                            i-s={style}
-                            scale={scale}
-                            size={size}
-                            {...{ rotate }}
-                            animation={[ animation, animationSpeed ].filter(Boolean).join('-')}
-                        />
-                    </div>
+                    <div className='dk-bg' dangerouslySetInnerHTML={{
+                        __html: `<f-icon
+                            icon='${icon}'
+                            i-s='${style}'
+                            scale='${scale}'
+                            size='${size}'
+                            rotate='${rotate}'
+                            animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'
+                        />`
+                    }}/>
                 </div>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling}`}>
