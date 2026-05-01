@@ -1,8 +1,8 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
-import { useEffect } from "react";
+import { LanguageContext } from 'Com/language';
+import { useContext } from "react";
 import { get, ref } from "firebase/database";
 import { db } from "Com/firebase";
 import usePage from "Pag/(header)/account/use-page";
@@ -12,6 +12,7 @@ import cssStyle from './page.module.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContext(LanguageContext)
 
     usePage(async () => {
         let { plan, pageview: { count, start } } = user.doc;
@@ -24,11 +25,26 @@ export default function Page() {
         pageviews.style.setProperty('--angle', `${percent * 360}deg`);
         pageviews.style.setProperty('--duration', `${percent * (6 - percent * 3)}s`);
 
-        let reset = new Date(start.year, start.month, start.day, start.hours, start.minutes, start.seconds);
-        reset.setDate(reset.getDate() + 30)
-
         elemById('count').innerText = `${count} / ${planData.pageviews}`;
-        elemById('reset').innerText = formatDate(reset);
+
+        let reset = new Date(start.year, start.month, start.day, start.hours, start.minutes, start.seconds);
+        reset.setDate(reset.getDate() + 30);
+        let formatted = formatDate(reset, lang);
+        elemById('reset').innerText =
+            lang == 'kr' ? `${formatted}에 재설정됨` :
+            lang == 'ja' ? `${format}にリセット` :
+            `${{
+                en: 'Reset at',
+                vi: 'Đặt lại vào',
+                fr: 'Réinitialisé à',
+                it: 'Reimpostato alle',
+                de: 'Zurückgesetzt am',
+                nl: 'Opnieuw ingesteld om',
+                dk: 'Nulstillet kl.',
+                pt: 'Reiniciado às',
+                es: 'Reiniciado a las',
+                ru: 'Сброс настроек в',
+            }[lang]} ${format}`;
     })
 
     return (
@@ -37,7 +53,7 @@ export default function Page() {
                 <div className={cssStyle.chart}>
                     <div>
                         <span>{
-                            GetLang({
+                            {
                                 en: 'You have used',
                                 vi: 'Bạn đã sử dụng',
                                 fr: 'Vous avez utilisé',
@@ -48,11 +64,11 @@ export default function Page() {
                                 pt: 'Utilizou',
                                 es: 'Has utilizado',
                                 ru: 'Вы использовали',
-                            })
+                            }[lang]
                         }</span>
                         <h4 id='count'></h4>
                         <span>{
-                            GetLang({
+                            {
                                 en: 'pageviews',
                                 vi: 'lượt xem trang',
                                 fr: 'pages vues',
@@ -65,7 +81,7 @@ export default function Page() {
                                 pt: 'visualizações de página',
                                 es: 'páginas vistas',
                                 ru: 'просмотров страниц',
-                            })
+                            }[lang]
                         }</span>
                     </div>
                 </div>
@@ -75,7 +91,7 @@ export default function Page() {
                     <li onClick={() => go(router, 'account/package/settings')}>
                         <f-icon icon='gear'></f-icon>
                         <span>{
-                            GetLang({
+                            {
                                 en: 'Settings',
                                 vi: 'Cài đặt',
                                 fr: 'Paramètres',
@@ -88,13 +104,13 @@ export default function Page() {
                                 pt: 'Configurações',
                                 es: 'Ajustes',
                                 ru: 'Настройки',
-                            })
+                            }[lang]
                         }</span>
                     </li>
                     <li onClick={() => go(router, 'account/package/download')}>
                         <f-icon icon='arrow-down-to-bracket' i-s='outline'></f-icon>
                         <span>{
-                            GetLang({
+                            {
                                 en: 'Download',
                                 vi: 'Tải xuống',
                                 fr: 'Télécharger',
@@ -107,13 +123,13 @@ export default function Page() {
                                 pt: 'Transferir',
                                 es: 'Descargar',
                                 ru: 'Скачать',
-                            })
+                            }[lang]
                         }</span>
                     </li>
                 </ul>
             </div>
             <h3>{
-                GetLang({
+                {
                     en: 'Import',
                     vi: 'Import',
                     fr: 'Importer',
@@ -126,10 +142,10 @@ export default function Page() {
                     pt: 'Importação',
                     es: 'Importar',
                     ru: 'Импорт',
-                })
+                }[lang]
             }</h3>
             <p dangerouslySetInnerHTML={{
-                __html: GetLang({
+                __html: {
                     en: "To import Foricon Package to your site, please copy the code below and paste it into your HTML\'s <span className='small-code element'>head</span>",
                     vi: "Để import Foricon Package vào trang web của bạn, vui lòng sao chép mã bên dưới và dán vào thẻ <span className='small-code element'>head</span> của HTML của bạn",
                     fr: "Pour importer le package Foricon sur votre site, veuillez copier le code ci-dessous et le coller dans votre <span className='small-code element'>head</span> HTML",
@@ -142,12 +158,12 @@ export default function Page() {
                     pt: "Para importar o pacote Foricon para o seu site, copie o código abaixo e cole-o no <span className='small-code element'>head</span> do seu HTML",
                     es: "Para importar el paquete Foricon a su sitio, copie el código a continuación y péguelo en el <span className='small-code element'>head</span> de su HTML.",
                     ru: "Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.",
-                })
+                }[lang]
             }}/>
             <code name='HTML'></code>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'docs/styling-icons/basics')}>{
-                    GetLang({
+                    {
                         en: 'Guide about customizing icons',
                         vi: 'Hướng dẫn tùy chỉnh biểu tượng',
                         fr: 'Guide sur la personnalisation des icônes',
@@ -160,7 +176,7 @@ export default function Page() {
                         pt: 'Guia sobre a personalização de ícones',
                         es: 'Guía sobre cómo personalizar iconos',
                         ru: 'Руководство по настройке иконок',
-                    })
+                    }[lang]
                 }</li>
             </ul>
         </div>

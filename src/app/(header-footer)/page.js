@@ -1,13 +1,22 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 // import Image from 'next/image';
 // import favicon from 'Ass/foricon-f-favicon.png';
-import { GetLang } from 'Com/language';
+import { LanguageContext } from 'Com/language';
 import cssStyle from './page.module.css';
-import 'Com/utils';
 
 export default function Home() {
+    let lang = useContext(LanguageContext);
+
+    let [ icon, setIcon ] = useState('brush');
+    let [ style, setStyle ] = useState('solid');
+    let [ scale, setScale ] = useState('');
+    let [ size, setSize ] = useState('');
+    let [ rotate, setRotate ] = useState('');
+    let [ animation, setAnimation ] = useState('');
+    let [ animationSpeed, setAnimationSpeed ] = useState('');
+
     useEffect(() => {(async () => {
         while (elemById('loading')) await wait();
         let icons = elemById('icons');
@@ -36,7 +45,7 @@ export default function Home() {
                     <f-icon i-s='outline' icon='hashtag'/><span>{webData.verFull}</span>
                 </a>
                 <h1>{
-                    GetLang({
+                    {
                         en: 'Icons That Make Your Design Shine',
                         vi: 'Kho icon font free, đầu tiên tại Việt Nam',
                         fr: 'Des icônes qui font briller votre design',
@@ -49,10 +58,10 @@ export default function Home() {
                         pt: 'Ícones que fazem seu design brilhar',
                         es: 'Iconos que hacen que tu diseño brille',
                         ru: 'Иконки, которые делают ваш дизайн ярким',
-                    })
+                    }[lang]
                 }</h1>
                 <p>{
-                    GetLang({
+                    {
                         en: 'Design smarter with icons that customize, animate, and integrate in seconds',
                         vi: 'Thiết kế thông minh hơn với các biểu tượng có thể tùy chỉnh, animate và tích hợp trong vài giây',
                         fr: "Concevez plus intelligemment avec des icônes qui se personnalisent, s'animent et s'intègrent en quelques secondes",
@@ -65,12 +74,12 @@ export default function Home() {
                         pt: 'Crie um design mais inteligente com ícones que podem ser personalizados, animados e integrados em segundos',
                         es: 'Diseñe de forma más inteligente con íconos que se personalizan, animan e integran en segundos',
                         ru: 'Проектируйте умнее с помощью иконок, которые можно настраивать, анимировать и интегрировать за считанные секунды.',
-                    })
+                    }[lang]
                 }</p>
                 <label>
                     <f-icon i-s='outline' icon='magnifying-glass'/>
                     <input placeholder={
-                        GetLang({
+                        {
                             en: 'Find your perfect icon - start typing...',
                             vi: 'Tìm biểu tượng hoàn hảo - bắt đầu nhập...',
                             fr: 'Trouvez votre icône parfaite - commencez à taper...',
@@ -83,7 +92,7 @@ export default function Home() {
                             pt: 'Encuentra tu icono perfecto: comienza a escribir...',
                             es: 'Encontre o ícone perfeito - comece a escrever...',
                             ru: 'Найдите свой идеальный значок — начните вводить текст...',
-                        })
+                        }[lang]
                     }/>
                 </label>
             </div>
@@ -91,7 +100,7 @@ export default function Home() {
                 <div>
                     <h1>
                         <span class='icon-count'/>+{
-                        ` ${GetLang({
+                        ` ${{
                             en: 'icons',
                             vi: 'biểu tượng',
                             fr: 'icônes',
@@ -104,10 +113,10 @@ export default function Home() {
                             pt: 'ícones',
                             es: 'iconos',
                             ru: 'иконки',
-                        })}`
+                        }[lang]}`
                     }</h1>
                     <p>{
-                        GetLang({
+                        {
                             en: 'are ready to be used',
                             vi: 'sẵn sàng để sử dụng',
                             fr: 'sont prêts à être utilisés',
@@ -120,14 +129,14 @@ export default function Home() {
                             pt: 'estão prontos para serem utilizados',
                             es: 'están listos para ser utilizados',
                             ru: 'готовы к использованию',
-                        })
+                        }[lang]
                     }</p>
                 </div>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.integration}`}>
                 <div>
                     <h6 class='tagline'>{
-                        GetLang({
+                        {
                             en: 'Integration',
                             vi: 'Tích hợp',
                             fr: "L'intégration",
@@ -140,10 +149,10 @@ export default function Home() {
                             pt: 'Integração',
                             es: 'Integración',
                             ru: 'Интеграция',
-                        })
+                        }[lang]
                     }</h6>
                     <h1>{
-                        GetLang({
+                        {
                             en: 'Easy Integration,&nbsp;Stunning Results',
                             vi: 'Dễ dàng tích hợp,&nbsp;Kết quả bắt mắt',
                             fr: 'Intégration facile,&nbsp;Résultats époustouflants',
@@ -156,10 +165,10 @@ export default function Home() {
                             pt: 'Fácil Integração,&nbsp;Resultados impressionantes',
                             es: 'Fácil integración,&nbsp;resultados sorprendentes',
                             ru: 'Простая интеграция,&nbsp;Потрясающие результаты',
-                        })
+                        }[lang]
                     }</h1>
                     <p>{
-                        GetLang({
+                        {
                             en: "Integrating our icon library into your projects is a breeze. Simply choose the icons you need, get its code, and start using them right away. With our extensive collection and easy-to-use interface, you'll find the perfect icons to elevate your designs.",
                             vi: 'Tích hợp thư viện icon của chúng tôi vào các dự án của bạn rất dễ. Chỉ cần chọn các biểu tượng bạn cần, lấy mã nhúng của biểu tượng đó và bắt đầu sử dụng ngay. Với bộ sưu tập phong phú và giao diện dễ sử dụng của chúng tôi, bạn sẽ tìm thấy các biểu tượng hoàn hảo để nâng tầm thiết kế của mình.',
                             fr: "L'intégration de notre bibliothèque d'icônes dans vos projets est un jeu d'enfant. Choisissez simplement les icônes dont vous avez besoin, obtenez leur code et commencez à les utiliser immédiatement. Grâce à notre vaste collection et à notre interface facile à utiliser, vous trouverez les icônes parfaites pour rehausser vos créations.",
@@ -172,10 +181,10 @@ export default function Home() {
                             pt: 'Integrar a nossa biblioteca de ícones nos seus projetos é muito fácil. Basta escolher os ícones de que necessita, obter o código e começar a utilizá-los imediatamente. Com a nossa extensa coleção e interface fácil de utilizar, encontrará os ícones perfeitos para elevar os seus designs.',
                             es: 'Integrar nuestra biblioteca de íconos en tus proyectos es muy fácil. Simplemente elige los íconos que necesitas, obtén su código y comienza a usarlos de inmediato. Con nuestra amplia colección y nuestra interfaz fácil de usar, encontrarás los íconos perfectos para mejorar tus diseños.',
                             ru: 'Интеграция нашей библиотеки иконок в ваши проекты &#8212; это просто. Просто выберите нужные вам иконки, получите их код и начните использовать их прямо сейчас. С нашей обширной коллекцией и простым в использовании интерфейсом вы найдете идеальные иконки, которые поднимут ваши проекты.',
-                        })
+                        }[lang]
                     }</p>
                     <a class='btn primary' href='/p/docs.html?adding-icons/basics'>{
-                        GetLang({
+                        {
                             en: 'Basics of Adding Icons',
                             vi: 'Hướng dẫn về thêm các icon',
                             fr: "Notions de base sur l'ajout d'icônes",
@@ -188,7 +197,7 @@ export default function Home() {
                             pt: 'Noções básicas de adição de ícones',
                             es: 'Conceptos básicos para agregar iconos',
                             ru: 'Основы добавления иконок',
-                        })
+                        }[lang]
                     }</a>
                 </div>
                 <div>
@@ -197,7 +206,7 @@ export default function Home() {
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.iconFamilies}`}>
                 <h6 class='tagline'>{
-                    GetLang({
+                    {
                         en: 'Icon Families',
                         vi: 'Bộ biểu tượng',
                         fr: "Familles d'icônes",
@@ -210,10 +219,10 @@ export default function Home() {
                         pt: 'Famílias de ícones',
                         es: 'Familias de iconos',
                         ru: 'Семейства иконок',
-                    })
+                    }[lang]
                 }</h6>
                 <h1>{
-                    GetLang({
+                    {
                         en: '4 Ways to Decorate Your Project',
                         vi: '4 cách để trang trí dự án của bạn',
                         fr: '4 façons de décorer votre projet',
@@ -226,7 +235,7 @@ export default function Home() {
                         pt: '4 formas de decorar o seu projeto',
                         es: '4 formas de decorar tu proyecto',
                         ru: '4 способа украсить ваш проект',
-                    })
+                    }[lang]
                 }</h1>
                 <ul>
                     <li onclick='go("search#v=b2&f=regular&s=solid")'>
@@ -325,7 +334,7 @@ export default function Home() {
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.customizable}`}>
                 <h6 class='tagline'>{
-                    GetLang({
+                    {
                         en: 'Easy to Customize',
                         vi: 'Dễ dàng tùy chỉnh',
                         fr: 'Facile à personnaliser',
@@ -338,10 +347,10 @@ export default function Home() {
                         pt: 'Fácil de personalizar',
                         es: 'Fácil de personalizar',
                         ru: 'Легко настраивать',
-                    })
+                    }[lang]
                 }</h6>
                 <h1>{
-                    GetLang({
+                    {
                         en: 'Style Our Icons in Your Own Way',
                         vi: 'Tùy chỉnh icon của chúng tôi theo cách riêng của bạn',
                         fr: 'Personnalisez nos icônes à votre façon',
@@ -354,10 +363,10 @@ export default function Home() {
                         pt: 'Estilize os nossos ícones à sua maneira',
                         es: 'Dale estilo a nuestros íconos a tu manera',
                         ru: 'Оформляйте наши иконки по-своему',
-                    })
+                    }[lang]
                 }</h1>
                 <p>{
-                    GetLang({
+                    {
                         en: 'Foricon allows you to customize icons to match your unique style and branding. Adjust colors, sizes, styles, transform and animate them to create a cohesive visual identity across all your designs. Make our icons truly yours.',
                         vi: 'Foricon cho phép bạn tùy chỉnh các biểu tượng để phù hợp với phong cách và thương hiệu độc đáo của bạn. Điều chỉnh màu sắc, kích thước, kiểu dáng, biến đổi và tạo hoạt ảnh cho chúng để tạo ra sự đồng bộ trên tất cả các thiết kế của bạn. Làm cho các biểu tượng của chúng tôi thực sự là của bạn.',
                         fr: "Foricon vous permet de personnaliser vos icônes pour qu'elles correspondent à votre style et à votre image de marque. Ajustez les couleurs, les tailles, les styles, transformez-les et animez-les pour créer une identité visuelle cohérente sur toutes vos créations. Personnalisez nos icônes.",
@@ -370,12 +379,12 @@ export default function Home() {
                         pt: 'O Foricon permite personalizar ícones para combinar com o seu estilo e marca únicos. Ajuste cores, tamanhos, estilos, transforme-os e anime-os para criar uma identidade visual coesa em todos os seus designs. Torne os nossos ícones verdadeiramente seus.',
                         es: 'Foricon te permite personalizar los íconos para que se adapten a tu estilo y marca únicos. Ajusta colores, tamaños, estilos, transfórmalos y anímalos para crear una identidad visual cohesiva en todos tus diseños. Haz que nuestros íconos sean verdaderamente tuyos.',
                         ru: 'Foricon позволяет вам настраивать иконки в соответствии с вашим уникальным стилем и брендингом. Настраивайте цвета, размеры, стили, трансформируйте и анимируйте их, чтобы создать целостную визуальную идентичность во всех ваших проектах. Сделайте наши иконки по-настоящему вашими.',
-                    })
+                    }[lang]
                 }</p>
                 <div>
                     <div>
                         <h6>{
-                            GetLang({
+                            {
                                 en: 'Icon',
                                 vi: 'Biểu tượng',
                                 fr: 'Icône',
@@ -388,18 +397,17 @@ export default function Home() {
                                 pt: 'Ícone',
                                 es: 'Icono',
                                 ru: 'Икона',
-                            })
+                            }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='icon'>
-                            <li data-value='brush' class='active'><f-icon icon='brush'/></li>
-                            <li data-value='grid-4'><f-icon icon='grid-4'/></li>
-                            <li data-value='mug-tea-hot'><f-icon icon='mug-tea-hot'/></li>
-                            <li data-value='layers'><f-icon icon='layers'/></li>
-                            <li data-value='palette'><f-icon icon='palette'/></li>
-                            <li data-value='pencil'><f-icon icon='pencil'/></li>
-                        </ul>
+                        <ul class='btn-list darker' data-attr='icon'>{
+                            [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
+                                <li onClick={() => setIcon(i)} className={icon == i && 'active'}>
+                                    <f-icon icon={i}/>
+                                </li>
+                            ))
+                        }</ul>
                         <h6>{
-                            GetLang({
+                            {
                                 en: 'Style',
                                 vi: 'Kiểu',
                                 fr: 'Style',
@@ -412,16 +420,17 @@ export default function Home() {
                                 pt: 'Estilo',
                                 es: 'Estilo',
                                 ru: 'Стиль',
-                            })
+                            }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='i-s'>
-                            <li data-value='' class='active'><f-icon icon='circle'/></li>
-                            <li data-value='outline'><f-icon i-s='outline' icon='circle'/></li>
-                            <li data-value='duotone/solid'><f-icon i-s='duotone/solid' icon='circle-half'/></li>
-                            <li data-value='duotone/outline'><f-icon i-s='duotone/outline' icon='circle-half'/></li>
-                        </ul>
+                        <ul class='btn-list darker' data-attr='i-s'>{
+                            [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
+                                <li onClick={() => setStyle(i)} i-s={style == i && 'active'}>
+                                    <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
+                                </li>
+                            ))
+                        }</ul>
                         <h6>{
-                            GetLang({
+                            {
                                 en: 'Scale',
                                 vi: 'Tỉ lệ',
                                 fr: 'Échelle',
@@ -434,17 +443,17 @@ export default function Home() {
                                 pt: 'Balança',
                                 es: 'Escala',
                                 ru: 'Шкала',
-                            })
+                            }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='scale'>
-                            <li data-value='xsmaller'>Extra smaller</li>
-                            <li data-value='smaller'>Smaller</li>
-                            <li data-value='' class='active'>Default</li>
-                            <li data-value='larger'>Larger</li>
-                            <li data-value='xlarger'>Extra Larger</li>
-                        </ul>
+                        <ul class='btn-list darker' data-attr='scale'>{
+                            [ 'xsmaller', 'smaller', '', 'larger', 'xlarger' ].map(i => (
+                                <li onClick={() => setScale(i)} className={scale == i && 'active'}>{
+                                    i || <f-icon icon='empty-set' i-s='outline'/>
+                                }</li>
+                            ))
+                        }</ul>
                         <h6>{
-                            GetLang({
+                            {
                                 en: 'Size',
                                 vi: 'Kích thước',
                                 fr: 'Taille',
@@ -457,19 +466,17 @@ export default function Home() {
                                 pt: 'Tamanho',
                                 es: 'Tamaño',
                                 ru: 'Размер',
-                            })
+                            }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='size'>
-                            <li data-value='smallest'>Smallest</li>
-                            <li data-value='smaller'>Smaller</li>
-                            <li data-value='small'>Small</li>
-                            <li data-value='' class='active'>Default</li>
-                            <li data-value='large'>Large</li>
-                            <li data-value='larger'>Larger</li>
-                            <li data-value='largest'>Largest</li>
-                        </ul>
+                        <ul class='btn-list darker' data-attr='size'>{
+                            [ 'smallest', 'smaller', 'small', '', 'large', 'larger', 'largest' ].map(i => (
+                                <li onClick={() => setSize(i)} className={size == i && 'active'}>{
+                                    i || <f-icon icon='empty-set' i-s='outline'/>
+                                }</li>
+                            ))
+                        }</ul>
                         <h6>{
-                            GetLang({
+                            {
                                 en: 'Rotate',
                                 vi: 'Xoay',
                                 fr: 'Tourner',
@@ -482,18 +489,17 @@ export default function Home() {
                                 pt: 'Girar',
                                 es: 'Girar',
                                 ru: 'Повернуть',
-                            })
+                            }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='rotate'>
-                            <li data-value='' class='active'>None</li>
-                            <li data-value='90'>90</li>
-                            <li data-value='180'>180</li>
-                            <li data-value='270'>270</li>
-                            <li data-value='flipX'>Flip X</li>
-                            <li data-value='flipY'>Flip Y</li>
-                        </ul>
+                        <ul class='btn-list darker' data-attr='rotate'>{
+                            [ '', 90, 180, 270, 'flipX', 'flipY' ].map(i => (
+                                <li onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
+                                    i || <f-icon icon='empty-set' i-s='outline'/>
+                                }</li>
+                            ))
+                        }</ul>
                         <h6>{
-                            GetLang({
+                            {
                                 en: 'Animation',
                                 vi: 'Hoạt ảnh',
                                 fr: 'Animation',
@@ -506,26 +512,41 @@ export default function Home() {
                                 pt: 'Animação',
                                 es: 'Animación',
                                 ru: 'Анимация',
-                            })
+                            }[lang]
                         }</h6>
-                        <ul class='btn-list darker' data-attr='animation'>
-                            <li data-value='' class='active'>None</li>
-                            <li data-value='fade'>Fade</li>
-                            <li data-value='beat'>Beat</li>
-                            <li data-value='spin'>Spin</li>
-                            <li data-value='flipX'>Flip X</li>
-                            <li data-value='flipY'>Flip Y</li>
-                            <li data-value='flipXY'>Flip X & Y</li>
-                        </ul>
+                        <ul class='btn-list darker' data-attr='animation'>{
+                            [
+                                '',
+                                'ltfade', 'fade', 'hvfade', 'ulfade',
+                                'smbeat', 'beat', 'bgbeat', 'fadebeat',
+                                'spin', 'spin-reverse',
+                                'flipX', 'flipY', 'flipXY',
+                            ].map(i => (
+                                <li onClick={() => setAnimation(i)} className={animation == i && 'active'}>{
+                                    i || <f-icon icon='empty-set' i-s='outline'/>
+                                }</li>
+                            ))
+                        }</ul>
+                        <ul class='btn-list darker' data-attr='animation'>{
+                            [
+                                'xxslow', 'xslow', 'slow', 'semislow',
+                                '',
+                                'semi-fast', 'fast', 'xfast', 'xxfast',
+                            ].map(i => (
+                                <li onClick={() => setAnimationSpeed(i)} className={animationSpeed == i && 'active'}>{
+                                    i || <f-icon icon='empty-set' i-s='outline'/>
+                                }</li>
+                            ))
+                        }</ul>
                     </div>
                     <div class='dk-bg'>
-                        <f-icon icon='brush'/>
+                        <f-icon icon={icon} i-s={style} scale={scale} size={size} rotate={rotate} animation={[ animation, animationSpeed ].filter(Boolean).join('-')}/>
                     </div>
                 </div>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling}`}>
                 <h1>{
-                    GetLang({
+                    {
                         en: 'Explore More Styling Options!',
                         vi: 'Khám phá thêm nhiều tùy chọn hơn!',
                         fr: 'Explorer plus d&#8217;options de style&#160;!',
@@ -538,11 +559,11 @@ export default function Home() {
                         pt: 'Explore mais opções de estilo!',
                         es: '&#161;Explora más opciones de estilo!',
                         ru: 'Исследуйте больше вариантов стилей!',
-                    })
+                    }[lang]
                 }
                 </h1>
                 <p>{
-                    GetLang({
+                    {
                         en: 'Dive into their properties and how they work. Advanced color, style, size and animation adjustment are all in the Docs.',
                         vi: 'Đi sâu vào thuộc tính của chúng và cách chúng hoạt đọng. Điều chỉnh màu sắc, kiểu dáng, kích thước và hoạt ảnh nâng cao đều có trong Tài liệu.',
                         fr: 'Plongez dans leurs propriétés et leur fonctionnement. Les réglages avancés de couleur, de style, de taille et d\'animation se trouvent tous dans la documentation.',
@@ -555,10 +576,10 @@ export default function Home() {
                         pt: 'Mergulhe nas suas propriedades e como funcionam. Os ajustes avançados de cor, estilo, tamanho e animação estão todos no Documentos.',
                         es: 'Conozca sus propiedades y cómo funcionan. Los ajustes avanzados de color, estilo, tamaño y animación se encuentran en la documentación.',
                         ru: 'Погрузитесь в их свойства и принципы работы. Расширенные настройки цвета, стиля, размера и анимации &#8212; все это в Docs.',
-                    })
+                    }[lang]
                 }</p>
                 <a class='btn primary' href='/p/docs.html?styling-icons/basics'>{
-                    GetLang({
+                    {
                         en: 'Explore',
                         vi: 'Khám phá',
                         fr: 'Explorer',
@@ -571,13 +592,13 @@ export default function Home() {
                         pt: 'Explorar',
                         es: 'Explorar',
                         ru: 'Исследовать',
-                    })
+                    }[lang]
                 }</a>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.compatible} dk-bg`}>
                 <div>
                     <h5>{
-                        GetLang({
+                        {
                             en: 'Compatible With',
                             vi: 'Tương thích với',
                             fr: 'Compatible avec',
@@ -590,10 +611,10 @@ export default function Home() {
                             pt: 'Compatível com',
                             es: 'Compatible con',
                             ru: 'Совместим с',
-                        })
+                        }[lang]
                     }</h5>
                     <h1>{
-                        GetLang({
+                        {
                             en: 'Where You Work',
                             vi: 'Nơi bạn làm việc',
                             fr: 'Où vous travaillez',
@@ -606,13 +627,13 @@ export default function Home() {
                             pt: 'Onde trabalha',
                             es: 'Donde trabajas',
                             ru: 'Где ты работаешь',
-                        })
+                        }[lang]
                     }</h1>
                 </div>
                 <ul>
                     <li>
                         <h3>{
-                            GetLang({
+                            {
                                 en: 'Developers',
                                 vi: 'Lập trình viên',
                                 fr: 'Développeurs',
@@ -625,7 +646,7 @@ export default function Home() {
                                 pt: 'Desenvolvedores',
                                 es: 'Desarrolladores',
                                 ru: 'Разработчики',
-                            })
+                            }[lang]
                         }</h3>
                         <ul>
                             <li>
@@ -639,7 +660,7 @@ export default function Home() {
                     </li>
                     <li>
                         <h3>{
-                            GetLang({
+                            {
                                 en: 'Designers',
                                 vi: 'Nhà thiết kế đồ họa',
                                 fr: 'Créateurs',
@@ -652,7 +673,7 @@ export default function Home() {
                                 pt: 'Designers',
                                 es: 'Diseñadores',
                                 ru: 'Дизайнеры',
-                            })
+                            }[lang]
                         }</h3>
                         <ul>
                             <li>
@@ -665,7 +686,7 @@ export default function Home() {
                     </li>
                     <li>
                         <h3>{
-                            GetLang({
+                            {
                                 en: 'Content Creators',
                                 vi: 'Nhà sáng tạo nội dung',
                                 fr: 'Créateurs de contenu',
@@ -678,7 +699,7 @@ export default function Home() {
                                 pt: 'Criadores de conteúdo',
                                 es: 'Creadores de contenido',
                                 ru: 'Создатели контента',
-                            })
+                            }[lang]
                         }</h3>
                         <ul>
                             <li>

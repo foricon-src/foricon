@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang, LanguageContext } from 'Com/language';
+import { LanguageContext } from 'Com/language';
 import { useContext } from "react";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
@@ -90,7 +90,7 @@ export default function Page() {
             </ul>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'pricing')}>{
-                    GetLang({
+                    {
                         en: 'Foricon Plus plans',
                         vi: 'Các gói Foricon Plus',
                         fr: 'Forfaits Foricon Plus',
@@ -103,10 +103,10 @@ export default function Page() {
                         pt: 'Planos Foricon Plus',
                         es: 'Planes de Foricon Plus',
                         ru: 'Планы Foricon Plus',
-                    })
+                    }[lang]
                 }</li>
                 <li className='red'>{
-                    GetLang({
+                    {
                         en: 'Remove my account',
                         vi: 'Xoá tài khoản của tôi',
                         fr: 'Supprimer mon compte',
@@ -119,7 +119,7 @@ export default function Page() {
                         pt: 'Remover a minha conta',
                         es: 'Eliminar mi cuenta',
                         ru: 'Удалить мой аккаунт',
-                    })
+                    }[lang]
                 }</li>
             </ul>
         </div>

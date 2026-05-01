@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { GetLang } from "./language";
+import { LanguageContext } from "./language";
 import logo from 'Pub/foricon-f-2.png';
+import { useContext } from "react";
 
 export default function Footer() {
+    let lang = useContext(LanguageContext);
+
     return (
         <footer>
             <div>
@@ -26,7 +29,7 @@ export default function Footer() {
                 <ul>
                     <li>
                         <a href='/about'>{
-                            GetLang({
+                            {
                                 en: 'About us',
                                 vi: 'Về chúng tôi',
                                 fr: 'À propos de nous',
@@ -38,12 +41,12 @@ export default function Footer() {
                                 dk: 'Om os',
                                 pt: 'Sobre nós',
                                 es: 'Sobre nosotros',
-                            })
+                            }[lang]
                         }</a>
                     </li>
                     <li>
                         <a href='/tos'>{
-                            GetLang({
+                            {
                                 en: 'Terms of Service',
                                 vi: 'Điều khoản dịch vụ',
                                 fr: 'Conditions d&#39;utilisation',
@@ -55,12 +58,12 @@ export default function Footer() {
                                 dk: 'Servicevilkår',
                                 pt: 'Termos de serviço',
                                 es: 'Términos de servicio',
-                            })
+                            }[lang]
                         }</a>
                     </li>
                     <li>
                         <a href='/refund-policy'>{
-                            GetLang({
+                            {
                                 en: 'Refund Policy',
                                 vi: 'Chính sách hoàn tiền',
                                 fr: 'Politique de remboursement',
@@ -72,12 +75,12 @@ export default function Footer() {
                                 dk: 'Refusionspolitik',
                                 pt: 'Política de Reembolso',
                                 es: 'Política de reembolso',
-                            })
+                            }[lang]
                         }</a>
                     </li>
                     <li>
                         <a href='/privacy'>{
-                            GetLang({
+                            {
                                 en: 'Privacy Policy',
                                 vi: 'Chính sách bảo mật',
                                 fr: 'Politique de Confidentialité',
@@ -89,12 +92,12 @@ export default function Footer() {
                                 dk: 'Fortrolighedspolitik',
                                 pt: 'Política de Privacidade',
                                 es: 'Política de Privacidad',
-                            })
+                            }[lang]
                         }</a>
                     </li>
                     <li>
                         <a href='/support'>{
-                            GetLang({
+                            {
                                 en: 'Support',
                                 vi: 'Hỗ trợ',
                                 fr: 'Soutien',
@@ -106,7 +109,7 @@ export default function Footer() {
                                 dk: 'Support',
                                 pt: 'Apoiar',
                                 es: 'Apoyo',
-                            })
+                            }[lang]
                         }</a>
                     </li>
                 </ul>

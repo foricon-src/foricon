@@ -1,12 +1,12 @@
 'use client';
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { dbFirestore, auth } from "Com/firebase";
-import { GetLang } from 'Com/language';
+import { LanguageContext } from 'Com/language';
 import popUp from "Com/popup";
 import recordLogin from "Com/record-login";
 
@@ -126,6 +126,7 @@ let texts = {
 export default function LogIn() {
     let router = useRouter();
     let params = useSearchParams();
+    let lang = useContext(LanguageContext)
 
     let [ step, setStep ] = useState('email');
     let [ email, setEmail ] = useState('');
@@ -165,10 +166,10 @@ export default function LogIn() {
                 <Link href='/' title='Back to home'>
                     <img src='/foricon-f-2.png'/>
                 </Link>
-                <h1>{texts[language][step].h1}</h1>
-                <p>{texts[language][step].p}</p>
+                <h1>{texts[lang][step].h1}</h1>
+                <p>{texts[lang][step].p}</p>
                 <a className='btn secondary' href='/signup'>{
-                    GetLang({
+                    {
                         en: 'Create a new account',
                         vi: 'Tạo tài khoản mới',
                         fr: 'Créer un nouveau compte',
@@ -181,9 +182,8 @@ export default function LogIn() {
                         pt: 'Criar uma nova conta',
                         es: 'Crea una cuenta nueva',
                         ru: 'Создать новую учетную запись',
-                    })
-                }
-                </a>
+                    }[lang]
+                }</a>
             </div>
             <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', e, async () => {
                 let snapshot = await getDocs(query(
@@ -209,7 +209,7 @@ export default function LogIn() {
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 <div>
                     <button className='primary' type='submit'>{
-                        GetLang({
+                        {
                             en: 'Next',
                             vi: 'Tiếp theo',
                             fr: 'Suivante',
@@ -222,7 +222,7 @@ export default function LogIn() {
                             pt: 'Próximo',
                             es: 'Próximo',
                             ru: 'Следующий',
-                        })
+                        }[lang]
                     }</button>
                 </div>
             </form>
@@ -240,7 +240,7 @@ export default function LogIn() {
                 <a href='/forgot'>Forgot password</a>
                 <div>
                     <button class='secondary' type='button' onClick={() => changePage('email')}>{
-                        GetLang({
+                        {
                             en: 'Back',
                             vi: 'Trở lại',
                             fr: 'Dos',
@@ -253,10 +253,10 @@ export default function LogIn() {
                             pt: 'Voltar',
                             es: 'Atrás',
                             ru: 'Назад',
-                        })
+                        }[lang]
                     }</button>
                     <button class='primary' type='submit'>{
-                        GetLang({
+                        {
                             en: 'Log in',
                             vi: 'Đăng nhập',
                             fr: 'Se connecter',
@@ -269,7 +269,7 @@ export default function LogIn() {
                             pt: 'Conecte-se',
                             es: 'Acceso',
                             ru: 'Авторизоваться',
-                        })
+                        }[lang]
                     }</button>
                 </div>
             </form>

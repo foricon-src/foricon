@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { useContext } from "react";
+import { LanguageContext } from 'Com/language';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -9,13 +10,14 @@ import './page.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContext(LanguageContext)
 
     usePage(() => {})
 
     return (
         <div name='security'>
             <h3>{
-                GetLang({
+                {
                     en: 'Security & Privacy',
                     vi: 'Bảo mật & Quyền riêng tư',
                     fr: 'Sécurité et confidentialité',
@@ -28,11 +30,11 @@ export default function Page() {
                     pt: 'Segurança e Privacidade',
                     es: 'Seguridad y privacidad',
                     ru: 'Безопасность и конфиденциальность',
-                })
+                }[lang]
             }</h3>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'account/security/change-password')}>{
-                    GetLang({
+                    {
                         en: 'Change password',
                         vi: 'Thay đổi mật khẩu',
                         fr: 'Changer le mot de passe',
@@ -45,10 +47,10 @@ export default function Page() {
                         pt: 'Alterar a palavra-passe',
                         es: 'Cambiar la contraseña',
                         ru: 'Изменить пароль',
-                    })
+                    }[lang]
                 }</li>
                 <li onClick={() => go(router, 'account/security/login-history')}>{
-                    GetLang({
+                    {
                         en: 'Login history',
                         vi: 'Lịch sử đăng nhập',
                         fr: 'Historique de connexion',
@@ -61,7 +63,7 @@ export default function Page() {
                         pt: 'Histórico de login',
                         es: 'Historial de inicio de sesión',
                         ru: 'История входов',
-                    })
+                    }[lang]
                 }</li>
             </ul>
         </div>

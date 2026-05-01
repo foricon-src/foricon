@@ -5,15 +5,11 @@ import { setDoc, getDoc, doc } from "firebase/firestore";
 import { dbFirestore } from "./firebase";
 
 export const LanguageContext = createContext(null);
-export function GetLang(obj) {
-    let lang = useContext(LanguageContext);
-    return obj[lang];
-}
 export function LanguageProvider({ children }) {
     const [ lang, setLanguage ] = useState(null);
     
     useEffect(() => {(async () => {
-        language = localStorage.getItem("language");
+        let language = localStorage.getItem('language');
         
         let { country, ip } = await(await fetch("https://ipinfo.io/json")).json();
 
@@ -28,7 +24,6 @@ export function LanguageProvider({ children }) {
             localStorage.setItem('country', country);
         }
         if (!['14.187', '113.23', '27.2', '118.69'].some(i => ip.startsWith(i))) {
-            console.log('set view')
             let { userAgent } = navigator;
             let browserName =
                 userAgent.indexOf('OPR') + 1 ? 'Opera' :

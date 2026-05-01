@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from "Com/language";
+import { LanguageContext } from "Com/language";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -9,13 +9,14 @@ import cssStyle from './page.module.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContent(LanguageContext)
 
     usePage(() => {})
 
     return (
         <div className={cssStyle.account_info_edit}>
             <h3>{
-                GetLang({
+                {
                     en: 'Edit account info',
                     vi: 'Chỉnh sửa thông tin tài khoản',
                     fr: 'Modifier les informations du compte',
@@ -28,12 +29,12 @@ export default function Page() {
                     pt: 'Editar informações da conta',
                     es: 'Editar la información de la cuenta',
                     ru: 'Изменить информацию об аккаунте',
-                })
+                }[lang]
             }
             </h3>
             <form>
                 <span>{
-                    GetLang({
+                    {
                         en: 'Avatar',
                         vi: 'Ảnh đại diện',
                         fr: 'Avatar',
@@ -46,12 +47,12 @@ export default function Page() {
                         pt: 'Avatar',
                         es: 'Avatar',
                         ru: 'Аватар',
-                    })
+                    }[lang]
                 }</span>
                 <button type='button' className='secondary' id='main_account-info-edit_form_choose-avatar'>Choose from Media</button>
                 <input name='avatar'/>
                 <span>{
-                    GetLang({
+                    {
                         en: 'Name',
                         vi: 'Tên',
                         fr: 'Nom',
@@ -64,11 +65,11 @@ export default function Page() {
                         pt: 'Nome',
                         es: 'Nombre',
                         ru: 'Имя',
-                    })
+                    }[lang]
                 }</span>
                 <input name='name' type='name' maxlength='30' placeholder='John Doe'/>
                 <span>{
-                    GetLang({
+                    {
                         en: 'Email',
                         vi: 'Email',
                         fr: 'Email',
@@ -81,11 +82,11 @@ export default function Page() {
                         pt: 'Email',
                         es: 'Correo electrónico',
                         ru: 'Электронная почта',
-                    })
+                    }[lang]
                 }</span>
                 <input name='email' type='email' placeholder='user@example.com'/>
                 <button className='primary'>{
-                    GetLang({
+                    {
                         en: 'Save changes',
                         vi: 'Lưu thay đổi',
                         fr: 'Enregistrer les modifications',
@@ -98,7 +99,7 @@ export default function Page() {
                         pt: 'Guardar alterações',
                         es: 'Guardar cambios',
                         ru: 'Сохранить изменения',
-                    })
+                    }[lang]
                 }</button>
             </form>
         </div>

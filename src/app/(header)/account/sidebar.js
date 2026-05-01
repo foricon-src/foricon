@@ -1,7 +1,6 @@
 'use client';
 
 import { usePathname } from "next/navigation";
-import { GetLang } from 'Com/language';
 import { signOut } from "firebase/auth";
 import { auth } from "Com/firebase";
 import { GoPage } from "Com/sidebar-page-transition";

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang, LanguageContext } from 'Com/language';
+import { LanguageContext } from 'Com/language';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -21,7 +21,7 @@ export default function Page() {
                 <tbody>
                     <tr>
                         <td>{
-                            GetLang({
+                            {
                                 en: 'Avatar',
                                 vi: 'Ảnh đại diện',
                                 fr: 'Avatar',
@@ -34,7 +34,7 @@ export default function Page() {
                                 pt: 'Avatar',
                                 es: 'Avatar',
                                 ru: 'Аватар',
-                            })
+                            }[lang]
                         }</td>
                         <td>
                             <div className='img circle square' style={{ backgroundImage: `url(${u?.doc.avatar})` }}/>
@@ -42,7 +42,7 @@ export default function Page() {
                     </tr>
                     <tr>
                         <td>{
-                            GetLang({
+                            {
                                 en: 'Name',
                                 vi: 'Tên',
                                 fr: 'Nom',
@@ -55,13 +55,13 @@ export default function Page() {
                                 pt: 'Nome',
                                 es: 'Nombre',
                                 ru: 'Имя',
-                            })
+                            }[lang]
                         }</td>
                         <td>{u?.doc.name}</td>
                     </tr>
                     <tr>
                         <td>{
-                            GetLang({
+                            {
                                 en: 'Email',
                                 vi: 'Email',
                                 fr: 'Email',
@@ -74,13 +74,13 @@ export default function Page() {
                                 pt: 'Email',
                                 es: 'Correo electrónico',
                                 ru: 'Электронная почта',
-                            })
+                            }[lang]
                         }</td>
                         <td>{u?.doc.email}{u?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
                     </tr>
                     <tr>
                         <td>{
-                            GetLang({
+                            {
                                 en: 'User ID',
                                 vi: 'ID người dùng',
                                 fr: "ID de l'utilisateur",
@@ -93,7 +93,7 @@ export default function Page() {
                                 pt: 'ID do utilizador',
                                 es: 'ID de usuario',
                                 ru: 'ID пользователя',
-                            })
+                            }[lang]
                         }</td>
                         <td>{u?.uid}<f-icon icon='clone' onClick={() => {
                             navigator.clipboard.writeText(u.uid);
@@ -115,7 +115,7 @@ export default function Page() {
                     </tr>
                     <tr>
                         <td>{
-                            GetLang({
+                            {
                                 en: 'Joining date',
                                 vi: 'Ngày tham gia',
                                 fr: "Date d'adhésion",
@@ -128,7 +128,7 @@ export default function Page() {
                                 pt: 'Data de adesão',
                                 es: 'Fecha de ingreso',
                                 ru: 'Дата присоединения',
-                            })
+                            }[lang]
                         }</td>
                         <td id='main_account-info_joining-date'>21 December, 2023</td>
                     </tr>
@@ -136,7 +136,7 @@ export default function Page() {
             </table>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go(router, 'account/info/edit')}>{
-                    GetLang({
+                    {
                         en: 'Edit account info',
                         vi: 'Chỉnh sửa thông tin tài khoản',
                         fr: 'Modifier les informations du compte',
@@ -149,7 +149,7 @@ export default function Page() {
                         pt: 'Editar informações da conta',
                         es: 'Editar la información de la cuenta',
                         ru: 'Изменить информацию об аккаунте',
-                    })
+                    }[lang]
                 }</li>
             </ul>
         </div>

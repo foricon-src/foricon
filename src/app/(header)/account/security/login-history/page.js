@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { useContext } from "react";
+import { LanguageContext } from 'Com/language';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -9,13 +10,14 @@ import './page.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContext(LanguageContext)
 
     usePage(() => {})
 
     return (
         <div name='security/login-history'>
             <h3>{
-                GetLang({
+                {
                     en: 'Login history',
                     vi: 'Lịch sử đăng nhập',
                     fr: 'Historique de connexion',
@@ -28,11 +30,11 @@ export default function Page() {
                     pt: 'Histórico de login',
                     es: 'Historial de inicio de sesión',
                     ru: 'История входов',
-                })
+                }[lang]
             }</h3>
             <ul>
                 <button className='primary'>{
-                    GetLang({
+                    {
                         en: 'Load more',
                         vi: 'Tải thêm',
                         fr: 'Charger plus',
@@ -45,7 +47,7 @@ export default function Page() {
                         pt: 'Carregar mais',
                         es: 'Cargar más',
                         ru: 'Загрузить еще',
-                    })
+                    }[lang]
                 }</button>
             </ul>
         </div>

@@ -670,7 +670,6 @@ globalThis.webData = {
     }
 }
 globalThis.user = null;
-globalThis.language = null;
 globalThis.country = null;
 globalThis.timezone = null;
 
@@ -956,7 +955,7 @@ globalThis.localTime = date => {
  * @param {Date} date - Formatted date object
  * @returns Difference string
  */
-globalThis.timeDiff = date => {
+globalThis.timeDiff = (date, lang) => {
     let now = new Date();
     let elapsed = now - date;
     
@@ -981,7 +980,7 @@ globalThis.timeDiff = date => {
         pt: [' segundos atrás', ' minutos atrás', ' horas atrás', ' dias atrás', ' semanas atrás', ' meses atrás', ' anos atrás'],
         es: [' segundos atrás', ' minutos atrás', ' horas atrás', ' días atrás', ' semanas atrás', ' meses atrás', ' años atrás'],
         ru: [' секунд назад', ' минут назад', ' часов назад', ' дней назад', ' недель назад', ' месяцев назад', ' лет назад']
-    }[language];
+    }[lang];
     
     return elapsed < msPerMinute ? Math.floor(elapsed / msPerSecond) + text[0] :
            elapsed < msPerHour ? Math.floor(elapsed / msPerMinute) + text[1] :
@@ -1015,7 +1014,7 @@ globalThis.formatTime = time => {
  * @param {string} lang - Language
  * @returns Formatted date string
  */
-globalThis.formatDate = (date, lang = language) => {
+globalThis.formatDate = (date, lang) => {
     let seconds = date.getSeconds();
     let minutes = date.getMinutes();
     let hours = date.getHours();
@@ -1159,7 +1158,7 @@ globalThis.notify = async (type, message) => {
  * @param {Number} num - Number to abbreviate
  * @returns {string} Abbreviated number
  */
-globalThis.abbreviateNumber = num => {
+globalThis.abbreviateNumber = (num, lang) => {
     let units = {
         en: ['', 'K', 'M', 'B', 'T'],
         vi: ['', ' N', ' Tr', ' tỷ', ' N tỷ'],
@@ -1173,7 +1172,7 @@ globalThis.abbreviateNumber = num => {
         pt: ['', ' mil', ' mi', ' bi', ' tri'],
         es: ['', ' mil', ' M', ' mil M', ' Bn'],
         ru: ['', ' тыс', ' млн', ' млрд', ' трлн'],
-    }[language];
+    }[lang];
     let unitIndex = 0;
     
     while (num >= 1000 && unitIndex < units.length - 1) {
@@ -1183,7 +1182,7 @@ globalThis.abbreviateNumber = num => {
     
     let formatted = (num < 100 && unitIndex ? number.toFixed(1) : num) + units[unitIndex];
     
-    ['vi', 'fr', 'de', 'nl', 'dk', 'pt', 'es', 'ru'].includes(language) && (formatted = formatted.toString().replace('.', ','));
+    ['vi', 'fr', 'de', 'nl', 'dk', 'pt', 'es', 'ru'].includes(lang) && (formatted = formatted.toString().replace('.', ','));
     
     return formatted;
 }
@@ -1193,12 +1192,11 @@ globalThis.abbreviateNumber = num => {
  * @param {Number} bytes - Bytes to format
  * @returns {string} Formatted byte string
  */
-globalThis.formatBytes = bytes => {
-    if (!bytes) return '0 Bytes';
+globalThis.formatBytes = (bytes = 0) => {
     let k = 1024;;
-    let sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    let sizes = [ 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' ];
     let i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
 }
 
 /**

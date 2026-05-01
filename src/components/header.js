@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from 'Pub/foricon-f-2.png';
-import { GetLang } from 'Com/language';
+import { LanguageContext } from 'Com/language';
 import 'Com/utils';
 
 export default function Header() {
     let [ open, setOpen ] = useState(false);
     let pathname = usePathname();
     let router = useRouter();
+    let lang = useContext(LanguageContext);
 
     useEffect(() => {
         let params = [ document, 'click', ({ target }) =>
@@ -36,7 +37,7 @@ export default function Header() {
             <ul name='center'>
                 <li>
                     <Link href='/'>{
-                        GetLang({
+                        {
                             en: 'Home',
                             vi: 'Trang chủ',
                             fr: 'Page d\'accueil',
@@ -49,12 +50,12 @@ export default function Header() {
                             pt: 'Pagina inicial',
                             es: 'Pagina de inicio',
                             ru: 'Дом',
-                        })
+                        }[lang]
                     }</Link>
                 </li>
                 <li>
                     <Link href='/search'>{
-                        GetLang({
+                        {
                             en: 'Search',
                             vi: 'Tìm kiếm',
                             fr: 'Recherche',
@@ -67,12 +68,12 @@ export default function Header() {
                             pt: 'Procurar',
                             es: 'Buscar',
                             ru: 'Поиск',
-                        })
+                        }[lang]
                     }</Link>
                 </li>
                 <li>
                     <Link href='/docs'>{
-                        GetLang({
+                        {
                             en: 'Docs',
                             vi: 'Tài liệu',
                             fr: 'Documents',
@@ -85,12 +86,12 @@ export default function Header() {
                             pt: 'Documentos',
                             es: 'Documentos',
                             ru: 'Документы',
-                        })
+                        }[lang]
                     }</Link>
                 </li>
                 <li>
                     <Link href='/support'>{
-                        GetLang({
+                        {
                             en: 'Support',
                             vi: 'Hỗ trợ',
                             fr: 'Soutien',
@@ -103,7 +104,7 @@ export default function Header() {
                             pt: 'Apoiar',
                             es: 'Apoyo',
                             ru: 'Поддерживать',
-                        })
+                        }[lang]
                     }</Link>
                 </li>
             </ul>
@@ -111,7 +112,7 @@ export default function Header() {
                 <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => go(router, 'languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
                     <span>{
-                        GetLang({
+                        {
                             en: 'Languages',
                             vi: 'Ngôn ngữ',
                             fr: 'Langues',
@@ -124,13 +125,13 @@ export default function Header() {
                             pt: 'Línguas',
                             es: 'Idiomas',
                             ru: 'Языки',
-                        })
+                        }[lang]
                     }</span>
                 </li>
                 <li className={`chip bottom${open ? ' active' : ''}`} onClick={() => setOpen(!open)}>
                     <f-icon icon='bars' i-s='outline'></f-icon>
                     <span>{
-                        GetLang({
+                        {
                             en: 'All',
                             vi: 'Tất cả',
                             fr: 'Tout',
@@ -143,7 +144,7 @@ export default function Header() {
                             pt: 'Tudo',
                             es: 'Todo',
                             ru: 'Все',
-                        })
+                        }[lang]
                     }</span>
                 </li>
                 <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => go(router, user ? 'account' : 'login')}>
@@ -154,7 +155,7 @@ export default function Header() {
             <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
                 <li>Foricon Plus</li>
                 <li className='line'>{
-                    GetLang({
+                    {
                         en: 'Home',
                         vi: 'Trang chủ',
                         fr: 'Page d\'accueil',
@@ -167,10 +168,10 @@ export default function Header() {
                         pt: 'Pagina inicial',
                         es: 'Pagina de inicio',
                         ru: 'Дом',
-                    })
+                    }[lang]
                 }</li>
                 <li>{
-                    GetLang({
+                    {
                         en: 'Search',
                         vi: 'Tìm kiếm',
                         fr: 'Recherche',
@@ -183,10 +184,10 @@ export default function Header() {
                         pt: 'Procurar',
                         es: 'Buscar',
                         ru: 'Поиск',
-                    })
+                    }[lang]
                 }</li>
                 <li>{
-                    GetLang({
+                    {
                         en: 'Docs',
                         vi: 'Tài liệu',
                         fr: 'Documents',
@@ -199,10 +200,10 @@ export default function Header() {
                         pt: 'Documentos',
                         es: 'Documentos',
                         ru: 'Документы',
-                    })
+                    }[lang]
                 }</li>
                 <li>{
-                    GetLang({
+                    {
                         en: 'Support',
                         vi: 'Hỗ trợ',
                         fr: 'Soutien',
@@ -215,7 +216,7 @@ export default function Header() {
                         pt: 'Apoiar',
                         es: 'Apoyo',
                         ru: 'Поддерживать',
-                    })
+                    }[lang]
                 }</li>
                 <li className='line'>Fotorno</li>
                 <li>Hub</li>
@@ -224,7 +225,7 @@ export default function Header() {
                 <li className='line' name='dark-toggle' onClick={toggleTheme}>
                     <div/>
                     <span dangerouslySetInnerHTML={{
-                        __html: `${GetLang({
+                        __html: `${{
                             en: 'Dark mode',
                             vi: 'Chế độ tối',
                             fr: 'Mode sombre',
@@ -237,7 +238,7 @@ export default function Header() {
                             pt: 'Modo escuro',
                             es: 'Modo oscuro',
                             ru: 'Темный режим',
-                        })} <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>`
+                        }[lang]} <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>`
                     }}/>
                 </li>
             </ul>

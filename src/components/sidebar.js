@@ -1,9 +1,10 @@
 'use client';
 
 import { usePathname } from "next/navigation";
-import { GetLang } from "./language";
+import { LanguageContext } from "./language";
 import { GoPage } from "./sidebar-page-transition";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 /**
  * Creates a sidebar
@@ -16,6 +17,7 @@ import { useRouter } from "next/navigation";
 export default function SidebarComponent({ items, home }) {
     let pathname = usePathname();
     let router = useRouter();
+    let lang = useContext(LanguageContext);
 
     function stateActive(path, isIcon) {
         return pathname.split('/')[2] == path.split('/')[1]
@@ -34,8 +36,8 @@ export default function SidebarComponent({ items, home }) {
                     onClick={e => { !isActive(e.currentTarget) && (action ? action() : GoPage(router, path)) }}
                 >
                     <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>
-                    <span>{text || GetLang(texts)}</span>
-                    {badge && <span className='badge'>{GetLang(badge)}</span>}
+                    <span>{text || texts[lang]}</span>
+                    {badge && <span className='badge'>{badge[lang]}</span>}
                 </li>
             })}
         </ul>

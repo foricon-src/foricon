@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { LanguageContext } from 'Com/language';
+import { useContext } from "react";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -9,13 +10,14 @@ import './page.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContext(LanguageContext)
 
     usePage(() => {})
 
     return (
         <div name='package/download'>
             <h3>{
-                GetLang({
+                {
                     en: 'Download',
                     vi: 'Tải xuống',
                     fr: 'Télécharger',
@@ -28,12 +30,12 @@ export default function Page() {
                     pt: 'Transferir',
                     es: 'Descargar',
                     ru: 'Скачать',
-                })
+                }[lang]
             }</h3>
             <ul>
                 <li>
                     <h6>{
-                        GetLang({
+                        {
                             en: 'Font pack',
                             vi: 'Gói phông chữ',
                             fr: 'Pack de polices',
@@ -46,7 +48,7 @@ export default function Page() {
                             pt: 'Pacote de fontes',
                             es: 'Paquete de fuentes',
                             ru: 'набор шрифтов',
-                        })
+                        }[lang]
                     }</h6>
                     <span></span>
                     <button className='primary' name='fonts'>
@@ -55,7 +57,7 @@ export default function Page() {
                 </li>
                 <li>
                     <h6>{
-                        GetLang({
+                        {
                             en: 'Icon pack',
                             vi: 'Gói biểu tượng',
                             fr: "Pack d'icônes",
@@ -68,7 +70,7 @@ export default function Page() {
                             pt: 'Pacote de ícones',
                             es: 'Paquete de iconos',
                             ru: 'набор иконок',
-                        })
+                        }[lang]
                     }</h6>
                     <span></span>
                     <button className='btn primary' name='icons'>

@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { GetLang } from 'Com/language';
+import { useContext } from "react";
+import { LanguageContext } from 'Com/language';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -9,13 +10,14 @@ import './page.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContext(LanguageContext)
 
     usePage(() => {})
 
     return (
         <div name='package/settings'>
             <h3>{
-                GetLang({
+                {
                     en: 'Package settings',
                     vi: 'Cài đặt gói',
                     fr: 'Paramètres du package',
@@ -28,11 +30,11 @@ export default function Page() {
                     pt: 'Configurações do pacote',
                     es: 'Configuración del paquete',
                     ru: 'Настройки пакета',
-                })
+                }[lang]
             }</h3>
             <form>
                 <span>{
-                    GetLang({
+                    {
                         en: 'Version',
                         vi: 'Phiên bản',
                         fr: 'Option de rendu',
@@ -45,7 +47,7 @@ export default function Page() {
                         pt: 'Opção de renderização',
                         es: 'Opción de renderizado',
                         ru: 'Вариант рендеринга',
-                    })
+                    }[lang]
                 }</span>
                 <f-select name='versions' multiple required>
                     <text></text>
@@ -56,7 +58,7 @@ export default function Page() {
                     </option-list>
                 </f-select>
                 <span>{
-                    GetLang({
+                    {
                         en: 'Rendering option',
                         vi: 'Tùy chọn kết xuất',
                         fr: 'Option de rendu',
@@ -69,13 +71,13 @@ export default function Page() {
                         pt: 'Opção de renderização',
                         es: 'Opción de renderizado',
                         ru: 'Вариант рендеринга',
-                    })
+                    }[lang]
                 }</span>
                 <f-select name='rendering-option'>
                     <text></text>
                     <option-list>
                     <f-option value='performance'>{
-                        GetLang({
+                        {
                             en: 'Performance',
                             vi: 'Hiệu suất',
                             fr: 'Performance',
@@ -88,10 +90,10 @@ export default function Page() {
                             pt: 'Desempenho',
                             es: 'Actuación',
                             ru: 'Производительность',
-                        })
+                        }[lang]
                     }</f-option>
                     <f-option value='precision'>{
-                        GetLang({
+                        {
                             en: 'Precision',
                             vi: 'Chính xác',
                             fr: 'Précision',
@@ -104,12 +106,12 @@ export default function Page() {
                             pt: 'Precisão',
                             es: 'Precisión',
                             ru: 'Точность',
-                        })
+                        }[lang]
                     }</f-option>
                     </option-list>
                 </f-select>
                 <span>{
-                    GetLang({
+                    {
                         en: 'Allowed domains',
                         vi: 'Tên miền được phép',
                         fr: 'Domaines autorisés',
@@ -122,13 +124,13 @@ export default function Page() {
                         pt: 'Domínios permitidos',
                         es: 'Dominios permitidos',
                         ru: 'Разрешенные домены',
-                    })
+                    }[lang]
                 }</span>
                 <ul className='btn-list vertical' name='domains'>
                     <li>
                         <f-icon icon='plus' i-s='outline'></f-icon>
                         <span>{
-                            GetLang({
+                            {
                                 en: 'Add a domain',
                                 vi: 'Thêm tên miền',
                                 fr: 'Ajouter un domaine',
@@ -141,12 +143,12 @@ export default function Page() {
                                 pt: 'Adicionar um domínio',
                                 es: 'Agregar un dominio',
                                 ru: 'Добавить домен',
-                            })
+                            }[lang]
                         }</span>
                     </li>
                 </ul>
                 <button className='primary'>{
-                    GetLang({
+                    {
                         en: 'Save changes',
                         vi: 'Lưu thay đổi',
                         fr: 'Enregistrer les modifications',
@@ -159,7 +161,7 @@ export default function Page() {
                         pt: 'Guardar alterações',
                         es: 'Guardar cambios',
                         ru: 'Сохранить изменения',
-                    })
+                    }[lang]
                 }</button>
             </form>
         </div>

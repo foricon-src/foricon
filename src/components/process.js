@@ -1,19 +1,21 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from './firebase';
 import { useRouter } from 'next/navigation';
+import { LanguageContext } from './language';
 
 export default function Process() {
     let router = useRouter();
     let pathname = usePathname();
+    let lang = useContext(LanguageContext);
 
     useEffect(() => {(async () => {
-        let { body, documentElement: html } = document;
+        let { body } = document;
         let theme = localStorage.getItem('theme');
 
         while (!qSelec(false, 'header')) await wait();
@@ -635,8 +637,6 @@ export default function Process() {
             })
         }
 
-        html.lang = language;
-
         qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each))
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
@@ -674,7 +674,7 @@ export default function Process() {
             pt: 'Conecte-se',
             es: 'Acceso',
             ru: 'Авторизоваться',
-        }[language];
+        }[lang];
     })()}, [ pathname ])
     
     return null;

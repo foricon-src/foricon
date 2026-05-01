@@ -1,16 +1,16 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { Ad } from 'Com/ad';
-import { GetLang } from 'Com/language';
+import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import FilterIcon from './filter-icon';
 import cssStyle from './page.module.css';
-import Initial from './initial';
 
 export default function Search({ initial }) {
     let router = useRouter();
+    let lang = useContext(LanguageContext);
 
     let [ type, setType ] = useState('');
 
@@ -479,7 +479,7 @@ export default function Search({ initial }) {
             <div className='modal confirm' id='choose-layers'>
                 <div>
                     <h3>{
-                        GetLang({
+                        {
                             en: 'Select layer(s) to download',
                             vi: 'Chọn (các) lớp để tải xuống',
                             fr: 'Sélectionnez la/les couche(s) à télécharger',
@@ -492,10 +492,10 @@ export default function Search({ initial }) {
                             pt: 'Selecione camada(s) para download',
                             es: 'Seleccione capa(s) para descargar',
                             ru: 'Выберите слой(и) для загрузки',
-                        })
+                        }[lang]
                     }</h3>
                     <p>{
-                        GetLang({
+                        {
                             en: `Download selected layer(s) as ${type}`,
                             vi: `Tải xuống lớp đã chọn dưới dạng ${type}`,
                             fr: `Télécharger la/les couche(s) sélectionnée(s) en tant que ${type}`,
@@ -508,7 +508,7 @@ export default function Search({ initial }) {
                             pt: `Baixar camada(s) selecionada(s) como ${type}`,
                             es: `Descargar capa(s) seleccionada(s) como ${type}`,
                             ru: `Скачать выбранный(е) слой(и) как ${type}`,
-                        })
+                        }[lang]
                     }</p>
                     <div className='checkboxes'>
                         <label>
@@ -520,7 +520,7 @@ export default function Search({ initial }) {
                     </div>
                     <div>
                         <a href='javascript:void(0)' className='btn secondary'>{
-                            GetLang({
+                            {
                                 en: 'Cancel',
                                 vi: 'Hủy',
                                 fr: 'Annuler',
@@ -533,10 +533,10 @@ export default function Search({ initial }) {
                                 pt: 'Cancelar',
                                 es: 'Cancelar',
                                 ru: 'Отмена',
-                            })
+                            }[lang]
                         }</a>
                         <a href='javascript:void(0)' className='btn primary'>{
-                            GetLang({
+                            {
                                 en: 'Download',
                                 vi: 'Tải xuống',
                                 fr: 'Télécharger',
@@ -549,7 +549,7 @@ export default function Search({ initial }) {
                                 pt: 'Transferir',
                                 es: 'Descargar',
                                 ru: 'Скачать',
-                            })
+                            }[lang]
                         }</a>
                     </div>
                 </div>
@@ -557,7 +557,7 @@ export default function Search({ initial }) {
             <Ad/>
             <div className='banner blue signup'>
                 <div>{
-                    GetLang({
+                    {
                         en: 'Enjoy free icons - sign up to access the entire set!',
                         vi: 'Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
                         fr: 'Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !',
@@ -570,10 +570,10 @@ export default function Search({ initial }) {
                         pt: 'Aproveite os ícones gratuitos - inscreva-se para acessar o conjunto completo!',
                         es: 'Disfruta de iconos gratis - regístrate para acceder al conjunto completo!',
                         ru: 'Наслаждайтесь бесплатными иконками - зарегистрируйтесь для доступа ко всем!',
-                    })
+                    }[lang]
                 }
                     <a href='/p/sign-up.html' className='btn'>{
-                        GetLang({
+                        {
                             en: 'Sign up',
                             vi: 'Đăng ký',
                             fr: 'S\'inscrire',
@@ -586,7 +586,7 @@ export default function Search({ initial }) {
                             pt: 'Inscrever-se',
                             es: 'Inscribirse',
                             ru: 'Зарегистрироваться',
-                        })
+                        }[lang]
                     }</a>
                 </div>
             </div>
@@ -594,7 +594,7 @@ export default function Search({ initial }) {
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
-                        GetLang({
+                        {
                             en: 'Find the perfect icon for your next masterpiece…',
                             vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
                             fr: "Trouvez l'icône parfaite pour votre prochaine création…",
@@ -607,7 +607,7 @@ export default function Search({ initial }) {
                             pt: 'Encontre o ícone perfeito para sua próxima obra-prima…',
                             es: 'Encuentra el icono perfecto para tu próxima obra maestra…',
                             ru: 'Найдите идеальную иконку для вашего следующего шедевра…',
-                        })
+                        }[lang]
                     }/>
                 </label>
                 <f-select onChange={e => setVersion(e.currentTarget.value)}>
@@ -620,7 +620,7 @@ export default function Search({ initial }) {
                 <div className={cssStyle.options}>
                     <ul className='btn-list line-active'>
                         <li className={family == 'all' && 'active'} onClick={() => setFamily('all')}>{
-                            GetLang({
+                            {
                                 en: 'All',
                                 vi: 'Tất cả',
                                 fr: 'Tout',
@@ -633,10 +633,10 @@ export default function Search({ initial }) {
                                 pt: 'Tudo',
                                 es: 'Todo',
                                 ru: 'Все',
-                            })
+                            }[lang]
                         }</li>
                         <li className={family == 'regular' && 'active'} onClick={() => setFamily('regular')}>{
-                            GetLang({
+                            {
                                 en: 'Regular',
                                 vi: 'Thường',
                                 fr: 'Régulier',
@@ -649,10 +649,10 @@ export default function Search({ initial }) {
                                 pt: 'Regular',
                                 es: 'Regular',
                                 ru: 'Обычный',
-                            })
+                            }[lang]
                         }</li>
                         <li className={family == 'duotone' && 'active'} onClick={() => setFamily('duotone')}>{
-                            GetLang({
+                            {
                                 en: 'Duotone',
                                 vi: 'Duotone',
                                 fr: 'Bichromie',
@@ -665,12 +665,12 @@ export default function Search({ initial }) {
                                 pt: 'Duotónico',
                                 es: 'Duotono',
                                 ru: 'Дуотон',
-                            })
+                            }[lang]
                         }</li>
                     </ul>
                     <ul className='btn-list line-active line'>
                         <li className={style == 'all' && 'active'} onClick={() => setStyle('all')}>{
-                            GetLang({
+                            {
                                 en: 'All',
                                 vi: 'Tất cả',
                                 fr: 'Tout',
@@ -683,10 +683,10 @@ export default function Search({ initial }) {
                                 pt: 'Tudo',
                                 es: 'Todo',
                                 ru: 'Все',
-                            })
+                            }[lang]
                         }</li>
                         <li className={style == 'solid' && 'active'} onClick={() => setStyle('solid')}>{
-                            GetLang({
+                            {
                                 en: 'Solid',
                                 vi: 'Đặc',
                                 fr: 'Solide',
@@ -699,10 +699,10 @@ export default function Search({ initial }) {
                                 pt: 'Sólido',
                                 es: 'Sólido',
                                 ru: 'Твердый',
-                            })
+                            }[lang]
                         }</li>
                         <li className={style == 'outline' && 'active'} onClick={() => setStyle('outline')}>{
-                            GetLang({
+                            {
                                 en: 'Outline',
                                 vi: 'Đường viền',
                                 fr: 'Contour',
@@ -715,14 +715,14 @@ export default function Search({ initial }) {
                                 pt: 'Delimitar',
                                 es: 'Describir',
                                 ru: 'Контур',
-                            })
+                            }[lang]
                         }</li>
                     </ul>
                     <ul className='btn-list line-active'>
                         <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
                             <f-icon icon='grid-4' i-s={view != 'large' && 'outline'}></f-icon>
                             <span>{
-                                GetLang({
+                                {
                                     en: 'Large icons',
                                     vi: 'Biểu tượng lớn',
                                     fr: 'Grandes icônes',
@@ -735,13 +735,13 @@ export default function Search({ initial }) {
                                     pt: 'Ícones grandes',
                                     es: 'Iconos grandes',
                                     ru: 'Большие значки',
-                                })
+                                }[lang]
                             }</span>
                         </li>
                         <li className={`chip top${view == 'small' ? ' active' : ''}`} onClick={() => setView('small')}>
                             <f-icon icon='grid-9' i-s={view != 'small' && 'outline'}></f-icon>
                             <span>{
-                                GetLang({
+                                {
                                     en: 'Small icons',
                                     vi: 'Biểu tượng nhỏ',
                                     fr: 'Petites icônes',
@@ -754,13 +754,13 @@ export default function Search({ initial }) {
                                     pt: 'Ícones pequenos',
                                     es: 'Iconos pequeños',
                                     ru: 'Маленькие значки',
-                                })
+                                }[lang]
                             }</span>
                         </li>
                         <li className={`chip top${view == 'tiles' ? ' active' : ''}`} onClick={() => setView('tiles')}>
                             <f-icon icon='list' i-s='outline'></f-icon>
                             <span>{
-                                GetLang({
+                                {
                                     en: 'Tiles',
                                     vi: 'Ô gạch',
                                     fr: 'Carrelage',
@@ -773,7 +773,7 @@ export default function Search({ initial }) {
                                     pt: 'Azulejos',
                                     es: 'Azulejos',
                                     ru: 'Плитка',
-                                })
+                                }[lang]
                             }</span>
                         </li>
                     </ul>
@@ -781,7 +781,7 @@ export default function Search({ initial }) {
             </div>
             <div className={cssStyle.main}>
                 <h5>{
-                    GetLang({
+                    {
                         en: 'Categories',
                         vi: 'Thể loại',
                         fr: 'Catégories',
@@ -794,10 +794,10 @@ export default function Search({ initial }) {
                         pt: 'Categorias',
                         es: 'Categorías',
                         ru: 'Категории',
-                    })
+                    }[lang]
                 }</h5>
                 <h5>{
-                    GetLang({
+                    {
                         en: `Showing ${filtered.length} results`,
                         vi: `Đang hiển thị ${filtered.length} kết quả`,
                         fr: `Affichage de ${filtered.length} résultats`,
@@ -810,14 +810,14 @@ export default function Search({ initial }) {
                         pt: `Mostrando ${filtered.length} resultados`,
                         es: `Mostrando ${filtered.length} resultados`,
                         ru: `Показано ${filtered.length} результата`,
-                    })
+                    }[lang]
                 }
                 </h5>
                 <ul className={`btn-list vertical ${cssStyle.categories}`}>{
                     Object.entries(categoryCounts)
                         .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
-                        .sort(([ , a ], [ , b ]) => GetLang(a).localeCompare(GetLang(b)))
-                        .map(([ key, { icon, count, ...lang } ]) => (
+                        .sort(([ , a ], [ , b ]) => a[lang].localeCompare(b[lang]))
+                        .map(([ key, { icon, count, ...lan } ]) => (
                             <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
                                 let arr = [ ...selectedCategories ];
                                 let i = arr.indexOf(key);
@@ -825,7 +825,7 @@ export default function Search({ initial }) {
                                 selectCategories(arr);
                             }}>
                                 <span key={key} dangerouslySetInnerHTML={{
-                                    __html: icon + GetLang(lang)
+                                    __html: icon + lan[lang]
                                 }}/>
                                 <span>{count || 0}</span>
                             </li>
@@ -865,7 +865,7 @@ export default function Search({ initial }) {
                 <div className={cssStyle.code}>
                     <span>
                         {
-                            `${GetLang({
+                            `${{
                                 en: 'Code',
                                 vi: 'Mã',
                                 fr: 'Code',
@@ -878,7 +878,7 @@ export default function Search({ initial }) {
                                 pt: 'Código',
                                 es: 'Código',
                                 ru: 'Код',
-                            })} `
+                            }[lang]} `
                         }
                         <f-icon icon='circle-info'></f-icon>:
                     </span>
@@ -888,7 +888,7 @@ export default function Search({ initial }) {
                 </div>
                 <div className={cssStyle.glyphs}>
                     <span>{
-                        GetLang({
+                        {
                             en: 'Glyphs:',
                             vi: 'Glyph:',
                             fr: 'Glyphes:',
@@ -901,7 +901,7 @@ export default function Search({ initial }) {
                             pt: 'Glifos:',
                             es: 'Glifos:',
                             ru: 'Глифы:',
-                        })
+                        }[lang]
                     }</span>
                     <div>
                         <div name='Primary'>{selectedIcon?.glyphs[0]}</div>
@@ -910,7 +910,7 @@ export default function Search({ initial }) {
                 </div>
                 <div className={cssStyle.unicodes}>
                     <span>{
-                        GetLang({
+                        {
                             en: 'Unicodes:',
                             vi: 'Unicode:',
                             fr: 'Unicodes:',
@@ -923,7 +923,7 @@ export default function Search({ initial }) {
                             pt: 'Unicodes:',
                             es: 'Unicodes:',
                             ru: 'Юникоды:',
-                        })
+                        }[lang]
                     }</span>
                     <div>
                         <div name='Primary'>{selectedIcon?.unicodes[0]}</div>
@@ -932,7 +932,7 @@ export default function Search({ initial }) {
                 </div>
                 <div className={cssStyle.categories}>
                     <span>{
-                        GetLang({
+                        {
                             en: 'Categories:',
                             vi: 'Thể loại:',
                             fr: 'Catégories:',
@@ -945,20 +945,20 @@ export default function Search({ initial }) {
                             pt: 'Categorias:',
                             es: 'Categorías:',
                             ru: 'Категории:',
-                        })
+                        }[lang]
                     }</span>
                     <ul className='btn-list'>{
                         (selectedIcon?.categories || []).map(category => {
-                            let { icon, ...lang } = webData.categories[category];
+                            let { icon, ...lan } = webData.categories[category];
                             return <li key={category} dangerouslySetInnerHTML={{
-                                __html: `${icon}<span>${GetLang(lang)}</span>`,
+                                __html: `${icon}<span>${lan[lang]}</span>`,
                             }} onClick={() => selectCategories([ category ])}/>
                         })
                     }</ul>
                 </div>
                 <div className={cssStyle.download}>
                     <span>{
-                        GetLang({
+                        {
                             en: 'Download:',
                             vi: 'Tải xuống:',
                             fr: 'Télécharger:',
@@ -971,7 +971,7 @@ export default function Search({ initial }) {
                             pt: 'Transferir:',
                             es: 'Descargar:',
                             ru: 'Скачать:',
-                        })
+                        }[lang]
                     }</span>
                     <ul className='btn-list'>
                         <li name='svg'>SVG</li>

@@ -1,8 +1,9 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 import Code from "Com/code";
-import { GetLang } from 'Com/language';
+import { LanguageContext } from 'Com/language';
 import { UpdateRange, Range } from "Com/range";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
@@ -11,6 +12,7 @@ import './page.css';
 
 export default function Page() {
     let router = useRouter();
+    let lang = useContext(LanguageContext);
 
     usePage(() => {
         let { font, indent } = user.doc.personalization;
@@ -26,7 +28,7 @@ export default function Page() {
         <div name='personalization'>
             <form>
                 <span>{
-                    GetLang({
+                    {
                         en: "Codebox's font",
                         vi: 'Phông chữ của hộp mã',
                         fr: 'Police de caractères de Codebox',
@@ -39,7 +41,7 @@ export default function Page() {
                         pt: 'Fonte Codebox',
                         es: 'Fuente de Codebox',
                         ru: 'Шрифт Codebox',
-                    })
+                    }[lang]
                 }</span>
                 <f-select name='font'>
                     <text></text>
@@ -67,7 +69,7 @@ export default function Page() {
   }
 </script>`}</Code>
                 <span>{
-                    GetLang({
+                    {
                         en: 'Indentation space',
                         vi: 'Khoảng cách thụt dòng',
                         fr: 'Espace d\'indentation',
@@ -80,11 +82,11 @@ export default function Page() {
                         pt: 'Espaço de recuo',
                         es: 'Espacio de indentación',
                         ru: 'Пространство отступа',
-                    })
+                    }[lang]
                 }</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2'/>
                 <button className='primary'>{
-                    GetLang({
+                    {
                         en: 'Save changes',
                         vi: 'Lưu thay đổi',
                         fr: 'Enregistrer les modifications',
@@ -97,7 +99,7 @@ export default function Page() {
                         pt: 'Guardar alterações',
                         es: 'Guardar cambios',
                         ru: 'Сохранить изменения',
-                    })
+                    }[lang]
                 }</button>
             </form>
         </div>
