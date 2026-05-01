@@ -672,6 +672,8 @@ export default function Search({ searchParams }) {
                                 ru: 'Дуотон',
                             }[lang]
                         }</li>
+                    </ul>
+                    <ul className='btn-list line-active'>
                         <li className={`line${style == 'all' ? ' active' : ''}`} onClick={() => setStyle('all')}>{
                             {
                                 en: 'All',
@@ -780,7 +782,7 @@ export default function Search({ searchParams }) {
                             }</span>
                         </li>
                     </ul>
-                    <ul className='btn-list'>
+                    <ul className='btn-list line'>
                         <li className={`chip top`}>
                             <f-icon icon='rectangle-stack'/>
                             <span>{

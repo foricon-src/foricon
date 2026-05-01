@@ -217,7 +217,7 @@
     & > .options {
         grid-area: options;
         margin: 0 -12px 0 -15px;
-        grid-template-columns: max-content auto max-content;
+        grid-template-columns: max-content max-content auto max-content;
         gap: 10px 0;
         
         & > ul {
