@@ -22,7 +22,7 @@ export default function Initial(params, toFilter) {
         }[params.v] || 'b2';
         if (param == 'c') {
             let arr = params.c?.split(';') || [];
-            return toFilter ? arr : arr.filter(category => toFilter[category]);
+            return toFilter ? arr.filter(category => toFilter[category]) : arr;
         }
     }
     
