@@ -10,7 +10,7 @@ export default function Home() {
     let lang = useContext(LanguageContext);
 
     let [ icon, setIcon ] = useState('brush');
-    let [ style, setStyle ] = useState('solid');
+    let [ style, setStyle ] = useState('');
     let [ scale, setScale ] = useState('');
     let [ size, setSize ] = useState('');
     let [ rotate, setRotate ] = useState('');
@@ -493,7 +493,7 @@ export default function Home() {
                         }</h6>
                         <ul className='btn-list darker'>{
                             [ '', '90', '180', '270', 'flipX', 'flipY' ].map(i => (
-                                <li key={i} onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
+                                <li key={i} onClick={() => setSize(i)} className={size == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
                             ))
