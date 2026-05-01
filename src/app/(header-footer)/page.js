@@ -401,7 +401,7 @@ export default function Home() {
                         }</h6>
                         <ul class='btn-list darker' data-attr='icon'>{
                             [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
-                                <li onClick={() => setIcon(i)} className={icon == i && 'active'}>
+                                <li key={i} onClick={() => setIcon(i)} className={icon == i && 'active'}>
                                     <f-icon icon={i}/>
                                 </li>
                             ))
@@ -424,7 +424,7 @@ export default function Home() {
                         }</h6>
                         <ul class='btn-list darker' data-attr='i-s'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
-                                <li onClick={() => setStyle(i)} i-s={style == i && 'active'}>
+                                <li key={i} onClick={() => setStyle(i)} i-s={style == i && 'active'}>
                                     <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
                                 </li>
                             ))
@@ -447,7 +447,7 @@ export default function Home() {
                         }</h6>
                         <ul class='btn-list darker' data-attr='scale'>{
                             [ 'xsmaller', 'smaller', '', 'larger', 'xlarger' ].map(i => (
-                                <li onClick={() => setScale(i)} className={scale == i && 'active'}>{
+                                <li key={i} onClick={() => setScale(i)} className={scale == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
                             ))
@@ -470,7 +470,7 @@ export default function Home() {
                         }</h6>
                         <ul class='btn-list darker' data-attr='size'>{
                             [ 'smallest', 'smaller', 'small', '', 'large', 'larger', 'largest' ].map(i => (
-                                <li onClick={() => setSize(i)} className={size == i && 'active'}>{
+                                <li key={i} onClick={() => setSize(i)} className={size == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
                             ))
@@ -493,7 +493,7 @@ export default function Home() {
                         }</h6>
                         <ul class='btn-list darker' data-attr='rotate'>{
                             [ '', 90, 180, 270, 'flipX', 'flipY' ].map(i => (
-                                <li onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
+                                <li key={i} onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
                             ))
@@ -522,7 +522,7 @@ export default function Home() {
                                 'spin', 'spin-reverse',
                                 'flipX', 'flipY', 'flipXY',
                             ].map(i => (
-                                <li onClick={() => setAnimation(i)} className={animation == i && 'active'}>{
+                                <li key={i} onClick={() => setAnimation(i)} className={animation == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
                             ))
@@ -533,7 +533,7 @@ export default function Home() {
                                 '',
                                 'semi-fast', 'fast', 'xfast', 'xxfast',
                             ].map(i => (
-                                <li onClick={() => setAnimationSpeed(i)} className={animationSpeed == i && 'active'}>{
+                                <li key={i} onClick={() => setAnimationSpeed(i)} className={animationSpeed == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
                             ))
