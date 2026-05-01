@@ -382,7 +382,7 @@ export default function Search({ initial }) {
 
         check();
         
-        let top = qSelec(false, `.${cssStyle.top}`);
+        let top = elemById('top');
         let top_search = qSelec(false, top, 'input');
 
         let animating = false;
@@ -410,10 +410,10 @@ export default function Search({ initial }) {
         
         addEvLis(document, 'click', ({ target }) => {
             (![
-                qSelec(false, `.${cssStyle.bar}`),
-                qSelec(false, `.${cssStyle.results} > .active`)
+                elemById('bar'),
+                qSelec(false, `#results > .active`)
             ].filter(Boolean).some(i => i.contains(target)) ||
-                qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
+                qSelec(false, `#bar > #categories > .btn-list`).contains(target)) &&
                 selectIcon(null);
             !top.contains(target) && hideTop();
         })
@@ -469,7 +469,7 @@ export default function Search({ initial }) {
 
     function check() {
         console.log(cssStyle.results)
-        let columns = getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length;
+        let columns = getComputedStyle(elemById('results')).gridTemplateColumns.split(' ').length;
         let rows = Math.floor((view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns);
         let itemsPerPage = columns * rows;
         setPerPage(itemsPerPage);
@@ -591,7 +591,7 @@ export default function Search({ initial }) {
                     }</a>
                 </div>
             </div>
-            <div className={`outer-corner ${cssStyle.top}`}>
+            <div className={`outer-corner ${cssStyle.top}`} id='top'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
                     <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
@@ -814,7 +814,7 @@ export default function Search({ initial }) {
                     }[lang]
                 }
                 </h5>
-                <ul className={`btn-list vertical ${cssStyle.categories}`}>{
+                <ul className={`btn-list vertical ${cssStyle.categories}`} id='categories'>{
                     Object.entries(categoryCounts)
                         .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
                         .sort(([ , a ], [ , b ]) => a[lang].localeCompare(b[lang]))
@@ -833,7 +833,7 @@ export default function Search({ initial }) {
                         ))
                 }</ul>
                 <div>
-                    <ul className={`${cssStyle.results} ${cssStyle[view]}`}>{
+                    <ul className={`${cssStyle.results} ${cssStyle[view]}`} id='results'>{
                         currentIcons.map(({ icon, style }) => (
                             <li key={`${icon.name} | ${style}`} className={icon.name == selectedIcon?.name && style == selectedIcon?.style && 'active'} onClick={async () => {
                                 await wait(.2);
@@ -861,7 +861,7 @@ export default function Search({ initial }) {
                     }</ul>
                 </div>
             </div>
-            <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
+            <div className={cssStyle.bar + (selectedIcon ? ' active' : '')} id='bar'>
                 <h6>{selectedIcon?.name || ''}</h6>
                 <div className={cssStyle.code}>
                     <span>
