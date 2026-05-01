@@ -234,6 +234,7 @@
                         & > code {
                             position: sticky;
                             bottom: var(--spacing-xxsmall);
+                            margin-bottom: 0;
                         }
                     }
                     &:last-child {

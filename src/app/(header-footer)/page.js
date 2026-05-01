@@ -49,7 +49,7 @@ export default function Home() {
                     `rotate='${rotate}'`,
                     `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`,
                 ].filter(i => !i.includes("''")).join(' ')
-            }`
+            }></f-icon>`
         )
     }, [ icon, style, scale, size, rotate, animation, animationSpeed ])
 
