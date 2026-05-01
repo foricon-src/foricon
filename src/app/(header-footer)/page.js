@@ -1,12 +1,12 @@
 'use client';
 
 import { useContext, useEffect, useState } from 'react';
-// import Image from 'next/image';
-// import favicon from 'Ass/foricon-f-favicon.png';
+import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import cssStyle from './page.module.css';
 
 export default function Home() {
+    let router = useRouter();
     let lang = useContext(LanguageContext);
 
     let [ icon, setIcon ] = useState('brush');
@@ -399,13 +399,35 @@ export default function Home() {
                                 ru: 'Икона',
                             }[lang]
                         }</h6>
-                        <ul className='btn-list darker'>{
-                            [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
-                                <li key={i} onClick={() => setIcon(i)} className={icon == i && 'active'}>
-                                    <f-icon icon={i}/>
-                                </li>
-                            ))
-                        }</ul>
+                        <ul className='btn-list darker'>
+                            {
+                                [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
+                                    <li key={i} onClick={() => setIcon(i)} className={`chip top${icon == i && ' active'}`}>
+                                        <f-icon icon={i}/>
+                                        <span>{i}</span>
+                                    </li>
+                                ))
+                            }
+                            <li onClick={() => go(router, 'search')} className='chiptop'>
+                                <f-icon icon='arrow-right' i-s='outline'/>
+                                <span>{
+                                    {
+                                        en: 'More icons!',
+                                        vi: 'Nhiều biểu tượng hơn!',
+                                        fr: "Plus d'icônes !",
+                                        it: 'Altre icone!',
+                                        kr: '아이콘이 더 많아졌어요!',
+                                        ja: 'アイコンをもっと増やそう！',
+                                        de: 'Mehr Symbole!',
+                                        nl: 'Meer pictogrammen!',
+                                        dk: 'Flere ikoner!',
+                                        pt: 'Mais ícones!',
+                                        es: '¡Más iconos!',
+                                        ru: 'Больше иконок!',
+                                    }[lang]
+                                }</span>
+                            </li>
+                        </ul>
                         <h6>{
                             {
                                 en: 'Style',
@@ -424,8 +446,14 @@ export default function Home() {
                         }</h6>
                         <ul className='btn-list darker'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
-                                <li key={i} onClick={() => setStyle(i)} className={style == i && 'active'}>
+                                <li key={i} onClick={() => setStyle(i)} className={`chip top${style == i && 'active'}`}>
                                     <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
+                                    {
+                                        i == 'outline' ? 'Outline' :
+                                        i == 'duotone/solid' ? 'Duotone Solid' :
+                                        i == 'duotone/outline' ? 'Duotone Outline' :
+                                        'Solid'
+                                    }
                                 </li>
                             ))
                         }</ul>
