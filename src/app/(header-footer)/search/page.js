@@ -945,12 +945,12 @@ export default function Search() {
                 </div>
             </div>
             <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
-                <h6>
-                    {selectedIcon?.name || ''}
+                <div>
+                    <h6>{selectedIcon?.name || ''}</h6>
                     <span>
                         <f-icon icon='bookmark' i-s='outline'/>Save
                     </span>
-                </h6>
+                </div>
                 <div className={cssStyle.code}>
                     <span>
                         {
