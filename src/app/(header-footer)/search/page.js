@@ -384,7 +384,7 @@ export default function Search() {
     let [ page, setPage ] = useState(0);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
-    let [ columns, setColumns ] = useState(1);
+    let [ tick, setTick ] = useState(0);
 
     let filtered = useMemo(() => {
         let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
@@ -413,12 +413,16 @@ export default function Search() {
                 .map(style => ({ icon, style }))
         })
     }, [ loaded, search, family, style, selectedCategories, version ]);
+    let columns = useMemo(
+        () => getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length,
+        [ tick, view ]
+    )
     let perPage = useMemo(() => {
         let rows = Math.floor(
             (view === 'large' ? 150 : view === 'small' ? 300 : 160) / columns
         )
         return columns * rows;
-    }, [])
+    }, [ columns ])
     let currentPage = Math.min(Math.floor(filtered.length / perPage), page);
     let currentIcons = useMemo(() => {
         let start = perPage * currentPage;
@@ -436,9 +440,7 @@ export default function Search() {
         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
     }
     function check() {
-        setColumns(
-            getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length
-        )
+        setTick(t => ++t);
     }
     
     useEffect(() => {(async () => {
@@ -530,7 +532,6 @@ export default function Search() {
         ].filter(Boolean).join('&')
         location.search != value && history.replaceState(null, '', `?${value}`);
     }, [ search, family, style, version, selectedCategories ])
-    useEffect(() => { check() }, [ view ])
     useEffect(() => {
         let adsenseContent = elemById('adsense-content');
         adsenseContent && (adsenseContent.style.display = 'none');
