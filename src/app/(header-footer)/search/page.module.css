@@ -46,6 +46,18 @@
     & * {
         margin: 0;
     }
+    & > h6 > span {
+        margin-left: var(--spacing-small);
+        cursor: var(--cursor-pointer);
+        user-select: none;
+
+        &:hover {
+            opacity: .75;
+        }
+        & > f-icon {
+            margin-right: var(--spacing-micro);
+        }
+    }
     & > div {
         align-items: center;
         

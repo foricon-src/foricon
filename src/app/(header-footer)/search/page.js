@@ -783,21 +783,21 @@ export default function Search() {
                     </ul>
                     <ul className='btn-list'>
                         <li className={`chip top`}>
-                            <f-icon icon='rectangle-stack'/>
+                            <f-icon icon='bookmark'/>
                             <span>{
                                 {
-                                    en: 'My collection',
-                                    vi: 'Bộ sưu tập của tôi',
-                                    fr: 'Ma collection',
-                                    it: 'La mia collezione',
-                                    kr: '내 컬렉션',
-                                    ja: '私のコレクション',
-                                    de: 'Meine Sammlung',
-                                    nl: 'Mijn verzameling',
-                                    dk: 'Min samling',
-                                    pt: 'A minha coleção',
-                                    es: 'Mi colección',
-                                    ru: 'Моя коллекция',
+                                    en: 'Saved',
+                                    vi: 'Đã lưu',
+                                    fr: 'Enregistré',
+                                    it: 'Salvato',
+                                    kr: '저장됨',
+                                    ja: '保存済み',
+                                    de: 'Gespeichert',
+                                    nl: 'Opgeslagen',
+                                    dk: 'Gemt',
+                                    pt: 'Salvo',
+                                    es: 'Guardado',
+                                    ru: 'Сохранено',
                                 }[lang]
                             }</span>
                         </li>
@@ -945,7 +945,12 @@ export default function Search() {
                 </div>
             </div>
             <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
-                <h6>{selectedIcon?.name || ''}</h6>
+                <h6>
+                    {selectedIcon?.name || ''}
+                    <span>
+                        <f-icon icon='bookmark' i-s='outline'/>Save
+                    </span>
+                </h6>
                 <div className={cssStyle.code}>
                     <span>
                         {
