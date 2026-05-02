@@ -788,7 +788,26 @@ export default function Search() {
                                 {
                                     en: 'Saved',
                                     vi: 'Đã lưu',
-                                    fr: 'Enregistré',
+                                    fr: 'Sauvé',
+                                    it: 'Salvato',
+                                    kr: '저장됨',
+                                    ja: '保存済み',
+                                    de: 'Gespeichert',
+                                    nl: 'Opgeslagen',
+                                    dk: 'Gemt',
+                                    pt: 'Salvo',
+                                    es: 'Guardado',
+                                    ru: 'Сохранено',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className={`chip top`}>
+                            <f-icon icon='bookmark'/>
+                            <span>{
+                                {
+                                    en: 'Saved',
+                                    vi: 'Đã lưu',
+                                    fr: 'Sauvé',
                                     it: 'Salvato',
                                     kr: '저장됨',
                                     ja: '保存済み',
@@ -948,7 +967,37 @@ export default function Search() {
                 <div>
                     <h6>{selectedIcon?.name || ''}</h6>
                     <span>
-                        <f-icon icon='bookmark' i-s='outline'/>Save
+                        <f-icon icon='bookmark' i-s='outline'/>
+                        {
+                            true ? {
+                                en: 'Save',
+                                vi: 'Lưu',
+                                fr: 'Sauvegarder',
+                                it: 'Salva',
+                                kr: '구하다',
+                                ja: '保存',
+                                de: 'Speichern',
+                                nl: 'Redden',
+                                dk: 'Spare',
+                                pt: 'Guardar',
+                                es: 'Ahorrar',
+                                ru: 'Сохранять',
+                            }[lang] :
+                            {
+                                en: 'Saved',
+                                vi: 'Đã lưu',
+                                fr: 'Sauvé',
+                                it: 'Salvato',
+                                kr: '저장됨',
+                                ja: '保存済み',
+                                de: 'Gespeichert',
+                                nl: 'Opgeslagen',
+                                dk: 'Gemt',
+                                pt: 'Salvo',
+                                es: 'Guardado',
+                                ru: 'Сохранено',
+                            }[lang]
+                        }
                     </span>
                 </div>
                 <div className={cssStyle.code}>

@@ -68,7 +68,7 @@ export async function GET(req) {
             })
         }
         
-        let result = { settings, fonts: {} };
+        let result = { settings, fonts: {}, cssBaseUrl: process.env.FORICON_CSS_BASE_URL };
         
         settings.versions.includes('b1') && (result.fonts.b1 = getFile('systemAssets/font.ttf', true));
         settings.versions.includes('b2') && (result.fonts.b2 = getFile('systemAssets/fontb2.ttf', true));

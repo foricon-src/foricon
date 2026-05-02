@@ -151,7 +151,7 @@ export function GET(_, { params: { uid }}) {
                 const parsed = await res.json();
 
                 if (!res.ok) throw new Error(parsed.message);
-                const { settings, fonts } = parsed;
+                const { settings, fonts, cssBaseUrl } = parsed;
 
                 log('[Foricon Package] Step 3/4: Applying settings and finalizing styles...');
                 
@@ -391,29 +391,17 @@ export function GET(_, { params: { uid }}) {
                     0% {transform: rotateX(0deg) rotateY(0deg);}
                     50% {transform: rotateX(180deg) rotateY(180deg);}
                     100% {transform: rotateX(360deg) rotateY(360deg);}
-                }\`
+                }\`;
+                let head = document.querySelector("head")
+                head.append(s);
 
                 let { versions } = settings;
                 for (let ver of versions) {
                     if (versions.includes('b2') && ver == 'b2w2') continue;
-                    let icons = (await get(ref(db, [ 'b2', 'b2w2' ].includes(ver) ? 'iconsB2/' : "icons/"))).val();
-                    for (let key in icons) {
-                        let icon = icons[key];
-                        
-                        icon.styles.forEach(item => {
-                            let string = \`\nf-icon[icon="\${key}"]\${ver == 'b1' ? '[b1]' : ''}\`;
-                            let unicode = icon.unicodes?.[item.replace("/", "-")];
-                            if (item.startsWith("duotone/")) {
-                                let unicode_layers = unicode?.split("|");
-                                string += \`[i-s="\${item}"]::before { content: "\\\\\${unicode_layers?.[0]}"}
-                                \${string}[i-s="\${item}"]::after { content: "\\\\\${unicode_layers?.[1]}"}\`;
-                            }
-                            else string += \`\${item == "outline" ? '[i-s="outline"]' : ""}::before { content: "\\\\\${unicode}"}\`;
-                            s.innerHTML += string;
-                        })
-                    }
+                    let link = document.createElement('link');
+                    link.href = \`\${cssBaseUrl}/foricon/\${ver}.css\`;
+                    head.append(link);
                 }
-                document.querySelector("head").appendChild(s);
                 window.foriconPackageIsLoaded = true;
                 log('[Foricon Package] Step 4/4: Foricon package loaded successfully!\\n\\nEverthing looks fine now, wanna look for some "decoration"? Just browse it here: https://foricon-dev.blogspot.com/p/search.html');
             }
