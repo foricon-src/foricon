@@ -414,9 +414,6 @@ export default function Search() {
         })
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let currentIcons = useMemo(() => {
-        let maxPage = Math.floor(filtered.length / perPage);
-        setPage(Math.min(maxPage, currentPage));
-
         let start = perPage * currentPage;
         return filtered.slice(start, start + perPage);
     }, [ filtered, currentPage, perPage ])
@@ -532,6 +529,10 @@ export default function Search() {
         let adsenseContent = elemById('adsense-content');
         adsenseContent && (adsenseContent.style.display = 'none');
     }, [])
+    useEffect(() => {
+        let maxPage = Math.floor(filtered.length / perPage);
+        setPage(Math.min(maxPage, currentPage));
+    }, [ filtered, currentPage, perPage ])
 
     return (
         <>
