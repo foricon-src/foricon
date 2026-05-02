@@ -399,7 +399,7 @@ export function GET(_, { params: { uid }}) {
                 for (let ver of versions) {
                     if (versions.includes('b2') && ver == 'b2w2') continue;
                     let link = document.createElement('link');
-                    link.href = \`\${cssBaseUrl}/foricon/\${ver}.css\`;
+                    link.href = \`\${cssBaseUrl}/foricon/\${ver == 'b2w2' ? 'b2' : ver}.css\`;
                     head.append(link);
                 }
                 window.foriconPackageIsLoaded = true;
