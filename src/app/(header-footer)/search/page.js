@@ -391,7 +391,7 @@ export default function Search() {
         if (!iconSet) return [];
     
         return iconSet.flatMap(icon => {
-            (
+            return (
                 family == 'all' && style == 'all' ? icon.styles :
                 family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`) :
                 style == 'all' ? [ 'solid', 'outline' ].map(
