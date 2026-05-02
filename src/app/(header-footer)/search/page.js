@@ -406,7 +406,7 @@ export default function Search() {
                         (
                             normalized.includes(search) || similarity(normalized, search) > 0.65
                         ) && (
-                            !selectedCategories.length || selectCategories.every(c => icon.categories.includes(c))
+                            !selectedCategories.length || selectedCategories.every(c => icon.categories.includes(c))
                         )
                     )
                 })
