@@ -7,10 +7,9 @@ import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import cssStyle from './page.module.css';
 
-export default function Search() {
+export default function Search({ searchParams }) {
     let router = useRouter();
     let lang = useContext(LanguageContext);
-    let searchParams = useSearchParams();
 
     let [ type, setType ] = useState('');
 
@@ -373,7 +372,7 @@ export default function Search() {
             version: verify('v'),
             categories: verify('c'),
         }
-    })(searchParams)
+    })(JSON.parse(searchParams.value))
     
     let [ loaded, setLoaded ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
@@ -414,6 +413,9 @@ export default function Search() {
         })
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let currentIcons = useMemo(() => {
+        let maxPage = Math.floor(filtered.length / perPage);
+        setPage(Math.min(maxPage, currentPage));
+
         let start = perPage * currentPage;
         return filtered.slice(start, start + perPage);
     }, [ filtered, currentPage, perPage ])
@@ -529,10 +531,6 @@ export default function Search() {
         let adsenseContent = elemById('adsense-content');
         adsenseContent && (adsenseContent.style.display = 'none');
     }, [])
-    useEffect(() => {
-        let maxPage = Math.floor(filtered.length / perPage);
-        setPage(Math.min(maxPage, currentPage));
-    }, [ filtered, currentPage, perPage ])
 
     return (
         <>
