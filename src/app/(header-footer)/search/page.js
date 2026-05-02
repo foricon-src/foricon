@@ -430,6 +430,7 @@ export default function Search() {
     }, [ filtered, currentPage, perPage ])
     let categoryCounts = useMemo(() => {
         let cloned = structuredClone(webData.categories);
+        console.log(filtered)
         filtered.forEach(({ icon: { categories } }) => 
             categories.forEach(c => cloned[c].count = (cloned[c].count || 0) + 1)
         )
