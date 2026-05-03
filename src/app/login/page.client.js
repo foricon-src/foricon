@@ -9,6 +9,7 @@ import { dbFirestore, auth } from "Com/firebase";
 import { LanguageContext } from 'Com/language';
 import popUp from "Com/popup";
 import recordLogin from "Com/record-login";
+import logo from 'Pub/foricon-f-logo.png';
 
 let texts = {
     en: {
@@ -164,7 +165,7 @@ export default function LogIn() {
         <div id='wrapper'>
             <div>
                 <Link href='/' title='Back to home'>
-                    <img src='/foricon-f-2.png'/>
+                    <Image src={logo}/>
                 </Link>
                 <h1>{texts[lang][step].h1}</h1>
                 <p>{texts[lang][step].p}</p>

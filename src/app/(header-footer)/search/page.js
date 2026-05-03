@@ -783,21 +783,40 @@ export default function Search() {
                     </ul>
                     <ul className='btn-list'>
                         <li className={`chip top`}>
-                            <f-icon icon='bookmark'/>
+                            <f-icon icon='palette'/>
                             <span>{
                                 {
-                                    en: 'Saved',
-                                    vi: 'Đã lưu',
-                                    fr: 'Sauvé',
-                                    it: 'Salvato',
-                                    kr: '저장됨',
-                                    ja: '保存済み',
-                                    de: 'Gespeichert',
-                                    nl: 'Opgeslagen',
-                                    dk: 'Gemt',
-                                    pt: 'Salvo',
-                                    es: 'Guardado',
-                                    ru: 'Сохранено',
+                                    en: 'Add colors',
+                                    vi: 'Thêm màu',
+                                    fr: 'Ajouter des couleurs',
+                                    it: 'Aggiungi i colori',
+                                    kr: '색상을 추가하세요',
+                                    ja: '色を加える',
+                                    de: 'Füge Farben hinzu',
+                                    nl: 'Voeg kleuren toe',
+                                    dk: 'Tilføj farver',
+                                    pt: 'Adicionar cores',
+                                    es: 'Añade colores',
+                                    ru: 'Добавить цвета',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className={`chip top`}>
+                            <f-icon icon='arrow-down-a-z' i-s='outline'/>
+                            <span>{
+                                {
+                                    en: 'Sort',
+                                    vi: 'Sắp xếp',
+                                    fr: 'Trier',
+                                    it: 'Ordinare',
+                                    kr: '종류',
+                                    ja: '選別',
+                                    de: 'Sortieren',
+                                    nl: 'Soort',
+                                    dk: 'Sortere',
+                                    pt: 'Ordenar',
+                                    es: 'Clasificar',
+                                    ru: 'Сортировка',
                                 }[lang]
                             }</span>
                         </li>

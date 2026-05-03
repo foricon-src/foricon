@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { LanguageContext } from "./language";
-import logo from 'Pub/foricon-f-2.png';
+import logo from 'Pub/foricon-f-logo.png';
 import { useContext } from "react";
 
 export default function Footer() {

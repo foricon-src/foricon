@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from 'Pub/foricon-f-2.png';
+import logo from 'Pub/foricon-f-logo.png';
 import { LanguageContext } from 'Com/language';
 import 'Com/utils';
 
@@ -15,15 +15,12 @@ export default function Header() {
     let lang = useContext(LanguageContext);
 
     useEffect(() => {
-        let params = [ document, 'click', ({ target }) =>
+        addEvLis(document, 'click', ({ target }) =>
             ![
                 qSelec(false, 'header > ul[name="right"] > :has(f-icon[icon="bars"])'),
                 qSelec(false, 'header > ul[name="all"]')
             ].some(i => i.contains(target)) && setOpen(false)
-        ]
-        addEvLis(...params);
-
-        return () => remvEvLis(...params);
+        )
     }, [])
 
     return (
