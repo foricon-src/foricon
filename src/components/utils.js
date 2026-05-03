@@ -829,6 +829,14 @@ globalThis.getAttr = (elem, attr) => {
 globalThis.hasAttr = (elem, attr) => {
     return elem?.hasAttribute(attr);
 }
+/**
+ * Removes specified attributes of an element
+ * @param {HTMLElement} elem - Element to remove attribute
+ * @param {string | string[]} attrs - Attribute to remove
+ */
+globalThis.remvAttrs = (elem, attrs) => {
+    (Array.isArray(attrs) ? attrs : [ attrs ]).forEach(elem.removeAttribute);
+}
 const listenerMap = new Map();
 /**
  * Adds event listener(s) to element(s)
