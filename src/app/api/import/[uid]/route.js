@@ -5,13 +5,13 @@ export function GET(_, { params: { uid }}) {
         window.foriconPackageIsLoaded = false;
 
         (async () => {
-            customElements.define("f-icon", class extends HTMLElement {
+            customElements.define('f-icon', class extends HTMLElement {
                 getIcon() {
-                    return this.getAttribute("icon");
+                    return this.getAttribute('icon');
                 }
                 setIcon(iconName) {
-                    if (typeof iconName != "string") error("Invalid value format: iconName must be a valid string");
-                    else this.setAttribute("icon", iconName);
+                    if (typeof iconName != 'string') error('Invalid value format: iconName must be a valid string');
+                    else this.setAttribute('icon', iconName);
                 }
                 toggleIcon(icon1Name, icon2Name) {
                     let currentIcon = this.getIcon();
@@ -20,50 +20,50 @@ export function GET(_, { params: { uid }}) {
                     else this.setIcon(currentIcon == icon1Name ? icon2Name : icon1Name);
                 }
                 getStyle() {
-                    return this.getAttribute("i-s") || "solid";
+                    return this.getAttribute('i-s') || 'solid';
                 }
                 setStyle(styleName) {
-                    if (typeof styleName != "string") error("Invalid value format: Style name must be a valid string");
-                    else this.setAttribute("i-s", styleName);
+                    if (typeof styleName != 'string') error('Invalid value format: Style name must be a valid string');
+                    else this.setAttribute('i-s', styleName);
                 }
                 toggleStyle(style1Name, style2Name) {
-                    let currentStyle = this.getAttribute("i-s") || "Solid";
-                    if (!style1Name) error("Missing arguments: style1Name is undefined");
-                    else if (!style2Name) error("Missing arguments: style2Name is undefined");
+                    let currentStyle = this.getAttribute('i-s') || 'Solid';
+                    if (!style1Name) error('Missing arguments: style1Name is undefined');
+                    else if (!style2Name) error('Missing arguments: style2Name is undefined');
                     else this.setStyle(currentStyle == style1Name ? style2Name : style1Name);
                 }
                 setAnimation(animationName, speedName) {
-                    if (animationName == null) this.removeAttribute("animation");
-                    else if (typeof animationName != "string" || (speedName && typeof speedName != "string")) error("Invalid value format: animationName and speedName must be a valid string");
-                    else if (!["spin", "spin-reverse", "ltfade", "fade", "hvfade", "ulfade", "csfade", "smbeat", "beat", "bgbeat", "fadebeat", "csbeat", "flipX", "flipY", "flipXY"].includes(animationName)) error(\`Invalid value: "\${animationName}" is not supported\`);
-                    else if (speedName && !["xxslow", "xslow", "slow", "semislow", "", "semifast", "fast", "xfast", "xxfast"].includes(speedName)) error(\`Invalid value: "\${speedName}" is not supported\`);
-                    else this.setAttribute("animation", \`\${animationName}\${speedName ? \`-\${speedName}\` : ''}\`);
+                    if (animationName == null) this.removeAttribute('animation');
+                    else if (typeof animationName != 'string' || (speedName && typeof speedName != 'string')) error('Invalid value format: animationName and speedName must be a valid string');
+                    else if (![ 'spin', 'spin-reverse', 'ltfade', 'fade', 'hvfade', 'ulfade', 'csfade', 'smbeat', 'beat', 'bgbeat', 'fadebeat', 'csbeat', 'flip-x', 'flip-y', 'flip-xy' ].includes(animationName)) error(\`Invalid value: '\${animationName}' is not supported\`);
+                    else if (speedName && ![ 'xxslow', 'xslow', 'slow', 'semislow', '', 'semifast', 'fast', 'xfast', 'xxfast' ].includes(speedName)) error(\`Invalid value: '\${speedName}' is not supported\`);
+                    else this.setAttribute('animation', \`\${animationName}\${speedName ? \`-\${speedName}\` : ''}\`);
                 }
                 setSize(sizeName) {
-                    if (sizeName == null) this.removeAttribute("size");
-                    else if (typeof sizeName == "string") {
-                        if (["smallest", "smaller", "small", "large", "larger", "largest"].includes(sizeName)) this.setAttribute("size", sizeName);
-                        else error(\`Invalid value: "\${sizeName}" is not supported\`);
+                    if (sizeName == null) this.removeAttribute('size');
+                    else if (typeof sizeName == 'string') {
+                        if ([ 'smallest', 'smaller', 'small', 'large', 'larger', 'largest' ].includes(sizeName)) this.setAttribute('size', sizeName);
+                        else error(\`Invalid value: '\${sizeName}' is not supported\`);
                     }
-                    else error("Invalid value format: sizeName must be a valid string");
+                    else error('Invalid value format: sizeName must be a valid string');
                 }
                 setScale(scaleName) {
-                    if (scaleName == null) this.removeAttribute("scale");
-                    else if (typeof scaleName == "string") {
-                        let scales = ["xsmaller", "smaller", "larger", "xlarger"];
-                        if (scales.includes(scaleName)) this.setAttribute("scale", scaleName);
-                        else error(\`Invalid value: "\${scaleName}" is not supported\`);
+                    if (scaleName == null) this.removeAttribute('scale');
+                    else if (typeof scaleName == 'string') {
+                        let scales = [ 'xsmaller', 'smaller', 'larger', 'xlarger' ];
+                        if (scales.includes(scaleName)) this.setAttribute('scale', scaleName);
+                        else error(\`Invalid value: '\${scaleName}' is not supported\`);
                     }
-                    else error("Invalid value format: scaleName must be a valid string");
+                    else error('Invalid value format: scaleName must be a valid string');
                 }
                 rotate(value) {
-                    if (value == null) this.removeAttribute("rotate");
-                    else if (typeof value == "string" || typeof value == "number") {
-                        let values = ["90", "180", "270", "flipX", "flipY"];
-                        if (values.includes(value.toString())) this.setAttribute("rotate", value);
-                        else error(\`Invalid value: "\${value}" is not supported\`);
+                    if (value == null) this.removeAttribute('rotate');
+                    else if (typeof value == 'string' || typeof value == 'number') {
+                        let values = [ '90', '180', '270', 'flip-x', 'flip-y' ];
+                        if (values.includes(value.toString())) this.setAttribute('rotate', value);
+                        else error(\`Invalid value: '\${value}' is not supported\`);
                     }
-                    else error("Invalid value format: Value must be a valid string or number");
+                    else error('Invalid value format: Value must be a valid string or number');
                 }
                 toggleIconOnHover(activeIconName, element = this) {
                     let t = this;
@@ -76,19 +76,19 @@ export function GET(_, { params: { uid }}) {
                         t.setIcon(currentIconName);
                     }
                 
-                    element.addEventListener("mouseenter", i_meh);
-                    element.addEventListener("mouseleave", i_mlh);
+                    element.addEventListener('mouseenter', i_meh);
+                    element.addEventListener('mouseleave', i_mlh);
                 
                     element._i_meh = i_meh;
                     element._i_mlh = i_mlh;
                 }
                 removeToggleIconOnHover(element = this) {
                     if (element._i_meh) {
-                        element.removeEventListener("mouseenter", element._i_meh);
+                        element.removeEventListener('mouseenter', element._i_meh);
                         delete element._i_meh;
                     }
                     if (element._i_mlh) {
-                        element.removeEventListener("mouseleave", element._i_mlh);
+                        element.removeEventListener('mouseleave', element._i_mlh);
                         delete element._i_mlh;
                     }
                 }
@@ -103,25 +103,25 @@ export function GET(_, { params: { uid }}) {
                         t.setStyle(currentStyleName);
                     }
                 
-                    element.addEventListener("mouseenter", s_meh);
-                    element.addEventListener("mouseleave", s_mlh);
+                    element.addEventListener('mouseenter', s_meh);
+                    element.addEventListener('mouseleave', s_mlh);
                 
                     element._s_meh = s_meh;
                     element._s_mlh = s_mlh;
                 }
                 removeToggleStyleOnHover(element = this) {
                     if (element._s_meh) {
-                        element.removeEventListener("mouseenter", element._s_meh);
+                        element.removeEventListener('mouseenter', element._s_meh);
                         delete element._s_meh;
                     }
                     if (element._s_mlh) {
-                        element.removeEventListener("mouseleave", element._s_mlh);
+                        element.removeEventListener('mouseleave', element._s_mlh);
                         delete element._s_mlh;
                     }
                 }
                 set(options) {
                     if (!options) {
-                        error("Missing arguments: option is undefined");
+                        error('Missing arguments: option is undefined');
                         return;
                     }
                     const { icon, style, animation, size, scale, rotate } = options;
@@ -133,11 +133,6 @@ export function GET(_, { params: { uid }}) {
                     rotate && this.rotate(rotate);
                 }
             })
-            function fIcon(options) {
-                const elem = document.createElement("f-icon");
-                elem.set(options);
-                return elem;
-            }
             
             try {
                 log('[Foricon Package] Step 1/4: Preparing environment...');
@@ -155,7 +150,7 @@ export function GET(_, { params: { uid }}) {
 
                 log('[Foricon Package] Step 3/4: Applying settings and finalizing styles...');
                 
-                let s = document.createElement("style");
+                let s = document.createElement('style');
                 s.innerHTML = \`:root {
                     --primary-color: inherit;
                     --secondary-color: inherit;
@@ -163,24 +158,24 @@ export function GET(_, { params: { uid }}) {
                     --secondary-opacity: 0.4;
                 }
                 \${fonts.b1 ? \`@font-face {
-                    font-family: "Foricon Beta 1";
-                    src: url("\${fonts.b1}");
+                    font-family: 'Foricon Beta 1';
+                    src: url('\${fonts.b1}');
                     font-weight: normal;
                     font-style: normal;
-                    text-rendering: \${settings.renderingOption == "performance" ? "optimizeSpeed" : "geometricPrecision"};
+                    text-rendering: \${settings.renderingOption == 'performance' ? 'optimizeSpeed' : 'geometricPrecision'};
                 }\` : ''}
                 \${fonts.b2 || fonts.b2w2 ? \`@font-face {
-                    font-family: "Foricon Beta";
+                    font-family: 'Foricon Beta';
                     src: \${[ fonts.b2, fonts.b2w2 ].filter(Boolean).map(link => \`url('\${link}')\`).join(', ')};
                     font-weight: normal;
                     font-style: normal;
-                    text-rendering: \${settings.renderingOption == "performance" ? "optimizeSpeed" : "geometricPrecision"};
+                    text-rendering: \${settings.renderingOption == 'performance' ? 'optimizeSpeed' : 'geometricPrecision'};
                 }\` : ''}
 
                 f-icon {
                     animation: 1s ease infinite;
                     position: relative;
-                    font-family: "Foricon Beta";
+                    font-family: 'Foricon Beta';
                     line-height: 1em;
                     font-weight: normal;
                     display: inline-flex;
@@ -189,133 +184,133 @@ export function GET(_, { params: { uid }}) {
                     &::before {
                         color: var(--primary-color);
                     }
-                    &[i-s^="duotone/"]::before, &[reversed][i-s^="duotone/"]::after {
+                    &[i-s^='duotone/']::before, &[reversed][i-s^='duotone/']::after {
                         opacity: var(--primary-opacity);
                     }
-                    &[i-s^="duotone/"]::after, &[reversed][i-s^="duotone/"]::before {
+                    &[i-s^='duotone/']::after, &[reversed][i-s^='duotone/']::before {
                         color: var(--secondary-color);
                         opacity: var(--secondary-opacity);
                     }
-                    &[i-s^="duotone/"]::after {
+                    &[i-s^='duotone/']::after {
                         position: absolute;
                     }
-                    &[animation*="-xxslow"] {
+                    &[animation*='-xxslow'] {
                         animation-duration: 3s;
                     }
-                    &[animation*="-xslow"] {
+                    &[animation*='-xslow'] {
                         animation-duration: 2.5s;
                     }
-                    &[animation*="-slow"] {
+                    &[animation*='-slow'] {
                         animation-duration: 2s;
                     }
-                    &[animation*="-semislow"] {
+                    &[animation*='-semislow'] {
                         animation-duration: 1.5s;
                     }
-                    &[animation*="-semifast"] {
+                    &[animation*='-semifast'] {
                         animation-duration: .75s;
                     }
-                    &[animation*="-fast"] {
+                    &[animation*='-fast'] {
                         animation-duration: .5s;
                     }
-                    &[animation*="-xfast"] {
+                    &[animation*='-xfast'] {
                         animation-duration: .25s;
                     }
-                    &[animation*="-xxfast"] {
+                    &[animation*='-xxfast'] {
                         animation-duration: .125s;
                     }
                     
-                    &[animation^="spin"] {
+                    &[animation^='spin'] {
                         animation-name: spin;
                         animation-timing-function: linear;
                     }
-                    &[animation^="spin-reverse"] {
+                    &[animation^='spin-reverse'] {
                         animation-direction: reverse;
                     }
-                    &[animation^="ltfade"] {
+                    &[animation^='ltfade'] {
                         animation-name: ltfade;
                     }
-                    &[animation^="fade"] {
+                    &[animation^='fade'] {
                         animation-name: fade;
                     }
-                    &[animation^="hvfade"] {
+                    &[animation^='hvfade'] {
                         animation-name: hvfade;
                     }
-                    &[animation^="ulfade"] {
+                    &[animation^='ulfade'] {
                         animation-name: ulfade;
                     }
-                    &[animation^="csfade"] {
+                    &[animation^='csfade'] {
                         animation-name: csfade;
                     }
-                    &[animation^="smbeat"] {
+                    &[animation^='smbeat'] {
                         animation-name: smbeat;
                     }
-                    &[animation^="beat"] {
+                    &[animation^='beat'] {
                         animation-name: beat;
                     }
-                    &[animation^="bgbeat"] {
+                    &[animation^='bgbeat'] {
                         animation-name: bgbeat;
                     }
-                    &[animation^="fadebeat"] {
+                    &[animation^='fadebeat'] {
                         animation-name: fadebeat;
                     }
-                    &[animation^="csbeat"] {
+                    &[animation^='csbeat'] {
                         animation-name: csbeat;
                     }
-                    &[animation^="flipX"] {
+                    &[animation^='flip-x'] {
                         animation-name: flipX;
                     }
-                    &[animation^="flipY"] {
+                    &[animation^='flip-y'] {
                         animation-name: flipY;
                     }
-                    &[animation^="flipXY"] {
+                    &[animation^='flip-xy'] {
                         animation-name: flipXY;
                     }
                     
-                    &[size="smallest"] {
+                    &[size='smallest'] {
                         font-size: .25em !important;
                     }
-                    &[size="smaller"] {
+                    &[size='smaller'] {
                         font-size: .5em !important;
                     }
-                    &[size="small"] {
+                    &[size='small'] {
                         font-size: .75em !important;
                     }
-                    &[size="large"] {
+                    &[size='large'] {
                         font-size: 1.25em !important;
                     }
-                    &[size="larger"] {
+                    &[size='larger'] {
                         font-size: 1.5em !important;
                     }
-                    &[size="largest"] {
+                    &[size='largest'] {
                         font-size: 1.75em !important;
                     }
                     
-                    &[scale="xsmaller"] {
+                    &[scale='xsmaller'] {
                         scale: .5;
                     }
-                    &[scale="smaller"] {
+                    &[scale='smaller'] {
                         scale: .75;
                     }
-                    &[scale="larger"] {
+                    &[scale='larger'] {
                         scale: 1.25;
                     }
-                    &[scale="xlarger"] {
+                    &[scale='xlarger'] {
                         scale: 1.5;
                     }
                     
-                    &[rotate="90"] {
+                    &[rotate='90'] {
                         rotate: 90deg;
                     }
-                    &[rotate="180"] {
+                    &[rotate='180'] {
                         rotate: 180deg;
                     }
-                    &[rotate="270"] {
+                    &[rotate='270'] {
                         rotate: 270deg;
                     }
-                    &[rotate="flipX"] {
+                    &[rotate='flip-x'] {
                         transform: rotateX(180deg);
                     }
-                    &[rotate="flipY"] {
+                    &[rotate='flip-y'] {
                         transform: rotateY(180deg);
                     }
                 }
@@ -392,7 +387,7 @@ export function GET(_, { params: { uid }}) {
                     50% {transform: rotateX(180deg) rotateY(180deg);}
                     100% {transform: rotateX(360deg) rotateY(360deg);}
                 }\`;
-                let head = document.querySelector("head")
+                let head = document.querySelector('head')
                 head.append(s);
 
                 let { versions } = settings;
@@ -404,7 +399,7 @@ export function GET(_, { params: { uid }}) {
                     head.append(link);
                 }
                 window.foriconPackageIsLoaded = true;
-                log('[Foricon Package] Step 4/4: Foricon package loaded successfully!\\n\\nEverthing looks fine now, wanna look for some "decoration"? Just browse it here: https://foricon-dev.blogspot.com/p/search.html');
+                log('[Foricon Package] Step 4/4: Foricon package loaded successfully!');
             }
             catch (err) {
                 error('[Foricon Package] An error occurred:', err);

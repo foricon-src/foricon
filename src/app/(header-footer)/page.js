@@ -171,18 +171,18 @@ export default function Home() {
                     }</h6>
                     <h1>{
                         {
-                            en: 'Easy Integration,&nbsp;Stunning Results',
-                            vi: 'Dễ dàng tích hợp,&nbsp;Kết quả bắt mắt',
-                            fr: 'Intégration facile,&nbsp;Résultats époustouflants',
-                            it: 'Facile integrazione,&nbsp;Risultati sorprendenti',
-                            kr: '쉬운 통합,&nbsp;놀라운 결과',
-                            ja: '簡単な統合&#12289;&nbsp;素晴らしい結果',
-                            de: 'Einfache Integration,&nbsp;umwerfende Ergebnisse',
-                            nl: 'Eenvoudige integratie,&nbsp;Verbluffende resultaten',
-                            dk: 'Nem integration,&nbsp;Fantastiske resultater',
-                            pt: 'Fácil Integração,&nbsp;Resultados impressionantes',
-                            es: 'Fácil integración,&nbsp;resultados sorprendentes',
-                            ru: 'Простая интеграция,&nbsp;Потрясающие результаты',
+                            en: 'Easy Integration,\nStunning Results',
+                            vi: 'Dễ dàng tích hợp,\nKết quả bắt mắt',
+                            fr: 'Intégration facile,\nRésultats époustouflants',
+                            it: 'Facile integrazione,\nRisultati sorprendenti',
+                            kr: '쉬운 통합,\n놀라운 결과',
+                            ja: '簡単な統合&#12289;\n素晴らしい結果',
+                            de: 'Einfache Integration,\numwerfende Ergebnisse',
+                            nl: 'Eenvoudige integratie,\nVerbluffende resultaten',
+                            dk: 'Nem integration,\nFantastiske resultater',
+                            pt: 'Fácil Integração,\nResultados impressionantes',
+                            es: 'Fácil integración,\nresultados sorprendentes',
+                            ru: 'Простая интеграция,\nПотрясающие результаты',
                         }[lang]
                     }</h1>
                     <p>{
@@ -538,7 +538,7 @@ export default function Home() {
                             }[lang]
                         }</h6>
                         <ul className='btn-list darker'>{
-                            [ '', '90', '180', '270', 'flipX', 'flipY' ].map(i => (
+                            [ '', '90', '180', '270', 'flip-x', 'flip-y' ].map(i => (
                                 <li key={i} onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
                                 }</li>
@@ -566,7 +566,7 @@ export default function Home() {
                                 'ltfade', 'fade', 'hvfade', 'ulfade',
                                 'smbeat', 'beat', 'bgbeat', 'fadebeat',
                                 'spin', 'spin-reverse',
-                                'flipX', 'flipY', 'flipXY',
+                                'flip-x', 'flip-y', 'flip-xy',
                             ].map(i => (
                                 <li key={i} onClick={() => setAnimation(i)} className={animation == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
@@ -820,5 +820,5 @@ export default function Home() {
                 </a>
             </div>
         </div>
-    );
+    )
 }
