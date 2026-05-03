@@ -1489,7 +1489,7 @@ code {
             content: attr(name);
             display: block;
             padding: 10px 15px;
-            border-bottom: 1px solid var(--gray);
+            border-bottom: 1px solid var(--dk-gray);
             background-color: var(--lt-gray);
             margin: 0 -25px 25px;
             border-radius: 14px 14px 0 0;
