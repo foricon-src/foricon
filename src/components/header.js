@@ -6,6 +6,7 @@ import Link from 'next/link';
 import logo from 'Pub/foricon-f-logo.png';
 import { LanguageContext } from 'Com/language';
 import Img from 'Com/img';
+import 'Com/utils';
 
 export default function Header() {
     let [ open, setOpen ] = useState(false);
