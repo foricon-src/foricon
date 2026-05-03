@@ -835,7 +835,7 @@ globalThis.hasAttr = (elem, attr) => {
  * @param {string | string[]} attrs - Attribute to remove
  */
 globalThis.remvAttrs = (elem, attrs) => {
-    (Array.isArray(attrs) ? attrs : [ attrs ]).forEach(elem.removeAttribute);
+    [].concat(attrs).forEach(attr => elem.removeAttribute(attr));
 }
 const listenerMap = new Map();
 /**
@@ -845,8 +845,8 @@ const listenerMap = new Map();
  * @param {(e: Event & { i: number }) => void} func - Event handler
  */
 globalThis.addEvLis = (elems, types, func) => {
-    elems = Array.isArray(elems) ? elems : [elems];
-    types = Array.isArray(types) ? types : [types];
+    elems = [].concat(elems);
+    types = [].concat(types);
     
     elems.forEach((elem, i) => 
         (elem instanceof HTMLElement || elem == document || elem == window) && types.forEach(type => {
