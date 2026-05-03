@@ -85,7 +85,7 @@ export default function Home() {
                         fr: "Concevez plus intelligemment avec des icônes qui se personnalisent, s'animent et s'intègrent en quelques secondes",
                         it: 'Progetta in modo più intelligente con icone che si personalizzano, si animano e si integrano in pochi secondi',
                         kr: '몇 초 만에 사용자 지정, 애니메이션 및 통합이 가능한 아이콘으로 더욱 스마트하게 디자인하세요',
-                        ja: '数秒でカスタマイズ&#12289;アニメーション&#12289;統合できるアイコンで&#12289;よりスマートにデザインできます',
+                        ja: '数秒でカスタマイズ、アニメーション、統合できるアイコンで、よりスマートにデザインできます',
                         de: 'Gestalten Sie intelligenter mit Symbolen, die sich in Sekundenschnelle anpassen, animieren und integrieren lassen',
                         nl: 'Ontwerp slimmer met pictogrammen die u in seconden kunt aanpassen, animeren en integreren',
                         dk: 'Design smartere med ikoner, der tilpasser, animerer og integrerer på få sekunder',
@@ -169,22 +169,22 @@ export default function Home() {
                             ru: 'Интеграция',
                         }[lang]
                     }</h6>
-                    <h1>{
-                        {
-                            en: 'Easy Integration,\nStunning Results',
-                            vi: 'Dễ dàng tích hợp,\nKết quả bắt mắt',
-                            fr: 'Intégration facile,\nRésultats époustouflants',
-                            it: 'Facile integrazione,\nRisultati sorprendenti',
-                            kr: '쉬운 통합,\n놀라운 결과',
-                            ja: '簡単な統合&#12289;\n素晴らしい結果',
-                            de: 'Einfache Integration,\numwerfende Ergebnisse',
-                            nl: 'Eenvoudige integratie,\nVerbluffende resultaten',
-                            dk: 'Nem integration,\nFantastiske resultater',
-                            pt: 'Fácil Integração,\nResultados impressionantes',
-                            es: 'Fácil integración,\nresultados sorprendentes',
-                            ru: 'Простая интеграция,\nПотрясающие результаты',
+                    <h1 dangerouslySetInnerHTML={{
+                        __html: {
+                            en: 'Easy Integration,<br>Stunning Results',
+                            vi: 'Dễ dàng tích hợp,<br>Kết quả bắt mắt',
+                            fr: 'Intégration facile,<br>Résultats époustouflants',
+                            it: 'Facile integrazione,<br>Risultati sorprendenti',
+                            kr: '쉬운 통합,<br>놀라운 결과',
+                            ja: '簡単な統合、<br>素晴らしい結果',
+                            de: 'Einfache Integration,<br>umwerfende Ergebnisse',
+                            nl: 'Eenvoudige integratie,<br>Verbluffende resultaten',
+                            dk: 'Nem integration,<br>Fantastiske resultater',
+                            pt: 'Fácil Integração,<br>Resultados impressionantes',
+                            es: 'Fácil integración,<br>resultados sorprendentes',
+                            ru: 'Простая интеграция,<br>Потрясающие результаты',
                         }[lang]
-                    }</h1>
+                    }}/>
                     <p>{
                         {
                             en: "Integrating our icon library into your projects is a breeze. Simply choose the icons you need, get its code, and start using them right away. With our extensive collection and easy-to-use interface, you'll find the perfect icons to elevate your designs.",
@@ -192,7 +192,7 @@ export default function Home() {
                             fr: "L'intégration de notre bibliothèque d'icônes dans vos projets est un jeu d'enfant. Choisissez simplement les icônes dont vous avez besoin, obtenez leur code et commencez à les utiliser immédiatement. Grâce à notre vaste collection et à notre interface facile à utiliser, vous trouverez les icônes parfaites pour rehausser vos créations.",
                             it: "Integrare la nostra libreria di icone nei tuoi progetti è un gioco da ragazzi. Scegli semplicemente le icone di cui hai bisogno, ottieni il codice e inizia a usarle subito. Con la nostra vasta collezione e l'interfaccia facile da usare, troverai le icone perfette per migliorare i tuoi design.",
                             kr: '아이콘 라이브러리를 프로젝트에 통합하는 것은 아주 간단합니다. 필요한 아이콘을 선택하고, 코드를 받고, 바로 사용하기 시작하면 됩니다. 광범위한 컬렉션과 사용하기 쉬운 인터페이스로 디자인을 한 단계 업그레이드할 완벽한 아이콘을 찾을 수 있습니다.',
-                            ja: '当社のアイコン ライブラリをプロジェクトに統合するのは簡単です&#12290;必要なアイコンを選択し&#12289;コードを取得して&#12289;すぐに使い始めるだけです&#12290;当社の豊富なコレクションと使いやすいインターフェイスにより&#12289;デザインを向上させる完璧なアイコンが見つかります&#12290;',
+                            ja: '当社のアイコン ライブラリをプロジェクトに統合するのは簡単です。必要なアイコンを選択し、コードを取得して、すぐに使い始めるだけです。当社の豊富なコレクションと使いやすいインターフェイスにより、デザインを向上させる完璧なアイコンが見つかります。',
                             de: 'Die Integration unserer Symbolbibliothek in Ihre Projekte ist ein Kinderspiel. Wählen Sie einfach die gewünschten Symbole aus, holen Sie sich den Code und verwenden Sie sie sofort. Mit unserer umfangreichen Sammlung und der benutzerfreundlichen Oberfläche finden Sie die perfekten Symbole, um Ihre Designs aufzuwerten.',
                             nl: 'Het integreren van onze icoonbibliotheek in uw projecten is een fluitje van een cent. Kies gewoon de iconen die u nodig hebt, ontvang de code en begin ze meteen te gebruiken. Met onze uitgebreide collectie en gebruiksvriendelijke interface vindt u de perfecte iconen om uw ontwerpen naar een hoger niveau te tillen.',
                             dk: 'At integrere vores ikonbibliotek i dine projekter er en leg. Du skal blot vælge de ikoner, du har brug for, få dens kode, og begynde at bruge dem med det samme. Med vores omfattende samling og brugervenlige grænseflade finder du de perfekte ikoner til at løfte dine designs.',
@@ -390,7 +390,7 @@ export default function Home() {
                         fr: "Foricon vous permet de personnaliser vos icônes pour qu'elles correspondent à votre style et à votre image de marque. Ajustez les couleurs, les tailles, les styles, transformez-les et animez-les pour créer une identité visuelle cohérente sur toutes vos créations. Personnalisez nos icônes.",
                         it: "Foricon ti consente di personalizzare le icone per adattarle al tuo stile e al tuo marchio unici. Regola colori, dimensioni, stili, trasformali e animali per creare un'identità visiva coesa in tutti i tuoi design. Rendi le nostre icone davvero tue.",
                         kr: 'Foricon을 사용하면 고유한 스타일과 브랜딩에 맞게 아이콘을 사용자 정의할 수 있습니다. 색상, 크기, 스타일을 조정하고 변형하고 애니메이션을 적용하여 모든 디자인에서 일관된 시각적 정체성을 만드세요. 아이콘을 진정으로 당신만의 것으로 만드세요.',
-                        ja: 'Foricon を使用すると&#12289;独自のスタイルやブランドに合わせてアイコンをカスタマイズできます&#12290;色&#12289;サイズ&#12289;スタイルを調整し&#12289;変形やアニメーション化を行って&#12289;すべてのデザインに一貫したビジュアル アイデンティティを作成します&#12290;当社のアイコンを真に自分らしくしましょう&#12290;',
+                        ja: 'Foricon を使用すると、独自のスタイルやブランドに合わせてアイコンをカスタマイズできます。色、サイズ、スタイルを調整し、変形やアニメーション化を行って、すべてのデザインに一貫したビジュアル アイデンティティを作成します。当社のアイコンを真に自分らしくしましょう。',
                         de: 'Mit Foricon können Sie Symbole an Ihren individuellen Stil und Ihre Marke anpassen. Passen Sie Farben, Größen und Stile an, transformieren und animieren Sie sie, um eine einheitliche visuelle Identität für alle Ihre Designs zu schaffen. Machen Sie unsere Symbole zu Ihren ganz persönlichen Symbolen.',
                         nl: 'Met Foricon kunt u iconen aanpassen aan uw unieke stijl en branding. Pas kleuren, formaten, stijlen aan, transformeer en animeer ze om een samenhangende visuele identiteit te creëren in al uw ontwerpen. Maak onze iconen echt van u.',
                         dk: 'Foricon giver dig mulighed for at tilpasse ikoner til at matche din unikke stil og branding. Juster farver, størrelser, stilarter, transformer og animer dem for at skabe en sammenhængende visuel identitet på tværs af alle dine designs. Gør vores ikoner til dine.',
@@ -612,15 +612,15 @@ export default function Home() {
                     {
                         en: 'Explore More Styling Options!',
                         vi: 'Khám phá thêm nhiều tùy chọn hơn!',
-                        fr: 'Explorer plus d&#8217;options de style&#160;!',
+                        fr: "Explorez davantage d'options de style !",
                         it: 'Esplora altre opzioni di stile!',
                         kr: '더욱 다양한 스타일링 옵션을 탐험해보세요!',
-                        ja: 'エクスプローラーのより多くのスタイル オプション!',
+                        ja: 'エクスプローラーのより多くのスタイル オプション！',
                         de: 'Entdecken Sie weitere Styling-Optionen!',
                         nl: 'Ontdek meer stylingopties!',
                         dk: 'Explorer Flere stylingmuligheder!',
                         pt: 'Explore mais opções de estilo!',
-                        es: '&#161;Explora más opciones de estilo!',
+                        es: '¡Explora más opciones de estilo!',
                         ru: 'Исследуйте больше вариантов стилей!',
                     }[lang]
                 }
@@ -632,7 +632,7 @@ export default function Home() {
                         fr: 'Plongez dans leurs propriétés et leur fonctionnement. Les réglages avancés de couleur, de style, de taille et d\'animation se trouvent tous dans la documentation.',
                         it: 'Immergiti nelle loro proprietà e nel loro funzionamento. Regolazione avanzata di colore, stile, dimensione e animazione sono tutte nei Documenti.',
                         kr: '속성과 작동 방식을 자세히 알아보세요. 고급 색상, 스타일, 크기 및 애니메이션 조정은 모두 Docs에 있습니다.',
-                        ja: 'それぞれのプロパティとその動作について詳しく見てみましょう&#12290;高度な色&#12289;スタイル&#12289;サイズ&#12289;アニメーションの調整はすべてドキュメントに記載されています&#12290;',
+                        ja: 'それぞれのプロパティとその動作について詳しく見てみましょう。高度な色、スタイル、サイズ、アニメーションの調整はすべてドキュメントに記載されています。',
                         de: 'Erfahren Sie mehr über ihre Eigenschaften und ihre Funktionsweise. Erweiterte Farb-, Stil-, Größen- und Animationsanpassungen finden Sie in den Dokumenten.',
                         nl: 'Duik in hun eigenschappen en hoe ze werken. Geavanceerde kleur-, stijl-, grootte- en animatieaanpassingen staan allemaal in de Docs.',
                         dk: 'Dyk ned i deres egenskaber og hvordan de fungerer. Avanceret farve-, stil-, størrelses- og animationsjustering er alle i Docs.',

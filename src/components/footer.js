@@ -49,7 +49,7 @@ export default function Footer() {
                             {
                                 en: 'Terms of Service',
                                 vi: 'Điều khoản dịch vụ',
-                                fr: 'Conditions d&#39;utilisation',
+                                fr: "Conditions d'utilisation",
                                 it: 'Termini di servizio',
                                 kr: '서비스 약관',
                                 ja: '利用規約',
