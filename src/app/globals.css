@@ -249,6 +249,7 @@ ul {
             width: 1px;
             inset: 10px 0 10px -11px;
             background-color: var(--dk-gray);
+            pointer-events: none;
         }
         &.line {
             &.vertical {
@@ -1938,7 +1939,6 @@ header {
             
             > img {
                 height: 40px;
-                width: unset;
                 display: block;
             }
         }

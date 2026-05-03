@@ -1,7 +1,6 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
@@ -9,6 +8,7 @@ import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase
 import { dbFirestore, auth } from "Com/firebase";
 import { LanguageContext } from 'Com/language';
 import popUp from "Com/popup";
+import Img from "Com/img";
 import recordLogin from "Com/record-login";
 import logo from 'Pub/foricon-f-logo.png';
 
@@ -166,7 +166,7 @@ export default function LogIn() {
         <div id='wrapper'>
             <div>
                 <Link href='/' title='Back to home'>
-                    <Image src={logo}/>
+                    <Img src={logo}/>
                 </Link>
                 <h1>{texts[lang][step].h1}</h1>
                 <p>{texts[lang][step].p}</p>

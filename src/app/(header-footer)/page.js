@@ -3,10 +3,10 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
-import Image from 'next/image';
-import cssStyle from './page.module.css';
 import Code from 'Com/code';
+import Img from 'Com/img';
 import logo from 'Pub/foricon-f-logo.png';
+import cssStyle from './page.module.css';
 
 export default function Home() {
     let router = useRouter();
@@ -58,7 +58,7 @@ export default function Home() {
     return (
         <div className={cssStyle.page}>
             <div className={cssStyle.hero}>
-                <Image src={logo}/>
+                <Img src={logo}/>
                 <a href='/p/new-changelog.html'>
                     <f-icon i-s='outline' icon='hashtag'/><span>{webData.verFull}</span>
                 </a>

@@ -1,10 +1,10 @@
 'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { LanguageContext } from "./language";
-import logo from 'Pub/foricon-f-logo.png';
 import { useContext } from "react";
+import Link from "next/link";
+import logo from 'Pub/foricon-f-logo.png';
+import { LanguageContext } from "./language";
+import Img from "./img";
 
 export default function Footer() {
     let lang = useContext(LanguageContext);
@@ -13,7 +13,7 @@ export default function Footer() {
         <footer>
             <div>
                 <Link href='/'>
-                    <Image src={logo}/>
+                    <Img src={logo}/>
                 </Link>
                 <div>
                     <a class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>

@@ -3,10 +3,9 @@
 import { useContext, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import logo from 'Pub/foricon-f-logo.png';
 import { LanguageContext } from 'Com/language';
-import 'Com/utils';
+import Img from 'Com/img';
 
 export default function Header() {
     let [ open, setOpen ] = useState(false);
@@ -27,7 +26,7 @@ export default function Header() {
         <header className='outer-corner'>
             <div>
                 <Link href='/' name='logo'>
-                    <Image src={logo} alt='Foricon logo'/>
+                    <Img src={logo} alt='Foricon logo'/>
                 </Link>
                 <Link href='/changelog' name='version'>{webData.verFull}</Link>
             </div>
