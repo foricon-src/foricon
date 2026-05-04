@@ -27,8 +27,8 @@ export default function RootLayout({ children }) {
                     </div>
                     <div id='toast'/>
                     {children}
+                    <Process/>
                 </LanguageProvider>
-                <Process/>
             </body>
         </html>
     );
