@@ -15,12 +15,12 @@ export async function buildAllCss() {
         let icon = icons[key];
         
         icon.styles.forEach(item => {
-            let string = `\nf-icon[icon='${key}']`;
+            let string = `
+f-icon[icon='${key}']`;
             let unicode = icon.unicodes?.[item.replace("/", "-")];
             if (item.startsWith('duotone/')) {
                 let unicode_layers = unicode?.split('|');
-                string += `[i-s='${item}']::before { content: '\\${unicode_layers?.[0]}'}
-${string}[i-s='${item}']::after { content: '\\${unicode_layers?.[1]}'}`;
+                string += `[i-s='${item}']::before { content: '\\${unicode_layers?.[0]}'}${string}[i-s='${item}']::after { content: '\\${unicode_layers?.[1]}'}`;
             }
             else string += `${item == 'outline' ? "[i-s='outline']" : ''}::before { content: '\\${unicode}'}`;
             css += string;

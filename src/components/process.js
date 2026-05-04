@@ -677,6 +677,7 @@ export default function Process() {
             es: 'Acceso',
             ru: 'Авторизоваться',
         }[lang];
+        console.log(lang)
     })()}, [ pathname ])
     
     return null;
