@@ -145,7 +145,7 @@
                 gap: var(--spacing-xxsmall);
                 margin-top: var(--spacing-small);
                 
-                &, & > li > div:last-child {
+                &, & > li > div {
                     display: grid;
                 }
                 & > li {
@@ -154,24 +154,21 @@
                     cursor: var(--cursor-pointer);
                     min-width: 0;
                     background-color: var(--lt-gray);
-                    padding: var(--spacing-xxsmall);
+                    padding: var(--spacing-small);
 
                     & > div {
                         gap: var(--spacing-small);
                         grid-template-columns: repeat(3, 1fr);
-                        justify-content: center;
                         
                         & > f-icon {
-                            flex-shrink: 0;
-                            font-size: 2rem;
-                            color: var(--dk-main-color);
+                            font-size: 1.5rem;
                             
                             &:before, &:after {
-                                line-height: 40px;
+                                line-height: unset;
                             }
                         }
                     }
-                    & > h4 {
+                    & > h5 {
                         margin: 0;
                         text-align: center;
                     }

@@ -265,7 +265,7 @@ export default function Home() {
                             <f-icon icon='compass'/>
                             <f-icon icon='rectangle-stack'/>
                         </div>
-                        <h4>Regular Solid</h4>
+                        <h5>Regular Solid</h5>
                     </li>
                     <li onClick={() => go(router, 'search?f=regular&s=outline')}>
                         <div>
@@ -276,7 +276,7 @@ export default function Home() {
                             <f-icon i-s='outline' icon='compass'/>
                             <f-icon i-s='outline' icon='rectangle-stack'/>
                         </div>
-                        <h4>Regular Outline</h4>
+                        <h5>Regular Outline</h5>
                     </li>
                     <li onClick={() => go(router, 'search?f=duotone&s=solid')}>
                         <div>
@@ -287,7 +287,7 @@ export default function Home() {
                             <f-icon i-s='duotone/solid' icon='compass'/>
                             <f-icon i-s='duotone/solid' icon='rectangle-stack'/>
                         </div>
-                        <h4>Duotone Solid</h4>
+                        <h5>Duotone Solid</h5>
                     </li>
                     <li onClick={() => go(router, 'search?f=duotone&s=outline')}>
                         <div>
@@ -298,7 +298,7 @@ export default function Home() {
                             <f-icon i-s='duotone/outline' icon='compass'/>
                             <f-icon i-s='duotone/outline' icon='rectangle-stack'/>
                         </div>
-                        <h4>Duotone Outline</h4>
+                        <h5>Duotone Outline</h5>
                     </li>
                 </ul>
             </div>
