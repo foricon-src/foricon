@@ -17,7 +17,11 @@ export default function Process() {
     useEffect(() => {(async () => {
         let { body } = document;
 
-        while (qSelec(false, 'header')) await wait();
+        if (!globalThis.qSelec)
+            if (document.getElementById('404')) return;
+            else location.reload();
+
+        while (!qSelec(false, 'header')) await wait();
         
         user && qSelec(true, '.signup').forEach(each => each.style.display = 'none');
         
@@ -633,7 +637,6 @@ export default function Process() {
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
 
-        let loading = elemById('loading');
         if (loading) {
             loading.style.opacity = '0';
             await wait(.2);

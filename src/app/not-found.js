@@ -4,7 +4,7 @@ export default function Page() {
     let lang = 'en';
 
     return (
-        <div className={cssStyle.main}>
+        <div className={cssStyle.main} id='404'>
             <h1>404</h1>
             <h3>{
                 {
@@ -54,9 +54,9 @@ export default function Page() {
                     ru: 'А как насчет:',
                 }[lang]
             }</p>
-            <ul className='btn-list vetical'>
+            <ul className='btn-list vertical'>
                 <li>
-                    <f-icon icon='home'/>
+                    <f-icon icon='house'/>
                     <span>{
                         {
                             en: 'Back to Home',
@@ -75,7 +75,7 @@ export default function Page() {
                     }</span>
                 </li>
                 <li>
-                    <f-icon icon='magnifying-class' i-s='outline'/>
+                    <f-icon icon='magnifying-glass' i-s='outline'/>
                     <span>{
                         {
                             en: 'Take a look at our icon set',
