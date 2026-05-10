@@ -18,9 +18,7 @@ export default function Process() {
         let { body } = document;
         let theme = localStorage.getItem('theme');
 
-        !globalThis.qSelec && location.reload();
-
-        while (!qSelec(false, 'header')) await wait();
+        while (!globalThis.qSelec?.(false, 'header')) await wait();
         
         user && qSelec(true, '.signup').forEach(each => each.style.display = 'none');
         

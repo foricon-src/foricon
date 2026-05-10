@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import cssStyle from './not-found.module.css';
-import { LanguageContext } from 'Com/language';
 
 export default function Page() {
     let lang = 'en';
