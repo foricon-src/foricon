@@ -479,13 +479,14 @@ export default function Search() {
         
         addEvLis(window, 'resize', check);
         
-        addEvLis(document, 'click', ({ target }) => {
+        addEvLis(document, 'click', async ({ target }) => {
             (![
                 qSelec(false, `.${cssStyle.bar}`),
                 qSelec(false, `.${cssStyle.results} > .active`)
             ].filter(Boolean).some(i => i.contains(target)) ||
                 qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
                 selectIcon(null);
+            await wait();
             !top.contains(target) && hideTop();
         })
         addEvLis(document, 'scroll', async () => {
