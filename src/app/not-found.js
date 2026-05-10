@@ -3,7 +3,7 @@ import cssStyle from './not-found.module.css';
 import { LanguageContext } from 'Com/language';
 
 export default function Page() {
-    let lang = useContext(LanguageContext);
+    let lang = 'en';
 
     return (
         <div className={cssStyle.main}>
