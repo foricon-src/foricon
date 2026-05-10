@@ -467,7 +467,7 @@ export default function Search() {
         }
         async function hideTop() {
             if (!isHovered || !isActive(top)) return;
-            if (document.activeElement != top_search) {
+            if (document.activeElement != top_search && !qSelec(false, 'option-list.active')) {
                 top.style.top = topPos;
                 top.classList.add(cssStyle.slowTrans);
                 isHovered = false;
