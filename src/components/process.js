@@ -18,7 +18,10 @@ export default function Process() {
         let { body } = document;
 
         if (!globalThis.qSelec)
-            if (document.getElementById('404')) return;
+            if (document.getElementById('404')) {
+                document.getElementById('loading').remove();
+                return
+            }
             else location.reload();
 
         while (!qSelec(false, 'header')) await wait();
@@ -637,6 +640,7 @@ export default function Process() {
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
 
+        let loading = elemById('loading');
         if (loading) {
             loading.style.opacity = '0';
             await wait(.2);
