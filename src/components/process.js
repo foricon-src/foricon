@@ -30,12 +30,6 @@ export default function Process() {
         let header_right_accBtn = qSelec(false, header_right, 'li:last-child');
         let header_right_accBtn_span = qSelec(false, header_right_accBtn, 'span');
         let header_all = qSelec(false, header, 'ul[name="all"]');
-        
-        (
-            theme == 'dark'
-            ||
-            !theme && window.matchMedia?.('(prefers-color-scheme: dark)').matches
-        ) && !body.classList.contains('dark') && toggleTheme();
 
         timezone = new Date().getTimezoneOffset() / 60;
         
