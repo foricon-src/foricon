@@ -197,7 +197,7 @@
         &.slowTrans, &:hover {
             transition: var(--df-trans), top .5s ease, translate .5s ease;
         }
-        &:not(:has(input:focus), :hover) {
+        &:not(:has(input:focus, option-list.active), :hover) {
             &:after {
                 opacity: 1;
             }
@@ -224,6 +224,7 @@
     }
     & > label {
         grid-area: searchBar;
+        margin: 0;
     }
     & > f-select {
         grid-area: versions;

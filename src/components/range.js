@@ -19,7 +19,7 @@ export function Range({ min, max, step, dfValue, value, className = '', ...rest 
         min={min}
         max={max}
         step={step}
-        className={`${className}${dfValue == v ? ' default' : ''}`}
+        className={className + (dfValue == v ? ' default' : '')}
         onInput={e => setValue(Number(e.currentTarget.value))}
         style={{'--pos': `${(v - min) / (max - min) * 100}%`}}
         value={v}

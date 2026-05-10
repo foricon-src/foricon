@@ -6,6 +6,7 @@ import { Ad } from 'Com/ad';
 import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import cssStyle from './page.module.css';
+import Classes from 'Com/classes';
 
 export default function Search() {
     let router = useRouter();
@@ -384,7 +385,7 @@ export default function Search() {
     let [ page, setPage ] = useState(0);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
-    let [ tick, setTick ] = useState(0);
+    let [ width, setWidth ] = useState(0);
 
     let filtered = useMemo(() => {
         let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
@@ -415,7 +416,7 @@ export default function Search() {
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let columns = useMemo(
         () => loaded ? getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1,
-        [ loaded, tick, view ]
+        [ loaded, width, view ]
     )
     let perPage = useMemo(() => {
         let rows = Math.floor(
@@ -441,7 +442,7 @@ export default function Search() {
         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
     }
     function check() {
-        setTick(t => ++t);
+        setWidth(innerWidth);
     }
     
     useEffect(() => {(async () => {
@@ -682,104 +683,122 @@ export default function Search() {
                 </f-select>
                 <div className={cssStyle.options}>
                     <ul className='btn-list line-active'>
-                        <li className={family == 'all' && 'active'} onClick={() => setFamily('all')}>{
-                            {
-                                en: 'All',
-                                vi: 'Tất cả',
-                                fr: 'Tout',
-                                it: 'Tutto',
-                                kr: '모두',
-                                ja: '全て',
-                                de: 'Alle',
-                                nl: 'Alle',
-                                dk: 'Alle',
-                                pt: 'Tudo',
-                                es: 'Todo',
-                                ru: 'Все',
-                            }[lang]
-                        }</li>
-                        <li className={family == 'regular' && 'active'} onClick={() => setFamily('regular')}>{
-                            {
-                                en: 'Regular',
-                                vi: 'Thường',
-                                fr: 'Régulier',
-                                it: 'Regolare',
-                                kr: '정기적인',
-                                ja: '通常',
-                                de: 'Regulär',
-                                nl: 'Normaal',
-                                dk: 'Fast',
-                                pt: 'Regular',
-                                es: 'Regular',
-                                ru: 'Обычный',
-                            }[lang]
-                        }</li>
-                        <li className={family == 'duotone' && 'active'} onClick={() => setFamily('duotone')}>{
-                            {
-                                en: 'Duotone',
-                                vi: 'Duotone',
-                                fr: 'Bichromie',
-                                it: 'Duotone',
-                                kr: '듀오톤',
-                                ja: 'デュオトーン',
-                                de: 'Duotone',
-                                nl: 'Duotoon',
-                                dk: 'Duotone',
-                                pt: 'Duotónico',
-                                es: 'Duotono',
-                                ru: 'Дуотон',
-                            }[lang]
-                        }</li>
+                        <li className={Classes(family == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('all')}>
+                            {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
+                            <span>{
+                                {
+                                    en: 'All',
+                                    vi: 'Tất cả',
+                                    fr: 'Tout',
+                                    it: 'Tutto',
+                                    kr: '모두',
+                                    ja: '全て',
+                                    de: 'Alle',
+                                    nl: 'Alle',
+                                    dk: 'Alle',
+                                    pt: 'Tudo',
+                                    es: 'Todo',
+                                    ru: 'Все',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className={Classes(family == 'regular' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('regular')}>
+                            {width < 1100 && <f-icon icon='square'/>}
+                            <span>{
+                                {
+                                    en: 'Regular',
+                                    vi: 'Chuẩn',
+                                    fr: 'Normal',
+                                    it: 'Normale',
+                                    kr: '기본',
+                                    ja: '標準',
+                                    de: 'Normal',
+                                    nl: 'Normaal',
+                                    dk: 'Normal',
+                                    pt: 'Regular',
+                                    es: 'Regular',
+                                    ru: 'Обычный',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className={Classes(family == 'duotone' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('duotone')}>
+                            {width < 1100 && <f-icon icon='clone' i-s='duotone/solid'/>}
+                            <span>{
+                                {
+                                    en: 'Duotone',
+                                    vi: 'Hai màu',
+                                    fr: 'Bichromie',
+                                    it: 'Duotono',
+                                    kr: '듀오톤',
+                                    ja: 'デュオトーン',
+                                    de: 'Duotone',
+                                    nl: 'Duotoon',
+                                    dk: 'Tofarvet',
+                                    pt: 'Duotónico',
+                                    es: 'Duotono',
+                                    ru: 'Дуотон',
+                                }[lang]
+                            }</span>
+                        </li>
                     </ul>
                     <ul className='btn-list line-active'>
-                        <li className={`line${style == 'all' ? ' active' : ''}`} onClick={() => setStyle('all')}>{
-                            {
-                                en: 'All',
-                                vi: 'Tất cả',
-                                fr: 'Tout',
-                                it: 'Tutto',
-                                kr: '모두',
-                                ja: '全て',
-                                de: 'Alle',
-                                nl: 'Alle',
-                                dk: 'Alle',
-                                pt: 'Tudo',
-                                es: 'Todo',
-                                ru: 'Все',
-                            }[lang]
-                        }</li>
-                        <li className={style == 'solid' && 'active'} onClick={() => setStyle('solid')}>{
-                            {
-                                en: 'Solid',
-                                vi: 'Đặc',
-                                fr: 'Solide',
-                                it: 'Solido',
-                                kr: '단단한',
-                                ja: '固体',
-                                de: 'Solide',
-                                nl: 'Stevig',
-                                dk: 'Solid',
-                                pt: 'Sólido',
-                                es: 'Sólido',
-                                ru: 'Твердый',
-                            }[lang]
-                        }</li>
-                        <li className={style == 'outline' && 'active'} onClick={() => setStyle('outline')}>{
-                            {
-                                en: 'Outline',
-                                vi: 'Đường viền',
-                                fr: 'Contour',
-                                it: 'Contorno',
-                                kr: '개요',
-                                ja: '概要',
-                                de: 'Gliederung',
-                                nl: 'Overzicht',
-                                dk: 'Omrids',
-                                pt: 'Delimitar',
-                                es: 'Describir',
-                                ru: 'Контур',
-                            }[lang]
-                        }</li>
+                        <li className={`line${style == 'all' ? ' active' : ''}`} onClick={() => setStyle('all')}>
+                            {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
+                            <span>{
+                                {
+                                    en: 'All',
+                                    vi: 'Tất cả',
+                                    fr: 'Tout',
+                                    it: 'Tutto',
+                                    kr: '모두',
+                                    ja: '全て',
+                                    de: 'Alle',
+                                    nl: 'Alle',
+                                    dk: 'Alle',
+                                    pt: 'Tudo',
+                                    es: 'Todo',
+                                    ru: 'Все',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className={Classes(style == 'solid' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('solid')}>
+                            {width < 1100 && <f-icon icon='square'/>}
+                            <span>{
+                                {
+                                    en: 'Solid',
+                                    vi: 'Đầy',
+                                    fr: 'Plein',
+                                    it: 'Pieno',
+                                    kr: '채움',
+                                    ja: '塗りつぶし',
+                                    de: 'Gefüllt',
+                                    nl: 'Ingevuld',
+                                    dk: 'Udfyldt',
+                                    pt: 'Relleno',
+                                    es: 'Relleno',
+                                    ru: 'Заполненный',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className={Classes(style == 'outline' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('outline')}>
+                            {width < 1100 && <f-icon icon='bars' i-s='outline'/>}
+                            <span>{
+                                {
+                                    en: 'Outline',
+                                    vi: 'Viền',
+                                    fr: 'Contour',
+                                    it: 'Contorno',
+                                    kr: '윤곽',
+                                    ja: 'アウトライン',
+                                    de: 'Umriss',
+                                    nl: 'Omlijning',
+                                    dk: 'Omrids',
+                                    pt: 'Contorno',
+                                    es: 'Contorno',
+                                    ru: 'Контур',
+                                }[lang]
+                            }</span>
+                        </li>
                     </ul>
                     <ul className='btn-list'>
                         <li className={`chip top`}>
