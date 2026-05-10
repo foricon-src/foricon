@@ -468,7 +468,7 @@ export default function Search() {
         }
         async function hideTop() {
             if (!isHovered || !isActive(top)) return;
-            if (document.activeElement != top_search && !isActive(top_search_optionList)) {
+            if (document.activeElement != top_search && !isActive(top_optionList)) {
                 top.style.top = topPos;
                 top.classList.add(cssStyle.slowTrans);
                 isHovered = false;
@@ -499,7 +499,7 @@ export default function Search() {
                     top: topPos,
                     translate: '0 18px',
                 })
-                if (document.activeElement == top_search || isActive(top_search_optionList)) {
+                if (document.activeElement == top_search || isActive(top_optionList)) {
                     openTop();
                     top.classList.add(cssStyle.slowTrans);
                     await wait(.5);
