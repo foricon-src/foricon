@@ -385,7 +385,7 @@ export default function Search() {
     let [ page, setPage ] = useState(0);
     let [ view, setView ] = useState('large');
     let [ selectedIcon, selectIcon ] = useState(null);
-    let [ width, setWidth ] = useState(0);
+    let [ width, setWidth ] = useState(innerWidth);
 
     let filtered = useMemo(() => {
         let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
@@ -742,7 +742,7 @@ export default function Search() {
                         </li>
                     </ul>
                     <ul className='btn-list line-active'>
-                        <li className={`line${style == 'all' ? ' active' : ''}`} onClick={() => setStyle('all')}>
+                        <li className={Classes('line', style == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('all')}>
                             {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
                             <span>{
                                 {
@@ -762,7 +762,7 @@ export default function Search() {
                             }</span>
                         </li>
                         <li className={Classes(style == 'solid' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('solid')}>
-                            {width < 1100 && <f-icon icon='square'/>}
+                            {width < 1100 && <f-icon icon='circle'/>}
                             <span>{
                                 {
                                     en: 'Solid',
