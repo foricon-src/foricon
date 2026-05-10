@@ -197,7 +197,7 @@
         &.slowTrans, &:hover {
             transition: var(--df-trans), top .5s ease, translate .5s ease;
         }
-        &:not(:has(input:focus, option-list.active), :hover) {
+        &:not(:has(input:focus), :has(option-list.active), :hover) {
             &:after {
                 opacity: 1;
             }
