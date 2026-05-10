@@ -454,7 +454,7 @@ export default function Search() {
         
         let top = qSelec(false, `.${cssStyle.top}`);
         let top_search = qSelec(false, top, 'input');
-        let top_search_optionList = qSelec(false, top_search, 'option-list');
+        let top_optionList = qSelec(false, top, 'option-list');
 
         let animating = false;
         let isHovered = false;
