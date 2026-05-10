@@ -256,10 +256,7 @@ export default function Home() {
                     }[lang]
                 }</h1>
                 <ul>
-                    <li onclick='go("search#v=b2&f=regular&s=solid")'>
-                        <div>
-                            <h4>Regular Solid</h4>
-                        </div>
+                    <li onClick={() => go(router, 'search?f=regular&s=solid')}>
                         <div>
                             <f-icon icon='clone'/>
                             <f-icon icon='image'/>
@@ -267,22 +264,10 @@ export default function Home() {
                             <f-icon icon='grid-4'/>
                             <f-icon icon='compass'/>
                             <f-icon icon='rectangle-stack'/>
-                            <f-icon icon='circle-check'/>
-                            <f-icon icon='comment-ellipsis'/>
-                            <f-icon icon='clock-four'/>
-                            <f-icon icon='layers'/>
-                            <f-icon icon='bookmark'/>
-                            <f-icon icon='briefcase'/>
-                            <f-icon icon='cart'/>
-                            <f-icon icon='music-note'/>
-                            <f-icon icon='eraser'/>
-                            <f-icon icon='unlock'/>
                         </div>
+                        <h4>Regular Solid</h4>
                     </li>
-                    <li onclick='go("search#v=b2&f=regular&s=outline")'>
-                        <div>
-                            <h4>Regular Outline</h4>
-                        </div>
+                    <li onClick={() => go(router, 'search?f=regular&s=outline')}>
                         <div>
                             <f-icon i-s='outline' icon='clone'/>
                             <f-icon i-s='outline' icon='image'/>
@@ -290,22 +275,10 @@ export default function Home() {
                             <f-icon i-s='outline' icon='grid-4'/>
                             <f-icon i-s='outline' icon='compass'/>
                             <f-icon i-s='outline' icon='rectangle-stack'/>
-                            <f-icon i-s='outline' icon='circle-check'/>
-                            <f-icon i-s='outline' icon='comment-ellipsis'/>
-                            <f-icon i-s='outline' icon='clock-four'/>
-                            <f-icon i-s='outline' icon='layers'/>
-                            <f-icon i-s='outline' icon='bookmark'/>
-                            <f-icon i-s='outline' icon='briefcase'/>
-                            <f-icon i-s='outline' icon='cart'/>
-                            <f-icon i-s='outline' icon='music-note'/>
-                            <f-icon i-s='outline' icon='eraser'/>
-                            <f-icon i-s='outline' icon='unlock'/>
                         </div>
+                        <h4>Regular Outline</h4>
                     </li>
-                    <li onclick='go("search#v=b2&f=duotone&s=solid")'>
-                        <div>
-                            <h4>Duotone Solid</h4>
-                        </div>
+                    <li onClick={() => go(router, 'search?f=duotone&s=solid')}>
                         <div>
                             <f-icon i-s='duotone/solid' icon='clone'/>
                             <f-icon i-s='duotone/solid' icon='image'/>
@@ -313,22 +286,10 @@ export default function Home() {
                             <f-icon i-s='duotone/solid' icon='grid-4'/>
                             <f-icon i-s='duotone/solid' icon='compass'/>
                             <f-icon i-s='duotone/solid' icon='rectangle-stack'/>
-                            <f-icon i-s='duotone/solid' icon='circle-check'/>
-                            <f-icon i-s='duotone/solid' icon='comment-ellipsis'/>
-                            <f-icon i-s='duotone/solid' icon='clock-four'/>
-                            <f-icon i-s='duotone/solid' icon='layers'/>
-                            <f-icon i-s='duotone/solid' icon='bookmark'/>
-                            <f-icon i-s='duotone/solid' icon='briefcase'/>
-                            <f-icon i-s='duotone/solid' icon='cart'/>
-                            <f-icon i-s='duotone/solid' icon='music-note'/>
-                            <f-icon i-s='duotone/solid' icon='eraser'/>
-                            <f-icon i-s='duotone/solid' icon='unlock'/>
                         </div>
+                        <h4>Duotone Solid</h4>
                     </li>
-                    <li onclick='go("search#v=b2&f=duotone&s=outline")'>
-                        <div>
-                            <h4>Duotone Outline</h4>
-                        </div>
+                    <li onClick={() => go(router, 'search?f=duotone&s=outline')}>
                         <div>
                             <f-icon i-s='duotone/outline' icon='clone'/>
                             <f-icon i-s='duotone/outline' icon='image'/>
@@ -336,17 +297,8 @@ export default function Home() {
                             <f-icon i-s='duotone/outline' icon='grid-4'/>
                             <f-icon i-s='duotone/outline' icon='compass'/>
                             <f-icon i-s='duotone/outline' icon='rectangle-stack'/>
-                            <f-icon i-s='duotone/outline' icon='circle-check'/>
-                            <f-icon i-s='duotone/outline' icon='comment-ellipsis'/>
-                            <f-icon i-s='duotone/outline' icon='clock-four'/>
-                            <f-icon i-s='duotone/outline' icon='layers'/>
-                            <f-icon i-s='duotone/outline' icon='bookmark'/>
-                            <f-icon i-s='duotone/outline' icon='briefcase'/>
-                            <f-icon i-s='duotone/outline' icon='cart'/>
-                            <f-icon i-s='duotone/outline' icon='music-note'/>
-                            <f-icon i-s='duotone/outline' icon='eraser'/>
-                            <f-icon i-s='duotone/outline' icon='unlock'/>
                         </div>
+                        <h4>Duotone Outline</h4>
                     </li>
                 </ul>
             </div>

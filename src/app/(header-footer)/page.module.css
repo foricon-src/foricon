@@ -141,7 +141,7 @@
         }
         &.iconFamilies {
             & > ul {
-                grid-template-columns: repeat(2, calc(50% - .5 * var(--spacing-small)));
+                grid-template-columns: repeat(4, 1fr);
                 gap: var(--spacing-xxsmall);
                 margin-top: var(--spacing-small);
                 
@@ -150,53 +150,30 @@
                 }
                 & > li {
                     border-radius: var(--bdr-rad);
-                    position: relative;
-                    height: 120px;
-                    overflow: hidden;
                     background-color: var(--main-color);
                     cursor: var(--cursor-pointer);
-                    
-                    &, & > div:first-child {
-                        display: flex;
-                        align-items: center;
-                    }
+                    min-width: 0;
+                    background-color: var(--lt-gray);
+                    padding: var(--spacing-xxsmall);
+
                     & > div {
-                        &:first-child {
-                            position: absolute;
-                            z-index: 1;
-                            inset: 0;
-                            padding-left: var(--spacing-small);
-                            background: linear-gradient(to right, rgba(0, 0, 0, .75), transparent);
+                        gap: var(--spacing-small);
+                        grid-template-columns: repeat(3, 1fr);
+                        justify-content: center;
+                        
+                        & > f-icon {
+                            flex-shrink: 0;
+                            font-size: 2rem;
+                            color: var(--dk-main-color);
                             
-                            :hover > & {
-                                background: var(--main-color);
-                                
-                                & > * {
-                                    color: var(--dk-main-color);
-                                }
-                            }
-                            & > * {
-                                margin: 0;
-                                color: white;
+                            &:before, &:after {
+                                line-height: 40px;
                             }
                         }
-                        &:last-child {
-                            rotate: 350deg;
-                            gap: var(--spacing-small);
-                            margin-left: 50%;
-                            grid-template-columns: repeat(8, 1fr);
-                            justify-content: center;
-                            
-                            & > f-icon {
-                                flex-shrink: 0;
-                                font-size: 2rem;
-                                color: var(--dk-main-color);
-                                
-                                &:before, &:after {
-                                    line-height: 40px;
-                                }
-                            }
-                        }
+                    }
+                    & > h4 {
+                        margin: 0;
+                        text-align: center;
                     }
                 }
             }
