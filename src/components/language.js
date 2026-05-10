@@ -56,8 +56,8 @@ export function LanguageProvider({ children }) {
     if (!lang) return null;
     
     return (
-        <LanguageContext.Provider value={lang}>
-            {children}
-        </LanguageContext.Provider>
+        <LanguageContext.Provider value={lang}>{
+            children
+        }</LanguageContext.Provider>
     )
 }

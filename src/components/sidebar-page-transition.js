@@ -20,8 +20,8 @@ export function SidebarPageTransition({ name, children }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: .2, ease: 'ease' }}
-        >
-            {children}
-        </motion.div>
+        >{
+            children
+        }</motion.div>
     )
 }

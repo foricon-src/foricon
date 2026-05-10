@@ -2,9 +2,9 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-export const ThemeContext = useContext();
+export const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
-    let [ isDark, setIsDark ] = useContext((() => {
+    let [ isDark, setIsDark ] = useState((() => {
         let stored = localStorage.getItem('dark-theme');
         return stored ? JSON.parse(stored) : window.matchMedia('(prefers-color-scheme: dark)').matches;
     })())

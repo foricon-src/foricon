@@ -5,9 +5,9 @@ export default function AccountLayout({ children }) {
     return (
         <div id='sidebar-page'>
             <Sidebar/>
-            <SidebarPageTransition>
-                {children}
-            </SidebarPageTransition>
+            <SidebarPageTransition>{
+                children
+            }</SidebarPageTransition>
         </div>
     )
 }
