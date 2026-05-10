@@ -454,6 +454,7 @@ export default function Search() {
         
         let top = qSelec(false, `.${cssStyle.top}`);
         let top_search = qSelec(false, top, 'input');
+        let top_search_optionList = qSelec(false, top_search, 'option-list');
 
         let animating = false;
         let isHovered = false;
@@ -467,7 +468,7 @@ export default function Search() {
         }
         async function hideTop() {
             if (!isHovered || !isActive(top)) return;
-            if (document.activeElement != top_search && !qSelec(false, 'option-list.active')) {
+            if (document.activeElement != top_search && !isActive(top_search_optionList)) {
                 top.style.top = topPos;
                 top.classList.add(cssStyle.slowTrans);
                 isHovered = false;
@@ -498,7 +499,7 @@ export default function Search() {
                     top: topPos,
                     translate: '0 18px',
                 })
-                if (document.activeElement == top_search) {
+                if (document.activeElement == top_search || isActive(top_search_optionList)) {
                     openTop();
                     top.classList.add(cssStyle.slowTrans);
                     await wait(.5);
