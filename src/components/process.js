@@ -16,9 +16,8 @@ export default function Process() {
 
     useEffect(() => {(async () => {
         let { body } = document;
-        let theme = localStorage.getItem('theme');
 
-        while (!globalThis.qSelec?.(false, 'header')) await wait();
+        while (qSelec(false, 'header')) await wait();
         
         user && qSelec(true, '.signup').forEach(each => each.style.display = 'none');
         
