@@ -940,17 +940,6 @@ globalThis.classList = (elems, action, className) => {
     elems = Array.isArray(elems) ? elems : [elems];
     elems.forEach(each => each.classList[action](className));
 }
-/**
- * Toggles the theme of the site and saves it to `localStorage`
- */
-globalThis.toggleTheme = async () => {
-    let { body } = document;
-    body.classList.toggle('dark');
-    let darkToggle = qSelec(false, 'header > ul[name="all"] > li[name="dark-toggle"]');
-    while (!darkToggle) await wait();
-    toggle(darkToggle);
-    return localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
-}
 
 globalThis.getUTC = () => {
     return new Date().toUTCString();

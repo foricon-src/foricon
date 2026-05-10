@@ -6,7 +6,7 @@ import { dbFirestore } from "./firebase";
 
 export const LanguageContext = createContext(null);
 export function LanguageProvider({ children }) {
-    const [ lang, setLanguage ] = useState(null);
+    let [ lang, setLanguage ] = useState(null);
     
     useEffect(() => {(async () => {
         let language = localStorage.getItem('language');

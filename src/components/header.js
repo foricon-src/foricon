@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-logo.png';
 import { LanguageContext } from 'Com/language';
+import { ThemeContext } from 'Com/theme';
 import Img from 'Com/img';
 import 'Com/utils';
 
@@ -13,13 +14,14 @@ export default function Header() {
     let pathname = usePathname();
     let router = useRouter();
     let lang = useContext(LanguageContext);
+    let { isDark, setIsDark } = useContext(ThemeContext);
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) =>
             ![
                 qSelec(false, 'header > ul[name="right"] > :has(f-icon[icon="bars"])'),
                 qSelec(false, 'header > ul[name="all"]')
-            ].some(i => i.contains(target)) && setOpen(false)
+            ].some(i => i?.contains(target)) && setOpen(false)
         )
     }, [])
 
@@ -219,7 +221,7 @@ export default function Header() {
                 <li>Hub</li>
                 <li>Media</li>
                 <li>Music</li>
-                <li className='line' name='dark-toggle' onClick={toggleTheme}>
+                <li className={`line${isDark ? ' active' : ''}`} name='dark-toggle' onClick={() => setIsDark(!isDark)}>
                     <div/>
                     <span dangerouslySetInnerHTML={{
                         __html: `${{
