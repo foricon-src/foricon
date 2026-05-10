@@ -431,7 +431,6 @@ export default function Search() {
     }, [ filtered, currentPage, perPage ])
     let categoryCounts = useMemo(() => {
         let cloned = structuredClone(webData.categories);
-        console.log(filtered)
         filtered.forEach(({ icon: { categories } }) => 
             categories.forEach(c => cloned[c].count = (cloned[c].count || 0) + 1)
         )
@@ -741,8 +740,8 @@ export default function Search() {
                             }</span>
                         </li>
                     </ul>
-                    <ul className='btn-list line-active'>
-                        <li className={Classes('line', style == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('all')}>
+                    <ul className='btn-list line line-active'>
+                        <li className={Classes(style == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('all')}>
                             {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
                             <span>{
                                 {
