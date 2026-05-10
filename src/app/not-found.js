@@ -54,7 +54,7 @@ export default function Page() {
                     ru: 'А как насчет:',
                 }[lang]
             }</p>
-            <ul className='btn-list vertical'>
+            <ul className='btn-list vertical darker'>
                 <li>
                     <f-icon icon='house'/>
                     <span>{
