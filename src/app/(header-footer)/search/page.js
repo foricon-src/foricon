@@ -624,20 +624,20 @@ export default function Search() {
                 <div>{
                     {
                         en: 'Enjoy free icons - sign up to access the entire set!',
-                        vi: 'Thưởng thức các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
-                        fr: 'Profitez des icônes gratuites - inscrivez-vous pour tout débloquer !',
-                        it: 'Goditi le icone gratuite - registrati per accedere all\'intera collezione!',
-                        kr: '무료 아이콘을 즐기세요 - 전체 세트를 이용하려면 가입하세요!',
-                        ja: '無料アイコンを楽しもう - 全セットを使うには登録が必要です！',
-                        de: 'Kostenlose Icons genießen - registriere dich für das komplette Set!',
-                        nl: 'Geniet van gratis iconen - meld je aan om de hele set te gebruiken!',
-                        dk: 'Nyd gratis ikoner - tilmeld dig for adgang til hele samlingen!',
-                        pt: 'Aproveite os ícones gratuitos - inscreva-se para acessar o conjunto completo!',
-                        es: 'Disfruta de iconos gratis - regístrate para acceder al conjunto completo!',
-                        ru: 'Наслаждайтесь бесплатными иконками - зарегистрируйтесь для доступа ко всем!',
+                        vi: 'Tận hưởng các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
+                        fr: "Profitez d'icônes gratuites - inscrivez-vous pour accéder à l'ensemble complet !",
+                        it: "Approfitta delle icone gratuite: registrati per accedere all'intero set!",
+                        kr: '무료 아이콘을 즐겨보세요! 가입하시면 전체 아이콘을 이용하실 수 있습니다!',
+                        ja: '無料アイコンをお楽しみください！登録すると全セットにアクセスできます！',
+                        de: 'Sichern Sie sich kostenlose Icons - melden Sie sich an, um Zugriff auf das gesamte Set zu erhalten!',
+                        nl: 'Geniet van gratis iconen - meld je aan om toegang te krijgen tot de volledige set!',
+                        dk: 'Nyd gratis ikoner - tilmeld dig for at få adgang til hele sættet!',
+                        pt: '¡Disfruta de iconos gratuitos! Regístrate para acceder al conjunto completo.',
+                        es: 'Desfrute de ícones gratuitos - registe-se para aceder ao conjunto completo!',
+                        ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
                     }[lang]
                 }
-                    <a href='/p/sign-up.html' className='btn'>{
+                    <a href='/signup' className='btn'>{
                         {
                             en: 'Sign up',
                             vi: 'Đăng ký',

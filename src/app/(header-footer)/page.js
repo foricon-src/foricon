@@ -59,7 +59,7 @@ export default function Home() {
         <div className={cssStyle.page}>
             <div className={cssStyle.hero}>
                 <Img src={logo}/>
-                <a href='/p/new-changelog.html'>
+                <a href='/changelog'>
                     <f-icon i-s='outline' icon='hashtag'/><span>{webData.verFull}</span>
                 </a>
                 <h1>{
@@ -201,7 +201,7 @@ export default function Home() {
                             ru: 'Интеграция нашей библиотеки иконок в ваши проекты &#8212; это просто. Просто выберите нужные вам иконки, получите их код и начните использовать их прямо сейчас. С нашей обширной коллекцией и простым в использовании интерфейсом вы найдете идеальные иконки, которые поднимут ваши проекты.',
                         }[lang]
                     }</p>
-                    <a class='btn primary' href='/p/docs.html?adding-icons/basics'>{
+                    <a class='btn primary' href='/docs?adding-icons/basics'>{
                         {
                             en: 'Basics of Adding Icons',
                             vi: 'Hướng dẫn về thêm các icon',
@@ -593,7 +593,7 @@ export default function Home() {
                         ru: 'Погрузитесь в их свойства и принципы работы. Расширенные настройки цвета, стиля, размера и анимации &#8212; все это в Docs.',
                     }[lang]
                 }</p>
-                <a class='btn primary' href='/p/docs.html?styling-icons/basics'>{
+                <a class='btn primary' href='/docs?styling-icons/basics'>{
                     {
                         en: 'Explore',
                         vi: 'Khám phá',
@@ -734,15 +734,16 @@ export default function Home() {
                 <div>
                     <h1>Get started</h1>
                     <p>Get access to the power of the Foricon</p>
-                    <a class='btn primary' href='/p/signup.html'>
+                    <a class='btn primary' href='/signup'>
                         <f-icon i-s='outline' icon='arrow-right-to-bracket'/>Sign up
-                    </a><a class='btn secondary' href='/p/docs.html'>
+                    </a>
+                    <a class='btn secondary' href='/docs'>
                         <f-icon icon='file-lines'/>View the Docs
                     </a>
                 </div>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.pages}`}>
-                <a href='/p/hub.html'>
+                <a href='/hub'>
                     <div>
                         <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgu2RsPztgjhUls5ZfAiJvxJ95dXULPYSARYYoJYP-73-qp6GnkN09zQ7Lohja3UMJhq2Zjv78rM2LUOiKMuiE2ZT0xjPKKDw2CQqp5-r7ippkOzKrNWSXtLlMkcnd9K-z-QHo2o8GMbJnGTXd69U5TXvMKCrZZCb99XZZaOlJ9kcEQqa_EbY5qh3JhK0/s320/foricon-hub.png'/>
                     </div>
@@ -756,14 +757,14 @@ export default function Home() {
                     <h5>Foricon Music</h5>
                     <p>Stream and download music no limit for free</p>
                 </a>
-                <a href='/p/fotorno.html'>
+                <a href='/fotorno'>
                     <div>
                         <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq7qnPl4uWBfAYXhQ5quYi_hauu8gNbUU5HdkXNIZ8Efgcpjh85N0_0JLr2J0oeru8S6p8AQXIfVxJ7k0wDZ1MYNSKEQTbkpBFyWt82XelBk5-63143dbrFddbah2ZS-03q7FND2de7ec3SExU1MiU4C4xp-5ExivgiOAnTBimjh0NQBpSIL_SvzkL4Mg/s250/foricon-fotorno.png'/>
                     </div>
                     <h5>Foricon Fotorno</h5>
                     <p>Quickly enhance your image with AI tools</p>
                 </a>
-                <a href='/p/support.html'>
+                <a href='/support'>
                     <div>
                         <f-icon icon='circle-question'/>
                     </div>
