@@ -649,11 +649,11 @@ export default function Process() {
         if (user) {
             let icon = qSelec(false, header_right_accBtn, 'f-icon');
             if (icon) {
-                header_right_accBtn.replaceChild(newElem('img', { src: user.doc.avatar }), icon)
-                header_right_accBtn_span.innerText = user.doc.name;
+                header_right_accBtn?.replaceChild(newElem('img', { src: user.doc.avatar }), icon)
+                header_right_accBtn_span && (header_right_accBtn_span.innerText = user.doc.name);
             }
         }
-        else header_right_accBtn_span.innerText = {
+        else if (header_right_accBtn_span) header_right_accBtn_span.innerText = {
             en: 'Log in',
             vi: 'Đăng nhập',
             fr: 'Se connecter',
@@ -666,7 +666,7 @@ export default function Process() {
             pt: 'Conecte-se',
             es: 'Acceso',
             ru: 'Авторизоваться',
-        }[lang];
+        }[lang]
     })()}, [ pathname ])
     
     return null;
