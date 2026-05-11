@@ -1,9 +1,11 @@
 'use client';
 
+import { useContext } from 'react';
 import cssStyle from './not-found.module.css';
+import { LanguageContext } from 'Com/language';
 
 export default function PageClient() {
-    let lang = 'en';
+    let lang = useContext(LanguageContext);
 
     return (
         <div className={cssStyle.main} id='404'>
