@@ -8,15 +8,7 @@ import { useRouter } from 'next/navigation';
 export default function PageClient() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
-    let show = useMemo(() => {
-        try {
-            let ref = document.referrer;
-            if (!ref) return false;
-            let refUrl = new URL(ref);
-            return refUrl.origin == location.origin && history.length;
-        }
-        catch (err) { return false };
-    }, [])
+    // let show = useMemo(() => history.length > 1, []);
 
     return (
         <div className={cssStyle.main} id='404'>
@@ -131,22 +123,22 @@ export default function PageClient() {
                             }[lang]
                         }</span>
                     </li>
-                    {show && <li onClick={() => go(router, '/docs')}>
+                    {history.length > 1 && <li onClick={() => history.back()}>
                         <f-icon icon='arrow-left' i-s='outline'/>
                         <span>{
                             {
-                                en: 'Explore the Docs',
-                                vi: 'Khám phá tài liệu',
-                                fr: 'Explorez les documents',
-                                it: 'Esplora la documentazione',
-                                kr: '문서 살펴보기',
-                                ja: 'ドキュメントを探索する',
-                                de: 'Dokumente erkunden',
-                                nl: 'Verken de documentatie',
-                                dk: 'Udforsk Dokumenterne',
-                                pt: 'Explore os documentos',
-                                es: 'Explorar la documentación',
-                                ru: 'Изучите документацию',
+                                en: 'Previous page',
+                                vi: 'Trang trước',
+                                fr: 'Page précédente',
+                                it: 'Pagina precedente',
+                                kr: '이전 페이지',
+                                ja: '前のページ',
+                                de: 'Vorherige Seite',
+                                nl: 'Vorige pagina',
+                                dk: 'Forrige side',
+                                pt: 'Página anterior',
+                                es: 'Página anterior',
+                                ru: 'Предыдущая страница',
                             }[lang]
                         }</span>
                     </li>}
