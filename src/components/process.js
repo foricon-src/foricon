@@ -17,14 +17,7 @@ export default function Process() {
     useEffect(() => {(async () => {
         let { body } = document;
 
-        if (!globalThis.qSelec)
-            if (document.getElementById('404')) {
-                document.getElementById('loading').remove();
-                return
-            }
-            else location.reload();
-
-        while (!qSelec(false, 'header')) await wait();
+        !globalThis.qSelec && location.reload();
         
         user && qSelec(true, '.signup').forEach(each => each.style.display = 'none');
         
