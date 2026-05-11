@@ -45,7 +45,7 @@ export default function PageClient() {
             <p>{
                 {
                     en: 'What about:',
-                    vi: 'Có vẻ bạn đã lang thang tới vùng đất chưa được vẽ trên bản đồ',
+                    vi: 'Vậy thì:',
                     fr: "Qu'en est-il de :",
                     it: 'Che ne dici di:',
                     kr: '은 어떻게 되느냐:',
@@ -103,16 +103,16 @@ export default function PageClient() {
                         {
                             en: 'Explore the Docs',
                             vi: 'Truy cập tài liệu',
-                            fr: 'Apprendre quelque chose de nouveau',
-                            it: 'Impara qualcosa di nuovo',
-                            kr: '새로운 것을 배우세요',
-                            ja: '何か新しいことを学ぶ',
-                            de: 'Lerne etwas Neues',
-                            nl: 'Leer iets nieuws',
-                            dk: 'Lær noget nyt',
-                            pt: 'Aprenda algo novo',
-                            es: 'Aprende algo nuevo',
-                            ru: 'Узнать что-то новое',
+                            fr: 'Explorez les documents',
+                            it: 'Esplora la documentazione',
+                            kr: '문서 살펴보기',
+                            ja: 'ドキュメントを探索する',
+                            de: 'Dokumente erkunden',
+                            nl: 'Verken de documentatie',
+                            dk: 'Udforsk Dokumenterne',
+                            pt: 'Explore os documentos',
+                            es: 'Explorar la documentación',
+                            ru: 'Изучите документацию',
                         }[lang]
                     }</span>
                 </li>

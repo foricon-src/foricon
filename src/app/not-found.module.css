@@ -16,6 +16,7 @@
     }
     & > ul {
         width: 350px;
+        min-width: max-content;
         gap: 10px;
     }
 }
