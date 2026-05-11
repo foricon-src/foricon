@@ -4,6 +4,7 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import cssStyle from './not-found.module.css';
 import { LanguageContext } from 'Com/language';
 import { useRouter } from 'next/navigation';
+import 'Com/utils';
 
 export default function PageClient() {
     let router = useRouter();
