@@ -69,87 +69,89 @@ export default function PageClient() {
                     ru: 'Не волнуйтесь, вы можете начать заново отсюда:',
                 }[lang]
             }</p>
-            <form action='/search'>
-                <label>
-                    <f-icon icon='magnifying-glass' i-s='outline'/>
-                    <input name='s' placeholder={
-                        {
-                            en: 'Search for icons...',
-                            vi: 'Tìm kiếm biểu tượng...',
-                            fr: 'Rechercher des icônes...',
-                            it: 'Cerca icone...',
-                            kr: '아이콘을 검색하세요...',
-                            ja: 'アイコンを検索...',
-                            de: 'Suche nach Symbolen...',
-                            nl: 'Zoek naar pictogrammen...',
-                            dk: 'Søg efter ikoner...',
-                            pt: 'Pesquisar ícones...',
-                            es: 'Buscar iconos...',
-                            ru: 'Поиск значков...',
-                        }[lang]
-                    }/>
-                </label>
-            </form>
-            <hr/>
-            <ul className='btn-list vertical darker'>
-                <li onClick={() => go(router)}>
-                    <f-icon icon='house'/>
-                    <span>{
-                        {
-                            en: 'Back to Home',
-                            vi: 'Trở về trang chủ',
-                            fr: "Retour à l'accueil",
-                            it: 'Torna alla home',
-                            kr: '홈으로 돌아가기',
-                            ja: 'ホームに戻る',
-                            de: 'Zurück zur Startseite',
-                            nl: 'Terug naar de homepage',
-                            dk: 'Tilbage til forsiden',
-                            pt: 'Voltar à página inicial',
-                            es: 'Volver a la página principal',
-                            ru: 'Вернуться на главную',
-                        }[lang]
-                    }</span>
-                </li>
-                <li onClick={() => go(router, '/docs')}>
-                    <f-icon icon='file-lines'/>
-                    <span>{
-                        {
-                            en: 'Explore the Docs',
-                            vi: 'Khám phá tài liệu',
-                            fr: 'Explorez les documents',
-                            it: 'Esplora la documentazione',
-                            kr: '문서 살펴보기',
-                            ja: 'ドキュメントを探索する',
-                            de: 'Dokumente erkunden',
-                            nl: 'Verken de documentatie',
-                            dk: 'Udforsk Dokumenterne',
-                            pt: 'Explore os documentos',
-                            es: 'Explorar la documentación',
-                            ru: 'Изучите документацию',
-                        }[lang]
-                    }</span>
-                </li>
-                {show && <li onClick={() => go(router, '/docs')}>
-                    <f-icon icon='arrow-left' i-s='outline'/>
-                    <span>{
-                        {
-                            en: 'Explore the Docs',
-                            vi: 'Khám phá tài liệu',
-                            fr: 'Explorez les documents',
-                            it: 'Esplora la documentazione',
-                            kr: '문서 살펴보기',
-                            ja: 'ドキュメントを探索する',
-                            de: 'Dokumente erkunden',
-                            nl: 'Verken de documentatie',
-                            dk: 'Udforsk Dokumenterne',
-                            pt: 'Explore os documentos',
-                            es: 'Explorar la documentación',
-                            ru: 'Изучите документацию',
-                        }[lang]
-                    }</span>
-                </li>}
-            </ul>
+            <div>
+                <form action='/search'>
+                    <label>
+                        <f-icon icon='magnifying-glass' i-s='outline'/>
+                        <input name='s' placeholder={
+                            {
+                                en: 'Search for icons...',
+                                vi: 'Tìm kiếm biểu tượng...',
+                                fr: 'Rechercher des icônes...',
+                                it: 'Cerca icone...',
+                                kr: '아이콘을 검색하세요...',
+                                ja: 'アイコンを検索...',
+                                de: 'Suche nach Symbolen...',
+                                nl: 'Zoek naar pictogrammen...',
+                                dk: 'Søg efter ikoner...',
+                                pt: 'Pesquisar ícones...',
+                                es: 'Buscar iconos...',
+                                ru: 'Поиск значков...',
+                            }[lang]
+                        }/>
+                    </label>
+                </form>
+                <hr/>
+                <ul className='btn-list vertical darker'>
+                    <li onClick={() => go(router)}>
+                        <f-icon icon='house'/>
+                        <span>{
+                            {
+                                en: 'Back to Home',
+                                vi: 'Trở về trang chủ',
+                                fr: "Retour à l'accueil",
+                                it: 'Torna alla home',
+                                kr: '홈으로 돌아가기',
+                                ja: 'ホームに戻る',
+                                de: 'Zurück zur Startseite',
+                                nl: 'Terug naar de homepage',
+                                dk: 'Tilbage til forsiden',
+                                pt: 'Voltar à página inicial',
+                                es: 'Volver a la página principal',
+                                ru: 'Вернуться на главную',
+                            }[lang]
+                        }</span>
+                    </li>
+                    <li onClick={() => go(router, '/docs')}>
+                        <f-icon icon='file-lines'/>
+                        <span>{
+                            {
+                                en: 'Explore the Docs',
+                                vi: 'Khám phá tài liệu',
+                                fr: 'Explorez les documents',
+                                it: 'Esplora la documentazione',
+                                kr: '문서 살펴보기',
+                                ja: 'ドキュメントを探索する',
+                                de: 'Dokumente erkunden',
+                                nl: 'Verken de documentatie',
+                                dk: 'Udforsk Dokumenterne',
+                                pt: 'Explore os documentos',
+                                es: 'Explorar la documentación',
+                                ru: 'Изучите документацию',
+                            }[lang]
+                        }</span>
+                    </li>
+                    {show && <li onClick={() => go(router, '/docs')}>
+                        <f-icon icon='arrow-left' i-s='outline'/>
+                        <span>{
+                            {
+                                en: 'Explore the Docs',
+                                vi: 'Khám phá tài liệu',
+                                fr: 'Explorez les documents',
+                                it: 'Esplora la documentazione',
+                                kr: '문서 살펴보기',
+                                ja: 'ドキュメントを探索する',
+                                de: 'Dokumente erkunden',
+                                nl: 'Verken de documentatie',
+                                dk: 'Udforsk Dokumenterne',
+                                pt: 'Explore os documentos',
+                                es: 'Explorar la documentación',
+                                ru: 'Изучите документацию',
+                            }[lang]
+                        }</span>
+                    </li>}
+                </ul>
+            </div>
         </div>
     )
 }
