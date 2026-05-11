@@ -14,9 +14,12 @@
     & > h3 {
         margin-top: 0;
     }
+    & > hr {
+        margin: var(--spacing-mili) 0;
+    }
     & > ul {
         width: 350px;
         min-width: max-content;
-        gap: 10px;
+        gap: var(--spacing-micro);
     }
 }

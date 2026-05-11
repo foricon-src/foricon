@@ -1,11 +1,23 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import cssStyle from './not-found.module.css';
 import { LanguageContext } from 'Com/language';
+import { useRouter } from 'next/navigation';
 
 export default function PageClient() {
+    let [ show, setShow ] = useState(false);
+    let router = useRouter();
     let lang = useContext(LanguageContext);
+
+    useEffect(() => {
+        try {
+            let ref = document.referrer;
+            let refUrl = new URL(ref);
+            refUrl.origin == location.origin && history.length && setShow(true);
+        }
+        catch (err) {}
+    }, [])
 
     return (
         <div className={cssStyle.main} id='404'>
@@ -44,22 +56,44 @@ export default function PageClient() {
             }</p>
             <p>{
                 {
-                    en: 'What about:',
-                    vi: 'Vậy thì:',
-                    fr: "Qu'en est-il de :",
-                    it: 'Che ne dici di:',
-                    kr: '은 어떻게 되느냐:',
-                    ja: 'では、次のことはどうでしょうか？',
-                    de: 'Was ist mit:',
-                    nl: 'Wat vind je van:',
-                    dk: 'Hvad med:',
-                    pt: 'Que tal:',
-                    es: '¿Qué tal si...?',
-                    ru: 'А как насчет:',
+                    en: "Don't worry, you can restart from here:",
+                    vi: 'Đừng lo, bạn có thể bắt đầu lại từ đây:',
+                    fr: "Ne vous inquiétez pas, vous pouvez recommencer à partir d'ici :",
+                    it: 'Non preoccuparti, puoi ricominciare da qui:',
+                    kr: '걱정하지 마세요, 여기서부터 다시 시작할 수 있습니다:',
+                    ja: 'ご安心ください、ここから再開できます:',
+                    de: 'Keine Sorge, Sie können von hier aus neu starten:',
+                    nl: 'Geen zorgen, je kunt hier opnieuw beginnen:',
+                    dk: 'Bare rolig, du kan genstarte herfra:',
+                    pt: 'Não se preocupe, pode reiniciar a partir daqui:',
+                    es: 'No te preocupes, puedes reiniciar desde aquí:',
+                    ru: 'Не волнуйтесь, вы можете начать заново отсюда:',
                 }[lang]
             }</p>
+            <form action='/search'>
+                <label>
+                    <f-icon icon='magnifying-glass' i-s='outline'/>
+                    <input name='s' placeholder={
+                        {
+                            en: 'Search for icons...',
+                            vi: 'Tìm kiếm biểu tượng...',
+                            fr: 'Rechercher des icônes...',
+                            it: 'Cerca icone...',
+                            kr: '아이콘을 검색하세요...',
+                            ja: 'アイコンを検索...',
+                            de: 'Suche nach Symbolen...',
+                            nl: 'Zoek naar pictogrammen...',
+                            dk: 'Søg efter ikoner...',
+                            pt: 'Pesquisar ícones...',
+                            es: 'Buscar iconos...',
+                            ru: 'Поиск значков...',
+                        }[lang]
+                    }/>
+                </label>
+            </form>
+            <hr/>
             <ul className='btn-list vertical darker'>
-                <li>
+                <li onClick={() => go(router)}>
                     <f-icon icon='house'/>
                     <span>{
                         {
@@ -78,31 +112,12 @@ export default function PageClient() {
                         }[lang]
                     }</span>
                 </li>
-                <li>
-                    <f-icon icon='magnifying-glass' i-s='outline'/>
-                    <span>{
-                        {
-                            en: 'Take a look at our icon set',
-                            vi: 'Ngó qua bộ biểu tượng của chúng tôi',
-                            fr: "Jetez un œil à notre ensemble d'icônes",
-                            it: "Dai un'occhiata al nostro set di icone",
-                            kr: '저희 아이콘 세트를 살펴보세요',
-                            ja: 'アイコンセットをご覧ください',
-                            de: 'Werfen Sie einen Blick auf unser Icon-Set',
-                            nl: 'Bekijk onze iconenset',
-                            dk: 'Tag et kig på vores ikonsæt',
-                            pt: 'Conheça o nosso conjunto de ícones',
-                            es: 'Echa un vistazo a nuestro conjunto de iconos',
-                            ru: 'Взгляните на наш набор иконок',
-                        }[lang]
-                    }</span>
-                </li>
-                <li>
+                <li onClick={() => go(router, '/docs')}>
                     <f-icon icon='file-lines'/>
                     <span>{
                         {
                             en: 'Explore the Docs',
-                            vi: 'Truy cập tài liệu',
+                            vi: 'Khám phá tài liệu',
                             fr: 'Explorez les documents',
                             it: 'Esplora la documentazione',
                             kr: '문서 살펴보기',
@@ -116,6 +131,25 @@ export default function PageClient() {
                         }[lang]
                     }</span>
                 </li>
+                {show && <li onClick={() => go(router, '/docs')}>
+                    <f-icon icon='arrow-left' i-s='outline'/>
+                    <span>{
+                        {
+                            en: 'Explore the Docs',
+                            vi: 'Khám phá tài liệu',
+                            fr: 'Explorez les documents',
+                            it: 'Esplora la documentazione',
+                            kr: '문서 살펴보기',
+                            ja: 'ドキュメントを探索する',
+                            de: 'Dokumente erkunden',
+                            nl: 'Verken de documentatie',
+                            dk: 'Udforsk Dokumenterne',
+                            pt: 'Explore os documentos',
+                            es: 'Explorar la documentación',
+                            ru: 'Изучите документацию',
+                        }[lang]
+                    }</span>
+                </li>}
             </ul>
         </div>
     )

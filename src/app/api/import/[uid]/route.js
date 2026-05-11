@@ -135,20 +135,11 @@ export function GET(_, { params: { uid }}) {
             })
             
             try {
-                log('[Foricon Package] Step 1/4: Preparing environment...');
-
-                const { db } = await import('https://foricon-src.github.io/foricon-firebase/script.js');
-                const { ref, get } = await import('https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js');
-
-                log('[Foricon Package] Step 2/4: Verifying and fetching package data from server...');
-
                 const res = await fetch(\`//foricon.vercel.app/api/get-package?uid=\${uid}&timezone=\${new Date().getTimezoneOffset() / 60}\`);
                 const parsed = await res.json();
 
                 if (!res.ok) throw new Error(parsed.message);
                 const { settings, fonts, cssBaseUrl } = parsed;
-
-                log('[Foricon Package] Step 3/4: Applying settings and finalizing styles...');
                 
                 let s = document.createElement('style');
                 s.innerHTML = \`:root {
@@ -399,7 +390,7 @@ export function GET(_, { params: { uid }}) {
                     head.append(link);
                 }
                 window.foriconPackageIsLoaded = true;
-                log('[Foricon Package] Step 4/4: Foricon package loaded successfully!');
+                log('[Foricon Package] Loaded successfully');
             }
             catch (err) {
                 error('[Foricon Package] An error occurred:', err);
