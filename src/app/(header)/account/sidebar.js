@@ -135,9 +135,7 @@ export default function Sidebar() {
                         await signOut(auth);
                         location.reload();
                     }
-                    catch ({ message }) {
-                        notify('error', message)
-                    }
+                    catch ({ message }) { notify('error', message) }
                 },
                 icon: { name: 'arrow-right-from-bracket' },
                 className: 'red',

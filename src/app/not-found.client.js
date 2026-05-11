@@ -1,22 +1,21 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import cssStyle from './not-found.module.css';
 import { LanguageContext } from 'Com/language';
 import { useRouter } from 'next/navigation';
 
 export default function PageClient() {
-    let [ show, setShow ] = useState(false);
     let router = useRouter();
     let lang = useContext(LanguageContext);
-
-    useEffect(() => {
+    let show = useMemo(() => {
         try {
             let ref = document.referrer;
+            if (!ref) return false;
             let refUrl = new URL(ref);
-            refUrl.origin == location.origin && history.length && setShow(true);
+            return refUrl.origin == location.origin && history.length;
         }
-        catch (err) {}
+        catch (err) { return false };
     }, [])
 
     return (

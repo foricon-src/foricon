@@ -392,9 +392,7 @@ export function GET(_, { params: { uid }}) {
                 window.foriconPackageIsLoaded = true;
                 log('[Foricon Package] Loaded successfully');
             }
-            catch (err) {
-                error('[Foricon Package] An error occurred:', err);
-            }
+            catch (err) { error('[Foricon Package] An error occurred:', err) };
         })()
     `, {
         headers: {
