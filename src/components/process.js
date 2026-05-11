@@ -629,7 +629,7 @@ export default function Process() {
             })
         }
 
-        qSelec(true, header_center, 'a').forEach(each => each.pathname == pathname ? activate(each) : inactivate(each))
+        qSelec(true, header_center, 'a')?.forEach(each => each.pathname == pathname ? activate(each) : inactivate(each))
         
         while (user == null || user && !user.doc || !window.foriconPackageIsLoaded) await wait();
 
