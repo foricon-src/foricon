@@ -2104,6 +2104,9 @@ footer > div {
 }
 
 #loading {
+    --initial: .2;
+    --fly-up: .1;
+
     position: fixed;
     z-index: 6;
     background-color: var(--bg-color);
@@ -2116,6 +2119,10 @@ footer > div {
     align-items: center;
     flex-direction: column-reverse;
     
+    body.dark & {
+        --initial: .4;
+        --fly-up: .2;
+    }
     #loading_spin {
         background-color: var(--main-color);
         border-radius: var(--bdr-rad);
@@ -2124,8 +2131,8 @@ footer > div {
         animation: spin 2s infinite cubic-bezier(0.1, 0.2, 0.6, 1);
     }
     #loading_bounce {
-        height: 100px;
-        width: 100px;
+        height: 80px;
+        width: 80px;
         animation: bounce 2s infinite;
     }
     #loading_shadow {
@@ -2134,7 +2141,7 @@ footer > div {
         height: 20px;
         width: 160px;
         animation: shadow 2s infinite;
-        margin-top: -40px;
+        margin-top: -35px;
     }
 }
 
@@ -2173,21 +2180,21 @@ footer > div {
     100% { rotate: 360deg }
 }
 @keyframes shadow {
-    0% { opacity: .4; scale: 1 }
+    0% { opacity: var(--initial); scale: 1 }
     20% {
-        opacity: .4;
+        opacity: var(--initial);
         scale: 1;
         animation-timing-function: cubic-bezier(.1, .25, .5, 1);
     }
     50% {
-        opacity: .2;
+        opacity: var(--fly-up);
         scale: .5;
         animation-timing-function: cubic-bezier(.5, 0, .9, .75);
     }
     80% {
-        opacity: .4;
+        opacity: var(--initial);
         scale: 1;
         animation-timing-function:  cubic-bezier(0, .25, .5, 1);
     }
-    100% { opacity: .4; scale: 1 }
+    100% { opacity: var(--initial); scale: 1 }
 }
