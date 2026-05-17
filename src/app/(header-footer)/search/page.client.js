@@ -384,6 +384,7 @@ export default function PageClient() {
     let [ version, setVersion ] = useState(initial.version);
     let [ page, setPage ] = useState(0);
     let [ view, setView ] = useState(localStorage.getItem('view') || 'large');
+    let [ updateView, setUpdateView ] = useState(0);
     let [ selectedIcon, selectIcon ] = useState(null);
     let [ width, setWidth ] = useState(innerWidth);
 
@@ -416,7 +417,7 @@ export default function PageClient() {
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let columns = useMemo(
         () => loaded ? getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1,
-        [ loaded, width, view ]
+        [ loaded, width, updateView ]
     )
     let perPage = useMemo(() => {
         console.log(columns);
@@ -438,6 +439,11 @@ export default function PageClient() {
         return cloned;
     }, [ filtered ])
     
+    async function SetView(v) {
+        setView(v);
+        await wait();
+        setUpdateView(updateView + 1);
+    }
     function formatKeyword(value, reversed) {
         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
     }
@@ -863,7 +869,7 @@ export default function PageClient() {
                         </li>
                     </ul>
                     <ul className='btn-list line line-active'>
-                        <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
+                        <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => SetView('large')}>
                             <f-icon icon='grid-4' i-s={view != 'large' && 'outline'}></f-icon>
                             <span>{
                                 {
@@ -882,7 +888,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={`chip top${view == 'small' ? ' active' : ''}`} onClick={() => setView('small')}>
+                        <li className={`chip top${view == 'small' ? ' active' : ''}`} onClick={() => SetView('small')}>
                             <f-icon icon='grid-9' i-s={view != 'small' && 'outline'}></f-icon>
                             <span>{
                                 {
@@ -901,7 +907,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={`chip top${view == 'tiles' ? ' active' : ''}`} onClick={() => setView('tiles')}>
+                        <li className={`chip top${view == 'tiles' ? ' active' : ''}`} onClick={() => SetView('tiles')}>
                             <f-icon icon='list' i-s='outline'></f-icon>
                             <span>{
                                 {
