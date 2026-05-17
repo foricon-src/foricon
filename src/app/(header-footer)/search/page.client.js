@@ -416,11 +416,10 @@ export default function PageClient() {
         })
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let columns = useMemo(
-        () => loaded ? getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1,
-        [ loaded, width, updateView ]
+        () => getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length,
+        [ width, updateView ]
     )
     let perPage = useMemo(() => {
-        console.log(columns);
         let rows = Math.floor(
             (view === 'large' ? 150 : view === 'small' ? 300 : 160) / columns
         )
@@ -445,7 +444,7 @@ export default function PageClient() {
         setUpdateView(updateView + 1);
     }
     function formatKeyword(value, reversed) {
-        return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
+        return value.replaceAll(...(reversed ? [ '+', ' ' ] : [ ' ', '+' ]));
     }
     function check() {
         setWidth(innerWidth);
@@ -983,7 +982,7 @@ export default function PageClient() {
                 }</ul>
                 <div>
                     <ul className={`${cssStyle.results} ${cssStyle[view]}`}>{
-                        currentIcons.map(({ icon, style }) => (
+                        loaded ? currentIcons.map(({ icon, style }) => (
                             <li key={`${icon.name} | ${style}`} className={icon.name == selectedIcon?.name && style == selectedIcon?.style && 'active'} onClick={async () => {
                                 await wait(.2);
                                 selectIcon({
@@ -1001,7 +1000,7 @@ export default function PageClient() {
                                 })()}></f-icon>
                                 <span>{icon.name}</span>
                             </li>
-                        ))
+                        )) : Array(20).map((_, i) => <li key={i}/>)
                     }</ul>
                     <ul className={`btn-list line-active top ${cssStyle.pages}`}>{
                         Array.from({ length: Math.ceil(filtered.length / perPage) }).map((_, i) => (
