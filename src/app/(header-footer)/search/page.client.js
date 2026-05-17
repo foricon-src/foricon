@@ -416,8 +416,8 @@ export default function PageClient() {
         })
     }, [ loaded, search, family, style, selectedCategories, version ]);
     let columns = useMemo(
-        () => getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length,
-        [ width, updateView ]
+        () => loaded ? getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
+        [ loaded, width, updateView ]
     )
     let perPage = useMemo(() => {
         let rows = Math.floor(
