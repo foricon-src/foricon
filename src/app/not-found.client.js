@@ -9,7 +9,6 @@ import 'Com/utils';
 export default function PageClient() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
-    // let show = useMemo(() => history.length > 1, []);
 
     return (
         <div className={cssStyle.main} id='404'>
@@ -66,7 +65,7 @@ export default function PageClient() {
                 <form action='/search'>
                     <label>
                         <f-icon icon='magnifying-glass' i-s='outline'/>
-                        <input name='s' placeholder={
+                        <input name='k' placeholder={
                             {
                                 en: 'Search for icons...',
                                 vi: 'Tìm kiếm biểu tượng...',
@@ -124,7 +123,7 @@ export default function PageClient() {
                             }[lang]
                         }</span>
                     </li>
-                    {history.length > 1 && <li onClick={() => history.back()}>
+                    <li onClick={() => history.back()}>
                         <f-icon icon='arrow-left' i-s='outline'/>
                         <span>{
                             {
@@ -142,7 +141,7 @@ export default function PageClient() {
                                 ru: 'Предыдущая страница',
                             }[lang]
                         }</span>
-                    </li>}
+                    </li>
                 </ul>
             </div>
         </div>
