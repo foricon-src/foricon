@@ -383,7 +383,7 @@ export default function PageClient() {
     let [ selectedCategories, selectCategories ] = useState(initial.categories);
     let [ version, setVersion ] = useState(initial.version);
     let [ page, setPage ] = useState(0);
-    let [ view, setView ] = useState('large');
+    let [ view, setView ] = useState(localStorage.getItem('view') || 'large');
     let [ selectedIcon, selectIcon ] = useState(null);
     let [ width, setWidth ] = useState(innerWidth);
 
@@ -419,6 +419,7 @@ export default function PageClient() {
         [ loaded, width, view ]
     )
     let perPage = useMemo(() => {
+        console.log(columns);
         let rows = Math.floor(
             (view === 'large' ? 150 : view === 'small' ? 300 : 160) / columns
         )
@@ -539,6 +540,7 @@ export default function PageClient() {
         let adsenseContent = elemById('adsense-content');
         adsenseContent && (adsenseContent.style.display = 'none');
     }, [])
+    useEffect(() => { localStorage.setItem('view', view) }, [ view ]);
 
     return (
         <>
