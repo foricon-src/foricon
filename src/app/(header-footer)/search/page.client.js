@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo, useContext } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Ad } from 'Com/ad';
 import { LanguageContext } from 'Com/language';
+import { UserContext } from 'Com/user';
 import Code from 'Com/code';
 import cssStyle from './page.module.css';
 import Classes from 'Com/classes';
@@ -12,6 +13,7 @@ export default function PageClient() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
     let searchParams = useSearchParams();
+    let user = useContext(UserContext);
 
     let [ type, setType ] = useState('');
 

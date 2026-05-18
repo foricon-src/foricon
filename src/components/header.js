@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import logo from 'Pub/foricon-f-logo.png';
 import { LanguageContext } from 'Com/language';
+import { UserContext } from './user';
 import { ThemeContext } from 'Com/theme';
 import Img from 'Com/img';
 import 'Com/utils';
@@ -15,6 +16,7 @@ export default function Header() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
     let { isDark, setIsDark } = useContext(ThemeContext);
+    let user = useContext(UserContext);
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) =>

@@ -1,19 +1,18 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import { LanguageContext } from 'Com/language';
+import { UserContext } from "Com/user";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
 import cssStyle from './page.module.css';
-import { useContext, useState } from "react";
 
 export default function Page() {
     let router = useRouter();
-    let [ u, setU ] = useState();
     let lang = useContext(LanguageContext);
-
-    usePage(() => { setU(user) });
+    let user = useContext(UserContext);
 
     return (
         <div className={cssStyle.account_info}>
@@ -37,7 +36,7 @@ export default function Page() {
                             }[lang]
                         }</td>
                         <td>
-                            <div className='img circle square' style={{ backgroundImage: `url(${u?.doc.avatar})` }}/>
+                            <div className='img circle square' style={{ backgroundImage: `url(${user?.doc.avatar})` }}/>
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +56,7 @@ export default function Page() {
                                 ru: 'Имя',
                             }[lang]
                         }</td>
-                        <td>{u?.doc.name}</td>
+                        <td>{user?.doc.name}</td>
                     </tr>
                     <tr>
                         <td>{
@@ -76,7 +75,7 @@ export default function Page() {
                                 ru: 'Электронная почта',
                             }[lang]
                         }</td>
-                        <td>{u?.doc.email}{u?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
+                        <td>{user?.doc.email}{user?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
                     </tr>
                     <tr>
                         <td>{
@@ -95,8 +94,8 @@ export default function Page() {
                                 ru: 'ID пользователя',
                             }[lang]
                         }</td>
-                        <td>{u?.uid}<f-icon icon='clone' onClick={() => {
-                            navigator.clipboard.writeText(u.uid);
+                        <td>{user?.uid}<f-icon icon='clone' onClick={() => {
+                            navigator.clipboard.writeText(user.uid);
                             notify('success', {
                                 en: 'Copied to clipboard',
                                 vi: 'Đã sao chép vào bộ nhớ tạm',

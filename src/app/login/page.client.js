@@ -11,6 +11,7 @@ import popUp from "Com/popup";
 import Img from "Com/img";
 import recordLogin from "Com/record-login";
 import logo from 'Pub/foricon-f-logo.png';
+import { UserContext } from "Com/user";
 
 let texts = {
     en: {
@@ -128,7 +129,9 @@ let texts = {
 export default function LogIn() {
     let router = useRouter();
     let params = useSearchParams();
-    let lang = useContext(LanguageContext)
+    let pathname = usePathname();
+    let lang = useContext(LanguageContext);
+    let user = useContext(UserContext);
 
     let [ step, setStep ] = useState('email');
     let [ email, setEmail ] = useState('');
@@ -138,9 +141,9 @@ export default function LogIn() {
     let des = params.get('redirect') || 'account';
     
     useEffect(() => {(async () => {
-        while (user == null) await wait();
+        if (user == null) return;
         user && go(router, 'account');
-    })()}, [ usePathname() ])
+    })()}, [ pathname, user ])
 
     async function changePage(page, e, func) {
         e?.preventDefault();

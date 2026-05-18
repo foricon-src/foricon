@@ -5,6 +5,7 @@ import { useContext } from "react";
 import Code from "Com/code";
 import { LanguageContext } from 'Com/language';
 import { UpdateRange, Range } from "Com/range";
+import { UserContext } from "Com/user";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -13,6 +14,7 @@ import './page.css';
 export default function Page() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
+    let user = useContext(UserContext);
 
     usePage(() => {
         let { font, indent } = user.doc.personalization;

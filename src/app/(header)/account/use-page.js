@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { UserContext } from "Com/user";
 
 export default function usePage(func) {
     let router = useRouter();
     let pathname = usePathname();
+    let user = useContext(UserContext);
 
     useEffect(() => {(async () => {
-        while (user == null) await wait();
+        if (user == null) return;
         if (!user) {
             go(router, 'login');
             return;
@@ -26,5 +28,5 @@ export default function usePage(func) {
             '/account/package/settings',
             '/account/package/download',
         ].forEach(router.prefetch);
-    })()}, [ pathname ])
+    })()}, [ pathname, user ])
 }

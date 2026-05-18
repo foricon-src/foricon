@@ -669,7 +669,6 @@ globalThis.webData = {
         }
     }
 }
-globalThis.user = null;
 globalThis.country = null;
 globalThis.timezone = null;
 

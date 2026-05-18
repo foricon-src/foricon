@@ -2,21 +2,19 @@
 
 import { useContext, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { onAuthStateChanged } from 'firebase/auth';
-import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
-import { auth, dbFirestore, db } from './firebase';
+import { db } from './firebase';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from './language';
+import { UserContext } from './user';
 
 export default function Process() {
     let router = useRouter();
     let pathname = usePathname();
     let lang = useContext(LanguageContext);
+    let user = useContext(UserContext);
 
     useEffect(() => {(async () => {
-        let { body } = document;
-
         !globalThis.qSelec && location.reload();
         
         user && qSelec(true, '.signup').forEach(each => each.style.display = 'none');
@@ -29,36 +27,6 @@ export default function Process() {
         let header_all = qSelec(false, header, 'ul[name="all"]');
 
         timezone = new Date().getTimezoneOffset() / 60;
-        
-        user == null && onAuthStateChanged(auth, async res => {
-            let locked = (await get(ref(db, 'locked'))).val();
-            let admin;
-            
-            if (res) {
-                user = res;
-                let d = await getDoc(doc(dbFirestore, 'users', user.uid));
-                user.doc = d.data();
-                
-                qSelec(true, '.signup').forEach(each => each.style.display = 'none');
-                if (user.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
-                    addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
-                        ctrlKey && key == '/' && location.pathname != '/admin' && !document.activeElement.matches('textarea, input') &&
-                        go(router, 'admin', true);
-                    }, false)
-                    admin = true;
-                }
-                
-                let { font, indent } = user.doc.personalization;
-                body.classList.remove('cons');
-                body.classList.add(font);
-                body.indentSize = indent;
-            }
-            else user = false;
-            // if (!admin) {
-            //     if (['manager', 'management-center', 'admin'].some(path => location.pathname == `/p/${path}.html`)) document.documentElement.innerHTML = '403 Forbidden';
-            //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
-            // }
-        })
         
         if (!customElements.get('f-upload')) {
             let icons = (await get(ref(db, 'icons/'))).val();

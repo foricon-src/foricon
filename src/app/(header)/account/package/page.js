@@ -1,9 +1,10 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { LanguageContext } from 'Com/language';
 import { useContext } from "react";
 import { get, ref } from "firebase/database";
+import { LanguageContext } from 'Com/language';
+import { UserContext } from "Com/user";
 import { db } from "Com/firebase";
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
@@ -12,7 +13,8 @@ import cssStyle from './page.module.css';
 
 export default function Page() {
     let router = useRouter();
-    let lang = useContext(LanguageContext)
+    let lang = useContext(LanguageContext);
+    let user = useContext(UserContext);
 
     usePage(async () => {
         let { plan, pageview: { count, start } } = user.doc;
