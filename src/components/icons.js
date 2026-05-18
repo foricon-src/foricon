@@ -33,6 +33,7 @@ export function IconProvider({ children }) {
                 unicodes: icon.unicodes,
             })
         }
+        console.log(value);
         setIcons(value);
     })}, [])
 
