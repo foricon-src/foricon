@@ -7,6 +7,7 @@ import { db } from './firebase';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from './language';
 import { UserContext } from './user';
+import { IconContext } from './icons';
 
 export default function Process() {
     let router = useRouter();
@@ -27,28 +28,6 @@ export default function Process() {
         timezone = new Date().getTimezoneOffset() / 60;
         
         if (!customElements.get('f-upload')) {
-            let icons = (await get(ref(db, 'icons/'))).val();
-            for (let name in icons) {
-                let icon = icons[name];
-                webData.icons.push({
-                    name,
-                    categories: icon.categories.map(cate => cate.replace('bussiness', 'business')),
-                    styles: icon.styles,
-                    glyphs: icon.glyphs,
-                    unicodes: icon.unicodes,
-                })
-            }
-            let iconsB2 = (await get(ref(db, 'iconsB2/'))).val();
-            for (let name in iconsB2) {
-                let icon = iconsB2[name];
-                webData.iconsB2.push({
-                    name,
-                    categories: icon.categories,
-                    styles: icon.styles,
-                    glyphs: icon.glyphs,
-                    unicodes: icon.unicodes,
-                })
-            }
             
             customElements.define('f-upload', class extends HTMLElement {
                 async connectedCallback() {
@@ -607,7 +586,7 @@ export default function Process() {
         }
         
         qSelec(true, '.icon-count').forEach(
-            each => each.innerText = `${Math.floor(webData.iconsB2.reduce(
+            each => each.innerText = `${Math.floor(IconContext.b2.reduce(
                 (total, icon) => total + icon.styles.length, 0
             ) / 100) * 100}`
         )

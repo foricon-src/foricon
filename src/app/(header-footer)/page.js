@@ -4,6 +4,7 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
+import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
 import Img from 'Com/img';
 import logo from 'Pub/foricon-f-logo.png';
@@ -13,6 +14,7 @@ export default function Home() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
     let user = useContext(UserContext);
+    let iconSet = useContext(IconContext);
 
     let [ icon, setIcon ] = useState('brush');
     let [ style, setStyle ] = useState('');
@@ -30,7 +32,7 @@ export default function Home() {
             let div = newElem('div');
             while (div.children.length < 10) {
                 await wait();
-                let icon = random(webData.iconsB2);
+                let icon = random(iconSet.b2);
                 let { name, styles } = icon;
                 let style = random(styles);
                 if (!added.includes(`${name} ${style}`)) {

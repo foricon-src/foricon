@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Ad } from 'Com/ad';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
+import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
 import cssStyle from './page.module.css';
 import Classes from 'Com/classes';
@@ -14,6 +15,7 @@ export default function PageClient() {
     let lang = useContext(LanguageContext);
     let searchParams = useSearchParams();
     let user = useContext(UserContext);
+    let iconSet = useContext(IconContext);
 
     let [ type, setType ] = useState('');
 
@@ -392,10 +394,10 @@ export default function PageClient() {
     let [ width, setWidth ] = useState(innerWidth);
 
     let filtered = useMemo(() => {
-        let iconSet = version == 'b2' ? webData.iconsB2 : webData.icons;
-        if (!iconSet) return [];
+        let icons = iconSet[version];
+        if (!icons) return [];
     
-        return iconSet.flatMap(icon => {
+        return icons.flatMap(icon => {
             return (
                 family == 'all' && style == 'all' ? icon.styles :
                 family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`) :

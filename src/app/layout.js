@@ -5,6 +5,7 @@ import { LanguageProvider } from 'Com/language';
 import './globals.css';
 import { ThemeProvider } from 'Com/theme';
 import { UserProvider } from 'Com/user';
+import { IconProvider } from 'Com/icons';
 
 export const metadata = {
     title: {
@@ -26,22 +27,24 @@ export default function RootLayout({ children }) {
             </head>
             <body className='cons'>
                 <GoogleAdSense client='pub-8532596750508498'/>
-                <UserProvider>
-                    <LanguageProvider>
-                        <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
-                        <div id='loading'>
-                            <div id='loading_shadow'></div>
-                            <div id='loading_bounce'>
-                                <div id='loading_spin'></div>
+                <IconProvider>
+                    <UserProvider>
+                        <LanguageProvider>
+                            <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
+                            <div id='loading'>
+                                <div id='loading_shadow'></div>
+                                <div id='loading_bounce'>
+                                    <div id='loading_spin'></div>
+                                </div>
                             </div>
-                        </div>
-                        <div id='toast'/>
-                        <ThemeProvider>{
-                            children
-                        }</ThemeProvider>
-                        <Process/>
-                    </LanguageProvider>
-                </UserProvider>
+                            <div id='toast'/>
+                            <ThemeProvider>{
+                                children
+                            }</ThemeProvider>
+                            <Process/>
+                        </LanguageProvider>
+                    </UserProvider>
+                </IconProvider>
             </body>
         </html>
     );
