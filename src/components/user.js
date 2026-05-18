@@ -3,6 +3,7 @@
 import { createContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
+import { get, ref } from "firebase/database";
 import { auth, dbFirestore, db } from './firebase';
 
 export const UserContext = createContext(false);
@@ -20,7 +21,6 @@ export function UserProvider({ children }) {
                 let d = await getDoc(doc(dbFirestore, 'users', res.uid));
                 res.doc = d.data();
                 
-                qSelec(true, '.signup').forEach(each => each.style.display = 'none');
                 if (res.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
                     addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
                         ctrlKey && key == '/' && location.pathname != '/admin' && !document.activeElement.matches('textarea, input') &&

@@ -636,7 +636,7 @@ export default function PageClient() {
                     </div>
                 </div>
             </div>
-            <div className='banner blue signup'>
+            {!user && <div className='banner blue'>
                 <div>{
                     {
                         en: 'Enjoy free icons - sign up to access the entire set!',
@@ -670,7 +670,7 @@ export default function PageClient() {
                         }[lang]
                     }</a>
                 </div>
-            </div>
+            </div>}
             <div className={`outer-corner ${cssStyle.top}`}>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'></f-icon>

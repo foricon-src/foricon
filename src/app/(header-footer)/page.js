@@ -730,7 +730,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.getStarted} signup`}>
+            {!user && <div className={`${cssStyle.contentSection} ${cssStyle.getStarted}`}>
                 <div>
                     <h1>Get started</h1>
                     <p>Get access to the power of the Foricon</p>
@@ -741,7 +741,7 @@ export default function Home() {
                         <f-icon icon='file-lines'/>View the Docs
                     </a>
                 </div>
-            </div>
+            </div>}
             <div className={`${cssStyle.contentSection} ${cssStyle.pages}`}>
                 <a href='/hub'>
                     <div>

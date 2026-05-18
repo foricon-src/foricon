@@ -17,8 +17,6 @@ export default function Process() {
     useEffect(() => {(async () => {
         !globalThis.qSelec && location.reload();
         
-        user && qSelec(true, '.signup').forEach(each => each.style.display = 'none');
-        
         let header = qSelec(false, 'header');
         let header_center = qSelec(false, header, 'ul[name="center"]');
         let header_right = qSelec(false, header, 'ul[name="right"]');
@@ -613,28 +611,6 @@ export default function Process() {
                 (total, icon) => total + icon.styles.length, 0
             ) / 100) * 100}`
         )
-        
-        if (user) {
-            let icon = qSelec(false, header_right_accBtn, 'f-icon');
-            if (icon) {
-                header_right_accBtn?.replaceChild(newElem('img', { src: user.doc.avatar }), icon)
-                header_right_accBtn_span && (header_right_accBtn_span.innerText = user.doc.name);
-            }
-        }
-        else if (header_right_accBtn_span) header_right_accBtn_span.innerText = {
-            en: 'Log in',
-            vi: 'Đăng nhập',
-            fr: 'Se connecter',
-            it: 'Login',
-            kr: '로그인',
-            ja: 'ログイン',
-            de: 'Einloggen',
-            nl: 'Inloggen',
-            dk: 'Log ind',
-            pt: 'Conecte-se',
-            es: 'Acceso',
-            ru: 'Авторизоваться',
-        }[lang]
     })()}, [ pathname ])
     
     return null;
