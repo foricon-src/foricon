@@ -554,6 +554,7 @@ export default function PageClient() {
         await wait();
         updateTick();
     })()}, [ loaded, view ])
+    useEffect(() => { globalThis[user ? 'enable' : 'disable'](elemById('save')) }, [ user ]);
 
     return (
         <>
@@ -856,10 +857,10 @@ export default function PageClient() {
                             }</span>
                         </li>
                         <li
+                            id='save'
                             className={`chip top${inSaved ? ' active' : ''}`}
                             onClick={() => setInSaved(!inSaved)}
-                            {...(user ? {} : { 'disabled': ''})
-                        }>
+                        >
                             <f-icon icon='bookmark'/>
                             <span>{
                                 {
