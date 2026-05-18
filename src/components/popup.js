@@ -1,8 +1,10 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth } from "./firebase";
 import recordLogin from "./record-login";
+import { useRouter } from "next/navigation";
 
 export default async function popUp(provider, des) {
+    let router = useRouter();
     let result = await signInWithPopup(auth, provider);
     let token = await result.user.getIdToken();
 
@@ -12,5 +14,5 @@ export default async function popUp(provider, des) {
     })
     await recordLogin(token);
 
-    router.push(des);
+    go(router, des);
 }
