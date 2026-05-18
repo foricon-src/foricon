@@ -394,6 +394,7 @@ export default function PageClient() {
     let [ width, setWidth ] = useState(innerWidth);
 
     let filtered = useMemo(() => {
+        console.log(iconSet)
         if (!iconSet) return [];
         
         let icons = iconSet[version];
