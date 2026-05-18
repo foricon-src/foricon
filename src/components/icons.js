@@ -1,6 +1,8 @@
 'use client';
 
 import { createContext, useEffect, useState } from 'react';
+import { get, ref } from "firebase/database";
+import { db } from './firebase';
 
 export const IconContext = createContext(null);
 export function IconProvider({ children }) {
@@ -33,7 +35,6 @@ export function IconProvider({ children }) {
                 unicodes: icon.unicodes,
             })
         }
-        console.log(value);
         setIcons(value);
     })}, [])
 
