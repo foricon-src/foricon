@@ -25,6 +25,8 @@ export default function Header() {
                 qSelec(false, 'header > ul[name="all"]')
             ].some(i => i?.contains(target)) && setOpen(false)
         )
+
+        qSelec(true, 'header > center > a')?.forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
     }, [])
 
     return (
@@ -35,80 +37,71 @@ export default function Header() {
                 </Link>
                 <Link href='/changelog' name='version'>{webData.verFull}</Link>
             </div>
-            <ul name='center'>
-                <li>
-                    <Link href='/'>{
-                        {
-                            en: 'Home',
-                            vi: 'Trang chủ',
-                            fr: 'Page d\'accueil',
-                            it: 'Pagina iniziale',
-                            kr: '홈페이지',
-                            ja: 'ホームページ',
-                            de: 'Startseite',
-                            nl: 'Startpagina',
-                            dk: 'Hjemmeside',
-                            pt: 'Pagina inicial',
-                            es: 'Pagina de inicio',
-                            ru: 'Дом',
-                        }[lang]
-                    }</Link>
-                </li>
-                <li>
-                    <Link href='/search'>{
-                        {
-                            en: 'Search',
-                            vi: 'Tìm kiếm',
-                            fr: 'Recherche',
-                            it: 'Ricerca',
-                            kr: '찾다',
-                            ja: '検索',
-                            de: 'Suchen',
-                            nl: 'Zoekopdracht',
-                            dk: 'Søg',
-                            pt: 'Procurar',
-                            es: 'Buscar',
-                            ru: 'Поиск',
-                        }[lang]
-                    }</Link>
-                </li>
-                <li>
-                    <Link href='/docs'>{
-                        {
-                            en: 'Docs',
-                            vi: 'Tài liệu',
-                            fr: 'Documents',
-                            it: 'Documenti',
-                            kr: '문서',
-                            ja: 'ドキュメント',
-                            de: 'Dokumente',
-                            nl: 'Documenten',
-                            dk: 'Dokumenter',
-                            pt: 'Documentos',
-                            es: 'Documentos',
-                            ru: 'Документы',
-                        }[lang]
-                    }</Link>
-                </li>
-                <li>
-                    <Link href='/support'>{
-                        {
-                            en: 'Support',
-                            vi: 'Hỗ trợ',
-                            fr: 'Soutien',
-                            it: 'Supporto',
-                            kr: '지원하다',
-                            ja: 'サポート',
-                            de: 'Unterstützung',
-                            nl: 'Steun',
-                            dk: 'Support',
-                            pt: 'Apoiar',
-                            es: 'Apoyo',
-                            ru: 'Поддерживать',
-                        }[lang]
-                    }</Link>
-                </li>
-            </ul>
+            <ul name='center'>{
+                [
+                    {
+                        path: '/',
+                        en: 'Home',
+                        vi: 'Trang chủ',
+                        fr: 'Page d\'accueil',
+                        it: 'Pagina iniziale',
+                        kr: '홈페이지',
+                        ja: 'ホームページ',
+                        de: 'Startseite',
+                        nl: 'Startpagina',
+                        dk: 'Hjemmeside',
+                        pt: 'Pagina inicial',
+                        es: 'Pagina de inicio',
+                        ru: 'Дом',
+                    }, {
+                        path: '/search',
+                        en: 'Search',
+                        vi: 'Tìm kiếm',
+                        fr: 'Recherche',
+                        it: 'Ricerca',
+                        kr: '찾다',
+                        ja: '検索',
+                        de: 'Suchen',
+                        nl: 'Zoekopdracht',
+                        dk: 'Søg',
+                        pt: 'Procurar',
+                        es: 'Buscar',
+                        ru: 'Поиск',
+                    }, {
+                        path: '/docs',
+                        en: 'Docs',
+                        vi: 'Tài liệu',
+                        fr: 'Documents',
+                        it: 'Documenti',
+                        kr: '문서',
+                        ja: 'ドキュメント',
+                        de: 'Dokumente',
+                        nl: 'Documenten',
+                        dk: 'Dokumenter',
+                        pt: 'Documentos',
+                        es: 'Documentos',
+                        ru: 'Документы',
+                    }, {
+                        path: '/support',
+                        en: 'Support',
+                        vi: 'Hỗ trợ',
+                        fr: 'Soutien',
+                        it: 'Supporto',
+                        kr: '지원하다',
+                        ja: 'サポート',
+                        de: 'Unterstützung',
+                        nl: 'Steun',
+                        dk: 'Support',
+                        pt: 'Apoiar',
+                        es: 'Apoyo',
+                        ru: 'Поддерживать',
+                    }
+                ].map(({ path, ...text }) =>
+                    <li>
+                        <Link href={path} className={pathname == path && 'active'}>{text[lang]}</Link>
+                    </li>
+                )
+            }</ul>
             <ul className='btn-list' name='right'>
                 <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => go(router, 'languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
