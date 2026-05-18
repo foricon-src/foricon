@@ -97,9 +97,9 @@ export default function Header() {
                         ru: 'Поддерживать',
                     }
                 ].map(({ path, ...text }) =>
-                    <li key={path}>
+                    (<li key={path}>
                         <Link href={path} className={pathname == path && 'active'}>{text[lang]}</Link>
-                    </li>
+                    </li>)
                 )
             }</ul>
             <ul className='btn-list' name='right'>
