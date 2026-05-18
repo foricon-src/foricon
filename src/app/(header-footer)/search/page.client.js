@@ -855,7 +855,11 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={`chip top${inSaved ? ' active' : ''}`} onClick={() => setInSaved(!inSaved)}>
+                        <li
+                            className={`chip top${inSaved ? ' active' : ''}`}
+                            onClick={() => setInSaved(!inSaved)}
+                            {...(user ? {} : { 'disabled': ''})
+                        }>
                             <f-icon icon='bookmark'/>
                             <span>{
                                 {
