@@ -1465,6 +1465,7 @@ iframe {
     width: 100%;
     display: block;
 }
+
 code {
     display: block;
     padding: 25px;
@@ -2144,7 +2145,6 @@ footer > div {
         margin-top: -35px;
     }
 }
-
 @keyframes bounce {
     0% {
         scale: 1.6 .4;
@@ -2197,4 +2197,9 @@ footer > div {
         animation-timing-function:  cubic-bezier(0, .25, .5, 1);
     }
     100% { opacity: var(--initial); scale: 1 }
+}
+
+[disabled] {
+    opacity: .5;
+    pointer-events: none;
 }
