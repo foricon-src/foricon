@@ -56,6 +56,7 @@ export default function getUserData(name, email, uid) {
             notifications: [],
             saved: [],
         },
+        savedIcons: [],
         joiningDate: date,
     }
 }

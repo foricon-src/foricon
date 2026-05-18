@@ -377,6 +377,7 @@ export default function PageClient() {
     })(searchParams)
     
     let [ loaded, setLoaded ] = useState(false);
+    let [ inSaved, setInSaved ] = useState(false);
     let [ search, setSearch ] = useState(initial.search);
     let [ family, setFamily ] = useState(initial.family);
     let [ style, setStyle ] = useState(initial.style);
@@ -412,6 +413,9 @@ export default function PageClient() {
                         )
                     )
                 })
+                .filter(() =>
+                    !inSaved ? true : user.doc.savedIcons.some(i => i.name == icon.name)
+                )
                 .map(style => ({ icon, style }))
         })
     }, [ loaded, search, family, style, selectedCategories, version ]);
@@ -421,7 +425,7 @@ export default function PageClient() {
     )
     let perPage = useMemo(() => {
         let rows = Math.floor(
-            (view === 'large' ? 150 : view === 'small' ? 300 : 160) / columns
+            (view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns
         )
         return columns * rows;
     }, [ columns ])
@@ -849,7 +853,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={`chip top`}>
+                        <li className={`chip top${inSaved ? ' active' : ''}`} onClick={() => setInSaved(!inSaved)}>
                             <f-icon icon='bookmark'/>
                             <span>{
                                 {
@@ -985,16 +989,20 @@ export default function PageClient() {
                 <div>
                     <ul className={`${cssStyle.results} ${cssStyle[view]}`}>{
                         loaded ? currentIcons.map(({ icon, style }) => (
-                            <li key={`${icon.name} | ${style}`} className={icon.name == selectedIcon?.name && style == selectedIcon?.style && 'active'} onClick={async () => {
-                                await wait(.2);
-                                selectIcon({
-                                    name: icon.name,
-                                    style,
-                                    glyphs: icon.glyphs[style.replace('/', '-')],
-                                    unicodes: icon.unicodes[style.replace('/', '-')].split('|'),
-                                    categories: icon.categories,
-                                })
-                            }}>
+                            <li
+                                key={`${icon.name} | ${style}`}
+                                className={icon.name == selectedIcon?.name && style == selectedIcon?.style && 'active'}
+                                onClick={async () => {
+                                    await wait(.2);
+                                    selectIcon({
+                                        name: icon.name,
+                                        style,
+                                        glyphs: icon.glyphs[style.replace('/', '-')],
+                                        unicodes: icon.unicodes[style.replace('/', '-')].split('|'),
+                                        categories: icon.categories,
+                                    })
+                                }
+                            }>
                                 <f-icon icon={icon.name} i-s={style}{...(() => {
                                     let obj = {};
                                     version == 'b1' && (obj.b1 = '');
