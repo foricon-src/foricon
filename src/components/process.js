@@ -14,6 +14,7 @@ export default function Process() {
     let pathname = usePathname();
     let lang = useContext(LanguageContext);
     let user = useContext(UserContext);
+    let icons = useContext(IconContext);
 
     useEffect(() => {(async () => {
         !globalThis.qSelec && location.reload();
@@ -28,13 +29,15 @@ export default function Process() {
             await wait(.2);
             loading.remove();
         }
-        
+    })()}, [ pathname ])
+    useEffect(() => {
+        if (!icons) return;
         qSelec(true, '.icon-count').forEach(
-            each => each.innerText = `${Math.floor(IconContext.b2.reduce(
+            each => each.innerText = `${Math.floor(icons.b2.reduce(
                 (total, icon) => total + icon.styles.length, 0
             ) / 100) * 100}`
         )
-    })()}, [ pathname ])
+    }, [ icons ])
 
     if (!customElements.get('f-upload')) {
         customElements.define('f-upload', class extends HTMLElement {

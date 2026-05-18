@@ -25,7 +25,7 @@ export default function Home() {
     let [ animationSpeed, setAnimationSpeed ] = useState('');
 
     useEffect(() => {(async () => {
-        while (elemById('loading')) await wait();
+        if (!iconSet) return;
         let icons = elemById('icons');
         let added = [];
         for (let i = 0; i < 4; i++) {
@@ -42,7 +42,7 @@ export default function Home() {
             }
             icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
         }
-    })()}, [])
+    })()}, [ iconSet ])
 
     let html = useMemo(() => {
         return (
