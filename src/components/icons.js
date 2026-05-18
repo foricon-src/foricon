@@ -9,14 +9,11 @@ export function IconProvider({ children }) {
     let [ icons, setIcons ] = useState(null);
 
     useEffect(() => {(async () => {
-        let value = {
-            b1: [],
-            b2: [],
-        }
+        let value = { b1: [], b2: [] };
+        
         let b1 = (await get(ref(db, 'icons/'))).val();
-        console.log('Got B1 icons');
         for (let name in b1) {
-            let icon = b2[name];
+            let icon = b1[name];
             b1.push({
                 name,
                 categories: icon.categories.map(cate => cate.replace('bussiness', 'business')),
@@ -26,7 +23,6 @@ export function IconProvider({ children }) {
             })
         }
         let b2 = (await get(ref(db, 'iconsB2/'))).val();
-        console.log('Got B2 icons');
         for (let name in b2) {
             let icon = b2[name];
             b2.push({
@@ -37,7 +33,6 @@ export function IconProvider({ children }) {
                 unicodes: icon.unicodes,
             })
         }
-        console.log(value);
         setIcons(value);
     })}, [])
 
