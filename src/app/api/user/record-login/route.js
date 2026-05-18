@@ -1,6 +1,6 @@
-import { fs } from "Uti/firebase-admin"
-import { FieldValue } from "firebase/firestore"
-import getOS from "Com/get-os"
+import { admin, fs } from 'Uti/firebase-admin'
+import { FieldValue } from 'firebase/firestore'
+import getOS from 'Com/get-os';
 
 export async function POST(req) {
     let token = req.headers.get('authorization')?.split('Bearer ')[1];
