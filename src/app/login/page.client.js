@@ -7,7 +7,7 @@ import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, Github
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
 import { dbFirestore, auth } from "Com/firebase";
 import { LanguageContext } from 'Com/language';
-import popUp from "Com/popup";
+import MethodPopup from "Com/method-popup";
 import Img from "Com/img";
 import recordLogin from "Com/record-login";
 import logo from 'Pub/foricon-f-logo.png';
@@ -201,13 +201,13 @@ export default function LogIn() {
                 setUserDoc(snapshot.docs[0].data());
             })}>
                 <ul className='btn-list darker'>
-                    <li className='chip top' name='google' onClick={() => popUp(new GoogleAuthProvider(), des)}>
+                    <li className='chip top' name='google' onClick={() => MethodPopup(new GoogleAuthProvider(), des)}>
                         <span>Log in with Google</span>
                     </li>
-                    <li className='chip top' name='microsoft' onClick={() => popUp(new OAuthProvider('microsoft.com'), des)}>
+                    <li className='chip top' name='microsoft' onClick={() => MethodPopup(new OAuthProvider('microsoft.com'), des)}>
                         <span>Log in with Microsoft</span>
                     </li>
-                    <li className='chip top' name='github' onClick={() => popUp(new GithubAuthProvider(), des)}>
+                    <li className='chip top' name='github' onClick={() => MethodPopup(new GithubAuthProvider(), des)}>
                         <span>Log in with Github</span>
                     </li>
                 </ul>

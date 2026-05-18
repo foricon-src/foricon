@@ -4,6 +4,7 @@ import { GoogleAdSense } from 'next-google-adsense';
 import { LanguageProvider } from 'Com/language';
 import './globals.css';
 import { ThemeProvider } from 'Com/theme';
+import { UserProvider } from 'Com/user';
 
 export const metadata = {
     title: {
@@ -25,20 +26,22 @@ export default function RootLayout({ children }) {
             </head>
             <body>
                 <GoogleAdSense client='pub-8532596750508498'/>
-                <LanguageProvider>
-                    <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
-                    <div id='loading'>
-                        <div id='loading_shadow'></div>
-                        <div id='loading_bounce'>
-                            <div id='loading_spin'></div>
+                <UserProvider>
+                    <LanguageProvider>
+                        <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
+                        <div id='loading'>
+                            <div id='loading_shadow'></div>
+                            <div id='loading_bounce'>
+                                <div id='loading_spin'></div>
+                            </div>
                         </div>
-                    </div>
-                    <div id='toast'/>
-                    <ThemeProvider>{
-                        children
-                    }</ThemeProvider>
-                    <Process/>
-                </LanguageProvider>
+                        <div id='toast'/>
+                        <ThemeProvider>{
+                            children
+                        }</ThemeProvider>
+                        <Process/>
+                    </LanguageProvider>
+                </UserProvider>
             </body>
         </html>
     );

@@ -1,9 +1,11 @@
-import { signInWithPopup } from "firebase/auth";
-import { auth } from "./firebase";
-import recordLogin from "./record-login";
-import { useRouter } from "next/navigation";
+'use client';
 
-export default async function popUp(provider, des) {
+import { useRouter } from 'next/navigation';
+import { signInWithPopup } from 'firebase/auth';
+import { auth } from './firebase';
+import recordLogin from './record-login';
+
+export default async function MethodPopup(provider, des) {
     let router = useRouter();
     let result = await signInWithPopup(auth, provider);
     let token = await result.user.getIdToken();
