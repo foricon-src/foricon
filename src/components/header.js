@@ -142,7 +142,7 @@ export default function Header() {
                     }</span>
                 </li>
                 <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => go(router, user ? 'account' : 'login')}>
-                    {user ? <Img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>}
+                    {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>}
                     <span>{
                         user ? user.doc.name : {
                             en: 'Log in',

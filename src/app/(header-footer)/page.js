@@ -40,7 +40,7 @@ export default function Home() {
                     added.push(`${name} ${style}`);
                 }
             }
-            icons.insertBefore(div, qSelec(false, '#icons > div:last-child'));
+            icons.insertBefore(div, icons.lastChild);
         }
     })()}, [ iconSet ])
 
