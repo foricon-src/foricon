@@ -418,7 +418,7 @@ export default function PageClient() {
                 )
                 .map(style => ({ icon, style }))
         })
-    }, [ loaded, search, family, style, selectedCategories, version ]);
+    }, [ loaded, search, family, style, selectedCategories, version, inSaved ]);
     let columns = useMemo(
         () => loaded ? getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
         [ width, tick ]
