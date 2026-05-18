@@ -3,6 +3,7 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
+import { UserContext } from 'Com/user';
 import Code from 'Com/code';
 import Img from 'Com/img';
 import logo from 'Pub/foricon-f-logo.png';
@@ -11,6 +12,7 @@ import cssStyle from './page.module.css';
 export default function Home() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
+    let user = useContext(UserContext);
 
     let [ icon, setIcon ] = useState('brush');
     let [ style, setStyle ] = useState('');
