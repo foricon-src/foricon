@@ -182,7 +182,10 @@
         'searchBar versions'
         'options options';
     grid-template-columns: calc(100% - min(200px, 30%) - 5px) min(200px, 30%);
-    padding: var(--spacing-default) calc(50vw - 500px) var(--spacing-xxsmall);
+    padding:
+        var(--spacing-default)
+        max(var(--spacing-default), calc(50vw - 1000px))
+        var(--spacing-xxsmall);
     gap: var(--spacing-small) 5px;
     background-color: var(--bg-color);
     z-index: 1;
@@ -474,16 +477,6 @@
         & code  {
             max-width: unset;
         }
-    }
-}
-@media screen and (max-width: 1070px) {
-    .top {
-        padding: var(--spacing-medium) var(--spacing-default) var(--spacing-xxsmall);
-    }
-}
-@media screen and (max-width: 1020px) {
-    .top {
-        padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-xxsmall);
     }
 }
 @media screen and (max-width: 900px) {
