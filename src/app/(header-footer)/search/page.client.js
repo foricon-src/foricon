@@ -607,7 +607,7 @@ export default function PageClient() {
                         </label>}
                     </div>
                     <div>
-                        <a href='javascript:void(0)' className='btn secondary'>{
+                        <button className='secondary'>{
                             {
                                 en: 'Cancel',
                                 vi: 'Hủy',
@@ -622,8 +622,8 @@ export default function PageClient() {
                                 es: 'Cancelar',
                                 ru: 'Отмена',
                             }[lang]
-                        }</a>
-                        <a href='javascript:void(0)' className='btn primary'>{
+                        }</button>
+                        <button className='primary'>{
                             {
                                 en: 'Download',
                                 vi: 'Tải xuống',
@@ -638,7 +638,7 @@ export default function PageClient() {
                                 es: 'Descargar',
                                 ru: 'Скачать',
                             }[lang]
-                        }</a>
+                        }</button>
                     </div>
                 </div>
             </div>
