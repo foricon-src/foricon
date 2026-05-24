@@ -1260,8 +1260,8 @@ globalThis.modal = async (elem, actionIfTrue, actionIfFalse, useStrict) => {
     
     let { body } = document;
     
-    let ok = qSelec(elem, 'div:last-child > a.primary');
-    let cancel = qSelec(elem, 'div:last-child > a.secondary');
+    let ok = qSelec(elem, 'div:last-child > button.primary');
+    let cancel = qSelec(elem, 'div:last-child > button.secondary');
     
     let checkboxes = qSelec(elem, 'div.checkboxes');
     let checkboxes_input = qSelecA(elem, 'input');
@@ -1272,23 +1272,23 @@ globalThis.modal = async (elem, actionIfTrue, actionIfFalse, useStrict) => {
         function check() {
             checkboxes_input?.some(i => i.checked) ? enable(ok) : disable(ok);
         }
+        useStrict && check();
         checkboxes_input?.forEach(input => {
             input.checked = false;
-            addEvLis(input, 'change', check());
+            useStrict && addEvLis(input, 'change', check());
         })
     }
 
     input && (async () => {
-        disable(ok);
         input.value = '';
+        disable(ok);
         addEvLis(input, 'input', () => input.value ? enable(ok) : disable(ok));
-        input.oninput = () => input.value ? enable(ok) : disable(ok);
         await wait(.2);
         input.focus();
     })()
     uploadFile && (async () => {
         disable(ok);
-        uploadFile.onchange = () => uploadFile.files.length ? enable(ok) : disable(ok);
+        addEvLis(uploadFile, 'change', () => uploadFile.files.length ? enable(ok) : disable(ok));
     })()
     
     function getValue() {

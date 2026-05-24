@@ -1701,7 +1701,7 @@ div.message.offline:before {
         text-align: center;
         
         > div {
-            > h3, & > div > a {
+            > h3, & > div > button {
                 margin: 0 !important;
             }
             > h3 > span {
