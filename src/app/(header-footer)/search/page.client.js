@@ -728,7 +728,7 @@ export default function PageClient() {
                             <span>{
                                 {
                                     en: 'Regular',
-                                    vi: 'Chuẩn',
+                                    vi: 'Thường',
                                     fr: 'Normal',
                                     it: 'Normale',
                                     kr: '기본',
@@ -885,10 +885,12 @@ export default function PageClient() {
                         </li>
                     </ul>
                     <ul className='btn-list line line-active'>
-                        <li className={`chip top${view == 'large' ? ' active' : ''}`} onClick={() => setView('large')}>
-                            <f-icon icon='grid-4' i-s={view != 'large' && 'outline'}></f-icon>
-                            <span>{
+                        {
+                            [
                                 {
+                                    icon: 'grid-4',
+                                    value: 'large',
+
                                     en: 'Large icons',
                                     vi: 'Biểu tượng lớn',
                                     fr: 'Grandes icônes',
@@ -901,13 +903,11 @@ export default function PageClient() {
                                     pt: 'Ícones grandes',
                                     es: 'Iconos grandes',
                                     ru: 'Большие значки',
-                                }[lang]
-                            }</span>
-                        </li>
-                        <li className={`chip top${view == 'small' ? ' active' : ''}`} onClick={() => setView('small')}>
-                            <f-icon icon='grid-9' i-s={view != 'small' && 'outline'}></f-icon>
-                            <span>{
+                                },
                                 {
+                                    icon: 'grid-4',
+                                    value: 'large',
+                                    
                                     en: 'Small icons',
                                     vi: 'Biểu tượng nhỏ',
                                     fr: 'Petites icônes',
@@ -920,13 +920,11 @@ export default function PageClient() {
                                     pt: 'Ícones pequenos',
                                     es: 'Iconos pequeños',
                                     ru: 'Маленькие значки',
-                                }[lang]
-                            }</span>
-                        </li>
-                        <li className={`chip top${view == 'tiles' ? ' active' : ''}`} onClick={() => setView('tiles')}>
-                            <f-icon icon='list' i-s='outline'></f-icon>
-                            <span>{
+                                },
                                 {
+                                    icon: 'grid-4',
+                                    value: 'large',
+                                    
                                     en: 'Tiles',
                                     vi: 'Ô gạch',
                                     fr: 'Carrelage',
@@ -939,6 +937,30 @@ export default function PageClient() {
                                     pt: 'Azulejos',
                                     es: 'Azulejos',
                                     ru: 'Плитка',
+                                }
+                            ].map(({ icon, value, ...texts }) =>
+                                <li className={`chip top${view == value ? ' active' : ''}`} onClick={() => setView(value)}>
+                                    <f-icon icon={icon} i-s={(view != 'icon' || icon == 'list') && 'outline'}></f-icon>
+                                    <span>{texts[lang]}</span>
+                                </li>
+                            )
+                        }
+                        <li className='chip top line'>
+                            <f-icon icon='gear'></f-icon>
+                            <span>{
+                                {
+                                    en: 'Settings',
+                                    vi: 'Cài đặt',
+                                    fr: 'Paramètres',
+                                    it: 'Impostazioni',
+                                    kr: '설정',
+                                    ja: '設定',
+                                    de: 'Einstellungen',
+                                    nl: 'Instellingen',
+                                    dk: 'Indstillinger',
+                                    pt: 'Configurações',
+                                    es: 'Ajustes',
+                                    ru: 'Настройки',
                                 }[lang]
                             }</span>
                         </li>
@@ -983,7 +1005,7 @@ export default function PageClient() {
                     Object.entries(categoryCounts)
                         .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
                         .sort(([ , a ], [ , b ]) => a[lang].localeCompare(b[lang]))
-                        .map(([ key, { icon, count, ...lan } ]) => (
+                        .map(([ key, { icon, count, ...texts } ]) => (
                             <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
                                 let arr = [ ...selectedCategories ];
                                 let i = arr.indexOf(key);
@@ -991,7 +1013,7 @@ export default function PageClient() {
                                 selectCategories(arr);
                             }}>
                                 <span key={key} dangerouslySetInnerHTML={{
-                                    __html: icon + lan[lang]
+                                    __html: icon + texts[lang]
                                 }}/>
                                 <span>{count || 0}</span>
                             </li>
@@ -1160,9 +1182,9 @@ export default function PageClient() {
                     }</span>
                     <ul className='btn-list'>{
                         (selectedIcon?.categories || []).map(category => {
-                            let { icon, ...lan } = webData.categories[category];
+                            let { icon, ...texts } = webData.categories[category];
                             return <li key={category} dangerouslySetInnerHTML={{
-                                __html: `${icon}<span>${lan[lang]}</span>`,
+                                __html: `${icon}<span>${texts[lang]}</span>`,
                             }} onClick={() => selectCategories([ category ])}/>
                         })
                     }</ul>

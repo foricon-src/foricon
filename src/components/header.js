@@ -96,9 +96,9 @@ export default function Header() {
                         es: 'Apoyo',
                         ru: 'Поддерживать',
                     }
-                ].map(({ path, ...text }) =>
+                ].map(({ path, ...texts }) =>
                     <li key={path}>
-                        <Link href={path} className={pathname == path && 'active'}>{text[lang]}</Link>
+                        <Link href={path} className={pathname == path && 'active'}>{texts[lang]}</Link>
                     </li>
                 )
             }</ul>
