@@ -905,8 +905,8 @@ export default function PageClient() {
                                     ru: 'Большие значки',
                                 },
                                 {
-                                    icon: 'grid-4',
-                                    value: 'large',
+                                    icon: 'grid-9',
+                                    value: 'small',
                                     
                                     en: 'Small icons',
                                     vi: 'Biểu tượng nhỏ',
@@ -922,8 +922,8 @@ export default function PageClient() {
                                     ru: 'Маленькие значки',
                                 },
                                 {
-                                    icon: 'grid-4',
-                                    value: 'large',
+                                    icon: 'list',
+                                    value: 'tiles',
                                     
                                     en: 'Tiles',
                                     vi: 'Ô gạch',
