@@ -32,7 +32,7 @@ export default function Process() {
     })()}, [ pathname ])
     useEffect(() => {
         if (!icons) return;
-        qSelec(true, '.icon-count').forEach(
+        qSelecA('.icon-count').forEach(
             each => each.innerText = `${Math.floor(icons.b2.reduce(
                 (total, icon) => total + icon.styles.length, 0
             ) / 100) * 100}`
@@ -52,8 +52,8 @@ export default function Process() {
             <span>Drag & drop the file here, or</span>
             <ul class='btn-list darker vertical'/>
             <a class='btn primary' href='javascript:void(0)'>Add file${maxSize ? ` (${formatBytes(maxSize)} maximum)` : ''}</a>`;
-                let list = qSelec(false, elem, 'ul');
-                let btn = qSelec(false, elem, 'a');
+                let list = qSelec(elem, 'ul');
+                let btn = qSelec(elem, 'a');
                 
                 elem.files = [];
                 
@@ -125,7 +125,7 @@ export default function Process() {
             }
             add(files) {
                 let elem = this;
-                let btn = qSelec(false, elem, 'a');
+                let btn = qSelec(elem, 'a');
                 let maxSize = getAttr(elem,'max-size');
                 let notMultiple = getAttr(elem,'multiple') == undefined;
                 
@@ -144,7 +144,7 @@ export default function Process() {
                 }
             }
             clear() {
-                enable(qSelec(false, this, 'a'));
+                enable(qSelec(this, 'a'));
                 this._v = [];
             }
         })
@@ -247,33 +247,33 @@ export default function Process() {
                     </div>
                     <video></video>`;
                 
-                let more = qSelec(false, elem, '.player_more');
-                let info = qSelec(false, elem, '.player_info');
-                let controlling = qSelec(false, elem, '.player_controlling');
-                let control = qSelec(false, elem, '.player_control');
-                let control_timeline = qSelec(false, control, '.player_control_timeline');
-                let control_timeline_div = qSelec(false, control_timeline, 'div');
-                let control_timeline_div_span = qSelec(false, control_timeline_div, 'span');
-                let control_controls = qSelec(false, control, '.player_control_controls');
-                let control_controls_left = qSelec(false, control_controls, '.player_control_controls_left');
-                let control_controls_left_mute = qSelec(false, control_controls_left, '[name=&quot;mute&quot;]');
-                let control_controls_left_mute_icon = qSelec(false, control_controls_left_mute, 'f-icon');
-                let control_controls_left_range = qSelec(false, control_controls_left, 'input');
-                let control_controls_left_timer = qSelec(false, control_controls_left, '.player_control_controls_left_timer');
-                let control_controls_left_timer_currentTime = qSelec(false, control_controls_left_timer, '.player_control_controls_left_timer_current-time');
-                let control_controls_left_timer_duration = qSelec(false, control_controls_left_timer, '.player_control_controls_left_timer_duration');
-                let control_controls_center = qSelec(false, control_controls, '.player_control_controls_center');
-                let control_controls_center_backward = qSelec(false, control_controls_center, '[name=&quot;backward&quot;]');
-                let control_controls_center_play = qSelec(false, control_controls_center, '[name=&quot;play&quot;]');
-                let control_controls_center_play_icon = qSelec(false, control_controls_center_play, 'f-icon');
-                let control_controls_center_forward = qSelec(false, control_controls_center, '[name=&quot;forward&quot;]');
-                let control_controls_right = qSelec(false, control_controls, '.player_control_controls_right');
-                let control_controls_right_speed = qSelec(false, control_controls_right, '[name=&quot;speed&quot;]');
-                let control_controls_right_fullscreen = qSelec(false, control_controls_right, '[name=&quot;fullscreen&quot;]');
-                let control_controls_right_fullscreen_icon = qSelec(false, control_controls_right_fullscreen, 'f-icon');
-                let control_controls_right_speedOptions = qSelec(false, control_controls_right, '.player_control_controls_right_speed-options');
+                let more = qSelec(elem, '.player_more');
+                let info = qSelec(elem, '.player_info');
+                let controlling = qSelec(elem, '.player_controlling');
+                let control = qSelec(elem, '.player_control');
+                let control_timeline = qSelec(control, '.player_control_timeline');
+                let control_timeline_div = qSelec(control_timeline, 'div');
+                let control_timeline_div_span = qSelec(control_timeline_div, 'span');
+                let control_controls = qSelec(control, '.player_control_controls');
+                let control_controls_left = qSelec(control_controls, '.player_control_controls_left');
+                let control_controls_left_mute = qSelec(control_controls_left, '[name=&quot;mute&quot;]');
+                let control_controls_left_mute_icon = qSelec(control_controls_left_mute, 'f-icon');
+                let control_controls_left_range = qSelec(control_controls_left, 'input');
+                let control_controls_left_timer = qSelec(control_controls_left, '.player_control_controls_left_timer');
+                let control_controls_left_timer_currentTime = qSelec(control_controls_left_timer, '.player_control_controls_left_timer_current-time');
+                let control_controls_left_timer_duration = qSelec(control_controls_left_timer, '.player_control_controls_left_timer_duration');
+                let control_controls_center = qSelec(control_controls, '.player_control_controls_center');
+                let control_controls_center_backward = qSelec(control_controls_center, '[name=&quot;backward&quot;]');
+                let control_controls_center_play = qSelec(control_controls_center, '[name=&quot;play&quot;]');
+                let control_controls_center_play_icon = qSelec(control_controls_center_play, 'f-icon');
+                let control_controls_center_forward = qSelec(control_controls_center, '[name=&quot;forward&quot;]');
+                let control_controls_right = qSelec(control_controls, '.player_control_controls_right');
+                let control_controls_right_speed = qSelec(control_controls_right, '[name=&quot;speed&quot;]');
+                let control_controls_right_fullscreen = qSelec(control_controls_right, '[name=&quot;fullscreen&quot;]');
+                let control_controls_right_fullscreen_icon = qSelec(control_controls_right_fullscreen, 'f-icon');
+                let control_controls_right_speedOptions = qSelec(control_controls_right, '.player_control_controls_right_speed-options');
                 let control_controls_right_speedOptions_options = getChild(control_controls_right_speedOptions);
-                let video = qSelec(false, elem, 'video');
+                let video = qSelec(elem, 'video');
                 
                 function controllingNotify(type, value) {
                     controlling.className = `player_controlling active ${type}`;
@@ -479,8 +479,8 @@ export default function Process() {
                 let isMultiple = hasAttr(elem, 'multiple');
 
                 appendData(elem, {
-                    text: qSelec(false, elem, 'text'),
-                    list: qSelec(false, elem, 'option-list'),
+                    text: qSelec(elem, 'text'),
+                    list: qSelec(elem, 'option-list'),
                     isMultiple,
                     required: hasAttr(elem, 'required'),
                 })
@@ -499,7 +499,7 @@ export default function Process() {
                     ) && elem.toggleList()
                 )
                 
-                let selected = qSelec(false, elem.list, '[selected]');
+                let selected = qSelec(elem.list, '[selected]');
                 selected && elem.toggleOption(selected);
 
                 new MutationObserver(() => {
@@ -512,7 +512,7 @@ export default function Process() {
 
                 if (elem.isMultiple) {
                     if (elem.value.includes(value)) {
-                        if (elem.required && qSelec(true, elem.list, '.active').length == 1) return;
+                        if (elem.required && qSelecA(elem.list, '.active').length == 1) return;
                         inactivate(opt);
                     }
                     else activate(opt);
@@ -526,7 +526,7 @@ export default function Process() {
                 elem.reset();
                 clear(elem.text);
 
-                qSelec(true, elem.list, '.active').forEach(each => {
+                qSelecA(elem.list, '.active').forEach(each => {
                     if (elem.isMultiple && i > 0) return;
                     let span = newElem('span', each.innerText);
                     elem.text.append(span);
@@ -564,13 +564,13 @@ export default function Process() {
                     attrs: { value, disabled: options.disabled },
                     innerHTML,
                 })
-                qSelec(false, elem, 'option-list').append(opt);
+                qSelec(elem, 'option-list').append(opt);
             }
             clearOptions() {
                 let elem = this;
                 clear(
-                    qSelec(false, elem, 'text'),
-                    qSelec(false, elem, 'option-list')
+                    qSelec(elem, 'text'),
+                    qSelec(elem, 'option-list')
                 )
             }
             async setValue(value) {

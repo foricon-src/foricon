@@ -23,7 +23,7 @@ export default function Page() {
 
         let percent = Math.floor(count / planData.pageviews * 1000) / 1000;
 
-        let pageviews = qSelec(false, `.${cssStyle.pageviews}`);
+        let pageviews = qSelec(`.${cssStyle.pageviews}`);
         pageviews.style.setProperty('--angle', `${percent * 360}deg`);
         pageviews.style.setProperty('--duration', `${percent * (6 - percent * 3)}s`);
 

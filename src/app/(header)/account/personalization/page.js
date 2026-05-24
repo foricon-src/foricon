@@ -18,8 +18,8 @@ export default function Page() {
 
     usePage(() => {
         let { font, indent } = user.doc.personalization;
-        let form = qSelec(false, 'div[name="personalization"] > form');
-        let form_fSelect = qSelec(false, form, 'f-select');
+        let form = qSelec('div[name="personalization"] > form');
+        let form_fSelect = qSelec(form, 'f-select');
         let form_indent = form.indent;
 
         form_fSelect.setValue(font);

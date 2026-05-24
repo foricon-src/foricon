@@ -21,12 +21,12 @@ export default function Header() {
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) =>
             ![
-                qSelec(false, 'header > ul[name="right"] > :has(f-icon[icon="bars"])'),
-                qSelec(false, 'header > ul[name="all"]')
+                qSelec('header > ul[name="right"] > :has(f-icon[icon="bars"])'),
+                qSelec('header > ul[name="all"]')
             ].some(i => i?.contains(target)) && setOpen(false)
         )
 
-        qSelec(true, 'header > center > a')?.forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
+        qSelecA('header > center > a')?.forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
     }, [])
 
     return (

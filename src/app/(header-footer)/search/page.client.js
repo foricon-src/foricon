@@ -23,33 +23,33 @@ export default function PageClient() {
     //     while (elemById('loading')) await wait();
   
     //     let chooseLayers = elemById('choose-layers');
-    //     let chooseLayers_checkboxes = getChild(qSelec(false, chooseLayers, 'div.checkboxes'));
+    //     let chooseLayers_checkboxes = getChild(qSelec(chooseLayers, 'div.checkboxes'));
         
     //     let selectedCategories = [];
     //     let timeoutSearch;
     //     let currentView = localStorage.getItem('view') || 'large';
     //     let quickSearch = sessionStorage.getItem('search');
     //     let top = elemById('top');
-    //     let top_search = qSelec(false, top, 'input');
-    //     let top_versions = qSelec(false, top, 'f-select');
-    //     let top_options = qSelec(false, top, '#options');
-    //     let top_options_families = qSelec(false, options, '#top_options_families');
-    //     let top_options_styles = qSelec(false, options, '#top_options_styles');
-    //     let top_options_views = qSelec(false, options, '#top_options_views');
+    //     let top_search = qSelec(top, 'input');
+    //     let top_versions = qSelec(top, 'f-select');
+    //     let top_options = qSelec(top, '#options');
+    //     let top_options_families = qSelec(options, '#top_options_families');
+    //     let top_options_styles = qSelec(options, '#top_options_styles');
+    //     let top_options_views = qSelec(options, '#top_options_views');
     //     let categories = elemById('categories');
     //     let results = elemById('results');
     //     let pages = elemById('pages');
     //     let bar = elemById('bar');
-    //     let bar_code = qSelec(false, bar, 'code');
-    //     let bar_glyphs = qSelec(false, bar, '#bar_glyphs');
-    //     let bar_glyphs_primary = qSelec(false, bar_glyphs, 'div[name="Primary"]');
-    //     let bar_glyphs_secondary = qSelec(false, bar_glyphs, 'div[name="Secondary"]');
-    //     let bar_unicodes = qSelec(false, bar, '#bar_unicodes');
-    //     let bar_unicodes_primary = qSelec(false, bar_unicodes, 'div[name="Primary"]');
-    //     let bar_unicodes_secondary = qSelec(false, bar_unicodes, 'div[name="Secondary"]');
-    //     let bar_categories = qSelec(false, bar, '#bar_categories > ul');
-    //     let bar_download = qSelec(false, bar, '#bar_download');
-    //     let bar_download_ul = qSelec(false, bar_download, 'ul');
+    //     let bar_code = qSelec(bar, 'code');
+    //     let bar_glyphs = qSelec(bar, '#bar_glyphs');
+    //     let bar_glyphs_primary = qSelec(bar_glyphs, 'div[name="Primary"]');
+    //     let bar_glyphs_secondary = qSelec(bar_glyphs, 'div[name="Secondary"]');
+    //     let bar_unicodes = qSelec(bar, '#bar_unicodes');
+    //     let bar_unicodes_primary = qSelec(bar_unicodes, 'div[name="Primary"]');
+    //     let bar_unicodes_secondary = qSelec(bar_unicodes, 'div[name="Secondary"]');
+    //     let bar_categories = qSelec(bar, '#bar_categories > ul');
+    //     let bar_download = qSelec(bar, '#bar_download');
+    //     let bar_download_ul = qSelec(bar_download, 'ul');
         
     //     let charNameList = [], isBarOpened = false;
         
@@ -72,12 +72,12 @@ export default function PageClient() {
     //         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
     //     }
     //     function goLink() {
-    //         go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(false, top_options_families, '.active').dataset.value)}&s=${lower(qSelec(false, top_options_styles, '.active').dataset.value)}`);
+    //         go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(top_options_families, '.active').dataset.value)}&s=${lower(qSelec(top_options_styles, '.active').dataset.value)}`);
     //     }
     //     function show() {
     //         let value = normalize(top_search.value);
-    //         let currentStyle = lower(qSelec(false, top_options_styles, '.active').dataset.value);
-    //         let currentFamily = lower(qSelec(false, top_options_families, '.active').dataset.value);
+    //         let currentStyle = lower(qSelec(top_options_styles, '.active').dataset.value);
+    //         let currentFamily = lower(qSelec(top_options_families, '.active').dataset.value);
     //         let obj = structuredClone(webData.categories);
     //         let style = '', resultCount = 0, children = [];
             
@@ -122,8 +122,8 @@ export default function PageClient() {
     //                     clear(bar_categories);
     //                     activate(bar);
                         
-    //                     qSelec(false, bar, 'h6').innerText = name;
-    //                     qSelec(false, bar, 'f-icon[icon="circle-info"]').onclick = () => notify(
+    //                     qSelec(bar, 'h6').innerText = name;
+    //                     qSelec(bar, 'f-icon[icon="circle-info"]').onclick = () => notify(
     //                         'info', '<span className="key">Ctrl</span> + <b>Click</b> to copy the code'
     //                     )
     //                     bar_code.innerHTML = formatCode(
@@ -210,7 +210,7 @@ export default function PageClient() {
     //             (obj[item].count || isActive(li_category)) && children.push(li_category);
     //         }
     //         children.sort(
-    //             (a, b) => qSelec(false, a, 'span').innerText.localeCompare(qSelec(false, b, 'span').innerText)
+    //             (a, b) => qSelec(a, 'span').innerText.localeCompare(qSelec(b, 'span').innerText)
     //         )
     //         categories.append(...children);
     //     }
@@ -227,8 +227,8 @@ export default function PageClient() {
     //             'v=': value => value == 'b1' && top_versions.setValue(value)
     //         })[prefix]?.(value);
     //     })
-    //     !qSelec(false, top_options_styles, '.active') && activate(top_options_styles.children[0]);
-    //     !qSelec(false, top_options_families, '.active') && activate(top_options_families.children[0]);
+    //     !qSelec(top_options_styles, '.active') && activate(top_options_styles.children[0]);
+    //     !qSelec(top_options_families, '.active') && activate(top_options_families.children[0]);
     //     show();
     //     goLink();
         
@@ -237,7 +237,7 @@ export default function PageClient() {
     //     let topPos = `${-top.offsetHeight + 70}px`;
     //     let lastPos = 0;
     //     addEvLis(document, 'click', ({target}) => {
-    //         if (!qSelec(false, results, '.active')?.contains(target) && !bar.contains(target) && !chooseLayers.contains(target) && isActive(bar)) {
+    //         if (!qSelec(results, '.active')?.contains(target) && !bar.contains(target) && !chooseLayers.contains(target) && isActive(bar)) {
     //             inactivate(...results.children, bar);
     //             isBarOpened = false;
     //         }
@@ -312,7 +312,7 @@ export default function PageClient() {
     //         results.dataset.version = top_versions.value;
     //         goLink();
     //     })
-    //     qSelec(true, top_options_styles, 'li').forEach(each => {
+    //     qSelecA(top_options_styles, 'li').forEach(each => {
     //         addEvLis(each,'click', () => {
     //             inactivate(...top_options_styles.children);
     //             activate(each);
@@ -320,7 +320,7 @@ export default function PageClient() {
     //             show();
     //         })
     //     })
-    //     qSelec(true, top_options_families, 'li').forEach(each => {
+    //     qSelecA(top_options_families, 'li').forEach(each => {
     //         addEvLis(each, 'click', () => {
     //             inactivate(...top_options_families.children);
     //             activate(each);
@@ -328,7 +328,7 @@ export default function PageClient() {
     //             show();
     //         })
     //     })
-    //     qSelec(true, top_options_views, 'li').forEach(each => {
+    //     qSelecA(top_options_views, 'li').forEach(each => {
     //         let name = getAttr(each, 'name');
     //         addEvLis(each, 'click', () => {
     //             inactivate(...top_options_views.children);
@@ -339,8 +339,8 @@ export default function PageClient() {
     //         currentView == name && each.click();
     //     })
         
-    //     addEvLis(qSelec(false, '#main > h5:first-of-type'), 'click', () => {
-    //       let item = qSelec(false, '#main > h5:first-of-type');
+    //     addEvLis(qSelec('#main > h5:first-of-type'), 'click', () => {
+    //       let item = qSelec('#main > h5:first-of-type');
     //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
     //     })
     // })()}, [])
@@ -394,7 +394,6 @@ export default function PageClient() {
     let [ width, setWidth ] = useState(innerWidth);
 
     let filtered = useMemo(() => {
-        console.log(iconSet)
         if (!iconSet) return [];
         
         let icons = iconSet[version];
@@ -402,11 +401,11 @@ export default function PageClient() {
         return icons.flatMap(icon => {
             return (
                 family == 'all' && style == 'all' ? icon.styles :
-                family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`) :
+                family == 'all' ? [ '', 'duotone-', 'sharp-' ].map(prefix => `${prefix}${style}`) :
                 style == 'all' ? [ 'solid', 'outline' ].map(
-                    s => `${family == 'regular' ? '' : `${family}/`}${s}`
+                    s => `${family == 'regular' ? '' : `${family}-`}${s}`
                 ) :
-                [ `${family == 'regular' ? '' : `${family}/`}${style}` ]
+                [ `${family == 'regular' ? '' : `${family}-`}${style}` ]
             )
                 .filter(s => icon.styles.includes(s))
                 .filter(() => {
@@ -426,7 +425,7 @@ export default function PageClient() {
         })
     }, [ loaded, search, family, style, selectedCategories, version, inSaved ]);
     let columns = useMemo(
-        () => loaded ? getComputedStyle(qSelec(false, `.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
+        () => loaded ? getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
         [ width, tick ]
     )
     let perPage = useMemo(() => {
@@ -459,16 +458,16 @@ export default function PageClient() {
     }
     
     useEffect(() => {(async () => {
-        let fSelect = qSelec(false, 'f-select');
+        let fSelect = qSelec('f-select');
         while (elemById('loading')) await wait();
         fSelect.setValue(version);
         setLoaded(true);
 
         check();
         
-        let top = qSelec(false, `.${cssStyle.top}`);
-        let top_search = qSelec(false, top, 'input');
-        let top_optionList = qSelec(false, top, 'option-list');
+        let top = qSelec(`.${cssStyle.top}`);
+        let top_search = qSelec(top, 'input');
+        let top_optionList = qSelec(top, 'option-list');
 
         let animating = false;
         let isHovered = false;
@@ -494,12 +493,15 @@ export default function PageClient() {
         addEvLis(window, 'resize', check);
         
         addEvLis(document, 'click', async ({ target }) => {
-            (![
-                qSelec(false, `.${cssStyle.bar}`),
-                qSelec(false, `.${cssStyle.results} > .active`)
-            ].filter(Boolean).some(i => i.contains(target)) ||
-                qSelec(false, `.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)) &&
-                selectIcon(null);
+            (
+                ![
+                    qSelec(`.${cssStyle.bar}`),
+                    qSelec(`.${cssStyle.results} > .active`),
+                    qSelec('.modal'),
+                ].filter(Boolean).some(i => i.contains(target))
+                ||
+                qSelec(`.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)
+            ) && selectIcon(null);
             await wait();
             !top.contains(target) && hideTop();
         })
@@ -600,9 +602,9 @@ export default function PageClient() {
                         <label>
                             <input type='checkbox' value='pri'/><div className='checkmark'></div>Primary
                         </label>
-                        <label>
+                        {selectedIcon?.style.startsWith('duotone-') && <label>
                             <input type='checkbox' value='sec'/><div className='checkmark'></div>Secondary
-                        </label>
+                        </label>}
                     </div>
                     <div>
                         <a href='javascript:void(0)' className='btn secondary'>{
@@ -1030,13 +1032,13 @@ export default function PageClient() {
                                     selectIcon({
                                         name: icon.name,
                                         style,
-                                        glyphs: icon.glyphs[style.replace('/', '-')],
-                                        unicodes: icon.unicodes[style.replace('/', '-')].split('|'),
+                                        glyphs: icon.glyphs[style],
+                                        unicodes: icon.unicodes[style].split('|'),
                                         categories: icon.categories,
                                     })
                                 }
                             }>
-                                <f-icon icon={icon.name} i-s={style}{...(() => {
+                                <f-icon icon={icon.name} i-s={style.replace('-', '/')}{...(() => {
                                     let obj = {};
                                     version == 'b1' && (obj.b1 = '');
                                     return obj;
@@ -1207,7 +1209,12 @@ export default function PageClient() {
                         }[lang]
                     }</span>
                     <ul className='btn-list'>{
-                        [ 'SVG', 'PNG', 'WebP' ].map(i => <li key={i} onClick={() => modal(elemById('choose-layers'))}>{i}</li>)
+                        [ 'SVG', 'PNG', 'WebP' ].map(i =>
+                            <li key={i} onClick={() => {
+                                setType(i);
+                                modal(elemById('choose-layers'));
+                            }}>{i}</li>
+                        )
                     }</ul>
                 </div>
             </div>

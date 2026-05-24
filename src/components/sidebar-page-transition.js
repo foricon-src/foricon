@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 
 export async function GoPage(router, page) {
-    let main = qSelec(false, '#sidebar-page > div:last-child');
+    let main = qSelec('#sidebar-page > div:last-child');
     main.style.opacity = 0;
     await wait(.2);
     go(router, page);

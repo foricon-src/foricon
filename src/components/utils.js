@@ -750,7 +750,7 @@ globalThis.toggle = (...elems) => {
 globalThis.disable = (...elems) => {
     elems.forEach(elem => {
         elem.setAttribute('disabled', '');
-        qSelec(false, elem, ':focus')?.blur();
+        qSelec(elem, ':focus')?.blur();
     })
 }
 /**
@@ -785,16 +785,26 @@ globalThis.remove = (...elems) => {
     elems.forEach(elem => elem?.remove());
 }
 /**
- * Selects element(s)
- * @param {Boolean} all - Whether to select all instances or just the first instance
+ * Selects element
  * @param {HTMLElement | string} param1 - The element to query from, or query string
  * @param {string} [param2] - Query string
- * @returns {HTMLElement | HTMLElement[] | undefined} Returns an `Array` if `all` is `true`, otherwise returns a `HTMLElement`, or `undefined` if nothing matches
+ * @returns {HTMLElement | undefined} Returns the first element that is a descendant of node that matches selectors.
  */
-globalThis.qSelec = (all, param1, param2) => {
+globalThis.qSelec = (param1, param2) => {
     let elem = param2 ? param1 : document;
     let str = param2 || param1;
-    return elem?.[all ? 'querySelectorAll' : 'querySelector'](str) || undefined;
+    return elem?.querySelector(str) || undefined;
+}
+/**
+ * Selects elements
+ * @param {HTMLElement | string} param1 - The element to query from, or query string
+ * @param {string} [param2] - Query string
+ * @returns {HTMLElement[] | undefined} Returns all element descendants of node that match selectors.
+ */
+globalThis.qSelecA = (param1, param2) => {
+    let elem = param2 ? param1 : document;
+    let str = param2 || param1;
+    return elem?.querySelectorAll(str) || undefined;
 }
 /**
  * Gets an element by its `id`
@@ -1172,7 +1182,7 @@ globalThis.replace = (str, replacements) => {
  * @param {string} message - Content for notification
  */
 globalThis.notify = async (type, message) => {
-    let toast = qSelec(false, '#toast');
+    let toast = qSelec('#toast');
     while (toast.children.length > 4) await wait();
     let div = newElem('div', {
         innerHTML: replace(message, [
@@ -1241,26 +1251,37 @@ globalThis.formatBytes = (bytes = 0) => {
 /**
  * Shows a modal
  * @param {HTMLElement} elem - Modal
- * @param {(value: *) => void} [actionIfTrue]
- * @param {(value: *) => void} [actionIfFalse]
+ * @param {(value: *) => void} [actionIfTrue] - Action to do when clicked submit button
+ * @param {(value: *) => void} [actionIfFalse] - Action to do when clicked cancel button
+ * @param {Boolean} useStrict - At least one instance of input mustn't have falsy value for the submit button to be available
  */
-globalThis.modal = async (elem, actionIfTrue, actionIfFalse) => {
+globalThis.modal = async (elem, actionIfTrue, actionIfFalse, useStrict) => {
     activate(elem);
     
     let { body } = document;
     
-    let ok = qSelec(false, elem, 'div:last-child > a.primary');
-    let cancel = qSelec(false, elem, 'div:last-child > a.secondary');
+    let ok = qSelec(elem, 'div:last-child > a.primary');
+    let cancel = qSelec(elem, 'div:last-child > a.secondary');
     
-    let checkboxes = qSelec(false, elem, 'div.checkboxes');
-    let uploadFile = qSelec(false, elem, 'f-upload');
-    let input = qSelec(false, elem, 'input:is([type=&quot;password&quot;], :not([type]))');
+    let checkboxes = qSelec(elem, 'div.checkboxes');
+    let checkboxes_input = qSelecA(elem, 'input');
+    let uploadFile = qSelec(elem, 'f-upload');
+    let input = qSelec(elem, 'input:is([type="password"], :not([type]))');
     
-    qSelec(true, checkboxes, 'input')?.forEach(i => i.checked = false);
-    
+    if (checkboxes) {
+        function check() {
+            checkboxes_input?.some(i => i.checked) ? enable(ok) : disable(ok);
+        }
+        checkboxes_input?.forEach(input => {
+            input.checked = false;
+            addEvLis(input, 'change', check());
+        })
+    }
+
     input && (async () => {
         disable(ok);
         input.value = '';
+        addEvLis(input, 'input', () => input.value ? enable(ok) : disable(ok));
         input.oninput = () => input.value ? enable(ok) : disable(ok);
         await wait(.2);
         input.focus();
@@ -1271,16 +1292,13 @@ globalThis.modal = async (elem, actionIfTrue, actionIfFalse) => {
     })()
     
     function getValue() {
-        return checkboxes?.children.length
-            ? [...checkboxes.children].map(each => {
-                let { checked, value } = each.querySelector('input');
-                return checked ? value : null;
-            }).filter(each => each)
-            : uploadFile
-                ? uploadFile.files
-                : input
-                    ? input.value
-                    : null;
+        return  checkboxes?.children.length ? [...checkboxes.children].map(each => {
+                    let { checked, value } = qSelec(each, 'input');
+                    return checked ? value : null;
+                }).filter(each => each) :
+                uploadFile ? uploadFile.files :
+                input ? input.value :
+                null;
     }
     
     ok.onclick = async () => {
