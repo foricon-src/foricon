@@ -688,6 +688,8 @@ globalThis.appendData = (target, data) => {
 globalThis.wait = (s) => {
     return new Promise(resolve => setTimeout(resolve, s * 1000));
 }
+
+let pos;
 /**
  * Makes element(s) to be in activate state
  * @param {HTMLElement} elems - Element(s) to activate
