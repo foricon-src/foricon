@@ -939,13 +939,13 @@ export default function PageClient() {
                                     ru: 'Плитка',
                                 }
                             ].map(({ icon, value, ...texts }) =>
-                                <li className={`chip top${view == value ? ' active' : ''}`} onClick={() => setView(value)}>
-                                    <f-icon icon={icon} i-s={(view != 'icon' || icon == 'list') && 'outline'}></f-icon>
+                                <li key={value} className={`chip top${view == value ? ' active' : ''}`} onClick={() => setView(value)}>
+                                    <f-icon icon={icon} i-s={(view != value || icon == 'list') && 'outline'}></f-icon>
                                     <span>{texts[lang]}</span>
                                 </li>
                             )
                         }
-                        <li className='chip top line'>
+                        <li className={`${width < 1400 ? 'chip top ' : ''}line`}>
                             <f-icon icon='gear'></f-icon>
                             <span>{
                                 {
