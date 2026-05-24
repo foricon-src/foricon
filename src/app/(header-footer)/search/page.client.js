@@ -1212,7 +1212,7 @@ export default function PageClient() {
                         [ 'SVG', 'PNG', 'WebP' ].map(i =>
                             <li key={i} onClick={() => {
                                 setType(i);
-                                modal(elemById('choose-layers'));
+                                modal(elemById('choose-layers'), null, null, true);
                             }}>{i}</li>
                         )
                     }</ul>
