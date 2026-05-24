@@ -804,7 +804,7 @@ globalThis.qSelec = (param1, param2) => {
 globalThis.qSelecA = (param1, param2) => {
     let elem = param2 ? param1 : document;
     let str = param2 || param1;
-    return elem?.querySelectorAll(str) || undefined;
+    return elem ? [ ...elem.querySelectorAll(str) ] : undefined;
 }
 /**
  * Gets an element by its `id`
