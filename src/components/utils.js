@@ -1275,7 +1275,7 @@ globalThis.modal = async (elem, actionIfTrue, actionIfFalse, useStrict) => {
         useStrict && check();
         checkboxes_input?.forEach(input => {
             input.checked = false;
-            useStrict && addEvLis(input, 'change', check());
+            useStrict && addEvLis(input, 'change', check);
         })
     }
 
