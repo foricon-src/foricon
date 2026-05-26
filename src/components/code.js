@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { LanguageContext } from './language';
-import { lower } from './string-tools';
+import { Lower } from './string-tools';
 
 export default function Code({ children, lang = 'HTML', nameless }) {
     let language = useContext(LanguageContext);
@@ -25,7 +25,7 @@ export default function Code({ children, lang = 'HTML', nameless }) {
             }[language])
         }}
             dangerouslySetInnerHTML={{
-                __html: formatCode(children, lower(lang))
+                __html: formatCode(children, Lower(lang))
             }}
         />
     )
