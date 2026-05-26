@@ -14,7 +14,7 @@ export default function PageClient({ params }) {
     let router = useRouter();
     let icons = useContext(IconContext);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
-
+    console.log(currentIcon)
     return currentIcon && currentIcon.styles.includes(styleName) ? (
         <div className={cssStyle.main}>
             <h3>{icon}</h3>
@@ -28,10 +28,10 @@ export default function PageClient({ params }) {
                 {currentIcon.styles.includes('outline') && <li onClick={() => go(router, `icon/regular/outline/${icon}`)}>
                     <f-icon icon={icon} i-s='outline'/>
                 </li>}
-                {currentIcon.styles.includes('duotone-solid') && <li onClick={() => go(router, `icon/duotone/solid/${icon}`)}>
+                {currentIcon.styles.includes('duotone/solid') && <li onClick={() => go(router, `icon/duotone/solid/${icon}`)}>
                     <f-icon icon={icon} i-s='duotone/solid'/>
                 </li>}
-                {currentIcon.styles.includes('duotone-outline') && <li onClick={() => go(router, `icon/duotone/outline/${icon}`)}>
+                {currentIcon.styles.includes('duotone/outline') && <li onClick={() => go(router, `icon/duotone/outline/${icon}`)}>
                     <f-icon icon={icon} i-s='duotone/outline'/>
                 </li>}
             </ul>
