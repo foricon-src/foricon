@@ -31,14 +31,13 @@ export default function Process() {
         }
     })()}, [ pathname ])
     useEffect(() => {
-        console.log(icons)
         if (!icons) return;
         qSelecA('.icon-count').forEach(
             each => each.innerText = `${Math.floor(icons.b2.reduce(
                 (total, icon) => total + icon.styles.length, 0
             ) / 100) * 100}`
         )
-    }, [ icons ])
+    }, [ icons, pathname ])
 
     if (!customElements.get('f-upload')) {
         customElements.define('f-upload', class extends HTMLElement {
