@@ -151,7 +151,7 @@
                     cursor: var(--cursor-pointer);
                     min-width: 0;
                     background-color: var(--lt-gray);
-                    padding: var(--spacing-small) var(--spacing-small) var(--spacing-xxsmall);
+                    padding: var(--spacing-small) var(--spacing-small) var(--spacing-xsmall);
 
                     &:hover {
                         background-color: var(--gray);

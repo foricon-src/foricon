@@ -408,7 +408,7 @@ export default function Home() {
                         <ul className='btn-list darker'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
                                 <li key={i} onClick={() => setStyle(i)} className={`chip top${style == i ? ' active' : ''}`}>
-                                    <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
+                                    <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i} className='auto-line-height'/>
                                     <span>{
                                         i == 'outline' ? 'Outline' :
                                         i == 'duotone/solid' ? 'Duotone Solid' :
