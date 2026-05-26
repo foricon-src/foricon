@@ -138,7 +138,7 @@
         }
         &.iconFamilies {
             & > ul {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: var(--spacing-xxsmall);
                 margin-top: var(--spacing-small);
                 
@@ -199,7 +199,7 @@
                         & > ul > li:has(f-icon:not([icon='empty-set'])) {
                             font-size: 1.4rem;
                             padding: 15px 0;
-                            width: 57px;
+                            width: 61px;
                         }
                         & > code {
                             position: sticky;
