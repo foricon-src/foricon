@@ -19,7 +19,7 @@ export default function PageClient({ params }) {
         <div className={cssStyle.main}>
             <h3>{icon}</h3>
             <div>
-                <div>
+                <div className={cssStyle.iconView}>
                     <f-icon icon={icon} i-s={styleName}/>
                 </div>
                 <div>
@@ -39,7 +39,11 @@ export default function PageClient({ params }) {
                     </ul>
                     <Code>{`<f-icon icon='${icon}' i-s='${styleName}'></f-icon>`}</Code>
                     <ul className='btn-list'>{
-                        [ 'SVG', 'PNG', 'WebP' ].map(i => <li key={i}>{i}</li>)
+                        [ 'SVG', 'PNG', 'WebP' ].map(i =>
+                            <li key={i}>
+                                <f-icon icon='arrow-down-to-bracket' i-s='outline'/>{i}
+                            </li>
+                        )
                     }</ul>
                 </div>
             </div>

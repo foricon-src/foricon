@@ -9,7 +9,7 @@
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-small);
 
-        & > div {
+        & > .iconView {
             border-radius: var(--bdr-rad);
             border: 1px solid var(--gray);
             display: flex;
