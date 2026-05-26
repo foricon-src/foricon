@@ -1,3 +1,5 @@
+import { Lower } from './string-tools';
+
 globalThis.webData = {
     isBeta: true,
     verNum: '3.0',
