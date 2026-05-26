@@ -31,6 +31,7 @@ export default function Process() {
         }
     })()}, [ pathname ])
     useEffect(() => {
+        console.log(icons)
         if (!icons) return;
         qSelecA('.icon-count').forEach(
             each => each.innerText = `${Math.floor(icons.b2.reduce(
