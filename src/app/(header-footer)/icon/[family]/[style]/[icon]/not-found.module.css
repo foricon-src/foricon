@@ -1,1 +1,10 @@
-.main {}
+.main {
+    height: calc(100vh - 70px);
+
+    & > f-icon {
+        font-size: 6rem;
+    }
+    & > h3 {
+        margin-bottom: 0;
+    }
+}

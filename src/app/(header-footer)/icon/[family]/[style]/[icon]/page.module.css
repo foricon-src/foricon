@@ -17,14 +17,10 @@
             justify-content: center;
             font-size: 6rem;
         }
-        & > :not(.iconView) {
-            & > :global(ul.darker) {
-                font-size: 1.4rem;
-
-                & > li {
-                    flex-grow: 1;
-                }
-            }
+        & > :not(.iconView) > :global(ul.darker) > li {
+            flex-grow: 1;
+            font-size: 1.4rem;
+            padding: 15px;
         }
     }
 }
