@@ -364,7 +364,7 @@ export default function Home() {
                             {
                                 [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
                                     <li key={i} onClick={() => setIcon(i)} className={`chip top${icon == i ? ' active' : ''}`}>
-                                        <f-icon icon={i}/>
+                                        <f-icon icon={i} className='auto-line-height'/>
                                         <span>{i}</span>
                                     </li>
                                 ))
