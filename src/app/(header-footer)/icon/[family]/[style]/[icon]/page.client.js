@@ -13,8 +13,7 @@ export default function PageClient({ params }) {
 
     let router = useRouter();
     let icons = useContext(IconContext);
-    console.log(icons)
-    let currentIcon = useMemo(() => icons?.find(i => i.name == icon), [ icons, icon ]);
+    let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
 
     return currentIcon && currentIcon.styles.includes(styleName) ? (
         <div className={cssStyle.main}>
@@ -23,16 +22,16 @@ export default function PageClient({ params }) {
                 <f-icon icon={icon} i-s={styleName}/>
             </div>
             <ul className='btn-list'>
-                {currentIcon?.styles.includes('solid') && <li onClick={() => go(router, `icon/regular/solid/${icon}`)}>
+                {currentIcon.styles.includes('solid') && <li onClick={() => go(router, `icon/regular/solid/${icon}`)}>
                     <f-icon icon={icon}/>
                 </li>}
-                {currentIcon?.styles.includes('outline') && <li onClick={() => go(router, `icon/regular/outline/${icon}`)}>
+                {currentIcon.styles.includes('outline') && <li onClick={() => go(router, `icon/regular/outline/${icon}`)}>
                     <f-icon icon={icon} i-s='outline'/>
                 </li>}
-                {currentIcon?.styles.includes('duotone-solid') && <li onClick={() => go(router, `icon/duotone/solid/${icon}`)}>
+                {currentIcon.styles.includes('duotone-solid') && <li onClick={() => go(router, `icon/duotone/solid/${icon}`)}>
                     <f-icon icon={icon} i-s='duotone/solid'/>
                 </li>}
-                {currentIcon?.styles.includes('duotone-outline') && <li onClick={() => go(router, `icon/duotone/outline/${icon}`)}>
+                {currentIcon.styles.includes('duotone-outline') && <li onClick={() => go(router, `icon/duotone/outline/${icon}`)}>
                     <f-icon icon={icon} i-s='duotone/outline'/>
                 </li>}
             </ul>
