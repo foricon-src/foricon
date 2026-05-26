@@ -1,5 +1,4 @@
-import PageClient from "./page.client";
-
+import PageClient from './page.client';
 
 export async function generateMetadata({ params }) {
     let { family, style, icon } = params;
@@ -8,6 +7,6 @@ export async function generateMetadata({ params }) {
         title: `${icon} icon | ${family} ${style} style`
     }
 }
-export function Page({ params }) {
+export default function Page({ params }) {
     return <PageClient params={params}/>;
 }
