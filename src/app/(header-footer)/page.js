@@ -14,7 +14,7 @@ export default function Home() {
     let router = useRouter();
     let lang = useContext(LanguageContext);
     let user = useContext(UserContext);
-    let iconSet = useContext(IconContext);
+    let icons = useContext(IconContext);
 
     let [ icon, setIcon ] = useState('brush');
     let [ style, setStyle ] = useState('');
@@ -24,25 +24,27 @@ export default function Home() {
     let [ animation, setAnimation ] = useState('');
     let [ animationSpeed, setAnimationSpeed ] = useState('');
 
-    useEffect(() => {(async () => {
-        if (!iconSet) return;
-        let icons = elemById('icons');
+    let iconArrs = useMemo(() => {
+        if (!icons) return;
+
         let added = [];
+        let arrs = []
+
         for (let i = 0; i < 4; i++) {
-            let div = newElem('div');
-            while (div.children.length < 10) {
-                await wait();
-                let icon = random(iconSet.b2);
+            let arr = []
+            while (arr.length < 10) {
+                let icon = random(icons.b2);
                 let { name, styles } = icon;
                 let style = random(styles);
                 if (!added.includes(`${name} ${style}`)) {
-                    div.innerHTML += `<f-icon i-s='${style}' icon='${name}'/>`;
+                    arr.push({ name, style });
                     added.push(`${name} ${style}`);
                 }
             }
-            icons.insertBefore(div, icons.lastChild);
+            arrs.push(arr);
         }
-    })()}, [ iconSet ])
+        return arrs;
+    }, [ icons ])
 
     let html = useMemo(() => {
         return (
@@ -58,6 +60,12 @@ export default function Home() {
             }></f-icon>`
         )
     }, [ icon, style, scale, size, rotate, animation, animationSpeed ])
+
+    function IconFamiliesIcons(style) {
+        return [ 'clone', 'image', 'file-lines', 'grid-4', 'compass', 'rectangle-stack' ].map(i =>
+            <f-icon icon={i} style={style} className='auto-line-height'/>
+        )
+    }
 
     return (
         <div className={cssStyle.page}>
@@ -118,7 +126,14 @@ export default function Home() {
                     }/>
                 </label>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.icons}`} id='icons'>
+            <div className={`${cssStyle.contentSection} ${cssStyle.icons}`}>
+                {
+                    iconArrs.map(i =>
+                        <div>{
+                            i.map(i => <f-icon icon={i.name} i-s={i.style} className='auto-line-height'/>)
+                        }</div>
+                    )
+                }
                 <div>
                     <h1>
                         <span class='icon-count'/>+{
@@ -261,47 +276,19 @@ export default function Home() {
                 }</h1>
                 <ul>
                     <li onClick={() => go(router, 'search?f=regular&s=solid')}>
-                        <div>
-                            <f-icon icon='clone'/>
-                            <f-icon icon='image'/>
-                            <f-icon icon='file-lines'/>
-                            <f-icon icon='grid-4'/>
-                            <f-icon icon='compass'/>
-                            <f-icon icon='rectangle-stack'/>
-                        </div>
+                        <div>{IconFamiliesIcons()}</div>
                         <h5>Regular Solid</h5>
                     </li>
                     <li onClick={() => go(router, 'search?f=regular&s=outline')}>
-                        <div>
-                            <f-icon i-s='outline' icon='clone'/>
-                            <f-icon i-s='outline' icon='image'/>
-                            <f-icon i-s='outline' icon='file-lines'/>
-                            <f-icon i-s='outline' icon='grid-4'/>
-                            <f-icon i-s='outline' icon='compass'/>
-                            <f-icon i-s='outline' icon='rectangle-stack'/>
-                        </div>
+                        <div>{IconFamiliesIcons('outline')}</div>
                         <h5>Regular Outline</h5>
                     </li>
                     <li onClick={() => go(router, 'search?f=duotone&s=solid')}>
-                        <div>
-                            <f-icon i-s='duotone/solid' icon='clone'/>
-                            <f-icon i-s='duotone/solid' icon='image'/>
-                            <f-icon i-s='duotone/solid' icon='file-lines'/>
-                            <f-icon i-s='duotone/solid' icon='grid-4'/>
-                            <f-icon i-s='duotone/solid' icon='compass'/>
-                            <f-icon i-s='duotone/solid' icon='rectangle-stack'/>
-                        </div>
+                        <div>{IconFamiliesIcons('duotone/solid')}</div>
                         <h5>Duotone Solid</h5>
                     </li>
                     <li onClick={() => go(router, 'search?f=duotone&s=outline')}>
-                        <div>
-                            <f-icon i-s='duotone/outline' icon='clone'/>
-                            <f-icon i-s='duotone/outline' icon='image'/>
-                            <f-icon i-s='duotone/outline' icon='file-lines'/>
-                            <f-icon i-s='duotone/outline' icon='grid-4'/>
-                            <f-icon i-s='duotone/outline' icon='compass'/>
-                            <f-icon i-s='duotone/outline' icon='rectangle-stack'/>
-                        </div>
+                        <div>{IconFamiliesIcons('duotone/outline')}</div>
                         <h5>Duotone Outline</h5>
                     </li>
                 </ul>

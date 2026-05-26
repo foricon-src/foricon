@@ -1665,13 +1665,22 @@ div.message.offline:before {
     font-family: 'Foricon Beta';
 }
 
+.auto-line-height {
+    &, & :before, & :after {
+        line-height: unset;
+    }
+}
+
+.center-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .modal {
     position: fixed;
     inset: 0;
     background-color: var(--dark-backdrop);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 4;
     
     &:not(.active) {

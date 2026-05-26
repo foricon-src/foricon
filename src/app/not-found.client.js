@@ -12,7 +12,7 @@ export default function PageClient() {
 
     return (
         <div className={cssStyle.main} id='404'>
-            <h1>404</h1>
+            <h1 className='auto-line-height'>404</h1>
             <h3>{
                 {
                     en: 'Page not found',

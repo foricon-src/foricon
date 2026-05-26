@@ -14,34 +14,35 @@ export default function PageClient({ params }) {
     let router = useRouter();
     let icons = useContext(IconContext);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
-    console.log(currentIcon)
+    
     return currentIcon && currentIcon.styles.includes(styleName) ? (
         <div className={cssStyle.main}>
             <h3>{icon}</h3>
             <div>
-                <div className={cssStyle.iconView}>
-                    <f-icon icon={icon} i-s={styleName}/>
+                <div className={`center-middle ${cssStyle.iconView}`}>
+                    <f-icon icon={icon} i-s={styleName} className='auto-line-height'/>
                 </div>
                 <div>
                     <ul className='btn-list darker'>
-                        {currentIcon.styles.includes('solid') && <li onClick={() => go(router, `icon/regular/solid/${icon}`)}>
-                            <f-icon icon={icon}/>
-                        </li>}
-                        {currentIcon.styles.includes('outline') && <li onClick={() => go(router, `icon/regular/outline/${icon}`)}>
-                            <f-icon icon={icon} i-s='outline'/>
-                        </li>}
-                        {currentIcon.styles.includes('duotone/solid') && <li onClick={() => go(router, `icon/duotone/solid/${icon}`)}>
-                            <f-icon icon={icon} i-s='duotone/solid'/>
-                        </li>}
-                        {currentIcon.styles.includes('duotone/outline') && <li onClick={() => go(router, `icon/duotone/outline/${icon}`)}>
-                            <f-icon icon={icon} i-s='duotone/outline'/>
-                        </li>}
+                        {
+                            currentIcon.styles.map(i => {
+                                let [ a, b ] = i.split('/');
+                                let f = b ? a : '';
+                                let f2 = f || 'regular';
+                                let s = b || a;
+
+                                return <li className={family == f2 && style == s && 'active'} onClick={() => go(router, `icon/${f2}/${s}/${icon}`)}>
+                                    <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
+                                </li>
+                            })
+                        }
                     </ul>
                     <Code>{`<f-icon icon='${icon}' i-s='${styleName}'></f-icon>`}</Code>
                     <ul className='btn-list'>{
                         [ 'SVG', 'PNG', 'WebP' ].map(i =>
                             <li key={i}>
-                                <f-icon icon='arrow-down-to-bracket' i-s='outline'/>{i}
+                                <f-icon icon='arrow-down-to-bracket' i-s='outline' className='auto-line-height'/>
+                                <span>{i}</span>
                             </li>
                         )
                     }</ul>
