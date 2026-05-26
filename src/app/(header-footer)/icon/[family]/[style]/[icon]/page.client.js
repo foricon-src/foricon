@@ -13,6 +13,7 @@ export default function PageClient({ params }) {
 
     let router = useRouter();
     let icons = useContext(IconContext);
+    console.log(icons)
     let currentIcon = useMemo(() => icons?.find(i => i.name == icon), [ icons, icon ]);
 
     return currentIcon && currentIcon.styles.includes(styleName) ? (
