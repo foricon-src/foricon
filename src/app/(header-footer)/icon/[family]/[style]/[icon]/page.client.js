@@ -13,9 +13,9 @@ export default function PageClient({ params }) {
 
     let router = useRouter();
     let icons = useContext(IconContext);
-    let currentIcon = useMemo(() => icons?.find(i => i.name == icon), [ icons ]);
+    let currentIcon = useMemo(() => icons?.find(i => i.name == icon), [ icons, icon ]);
 
-    return currentIcon ? (
+    return currentIcon && currentIcon.styles.includes(styleName) ? (
         <div className={cssStyle.main}>
             <h3>{icon}</h3>
             <div>
