@@ -31,7 +31,11 @@ export default function PageClient({ params }) {
                                 let f2 = f || 'regular';
                                 let s = b || a;
 
-                                return <li key={i} className={family == f2 && style == s && 'active'} onClick={() => go(router, `icon/${f2}/${s}/${icon}`)}>
+                                return <li
+                                    key={i}
+                                    className={family == f2 && style == s && 'active'}
+                                    onClick={() => go(router, `icon/${f2}/${s}/${icon}`)}
+                                >
                                     <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
                                 </li>
                             })

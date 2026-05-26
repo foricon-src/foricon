@@ -128,9 +128,9 @@ export default function Home() {
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.icons}`}>
                 {
-                    iconArrs.map(i =>
-                        <div>{
-                            i.map(i => <f-icon icon={i.name} i-s={i.style} className='auto-line-height'/>)
+                    iconArrs.map((arr, i) =>
+                        <div key={i}>{
+                            arr.map(i => <f-icon key={`${i.name} | ${i.style}`} icon={i.name} i-s={i.style} className='auto-line-height'/>)
                         }</div>
                     )
                 }
