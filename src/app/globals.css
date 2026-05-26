@@ -1666,7 +1666,7 @@ div.message.offline:before {
 }
 
 .auto-line-height {
-    &, & :before, & :after {
+    &, &:before, &:after {
         line-height: unset;
     }
 }
