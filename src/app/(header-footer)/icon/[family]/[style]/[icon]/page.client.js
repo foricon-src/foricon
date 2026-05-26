@@ -39,7 +39,7 @@ export default function PageClient({ params }) {
                     </ul>
                     <Code>{`<f-icon icon='${icon}' i-s='${styleName}'></f-icon>`}</Code>
                     <ul className='btn-list'>{
-                        [ 'SVG', 'PNG', 'WebP' ].map(i => <li>{i}</li>)
+                        [ 'SVG', 'PNG', 'WebP' ].map(i => <li key={i}>{i}</li>)
                     }</ul>
                 </div>
             </div>
