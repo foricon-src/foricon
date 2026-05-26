@@ -63,7 +63,7 @@ export default function Home() {
 
     function IconFamiliesIcons(style) {
         return [ 'clone', 'image', 'file-lines', 'grid-4', 'compass', 'rectangle-stack' ].map(i =>
-            <f-icon icon={i} style={style} className='auto-line-height'/>
+            <f-icon key={i} icon={i} style={style} className='auto-line-height'/>
         )
     }
 
