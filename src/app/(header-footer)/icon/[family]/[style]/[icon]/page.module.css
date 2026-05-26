@@ -1,0 +1,7 @@
+.main {
+    padding: var(--spacing-default);
+
+    & > h1 {
+        margin-top: 0;
+    }
+}

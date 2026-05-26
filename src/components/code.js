@@ -1,5 +1,6 @@
-import { useContext } from "react";
-import { LanguageContext } from "./language";
+import { useContext } from 'react';
+import { LanguageContext } from './language';
+import { lower } from './string-tools';
 
 export default function Code({ children, lang = 'HTML', nameless }) {
     let language = useContext(LanguageContext);

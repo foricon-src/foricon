@@ -6,6 +6,7 @@ import { Ad } from 'Com/ad';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
+import { Lower, Similarity } from 'Com/string-tools';
 import Code from 'Com/code';
 import cssStyle from './page.module.css';
 import Classes from 'Com/classes';
@@ -72,19 +73,19 @@ export default function PageClient() {
     //         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
     //     }
     //     function goLink() {
-    //         go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${lower(qSelec(top_options_families, '.active').dataset.value)}&s=${lower(qSelec(top_options_styles, '.active').dataset.value)}`);
+    //         go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${Lower(qSelec(top_options_families, '.active').dataset.value)}&s=${Lower(qSelec(top_options_styles, '.active').dataset.value)}`);
     //     }
     //     function show() {
     //         let value = normalize(top_search.value);
-    //         let currentStyle = lower(qSelec(top_options_styles, '.active').dataset.value);
-    //         let currentFamily = lower(qSelec(top_options_families, '.active').dataset.value);
+    //         let currentStyle = Lower(qSelec(top_options_styles, '.active').dataset.value);
+    //         let currentFamily = Lower(qSelec(top_options_families, '.active').dataset.value);
     //         let obj = structuredClone(webData.categories);
     //         let style = '', resultCount = 0, children = [];
             
     //         clear(categories, results, pages);
             
     //         function normalize(value) {
-    //             return lower(value).replace(/[+-]/g, ' ');
+    //             return Lower(value).replace(/[+-]/g, ' ');
     //         }
     //         function showIcon(icon, style) {
     //             let normalized = normalize(icon.name);
@@ -222,8 +223,8 @@ export default function PageClient() {
     //         ({
     //             'k=': value => top_search.value = formatKeyword(value, true),
     //             'c=': value => selectedCategories = value.split(';'),
-    //             's=': value => getChild(top_options_styles).forEach(style => value == lower(style.dataset.value) && activate(style)),
-    //             'f=': value => getChild(top_options_families).forEach(family => value == lower(family.dataset.value) && activate(family)),
+    //             's=': value => getChild(top_options_styles).forEach(style => value == Lower(style.dataset.value) && activate(style)),
+    //             'f=': value => getChild(top_options_families).forEach(family => value == Lower(family.dataset.value) && activate(family)),
     //             'v=': value => value == 'b1' && top_versions.setValue(value)
     //         })[prefix]?.(value);
     //     })
@@ -409,10 +410,10 @@ export default function PageClient() {
             )
                 .filter(s => icon.styles.includes(s))
                 .filter(() => {
-                    let normalized = lower(icon.name).replace(/[+-]/g, ' ');
+                    let normalized = Lower(icon.name).replace(/[+-]/g, ' ');
                     return (
                         (
-                            normalized.includes(search) || similarity(normalized, search) > 0.65
+                            normalized.includes(search) || Similarity(normalized, search) > 0.65
                         ) && (
                             !selectedCategories.length || selectedCategories.every(c => icon.categories.includes(c))
                         )
