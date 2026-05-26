@@ -45,7 +45,7 @@ export default function PageClient({ params }) {
                     <ul className='btn-list'>{
                         [ 'SVG', 'PNG', 'WebP' ].map(i =>
                             <li key={i}>
-                                <f-icon icon='arrow-down-to-bracket' i-s='outline' className='auto-line-height'/>
+                                <f-icon icon='arrow-down-to-bracket' i-s='outline'/>
                                 <span>{i}</span>
                             </li>
                         )
