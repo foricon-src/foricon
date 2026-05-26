@@ -8,6 +8,6 @@ export async function generateMetadata({ params }) {
         title: `${icon} icon | ${family} ${style} style`
     }
 }
-export function Page() {
+export function Page({ params }) {
     return <PageClient params={params}/>;
 }
