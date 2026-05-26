@@ -4,4 +4,17 @@
     & > h1 {
         margin-top: 0;
     }
+    & > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-small);
+
+        & > div {
+            border-radius: var(--bdr-rad);
+            border: 1px solid var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }

@@ -19,23 +19,30 @@ export default function PageClient({ params }) {
         <div className={cssStyle.main}>
             <h3>{icon}</h3>
             <div>
-                <f-icon icon={icon} i-s={styleName}/>
+                <div>
+                    <f-icon icon={icon} i-s={styleName}/>
+                </div>
+                <div>
+                    <ul className='btn-list darker'>
+                        {currentIcon.styles.includes('solid') && <li onClick={() => go(router, `icon/regular/solid/${icon}`)}>
+                            <f-icon icon={icon}/>
+                        </li>}
+                        {currentIcon.styles.includes('outline') && <li onClick={() => go(router, `icon/regular/outline/${icon}`)}>
+                            <f-icon icon={icon} i-s='outline'/>
+                        </li>}
+                        {currentIcon.styles.includes('duotone/solid') && <li onClick={() => go(router, `icon/duotone/solid/${icon}`)}>
+                            <f-icon icon={icon} i-s='duotone/solid'/>
+                        </li>}
+                        {currentIcon.styles.includes('duotone/outline') && <li onClick={() => go(router, `icon/duotone/outline/${icon}`)}>
+                            <f-icon icon={icon} i-s='duotone/outline'/>
+                        </li>}
+                    </ul>
+                    <Code>{`<f-icon icon='${icon}' i-s='${styleName}'></f-icon>`}</Code>
+                    <ul className='btn-list'>{
+                        [ 'SVG', 'PNG', 'WebP' ].map(i => <li>{i}</li>)
+                    }</ul>
+                </div>
             </div>
-            <ul className='btn-list'>
-                {currentIcon.styles.includes('solid') && <li onClick={() => go(router, `icon/regular/solid/${icon}`)}>
-                    <f-icon icon={icon}/>
-                </li>}
-                {currentIcon.styles.includes('outline') && <li onClick={() => go(router, `icon/regular/outline/${icon}`)}>
-                    <f-icon icon={icon} i-s='outline'/>
-                </li>}
-                {currentIcon.styles.includes('duotone/solid') && <li onClick={() => go(router, `icon/duotone/solid/${icon}`)}>
-                    <f-icon icon={icon} i-s='duotone/solid'/>
-                </li>}
-                {currentIcon.styles.includes('duotone/outline') && <li onClick={() => go(router, `icon/duotone/outline/${icon}`)}>
-                    <f-icon icon={icon} i-s='duotone/outline'/>
-                </li>}
-            </ul>
-            <Code>{`<f-icon icon='${icon}' i-s='${styleName}'></f-icon>`}</Code>
         </div>
     ) : <NotFound family={family} style={style} icon={icon}/>;
 }
