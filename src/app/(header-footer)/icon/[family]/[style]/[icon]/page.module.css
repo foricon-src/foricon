@@ -20,19 +20,19 @@
         gap: var(--spacing-mili);
 
         & > :first-child {
+            border-radius: var(--bdr-rad);
+            border: 1px solid var(--dk-gray);
+            display: grid;
+            grid-template-rows: max-content;
+            padding: var(--spacing-mili);
+
             & > ul > li {
                 flex-grow: 1;
                 font-size: 1.4rem;
                 padding: 15px;
             }
             & > div {
-                border-radius: var(--bdr-rad);
-                border: 1px solid var(--dk-gray);
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 font-size: 6rem;
-                margin-top: var(--spacing-mili);
             }
         }
         & > :last-child {
