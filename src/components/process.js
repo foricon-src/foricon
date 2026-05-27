@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { get, ref } from 'firebase/database';
 import { db } from './firebase';
@@ -16,12 +16,17 @@ export default function Process() {
     let user = useContext(UserContext);
     let icons = useContext(IconContext);
 
-    useEffect(() => {(async () => {
-        !globalThis.qSelec && location.reload();
+    let [ packageLoadded, setPackageLoadded ] = useState(false);
+    let [ isAnimating, setIsAnimating ] = useState(false);
 
-        timezone = new Date().getTimezoneOffset() / 60;
-        
-        while (user == null || !window.foriconPackageIsLoaded) await wait();
+    useEffect(() => {(async () => {
+        while (!window.foriconPackageIsLoaded) await wait();
+        setPackageLoadded(true);
+    })}, [])
+    useEffect(() => {(async () => {
+        if (user == null || !icons || !packageLoadded || isAnimating) return;
+
+        setIsAnimating(true);
 
         let loading = elemById('loading');
         if (loading) {
@@ -29,7 +34,7 @@ export default function Process() {
             await wait(.2);
             loading.remove();
         }
-    })()}, [ pathname ])
+    })()}, [ user, icons, packageLoadded ])
     useEffect(() => {
         if (!icons) return;
         qSelecA('.icon-count').forEach(
