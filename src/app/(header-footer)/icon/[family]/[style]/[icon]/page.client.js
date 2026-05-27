@@ -59,13 +59,49 @@ export default function PageClient({ params }) {
                     <div>
                         <h6>Unicodes</h6>
                         <ul className='btn-list'>{
-                            currentIcon.unicodes[styleName.replace('/', '-')].split('|').map(i => <li key={i}>{i}</li>)
+                            currentIcon.unicodes[styleName.replace('/', '-')].split('|').map(i =>
+                                <li key={i} onClick={() => {
+                                    navigator.clipboard.writeText(i);
+                                    notify('success', {
+                                        en: 'Copied to clipboard',
+                                        vi: 'Đã sao chép vào bộ nhớ tạm',
+                                        fr: 'Copié dans le presse-papiers',
+                                        it: 'Copiato negli appunti',
+                                        kr: '클립보드에 복사됨',
+                                        ja: 'クリップボードにコピーされました',
+                                        de: 'In die Zwischenablage kopiert',
+                                        nl: 'Gekopieerd naar het klembord',
+                                        dk: 'Kopieret til udklipsholderen',
+                                        pt: 'Copiado para a área de transferência',
+                                        es: 'Copiado al portapapeles',
+                                        ru: 'Скопировано в буфер обмена',
+                                    }[lang]);
+                                }}>{i}</li>
+                            )
                         }</ul>
                     </div>
                     <div>
                         <h6>Glyphs</h6>
                         <ul className='btn-list'>{
-                            currentIcon.glyphs[styleName.replace('/', '-')].split('').map(i => <li key={i}>{i}</li>)
+                            currentIcon.glyphs[styleName.replace('/', '-')].split('').map(i =>
+                                <li key={i} onClick={() => {
+                                    navigator.clipboard.writeText(i);
+                                    notify('success', {
+                                        en: 'Copied to clipboard',
+                                        vi: 'Đã sao chép vào bộ nhớ tạm',
+                                        fr: 'Copié dans le presse-papiers',
+                                        it: 'Copiato negli appunti',
+                                        kr: '클립보드에 복사됨',
+                                        ja: 'クリップボードにコピーされました',
+                                        de: 'In die Zwischenablage kopiert',
+                                        nl: 'Gekopieerd naar het klembord',
+                                        dk: 'Kopieret til udklipsholderen',
+                                        pt: 'Copiado para a área de transferência',
+                                        es: 'Copiado al portapapeles',
+                                        ru: 'Скопировано в буфер обмена',
+                                    }[lang]);
+                                }}><f-icon>{i}</f-icon></li>
+                            )
                         }</ul>
                     </div>
                     <div>
