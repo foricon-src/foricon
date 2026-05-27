@@ -1,5 +1,6 @@
 .wrapper {
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
+    padding: var(--spacing-default) 0;
     flex-direction: column;
 
     & > f-icon {
@@ -15,8 +16,9 @@
         margin: 5px 0 var(--spacing-mili);
     }
     & > form > label {
-        margin: var(--spacing-small) 0 0 !important;
+        margin: 0 !important;
         width: 260px;
+        transition: var(--df-trans), width .5s ease;
 
         &:focus-within {
             width: 400px;
