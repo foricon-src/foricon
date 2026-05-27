@@ -9,24 +9,34 @@ export default function Loading() {
     let icons = useContext(IconContext);
 
     let [ packageLoadded, setPackageLoadded ] = useState(false);
-    let [ isAnimating, setIsAnimating ] = useState(false);
-    let [ opacity, setOpacity ] = useState(1);
     let [ done, setDone ] = useState(false);
+    let [ opacity, setOpacity ] = useState(1);
 
-    useEffect(() => {(async () => {
-        while (!window.foriconPackageIsLoaded) await wait();
-        setPackageLoadded(true);
-    })()}, [])
-    useEffect(() => {(async () => {
-        console.log(user, !icons, !packageLoadded, isAnimating)
-        if (user == null || !icons || !packageLoadded || isAnimating) return;
+    let ready = user != null && icons && packageLoadded;
 
-        setIsAnimating(true);
+    useEffect(() => {
+        let cancelled = false;
+        
+        (async () => {
+            while (!window.foriconPackageIsLoaded) await wait();
+            !cancelled && setPackageLoadded(true);
+        })()
+        
+        return () => cancelled = true;
+    }, [])
+    useEffect(() => {
+        if (user == null || !icons || !packageLoadded) return;
 
-        setOpacity(0);
-        await wait(.2);
-        setDone(true);
-    })()}, [ user, icons, packageLoadded ])
+        let cancelled = false;
+
+        (async () => {
+            setOpacity(0);
+            await wait(.2);
+            !cancelled && setDone(true);
+        })()
+
+        return () => cancelled = true;
+    }, [ ready ])
 
     return !done && <div id='loading' style={{ opacity }}>
         <div id='loading_shadow'></div>
