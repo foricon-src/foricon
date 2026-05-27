@@ -3,7 +3,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { UserContext } from './user';
 import { IconContext } from './icons';
-import 'Pag/global.css';
 
 export default function Loading() {
     let user = useContext(UserContext);
@@ -19,6 +18,7 @@ export default function Loading() {
         setPackageLoadded(true);
     })}, [])
     useEffect(() => {(async () => {
+        console.log(user, !icons, !packageLoadded, isAnimating)
         if (user == null || !icons || !packageLoadded || isAnimating) return;
 
         setIsAnimating(true);
