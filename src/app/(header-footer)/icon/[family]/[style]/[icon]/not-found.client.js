@@ -4,7 +4,7 @@ import { LanguageContext } from 'Com/language';
 import { Capital } from 'Com/string-tools';
 import cssStyle from './not-found.module.css';
 
-export function NotFound({ iconName, family, style, styleExist, icon }) {
+export function NotFound({ iconName, family, style, exist, icon }) {
     let router = useRouter();
     let lang = useContext(LanguageContext);
 
@@ -15,13 +15,13 @@ export function NotFound({ iconName, family, style, styleExist, icon }) {
     return (
         <div className={`center-middle ${cssStyle.wrapper}`}>
             <f-icon icon='face-frown' className='auto-line-height'/>
-            <h3>{styleExist ? 'Icon not available' : 'Icon not found'}</h3>
+            <h3>{exist ? 'Icon not available' : 'Icon not found'}</h3>
             {
-                !styleExist
+                !exist && icon
                     ? <p><b>{iconName}</b> icon is not available in <b>{format(family, style)}</b> style</p>
                     : <p>There is no icon named <b>{iconName}</b> in our library so far</p>
             }
-            {!styleExist &&
+            {!exist && icon &&
                 <>
                     <p>Fortunately, <b>{iconName}</b> is available in:</p>
                     <ul className='btn-list'>{
