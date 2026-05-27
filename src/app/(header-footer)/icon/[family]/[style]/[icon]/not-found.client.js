@@ -25,7 +25,7 @@ export function NotFound({ iconName, family, style, styleExist, icon }) {
                             let [ a, b ] = i.split('/');
                             let f = b ? a : 'regular';
                             let s = b || a;
-                            return <li onClick={() => go(router, `/icon/${f}/${s}/${iconName}`)}>
+                            return <li key={i} onClick={() => go(router, `/icon/${f}/${s}/${iconName}`)}>
                                 <f-icon icon={icon} i-s={i}/>
                                 <span>{styleName}</span>
                             </li>
