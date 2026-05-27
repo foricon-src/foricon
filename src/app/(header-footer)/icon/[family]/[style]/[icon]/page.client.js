@@ -31,9 +31,6 @@ export default function PageClient({ params }) {
                 }</ul>
             </div>
             <div>
-                <div className={`center-middle ${cssStyle.iconView}`}>
-                    <f-icon icon={icon} i-s={styleName} className='auto-line-height'/>
-                </div>
                 <div>
                     <ul className='btn-list darker'>
                         {
@@ -53,6 +50,11 @@ export default function PageClient({ params }) {
                             })
                         }
                     </ul>
+                    <div className='center-middle'>
+                        <f-icon icon={icon} i-s={styleName} className='auto-line-height'/>
+                    </div>
+                </div>
+                <div>
                     <Code>{`<f-icon icon='${icon}'${styleName == 'solid' ? '' : ` i-s='${styleName}'`}></f-icon>`}</Code>
                     <div>
                         <h6>Unicodes</h6>
