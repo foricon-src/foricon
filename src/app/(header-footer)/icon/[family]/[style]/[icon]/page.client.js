@@ -67,7 +67,7 @@ export default function PageClient({ params }) {
                     </div>
                     <div>
                         <h6>Glyphs</h6>
-                        <ul className='btn-list'>{
+                        <ul className='btn-list' style={{ fontFamily: 'Foricon Beta' }}>{
                             currentIcon.glyphs[styleName.replace('/', '-')].split('').map(i => <li key={i}>{i}</li>)
                         }</ul>
                     </div>

@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import { LanguageContext } from 'Com/language';
 import cssStyle from './not-found.module.css';
 
 export function NotFound({ icon, styleName, iconExist, styleExist }) {
+    let lang = useContext(LanguageContext);
+
     return (
         <div className={`center-middle ${cssStyle.wrapper}`}>
             <f-icon icon='face-frown' className='auto-line-height'/>
