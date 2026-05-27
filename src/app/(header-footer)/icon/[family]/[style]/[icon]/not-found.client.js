@@ -4,16 +4,16 @@ import cssStyle from './not-found.module.css';
 
 export function NotFound({ icon, styleName, iconExist, styleExist }) {
     let lang = useContext(LanguageContext);
-
+console.log(styleExist)
     return (
         <div className={`center-middle ${cssStyle.wrapper}`}>
             <f-icon icon='face-frown' className='auto-line-height'/>
             <h3>{styleExist ? 'Icon not available' : 'Icon not found'}</h3>
-            <p>{
+            {
                 styleExist
-                    ? `${icon} icon is not available in ${styleName}`
-                    : `There's no icon named ${icon} in our library so far`
-            }</p>
+                    ? <p><b>{icon}</b> icon is not available in <b>{styleName}</b></p>
+                    : <p>There is no icon named <b>{icon}</b> in our library so far</p>
+            }
             <form action='/search'>
                 <label>
                     <f-icon icon='magnifying-glass' i-s='outline'/>

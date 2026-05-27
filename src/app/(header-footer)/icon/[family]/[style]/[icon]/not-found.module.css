@@ -1,5 +1,6 @@
 .wrapper {
     height: calc(100vh - 70px);
+    flex-direction: column;
 
     & > f-icon {
         font-size: 6rem;
@@ -9,5 +10,9 @@
     }
     & > form {
         max-width: 400px;
+
+        & > label {
+            margin-bottom: 0;
+        }
     }
 }
