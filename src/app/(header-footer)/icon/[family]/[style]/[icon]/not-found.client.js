@@ -22,7 +22,7 @@ export function NotFound({ iconName, family, style, styleExist, icon }) {
                 <>
                     <p>Fortunately, <b>{iconName}</b> is available in:</p>
                     <ul>{
-                        icon.styles.map(i => {
+                        icon?.styles.map(i => {
                             let [ a, b ] = i.split('/');
                             let f = b ? a : 'regular';
                             let s = b || a;
