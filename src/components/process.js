@@ -2,39 +2,12 @@
 
 import { useContext, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { get, ref } from 'firebase/database';
-import { db } from './firebase';
-import { useRouter } from 'next/navigation';
-import { LanguageContext } from './language';
-import { UserContext } from './user';
 import { IconContext } from './icons';
 
 export default function Process() {
-    let router = useRouter();
     let pathname = usePathname();
-    let lang = useContext(LanguageContext);
-    let user = useContext(UserContext);
     let icons = useContext(IconContext);
 
-    let [ packageLoadded, setPackageLoadded ] = useState(false);
-    let [ isAnimating, setIsAnimating ] = useState(false);
-
-    useEffect(() => {(async () => {
-        while (!window.foriconPackageIsLoaded) await wait();
-        setPackageLoadded(true);
-    })}, [])
-    useEffect(() => {(async () => {
-        if (user == null || !icons || !packageLoadded || isAnimating) return;
-
-        setIsAnimating(true);
-
-        let loading = elemById('loading');
-        if (loading) {
-            loading.style.opacity = '0';
-            await wait(.2);
-            loading.remove();
-        }
-    })()}, [ user, icons, packageLoadded ])
     useEffect(() => {
         if (!icons) return;
         qSelecA('.icon-count').forEach(

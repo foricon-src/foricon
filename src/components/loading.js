@@ -3,6 +3,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { UserContext } from './user';
 import { IconContext } from './icons';
+import 'Pag/global.css';
 
 export default function Loading() {
     let user = useContext(UserContext);
