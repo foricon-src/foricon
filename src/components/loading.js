@@ -16,7 +16,7 @@ export default function Loading() {
     useEffect(() => {(async () => {
         while (!window.foriconPackageIsLoaded) await wait();
         setPackageLoadded(true);
-    })}, [])
+    })()}, [])
     useEffect(() => {(async () => {
         console.log(user, !icons, !packageLoadded, isAnimating)
         if (user == null || !icons || !packageLoadded || isAnimating) return;
