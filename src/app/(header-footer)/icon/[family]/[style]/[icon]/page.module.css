@@ -44,7 +44,10 @@
                 border: 1px solid var(--dk-gray);
                 padding: var(--spacing-xxsmall);
                 margin-top: var(--spacing-mili);
-                
+
+                &:nth-of-type(2) > ul > li > f-icon {
+                    line-height: 27px;
+                }
                 & > h6 {
                     margin: 0;
                 }
