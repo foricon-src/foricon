@@ -1,7 +1,13 @@
 .main {
     padding: var(--spacing-default);
 
-    & > h3 {
+    & > .top, & > div > :not(.iconView) > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    & > .top > h3 {
         margin-top: 0;
     }
     & > div {
@@ -17,10 +23,22 @@
             justify-content: center;
             font-size: 6rem;
         }
-        & > :not(.iconView) > :global(ul.darker) > li {
-            flex-grow: 1;
-            font-size: 1.4rem;
-            padding: 15px;
+        & > :not(.iconView){
+            & > :global(ul.darker) > li {
+                flex-grow: 1;
+                font-size: 1.4rem;
+                padding: 15px;
+            }
+            & > div {
+                border-radius: var(--bdr-rad);
+                border: 1px solid var(--gray);
+                padding: var(--spacing-xxsmall);
+                margin-bottom: var(--spacing-xxsmall);
+
+                & > h6 {
+                    margin: 0;
+                }
+            }
         }
     }
 }
