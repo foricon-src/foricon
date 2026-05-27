@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { LanguageContext } from 'Com/language';
-import cssStyle from './not-found.module.css';
 import { useRouter } from 'next/navigation';
+import { LanguageContext } from 'Com/language';
+import { Capital } from 'Com/string-tools';
+import cssStyle from './not-found.module.css';
 
 export function NotFound({ iconName, family, style, styleExist, icon }) {
     let router = useRouter();
