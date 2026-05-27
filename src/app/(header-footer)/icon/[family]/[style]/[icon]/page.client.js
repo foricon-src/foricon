@@ -17,8 +17,8 @@ export default function PageClient({ params }) {
     let lang = useContext(LanguageContext);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
     
-    return currentIcon && currentIcon.styles.includes(styleName) ? (
-        <div className={cssStyle.main}>
+    return currentIcon && currentIcon.styles.includes(styleName)
+        ? <div className={cssStyle.wrapper}>
             <div className={cssStyle.top}>
                 <h3>{icon}</h3>
                 <ul className='btn-list'>{
@@ -30,7 +30,7 @@ export default function PageClient({ params }) {
                     })
                 }</ul>
             </div>
-            <div>
+            <div className={cssStyle.main}>
                 <div>
                     <ul className='btn-list darker'>
                         {
@@ -92,5 +92,5 @@ export default function PageClient({ params }) {
                 </div>
             </div>
         </div>
-    ) : <NotFound family={family} style={style} icon={icon}/>;
+        : <NotFound family={family} style={style} icon={icon}/>;
 }

@@ -11,7 +11,7 @@ export default function PageClient() {
     let lang = useContext(LanguageContext);
 
     return (
-        <div className={cssStyle.main} id='404'>
+        <div className={cssStyle.wrapper} id='404'>
             <h1 className='auto-line-height'>404</h1>
             <h3>{
                 {

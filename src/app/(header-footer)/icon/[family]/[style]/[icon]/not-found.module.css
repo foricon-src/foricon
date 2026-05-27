@@ -1,4 +1,4 @@
-.main {
+.wrapper {
     height: calc(100vh - 70px);
 
     & > f-icon {

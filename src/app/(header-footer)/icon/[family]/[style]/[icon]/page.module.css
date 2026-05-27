@@ -1,4 +1,4 @@
-.main {
+.wrapper {
     padding: var(--spacing-default);
 
     & > .top, & > div > :last-child > div {
@@ -14,7 +14,7 @@
             margin: 0;
         }
     }
-    & > div {
+    & > .main {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-mili);
