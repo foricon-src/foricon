@@ -21,14 +21,14 @@ export function NotFound({ iconName, family, style, styleExist, icon }) {
             {!styleExist &&
                 <>
                     <p>Fortunately, <b>{iconName}</b> is available in:</p>
-                    <ul>{
+                    <ul className='btn-list'>{
                         icon?.styles.map(i => {
                             let [ a, b ] = i.split('/');
                             let f = b ? a : 'regular';
                             let s = b || a;
                             return <li key={i} onClick={() => go(router, `/icon/${f}/${s}/${iconName}`)}>
-                                <f-icon icon={icon} i-s={i}/>
-                                <span>{styleName}</span>
+                                <f-icon icon={iconName} i-s={i}/>
+                                <span>{i}</span>
                             </li>
                         })
                     }</ul>
