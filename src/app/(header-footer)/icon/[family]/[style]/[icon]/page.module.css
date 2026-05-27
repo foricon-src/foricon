@@ -1,7 +1,7 @@
 .main {
     padding: var(--spacing-default);
 
-    & > .top, & > div > :not(.iconView) > div {
+    & > .top, & > div > :last-child > div {
         display: flex;
         align-items: center;
         justify-content: space-between;
