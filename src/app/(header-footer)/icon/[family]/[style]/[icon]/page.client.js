@@ -57,13 +57,13 @@ export default function PageClient({ params }) {
                     <div>
                         <h6>Unicodes</h6>
                         <ul className='btn-list'>{
-                            currentIcon.unicodes.split('|').map(i => <li key={i}>{i}</li>)
+                            currentIcon.unicodes[styleName].split('|').map(i => <li key={i}>{i}</li>)
                         }</ul>
                     </div>
                     <div>
                         <h6>Glyphs</h6>
                         <ul className='btn-list'>{
-                            currentIcon.glyphs.split('').map(i => <li key={i}>{i}</li>)
+                            currentIcon.glyphs[styleName].split('').map(i => <li key={i}>{i}</li>)
                         }</ul>
                     </div>
                     <div>
