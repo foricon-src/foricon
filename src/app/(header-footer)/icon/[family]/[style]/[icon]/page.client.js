@@ -16,10 +16,8 @@ export default function PageClient({ params }) {
     let icons = useContext(IconContext);
     let lang = useContext(LanguageContext);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
-
-    let exist = !!currentIcon && currentIcon.styles.includes(styleName);
     
-    return exist
+    return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
             <div className={cssStyle.top}>
                 <h3>{icon}</h3>
@@ -94,5 +92,5 @@ export default function PageClient({ params }) {
                 </div>
             </div>
         </div>
-        : <NotFound iconName={icon} family={family} style={style} exist={exist} icon={currentIcon}/>;
+        : <NotFound family={family} style={style} icon={icon} currentIcon={currentIcon}/>;
 }

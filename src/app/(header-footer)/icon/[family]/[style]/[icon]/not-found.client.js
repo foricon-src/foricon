@@ -4,7 +4,7 @@ import { LanguageContext } from 'Com/language';
 import { Capital } from 'Com/string-tools';
 import cssStyle from './not-found.module.css';
 
-export function NotFound({ iconName, family, style, exist, icon }) {
+export function NotFound({ family, style, icon, currentIcon }) {
     let router = useRouter();
     let lang = useContext(LanguageContext);
 
@@ -15,22 +15,22 @@ export function NotFound({ iconName, family, style, exist, icon }) {
     return (
         <div className={`center-middle ${cssStyle.wrapper}`}>
             <f-icon icon='face-frown' className='auto-line-height'/>
-            <h3>{exist ? 'Icon not available' : 'Icon not found'}</h3>
+            <h3>{currentIcon ? 'Icon not available' : 'Icon not found'}</h3>
             {
-                !exist && icon
-                    ? <p><b>{iconName}</b> icon is not available in <b>{format(family, style)}</b> style</p>
-                    : <p>There is no icon named <b>{iconName}</b> in our library so far</p>
+                currentIcon
+                    ? <p><b>{icon}</b> icon is not available in <b>{format(family, style)}</b> style</p>
+                    : <p>There is no icon named <b>{icon}</b> in our library</p>
             }
-            {!exist && icon &&
+            {currentIcon &&
                 <>
-                    <p>Fortunately, <b>{iconName}</b> is available in:</p>
+                    <p>Fortunately, <b>{icon}</b> is available in:</p>
                     <ul className='btn-list'>{
-                        icon?.styles.map(i => {
+                        currentIcon?.styles.map(i => {
                             let [ a, b ] = i.split('/');
                             let f = b ? a : 'regular';
                             let s = b || a;
-                            return <li className='chip top' key={i} onClick={() => go(router, `/icon/${f}/${s}/${iconName}`)}>
-                                <f-icon icon={iconName} i-s={i}/>
+                            return <li className='chip top' key={i} onClick={() => go(router, `/icon/${f}/${s}/${icon}`)}>
+                                <f-icon icon={icon} i-s={i}/>
                                 <span>{format(f, s)}</span>
                             </li>
                         })
