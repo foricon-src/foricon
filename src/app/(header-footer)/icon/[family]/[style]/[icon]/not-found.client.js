@@ -1,9 +1,12 @@
 import { useContext } from 'react';
 import { LanguageContext } from 'Com/language';
 import cssStyle from './not-found.module.css';
+import { useRouter } from 'next/navigation';
 
-export function NotFound({ icon, styleName, iconExist, styleExist }) {
+export function NotFound({ iconName, family, style, styleExist, icon }) {
+    let router = useRouter();
     let lang = useContext(LanguageContext);
+    let styleName = `${Capital(family)} ${Capital(style)}`;
 
     return (
         <div className={`center-middle ${cssStyle.wrapper}`}>
@@ -11,11 +14,27 @@ export function NotFound({ icon, styleName, iconExist, styleExist }) {
             <h3>{styleExist ? 'Icon not available' : 'Icon not found'}</h3>
             {
                 !styleExist
-                    ? <p><b>{icon}</b> icon is not available in <b>{styleName}</b></p>
-                    : <p>There is no icon named <b>{icon}</b> in our library so far</p>
+                    ? <p><b>{iconName}</b> icon is not available in <b>{styleName}</b> style</p>
+                    : <p>There is no icon named <b>{iconName}</b> in our library so far</p>
+            }
+            {!styleExist &&
+                <>
+                    <p>Fortunately, <b>{iconName}</b> is available in:</p>
+                    <ul>{
+                        icon.styles.map(i => {
+                            let [ a, b ] = i.split('/');
+                            let f = b ? a : 'regular';
+                            let s = b || a;
+                            return <li onClick={() => go(router, `/icon/${f}/${s}/${iconName}`)}>
+                                <f-icon icon={icon} i-s={i}/>
+                                <span>{styleName}</span>
+                            </li>
+                        })
+                    }</ul>
+                </>
             }
             <form action='/search'>
-                <label onFocus={e => e.currentTarget.style.width = '400px'}>
+                <label>
                     <f-icon icon='magnifying-glass' i-s='outline'/>
                     <input name='k' placeholder={
                         {

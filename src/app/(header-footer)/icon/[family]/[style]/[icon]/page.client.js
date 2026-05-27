@@ -19,7 +19,7 @@ export default function PageClient({ params }) {
 
     let iconExist = !!currentIcon;
     let styleExist = iconExist && currentIcon.styles.includes(styleName);
-    console.log(currentIcon, iconExist, styleExist)
+    
     return styleExist
         ? <div className={cssStyle.wrapper}>
             <div className={cssStyle.top}>
@@ -95,5 +95,5 @@ export default function PageClient({ params }) {
                 </div>
             </div>
         </div>
-        : <NotFound icon={icon} styleName={styleName} iconExist={iconExist} styleExist={styleExist}/>;
+        : <NotFound iconName={icon} family={family} style={style} styleExist={styleExist} icon={currentIcon}/>;
 }
