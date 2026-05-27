@@ -33,8 +33,10 @@
                 border-radius: var(--bdr-rad);
                 border: 1px solid var(--gray);
                 padding: var(--spacing-xxsmall);
-                margin-bottom: var(--spacing-xxsmall);
 
+                & + div {
+                    margin-top: var(--spacing-xxsmall);
+                }
                 & > h6 {
                     margin: 0;
                 }

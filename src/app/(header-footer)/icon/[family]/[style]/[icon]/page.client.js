@@ -3,6 +3,7 @@
 import { useContext, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { IconContext } from 'Com/icons';
+import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import { NotFound } from './not-found.client';
 import cssStyle from './page.module.css';
@@ -13,6 +14,7 @@ export default function PageClient({ params }) {
 
     let router = useRouter();
     let icons = useContext(IconContext);
+    let lang = useContext(LanguageContext);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
     
     return currentIcon && currentIcon.styles.includes(styleName) ? (
@@ -65,7 +67,22 @@ export default function PageClient({ params }) {
                         }</ul>
                     </div>
                     <div>
-                        <h6>Download</h6>
+                        <h6>{
+                            {
+                                en: 'Download',
+                                vi: 'Tải xuống',
+                                fr: 'Télécharger',
+                                it: 'Scaricamento',
+                                kr: '다운로드',
+                                ja: 'ダウンロード',
+                                de: 'Herunterladen',
+                                nl: 'Download',
+                                dk: 'Download',
+                                pt: 'Transferir',
+                                es: 'Descargar',
+                                ru: 'Скачать',
+                            }[lang]
+                        }</h6>
                         <ul className='btn-list'>{
                             [ 'SVG', 'PNG', 'WebP' ].map(i => <li key={i}>{i}</li>)
                         }</ul>
