@@ -17,7 +17,7 @@
     & > form > label {
         margin: var(--spacing-small) 0 0 !important;
 
-        &:focus {
+        &:focus-within {
             width: 400px;
         }
     }
