@@ -7,7 +7,10 @@ import cssStyle from './not-found.module.css';
 export function NotFound({ iconName, family, style, styleExist, icon }) {
     let router = useRouter();
     let lang = useContext(LanguageContext);
-    let styleName = `${Capital(family)} ${Capital(style)}`;
+
+    function format(family, style) {
+        return `${Capital(family)} ${Capital(style)}`;
+    }
 
     return (
         <div className={`center-middle ${cssStyle.wrapper}`}>
@@ -15,7 +18,7 @@ export function NotFound({ iconName, family, style, styleExist, icon }) {
             <h3>{styleExist ? 'Icon not available' : 'Icon not found'}</h3>
             {
                 !styleExist
-                    ? <p><b>{iconName}</b> icon is not available in <b>{styleName}</b> style</p>
+                    ? <p><b>{iconName}</b> icon is not available in <b>{format(family, style)}</b> style</p>
                     : <p>There is no icon named <b>{iconName}</b> in our library so far</p>
             }
             {!styleExist &&
@@ -26,9 +29,9 @@ export function NotFound({ iconName, family, style, styleExist, icon }) {
                             let [ a, b ] = i.split('/');
                             let f = b ? a : 'regular';
                             let s = b || a;
-                            return <li key={i} onClick={() => go(router, `/icon/${f}/${s}/${iconName}`)}>
+                            return <li className='chip top' key={i} onClick={() => go(router, `/icon/${f}/${s}/${iconName}`)}>
                                 <f-icon icon={iconName} i-s={i}/>
-                                <span>{i}</span>
+                                <span>{format(f, s)}</span>
                             </li>
                         })
                     }</ul>
