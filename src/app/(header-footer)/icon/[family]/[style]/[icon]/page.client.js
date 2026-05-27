@@ -19,7 +19,7 @@ export default function PageClient({ params }) {
 
     let iconExist = !!currentIcon;
     let styleExist = iconExist && currentIcon.styles.includes(styleName);
-    
+    console.log(currentIcon, iconExist, styleExist)
     return styleExist
         ? <div className={cssStyle.wrapper}>
             <div className={cssStyle.top}>
