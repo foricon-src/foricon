@@ -1,11 +1,12 @@
-import Process from 'Com/process';
 import Script from 'next/script';
 import { GoogleAdSense } from 'next-google-adsense';
 import { LanguageProvider } from 'Com/language';
-import './globals.css';
 import { ThemeProvider } from 'Com/theme';
 import { UserProvider } from 'Com/user';
 import { IconProvider } from 'Com/icons';
+import Loading from 'Com/loading';
+import Process from 'Com/process';
+import './globals.css';
 
 export const metadata = {
     title: {
@@ -31,12 +32,7 @@ export default function RootLayout({ children }) {
                     <UserProvider>
                         <LanguageProvider>
                             <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
-                            <div id='loading'>
-                                <div id='loading_shadow'></div>
-                                <div id='loading_bounce'>
-                                    <div id='loading_spin'></div>
-                                </div>
-                            </div>
+                            <Loading/>
                             <div id='toast'/>
                             <ThemeProvider>{
                                 children
