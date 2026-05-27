@@ -8,14 +8,15 @@
     & > h3 {
         margin-bottom: 0;
     }
-    & > p {
+    & > p:has(+ ul) {
         margin-bottom: 0;
     }
     & > ul {
-        margin-top: 5px;
+        margin: 5px 0 var(--spacing-mili);
     }
     & > form > label {
         margin: var(--spacing-small) 0 0 !important;
+        width: 260px;
 
         &:focus-within {
             width: 400px;
