@@ -21,6 +21,38 @@ export default function PageClient({ params }) {
         ? <div className={cssStyle.wrapper}>
             <div className={cssStyle.top}>
                 <h3>{icon}</h3>
+                <ul className='btn-list'>
+                    <li>{
+                        true ? {
+                            en: 'Save',
+                            vi: 'Lưu',
+                            fr: 'Sauvegarder',
+                            it: 'Salva',
+                            kr: '구하다',
+                            ja: '保存',
+                            de: 'Speichern',
+                            nl: 'Redden',
+                            dk: 'Spare',
+                            pt: 'Guardar',
+                            es: 'Ahorrar',
+                            ru: 'Сохранять',
+                        }[lang] :
+                        {
+                            en: 'Saved',
+                            vi: 'Đã lưu',
+                            fr: 'Sauvé',
+                            it: 'Salvato',
+                            kr: '저장됨',
+                            ja: '保存済み',
+                            de: 'Gespeichert',
+                            nl: 'Opgeslagen',
+                            dk: 'Gemt',
+                            pt: 'Salvo',
+                            es: 'Guardado',
+                            ru: 'Сохранено',
+                        }[lang]
+                    }</li>
+                </ul>
                 <ul className='btn-list'>{
                     currentIcon.categories.map(category => {
                         let { icon, ...texts } = webData.categories[category];
