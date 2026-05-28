@@ -402,11 +402,11 @@ export default function PageClient() {
         return icons.flatMap(icon => {
             return (
                 family == 'all' && style == 'all' ? icon.styles :
-                family == 'all' ? [ '', 'duotone-', 'sharp-' ].map(prefix => `${prefix}${style}`) :
+                family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`) :
                 style == 'all' ? [ 'solid', 'outline' ].map(
-                    s => `${family == 'regular' ? '' : `${family}-`}${s}`
+                    s => `${family == 'regular' ? '' : `${family}/`}${s}`
                 ) :
-                [ `${family == 'regular' ? '' : `${family}-`}${style}` ]
+                [ `${family == 'regular' ? '' : `${family}/`}${style}` ]
             )
                 .filter(s => icon.styles.includes(s))
                 .filter(() => {
@@ -419,9 +419,7 @@ export default function PageClient() {
                         )
                     )
                 })
-                .filter(() =>
-                    !inSaved ? true : user.doc.savedIcons.some(i => i.name == icon.name)
-                )
+                .filter(() => !inSaved || user.doc.savedIcons.some(i => i.name == icon.name))
                 .map(style => ({ icon, style }))
         })
     }, [ loaded, search, family, style, selectedCategories, version, inSaved ]);
