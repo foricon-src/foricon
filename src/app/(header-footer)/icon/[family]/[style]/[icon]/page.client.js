@@ -42,10 +42,11 @@ export default function PageClient({ params }) {
 
                                 return <li
                                     key={i}
-                                    className={family == f2 && style == s && 'active'}
+                                    className={`chip top ${family == f2 && style == s ? ' active' : ''}`}
                                     onClick={() => go(router, `icon/${f2}/${s}/${icon}`)}
                                 >
                                     <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
+                                    <span>{`${Capital(f)} ${Capital(s)}`}</span>
                                 </li>
                             })
                         }
