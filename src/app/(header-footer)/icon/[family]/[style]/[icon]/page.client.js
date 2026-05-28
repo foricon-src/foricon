@@ -141,7 +141,7 @@ export default function PageClient({ params }) {
                                     onClick={() => go(router, `icon/${f2}/${s}/${icon}`)}
                                 >
                                     <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
-                                    <span>{`${Capital(f)} ${Capital(s)}`}</span>
+                                    <span>{`${Capital(f2)} ${Capital(s)}`}</span>
                                 </li>
                             })
                         }
