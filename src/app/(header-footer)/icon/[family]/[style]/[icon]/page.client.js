@@ -38,7 +38,7 @@ export default function PageClient({ params }) {
             <div className={cssStyle.top}>
                 <h3>{icon}</h3>
                 <ul className='btn-list'>
-                    <li onClick={() => {
+                    <li className='chip top' onClick={() => {
                         navigator.clipboard.writeText(icon);
                         notify('success', copiedToClipboard);
                     }}>
@@ -60,7 +60,7 @@ export default function PageClient({ params }) {
                             }[lang]
                         }</span>
                     </li>
-                    <li onClick={() => {
+                    <li className='chip top' onClick={() => {
                         navigator.clipboard.writeText(location.href);
                         notify('success', copiedToClipboard);
                     }}>
@@ -83,6 +83,7 @@ export default function PageClient({ params }) {
                         }</span>
                     </li>
                     <li className='chip top'>
+                        <f-icon icon='bookmark'/>
                         <span>{
                             true ? {
                                 en: 'Save',
