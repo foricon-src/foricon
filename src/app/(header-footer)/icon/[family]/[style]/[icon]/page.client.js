@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { IconContext } from 'Com/icons';
 import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
+import { Capital } from 'Com/string-tools';
 import { NotFound } from './not-found.client';
 import cssStyle from './page.module.css';
 
