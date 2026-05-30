@@ -1035,17 +1035,18 @@ export default function PageClient() {
                                 key={`${icon.name} | ${style}`}
                                 className={icon.name == selectedIcon?.name && style == selectedIcon?.style && 'active'}
                                 onClick={async () => {
+                                    let replaced = style.replace('/', '-');
                                     await wait(.2);
                                     selectIcon({
                                         name: icon.name,
                                         style,
-                                        glyphs: icon.glyphs[style],
-                                        unicodes: icon.unicodes[style].split('|'),
+                                        glyphs: icon.glyphs[replaced],
+                                        unicodes: icon.unicodes[replaced].split('|'),
                                         categories: icon.categories,
                                     })
                                 }
                             }>
-                                <f-icon icon={icon.name} i-s={style.replace('-', '/')}{...(() => {
+                                <f-icon icon={icon.name} i-s={style}{...(() => {
                                     let obj = {};
                                     version == 'b1' && (obj.b1 = '');
                                     return obj;
