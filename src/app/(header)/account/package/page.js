@@ -6,14 +6,14 @@ import { get, ref } from 'firebase/database';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { db } from 'Com/firebase';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 import usePage from 'Pag/(header)/account/use-page';
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
 import cssStyle from './page.module.css';
 
 export default function Page() {
-    let router = useRouter();
+    let go = useGo();
     let lang = useContext(LanguageContext);
     let user = useContext(UserContext);
 
@@ -91,7 +91,7 @@ export default function Page() {
                 <span id='reset'></span>
                 <hr/>
                 <ul className='btn-list'>
-                    <li onClick={() => Go('account/package/settings')}>
+                    <li onClick={() => go('account/package/settings')}>
                         <f-icon icon='gear'></f-icon>
                         <span>{
                             {
@@ -110,7 +110,7 @@ export default function Page() {
                             }[lang]
                         }</span>
                     </li>
-                    <li onClick={() => Go('account/package/download')}>
+                    <li onClick={() => go('account/package/download')}>
                         <f-icon icon='arrow-down-to-bracket' i-s='outline'></f-icon>
                         <span>{
                             {
@@ -165,7 +165,7 @@ export default function Page() {
             }}/>
             <code></code>
             <ul className='btn-list vertical large'>
-                <li onClick={() => Go('docs/styling-icons/basics')}>{
+                <li onClick={() => go('docs/styling-icons/basics')}>{
                     {
                         en: 'Guide about customizing icons',
                         vi: 'Hướng dẫn tùy chỉnh biểu tượng',

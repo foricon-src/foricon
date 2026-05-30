@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import { Capital } from 'Com/string-tools';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 import cssStyle from './not-found.module.css';
 
 export function NotFound({ family, style, icon, currentIcon }) {
-    let router = useRouter();
+    let go = useGo();
     let lang = useContext(LanguageContext);
 
     function format(family, style) {
@@ -96,7 +96,7 @@ export function NotFound({ family, style, icon, currentIcon }) {
                         let [ a, b ] = i.split('/');
                         let f = b ? a : 'regular';
                         let s = b || a;
-                        return <li className='chip top' key={i} onClick={() => Go(`/icon/${f}/${s}/${icon}`)}>
+                        return <li className='chip top' key={i} onClick={() => go(`/icon/${f}/${s}/${icon}`)}>
                             <f-icon icon={icon} i-s={i}/>
                             <span>{format(f, s)}</span>
                         </li>

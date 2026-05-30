@@ -11,7 +11,7 @@ import MethodPopup from 'Com/method-popup';
 import Img from 'Com/img';
 import recordLogin from 'Com/record-login';
 import { UserContext } from 'Com/user';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 import logo from 'Pub/foricon-f-logo.png';
 
 let texts = {
@@ -129,6 +129,7 @@ let texts = {
 
 export default function LogIn() {
     let router = useRouter();
+    let go = useGo();
     let params = useSearchParams();
     let pathname = usePathname();
     let lang = useContext(LanguageContext);
@@ -143,7 +144,7 @@ export default function LogIn() {
     
     useEffect(() => {(async () => {
         if (user == null) return;
-        user && Go('account');
+        user && go('account');
     })()}, [ pathname, user ])
 
     async function changePage(page, e, func) {

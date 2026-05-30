@@ -1,15 +1,14 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext } from 'react';
 import 'Com/utils';
 import { LanguageContext } from 'Com/language';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 import cssStyle from './not-found.module.css';
 
 export default function PageClient() {
-    let router = useRouter();
     let lang = useContext(LanguageContext);
+    let go = useGo();
 
     return (
         <div className={`center-middle ${cssStyle.wrapper}`} id='404'>
@@ -86,7 +85,7 @@ export default function PageClient() {
                 </form>
                 <hr/>
                 <ul className='btn-list vertical darker'>
-                    <li onClick={() => Go()}>
+                    <li onClick={() => go()}>
                         <f-icon icon='house'/>
                         <span>{
                             {
@@ -105,7 +104,7 @@ export default function PageClient() {
                             }[lang]
                         }</span>
                     </li>
-                    <li onClick={() => Go('/docs')}>
+                    <li onClick={() => go('/docs')}>
                         <f-icon icon='file-lines'/>
                         <span>{
                             {

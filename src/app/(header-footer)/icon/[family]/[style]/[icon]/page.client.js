@@ -6,7 +6,7 @@ import { IconContext } from 'Com/icons';
 import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import { Capital } from 'Com/string-tools';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 import { NotFound } from './not-found.client';
 import cssStyle from './page.module.css';
 
@@ -14,7 +14,7 @@ export default function PageClient({ params }) {
     let { family, style, icon } = JSON.parse(params.value);
     let styleName = [ family == 'duotone' && family, style ].filter(Boolean).join('/');
 
-    let router = useRouter();
+    let go = useGo();
     let icons = useContext(IconContext);
     let lang = useContext(LanguageContext);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
@@ -141,7 +141,7 @@ export default function PageClient({ params }) {
                         let { icon, ...texts } = webData.categories[category];
                         return <li key={category} dangerouslySetInnerHTML={{
                             __html: `${icon}<span>${texts[lang]}</span>`,
-                        }} onClick={() => Go(`search?c=${category}`)}/>
+                        }} onClick={() => go(`search?c=${category}`)}/>
                     })
                 }</ul>
             </div>
@@ -158,7 +158,7 @@ export default function PageClient({ params }) {
                                 return <li
                                     key={i}
                                     className={`chip top ${family == f2 && style == s ? ' active' : ''}`}
-                                    onClick={() => Go(`icon/${f2}/${s}/${icon}`)}
+                                    onClick={() => go(`icon/${f2}/${s}/${icon}`)}
                                 >
                                     <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
                                     <span>{`${Capital(f2)} ${Capital(s)}`}</span>

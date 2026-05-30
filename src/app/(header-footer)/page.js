@@ -7,12 +7,12 @@ import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
 import Img from 'Com/img';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './page.module.css';
 
 export default function Home() {
-    let router = useRouter();
+    let go = useGo();
     let lang = useContext(LanguageContext);
     let user = useContext(UserContext);
     let icons = useContext(IconContext);
@@ -276,19 +276,19 @@ export default function Home() {
                     }[lang]
                 }</h1>
                 <ul>
-                    <li onClick={() => Go('search?f=regular&s=solid')}>
+                    <li onClick={() => go('search?f=regular&s=solid')}>
                         <div>{IconFamiliesIcons()}</div>
                         <h5>Regular Solid</h5>
                     </li>
-                    <li onClick={() => Go('search?f=regular&s=outline')}>
+                    <li onClick={() => go('search?f=regular&s=outline')}>
                         <div>{IconFamiliesIcons('outline')}</div>
                         <h5>Regular Outline</h5>
                     </li>
-                    <li onClick={() => Go('search?f=duotone&s=solid')}>
+                    <li onClick={() => go('search?f=duotone&s=solid')}>
                         <div>{IconFamiliesIcons('duotone/solid')}</div>
                         <h5>Duotone Solid</h5>
                     </li>
-                    <li onClick={() => Go('search?f=duotone&s=outline')}>
+                    <li onClick={() => go('search?f=duotone&s=outline')}>
                         <div>{IconFamiliesIcons('duotone/outline')}</div>
                         <h5>Duotone Outline</h5>
                     </li>
@@ -370,7 +370,7 @@ export default function Home() {
                                     </li>
                                 ))
                             }
-                            <li onClick={() => Go('search')} className='chip top line'>
+                            <li onClick={() => go('search')} className='chip top line'>
                                 <f-icon icon='arrow-right' i-s='outline' className='auto-line-height'/>
                                 <span>{
                                     {

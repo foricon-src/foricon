@@ -50,8 +50,10 @@
         align-items: center;
         
         &:first-child {
+            padding-right: var(--spacing-mili);
+
             & > h6 {
-                margin-right: var(--spacing-medium);
+                margin-right: auto;
             }
             & > span {
                 cursor: var(--cursor-pointer);

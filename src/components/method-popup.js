@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation';
 import { signInWithPopup } from 'firebase/auth';
 import { auth } from './firebase';
 import recordLogin from './record-login';
-import Go from './go';
+import useGo from './go';
 
 export default function MethodPopup(provider, des) {
-    let router = useRouter();
+    let go = useGo();
 
     useEffect(() => {(async () => {
         let result = await signInWithPopup(auth, provider);
@@ -20,6 +20,6 @@ export default function MethodPopup(provider, des) {
         })
         await recordLogin(token);
 
-        Go(des);
+        go(des);
     })()}, [])
 }

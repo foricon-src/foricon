@@ -1,17 +1,18 @@
 import { useContext, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { UserContext } from 'Com/user';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 
 export default function usePage(func) {
     let router = useRouter();
     let pathname = usePathname();
     let user = useContext(UserContext);
+    let go = useGo();
 
     useEffect(() => {(async () => {
         if (user == null) return;
         if (!user) {
-            Go('login');
+            go('login');
             return;
         }
         while (!user.doc) await wait();

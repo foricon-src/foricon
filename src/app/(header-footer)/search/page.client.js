@@ -9,11 +9,11 @@ import { IconContext } from 'Com/icons';
 import { Lower, Similarity } from 'Com/string-tools';
 import Code from 'Com/code';
 import Classes from 'Com/classes';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 
 export default function PageClient() {
-    let router = useRouter();
+    let go = useGo();
     let lang = useContext(LanguageContext);
     let searchParams = useSearchParams();
     let user = useContext(UserContext);
@@ -1094,7 +1094,7 @@ export default function PageClient() {
                         let [ a, b ] = selectedIcon.style.split('/');
                         let f = b ? a : 'regular';
                         let s = b || a;
-                        Go(`icon/${f}/${a}/${selectedIcon.name}`);
+                        go(`icon/${f}/${a}/${selectedIcon.name}`);
                     }}>
                         <f-icon icon='arrow-up-right-from-square-2' i-s='outline'/>
                         {

@@ -5,11 +5,12 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from 'Com/firebase';
-import Go from 'Com/go';
+import useGo from 'Com/go';
 
 export const UserContext = createContext(false);
 export function UserProvider({ children }) {
     let [ user, setUser ] = useState(false);
+    let go = useGo();
 
     useEffect(() => {
         let { body } = document;
@@ -25,7 +26,7 @@ export function UserProvider({ children }) {
                 if (res.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
                     addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
                         ctrlKey && key == '/' && location.pathname != '/admin' && !document.activeElement.matches('textarea, input') &&
-                        Go('admin', 'new tab');
+                        go('admin', 'new tab');
                     }, false)
                     admin = true;
                 }

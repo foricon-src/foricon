@@ -7,17 +7,17 @@ import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { ThemeContext } from 'Com/theme';
 import Img from 'Com/img';
-import Go from './go';
+import useGo from './go';
 import logo from 'Pub/foricon-f-logo.png';
 import 'Com/utils';
 
 export default function Header() {
-    let [ open, setOpen ] = useState(false);
     let pathname = usePathname();
-    let router = useRouter();
+    let go = useGo();
     let lang = useContext(LanguageContext);
     let { isDark, setIsDark } = useContext(ThemeContext);
     let user = useContext(UserContext);
+    let [ open, setOpen ] = useState(false);
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) =>
@@ -104,7 +104,7 @@ export default function Header() {
                 )
             }</ul>
             <ul className='btn-list' name='right'>
-                <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => Go('languages')}>
+                <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => go('languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
                     <span>{
                         {
@@ -142,7 +142,7 @@ export default function Header() {
                         }[lang]
                     }</span>
                 </li>
-                <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => Go(user ? 'account' : 'login')}>
+                <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => go(user ? 'account' : 'login')}>
                     {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>}
                     <span>{
                         user ? user.doc.name : {
