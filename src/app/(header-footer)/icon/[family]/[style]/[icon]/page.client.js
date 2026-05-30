@@ -37,8 +37,9 @@ export default function PageClient({ params }) {
     return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
             <div className={cssStyle.top}>
+                <h3>{icon}</h3>
                 <ul className='btn-list'>
-                    <li>
+                    <li onClick={() => history.back()}>
                         <f-icon icon='chevron-left-small' i-s='outline'/>
                         <span>{
                             {
@@ -57,10 +58,7 @@ export default function PageClient({ params }) {
                             }[lang]
                         }</span>
                     </li>
-                </ul>
-                <h3>{icon}</h3>
-                <ul className='btn-list'>
-                    <li className='chip top' onClick={() => {
+                    <li className='chip top line' onClick={() => {
                         navigator.clipboard.writeText(icon);
                         notify('success', copiedToClipboard);
                     }}>
