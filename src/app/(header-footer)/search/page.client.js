@@ -565,6 +565,7 @@ export default function PageClient() {
     useEffect(() => { globalThis[user ? 'enable' : 'disable'](elemById('save')) }, [ user ]);
     useEffect(() => {
         if (!selectedIcon) return;
+        let { f, s } = GetFamilyAndStyle(selectedIcon.style);
         router.prefetch(`icon/${f}/${s}/${selectedIcon.name}`);
     }, [ selectedIcon ])
 
