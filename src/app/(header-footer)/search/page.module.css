@@ -50,6 +50,7 @@
         align-items: center;
         
         &:first-child {
+            grid-area: name;
             padding-right: var(--spacing-mili);
 
             & > h6 {
@@ -63,7 +64,7 @@
                     opacity: .75;
                 }
                 & + span {
-                    margin-left: var(--spacing-xxsmall);
+                    margin-left: var(--spacing-small);
                 }
                 & > f-icon {
                     margin-right: var(--spacing-micro);
