@@ -51,7 +51,7 @@
         
         &:first-child {
             & > h6 {
-                margin-right: var(--spacing-small);
+                margin-right: var(--spacing-medium);
             }
             & > span {
                 cursor: var(--cursor-pointer);
@@ -61,7 +61,7 @@
                     opacity: .75;
                 }
                 & + span {
-                    margin-right: var(--spacing-xxsmall);
+                    margin-left: var(--spacing-xxsmall);
                 }
                 & > f-icon {
                     margin-right: var(--spacing-micro);

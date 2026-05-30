@@ -1,10 +1,11 @@
 'use client';
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
-import { get, ref } from "firebase/database";
-import { auth, dbFirestore, db } from './firebase';
+import { get, ref } from 'firebase/database';
+import { auth, dbFirestore, db } from 'Com/firebase';
+import Go from 'Com/go';
 
 export const UserContext = createContext(false);
 export function UserProvider({ children }) {
@@ -24,7 +25,7 @@ export function UserProvider({ children }) {
                 if (res.uid == 'ud4lP1mhq4XvynG7qUlcsAxi0Q02') {
                     addEvLis(document, 'keydown', ({ ctrlKey, key }) => {
                         ctrlKey && key == '/' && location.pathname != '/admin' && !document.activeElement.matches('textarea, input') &&
-                        go(router, 'admin', true);
+                        Go('admin', 'new tab');
                     }, false)
                     admin = true;
                 }

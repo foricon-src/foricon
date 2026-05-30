@@ -1,10 +1,11 @@
 'use client';
 
-import { useContext, useEffect, useMemo, useState } from 'react';
-import cssStyle from './not-found.module.css';
-import { LanguageContext } from 'Com/language';
 import { useRouter } from 'next/navigation';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import 'Com/utils';
+import { LanguageContext } from 'Com/language';
+import Go from 'Com/go';
+import cssStyle from './not-found.module.css';
 
 export default function PageClient() {
     let router = useRouter();
@@ -85,7 +86,7 @@ export default function PageClient() {
                 </form>
                 <hr/>
                 <ul className='btn-list vertical darker'>
-                    <li onClick={() => go(router)}>
+                    <li onClick={() => Go()}>
                         <f-icon icon='house'/>
                         <span>{
                             {
@@ -104,7 +105,7 @@ export default function PageClient() {
                             }[lang]
                         }</span>
                     </li>
-                    <li onClick={() => go(router, '/docs')}>
+                    <li onClick={() => Go('/docs')}>
                         <f-icon icon='file-lines'/>
                         <span>{
                             {

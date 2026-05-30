@@ -6,6 +6,7 @@ import { IconContext } from 'Com/icons';
 import { LanguageContext } from 'Com/language';
 import Code from 'Com/code';
 import { Capital } from 'Com/string-tools';
+import Go from 'Com/go';
 import { NotFound } from './not-found.client';
 import cssStyle from './page.module.css';
 
@@ -35,7 +36,14 @@ export default function PageClient({ params }) {
     
     return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
-            <div className={cssStyle.top}>
+            <div className={cssStyle.top}>'
+                <ul className='btn-list'>
+                    <li>
+                        <f-icon icon='chevron-left-small' i-s='outline'/>
+                        <span>{
+                        }</span>
+                    </li>
+                </ul>
                 <h3>{icon}</h3>
                 <ul className='btn-list'>
                     <li className='chip top' onClick={() => {
@@ -45,18 +53,18 @@ export default function PageClient({ params }) {
                         <f-icon icon='clone'/>
                         <span>{
                             {
-                                en: 'Copy icon name',
-                                vi: 'Sao chép tên biểu tượng',
-                                fr: "Copier le nom de l'icône",
-                                it: "Copia il nome dell'icona",
-                                kr: '아이콘 이름 복사',
-                                ja: 'アイコン名をコピー',
-                                de: 'Symbolnamen kopieren',
-                                nl: 'Kopieer pictogramnaam',
-                                dk: 'Kopiér ikonnavn',
-                                pt: 'Copiar nome do ícone',
-                                es: 'Copiar el nombre del icono',
-                                ru: 'Скопировать название значка',
+                                en: 'Back',
+                                vi: 'Trở lại',
+                                fr: 'Dos',
+                                it: 'Indietro',
+                                kr: '뒤쪽에',
+                                ja: '戻る',
+                                de: 'Zurück',
+                                nl: 'Rug',
+                                dk: 'Tilbage',
+                                pt: 'Costas',
+                                es: 'Atrás',
+                                ru: 'Назад',
                             }[lang]
                         }</span>
                     </li>
@@ -121,7 +129,7 @@ export default function PageClient({ params }) {
                         let { icon, ...texts } = webData.categories[category];
                         return <li key={category} dangerouslySetInnerHTML={{
                             __html: `${icon}<span>${texts[lang]}</span>`,
-                        }} onClick={() => go(router, `search?c=${category}`)}/>
+                        }} onClick={() => Go(`search?c=${category}`)}/>
                     })
                 }</ul>
             </div>
@@ -138,7 +146,7 @@ export default function PageClient({ params }) {
                                 return <li
                                     key={i}
                                     className={`chip top ${family == f2 && style == s ? ' active' : ''}`}
-                                    onClick={() => go(router, `icon/${f2}/${s}/${icon}`)}
+                                    onClick={() => Go(`icon/${f2}/${s}/${icon}`)}
                                 >
                                     <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
                                     <span>{`${Capital(f2)} ${Capital(s)}`}</span>

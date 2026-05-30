@@ -1,8 +1,9 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
 import { LanguageContext } from 'Com/language';
+import Go from 'Com/go';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -33,7 +34,7 @@ export default function Page() {
                 }[lang]
             }</h3>
             <ul className='btn-list vertical large'>
-                <li onClick={() => go(router, 'account/security/change-password')}>{
+                <li onClick={() => Go('account/security/change-password')}>{
                     {
                         en: 'Change password',
                         vi: 'Thay đổi mật khẩu',
@@ -49,7 +50,7 @@ export default function Page() {
                         ru: 'Изменить пароль',
                     }[lang]
                 }</li>
-                <li onClick={() => go(router, 'account/security/login-history')}>{
+                <li onClick={() => Go('account/security/login-history')}>{
                     {
                         en: 'Login history',
                         vi: 'Lịch sử đăng nhập',

@@ -1,17 +1,18 @@
 'use client';
 
-import Link from "next/link";
-import { useState, useEffect, useContext } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
-import { collection, where, query, doc, getDocs, getDoc, setDoc } from "firebase/firestore";
-import { dbFirestore, auth } from "Com/firebase";
+import Link from 'next/link';
+import { useState, useEffect, useContext } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from 'firebase/auth';
+import { collection, where, query, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
+import { dbFirestore, auth } from 'Com/firebase';
 import { LanguageContext } from 'Com/language';
-import MethodPopup from "Com/method-popup";
-import Img from "Com/img";
-import recordLogin from "Com/record-login";
+import MethodPopup from 'Com/method-popup';
+import Img from 'Com/img';
+import recordLogin from 'Com/record-login';
+import { UserContext } from 'Com/user';
+import Go from 'Com/go';
 import logo from 'Pub/foricon-f-logo.png';
-import { UserContext } from "Com/user";
 
 let texts = {
     en: {
@@ -142,7 +143,7 @@ export default function LogIn() {
     
     useEffect(() => {(async () => {
         if (user == null) return;
-        user && go(router, 'account');
+        user && Go('account');
     })()}, [ pathname, user ])
 
     async function changePage(page, e, func) {

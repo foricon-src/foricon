@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { LanguageContext } from 'Com/language';
 import { UserContext } from "Com/user";
+import Go from 'Com/go';
 import usePage from "Pag/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
@@ -134,7 +135,7 @@ export default function Page() {
                 </tbody>
             </table>
             <ul className='btn-list vertical large'>
-                <li onClick={() => go(router, 'account/info/edit')}>{
+                <li onClick={() => Go('account/info/edit')}>{
                     {
                         en: 'Edit account info',
                         vi: 'Chỉnh sửa thông tin tài khoản',

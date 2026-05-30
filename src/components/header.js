@@ -3,11 +3,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import logo from 'Pub/foricon-f-logo.png';
 import { LanguageContext } from 'Com/language';
-import { UserContext } from './user';
+import { UserContext } from 'Com/user';
 import { ThemeContext } from 'Com/theme';
 import Img from 'Com/img';
+import Go from './go';
+import logo from 'Pub/foricon-f-logo.png';
 import 'Com/utils';
 
 export default function Header() {
@@ -103,7 +104,7 @@ export default function Header() {
                 )
             }</ul>
             <ul className='btn-list' name='right'>
-                <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => go(router, 'languages')}>
+                <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => Go('languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
                     <span>{
                         {
@@ -141,7 +142,7 @@ export default function Header() {
                         }[lang]
                     }</span>
                 </li>
-                <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => go(router, user ? 'account' : 'login')}>
+                <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => Go(user ? 'account' : 'login')}>
                     {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>}
                     <span>{
                         user ? user.doc.name : {

@@ -1,10 +1,11 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
 import { LanguageContext } from 'Com/language';
-import { UserContext } from "Com/user";
-import usePage from "Pag/(header)/account/use-page";
+import { UserContext } from 'Com/user';
+import Go from 'Com/go';
+import usePage from 'Pag/(header)/account/use-page';
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
 import cssStyle from './page.module.css';
@@ -73,25 +74,25 @@ export default function Page() {
                 <h2 id='greeting'></h2>
             </div>
             <ul className={cssStyle.services}>
-                <li onClick={() => go(router, 'stream-chilzymusic')}>
+                <li onClick={() => Go('stream-chilzymusic')}>
                     <img height='42' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsRBUY7vhKuPaXrUxG6BipYVH90Ir-TngNmNkSV9fT5hTVVr2M_80JyG00NJb8CEaxn1cZuIMfWPkeL25ais09c9-zCYs0W6GQQdZIArHMCXl0ZoD6AfUGikFbXhEfBLUXRH5j-x1xeLsBo0xWokoFtGm1nH8uhSEmqJI6r46XlDJzPC-DWbLstQF6DC4/s360/chilzymusic-m.png'/>
                     <h6>Foricon Music</h6>
                 </li>
-                <li onClick={() => go(router, 'hub')}>
+                <li onClick={() => Go('hub')}>
                     <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgu2RsPztgjhUls5ZfAiJvxJ95dXULPYSARYYoJYP-73-qp6GnkN09zQ7Lohja3UMJhq2Zjv78rM2LUOiKMuiE2ZT0xjPKKDw2CQqp5-r7ippkOzKrNWSXtLlMkcnd9K-z-QHo2o8GMbJnGTXd69U5TXvMKCrZZCb99XZZaOlJ9kcEQqa_EbY5qh3JhK0/s320/foricon-hub.png'/>
                     <h6>Foricon Hub</h6>
                 </li>
-                <li onClick={() => go(router, 'fortono')}>
+                <li onClick={() => Go('fortono')}>
                     <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq7qnPl4uWBfAYXhQ5quYi_hauu8gNbUU5HdkXNIZ8Efgcpjh85N0_0JLr2J0oeru8S6p8AQXIfVxJ7k0wDZ1MYNSKEQTbkpBFyWt82XelBk5-63143dbrFddbah2ZS-03q7FND2de7ec3SExU1MiU4C4xp-5ExivgiOAnTBimjh0NQBpSIL_SvzkL4Mg/s250/foricon-fotorno.png'/>
                     <h6>Foricon Fotorno</h6>
                 </li>
-                <li onClick={() => go(router, 'media')}>
+                <li onClick={() => Go('media')}>
                     <img height='45' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0AALCOpcZYC2PmsEX18BY8F0TDzQkvPuwkIB_-zWx8I3WAYdUdlkjdpO5IC27eJSABdzKPq1H1CuDC9Ml3XdBadycE5WikWWXVg5a4iZVUrixLR7EW0wDz8CxeLwNa7Zje3nFMUjJz6FKU9ef3KaIMNgxdnDOMFjKol2Wv5mmvIvnQXv58Kukbqlp5pk/s250/foricon-media.png'/>
                     <h6>Foricon Media</h6>
                 </li>
             </ul>
             <ul className='btn-list vertical large'>
-                <li onClick={() => go(router, 'pricing')}>{
+                <li onClick={() => Go('pricing')}>{
                     {
                         en: 'Foricon Plus plans',
                         vi: 'Các gói Foricon Plus',

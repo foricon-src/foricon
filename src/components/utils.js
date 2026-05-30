@@ -1085,20 +1085,6 @@ globalThis.formatDate = (date, lang) => {
 }
 
 /**
- * Goes to a page
- * @param {AppRouterInstance} router - Router
- * @param {str | undefined} value - Page to go to
- * @param {Boolean} openInNewTab - Whether the new page should be opened in new tab
- */
-globalThis.go = (router, value, openInNewTab) => {
-    if (!value) router.push('/');
-    else if (value[0] == '#') location.hash = value;
-    else if (value[0] == '?') router.push(value);
-    else if (value.startsWith('//') || value.startsWith('http')) window.open(value, '_blank');
-    else openInNewTab ? window.open(`/${value}`, '_blank') : router.push(`/${value}`);
-}
-
-/**
  * Selects a random item from an array
  * @param {Array} arr - Array
  * @returns Selected random item

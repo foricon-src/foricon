@@ -8,8 +8,9 @@ import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import { Lower, Similarity } from 'Com/string-tools';
 import Code from 'Com/code';
-import cssStyle from './page.module.css';
 import Classes from 'Com/classes';
+import Go from 'Com/go';
+import cssStyle from './page.module.css';
 
 export default function PageClient() {
     let router = useRouter();
@@ -1093,23 +1094,23 @@ export default function PageClient() {
                         let [ a, b ] = selectedIcon.style.split('/');
                         let f = b ? a : 'regular';
                         let s = b || a;
-                        go(router, `icon/${f}/${a}/${selectedIcon.name}`);
+                        Go(`icon/${f}/${a}/${selectedIcon.name}`);
                     }}>
-                        <f-icon icon='arrow-up-right-from-square-2'/>
+                        <f-icon icon='arrow-up-right-from-square-2' i-s='outline'/>
                         {
                             {
-                                en: 'Open in new tab',
-                                vi: 'Mở trong tab mới',
-                                fr: 'Ouvrir dans un nouvel onglet',
-                                it: 'Apri in una nuova scheda',
-                                kr: '새 탭에서 열기',
-                                ja: '新しいタブで開く',
-                                de: 'In neuem Tab öffnen',
-                                nl: 'Openen in een nieuw tabblad',
-                                dk: 'Åbn i ny fane',
-                                pt: 'Abrir em novo separador',
-                                es: 'Abrir en una pestaña nueva',
-                                ru: 'Открыть в новой вкладке',
+                                en: 'More details',
+                                vi: 'Thêm chi tiết',
+                                fr: 'Plus de détails',
+                                it: 'Maggiori dettagli',
+                                kr: '자세한 내용',
+                                ja: '詳細はこちら',
+                                de: 'Weitere Details',
+                                nl: 'Meer details',
+                                dk: 'Flere detaljer',
+                                pt: 'Mais detalhes',
+                                es: 'Más detalles',
+                                ru: 'Более подробная информация',
                             }[lang]
                         }
                     </span>

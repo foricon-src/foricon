@@ -3,12 +3,13 @@
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import Go from 'Com/go';
 
 export async function GoPage(router, page) {
     let main = qSelec('#sidebar-page > div:last-child');
     main.style.opacity = 0;
     await wait(.2);
-    go(router, page);
+    Go(page);
 }
 export function SidebarPageTransition({ name, children }) {
     let pathname = usePathname();

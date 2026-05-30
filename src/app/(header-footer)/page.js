@@ -7,6 +7,7 @@ import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
 import Img from 'Com/img';
+import Go from 'Com/go';
 import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './page.module.css';
 
@@ -275,19 +276,19 @@ export default function Home() {
                     }[lang]
                 }</h1>
                 <ul>
-                    <li onClick={() => go(router, 'search?f=regular&s=solid')}>
+                    <li onClick={() => Go('search?f=regular&s=solid')}>
                         <div>{IconFamiliesIcons()}</div>
                         <h5>Regular Solid</h5>
                     </li>
-                    <li onClick={() => go(router, 'search?f=regular&s=outline')}>
+                    <li onClick={() => Go('search?f=regular&s=outline')}>
                         <div>{IconFamiliesIcons('outline')}</div>
                         <h5>Regular Outline</h5>
                     </li>
-                    <li onClick={() => go(router, 'search?f=duotone&s=solid')}>
+                    <li onClick={() => Go('search?f=duotone&s=solid')}>
                         <div>{IconFamiliesIcons('duotone/solid')}</div>
                         <h5>Duotone Solid</h5>
                     </li>
-                    <li onClick={() => go(router, 'search?f=duotone&s=outline')}>
+                    <li onClick={() => Go('search?f=duotone&s=outline')}>
                         <div>{IconFamiliesIcons('duotone/outline')}</div>
                         <h5>Duotone Outline</h5>
                     </li>
@@ -369,7 +370,7 @@ export default function Home() {
                                     </li>
                                 ))
                             }
-                            <li onClick={() => go(router, 'search')} className='chip top line'>
+                            <li onClick={() => Go('search')} className='chip top line'>
                                 <f-icon icon='arrow-right' i-s='outline' className='auto-line-height'/>
                                 <span>{
                                     {

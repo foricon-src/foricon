@@ -1,12 +1,13 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { get, ref } from "firebase/database";
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { get, ref } from 'firebase/database';
 import { LanguageContext } from 'Com/language';
-import { UserContext } from "Com/user";
-import { db } from "Com/firebase";
-import usePage from "Pag/(header)/account/use-page";
+import { UserContext } from 'Com/user';
+import { db } from 'Com/firebase';
+import Go from 'Com/go';
+import usePage from 'Pag/(header)/account/use-page';
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
 import cssStyle from './page.module.css';
@@ -90,7 +91,7 @@ export default function Page() {
                 <span id='reset'></span>
                 <hr/>
                 <ul className='btn-list'>
-                    <li onClick={() => go(router, 'account/package/settings')}>
+                    <li onClick={() => Go('account/package/settings')}>
                         <f-icon icon='gear'></f-icon>
                         <span>{
                             {
@@ -109,7 +110,7 @@ export default function Page() {
                             }[lang]
                         }</span>
                     </li>
-                    <li onClick={() => go(router, 'account/package/download')}>
+                    <li onClick={() => Go('account/package/download')}>
                         <f-icon icon='arrow-down-to-bracket' i-s='outline'></f-icon>
                         <span>{
                             {
@@ -164,7 +165,7 @@ export default function Page() {
             }}/>
             <code></code>
             <ul className='btn-list vertical large'>
-                <li onClick={() => go(router, 'docs/styling-icons/basics')}>{
+                <li onClick={() => Go('docs/styling-icons/basics')}>{
                     {
                         en: 'Guide about customizing icons',
                         vi: 'Hướng dẫn tùy chỉnh biểu tượng',

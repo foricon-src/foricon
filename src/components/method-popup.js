@@ -1,10 +1,11 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { signInWithPopup } from 'firebase/auth';
 import { auth } from './firebase';
 import recordLogin from './record-login';
-import { useEffect } from 'react';
+import Go from './go';
 
 export default function MethodPopup(provider, des) {
     let router = useRouter();
@@ -19,6 +20,6 @@ export default function MethodPopup(provider, des) {
         })
         await recordLogin(token);
 
-        go(router, des);
+        Go(des);
     })()}, [])
 }
