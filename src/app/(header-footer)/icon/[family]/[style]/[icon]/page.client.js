@@ -36,7 +36,7 @@ export default function PageClient({ params }) {
     
     return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
-            <div className={cssStyle.top}>'
+            <div className={cssStyle.top}>
                 <ul className='btn-list'>
                     <li>
                         <f-icon icon='chevron-left-small' i-s='outline'/>
