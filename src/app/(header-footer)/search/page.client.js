@@ -1144,7 +1144,7 @@ export default function PageClient() {
                         `<f-icon icon='${selectedIcon?.name}'${
                             [
                                 '',
-                                selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`,
+                                selectedIcon?.style != 'solid' && `i-s='${selectedIcon?.style}'`,
                                 version == 'b1' && 'b1',
                             ].filter(i => typeof i == 'string').join(' ')
                         }></f-icon>`
