@@ -1089,7 +1089,12 @@ export default function PageClient() {
                             }[lang]
                         }
                     </span>
-                    <span>
+                    <span onClick={() => {
+                        let [ a, b ] = selectedIcon.style.split('/');
+                        let f = b ? a : 'regular';
+                        let s = b || a;
+                        go(router, `icon/${f}/${a}/${selectedIcon.name}`);
+                    }}>
                         <f-icon icon='arrow-up-right-from-square-2'/>
                         {
                             {
