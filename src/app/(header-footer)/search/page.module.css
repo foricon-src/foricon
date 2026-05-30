@@ -49,16 +49,23 @@
     & > div {
         align-items: center;
         
-        &:first-child > span {
-            margin-left: var(--spacing-xxsmall);
-            cursor: var(--cursor-pointer);
-            user-select: none;
-
-            &:hover {
-                opacity: .75;
+        &:first-child {
+            & > h6 {
+                margin-right: var(--spacing-small);
             }
-            & > f-icon {
-                margin-right: var(--spacing-micro);
+            & > span {
+                cursor: var(--cursor-pointer);
+                user-select: none;
+
+                &:hover {
+                    opacity: .75;
+                }
+                & + span {
+                    margin-right: var(--spacing-xxsmall);
+                }
+                & > f-icon {
+                    margin-right: var(--spacing-micro);
+                }
             }
         }
         &:not(:first-child) {

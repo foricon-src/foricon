@@ -1055,7 +1055,7 @@ export default function PageClient() {
             </div>
             <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
                 <div>
-                    <h6>{selectedIcon?.name || ''}</h6>
+                    <h6>{selectedIcon?.name}</h6>
                     <span>
                         <f-icon icon='bookmark' i-s='outline'/>
                         {
@@ -1089,6 +1089,25 @@ export default function PageClient() {
                             }[lang]
                         }
                     </span>
+                    <span>
+                        <f-icon icon='arrow-up-right-from-square-2'/>
+                        {
+                            {
+                                en: 'Open in new tab',
+                                vi: 'Mở trong tab mới',
+                                fr: 'Ouvrir dans un nouvel onglet',
+                                it: 'Apri in una nuova scheda',
+                                kr: '새 탭에서 열기',
+                                ja: '新しいタブで開く',
+                                de: 'In neuem Tab öffnen',
+                                nl: 'Openen in een nieuw tabblad',
+                                dk: 'Åbn i ny fane',
+                                pt: 'Abrir em novo separador',
+                                es: 'Abrir en una pestaña nueva',
+                                ru: 'Открыть в новой вкладке',
+                            }[lang]
+                        }
+                    </span>
                 </div>
                 <div className={cssStyle.code}>
                     <span>
@@ -1115,8 +1134,8 @@ export default function PageClient() {
                             [
                                 '',
                                 selectedIcon?.style == 'solid' ? '' : `i-s='${selectedIcon?.style}'`,
-                                version == 'b1' ? 'b1' : ''
-                            ].filter(Boolean).join(' ')
+                                version == 'b1' && 'b1',
+                            ].filter(i => typeof i == 'string').join(' ')
                         }></f-icon>`
                     }</Code>
                 </div>
