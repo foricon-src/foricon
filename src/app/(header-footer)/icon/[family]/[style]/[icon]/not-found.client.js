@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import { Capital } from 'Com/string-tools';
 import useGo from 'Com/go';
+import GetFamilyAndStyle from 'Com/get-family-n-style';
 import cssStyle from './not-found.module.css';
 
 export function NotFound({ family, style, icon, currentIcon }) {
@@ -93,9 +94,7 @@ export function NotFound({ family, style, icon, currentIcon }) {
                 }</p>
                 <ul className='btn-list'>{
                     currentIcon?.styles.map(i => {
-                        let [ a, b ] = i.split('/');
-                        let f = b ? a : 'regular';
-                        let s = b || a;
+                        let { f, s } = GetFamilyAndStyle(i);
                         return <li className='chip top' key={i} onClick={() => go(`/icon/${f}/${s}/${icon}`)}>
                             <f-icon icon={icon} i-s={i}/>
                             <span>{format(f, s)}</span>

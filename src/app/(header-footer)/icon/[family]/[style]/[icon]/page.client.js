@@ -4,6 +4,7 @@ import { useContext, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { IconContext } from 'Com/icons';
 import { LanguageContext } from 'Com/language';
+import GetFamilyAndStyle from 'Com/get-family-n-style';
 import Code from 'Com/code';
 import { Capital } from 'Com/string-tools';
 import useGo from 'Com/go';
@@ -151,21 +152,19 @@ export default function PageClient({ params }) {
                     <ul className='btn-list darker'>
                         {
                             currentIcon.styles.map(i => {
-                                let [ a, b ] = i.split('/');
-                                let f = b ? a : '';
-                                let f2 = f || 'regular';
-                                let s = b || a;
-                                let str = `icon/${f2}/${s}/${icon}`;
+                                let { f, s } = GetFamilyAndStyle(i);
+                                let f2 = f == 'regular' ? '' : f;
+                                let str = `icon/${f}/${s}/${icon}`;
 
                                 router.prefetch(`/${str}`);
 
                                 return <li
                                     key={i}
-                                    className={`chip top ${family == f2 && style == s ? ' active' : ''}`}
+                                    className={`chip top ${family == f && style == s ? ' active' : ''}`}
                                     onClick={() => go(str, 'replace')}
                                 >
-                                    <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
-                                    <span>{`${Capital(f2)} ${Capital(s)}`}</span>
+                                    <f-icon icon={icon} i-s={(f2 ? `${f2}/` : '') + s} className='auto-line-height'/>
+                                    <span>{`${Capital(f)} ${Capital(s)}`}</span>
                                 </li>
                             })
                         }

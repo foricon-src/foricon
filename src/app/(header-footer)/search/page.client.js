@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo, useContext } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Ad } from 'Com/ad';
+import GetFamilyAndStyle from 'Com/get-family-n-style';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
@@ -562,6 +563,10 @@ export default function PageClient() {
         updateTick();
     })()}, [ loaded, view ])
     useEffect(() => { globalThis[user ? 'enable' : 'disable'](elemById('save')) }, [ user ]);
+    useEffect(() => {
+        if (!selectedIcon) return;
+        router.prefetch(`icon/${f}/${s}/${selectedIcon.name}`);
+    }, [ selectedIcon ])
 
     return (
         <>
@@ -1092,12 +1097,8 @@ export default function PageClient() {
                         }
                     </span>
                     <span onClick={({ ctrlKey }) => {
-                        let [ a, b ] = selectedIcon.style.split('/');
-                        let f = b ? a : 'regular';
-                        let s = b || a;
-                        let str = `icon/${f}/${s}/${selectedIcon.name}`;
-                        router.prefetch(str);
-                        go(str, ctrlKey && 'new tab');
+                        let { f, s } = GetFamilyAndStyle(selectedIcon.style)
+                        go(`icon/${f}/${s}/${selectedIcon.name}`, ctrlKey && 'new tab');
                     }}>
                         <f-icon icon='arrow-up-right-from-square-2' i-s='outline'/>
                         {
