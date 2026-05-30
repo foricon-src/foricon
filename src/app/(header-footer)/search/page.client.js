@@ -13,6 +13,7 @@ import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 
 export default function PageClient() {
+    let router = useRouter();
     let go = useGo();
     let lang = useContext(LanguageContext);
     let searchParams = useSearchParams();
@@ -1090,11 +1091,13 @@ export default function PageClient() {
                             }[lang]
                         }
                     </span>
-                    <span onClick={() => {
+                    <span onClick={({ ctrlKey }) => {
                         let [ a, b ] = selectedIcon.style.split('/');
                         let f = b ? a : 'regular';
                         let s = b || a;
-                        go(`icon/${f}/${a}/${selectedIcon.name}`);
+                        let str = `icon/${f}/${s}/${selectedIcon.name}`;
+                        router.prefetch(str);
+                        go(str, ctrlKey && 'new tab');
                     }}>
                         <f-icon icon='arrow-up-right-from-square-2' i-s='outline'/>
                         {

@@ -14,6 +14,7 @@ export default function PageClient({ params }) {
     let { family, style, icon } = JSON.parse(params.value);
     let styleName = [ family == 'duotone' && family, style ].filter(Boolean).join('/');
 
+    let router = useRouter();
     let go = useGo();
     let icons = useContext(IconContext);
     let lang = useContext(LanguageContext);
@@ -154,11 +155,14 @@ export default function PageClient({ params }) {
                                 let f = b ? a : '';
                                 let f2 = f || 'regular';
                                 let s = b || a;
+                                let str = `icon/${f2}/${s}/${icon}`;
+
+                                router.prefetch(`/${str}`);
 
                                 return <li
                                     key={i}
                                     className={`chip top ${family == f2 && style == s ? ' active' : ''}`}
-                                    onClick={() => go(`icon/${f2}/${s}/${icon}`)}
+                                    onClick={() => go(str, 'replace')}
                                 >
                                     <f-icon icon={icon} i-s={(f ? `${f}/` : '') + s} className='auto-line-height'/>
                                     <span>{`${Capital(f2)} ${Capital(s)}`}</span>
