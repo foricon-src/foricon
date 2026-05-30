@@ -41,17 +41,6 @@ export default function PageClient({ params }) {
                     <li>
                         <f-icon icon='chevron-left-small' i-s='outline'/>
                         <span>{
-                        }</span>
-                    </li>
-                </ul>
-                <h3>{icon}</h3>
-                <ul className='btn-list'>
-                    <li className='chip top' onClick={() => {
-                        navigator.clipboard.writeText(icon);
-                        notify('success', copiedToClipboard);
-                    }}>
-                        <f-icon icon='clone'/>
-                        <span>{
                             {
                                 en: 'Back',
                                 vi: 'Trở lại',
@@ -65,6 +54,31 @@ export default function PageClient({ params }) {
                                 pt: 'Costas',
                                 es: 'Atrás',
                                 ru: 'Назад',
+                            }[lang]
+                        }</span>
+                    </li>
+                </ul>
+                <h3>{icon}</h3>
+                <ul className='btn-list'>
+                    <li className='chip top' onClick={() => {
+                        navigator.clipboard.writeText(icon);
+                        notify('success', copiedToClipboard);
+                    }}>
+                        <f-icon icon='clone'/>
+                        <span>{
+                            {
+                                en: 'Copy icon name',
+                                vi: 'Sao chép tên biểu tượng',
+                                fr: "Copier le nom de l'icône",
+                                it: "Copia il nome dell'icona",
+                                kr: '아이콘 이름 복사',
+                                ja: 'アイコン名をコピー',
+                                de: 'Symbolnamen kopieren',
+                                nl: 'Kopieer pictogramnaam',
+                                dk: 'Kopiér ikonnavn',
+                                pt: 'Copiar nome do ícone',
+                                es: 'Copiar el nombre del icono',
+                                ru: 'Скопировать название значка',
                             }[lang]
                         }</span>
                     </li>
