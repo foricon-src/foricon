@@ -25,8 +25,8 @@ export default function PageClient({ params }) {
     let [ isDropdownOpened, setIsDropdownOpened ] = useState(false);
     let [ priColor, setPriColor ] = useState('');
     let [ secColor, setSecColor ] = useState('');
-    let [ priOpacity, setPriOpacity ] = useState(1);
-    let [ secOpacity, setSecOpacity ] = useState(.4);
+    let [ priOpacity, setPriOpacity ] = useState('');
+    let [ secOpacity, setSecOpacity ] = useState('');
     let [ scale, setScale ] = useState('');
     let [ size, setSize ] = useState('');
     let [ rotate, setRotate ] = useState('');
@@ -390,8 +390,8 @@ export default function PageClient({ params }) {
                             <Range value={secOpacity} onInput={e => setSecOpacity(e.currentTarget.value)} max={1} step={.01}/>
                             <ul className='btn-list darker'>
                                 <li onClick={() => {
-                                    setPriOpacity(1);
-                                    setSecOpacity(.4);
+                                    setPriOpacity('');
+                                    setSecOpacity('');
                                 }}>
                                     <f-icon icon='rotate-right' i-s='outline'/>
                                     <span>{

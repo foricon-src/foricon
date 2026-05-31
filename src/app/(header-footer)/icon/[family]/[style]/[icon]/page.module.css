@@ -96,6 +96,9 @@
                     & > input {
                         width: 100%;
                     }
+                    & > label {
+                        margin-top: var(--spacing-micro);
+                    }
                 }
             }
         }
