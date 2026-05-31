@@ -9,7 +9,7 @@ import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import { Lower, Similarity } from 'Com/string-tools';
 import Code from 'Com/code';
-import Classes from 'Com/classes';
+import Join from 'Com/join';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 
@@ -713,7 +713,7 @@ export default function PageClient() {
                 </f-select>
                 <div className={cssStyle.options}>
                     <ul className='btn-list line-active'>
-                        <li className={Classes(family == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('all')}>
+                        <li className={Join(' ', family == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('all')}>
                             {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
                             <span>{
                                 {
@@ -732,7 +732,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={Classes(family == 'regular' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('regular')}>
+                        <li className={Join(' ', family == 'regular' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('regular')}>
                             {width < 1100 && <f-icon icon='square'/>}
                             <span>{
                                 {
@@ -751,7 +751,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={Classes(family == 'duotone' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('duotone')}>
+                        <li className={Join(' ', family == 'duotone' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('duotone')}>
                             {width < 1100 && <f-icon icon='clone' i-s='duotone/solid'/>}
                             <span>{
                                 {
@@ -772,7 +772,7 @@ export default function PageClient() {
                         </li>
                     </ul>
                     <ul className='btn-list line line-active'>
-                        <li className={Classes(style == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('all')}>
+                        <li className={Join(' ', style == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('all')}>
                             {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
                             <span>{
                                 {
@@ -791,7 +791,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={Classes(style == 'solid' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('solid')}>
+                        <li className={Join(' ', style == 'solid' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('solid')}>
                             {width < 1100 && <f-icon icon='circle'/>}
                             <span>{
                                 {
@@ -810,7 +810,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                         </li>
-                        <li className={Classes(style == 'outline' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('outline')}>
+                        <li className={Join(' ', style == 'outline' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('outline')}>
                             {width < 1100 && <f-icon icon='bars' i-s='outline'/>}
                             <span>{
                                 {

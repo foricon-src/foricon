@@ -8,6 +8,7 @@ import GetFamilyAndStyle from 'Com/get-family-n-style';
 import Code from 'Com/code';
 import { Capital } from 'Com/string-tools';
 import useGo from 'Com/go';
+import Join from 'Com/join';
 import { NotFound } from './not-found.client';
 import cssStyle from './page.module.css';
 
@@ -26,6 +27,7 @@ export default function PageClient({ params }) {
     let [ scale, setScale ] = useState('');
     let [ size, setSize ] = useState('');
     let [ rotate, setRotate ] = useState('');
+    let [ useFRotate, setUseFRotate ] = useState(false);
     let [ animation, setAnimation ] = useState('');
     let [ animationSpeed, setAnimationSpeed ] = useState('');
 
@@ -185,7 +187,15 @@ export default function PageClient({ params }) {
                         }
                     </ul>
                     <div className='center-middle'>
-                        <f-icon icon={icon} i-s={styleName} className='auto-line-height'/>
+                        <f-icon
+                            icon={icon}
+                            i-s={styleName}
+                            scale={scale}
+                            size={size}
+                            f-rotate={rotate}
+                            animation={Join(' ', animation, animationSpeed)}
+                            className='auto-line-height'
+                        />
                     </div>
                 </div>
                 <div className={cssStyle.right}>
@@ -306,7 +316,7 @@ export default function PageClient({ params }) {
                                 <input type='color' value={priColor} onInput={e => setPriColor(e.currentTarget.value)}/>
                                 <input type='color' value={secColor} onInput={e => setSecColor(e.currentTarget.value)}/>
                             </div>
-                            <ul>
+                            <ul className='btn-list'>
                                 <li onClick={() => {
                                     setPriColor('');
                                     setSecColor('');
@@ -413,8 +423,9 @@ export default function PageClient({ params }) {
                                 ))
                             }</ul>
                             <label>
-                                <input type='checkbox' value='pri'/>
-                                <div className='checkmark'></div>Primary
+                                <input type='checkbox' onChange={e => setUseFRotate(e.currentTarget.checked)}/>
+                                <div className='checkmark'/>
+                                <span>Use <span className='small-code'>f-rotate</span></span>
                             </label>
                         </div>
                         <div>

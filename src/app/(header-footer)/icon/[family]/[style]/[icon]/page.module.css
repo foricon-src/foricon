@@ -34,7 +34,7 @@
             'left right'
             'bottom bottom';
 
-        &, & > .left, & > .bottom > :last-child, & > .bottom > :last-child > div {
+        &, & > .left, & > .bottom > :last-child, & > .bottom > :last-child > div > div {
             display: grid;
         }
         &, & > .bottom > :last-child, & > .bottom > :last-child > div {
@@ -80,7 +80,7 @@
                     background-color: var(--gray);
                 }
             }
-            & > :last-child {
+            & > :last-child > div {
                 & > span {
                     margin-bottom: 5px;
                 }
