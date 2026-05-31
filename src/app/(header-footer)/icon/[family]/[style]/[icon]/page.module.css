@@ -84,11 +84,11 @@
                 column-gap: var(--spacing-small);
 
                 & > div {
-                    & > span > :is(div, ul) {
-                        margin-top: 5px;
-                    }
                     & > div {
                         gap: 5px;
+                    }
+                    & > div, & > ul {
+                        margin-top: 5px;
                         margin-bottom: var(--spacing-micro);
                     }
                     & > input {
