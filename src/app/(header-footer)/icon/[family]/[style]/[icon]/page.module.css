@@ -80,15 +80,20 @@
                     background-color: var(--gray);
                 }
             }
-            & > :last-child > div {
-                & > span {
-                    margin-bottom: 5px;
-                }
+            & > :last-child {
+                column-gap: var(--spacing-small);
+
                 & > div {
-                    gap: 5px;
-                }
-                & > :nth-child(3) {
-                    margin-top: var(--spacing-micro);
+                    & > span > :is(div, ul) {
+                        margin-top: 5px;
+                    }
+                    & > div {
+                        gap: 5px;
+                        margin-bottom: var(--spacing-micro);
+                    }
+                    & > input {
+                        width: 100%;
+                    }
                 }
             }
         }
