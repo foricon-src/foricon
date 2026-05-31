@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IconContext } from 'Com/icons';
 import { LanguageContext } from 'Com/language';
@@ -19,7 +19,13 @@ export default function PageClient({ params }) {
     let go = useGo();
     let icons = useContext(IconContext);
     let lang = useContext(LanguageContext);
+    let [ isDropdownOpened, setIsDropdownOpened ] = useState(false);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
+    
+    useEffect(() => {
+        let bottom = qSelec(`.${cssStyle.bottom}`);
+        bottom.style.height = isDropdownOpened ? `calc(${bottom.scrollHeight}px + 2px)` :  '89px';
+    }, [ isDropdownOpened ])
 
     let copiedToClipboard = {
         en: 'Copied to clipboard',
@@ -148,7 +154,7 @@ export default function PageClient({ params }) {
                 }</ul>
             </div>
             <div className={cssStyle.main}>
-                <div>
+                <div className={cssStyle.left}>
                     <ul className='btn-list darker'>
                         {
                             currentIcon.styles.map(i => {
@@ -173,7 +179,7 @@ export default function PageClient({ params }) {
                         <f-icon icon={icon} i-s={styleName} className='auto-line-height'/>
                     </div>
                 </div>
-                <div>
+                <div className={cssStyle.right}>
                     <Code>{`<f-icon icon='${icon}'${styleName == 'solid' ? '' : ` i-s='${styleName}'`}></f-icon>`}</Code>
                     <div>
                         <h6>{
@@ -247,6 +253,32 @@ export default function PageClient({ params }) {
                         <ul className='btn-list'>{
                             [ 'SVG', 'PNG', 'WebP' ].map(i => <li key={i}>{i}</li>)
                         }</ul>
+                    </div>
+                </div>
+                <div className={cssStyle.bottom}>
+                    <div onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
+                        <h6>{
+                            {
+                                en: 'Download',
+                                vi: 'Tải xuống',
+                                fr: 'Télécharger',
+                                it: 'Scaricamento',
+                                kr: '다운로드',
+                                ja: 'ダウンロード',
+                                de: 'Herunterladen',
+                                nl: 'Download',
+                                dk: 'Download',
+                                pt: 'Transferir',
+                                es: 'Descargar',
+                                ru: 'Скачать',
+                            }[lang]
+                        }</h6>
+                        <f-icon icon='chevron-left' f-rotate={isDropdownOpened && '90'}/>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Hello</li>
+                        </ul>
                     </div>
                 </div>
             </div>

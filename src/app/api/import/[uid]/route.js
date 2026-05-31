@@ -289,19 +289,19 @@ export function GET(_, { params: { uid }}) {
                         scale: 1.5;
                     }
                     
-                    &[rotate='90'] {
+                    &[rotate='90'], &[f-rotate='90'] {
                         rotate: 90deg;
                     }
-                    &[rotate='180'] {
+                    &[rotate='180'], &[f-rotate='180'] {
                         rotate: 180deg;
                     }
-                    &[rotate='270'] {
+                    &[rotate='270'], &[f-rotate='270'] {
                         rotate: 270deg;
                     }
-                    &[rotate='flip-x'] {
+                    &[rotate='flip-x'], &[f-rotate='flip-x'] {
                         transform: rotateX(180deg);
                     }
-                    &[rotate='flip-y'] {
+                    &[rotate='flip-y'], &[f-rotate='flip-y'] {
                         transform: rotateY(180deg);
                     }
                 }
