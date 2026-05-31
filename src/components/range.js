@@ -13,21 +13,20 @@ export function UpdateRange(elem, value) {
 }
 export function Range({ min = 0, max = 100, step, dfValue, value, className = '', onInput, ...rest }) {
     let [ v, setValue ] = useState(dfValue ?? min);
-
-    useEffect(() => { if (value != undefined) setValue(value) }, [ value ]);
+    let currentValue = value != undefined ? value : v;
     
     return <input
         type='range'
         min={min}
         max={max}
         step={step}
-        className={className + (dfValue == v ? ' default' : '')}
+        className={className + (dfValue == currentValue ? ' default' : '')}
         onInput={e => {
             setValue(Number(e.currentTarget.value));
             onInput(e);
         }}
-        style={{'--pos': `${(v - min) / (max - min) * 100}%`}}
-        value={v}
+        style={{'--pos': `${(currentValue - min) / (max - min) * 100}%`}}
+        value={currentValue}
         {...rest}
     />
 }
