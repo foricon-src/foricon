@@ -302,8 +302,16 @@ export default function PageClient({ params }) {
                                     ru: 'Шкала',
                                 }[lang]
                             }</span>
-                            <input type='color' onInput={e => setPriColor(e.currentTarget.value)}/>
-                            <input type='color' onInput={e => setSecColor(e.currentTarget.value)}/>
+                            <div>
+                                <input type='color' value={priColor} onInput={e => setPriColor(e.currentTarget.value)}/>
+                                <input type='color' value={secColor} onInput={e => setSecColor(e.currentTarget.value)}/>
+                            </div>
+                            <ul>
+                                <li onClick={() => {
+                                    setPriColor('');
+                                    setSecColor('');
+                                }}>Reset</li>
+                            </ul>
                         </div>
                         <div>
                             <span>{
@@ -404,6 +412,10 @@ export default function PageClient({ params }) {
                                     }</li>
                                 ))
                             }</ul>
+                            <label>
+                                <input type='checkbox' value='pri'/>
+                                <div className='checkmark'></div>Primary
+                            </label>
                         </div>
                         <div>
                             <span>{

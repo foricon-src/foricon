@@ -721,66 +721,68 @@ input[type='range'] {
     }
 }
 
-label:has(> input:not([type])) {
-    cursor: var(--cursor-pointer);
-    display: flex;
-    gap: 12px;
-    padding-left: 18px !important;
-    
-    > input:not([type]) {
-        padding: 0;
-        margin: 0;
-        border: none;
-        outline: none;
-        border-radius: 0;
-        width: 100%;
-    }
-    &:focus-within > f-icon {
-        color: var(--main-color);
-    }
-}
-div.checkboxes > label {
-    cursor: var(--cursor-pointer);
-    gap: var(--spacing-xxsmall);
-    user-select: none;
-    padding: var(--inner-spacing);
-    border-radius: var(--s-bdr-rad);
-    
-    &, > label > div.checkmark {
+label {
+    &:has(> input:not([type])) {
+        cursor: var(--cursor-pointer);
         display: flex;
-        align-items: center;
-    }
-    &:hover {
-        color: var(--title-color);
-        background-color: var(--lt-gray);
-    }
-    &:active {
-        color: var(--title-color);
-        background-color: var(--gray);
-    }
-    + label {
-        margin-top: 5px;
-    }
-    > input {
-        display: none;
-    }
-    > div.checkmark {
-        position: relative;
+        gap: 12px;
+        padding-left: 18px !important;
         
-        &:before, &:after {
-            font-family: 'Foricon Beta';
+        > input:not([type]) {
+            padding: 0;
+            margin: 0;
+            border: none;
+            outline: none;
+            border-radius: 0;
+            width: 100%;
         }
-        &:before {
-            content: '\e2fd';
-        }
-        input:checked + &:before {
-            content: '\e300';
-            position: absolute;
-            color: var(--dk-main-color);
-        }
-        input:checked + &:after {
-            content: '\e2fe';
+        &:focus-within > f-icon {
             color: var(--main-color);
+        }
+    }
+    &:has(> input[type='checkbox']) {
+        cursor: var(--cursor-pointer);
+        gap: var(--spacing-xxsmall);
+        user-select: none;
+        padding: var(--inner-spacing);
+        border-radius: var(--s-bdr-rad);
+        
+        &, > div.checkmark {
+            display: flex;
+            align-items: center;
+        }
+        &:hover {
+            color: var(--title-color);
+            background-color: var(--lt-gray);
+        }
+        &:active {
+            color: var(--title-color);
+            background-color: var(--gray);
+        }
+        + label {
+            margin-top: 5px;
+        }
+        > input {
+            display: none;
+        }
+        > div.checkmark {
+            position: relative;
+            
+            &:before, &:after {
+                font-family: 'Foricon Beta';
+            }
+            &:before {
+                content: '\e2fd';
+            }
+            input:checked + &:before {
+                content: '\e300';
+                position: absolute;
+                color: var(--dk-main-color);
+            }
+            input:checked + &:after {
+                content: '\e2fe';
+                color: var(--main-color);
+            }
         }
     }
 }
