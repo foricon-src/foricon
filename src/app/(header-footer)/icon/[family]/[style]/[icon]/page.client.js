@@ -11,6 +11,7 @@ import useGo from 'Com/go';
 import Join from 'Com/join';
 import { NotFound } from './not-found.client';
 import cssStyle from './page.module.css';
+import { Range } from 'Com/range';
 
 export default function PageClient({ params }) {
     let { family, style, icon } = JSON.parse(params.value);
@@ -24,6 +25,8 @@ export default function PageClient({ params }) {
     let [ isDropdownOpened, setIsDropdownOpened ] = useState(false);
     let [ priColor, setPriColor ] = useState('');
     let [ secColor, setSecColor ] = useState('');
+    let [ priOpacity, setPriOpacity ] = useState(1);
+    let [ secOpacity, setSecOpacity ] = useState(.4);
     let [ scale, setScale ] = useState('');
     let [ size, setSize ] = useState('');
     let [ rotate, setRotate ] = useState('');
@@ -190,6 +193,12 @@ export default function PageClient({ params }) {
                         <f-icon
                             icon={icon}
                             i-s={styleName}
+                            style={{
+                                '--primary-color': priColor,
+                                '--secondary-color': secColor,
+                                '--primary-opacity': priOpacity,
+                                '--secondary-opacity': secOpacity,
+                            }}
                             scale={scale}
                             size={size}
                             f-rotate={rotate}
@@ -309,7 +318,7 @@ export default function PageClient({ params }) {
                             <span>{
                                 {
                                     en: 'Color',
-                                    vi: 'Tỉ lệ',
+                                    vi: 'Màu',
                                     fr: 'Échelle',
                                     it: 'Scala',
                                     kr: '규모',
@@ -330,6 +339,32 @@ export default function PageClient({ params }) {
                                 <li onClick={() => {
                                     setPriColor('');
                                     setSecColor('');
+                                }}>Reset</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Opacity',
+                                    vi: 'Độ trong suốt',
+                                    fr: 'Échelle',
+                                    it: 'Scala',
+                                    kr: '규모',
+                                    ja: '規模',
+                                    de: 'Skala',
+                                    nl: 'Schaal',
+                                    dk: 'Skala',
+                                    pt: 'Balança',
+                                    es: 'Escala',
+                                    ru: 'Шкала',
+                                }[lang]
+                            }</span>
+                            <Range value={priOpacity} onInput={e => setPriOpacity(e.currentTarget.value)}/>
+                            <Range value={secOpacity} onInput={e => setSecOpacity(e.currentTarget.value)}/>
+                            <ul className='btn-list'>
+                                <li onClick={() => {
+                                    setPriOpacity(1);
+                                    setSecOpacity(.4);
                                 }}>Reset</li>
                             </ul>
                         </div>
