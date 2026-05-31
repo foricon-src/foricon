@@ -1,6 +1,9 @@
 .wrapper {
     padding: var(--spacing-default);
 
+    & h6 {
+        margin: 0;
+    }
     & > .top, & > .main > .left > div, & > .main > .bottom > :first-child {
         display: flex;
         align-items: center;
@@ -8,11 +11,12 @@
     & > .main > .right > div, & > .main > .bottom > :first-child {
         justify-content: space-between;
     }
-    & > .bottom, & > .main > :is(.left, .right) {
-        border: 1px solid var(--dk-gray);
-    }
     & > .main > .left, & > .main > .right > div, & > .main > .bottom {
+        border: 1px solid var(--dk-gray);
         border-radius: var(--bdr-rad);
+    }
+    & > .main > :is(.right, .bottom) > div {
+        padding: var(--spacing-xxsmall);
     }
 
     & > .top {
@@ -54,15 +58,10 @@
                 margin: 0;
             }
             & > div {
-                border: 1px solid var(--dk-gray);
-                padding: var(--spacing-xxsmall);
                 margin-top: var(--spacing-mili);
 
                 &:nth-of-type(2) > ul > li > f-icon {
                     line-height: 27px;
-                }
-                & > h6 {
-                    margin: 0;
                 }
             }
         }

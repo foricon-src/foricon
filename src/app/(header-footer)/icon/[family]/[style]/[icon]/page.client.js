@@ -39,7 +39,7 @@ export default function PageClient({ params }) {
     
     useEffect(() => {
         let bottom = qSelec(`.${cssStyle.bottom}`);
-        bottom && (bottom.style.height = `${isDropdownOpened ? bottom.scrollHeight + 2 : 89}px)`);
+        bottom && (bottom.style.height = `${isDropdownOpened ? bottom.scrollHeight + 2 : 89}px`);
     }, [ isDropdownOpened ])
     
     return !!currentIcon && currentIcon.styles.includes(styleName)
@@ -273,7 +273,7 @@ export default function PageClient({ params }) {
                                 ru: 'Скачать',
                             }[lang]
                         }</h6>
-                        <f-icon icon='chevron-left' i-s='outline' f-rotate={isDropdownOpened && '90'}/>
+                        <f-icon icon='chevron-right' i-s='outline' f-rotate={isDropdownOpened && '90'}/>
                     </div>
                     <div>
                         <ul>
