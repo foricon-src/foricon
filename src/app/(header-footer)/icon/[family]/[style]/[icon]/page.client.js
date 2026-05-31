@@ -212,11 +212,11 @@ export default function PageClient({ params }) {
                         `<f-icon icon='${icon}'${Join(
                             ' ',
                             '',
-                            styleName != 'solid' && `i-s='${styleName}'`,
-                            scale && `scale='${scale}'`,
-                            size && `size=${size}`,
-                            rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
-                            animation && `animation='${Join('-', animation, animationSpeed)}'`,
+                            !!styleName != 'solid' && `i-s='${styleName}'`,
+                            !!scale && `scale='${scale}'`,
+                            !!size && `size=${size}`,
+                            !!rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
+                            !!animation && `animation='${Join('-', animation, animationSpeed)}'`,
                         )}></f-icon>`
                     }</Code>
                     <div>
@@ -342,7 +342,7 @@ export default function PageClient({ params }) {
                                 }}>Reset</li>
                             </ul>
                         </div>
-                        <div>
+                        {family == 'duotone' && <div>
                             <span>{
                                 {
                                     en: 'Opacity',
@@ -367,7 +367,7 @@ export default function PageClient({ params }) {
                                     setSecOpacity(.4);
                                 }}>Reset</li>
                             </ul>
-                        </div>
+                        </div>}
                         <div>
                             <span>{
                                 {
