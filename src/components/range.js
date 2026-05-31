@@ -11,7 +11,7 @@ export function UpdateRange(elem, value) {
     elem.value = value;
     elem.dispatchEvent(new Event('input'));
 }
-export function Range({ min, max, step, dfValue, value, className = '', onInput, ...rest }) {
+export function Range({ min = 0, max = 100, step, dfValue, value, className = '', onInput, ...rest }) {
     let [ v, setValue ] = useState(value ?? dfValue);
     
     return <input
