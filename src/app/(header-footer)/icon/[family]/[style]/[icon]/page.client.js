@@ -217,6 +217,15 @@ export default function PageClient({ params }) {
                             !!size && `size=${size}`,
                             !!rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
                             !!animation && `animation='${Join('-', animation, animationSpeed)}'`,
+                            [ priColor, priOpacity, secColor, secOpacity ].some(i => i != '') && `style='${
+                                Join(
+                                    '; ',
+                                    priColor != '' && `--primary-color: ${priColor}`,
+                                    priOpacity != '' && `--primary-opacity: ${priOpacity}`,
+                                    secColor != '' && `--secondary-color: ${secColor}`,
+                                    secOpacity != '' && `--secondary-opacity: ${secOpacity}`,
+                                )
+                            }'`
                         )}></f-icon>`
                     }</Code>
                     <div>
@@ -339,7 +348,10 @@ export default function PageClient({ params }) {
                                 <li onClick={() => {
                                     setPriColor('');
                                     setSecColor('');
-                                }}>Reset</li>
+                                }}>
+                                    <f-icon icon='rotate-right' i-s='outline'/>
+                                    <span>Reset</span>
+                                </li>
                             </ul>
                         </div>
                         {family == 'duotone' && <div>
@@ -365,7 +377,25 @@ export default function PageClient({ params }) {
                                 <li onClick={() => {
                                     setPriOpacity(1);
                                     setSecOpacity(.4);
-                                }}>Reset</li>
+                                }}>
+                                    <f-icon icon='rotate-right' i-s='outline'/>
+                                    <span>{
+                                        {
+                                            en: 'Reset',
+                                            vi: 'Đặt lại',
+                                            fr: 'Réinitialiser',
+                                            it: 'Reset',
+                                            kr: '다시 놓기',
+                                            ja: 'リセット',
+                                            de: 'Zurücksetzen',
+                                            nl: 'Reset',
+                                            dk: 'Nulstil',
+                                            pt: 'Reiniciar',
+                                            es: 'Reiniciar',
+                                            ru: 'Перезагрузить',
+                                        }[lang]
+                                    }</span>
+                                </li>
                             </ul>
                         </div>}
                         <div>

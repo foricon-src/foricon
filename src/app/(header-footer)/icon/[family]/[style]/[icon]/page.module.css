@@ -85,15 +85,18 @@
                 column-gap: var(--spacing-small);
 
                 & > div {
-                    & > div {
-                        gap: 5px;
-                    }
                     & > div, & > ul {
                         margin-top: 5px;
+                    }
+                    & > div {
+                        gap: 5px;
                         margin-bottom: var(--spacing-micro);
                     }
                     & > input {
                         width: 100%;
+                    }
+                    & > ul:has(> :only-child) {
+                        margin: -15px;
                     }
                 }
             }
