@@ -12,9 +12,9 @@ export function UpdateRange(elem, value) {
     elem.dispatchEvent(new Event('input'));
 }
 export function Range({ min = 0, max = 100, step, dfValue, value, className = '', onInput, ...rest }) {
-    let [ v, setValue ] = useState(value ?? dfValue);
+    let [ v, setValue ] = useState(dfValue ?? min);
 
-    useEffect(() => { if (value) setValue(value) }, [ value ]);
+    useEffect(() => { value != undefined && setValue(value) }, [ value ]);
     
     return <input
         type='range'
