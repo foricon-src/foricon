@@ -19,7 +19,16 @@ export default function PageClient({ params }) {
     let go = useGo();
     let icons = useContext(IconContext);
     let lang = useContext(LanguageContext);
+
     let [ isDropdownOpened, setIsDropdownOpened ] = useState(false);
+    let [ priColor, setPriColor ] = useState('');
+    let [ secColor, setSecColor ] = useState('');
+    let [ scale, setScale ] = useState('');
+    let [ size, setSize ] = useState('');
+    let [ rotate, setRotate ] = useState('');
+    let [ animation, setAnimation ] = useState('');
+    let [ animationSpeed, setAnimationSpeed ] = useState('');
+
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
 
     let copiedToClipboard = {
@@ -39,7 +48,7 @@ export default function PageClient({ params }) {
     
     useEffect(() => {
         let bottom = qSelec(`.${cssStyle.bottom}`);
-        bottom && (bottom.style.height = `${isDropdownOpened ? bottom.scrollHeight + 2 : 89}px`);
+        bottom && (bottom.style.height = `${isDropdownOpened ? bottom.scrollHeight + 2 : 72}px`);
     }, [ isDropdownOpened ])
     
     return !!currentIcon && currentIcon.styles.includes(styleName)
@@ -259,26 +268,203 @@ export default function PageClient({ params }) {
                     <div onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
                         <h6>{
                             {
-                                en: 'Download',
-                                vi: 'Tải xuống',
-                                fr: 'Télécharger',
-                                it: 'Scaricamento',
-                                kr: '다운로드',
-                                ja: 'ダウンロード',
-                                de: 'Herunterladen',
-                                nl: 'Download',
-                                dk: 'Download',
-                                pt: 'Transferir',
-                                es: 'Descargar',
-                                ru: 'Скачать',
+                                en: 'Customize',
+                                vi: 'Tùy chỉnh',
+                                fr: 'Personnaliser',
+                                it: 'Personalizzare',
+                                kr: '맞춤 설정',
+                                ja: 'カスタマイズ',
+                                de: 'Anpassen',
+                                nl: 'Aanpassen',
+                                dk: 'Tilpas',
+                                pt: 'Personalizar',
+                                es: 'Personalizar',
+                                ru: 'Настроить',
                             }[lang]
                         }</h6>
                         <f-icon icon='chevron-right' i-s='outline' f-rotate={isDropdownOpened && '90'}/>
                     </div>
                     <div>
-                        <ul>
-                            <li>Hello</li>
-                        </ul>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Color',
+                                    vi: 'Tỉ lệ',
+                                    fr: 'Échelle',
+                                    it: 'Scala',
+                                    kr: '규모',
+                                    ja: '規模',
+                                    de: 'Skala',
+                                    nl: 'Schaal',
+                                    dk: 'Skala',
+                                    pt: 'Balança',
+                                    es: 'Escala',
+                                    ru: 'Шкала',
+                                }[lang]
+                            }</span>
+                            <input type='color' onInput={e => setPriColor(e.currentTarget.value)}/>
+                            <input type='color' onInput={e => setSecColor(e.currentTarget.value)}/>
+                        </div>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Scale',
+                                    vi: 'Tỉ lệ',
+                                    fr: 'Échelle',
+                                    it: 'Scala',
+                                    kr: '규모',
+                                    ja: '規模',
+                                    de: 'Skala',
+                                    nl: 'Schaal',
+                                    dk: 'Skala',
+                                    pt: 'Balança',
+                                    es: 'Escala',
+                                    ru: 'Шкала',
+                                }[lang]
+                            }</span>
+                            <ul className='btn-list darker'>{
+                                [ 'xsmaller', 'smaller', '', 'larger', 'xlarger' ].map(i => (
+                                    <li key={i} onClick={() => setScale(i)} className={scale == i && 'active'}>{
+                                        i || <f-icon icon='empty-set' i-s='outline'/>
+                                    }</li>
+                                ))
+                            }</ul>
+                        </div>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Scale',
+                                    vi: 'Tỉ lệ',
+                                    fr: 'Échelle',
+                                    it: 'Scala',
+                                    kr: '규모',
+                                    ja: '規模',
+                                    de: 'Skala',
+                                    nl: 'Schaal',
+                                    dk: 'Skala',
+                                    pt: 'Balança',
+                                    es: 'Escala',
+                                    ru: 'Шкала',
+                                }[lang]
+                            }</span>
+                            <ul className='btn-list darker'>{
+                                [ 'xsmaller', 'smaller', '', 'larger', 'xlarger' ].map(i => (
+                                    <li key={i} onClick={() => setScale(i)} className={scale == i && 'active'}>{
+                                        i || <f-icon icon='empty-set' i-s='outline'/>
+                                    }</li>
+                                ))
+                            }</ul>
+                        </div>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Size',
+                                    vi: 'Kích thước',
+                                    fr: 'Taille',
+                                    it: 'Misurare',
+                                    kr: '크기',
+                                    ja: 'サイズ',
+                                    de: 'Größe',
+                                    nl: 'Maat',
+                                    dk: 'Størrelse',
+                                    pt: 'Tamanho',
+                                    es: 'Tamaño',
+                                    ru: 'Размер',
+                                }[lang]
+                            }</span>
+                            <ul className='btn-list darker'>{
+                                [ 'smallest', 'smaller', 'small', '', 'large', 'larger', 'largest' ].map(i => (
+                                    <li key={i} onClick={() => setSize(i)} className={size == i && 'active'}>{
+                                        i || <f-icon icon='empty-set' i-s='outline'/>
+                                    }</li>
+                                ))
+                            }</ul>
+                        </div>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Rotate',
+                                    vi: 'Xoay',
+                                    fr: 'Tourner',
+                                    it: 'Ruotare',
+                                    kr: '회전하다',
+                                    ja: '回転',
+                                    de: 'Drehen',
+                                    nl: 'Draaien',
+                                    dk: 'Rotere',
+                                    pt: 'Girar',
+                                    es: 'Girar',
+                                    ru: 'Повернуть',
+                                }[lang]
+                            }</span>
+                            <ul className='btn-list darker'>{
+                                [ '', '90', '180', '270', 'flip-x', 'flip-y' ].map(i => (
+                                    <li key={i} onClick={() => setRotate(i)} className={rotate == i && 'active'}>{
+                                        i || <f-icon icon='empty-set' i-s='outline'/>
+                                    }</li>
+                                ))
+                            }</ul>
+                        </div>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Animation',
+                                    vi: 'Hoạt ảnh',
+                                    fr: 'Animation',
+                                    it: 'Animazione',
+                                    kr: '생기',
+                                    ja: 'アニメーション',
+                                    de: 'Animation',
+                                    nl: 'Animatie',
+                                    dk: 'Animation',
+                                    pt: 'Animação',
+                                    es: 'Animación',
+                                    ru: 'Анимация',
+                                }[lang]
+                            }</span>
+                            <ul className='btn-list darker'>{
+                                [
+                                    '',
+                                    'ltfade', 'fade', 'hvfade', 'ulfade',
+                                    'smbeat', 'beat', 'bgbeat', 'fadebeat',
+                                    'spin', 'spin-reverse',
+                                    'flip-x', 'flip-y', 'flip-xy',
+                                ].map(i => (
+                                    <li key={i} onClick={() => setAnimation(i)} className={animation == i && 'active'}>{
+                                        i || <f-icon icon='empty-set' i-s='outline'/>
+                                    }</li>
+                                ))
+                            }</ul>
+                        </div>
+                        <div>
+                            <span>{
+                                {
+                                    en: 'Animation speed',
+                                    vi: 'Tốc độ hoạt ảnh',
+                                    fr: "Vitesse d'animation",
+                                    it: 'Velocità di animazione',
+                                    kr: '애니메이션 속도',
+                                    ja: 'アニメーション速度',
+                                    de: 'Animationsgeschwindigkeit',
+                                    nl: 'Animatiesnelheid',
+                                    dk: 'Animationshastighed',
+                                    pt: 'Velocidade da animação',
+                                    es: 'Velocidad de animación',
+                                    ru: 'скорость анимации',
+                                }[lang]
+                            }</span>
+                            <ul className='btn-list darker'>{
+                                [
+                                    'xxslow', 'xslow', 'slow', 'semislow',
+                                    '',
+                                    'semifast', 'fast', 'xfast', 'xxfast',
+                                ].map(i => (
+                                    <li key={i} onClick={() => setAnimationSpeed(i)} className={animationSpeed == i && 'active'}>{
+                                        i || <f-icon icon='empty-set' i-s='outline'/>
+                                    }</li>
+                                ))
+                            }</ul>
+                        </div>
                     </div>
                 </div>
             </div>
