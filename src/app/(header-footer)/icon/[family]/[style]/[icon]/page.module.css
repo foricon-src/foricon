@@ -1,17 +1,17 @@
 .wrapper {
     padding: var(--spacing-default);
 
-    & > .top, & > div > .left > div, & > .bottom > :first-child {
+    & > .top, & > .main > .left > div, & > .main > .bottom > :first-child {
         display: flex;
         align-items: center;
     }
-    & > .main > .left > div, & > .main > .bottom > :first-child {
+    & > .main > .right > div, & > .main > .bottom > :first-child {
         justify-content: space-between;
     }
     & > .bottom, & > .main > :is(.left, .right) {
         border: 1px solid var(--dk-gray);
     }
-    & > .main > .left, & > .main > .right > div, & > .bottom {
+    & > .main > .left, & > .main > .right > div, & > .main > .bottom {
         border-radius: var(--bdr-rad);
     }
 
@@ -72,6 +72,7 @@
             & > :first-child {
                 border-bottom: 1px solid var(--dk-gray);
                 background-color: var(--lt-gray);
+                user-select: none;
 
                 &:hover {
                     background-color: var(--gray);
