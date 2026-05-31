@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Updates a range input
@@ -13,6 +13,8 @@ export function UpdateRange(elem, value) {
 }
 export function Range({ min = 0, max = 100, step, dfValue, value, className = '', onInput, ...rest }) {
     let [ v, setValue ] = useState(value ?? dfValue);
+
+    useEffect(() => setValue(value), [ value ]);
     
     return <input
         type='range'
