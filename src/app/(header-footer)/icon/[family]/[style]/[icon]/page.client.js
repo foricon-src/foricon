@@ -24,7 +24,9 @@ export default function PageClient({ params }) {
     
     useEffect(() => {
         let bottom = qSelec(`.${cssStyle.bottom}`);
-        bottom.style.height = isDropdownOpened ? `calc(${bottom.scrollHeight}px + 2px)` :  '89px';
+        bottom?.style.height = isDropdownOpened
+            ? `calc(${bottom.scrollHeight}px + 2px)`
+            :  '89px'
     }, [ isDropdownOpened ])
 
     let copiedToClipboard = {
