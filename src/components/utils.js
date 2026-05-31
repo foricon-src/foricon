@@ -1260,26 +1260,28 @@ globalThis.modal = async (elem, actionIfTrue, actionIfFalse, useStrict) => {
             enable(body);
         }
     }
-    cancel && (cancel.onclick = async () => {
-        try {
-            let value = getValue();
-            uploadFile?.clear();
-            disable(body);
-            await actionIfFalse?.(value);
-            inactivate(elem);
+    cancel && (
+        cancel.onclick = async () => {
+            try {
+                let value = getValue();
+                uploadFile?.clear();
+                disable(body);
+                await actionIfFalse?.(value);
+                inactivate(elem);
+            }
+            catch (err) {
+                notify(
+                    err instanceof Info ? 'info' :
+                    err instanceof Warn ? 'warn' :
+                    'error',
+                    err.message
+                )
+            }
+            finally {
+                enable(body);
+            }
         }
-        catch (err) {
-            notify(
-                err instanceof Info ? 'info' :
-                err instanceof Warn ? 'warn' :
-                'error',
-                err.message
-            )
-        }
-        finally {
-            enable(body);
-        }
-    })
+    )
 }
 /**
  * Notifies the user that a certain action/page requires a logged-in account

@@ -33,7 +33,7 @@ export default function SidebarComponent({ items, home }) {
                 return <li
                     key={page}
                     className={[ hasLine && 'line', page != undefined && stateActive(path), className ].filter(Boolean).join(' ')}
-                    onClick={e => { console.log(action); !isActive(e.currentTarget) && (action ? action() : GoPage(go, path)) }}
+                    onClick={e => !isActive(e.currentTarget) && (action ? action() : GoPage(go, path))}
                 >
                     <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || texts[lang]}</span>

@@ -21,13 +21,6 @@ export default function PageClient({ params }) {
     let lang = useContext(LanguageContext);
     let [ isDropdownOpened, setIsDropdownOpened ] = useState(false);
     let currentIcon = useMemo(() => icons?.b2.find(i => i.name == icon), [ icons, icon ]);
-    
-    useEffect(() => {
-        let bottom = qSelec(`.${cssStyle.bottom}`);
-        bottom?.style.height = isDropdownOpened
-            ? `calc(${bottom.scrollHeight}px + 2px)`
-            :  '89px'
-    }, [ isDropdownOpened ])
 
     let copiedToClipboard = {
         en: 'Copied to clipboard',
@@ -43,6 +36,15 @@ export default function PageClient({ params }) {
         es: 'Copiado al portapapeles',
         ru: 'Скопировано в буфер обмена',
     }[lang]
+    
+    useEffect(() => {
+        let bottom = qSelec(`.${cssStyle.bottom}`);
+        bottom && (
+            bottom.style.height = isDropdownOpened
+                ? `calc(${bottom.scrollHeight}px + 2px)`
+                :  '89px'
+        )
+    }, [ isDropdownOpened ])
     
     return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
