@@ -14,7 +14,7 @@ export function UpdateRange(elem, value) {
 export function Range({ min = 0, max = 100, step, dfValue, value, className = '', onInput, ...rest }) {
     let [ v, setValue ] = useState(dfValue ?? min);
 
-    useEffect(() => { value != undefined && setValue(value) }, [ value ]);
+    useEffect(() => { if (value != undefined) setValue(value) }, [ value ]);
     
     return <input
         type='range'
