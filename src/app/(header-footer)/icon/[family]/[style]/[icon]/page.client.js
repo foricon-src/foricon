@@ -177,7 +177,7 @@ export default function PageClient({ params }) {
 
                                 return <li
                                     key={i}
-                                    className={`chip top ${family == f && style == s ? ' active' : ''}`}
+                                    className={`chip top${family == f && style == s ? ' active' : ''}`}
                                     onClick={() => go(str, 'replace')}
                                 >
                                     <f-icon icon={icon} i-s={(f2 ? `${f2}/` : '') + s} className='auto-line-height'/>
@@ -193,13 +193,23 @@ export default function PageClient({ params }) {
                             scale={scale}
                             size={size}
                             f-rotate={rotate}
-                            animation={Join(' ', animation, animationSpeed)}
+                            animation={Join('-', animation, animationSpeed)}
                             className='auto-line-height'
                         />
                     </div>
                 </div>
                 <div className={cssStyle.right}>
-                    <Code>{`<f-icon icon='${icon}'${styleName == 'solid' ? '' : ` i-s='${styleName}'`}></f-icon>`}</Code>
+                    <Code>{
+                        `<f-icon icon='${icon}'${Join(
+                            ' ',
+                            '',
+                            styleName != 'solid' && `i-s='${styleName}'`,
+                            scale && `scale='${scale}'`,
+                            size && `size=${size}`,
+                            rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
+                            Join('-', animation, animationSpeed),
+                        )}></f-icon>`
+                    }</Code>
                     <div>
                         <h6>{
                             {
