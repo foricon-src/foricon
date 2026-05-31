@@ -54,7 +54,7 @@ export default function PageClient({ params }) {
     useEffect(() => {
         let bottom = qSelec(`.${cssStyle.bottom}`);
         bottom && (bottom.style.height = `${isDropdownOpened ? bottom.scrollHeight + 2 : 72}px`);
-    }, [ isDropdownOpened ])
+    }, [ icons, isDropdownOpened ])
     
     return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
