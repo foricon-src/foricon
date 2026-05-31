@@ -386,8 +386,8 @@ export default function PageClient({ params }) {
                                     ru: 'Шкала',
                                 }[lang]
                             }</span>
-                            <Range value={priOpacity} onInput={e => setPriOpacity(e.currentTarget.value)} max={1} step={.01}/>
-                            <Range value={secOpacity} onInput={e => setSecOpacity(e.currentTarget.value)} max={1} step={.01}/>
+                            <Range value={priOpacity || 1} onInput={e => setPriOpacity(e.currentTarget.value)} max={1} step={.01}/>
+                            <Range value={secOpacity || .4} onInput={e => setSecOpacity(e.currentTarget.value)} max={1} step={.01}/>
                             <ul className='btn-list darker'>
                                 <li onClick={() => {
                                     setPriOpacity('');
