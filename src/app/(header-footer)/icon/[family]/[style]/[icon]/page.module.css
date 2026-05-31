@@ -75,6 +75,7 @@
                 border-bottom: 1px solid var(--dk-gray);
                 background-color: var(--lt-gray);
                 user-select: none;
+                cursor: var(--cursor-pointer);
 
                 &:hover {
                     background-color: var(--gray);
