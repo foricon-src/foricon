@@ -11,7 +11,7 @@ export function UpdateRange(elem, value) {
     elem.value = value;
     elem.dispatchEvent(new Event('input'));
 }
-export function Range({ min, max, step, dfValue, value, className = '', ...rest }) {
+export function Range({ min, max, step, dfValue, value, className = '', onInput, ...rest }) {
     let [ v, setValue ] = useState(value ?? dfValue);
     
     return <input
@@ -20,7 +20,10 @@ export function Range({ min, max, step, dfValue, value, className = '', ...rest 
         max={max}
         step={step}
         className={className + (dfValue == v ? ' default' : '')}
-        onInput={e => setValue(Number(e.currentTarget.value))}
+        onInput={e => {
+            setValue(Number(e.currentTarget.value));
+            onInput(e);
+        }}
         style={{'--pos': `${(v - min) / (max - min) * 100}%`}}
         value={v}
         {...rest}

@@ -1,7 +1,7 @@
 .wrapper {
     padding: var(--spacing-default);
 
-    & h6, & > .main > .bottom > :last-child > div > input {
+    & h6, & > .main > .bottom > :last-child > div > div > input {
         margin: 0;
     }
     & > .top, & > .main > .right > div, & > .main > .bottom > :first-child {
@@ -37,7 +37,7 @@
         &, & > .left, & > .bottom > :last-child, & > .bottom > :last-child > div > div {
             display: grid;
         }
-        &, & > .bottom > :last-child, & > .bottom > :last-child > div {
+        &, & > .bottom > :last-child, & > .bottom > :last-child > div > div {
             grid-template-columns: 1fr 1fr;
             gap: var(--spacing-mili);
         }
