@@ -344,13 +344,28 @@ export default function PageClient({ params }) {
                                 <input type='color' value={priColor} onInput={e => setPriColor(e.currentTarget.value)}/>
                                 <input type='color' value={secColor} onInput={e => setSecColor(e.currentTarget.value)}/>
                             </div>
-                            <ul className='btn-list'>
+                            <ul className='btn-list darker'>
                                 <li onClick={() => {
                                     setPriColor('');
                                     setSecColor('');
                                 }}>
                                     <f-icon icon='rotate-right' i-s='outline'/>
-                                    <span>Reset</span>
+                                    <span>{
+                                        {
+                                            en: 'Reset',
+                                            vi: 'Đặt lại',
+                                            fr: 'Réinitialiser',
+                                            it: 'Reset',
+                                            kr: '다시 놓기',
+                                            ja: 'リセット',
+                                            de: 'Zurücksetzen',
+                                            nl: 'Reset',
+                                            dk: 'Nulstil',
+                                            pt: 'Reiniciar',
+                                            es: 'Reiniciar',
+                                            ru: 'Перезагрузить',
+                                        }[lang]
+                                    }</span>
                                 </li>
                             </ul>
                         </div>
@@ -373,7 +388,7 @@ export default function PageClient({ params }) {
                             }</span>
                             <Range value={priOpacity} onInput={e => setPriOpacity(e.currentTarget.value)} max={1} step={.01}/>
                             <Range value={secOpacity} onInput={e => setSecOpacity(e.currentTarget.value)} max={1} step={.01}/>
-                            <ul className='btn-list'>
+                            <ul className='btn-list darker'>
                                 <li onClick={() => {
                                     setPriOpacity(1);
                                     setSecOpacity(.4);

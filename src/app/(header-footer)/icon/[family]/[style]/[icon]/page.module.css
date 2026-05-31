@@ -70,6 +70,7 @@
         & > .bottom {
             grid-area: bottom;
             overflow: hidden;
+            transition: var(--df-trans), height .5s ease;
 
             & > :first-child {
                 border-bottom: 1px solid var(--dk-gray);
@@ -85,7 +86,7 @@
                 column-gap: var(--spacing-small);
 
                 & > div {
-                    & > div, & > ul {
+                    & > div, & > ul:nth-child(2) {
                         margin-top: 5px;
                     }
                     & > div {
@@ -94,9 +95,6 @@
                     }
                     & > input {
                         width: 100%;
-                    }
-                    & > ul:has(> :only-child) {
-                        margin: -15px;
                     }
                 }
             }
