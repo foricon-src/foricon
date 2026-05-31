@@ -216,7 +216,7 @@ export default function PageClient({ params }) {
                             scale && `scale='${scale}'`,
                             size && `size=${size}`,
                             rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
-                            Join('-', animation, animationSpeed),
+                            animation && `animation='${Join('-', animation, animationSpeed)}'`,
                         )}></f-icon>`
                     }</Code>
                     <div>
@@ -367,31 +367,6 @@ export default function PageClient({ params }) {
                                     setSecOpacity(.4);
                                 }}>Reset</li>
                             </ul>
-                        </div>
-                        <div>
-                            <span>{
-                                {
-                                    en: 'Scale',
-                                    vi: 'Tỉ lệ',
-                                    fr: 'Échelle',
-                                    it: 'Scala',
-                                    kr: '규모',
-                                    ja: '規模',
-                                    de: 'Skala',
-                                    nl: 'Schaal',
-                                    dk: 'Skala',
-                                    pt: 'Balança',
-                                    es: 'Escala',
-                                    ru: 'Шкала',
-                                }[lang]
-                            }</span>
-                            <ul className='btn-list darker'>{
-                                [ 'xsmaller', 'smaller', '', 'larger', 'xlarger' ].map(i => (
-                                    <li key={i} onClick={() => setScale(i)} className={scale == i && 'active'}>{
-                                        i || <f-icon icon='empty-set' i-s='outline'/>
-                                    }</li>
-                                ))
-                            }</ul>
                         </div>
                         <div>
                             <span>{
