@@ -123,5 +123,13 @@
         &, & > .bottom > :last-child {
             grid-template-columns: 100%;
         }
+        & > .top > div {
+            aspect-ratio: 3/2;
+        }
+    }
+}
+@media screen and (max-width: 800px) {
+    .wrapper > .main > .top > div {
+        aspect-ratio: 1/1;
     }
 }
