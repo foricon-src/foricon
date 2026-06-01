@@ -124,12 +124,12 @@
             grid-template-columns: 100%;
         }
         & > .left > div {
-            aspect-ratio: 3/2;
+            aspect-ratio: 4/3;
         }
     }
 }
 @media screen and (max-width: 800px) {
     .wrapper > .main > .left > div {
-        aspect-ratio: 1/1;
+        aspect-ratio: 3/2;
     }
 }
