@@ -22,6 +22,7 @@
     }
     & > .main {
         grid-template-areas:
+            'top top'
             'left right'
             'bottom bottom';
 
@@ -41,6 +42,7 @@
         }
 
         & > .top {
+            grid-area: top;
             gap: var(--spacing-small);
         }
         & > .left {

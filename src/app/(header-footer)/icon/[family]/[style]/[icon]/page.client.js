@@ -160,7 +160,7 @@ export default function PageClient({ params }) {
                 </ul>
             </div>
             <div className={cssStyle.main}>
-                <div>
+                <div className={cssStyle.top}>
                     <span>{
                         {
                             en: 'Categories',
