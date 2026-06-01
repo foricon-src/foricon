@@ -58,7 +58,7 @@ export default function PageClient({ params }) {
     
     return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
-            <div className={cssStyle.top}>
+            <div className={cssStyle.title}>
                 <h3>{icon}</h3>
                 <ul className='btn-list'>
                     <li onClick={() => history.back()}>
@@ -158,16 +158,34 @@ export default function PageClient({ params }) {
                         }</span>
                     </li>
                 </ul>
-                <ul className='btn-list'>{
-                    currentIcon.categories.map(category => {
-                        let { icon, ...texts } = webData.categories[category];
-                        return <li key={category} dangerouslySetInnerHTML={{
-                            __html: `${icon}<span>${texts[lang]}</span>`,
-                        }} onClick={() => go(`search?c=${category}`)}/>
-                    })
-                }</ul>
             </div>
             <div className={cssStyle.main}>
+                <div>
+                    <span>{
+                        {
+                            en: 'Categories',
+                            vi: 'Thể loại',
+                            fr: 'Catégories',
+                            it: 'Categorie',
+                            kr: '카테고리',
+                            ja: 'カテゴリー',
+                            de: 'Kategorien',
+                            nl: 'Categorieën',
+                            dk: 'Kategorier',
+                            pt: 'Categorias',
+                            es: 'Categorías',
+                            ru: 'Категории',
+                        }[lang]
+                    }</span>
+                    <ul className='btn-list'>{
+                        currentIcon.categories.map(category => {
+                            let { icon, ...texts } = webData.categories[category];
+                            return <li key={category} dangerouslySetInnerHTML={{
+                                __html: `${icon}<span>${texts[lang]}</span>`,
+                            }} onClick={() => go(`search?c=${category}`)}/>
+                        })
+                    }</ul>
+                </div>
                 <div className={cssStyle.left}>
                     <ul className='btn-list darker'>
                         {
@@ -323,96 +341,98 @@ export default function PageClient({ params }) {
                         <f-icon icon='chevron-right' i-s='outline' f-rotate={isDropdownOpened && '90'}/>
                     </div>
                     <div>
-                        <div>
-                            <span>{
-                                {
-                                    en: 'Color',
-                                    vi: 'Màu',
-                                    fr: 'Échelle',
-                                    it: 'Scala',
-                                    kr: '규모',
-                                    ja: '規模',
-                                    de: 'Skala',
-                                    nl: 'Schaal',
-                                    dk: 'Skala',
-                                    pt: 'Balança',
-                                    es: 'Escala',
-                                    ru: 'Шкала',
-                                }[lang]
-                            }</span>
+                        {family == 'duotone' && <>
                             <div>
-                                <input type='color' value={priColor} onInput={e => setPriColor(e.currentTarget.value)}/>
-                                <input type='color' value={secColor} onInput={e => setSecColor(e.currentTarget.value)}/>
+                                <span>{
+                                    {
+                                        en: 'Color',
+                                        vi: 'Màu',
+                                        fr: 'Échelle',
+                                        it: 'Scala',
+                                        kr: '규모',
+                                        ja: '規模',
+                                        de: 'Skala',
+                                        nl: 'Schaal',
+                                        dk: 'Skala',
+                                        pt: 'Balança',
+                                        es: 'Escala',
+                                        ru: 'Шкала',
+                                    }[lang]
+                                }</span>
+                                <div>
+                                    <input type='color' value={priColor} onInput={e => setPriColor(e.currentTarget.value)}/>
+                                    <input type='color' value={secColor} onInput={e => setSecColor(e.currentTarget.value)}/>
+                                </div>
+                                <ul className='btn-list darker'>
+                                    <li onClick={() => {
+                                        setPriColor('');
+                                        setSecColor('');
+                                    }}>
+                                        <f-icon icon='rotate-right' i-s='outline'/>
+                                        <span>{
+                                            {
+                                                en: 'Reset',
+                                                vi: 'Đặt lại',
+                                                fr: 'Réinitialiser',
+                                                it: 'Reset',
+                                                kr: '다시 놓기',
+                                                ja: 'リセット',
+                                                de: 'Zurücksetzen',
+                                                nl: 'Reset',
+                                                dk: 'Nulstil',
+                                                pt: 'Reiniciar',
+                                                es: 'Reiniciar',
+                                                ru: 'Перезагрузить',
+                                            }[lang]
+                                        }</span>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul className='btn-list darker'>
-                                <li onClick={() => {
-                                    setPriColor('');
-                                    setSecColor('');
-                                }}>
-                                    <f-icon icon='rotate-right' i-s='outline'/>
-                                    <span>{
-                                        {
-                                            en: 'Reset',
-                                            vi: 'Đặt lại',
-                                            fr: 'Réinitialiser',
-                                            it: 'Reset',
-                                            kr: '다시 놓기',
-                                            ja: 'リセット',
-                                            de: 'Zurücksetzen',
-                                            nl: 'Reset',
-                                            dk: 'Nulstil',
-                                            pt: 'Reiniciar',
-                                            es: 'Reiniciar',
-                                            ru: 'Перезагрузить',
-                                        }[lang]
-                                    }</span>
-                                </li>
-                            </ul>
-                        </div>
-                        {family == 'duotone' && <div>
-                            <span>{
-                                {
-                                    en: 'Opacity',
-                                    vi: 'Độ trong suốt',
-                                    fr: 'Échelle',
-                                    it: 'Scala',
-                                    kr: '규모',
-                                    ja: '規模',
-                                    de: 'Skala',
-                                    nl: 'Schaal',
-                                    dk: 'Skala',
-                                    pt: 'Balança',
-                                    es: 'Escala',
-                                    ru: 'Шкала',
-                                }[lang]
-                            }</span>
-                            <Range value={priOpacity || 1} onInput={e => setPriOpacity(e.currentTarget.value)} max={1} step={.01}/>
-                            <Range value={secOpacity || .4} onInput={e => setSecOpacity(e.currentTarget.value)} max={1} step={.01}/>
-                            <ul className='btn-list darker'>
-                                <li onClick={() => {
-                                    setPriOpacity('');
-                                    setSecOpacity('');
-                                }}>
-                                    <f-icon icon='rotate-right' i-s='outline'/>
-                                    <span>{
-                                        {
-                                            en: 'Reset',
-                                            vi: 'Đặt lại',
-                                            fr: 'Réinitialiser',
-                                            it: 'Reset',
-                                            kr: '다시 놓기',
-                                            ja: 'リセット',
-                                            de: 'Zurücksetzen',
-                                            nl: 'Reset',
-                                            dk: 'Nulstil',
-                                            pt: 'Reiniciar',
-                                            es: 'Reiniciar',
-                                            ru: 'Перезагрузить',
-                                        }[lang]
-                                    }</span>
-                                </li>
-                            </ul>
-                        </div>}
+                            <div>
+                                <span>{
+                                    {
+                                        en: 'Opacity',
+                                        vi: 'Độ trong suốt',
+                                        fr: 'Échelle',
+                                        it: 'Scala',
+                                        kr: '규모',
+                                        ja: '規模',
+                                        de: 'Skala',
+                                        nl: 'Schaal',
+                                        dk: 'Skala',
+                                        pt: 'Balança',
+                                        es: 'Escala',
+                                        ru: 'Шкала',
+                                    }[lang]
+                                }</span>
+                                <Range value={priOpacity || 1} onInput={e => setPriOpacity(e.currentTarget.value)} max={1} step={.01}/>
+                                <Range value={secOpacity || .4} onInput={e => setSecOpacity(e.currentTarget.value)} max={1} step={.01}/>
+                                <ul className='btn-list darker'>
+                                    <li onClick={() => {
+                                        setPriOpacity('');
+                                        setSecOpacity('');
+                                    }}>
+                                        <f-icon icon='rotate-right' i-s='outline'/>
+                                        <span>{
+                                            {
+                                                en: 'Reset',
+                                                vi: 'Đặt lại',
+                                                fr: 'Réinitialiser',
+                                                it: 'Reset',
+                                                kr: '다시 놓기',
+                                                ja: 'リセット',
+                                                de: 'Zurücksetzen',
+                                                nl: 'Reset',
+                                                dk: 'Nulstil',
+                                                pt: 'Reiniciar',
+                                                es: 'Reiniciar',
+                                                ru: 'Перезагрузить',
+                                            }[lang]
+                                        }</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </>}
                         <div>
                             <span>{
                                 {

@@ -4,22 +4,13 @@
     & h6, & > .main > .bottom > :last-child > div > div > input {
         margin: 0;
     }
-    & > .top, & > .main > .right > div, & > .main > .bottom > :first-child {
+    & > .title, & > .main > .top, & > .main > .right > div, & > .main > .bottom > :first-child {
         display: flex;
         align-items: center;
-    }
-    & > .main > .right > div, & > .main > .bottom > :first-child {
         justify-content: space-between;
     }
-    & > .main > .left, & > .main > .right > div, & > .main > .bottom {
-        border: 1px solid var(--dk-gray);
-        border-radius: var(--bdr-rad);
-    }
-    & > .main > :is(.right, .bottom) > div {
-        padding: var(--spacing-xxsmall);
-    }
 
-    & > .top {
+    & > .title {
         margin-bottom: var(--spacing-small);
 
         & > h3 {
@@ -41,7 +32,17 @@
             grid-template-columns: 1fr 1fr;
             gap: var(--spacing-mili);
         }
+        & > .top, & > :is(.right, .bottom) > div {
+            padding: var(--spacing-xxsmall);
+        }
+        & > :is(.top, .left, .bottom), & > .right > div {
+            border: 1px solid var(--dk-gray);
+            border-radius: var(--bdr-rad);
+        }
 
+        & > .top {
+            gap: var(--spacing-small);
+        }
         & > .left {
             grid-template-rows: max-content;
             padding: var(--spacing-mili);
