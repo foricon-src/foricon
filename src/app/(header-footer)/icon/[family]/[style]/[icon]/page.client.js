@@ -161,7 +161,7 @@ export default function PageClient({ params }) {
             </div>
             <div className={cssStyle.main}>
                 <div className={cssStyle.top}>
-                    <span>{
+                    <h6>{
                         {
                             en: 'Categories',
                             vi: 'Thể loại',
@@ -176,7 +176,7 @@ export default function PageClient({ params }) {
                             es: 'Categorías',
                             ru: 'Категории',
                         }[lang]
-                    }</span>
+                    }</h6>
                     <ul className='btn-list'>{
                         currentIcon.categories.map(category => {
                             let { icon, ...texts } = webData.categories[category];

@@ -107,3 +107,17 @@
         }
     }
 }
+
+@media screen and (max-width: 920px) {
+    .main {
+        grid-template-areas:
+            'top'
+            'left'
+            'bottom'
+            'right';
+        
+        &, & > .bottom > :last-child {
+            grid-template-columns: 100%;
+        }
+    }
+}
