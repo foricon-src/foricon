@@ -1,13 +1,13 @@
 'use client';
 
 import { useContext, useEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
 import Img from 'Com/img';
 import useGo from 'Com/go';
+import Join from 'Com/join';
 import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './page.module.css';
 
@@ -49,16 +49,15 @@ export default function Home() {
 
     let html = useMemo(() => {
         return (
-            `<f-icon icon='${icon}'${
-                [
-                    '',
-                    `i-s='${style}'`,
-                    `scale='${scale}'`,
-                    `size='${size}'`,
-                    `rotate='${rotate}'`,
-                    `animation='${[ animation, animationSpeed ].filter(Boolean).join('-')}'`,
-                ].filter(i => !i.includes("''")).join(' ')
-            }></f-icon>`
+            `<f-icon icon='${icon}'${Join(
+                ' ',
+                '',
+                style && `i-s='${style}'`,
+                scale && `scale='${scale}'`,
+                size && `size='${size}'`,
+                rotate && `rotate='${rotate}'`,
+                animation && `animation='${Join('-', animation, animationSpeed)}'`,
+            )}></f-icon>`
         )
     }, [ icon, style, scale, size, rotate, animation, animationSpeed ])
 
@@ -137,22 +136,26 @@ export default function Home() {
                 }
                 <div>
                     <h1>
-                        <span class='icon-count'/>+{
-                        ` ${{
-                            en: 'icons',
-                            vi: 'biểu tượng',
-                            fr: 'icônes',
-                            it: 'icone',
-                            kr: '아이콘',
-                            ja: 'アイコン',
-                            de: 'Symbole',
-                            nl: 'iconen',
-                            dk: 'ikoner',
-                            pt: 'ícones',
-                            es: 'iconos',
-                            ru: 'иконки',
-                        }[lang]}`
-                    }</h1>
+                        <span class='icon-count'/>+
+                        {
+                            ` ${
+                                {
+                                    en: 'icons',
+                                    vi: 'biểu tượng',
+                                    fr: 'icônes',
+                                    it: 'icone',
+                                    kr: '아이콘',
+                                    ja: 'アイコン',
+                                    de: 'Symbole',
+                                    nl: 'iconen',
+                                    dk: 'ikoner',
+                                    pt: 'ícones',
+                                    es: 'iconos',
+                                    ru: 'иконки',
+                                }[lang]
+                            }`
+                        }
+                    </h1>
                     <p>{
                         {
                             en: 'are ready to be used',

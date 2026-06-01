@@ -124,7 +124,7 @@
             grid-template-columns: 100%;
         }
         & > .left > div {
-            aspect-ratio: 1/2;
+            aspect-ratio: 2/1;
         }
     }
 }

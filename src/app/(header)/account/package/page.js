@@ -35,19 +35,21 @@ export default function Page() {
         let formatted = formatDate(reset, lang);
         elemById('reset').innerText =
             lang == 'kr' ? `${formatted}에 재설정됨` :
-            lang == 'ja' ? `${format}にリセット` :
-            `${{
-                en: 'Reset at',
-                vi: 'Đặt lại vào',
-                fr: 'Réinitialisé à',
-                it: 'Reimpostato alle',
-                de: 'Zurückgesetzt am',
-                nl: 'Opnieuw ingesteld om',
-                dk: 'Nulstillet kl.',
-                pt: 'Reiniciado às',
-                es: 'Reiniciado a las',
-                ru: 'Сброс настроек в',
-            }[lang]} ${format}`;
+            lang == 'ja' ? `${formatted}にリセット` :
+            `${
+                {
+                    en: 'Reset at',
+                    vi: 'Đặt lại vào',
+                    fr: 'Réinitialisé à',
+                    it: 'Reimpostato alle',
+                    de: 'Zurückgesetzt am',
+                    nl: 'Opnieuw ingesteld om',
+                    dk: 'Nulstillet kl.',
+                    pt: 'Reiniciado às',
+                    es: 'Reiniciado a las',
+                    ru: 'Сброс настроек в',
+                }[lang]
+            } ${formatted}`;
     })
 
     return (

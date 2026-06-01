@@ -650,22 +650,23 @@ export default function PageClient() {
                 </div>
             </div>
             {!user && <div className='banner blue'>
-                <div>{
+                <div>
                     {
-                        en: 'Enjoy free icons - sign up to access the entire set!',
-                        vi: 'Tận hưởng các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
-                        fr: "Profitez d'icônes gratuites - inscrivez-vous pour accéder à l'ensemble complet !",
-                        it: "Approfitta delle icone gratuite: registrati per accedere all'intero set!",
-                        kr: '무료 아이콘을 즐겨보세요! 가입하시면 전체 아이콘을 이용하실 수 있습니다!',
-                        ja: '無料アイコンをお楽しみください！登録すると全セットにアクセスできます！',
-                        de: 'Sichern Sie sich kostenlose Icons - melden Sie sich an, um Zugriff auf das gesamte Set zu erhalten!',
-                        nl: 'Geniet van gratis iconen - meld je aan om toegang te krijgen tot de volledige set!',
-                        dk: 'Nyd gratis ikoner - tilmeld dig for at få adgang til hele sættet!',
-                        pt: '¡Disfruta de iconos gratuitos! Regístrate para acceder al conjunto completo.',
-                        es: 'Desfrute de ícones gratuitos - registe-se para aceder ao conjunto completo!',
-                        ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
-                    }[lang]
-                }
+                        {
+                            en: 'Enjoy free icons - sign up to access the entire set!',
+                            vi: 'Tận hưởng các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
+                            fr: "Profitez d'icônes gratuites - inscrivez-vous pour accéder à l'ensemble complet !",
+                            it: "Approfitta delle icone gratuite: registrati per accedere all'intero set!",
+                            kr: '무료 아이콘을 즐겨보세요! 가입하시면 전체 아이콘을 이용하실 수 있습니다!',
+                            ja: '無料アイコンをお楽しみください！登録すると全セットにアクセスできます！',
+                            de: 'Sichern Sie sich kostenlose Icons - melden Sie sich an, um Zugriff auf das gesamte Set zu erhalten!',
+                            nl: 'Geniet van gratis iconen - meld je aan om toegang te krijgen tot de volledige set!',
+                            dk: 'Nyd gratis ikoner - tilmeld dig for at få adgang til hele sættet!',
+                            pt: '¡Disfruta de iconos gratuitos! Regístrate para acceder al conjunto completo.',
+                            es: 'Desfrute de ícones gratuitos - registe-se para aceder ao conjunto completo!',
+                            ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
+                        }[lang]
+                    }
                     <a href='/signup' className='btn'>{
                         {
                             en: 'Sign up',
@@ -1068,34 +1069,36 @@ export default function PageClient() {
                     <span>
                         <f-icon icon='bookmark' i-s='outline'/>
                         {
-                            true ? {
-                                en: 'Save',
-                                vi: 'Lưu',
-                                fr: 'Sauvegarder',
-                                it: 'Salva',
-                                kr: '구하다',
-                                ja: '保存',
-                                de: 'Speichern',
-                                nl: 'Redden',
-                                dk: 'Spare',
-                                pt: 'Guardar',
-                                es: 'Ahorrar',
-                                ru: 'Сохранять',
-                            }[lang] :
-                            {
-                                en: 'Saved',
-                                vi: 'Đã lưu',
-                                fr: 'Sauvé',
-                                it: 'Salvato',
-                                kr: '저장됨',
-                                ja: '保存済み',
-                                de: 'Gespeichert',
-                                nl: 'Opgeslagen',
-                                dk: 'Gemt',
-                                pt: 'Salvo',
-                                es: 'Guardado',
-                                ru: 'Сохранено',
-                            }[lang]
+                            (
+                                true ? {
+                                    en: 'Save',
+                                    vi: 'Lưu',
+                                    fr: 'Sauvegarder',
+                                    it: 'Salva',
+                                    kr: '구하다',
+                                    ja: '保存',
+                                    de: 'Speichern',
+                                    nl: 'Redden',
+                                    dk: 'Spare',
+                                    pt: 'Guardar',
+                                    es: 'Ahorrar',
+                                    ru: 'Сохранять',
+                                } :
+                                {
+                                    en: 'Saved',
+                                    vi: 'Đã lưu',
+                                    fr: 'Sauvé',
+                                    it: 'Salvato',
+                                    kr: '저장됨',
+                                    ja: '保存済み',
+                                    de: 'Gespeichert',
+                                    nl: 'Opgeslagen',
+                                    dk: 'Gemt',
+                                    pt: 'Salvo',
+                                    es: 'Guardado',
+                                    ru: 'Сохранено',
+                                }
+                            )[lang]
                         }
                     </span>
                     <span onClick={({ ctrlKey }) => {
@@ -1124,20 +1127,22 @@ export default function PageClient() {
                 <div className={cssStyle.code}>
                     <span>
                         {
-                            `${{
-                                en: 'Code',
-                                vi: 'Mã',
-                                fr: 'Code',
-                                it: 'Codice',
-                                kr: '암호',
-                                ja: 'コード',
-                                de: 'Code',
-                                nl: 'Code',
-                                dk: 'Kode',
-                                pt: 'Código',
-                                es: 'Código',
-                                ru: 'Код',
-                            }[lang]} `
+                            `${
+                                    {
+                                    en: 'Code',
+                                    vi: 'Mã',
+                                    fr: 'Code',
+                                    it: 'Codice',
+                                    kr: '암호',
+                                    ja: 'コード',
+                                    de: 'Code',
+                                    nl: 'Code',
+                                    dk: 'Kode',
+                                    pt: 'Código',
+                                    es: 'Código',
+                                    ru: 'Код',
+                                }[lang]
+                            } `
                         }
                         <f-icon icon='circle-info' onClick={() => notify('info', 'key(Ctrl) + bold(Click) to copy the code')}></f-icon>:
                     </span>
