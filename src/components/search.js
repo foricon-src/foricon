@@ -2,10 +2,10 @@
 
 import { useRef, useState } from 'react';
 
-export default function Search({ placeholder, onFocus, onBlur, onInput, ...rest }) {
-    let [ value, setValue ] = useState('');
+export default function Search({ placeholder, value = '', onFocus, onBlur, onInput, ...rest }) {
+    let [ val, setVal ] = useState(value);
     let inputRef = useRef(null);
-    let icon = value.length > 0 ? 'xmark' : 'magnifying-glass';
+    let icon = val.length > 0 ? 'xmark' : 'magnifying-glass';
 
     return <label>
         <f-icon icon={icon} i-s='outline' onClick={() => icon == 'xmark' && (inputRef.current.value = '')}/>
@@ -13,7 +13,7 @@ export default function Search({ placeholder, onFocus, onBlur, onInput, ...rest 
             placeholder={placeholder}
             ref={inputRef}
             onInput={e => {
-                setValue(e.currentTarget.value);
+                setVal(e.currentTarget.value);
                 onInput?.(e);
             }}
             {...rest}
