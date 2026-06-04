@@ -788,6 +788,11 @@ label {
     &.search > f-icon {
         cursor: var(--cursor-pointer);
         width: 20px;
+        flex-shrink: 0;
+        
+        &:active {
+            scale: var(--btn-scale);
+        }
     }
 }
 
