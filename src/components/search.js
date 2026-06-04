@@ -14,14 +14,17 @@ export default function Search({ placeholder, onFocus, onBlur, onInput, ...rest 
             placeholder={placeholder}
             ref={inputRef}
             onFocus={e => {
+                console.log('Focus');
                 setIsFocused(true);
                 onFocus?.(e);
             }}
             onBlur={e => {
+                console.log('Blur');
                 setIsFocused(false);
                 onBlur?.(e);
             }}
             onInput={e => {
+                console.log('Input');
                 setValue(e.currentTarget.value);
                 onInput?.(e);
             }}
