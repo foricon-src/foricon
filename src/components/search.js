@@ -11,11 +11,12 @@ export default function Search({ placeholder, value = '', onFocus, onBlur, onInp
     let icon = val.length > 0 ? 'xmark' : 'magnifying-glass';
 
     useEffect(() => {
-        console.log(iconRef.current)
         addEvLis(iconRef.current, 'click', () => {
             if (icon == 'xmark') return;
+            console.log(current.value)
             let { current } = inputRef;
             current.value = '';
+            console.log(current.value)
             current.dispatchEvent(new Event('input'));
         })
     }, [])
