@@ -2,20 +2,25 @@
 
 import { useRef, useState } from 'react';
 import Join from './join';
+import './utils';
 
 export default function Search({ placeholder, value = '', onFocus, onBlur, onInput, ...rest }) {
     let [ val, setVal ] = useState(value);
-    let inputRef = useRef(null);
+    let inputRef = useRef();
+    let iconRef = useRef();
     let icon = val.length > 0 ? 'xmark' : 'magnifying-glass';
 
-    return <label className='search'>
-        <f-icon icon={icon} i-s='outline' onClick={() => {
+    useState(() => {
+        addEvLis(iconRef, 'click', () => {
             if (icon == 'xmark') return;
             let { current } = inputRef;
-            console.log(current.value)
             current.value = '';
             current.dispatchEvent(new Event('input'));
-        }}/>
+        })
+    }, [])
+
+    return <label className='search'>
+        <f-icon icon={icon} i-s='outline' ref={iconRef}/>
         <input
             placeholder={placeholder}
             ref={inputRef}
