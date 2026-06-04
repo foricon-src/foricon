@@ -11,6 +11,7 @@ export default function Search({ placeholder, value = '', onFocus, onBlur, onInp
     let icon = val.length > 0 ? 'xmark' : 'magnifying-glass';
 
     useEffect(() => {
+        console.log(iconRef.current)
         addEvLis(iconRef.current, 'click', () => {
             if (icon == 'xmark') return;
             let { current } = inputRef;
