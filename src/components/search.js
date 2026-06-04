@@ -9,7 +9,12 @@ export default function Search({ placeholder, className, value = '', onFocus, on
     let icon = val.length > 0 ? 'xmark' : 'magnifying-glass';
 
     return <label>
-        <f-icon icon={icon} i-s='outline' onClick={() => icon == 'xmark' && (inputRef.current.value = '')}/>
+        <f-icon icon={icon} i-s='outline' onClick={() => {
+            if (icon == 'xmark') return;
+            let { current } = inputRef;
+            current.value = '';
+            current.dispatchEvent(new Event('input'));
+        }}/>
         <input
             placeholder={placeholder}
             ref={inputRef}

@@ -785,6 +785,10 @@ label {
             }
         }
     }
+    &.search > f-icon {
+        cursor: var(--cursor-pointer);
+        width: 20px;
+    }
 }
 
 div.img {
