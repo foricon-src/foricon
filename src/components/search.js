@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Join from './join';
 import './utils';
 
@@ -10,8 +10,8 @@ export default function Search({ placeholder, value = '', onFocus, onBlur, onInp
     let iconRef = useRef();
     let icon = val.length > 0 ? 'xmark' : 'magnifying-glass';
 
-    useState(() => {
-        addEvLis(iconRef, 'click', () => {
+    useEffect(() => {
+        addEvLis(iconRef.current, 'click', () => {
             if (icon == 'xmark') return;
             let { current } = inputRef;
             current.value = '';
