@@ -245,7 +245,12 @@ export default function Sidebar() {
                 page: 'package',
                 icon: { name: 'code', keepState: true },
                 text: 'Foricon Package',
-            }
+            },
+            {
+                page: 'media',
+                icon: { name: 'folders' },
+                texts: 'Media'
+            },
         ]}/>
     )
 }
