@@ -10,7 +10,7 @@ export default function Search({ placeholder, value = '', onFocus, onBlur, onInp
 
     return <label className='search'>
         <f-icon icon={icon} i-s='outline' onClick={() => {
-            if (icon == 'xmark') return;
+            if (icon != 'xmark') return;
             let { current } = inputRef;
             current.value = '';
             current.dispatchEvent(new Event('input'));
