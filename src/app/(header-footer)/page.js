@@ -5,6 +5,7 @@ import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
+import Search from 'Com/search';
 import Img from 'Com/img';
 import useGo from 'Com/go';
 import Join from 'Com/join';
@@ -106,25 +107,22 @@ export default function Home() {
                         ru: 'Проектируйте умнее с помощью иконок, которые можно настраивать, анимировать и интегрировать за считанные секунды.',
                     }[lang]
                 }</p>
-                <label>
-                    <f-icon i-s='outline' icon='magnifying-glass'/>
-                    <input placeholder={
-                        {
-                            en: 'Find your perfect icon - start typing...',
-                            vi: 'Tìm biểu tượng hoàn hảo - bắt đầu nhập...',
-                            fr: 'Trouvez votre icône parfaite - commencez à taper...',
-                            it: "Trova l'icona perfetta: inizia a digitare...",
-                            kr: '당신에게 딱 맞는 아이콘을 찾아보세요 - 입력을 시작하세요...',
-                            ja: '最適なアイコンを見つけて、入力を開始してください...',
-                            de: 'Finden Sie Ihr perfektes Symbol - beginnen Sie mit der Eingabe …',
-                            dk: 'Find dit perfekte ikon - begynd at skrive...',
-                            nl: 'Vind het perfecte pictogram - begin met typen...',
-                            pt: 'Encuentra tu icono perfecto: comienza a escribir...',
-                            es: 'Encontre o ícone perfeito - comece a escrever...',
-                            ru: 'Найдите свой идеальный значок — начните вводить текст...',
-                        }[lang]
-                    }/>
-                </label>
+                <Search placeholder={
+                    {
+                        en: 'Find your perfect icon - start typing...',
+                        vi: 'Tìm biểu tượng hoàn hảo - bắt đầu nhập...',
+                        fr: 'Trouvez votre icône parfaite - commencez à taper...',
+                        it: "Trova l'icona perfetta: inizia a digitare...",
+                        kr: '당신에게 딱 맞는 아이콘을 찾아보세요 - 입력을 시작하세요...',
+                        ja: '最適なアイコンを見つけて、入力を開始してください...',
+                        de: 'Finden Sie Ihr perfektes Symbol - beginnen Sie mit der Eingabe …',
+                        dk: 'Find dit perfekte ikon - begynd at skrive...',
+                        nl: 'Vind het perfecte pictogram - begin met typen...',
+                        pt: 'Encuentra tu icono perfecto: comienza a escribir...',
+                        es: 'Encontre o ícone perfeito - comece a escrever...',
+                        ru: 'Найдите свой идеальный значок — начните вводить текст...',
+                    }[lang]
+                }/>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.icons}`}>
                 {

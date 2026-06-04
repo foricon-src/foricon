@@ -9,6 +9,7 @@ import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import { Lower, Similarity } from 'Com/string-tools';
 import Code from 'Com/code';
+import Search from 'Com/search';
 import Join from 'Com/join';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
@@ -686,25 +687,22 @@ export default function PageClient() {
                 </div>
             </div>}
             <div className={`outer-corner ${cssStyle.top}`}>
-                <label>
-                    <f-icon icon='magnifying-glass' i-s='outline'></f-icon>
-                    <input value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
-                        {
-                            en: 'Find the perfect icon for your next masterpiece…',
-                            vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
-                            fr: "Trouvez l'icône parfaite pour votre prochaine création…",
-                            it: "Trova l'icona perfetta per il tuo prossimo capolavoro…",
-                            kr: '다음 작품을 위한 완벽한 아이콘을 찾아보세요…',
-                            ja: '次の傑作にぴったりのアイコンを見つけましょう…',
-                            de: 'Finden Sie das perfekte Icon für Ihr nächstes Meisterwerk…',
-                            nl: 'Vind het perfecte icoon voor je volgende meesterwerk…',
-                            dk: 'Find det perfekte ikon til dit næste mesterværk…',
-                            pt: 'Encontre o ícone perfeito para sua próxima obra-prima…',
-                            es: 'Encuentra el icono perfecto para tu próxima obra maestra…',
-                            ru: 'Найдите идеальную иконку для вашего следующего шедевра…',
-                        }[lang]
-                    }/>
-                </label>
+                <Search value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
+                    {
+                        en: 'Find the perfect icon for your next masterpiece…',
+                        vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',
+                        fr: "Trouvez l'icône parfaite pour votre prochaine création…",
+                        it: "Trova l'icona perfetta per il tuo prossimo capolavoro…",
+                        kr: '다음 작품을 위한 완벽한 아이콘을 찾아보세요…',
+                        ja: '次の傑作にぴったりのアイコンを見つけましょう…',
+                        de: 'Finden Sie das perfekte Icon für Ihr nächstes Meisterwerk…',
+                        nl: 'Vind het perfecte icoon voor je volgende meesterwerk…',
+                        dk: 'Find det perfekte ikon til dit næste mesterværk…',
+                        pt: 'Encontre o ícone perfeito para sua próxima obra-prima…',
+                        es: 'Encuentra el icono perfecto para tu próxima obra maestra…',
+                        ru: 'Найдите идеальную иконку для вашего следующего шедевра…',
+                    }[lang]
+                }/>
                 <f-select>
                     <text></text>
                     <option-list>

@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { useRouter } from 'next/navigation';
 import { LanguageContext } from 'Com/language';
 import { Capital } from 'Com/string-tools';
 import useGo from 'Com/go';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
+import Search from 'Com/search';
 import cssStyle from './not-found.module.css';
 
 export function NotFound({ family, style, icon, currentIcon }) {
@@ -132,25 +132,22 @@ export function NotFound({ family, style, icon, currentIcon }) {
                 })[lang]
             }</p>
             <form action='/search'>
-                <label>
-                    <f-icon icon='magnifying-glass' i-s='outline'/>
-                    <input name='k' placeholder={
-                        {
-                            en: 'Search for icons...',
-                            vi: 'Tìm kiếm biểu tượng...',
-                            fr: 'Rechercher des icônes...',
-                            it: 'Cerca icone...',
-                            kr: '아이콘을 검색하세요...',
-                            ja: 'アイコンを検索...',
-                            de: 'Suche nach Symbolen...',
-                            nl: 'Zoek naar pictogrammen...',
-                            dk: 'Søg efter ikoner...',
-                            pt: 'Pesquisar ícones...',
-                            es: 'Buscar iconos...',
-                            ru: 'Поиск значков...',
-                        }[lang]
-                    }/>
-                </label>
+                <Search placeholder={
+                    {
+                        en: 'Search for icons...',
+                        vi: 'Tìm kiếm biểu tượng...',
+                        fr: 'Rechercher des icônes...',
+                        it: 'Cerca icone...',
+                        kr: '아이콘을 검색하세요...',
+                        ja: 'アイコンを検索...',
+                        de: 'Suche nach Symbolen...',
+                        nl: 'Zoek naar pictogrammen...',
+                        dk: 'Søg efter ikoner...',
+                        pt: 'Pesquisar ícones...',
+                        es: 'Buscar iconos...',
+                        ru: 'Поиск значков...',
+                    }[lang]
+                }/>
             </form>
         </div>
     )

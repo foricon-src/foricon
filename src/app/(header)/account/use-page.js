@@ -29,6 +29,7 @@ export default function usePage(func) {
             '/account/package',
             '/account/package/settings',
             '/account/package/download',
+            '/account/media'
         ].forEach(router.prefetch);
     })()}, [ pathname, user ])
 }

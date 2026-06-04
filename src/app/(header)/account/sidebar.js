@@ -249,7 +249,7 @@ export default function Sidebar() {
             {
                 page: 'media',
                 icon: { name: 'folders' },
-                texts: 'Media'
+                text: 'Media',
             },
         ]}/>
     )
