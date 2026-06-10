@@ -53,11 +53,11 @@ export default function Home() {
             `<f-icon icon='${icon}'${Join(
                 ' ',
                 '',
-                style && `i-s='${style}'`,
-                scale && `scale='${scale}'`,
-                size && `size='${size}'`,
-                rotate && `rotate='${rotate}'`,
-                animation && `animation='${Join('-', animation, animationSpeed)}'`,
+                !!style && `i-s='${style}'`,
+                !!scale && `scale='${scale}'`,
+                !!size && `size='${size}'`,
+                !!rotate && `rotate='${rotate}'`,
+                !!animation && `animation='${Join('-', animation, !!animationSpeed && animationSpeed)}'`,
             )}></f-icon>`
         )
     }, [ icon, style, scale, size, rotate, animation, animationSpeed ])

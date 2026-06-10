@@ -222,7 +222,7 @@ export default function PageClient({ params }) {
                             scale={scale}
                             size={size}
                             f-rotate={rotate}
-                            animation={Join('-', animation, animationSpeed)}
+                            animation={Join('-', animation, !!animationSpeed && animationSpeed)}
                             className='auto-line-height'
                         />
                     </div>
@@ -236,14 +236,14 @@ export default function PageClient({ params }) {
                             !!scale && `scale='${scale}'`,
                             !!size && `size=${size}`,
                             !!rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
-                            !!animation && `animation='${Join('-', animation, animationSpeed)}'`,
+                            !!animation && `animation='${Join('-', animation, !!animationSpeed && animationSpeed)}'`,
                             [ priColor, priOpacity, secColor, secOpacity ].some(i => i != '') && `style='${
                                 Join(
                                     '; ',
-                                    priColor != '' && `--primary-color: ${priColor}`,
-                                    priOpacity != '' && `--primary-opacity: ${priOpacity}`,
-                                    secColor != '' && `--secondary-color: ${secColor}`,
-                                    secOpacity != '' && `--secondary-opacity: ${secOpacity}`,
+                                    !!priColor && `--primary-color: ${priColor}`,
+                                    !!priOpacity && `--primary-opacity: ${priOpacity}`,
+                                    !!secColor && `--secondary-color: ${secColor}`,
+                                    !!secOpacity && `--secondary-opacity: ${secOpacity}`,
                                 )
                             }'`
                         )}></f-icon>`
