@@ -16,13 +16,13 @@ export default function IconInput({
 }) {
     let [ v, setV ] = useState(value);
     let inputRef = useRef();
-    console.log(clearable, v.length > 0)
     let currentIcon = clearable && v.length > 0
         ? icon
         : {
             name: 'xmark',
             style: 'outline',
         }
+    console.log(clearable, v.length > 0, currentIcon)
     
     return <label className={className} onPointerDown={
         e => inputRef.current.matches(':focus') && e.target == e.currentTarget && e.preventDefault()
