@@ -17,20 +17,20 @@ export default function IconInput({
     let [ v, setV ] = useState(value);
     let inputRef = useRef();
     let currentIcon = clearable && v.length > 0
-        ? icons
+        ? icon
         : {
             name: 'xmark',
             style: 'outline',
         }
     
     return <label className={className} onPointerDown={
-        e => inputRef.current.matches(':focus') && e.target != inputRef.current && e.preventDefault()
+        e => inputRef.current.matches(':focus') && e.target == e.currentTarget && e.preventDefault()
     }>
         <f-icon
             icon={currentIcon.name}
             i-s={currentIcon.style}
             onClick={() => {
-                if (currentIcon.name != 'xmark') return;
+                if (currentIcon.name != 'xmark' || !clearable) return;
                 inputRef.current.value = '';
                 inputRef.current.dispatchEvent(new Event('input'));
             }}

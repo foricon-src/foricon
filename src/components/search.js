@@ -37,6 +37,7 @@ export default function Search({ placeholder, value = '', ...rest }) {
         value={value}
         placeholder={placeholder}
         className={'search'}
+        clearable={true}
         {...rest}
     />
 }
