@@ -37,6 +37,7 @@ export default function IconInput({
             }}
         />
         <input
+            ref={inputRef}
             placeholder={placeholder}
             value={value}
             onInput={e => {
