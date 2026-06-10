@@ -16,6 +16,7 @@ export default function IconInput({
 }) {
     let [ v, setV ] = useState(value);
     let inputRef = useRef();
+    console.log(clearable, v.length > 0)
     let currentIcon = clearable && v.length > 0
         ? icon
         : {
