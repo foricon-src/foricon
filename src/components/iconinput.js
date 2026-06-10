@@ -16,6 +16,7 @@ export default function IconInput({
 }) {
     let [ v, setV ] = useState(value || '');
     let inputRef = useRef();
+    let iconRef = useRef();
     let currentIcon = clearable && v.length > 0
         ? {
             name: 'xmark',
@@ -25,17 +26,16 @@ export default function IconInput({
     
     useEffect(() => setV(value), [ value ]);
     
-    return <label className={className} onPointerDown={
-        e => inputRef.current.matches(':focus') && e.target == e.currentTarget && e.preventDefault()
-    }>
+    return <label className={className} onPointerDown={e => {
+        inputRef.current.matches(':focus') && e.target != e.currentTarget && e.preventDefault();
+        if (e.target != iconRef.current || currentIcon.name != 'xmark' || !clearable) return;
+        setV('');
+        onInput?.({ currentTarget: { value: '' } });
+    }}>
         <f-icon
+            ref={iconRef}
             icon={currentIcon.name}
             i-s={currentIcon.style}
-            onClick={() => {
-                if (currentIcon.name != 'xmark' || !clearable) return;
-                setV('');
-                onInput?.({ currentTarget: { value: '' } });
-            }}
         />
         <input
             ref={inputRef}
