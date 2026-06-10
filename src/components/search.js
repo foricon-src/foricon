@@ -28,20 +28,15 @@ import IconInput from './iconinput';
 //         />
 //     </label>
 // }
-export default function Search({ placeholder, value, ...rest }) {
+export default function Search({ placeholder, value = '', ...rest }) {
     return <IconInput
-        icons={{
-            normal: {
-                name: 'magnifying-glass',
-                style: 'outline',
-            },
-            active: {
-                name: 'xmark',
-                style: 'outline',
-            }
+        icon={{
+            name: 'magnifying-glass',
+            style: 'outline',
         }}
-        placeholder={placeholder}
         value={value}
+        placeholder={placeholder}
+        className={'search'}
         {...rest}
     />
 }

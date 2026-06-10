@@ -3,32 +3,41 @@
 import { useRef, useState } from 'react';
 
 export default function IconInput({
-    icons = {
-        normal: {
-            name: '',
-            style: '',
-        },
-        active: {
-            name: '',
-            style: '',
-        },
+    icon = {
+        name: '',
+        style: '',
     },
-    actionWhenClickIcon,
+    value = '',
+    placeholder,
     className,
     onInput,
-    placeholder,
+    clearable,
     ...rest
 }) {
     let [ v, setV ] = useState(value);
     let inputRef = useRef();
-    let currentIcon = icons[v.length > 0 ? 'active' : 'normal'];
-
-    return <label className={className} onMouseDown={
+    let currentIcon = clearable && v.length > 0
+        ? icons
+        : {
+            name: 'xmark',
+            style: 'outline',
+        }
+    
+    return <label className={className} onPointerDown={
         e => inputRef.current.matches(':focus') && e.target != inputRef.current && e.preventDefault()
     }>
-        <f-icon icon={currentIcon.name} i-s={currentIcon.style} onClick={actionWhenClickIcon}/>
+        <f-icon
+            icon={currentIcon.name}
+            i-s={currentIcon.style}
+            onClick={() => {
+                if (currentIcon.name != 'xmark') return;
+                inputRef.current.value = '';
+                inputRef.current.dispatchEvent(new Event('input'));
+            }}
+        />
         <input
             placeholder={placeholder}
+            value={value}
             onInput={e => {
                 setV(e.currentTarget.value);
                 onInput?.(e);
