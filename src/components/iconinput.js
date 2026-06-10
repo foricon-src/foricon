@@ -7,14 +7,14 @@ export default function IconInput({
         name: '',
         style: '',
     },
-    value = '',
+    value,
     placeholder,
     className,
     onInput,
     clearable,
     ...rest
 }) {
-    let [ v, setV ] = useState(value);
+    let [ v, setV ] = useState(value || '');
     let inputRef = useRef();
     let currentIcon = clearable && v.length > 0
         ? {
@@ -23,7 +23,7 @@ export default function IconInput({
         }
         : icon;
     
-    useEffect(() => setV(value), [ value ]);
+    useEffect(() => { if (value) setV(value) }, [ value ]);
     
     return <label className={className} onPointerDown={
         e => inputRef.current.matches(':focus') && e.target == e.currentTarget && e.preventDefault()
