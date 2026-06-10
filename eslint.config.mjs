@@ -9,6 +9,8 @@ const eslintConfig = defineConfig([
             "react/no-direct-setstate-in-useeffect": "off",
             // If it's actually coming from react-hooks plugin:
             "react-hooks/exhaustive-deps": "off",
+            'react/no-unescaped-entities': 'off',
+            '@next/next/no-page-custom-font': 'off',
         },
     },
     // Override default ignores of eslint-config-next.
