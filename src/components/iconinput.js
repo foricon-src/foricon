@@ -7,7 +7,7 @@ export default function IconInput({
         name: '',
         style: '',
     },
-    value,
+    value = '',
     placeholder,
     className,
     onInput,
@@ -23,7 +23,7 @@ export default function IconInput({
         }
         : icon;
     
-    useEffect(() => { if (value) setV(value) }, [ value ]);
+    useEffect(() => setV(value), [ value ]);
     
     return <label className={className} onPointerDown={
         e => inputRef.current.matches(':focus') && e.target == e.currentTarget && e.preventDefault()

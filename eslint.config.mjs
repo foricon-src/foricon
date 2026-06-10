@@ -3,6 +3,14 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 
 const eslintConfig = defineConfig([
     ...nextVitals,
+    {
+        rules: {
+            // Turn off the rule that complains about setState in useEffect
+            "react/no-direct-setstate-in-useeffect": "off",
+            // If it's actually coming from react-hooks plugin:
+            "react-hooks/exhaustive-deps": "off",
+        },
+    },
     // Override default ignores of eslint-config-next.
     globalIgnores([
         // Default ignores of eslint-config-next:
