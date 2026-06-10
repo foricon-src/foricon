@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function IconInput({
     icon = {
@@ -21,7 +21,9 @@ export default function IconInput({
             name: 'xmark',
             style: 'outline',
         }
-        : icon
+        : icon;
+    
+    useEffect(() => setV(value), [ value ]);
     
     return <label className={className} onPointerDown={
         e => inputRef.current.matches(':focus') && e.target == e.currentTarget && e.preventDefault()
@@ -31,14 +33,14 @@ export default function IconInput({
             i-s={currentIcon.style}
             onClick={() => {
                 if (currentIcon.name != 'xmark' || !clearable) return;
-                inputRef.current.value = '';
-                inputRef.current.dispatchEvent(new Event('input'));
+                setV('');
+                onInput?.({ currentTarget: { value: '' } });
             }}
         />
         <input
             ref={inputRef}
             placeholder={placeholder}
-            value={value}
+            value={v}
             onInput={e => {
                 setV(e.currentTarget.value);
                 onInput?.(e);
