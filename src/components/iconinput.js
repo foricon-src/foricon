@@ -27,7 +27,7 @@ export default function IconInput({
     useEffect(() => setV(value), [ value ]);
     
     return <label className={className} onPointerDown={e => {
-        inputRef.current.matches(':focus') && e.target != e.currentTarget && e.preventDefault();
+        inputRef.current.matches(':focus') && e.target == e.currentTarget && e.preventDefault();
         if (e.target != iconRef.current || currentIcon.name != 'xmark' || !clearable) return;
         setV('');
         onInput?.({ currentTarget: { value: '' } });
