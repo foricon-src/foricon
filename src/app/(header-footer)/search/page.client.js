@@ -438,10 +438,9 @@ export default function PageClient() {
                 ).filter(i => icon.styles.includes(i)).map(style => ({ icon, style }))
             })
     }, [
-        loaded,
+        loaded, user,
         search, family, style, selectedCategories, version,
         inSaved, sortOpt, searchSortOpt,
-        user
     ])
     let columns = useMemo(
         () => loaded ? getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
@@ -611,7 +610,7 @@ export default function PageClient() {
                 </li>
                 {
                     values.map(({ icon: { name, style }, value }) => {
-                        return <li className={Join(' ', variable == value && 'active', width < 1100 && 'chip top')} onClick={() => func(value)}>
+                        return <li key={value} className={Join(' ', variable == value && 'active', width < 1100 && 'chip top')} onClick={() => func(value)}>
                             {width < 1100 && <f-icon icon={name} i-s={style}/>}
                             <span>{Capital(value)}</span>
                         </li>
@@ -643,7 +642,7 @@ export default function PageClient() {
                     </li>
                     {
                         values.map(({ icon: { name, style }, value }) => {
-                            return <li className={variable == value && 'active'} onClick={() => func(value)}>
+                            return <li key={value} className={variable == value && 'active'} onClick={() => func(value)}>
                                 <f-icon icon={name} i-s={style}/>
                                 <span>{Capital(value)}</span>
                             </li>
