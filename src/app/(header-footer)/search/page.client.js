@@ -1034,30 +1034,32 @@ export default function PageClient() {
                     }[lang]
                 }
                 </h5>
-                <ul className={`btn-list vertical ${cssStyle.categories}`} onScroll={({ currentTarget }) => {
-                    let { scrollTop, scrollHeight, clientHeight } = currentTarget;
-                    currentTarget.classList[scrollTop == 0 ? 'remove' : 'add'](cssStyle.scrollTop);
-                    currentTarget.classList[scrollTop + clientHeight == scrollHeight ? 'remove' : 'add'](cssStyle.scrollBottom);
-                }}>{
-                    Object.entries(categoryCounts)
-                        .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
-                        .sort(([ , a ], [ , b ]) => a[lang].localeCompare(b[lang]))
-                        .map(([ key, { icon, count, ...texts } ]) => (
-                            <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
-                                let arr = [ ...selectedCategories ];
-                                let i = arr.indexOf(key);
-                                i < 0 ? arr.push(key) : arr.splice(i, 1);
-                                selectCategories(arr);
-                            }}>
-                                <span key={key} dangerouslySetInnerHTML={{
-                                    __html: icon + texts[lang]
-                                }}/>
-                                <span>{count || 0}</span>
-                            </li>
-                        ))
-                }</ul>
-                <div>
-                    <ul className={`${cssStyle.results} ${cssStyle[view]}`}>{
+                <div className={cssStyle.categories}>
+                    <ul className='btn-list vertical' onScroll={({ currentTarget }) => {
+                        let { scrollTop, scrollHeight, clientHeight } = currentTarget;
+                        currentTarget.classList[scrollTop == 0 ? 'remove' : 'add'](cssStyle.scrollTop);
+                        currentTarget.classList[scrollTop + clientHeight == scrollHeight ? 'remove' : 'add'](cssStyle.scrollBottom);
+                    }}>{
+                        Object.entries(categoryCounts)
+                            .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
+                            .sort(([ , a ], [ , b ]) => a[lang].localeCompare(b[lang]))
+                            .map(([ key, { icon, count, ...texts } ]) => (
+                                <li key={key} className={selectedCategories.includes(key) && 'active'} onClick={() => {
+                                    let arr = [ ...selectedCategories ];
+                                    let i = arr.indexOf(key);
+                                    i < 0 ? arr.push(key) : arr.splice(i, 1);
+                                    selectCategories(arr);
+                                }}>
+                                    <span key={key} dangerouslySetInnerHTML={{
+                                        __html: icon + texts[lang]
+                                    }}/>
+                                    <span>{count || 0}</span>
+                                </li>
+                            ))
+                    }</ul>
+                </div>
+                <div className={cssStyle.results}>
+                    <ul className={`${cssStyle.grid} ${cssStyle[view]}`}>{
                         loaded ? currentIcons.map(({ icon, style }) => (
                             <li
                                 key={`${icon.name} | ${style}`}
@@ -1084,9 +1086,29 @@ export default function PageClient() {
                         )) : Array(20).map((_, i) => <li key={i}/>)
                     }</ul>
                     <ul className={`btn-list line-active top ${cssStyle.pages}`}>{
-                        Array.from({ length: Math.ceil(filtered.length / perPage) }).map((_, i) => (
-                            <li key={i} onClick={() => setPage(i)} className={currentPage == i && 'active'}>{i + 1}</li>
-                        ))
+                        (() => {
+                            let length = Math.ceil(filtered.length / perPage);
+                            let arr = Array.from({ length }).map((_, i) => (
+                                <li key={i} onClick={() => setPage(i)} className={currentPage == i && 'active'}>{i + 1}</li>
+                            ))
+                            let limited = Math.min(Math.max(2, i), length - 3);
+                            
+                            return arr.length > 5 ? [
+                                <li onClick={() => setPage(Math.max(page - 1, 0))}>
+                                    <f-icon icon='chevron-left-small' i-s='outline'/>
+                                    <span>First</span>
+                                </li>,
+                                arr[0],
+                                <li style={{ pointerEvents: 'none' }}>...</li>,
+                                ...arr.slice(limited - 1, limited + 2),
+                                <li style={{ pointerEvents: 'none' }}>...</li>,
+                                arr[length - 1],
+                                <li onClick={() => setPage(Math.min(page + 1, length - 1))}>
+                                    <f-icon icon='chevron-right-small' i-s='outline'/>
+                                    <span>Last</span>
+                                </li>
+                            ] : arr;
+                        })()
                     }</ul>
                 </div>
             </div>
