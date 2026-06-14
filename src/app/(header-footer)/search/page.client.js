@@ -1026,7 +1026,7 @@ export default function PageClient() {
                             <span>Views</span>
                             <ul className='btn-list vertical'>{viewOpts}</ul>
                         </li> : viewOpts}
-                        <li className='line'>
+                        <li className='chip top line'>
                             <f-icon icon='gear'></f-icon>
                             <span>{
                                 {
