@@ -4,18 +4,17 @@
 .top > div.search,
 .top > div.options,
 .main, 
-.main > div > div.results > ul.grid:has(> li),
-.main > div > div.results > ul.grid.tiles > li {
+.main > div.results > ul.grid:has(> li),
+.main > div.results > ul.grid.tiles > li {
     display: grid;
 }
 .bar > div,
 .bar > div > div,
 .bar > div > div > div,
 .top > div.options > ul,
-.main > div > div.results > ul.grid:not(:has(> li)),
-.main > div > div.results > ul.grid > li,
-.main > div > div.results > ul.grid.large > li,
-.read-docs {
+.main > div.results > ul.grid:not(:has(> li)),
+.main > div.results > ul.grid > li,
+.main > div.results > ul.grid.large > li {
     display: flex;
 }
 

@@ -1036,9 +1036,9 @@ export default function PageClient() {
                 </h5>
                 <div className={cssStyle.categories}>
                     <ul className='btn-list vertical scrollBottom' onScroll={({ currentTarget }) => {
-                        let { scrollTop, scrollHeight, clientHeight } = currentTarget;
-                        currentTarget.classList[scrollTop == 0 ? 'remove' : 'add'](cssStyle.scrollTop);
-                        currentTarget.classList[scrollTop + clientHeight == scrollHeight ? 'remove' : 'add'](cssStyle.scrollBottom);
+                        let { scrollTop, scrollHeight, clientHeight, parentNode } = currentTarget;
+                        parentNode.classList[scrollTop == 0 ? 'remove' : 'add'](cssStyle.scrollTop);
+                        parentNode.classList[scrollTop + clientHeight == scrollHeight ? 'remove' : 'add'](cssStyle.scrollBottom);
                     }}>{
                         Object.entries(categoryCounts)
                             .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
@@ -1094,16 +1094,16 @@ export default function PageClient() {
                             let limited = Math.min(Math.max(2, page), length - 3);
 
                             return arr.length > 5 ? [
-                                <li key='prev' onClick={() => setPage(limited - 1)}>
+                                page > 0 && <li key='prev' onClick={() => setPage(limited - 1)}>
                                     <f-icon icon='chevron-left-small' i-s='outline'/>
                                     <span>Previous</span>
                                 </li>,
                                 arr[0],
-                                <li key='dots1' style={{ pointerEvents: 'none' }}>...</li>,
+                                limited > 2 && <li key='dots1' style={{ pointerEvents: 'none' }}>...</li>,
                                 ...arr.slice(limited - 1, limited + 2),
-                                <li key='dots2' style={{ pointerEvents: 'none' }}>...</li>,
+                                limited < length - 3 && <li key='dots2' style={{ pointerEvents: 'none' }}>...</li>,
                                 arr[length - 1],
-                                <li key='next' onClick={() => setPage(limited + 1)}>
+                                page < length - 1 && <li key='next' onClick={() => setPage(limited + 1)}>
                                     <f-icon icon='chevron-right-small' i-s='outline'/>
                                     <span>Next</span>
                                 </li>
