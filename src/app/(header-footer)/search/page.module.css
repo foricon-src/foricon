@@ -519,7 +519,7 @@
         }
         & > ul {
             overflow-y: scroll;
-            padding-left: var(--spacing-micro);
+            padding-right: var(--spacing-micro);
         }
     }
 }
