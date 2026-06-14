@@ -1025,7 +1025,7 @@ export default function PageClient() {
                             <f-icon icon='eye'/>
                             <span>Views</span>
                             <ul className='btn-list vertical'>{viewOpts}</ul>
-                        </li>: viewOpts}
+                        </li> : viewOpts}
                         <li className={`${width > 900 && width < 1400 ? 'chip top ' : ''}line`}>
                             <f-icon icon='gear'></f-icon>
                             <span>{

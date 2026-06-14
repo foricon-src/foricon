@@ -489,7 +489,7 @@
         }
     }
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 901px) {
     .main > .categories {
         max-height: calc(100vh - 108px);
         position: sticky;
@@ -549,6 +549,7 @@
         }
         & > .categories > ul {
             height: calc-size(auto, size);
+            overflow-y: hidden;
             display: grid;
             
             :global(:not(:has(h5:first-of-type.active))) > * > & {
