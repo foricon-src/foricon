@@ -881,6 +881,7 @@ export default function PageClient() {
                                 Object.keys(sortOpts).map(i => {
                                     let { icon, ...texts } = sortOpts[i];
                                     return <li
+                                        key={i}
                                         className={(search ? searchSortOpt : sortOpt) == i && ''}
                                         onClick={() => search ? setSearchSortOpt(i) : setSortOpt(i)}
                                     >
