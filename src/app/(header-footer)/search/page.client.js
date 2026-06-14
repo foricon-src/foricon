@@ -880,7 +880,7 @@ export default function PageClient() {
                                 }[lang]
                             }</span>
                             <ul className='btn-list vertical'>{
-                                Object.keys(sortOpts).map(i => {
+                                Object.keys(sortOpts).slice(0, search ? 4 : 3).map(i => {
                                     let { icon, ...texts } = sortOpts[i];
                                     return <li
                                         key={i}
