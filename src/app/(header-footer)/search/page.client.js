@@ -463,37 +463,39 @@ export default function PageClient() {
         
         let icons = iconSet[version];
     
-        return icons.flatMap(icon => {
-            return (
-                family == 'all' && style == 'all' ? icon.styles :
-                family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`) :
-                style == 'all' ? [ 'solid', 'outline' ].map(
-                    s => `${family == 'regular' ? '' : `${family}/`}${s}`
-                ) :
-                [ `${family == 'regular' ? '' : `${family}/`}${style}` ]
-            )
-                .filter(s => icon.styles.includes(s))
-                .filter(() => {
-                    let normalized = Lower(icon.name).replace(/[+-]/g, ' ');
-                    return (
-                        (
-                            normalized.includes(search) || Similarity(normalized, search) > 0.65
-                        ) && (
-                            !selectedCategories.length || selectedCategories.every(c => icon.categories.includes(c))
-                        )
+        return icons
+            .sort(({ name: a }, { name: b }) => {
+                let value = search ? searchSortOpt : sortOpt;
+                let [ x, y ] = value == 'descending' ? [ b, a ] : [ a, b ];
+                return value == 'bestMatch'
+                    ? Similarity(a, search) - Similarity(b, search)
+                    : x.localeCompare(y)
+            })
+            .filter(({ name, categories }) => {
+                let normalized = Lower(name).replace(/[+-]/g, ' ');
+                return (
+                    (
+                        normalized.includes(search) || Similarity(normalized, search) > 0.65
+                    ) && (
+                        !selectedCategories.length || selectedCategories.every(c => categories.includes(c))
                     )
-                })
-                .filter(() => !inSaved || user.doc.savedIcons.some(i => i.name == icon.name))
-                .sort((a, b) => {
-                    let value = search ? searchSortOpt : sortOpt;
-                    let [ x, y ] = value == 'descending' ? [ b, a ] : [ a, b ];
-                    return value == 'bestMatch'
-                        ? Similarity(a, search) - Similarity(b, search)
-                        : x.localeCompare(y)
-                })
-                .map(style => ({ icon, style }))
-        })
-    }, [ loaded, search, family, style, selectedCategories, version, inSaved ]);
+                ) && (!inSaved || user.doc.savedIcons.some(i => i.name == icon.name))
+            })
+            .flatMap(icon => {
+                return (
+                    family == 'all' && style == 'all' ? icon.styles :
+                    family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`) :
+                    style == 'all' ? [ 'solid', 'outline' ].map(
+                        s => `${family == 'regular' ? '' : `${family}/`}${s}`
+                    ) :
+                    [ `${family == 'regular' ? '' : `${family}/`}${style}` ]
+                ).filter(icon.styles.includes).map(style => ({ icon, style }))
+            })
+    }, [
+        loaded,
+        search, family, style, selectedCategories, version,
+        inSaved, sortOpt, searchSortOpt
+    ])
     let columns = useMemo(
         () => loaded ? getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
         [ width, tick ]
