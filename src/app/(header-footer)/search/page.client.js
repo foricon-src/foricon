@@ -1021,7 +1021,7 @@ export default function PageClient() {
                         </li>
                     </ul>
                     <ul className='btn-list line line-active'>
-                        {width > 900 ? <li>
+                        {width <= 900 ? <li>
                             <f-icon icon='eye'/>
                             <span>Views</span>
                             <ul className='btn-list vertical'>{viewOpts}</ul>
