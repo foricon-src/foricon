@@ -1034,8 +1034,8 @@ export default function PageClient() {
                     }[lang]
                 }
                 </h5>
-                <div className={cssStyle.categories}>
-                    <ul className='btn-list vertical scrollBottom' onScroll={({ currentTarget }) => {
+                <div className={`${cssStyle.categories} ${cssStyle.scrollBottom}`}>
+                    <ul className='btn-list vertical' onScroll={({ currentTarget }) => {
                         let { scrollTop, scrollHeight, clientHeight, parentNode } = currentTarget;
                         parentNode.classList[scrollTop == 0 ? 'remove' : 'add'](cssStyle.scrollTop);
                         parentNode.classList[scrollTop + clientHeight == scrollHeight ? 'remove' : 'add'](cssStyle.scrollBottom);
@@ -1094,7 +1094,7 @@ export default function PageClient() {
                             let limited = Math.min(Math.max(2, page), length - 3);
 
                             return arr.length > 5 ? [
-                                page > 0 && <li key='prev' onClick={() => setPage(limited - 1)}>
+                                page > 0 && <li key='prev' onClick={() => setPage(page - 1)}>
                                     <f-icon icon='chevron-left-small' i-s='outline'/>
                                     <span>Previous</span>
                                 </li>,
@@ -1103,9 +1103,9 @@ export default function PageClient() {
                                 ...arr.slice(limited - 1, limited + 2),
                                 limited < length - 3 && <li key='dots2' style={{ pointerEvents: 'none' }}>...</li>,
                                 arr[length - 1],
-                                page < length - 1 && <li key='next' onClick={() => setPage(limited + 1)}>
-                                    <f-icon icon='chevron-right-small' i-s='outline'/>
+                                page < length - 1 && <li key='next' onClick={() => setPage(page + 1)}>
                                     <span>Next</span>
+                                    <f-icon icon='chevron-right-small' i-s='outline'/>
                                 </li>
                             ] : arr;
                         })()

@@ -293,9 +293,10 @@
             content: '';
             position: absolute;
             left: 0;
-            right: 0;
+            right: 16px;
             height: var(--spacing-small);
             pointer-events: none;
+            z-index: 1;
         }
         &:before {
             background-image: linear-gradient(to bottom, var(--dk-bg-color), transparent);
