@@ -289,11 +289,12 @@
         overflow: hidden;
         grid-template-columns: repeat(2, 1fr);
         max-height: calc(100vh - 88px);
-        overflow-y: auto;
+        overflow-y: scroll;
         position: sticky;
         top: 88px;
         
         &:before, &:after {
+            content: '';
             position: absolute;
             left: 0;
             right: 0;
@@ -308,6 +309,9 @@
         }
         &:not(.scrollTop):before, &:not(.scrollBottom):after {
             opacity: 0;
+        }
+        &::-webkit-scrollbar {
+            display: none;
         }
 
         & > li {

@@ -1036,8 +1036,8 @@ export default function PageClient() {
                 </h5>
                 <ul className={`btn-list vertical ${cssStyle.categories}`} onScroll={({ currentTarget }) => {
                     let { scrollTop, scrollHeight, clientHeight } = currentTarget;
-                    currentTarget.classList[scrollTop == 0 ? 'add' : 'remove'](cssStyle.scrollTop);
-                    currentTarget.classList[scrollTop + clientHeight == scrollHeight ? 'add' : 'remove'](cssStyle.scrollBottom);
+                    currentTarget.classList[scrollTop == 0 ? 'remove' : 'add'](cssStyle.scrollTop);
+                    currentTarget.classList[scrollTop + clientHeight == scrollHeight ? 'remove' : 'add'](cssStyle.scrollBottom);
                 }}>{
                     Object.entries(categoryCounts)
                         .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
