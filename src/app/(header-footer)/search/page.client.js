@@ -571,7 +571,7 @@ export default function PageClient() {
             ru: 'Плитка',
         }
     ].map(({ icon, value, ...texts }) =>
-        <li key={value} className={`chip top${view == value ? ' active' : ''}`} onClick={() => setView(value)}>
+        <li key={value} className={Join(' ', width > 900 && 'chip top', view == value && 'active')} onClick={() => setView(value)}>
             <f-icon icon={icon} i-s={icon == 'list' && 'outline'}></f-icon>
             <span>{texts[lang]}</span>
         </li>
@@ -1026,7 +1026,7 @@ export default function PageClient() {
                             <span>Views</span>
                             <ul className='btn-list vertical'>{viewOpts}</ul>
                         </li> : viewOpts}
-                        <li className={`${width > 900 && width < 1400 ? 'chip top ' : ''}line`}>
+                        <li className='line'>
                             <f-icon icon='gear'></f-icon>
                             <span>{
                                 {
