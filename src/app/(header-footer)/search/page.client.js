@@ -1001,7 +1001,7 @@ export default function PageClient() {
                 </div>
             </div>
             <div className={cssStyle.main}>
-                <h5>{
+                <h5 onClick={({ currentTarget }) => isActive(currentTarget) ? inactivate(currentTarget) : activate(currentTarget)}>{
                     {
                         en: 'Categories',
                         vi: 'Thể loại',
@@ -1093,21 +1093,53 @@ export default function PageClient() {
                             ))
                             let limited = Math.min(Math.max(2, page), length - 3);
 
-                            return arr.length > 5 ? [
+                            return [
                                 page > 0 && <li key='prev' onClick={() => setPage(page - 1)}>
                                     <f-icon icon='chevron-left-small' i-s='outline'/>
-                                    <span>Previous</span>
+                                    <span>{
+                                        {
+                                            en: 'Prev',
+                                            vi: 'Trước',
+                                            fr: 'Précédent',
+                                            it: 'Precedente',
+                                            kr: '이전의',
+                                            ja: '前の',
+                                            de: 'Vorherige',
+                                            nl: 'Vorig',
+                                            dk: 'Tidligere',
+                                            pt: 'Anterior',
+                                            es: 'Previo',
+                                            ru: 'Предыдущий',
+                                        }[lang]
+                                    }</span>
                                 </li>,
-                                arr[0],
-                                limited > 2 && <li key='dots1' style={{ pointerEvents: 'none' }}>...</li>,
-                                ...arr.slice(limited - 1, limited + 2),
-                                limited < length - 3 && <li key='dots2' style={{ pointerEvents: 'none' }}>...</li>,
-                                arr[length - 1],
+                                ...(arr.length > 5 ? [
+                                    arr[0],
+                                    limited > 2 && <li key='dots1' style={{ pointerEvents: 'none' }}>...</li>,
+                                    ...arr.slice(limited - 1, limited + 2),
+                                    limited < length - 3 && <li key='dots2' style={{ pointerEvents: 'none' }}>...</li>,
+                                    arr[length - 1],
+                                ] : arr),
                                 page < length - 1 && <li key='next' onClick={() => setPage(page + 1)}>
-                                    <span>Next</span>
+                                    <span>{
+                                        {
+                                            en: 'Next',
+                                            vi: 'Sau',
+                                            fr: 'Suivant',
+                                            it: 'Prossimo',
+                                            kr: '다음',
+                                            ja: '次',
+                                            de: 'Nächste',
+                                            nl: 'Volgende',
+                                            dk: 'Næste',
+                                            pt: 'Seguinte',
+                                            es: 'Próximo',
+                                            ru: 'Следующий',
+                                        }[lang]
+                                    }</span>
                                     <f-icon icon='chevron-right-small' i-s='outline'/>
                                 </li>
-                            ] : arr;
+                            ]
                         })()
                     }</ul>
                 </div>

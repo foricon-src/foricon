@@ -285,37 +285,12 @@
     }
     & > div.categories {
         grid-area: categories;
-        max-height: calc(100vh - 108px);
-        position: sticky;
-        top: 98px;
-        
-        &:before, &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 16px;
-            height: var(--spacing-small);
-            pointer-events: none;
-            z-index: 1;
-        }
-        &:before {
-            background-image: linear-gradient(to bottom, var(--dk-bg-color), transparent);
-        }
-        &:after {
-            background-image: linear-gradient(to top, var(--dk-bg-color), transparent);
-            bottom: 0;
-        }
-        &:not(.scrollTop):before, &:not(.scrollBottom):after {
-            opacity: 0;
-        }
-        &::-webkit-scrollbar {
-            display: none;
-        }
 
         & > ul {
             grid-template-columns: repeat(2, 1fr);
             overflow-y: scroll;
             height: 100%;
+            padding-left: var(--spacing-micro);
 
             & > li {
                 justify-content: space-between;
@@ -518,6 +493,36 @@
         }
     }
 }
+@media screen and (min-width: 900px) {
+    .main > div.categories {
+        max-height: calc(100vh - 108px);
+        position: sticky;
+        top: 98px;
+        
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 16px;
+            height: var(--spacing-small);
+            pointer-events: none;
+            z-index: 1;
+        }
+        &:before {
+            background-image: linear-gradient(to bottom, var(--dk-bg-color), transparent);
+        }
+        &:after {
+            background-image: linear-gradient(to top, var(--dk-bg-color), transparent);
+            bottom: 0;
+        }
+        &:not(.scrollTop):before, &:not(.scrollBottom):after {
+            opacity: 0;
+        }
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
 @media screen and (max-width: 900px) {
     .main {
         grid-template-areas:
@@ -546,7 +551,7 @@
             height: calc-size(auto, size);
             display: grid;
             
-            :global(:not(:has(h5:first-of-type.active))) > & {
+            :global(:not(:has(h5:first-of-type.active))) > * > & {
                 height: 0;
             }
         }
