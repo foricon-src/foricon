@@ -1021,12 +1021,12 @@ export default function PageClient() {
                         </li>
                     </ul>
                     <ul className='btn-list line line-active'>
-                        {width < 1400 ? <li>
+                        {width > 900 ? <li>
                             <f-icon icon='eye'/>
                             <span>Views</span>
                             <ul className='btn-list vertical'>{viewOpts}</ul>
                         </li>: viewOpts}
-                        <li className={`${width < 1400 ? 'chip top ' : ''}line`}>
+                        <li className={`${width > 900 && width < 1400 ? 'chip top ' : ''}line`}>
                             <f-icon icon='gear'></f-icon>
                             <span>{
                                 {
