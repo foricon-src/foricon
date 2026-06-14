@@ -1093,7 +1093,7 @@ export default function PageClient() {
                             ))
                             let limited = Math.min(Math.max(2, page), length - 3);
 
-                            return [
+                            return arr.length > 5 ? [
                                 page > 0 && <li key='prev' onClick={() => setPage(page - 1)}>
                                     <f-icon icon='chevron-left-small' i-s='outline'/>
                                     <span>Previous</span>
@@ -1107,7 +1107,7 @@ export default function PageClient() {
                                     <span>Next</span>
                                     <f-icon icon='chevron-right-small' i-s='outline'/>
                                 </li>
-                            ]
+                            ] : arr;
                         })()
                     }</ul>
                 </div>
