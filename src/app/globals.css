@@ -790,7 +790,7 @@ label {
         width: 20px;
         flex-shrink: 0;
         
-        &:active {
+        &[icon='xmark']:active {
             scale: var(--btn-scale);
         }
     }
