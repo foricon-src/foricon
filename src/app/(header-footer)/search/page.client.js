@@ -1091,21 +1091,21 @@ export default function PageClient() {
                             let arr = Array.from({ length }).map((_, i) => (
                                 <li key={i} onClick={() => setPage(i)} className={currentPage == i && 'active'}>{i + 1}</li>
                             ))
-                            let limited = Math.min(Math.max(2, i), length - 3);
+                            let limited = Math.min(Math.max(2, page), length - 3);
 
                             return arr.length > 5 ? [
-                                <li key='first' onClick={() => setPage(Math.max(page - 1, 0))}>
+                                <li key='prev' onClick={() => setPage(limited - 1)}>
                                     <f-icon icon='chevron-left-small' i-s='outline'/>
-                                    <span>First</span>
+                                    <span>Previous</span>
                                 </li>,
                                 arr[0],
                                 <li key='dots1' style={{ pointerEvents: 'none' }}>...</li>,
                                 ...arr.slice(limited - 1, limited + 2),
                                 <li key='dots2' style={{ pointerEvents: 'none' }}>...</li>,
                                 arr[length - 1],
-                                <li key='last' onClick={() => setPage(Math.min(page + 1, length - 1))}>
+                                <li key='next' onClick={() => setPage(limited + 1)}>
                                     <f-icon icon='chevron-right-small' i-s='outline'/>
-                                    <span>Last</span>
+                                    <span>Next</span>
                                 </li>
                             ] : arr;
                         })()
