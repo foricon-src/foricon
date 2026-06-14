@@ -288,6 +288,10 @@
         grid-area: categories;
         overflow: hidden;
         grid-template-columns: repeat(2, 1fr);
+        max-height: calc(100vh - 88px);
+        overflow-y: scroll;
+        position: sticky;
+        top: 88px;
         
         & > li {
             justify-content: space-between;

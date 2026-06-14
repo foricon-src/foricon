@@ -468,7 +468,7 @@ export default function PageClient() {
                 let value = search ? searchSortOpt : sortOpt;
                 let [ x, y ] = value == 'descending' ? [ b, a ] : [ a, b ];
                 return value == 'bestMatch'
-                    ? Similarity(a, search) - Similarity(b, search)
+                    ? Similarity(b, search) - Similarity(a, search)
                     : x.localeCompare(y)
             })
             .filter(({ name, categories }) => {
@@ -479,7 +479,7 @@ export default function PageClient() {
                     ) && (
                         !selectedCategories.length || selectedCategories.every(c => categories.includes(c))
                     )
-                ) && (!inSaved || user.doc.savedIcons.some(i => i.name == icon.name))
+                ) && (!inSaved || user.doc.savedIcons.some(i => i.name == name))
             })
             .flatMap(icon => {
                 return (
