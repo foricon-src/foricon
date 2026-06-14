@@ -484,12 +484,12 @@ export default function PageClient() {
             .flatMap(icon => {
                 return (
                     family == 'all' && style == 'all' ? icon.styles :
-                    family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(prefix => `${prefix}${style}`) :
+                    family == 'all' ? [ '', 'duotone/', 'sharp/' ].map(i => `${i}${style}`) :
                     style == 'all' ? [ 'solid', 'outline' ].map(
-                        s => `${family == 'regular' ? '' : `${family}/`}${s}`
+                        i => `${family == 'regular' ? '' : `${family}/`}${i}`
                     ) :
                     [ `${family == 'regular' ? '' : `${family}/`}${style}` ]
-                ).filter(icon.styles.includes).map(style => ({ icon, style }))
+                ).filter(i => icon.styles.includes(i)).map(style => ({ icon, style }))
             })
     }, [
         loaded,
