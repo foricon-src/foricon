@@ -4,17 +4,17 @@
 .top > div.search,
 .top > div.options,
 .main, 
-.main > div > ul.results:has(> li),
-.main > div > ul.results.tiles > li {
+.main > div > div.results > ul.grid:has(> li),
+.main > div > div.results > ul.grid.tiles > li {
     display: grid;
 }
 .bar > div,
 .bar > div > div,
 .bar > div > div > div,
 .top > div.options > ul,
-.main > div > ul.results:not(:has(> li)),
-.main > div > ul.results > li,
-.main > div > ul.results.large > li,
+.main > div > div.results > ul.grid:not(:has(> li)),
+.main > div > div.results > ul.grid > li,
+.main > div > div.results > ul.grid.large > li,
 .read-docs {
     display: flex;
 }
@@ -286,9 +286,9 @@
     }
     & > div.categories {
         grid-area: categories;
-        max-height: calc(100vh - 88px);
+        max-height: calc(100vh - 108px);
         position: sticky;
-        top: 88px;
+        top: 98px;
         
         &:before, &:after {
             content: '';
@@ -315,6 +315,7 @@
         & > ul {
             grid-template-columns: repeat(2, 1fr);
             overflow-y: scroll;
+            height: 100%;
 
             & > li {
                 justify-content: space-between;

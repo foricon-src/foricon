@@ -1035,7 +1035,7 @@ export default function PageClient() {
                 }
                 </h5>
                 <div className={cssStyle.categories}>
-                    <ul className='btn-list vertical' onScroll={({ currentTarget }) => {
+                    <ul className='btn-list vertical scrollBottom' onScroll={({ currentTarget }) => {
                         let { scrollTop, scrollHeight, clientHeight } = currentTarget;
                         currentTarget.classList[scrollTop == 0 ? 'remove' : 'add'](cssStyle.scrollTop);
                         currentTarget.classList[scrollTop + clientHeight == scrollHeight ? 'remove' : 'add'](cssStyle.scrollBottom);
