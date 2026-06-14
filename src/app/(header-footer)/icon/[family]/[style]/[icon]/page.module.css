@@ -79,6 +79,12 @@
             overflow: hidden;
             transition: var(--df-trans), height .5s ease;
 
+            &.active {
+                height: calc-size(auto, size);
+            }
+            &:not(.active) {
+                height: 72px;
+            }
             & > :first-child {
                 border-bottom: 1px solid var(--dk-gray);
                 background-color: var(--lt-gray);

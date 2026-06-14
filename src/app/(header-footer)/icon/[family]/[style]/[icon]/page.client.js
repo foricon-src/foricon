@@ -51,11 +51,6 @@ export default function PageClient({ params }) {
         ru: 'Скопировано в буфер обмена',
     }[lang]
     
-    useEffect(() => {
-        let bottom = qSelec(`.${cssStyle.bottom}`);
-        bottom && (bottom.style.height = `${isDropdownOpened ? bottom.scrollHeight + 2 : 72}px`);
-    }, [ icons, isDropdownOpened ])
-    
     return !!currentIcon && currentIcon.styles.includes(styleName)
         ? <div className={cssStyle.wrapper}>
             <div className={cssStyle.title}>
@@ -322,7 +317,7 @@ export default function PageClient({ params }) {
                         }</ul>
                     </div>
                 </div>
-                <div className={cssStyle.bottom}>
+                <div className={cssStyle.bottom + (isDropdownOpened ? ' active' : '')}>
                     <div onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
                         <h6>{
                             {

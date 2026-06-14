@@ -7,7 +7,7 @@ import GetFamilyAndStyle from 'Com/get-family-n-style';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
-import { Lower, Similarity } from 'Com/string-tools';
+import { Capital, Lower, Similarity } from 'Com/string-tools';
 import Code from 'Com/code';
 import Search from 'Com/search';
 import Join from 'Com/join';
@@ -392,60 +392,6 @@ export default function PageClient() {
     let [ sortOpt, setSortOpt ] = useState('ascending');
     let [ searchSortOpt, setSearchSortOpt ] = useState('bestMatch');
 
-    let sortOpts = {
-        ascending: {
-            icon: {
-                name: 'arrow-down-a-z',
-                isOutline: true,
-            },
-            en: 'Ascending',
-            vi: 'Tăng dần',
-            fr: 'Ascendant',
-            it: 'Ascendente',
-            kr: '상승',
-            ja: '上昇',
-            de: 'Aufsteigend',
-            nl: 'Stijgend',
-            dk: 'Stigende',
-            pt: 'Ascendente',
-            es: 'Ascendente',
-            ru: 'Восходящий',
-        },
-        descending: {
-            icon: {
-                name: 'arrow-down-z-a',
-                isOutline: true,
-            },
-            en: 'Descending',
-            vi: 'Giảm dần',
-            fr: 'Descendant',
-            it: 'Discendente',
-            kr: '하강',
-            ja: '下降',
-            de: 'Absteigend',
-            nl: 'Dalend',
-            dk: 'Faldende',
-            pt: 'Descendente',
-            es: 'Descendente',
-            ru: 'нисходящий',
-        },
-        bestMatch: {
-            icon: { name: 'sparkle' },
-            en: 'Best match',
-            vi: 'Phù hợp nhất',
-            fr: 'Meilleure correspondance',
-            it: 'Miglior abbinamento',
-            kr: '최적의 매치',
-            ja: 'ベストマッチ',
-            de: 'Beste Übereinstimmung',
-            nl: 'Beste match',
-            dk: 'Bedste match',
-            pt: 'Melhor combinação',
-            es: 'Mejor coincidencia',
-            ru: 'Лучший матч',
-        },
-    }
-
     let [ search, setSearch ] = useState(initial.search);
     let [ family, setFamily ] = useState(initial.family);
     let [ style, setStyle ] = useState(initial.style);
@@ -518,6 +464,118 @@ export default function PageClient() {
         )
         return cloned;
     }, [ filtered ])
+
+    let sortOpts = {
+        ascending: {
+            icon: {
+                name: 'arrow-down-a-z',
+                isOutline: true,
+            },
+            en: 'Ascending',
+            vi: 'Tăng dần',
+            fr: 'Ascendant',
+            it: 'Ascendente',
+            kr: '상승',
+            ja: '上昇',
+            de: 'Aufsteigend',
+            nl: 'Stijgend',
+            dk: 'Stigende',
+            pt: 'Ascendente',
+            es: 'Ascendente',
+            ru: 'Восходящий',
+        },
+        descending: {
+            icon: {
+                name: 'arrow-down-z-a',
+                isOutline: true,
+            },
+            en: 'Descending',
+            vi: 'Giảm dần',
+            fr: 'Descendant',
+            it: 'Discendente',
+            kr: '하강',
+            ja: '下降',
+            de: 'Absteigend',
+            nl: 'Dalend',
+            dk: 'Faldende',
+            pt: 'Descendente',
+            es: 'Descendente',
+            ru: 'нисходящий',
+        },
+        bestMatch: {
+            icon: { name: 'sparkle' },
+            en: 'Best match',
+            vi: 'Phù hợp nhất',
+            fr: 'Meilleure correspondance',
+            it: 'Miglior abbinamento',
+            kr: '최적의 매치',
+            ja: 'ベストマッチ',
+            de: 'Beste Übereinstimmung',
+            nl: 'Beste match',
+            dk: 'Bedste match',
+            pt: 'Melhor combinação',
+            es: 'Mejor coincidencia',
+            ru: 'Лучший матч',
+        },
+    }
+    let viewOpts = [
+        {
+            icon: 'grid-4',
+            value: 'large',
+
+            en: 'Large icons',
+            vi: 'Biểu tượng lớn',
+            fr: 'Grandes icônes',
+            it: 'Icone grandi',
+            kr: '큰 아이콘',
+            ja: '大きなアイコン',
+            de: 'Große Symbole',
+            nl: 'Grote iconen',
+            dk: 'Store ikoner',
+            pt: 'Ícones grandes',
+            es: 'Iconos grandes',
+            ru: 'Большие значки',
+        },
+        {
+            icon: 'grid-9',
+            value: 'small',
+            
+            en: 'Small icons',
+            vi: 'Biểu tượng nhỏ',
+            fr: 'Petites icônes',
+            it: 'Piccole icone',
+            kr: '작은 아이콘',
+            ja: '小さいアイコン',
+            de: 'Kleine Symbole',
+            nl: 'Kleine iconen',
+            dk: 'Små ikoner',
+            pt: 'Ícones pequenos',
+            es: 'Iconos pequeños',
+            ru: 'Маленькие значки',
+        },
+        {
+            icon: 'list',
+            value: 'tiles',
+            
+            en: 'Tiles',
+            vi: 'Ô gạch',
+            fr: 'Carrelage',
+            it: 'Piastrelle',
+            kr: '타일',
+            ja: 'タイル',
+            de: 'Fliesen',
+            nl: 'Tegels',
+            dk: 'Fliser',
+            pt: 'Azulejos',
+            es: 'Azulejos',
+            ru: 'Плитка',
+        }
+    ].map(({ icon, value, ...texts }) =>
+        <li key={value} className={`chip top${view == value ? ' active' : ''}`} onClick={() => setView(value)}>
+            <f-icon icon={icon} i-s={icon == 'list' && 'outline'}></f-icon>
+            <span>{texts[lang]}</span>
+        </li>
+    )
     
     function updateTick() {
         setTick(tick + 1);
@@ -527,6 +585,71 @@ export default function PageClient() {
     }
     function check() {
         setWidth(innerWidth);
+    }
+    function dynamic(dropdown, values, variable, func) {
+        return width > 900
+            ? <>
+                <li className={Join(' ', variable == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => func('all')}>
+                    {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
+                    <span>{
+                        {
+                            en: 'All',
+                            vi: 'Tất cả',
+                            fr: 'Tout',
+                            it: 'Tutto',
+                            kr: '모두',
+                            ja: '全て',
+                            de: 'Alle',
+                            nl: 'Alle',
+                            dk: 'Alle',
+                            pt: 'Tudo',
+                            es: 'Todo',
+                            ru: 'Все',
+                        }[lang]
+                    }</span>
+                </li>
+                {
+                    values.map(({ icon: { name, style }, value }) => {
+                        return <li className={Join(' ', variable == value && 'active', width < 1100 && 'chip top')} onClick={() => func(value)}>
+                            {width < 1100 && <f-icon icon={name} i-s={style}/>}
+                            <span>{Capital(value)}</span>
+                        </li>
+                    })
+                }
+            </>
+            : <li>
+                <f-icon icon={dropdown.icon}/>
+                <span>{dropdown.title}</span>
+                <ul className='btn-list vertical'>
+                    <li className={variable == 'all' && 'active'} onClick={() => func('all')}>
+                        {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
+                        <span>{
+                            {
+                                en: 'All',
+                                vi: 'Tất cả',
+                                fr: 'Tout',
+                                it: 'Tutto',
+                                kr: '모두',
+                                ja: '全て',
+                                de: 'Alle',
+                                nl: 'Alle',
+                                dk: 'Alle',
+                                pt: 'Tudo',
+                                es: 'Todo',
+                                ru: 'Все',
+                            }[lang]
+                        }</span>
+                    </li>
+                    {
+                        values.map(({ icon: { name, style }, value }) => {
+                            return <li className={variable == value && 'active'} onClick={() => func(value)}>
+                                <f-icon icon={name} i-s={style}/>
+                                <span>{Capital(value)}</span>
+                            </li>
+                        })
+                    }
+                </ul>
+            </li>
     }
     
     useEffect(() => {(async () => {
@@ -780,64 +903,44 @@ export default function PageClient() {
                     </option-list>
                 </f-select>
                 <div className={cssStyle.options}>
-                    <ul className='btn-list line-active'>
-                        <li className={Join(' ', family == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('all')}>
-                            {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
-                            <span>{
+                    <ul className='btn-list line-active'>{
+                        dynamic(
+                            {
+                                icon: 'folders',
+                                title: 'Families',
+                            },
+                            [
                                 {
-                                    en: 'All',
-                                    vi: 'Tất cả',
-                                    fr: 'Tout',
-                                    it: 'Tutto',
-                                    kr: '모두',
-                                    ja: '全て',
-                                    de: 'Alle',
-                                    nl: 'Alle',
-                                    dk: 'Alle',
-                                    pt: 'Tudo',
-                                    es: 'Todo',
-                                    ru: 'Все',
-                                }[lang]
-                            }</span>
-                        </li>
-                        <li className={Join(' ', family == 'regular' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('regular')}>
-                            {width < 1100 && <f-icon icon='square'/>}
-                            <span>Regular</span>
-                        </li>
-                        <li className={Join(' ', family == 'duotone' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('duotone')}>
-                            {width < 1100 && <f-icon icon='clone' i-s='duotone/solid'/>}
-                            <span>Duotone</span>
-                        </li>
-                    </ul>
-                    <ul className='btn-list line line-active'>
-                        <li className={Join(' ', style == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('all')}>
-                            {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
-                            <span>{
+                                    icon: { name: 'square' },
+                                    value: 'regular',
+                                },
                                 {
-                                    en: 'All',
-                                    vi: 'Tất cả',
-                                    fr: 'Tout',
-                                    it: 'Tutto',
-                                    kr: '모두',
-                                    ja: '全て',
-                                    de: 'Alle',
-                                    nl: 'Alle',
-                                    dk: 'Alle',
-                                    pt: 'Tudo',
-                                    es: 'Todo',
-                                    ru: 'Все',
-                                }[lang]
-                            }</span>
-                        </li>
-                        <li className={Join(' ', style == 'solid' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('solid')}>
-                            {width < 1100 && <f-icon icon='circle'/>}
-                            <span>Solid</span>
-                        </li>
-                        <li className={Join(' ', style == 'outline' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('outline')}>
-                            {width < 1100 && <f-icon icon='bars' i-s='outline'/>}
-                            <span>Outline</span>
-                        </li>
-                    </ul>
+                                    icon: { name: 'clone', style: 'duotone/solid' },
+                                    value: 'duotone',
+                                },
+                            ],
+                            family, setFamily
+                        )
+                    }</ul>
+                    <ul className='btn-list line line-active'>{
+                        dynamic(
+                            {
+                                icon: 'brush',
+                                title: 'Styles',
+                            },
+                            [
+                                {
+                                    icon: { name: 'circle' },
+                                    value: 'solid',
+                                },
+                                {
+                                    icon: { name: 'bars', style: 'outline' },
+                                    value: 'outline',
+                                },
+                            ],
+                            style, setStyle
+                        )
+                    }</ul>
                     <ul className='btn-list'>
                         <li className={`chip top`}>
                             <f-icon icon='palette'/>
@@ -918,66 +1021,11 @@ export default function PageClient() {
                         </li>
                     </ul>
                     <ul className='btn-list line line-active'>
-                        {
-                            [
-                                {
-                                    icon: 'grid-4',
-                                    value: 'large',
-
-                                    en: 'Large icons',
-                                    vi: 'Biểu tượng lớn',
-                                    fr: 'Grandes icônes',
-                                    it: 'Icone grandi',
-                                    kr: '큰 아이콘',
-                                    ja: '大きなアイコン',
-                                    de: 'Große Symbole',
-                                    nl: 'Grote iconen',
-                                    dk: 'Store ikoner',
-                                    pt: 'Ícones grandes',
-                                    es: 'Iconos grandes',
-                                    ru: 'Большие значки',
-                                },
-                                {
-                                    icon: 'grid-9',
-                                    value: 'small',
-                                    
-                                    en: 'Small icons',
-                                    vi: 'Biểu tượng nhỏ',
-                                    fr: 'Petites icônes',
-                                    it: 'Piccole icone',
-                                    kr: '작은 아이콘',
-                                    ja: '小さいアイコン',
-                                    de: 'Kleine Symbole',
-                                    nl: 'Kleine iconen',
-                                    dk: 'Små ikoner',
-                                    pt: 'Ícones pequenos',
-                                    es: 'Iconos pequeños',
-                                    ru: 'Маленькие значки',
-                                },
-                                {
-                                    icon: 'list',
-                                    value: 'tiles',
-                                    
-                                    en: 'Tiles',
-                                    vi: 'Ô gạch',
-                                    fr: 'Carrelage',
-                                    it: 'Piastrelle',
-                                    kr: '타일',
-                                    ja: 'タイル',
-                                    de: 'Fliesen',
-                                    nl: 'Tegels',
-                                    dk: 'Fliser',
-                                    pt: 'Azulejos',
-                                    es: 'Azulejos',
-                                    ru: 'Плитка',
-                                }
-                            ].map(({ icon, value, ...texts }) =>
-                                <li key={value} className={`chip top${view == value ? ' active' : ''}`} onClick={() => setView(value)}>
-                                    <f-icon icon={icon} i-s={(view != value || icon == 'list') && 'outline'}></f-icon>
-                                    <span>{texts[lang]}</span>
-                                </li>
-                            )
-                        }
+                        {width < 1400 ? <li>
+                            <f-icon icon='eye'/>
+                            <span>Views</span>
+                            <ul className='btn-list vertical'>{viewOpts}</ul>
+                        </li>: viewOpts}
                         <li className={`${width < 1400 ? 'chip top ' : ''}line`}>
                             <f-icon icon='gear'></f-icon>
                             <span>{
