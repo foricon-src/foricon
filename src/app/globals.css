@@ -326,7 +326,7 @@ ul {
                 }
             }
             :not(.vertical) > &:has(> ul.btn-list) {
-                &:before {
+                :global(&:not(.chip):before) {
                     content: '';
                     height: 10px;
                     position:

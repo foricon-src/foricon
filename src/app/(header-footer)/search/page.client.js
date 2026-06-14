@@ -413,7 +413,7 @@ export default function PageClient() {
         },
         descending: {
             icon: {
-                name: 'arrow-down-a-z',
+                name: 'arrow-down-z-a',
                 isOutline: true,
             },
             en: 'Descending',
@@ -877,7 +877,7 @@ export default function PageClient() {
                                     ru: 'Сортировка',
                                 }[lang]
                             }</span>
-                            <ul className='vertical'>{
+                            <ul className='btn-list vertical'>{
                                 Object.keys(sortOpts).map(i => {
                                     let { icon, ...texts } = sortOpts[i];
                                     return <li
