@@ -386,15 +386,75 @@ export default function PageClient() {
     })(searchParams)
     
     let [ loaded, setLoaded ] = useState(false);
+
     let [ inSaved, setInSaved ] = useState(false);
+    let [ view, setView ] = useState(localStorage.getItem('view') || 'large');
+    let [ sortOpt, setSortOpt ] = useState('ascending');
+    let [ searchSortOpt, setSearchSortOpt ] = useState('bestMatch');
+
+    let sortOpts = {
+        ascending: {
+            icon: {
+                name: 'arrow-down-a-z',
+                isOutline: true,
+            },
+            en: 'Ascending',
+            vi: 'Tăng dần',
+            fr: 'Ascendant',
+            it: 'Ascendente',
+            kr: '상승',
+            ja: '上昇',
+            de: 'Aufsteigend',
+            nl: 'Stijgend',
+            dk: 'Stigende',
+            pt: 'Ascendente',
+            es: 'Ascendente',
+            ru: 'Восходящий',
+        },
+        descending: {
+            icon: {
+                name: 'arrow-down-a-z',
+                isOutline: true,
+            },
+            en: 'Descending',
+            vi: 'Giảm dần',
+            fr: 'Descendant',
+            it: 'Discendente',
+            kr: '하강',
+            ja: '下降',
+            de: 'Absteigend',
+            nl: 'Dalend',
+            dk: 'Faldende',
+            pt: 'Descendente',
+            es: 'Descendente',
+            ru: 'нисходящий',
+        },
+        bestMatch: {
+            icon: { name: 'sparkle' },
+            en: 'Best match',
+            vi: 'Phù hợp nhất',
+            fr: 'Meilleure correspondance',
+            it: 'Miglior abbinamento',
+            kr: '최적의 매치',
+            ja: 'ベストマッチ',
+            de: 'Beste Übereinstimmung',
+            nl: 'Beste match',
+            dk: 'Bedste match',
+            pt: 'Melhor combinação',
+            es: 'Mejor coincidencia',
+            ru: 'Лучший матч',
+        },
+    }
+
     let [ search, setSearch ] = useState(initial.search);
     let [ family, setFamily ] = useState(initial.family);
     let [ style, setStyle ] = useState(initial.style);
     let [ selectedCategories, selectCategories ] = useState(initial.categories);
     let [ version, setVersion ] = useState(initial.version);
+
     let [ page, setPage ] = useState(0);
-    let [ view, setView ] = useState(localStorage.getItem('view') || 'large');
     let [ tick, setTick ] = useState(0);
+
     let [ selectedIcon, selectIcon ] = useState(null);
     let [ width, setWidth ] = useState(innerWidth);
 
@@ -424,6 +484,13 @@ export default function PageClient() {
                     )
                 })
                 .filter(() => !inSaved || user.doc.savedIcons.some(i => i.name == icon.name))
+                .sort((a, b) => {
+                    let value = search ? searchSortOpt : sortOpt;
+                    let [ x, y ] = value == 'descending' ? [ b, a ] : [ a, b ];
+                    return value == 'bestMatch'
+                        ? Similarity(a, search) - Similarity(b, search)
+                        : x.localeCompare(y)
+                })
                 .map(style => ({ icon, style }))
         })
     }, [ loaded, search, family, style, selectedCategories, version, inSaved ]);
@@ -672,7 +739,7 @@ export default function PageClient() {
                         {
                             en: 'Sign up',
                             vi: 'Đăng ký',
-                            fr: 'S\'inscrire',
+                            fr: "S'inscrire",
                             it: 'Iscrizione',
                             kr: '가입하기',
                             ja: 'サインアップ',
@@ -733,41 +800,11 @@ export default function PageClient() {
                         </li>
                         <li className={Join(' ', family == 'regular' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('regular')}>
                             {width < 1100 && <f-icon icon='square'/>}
-                            <span>{
-                                {
-                                    en: 'Regular',
-                                    vi: 'Thường',
-                                    fr: 'Normal',
-                                    it: 'Normale',
-                                    kr: '기본',
-                                    ja: '標準',
-                                    de: 'Normal',
-                                    nl: 'Normaal',
-                                    dk: 'Normal',
-                                    pt: 'Regular',
-                                    es: 'Regular',
-                                    ru: 'Обычный',
-                                }[lang]
-                            }</span>
+                            <span>Regular</span>
                         </li>
                         <li className={Join(' ', family == 'duotone' && 'active', width < 1100 && 'chip top')} onClick={() => setFamily('duotone')}>
                             {width < 1100 && <f-icon icon='clone' i-s='duotone/solid'/>}
-                            <span>{
-                                {
-                                    en: 'Duotone',
-                                    vi: 'Hai màu',
-                                    fr: 'Bichromie',
-                                    it: 'Duotono',
-                                    kr: '듀오톤',
-                                    ja: 'デュオトーン',
-                                    de: 'Duotone',
-                                    nl: 'Duotoon',
-                                    dk: 'Tofarvet',
-                                    pt: 'Duotónico',
-                                    es: 'Duotono',
-                                    ru: 'Дуотон',
-                                }[lang]
-                            }</span>
+                            <span>Duotone</span>
                         </li>
                     </ul>
                     <ul className='btn-list line line-active'>
@@ -792,41 +829,11 @@ export default function PageClient() {
                         </li>
                         <li className={Join(' ', style == 'solid' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('solid')}>
                             {width < 1100 && <f-icon icon='circle'/>}
-                            <span>{
-                                {
-                                    en: 'Solid',
-                                    vi: 'Đầy',
-                                    fr: 'Plein',
-                                    it: 'Pieno',
-                                    kr: '채움',
-                                    ja: '塗りつぶし',
-                                    de: 'Gefüllt',
-                                    nl: 'Ingevuld',
-                                    dk: 'Udfyldt',
-                                    pt: 'Relleno',
-                                    es: 'Relleno',
-                                    ru: 'Заполненный',
-                                }[lang]
-                            }</span>
+                            <span>Solid</span>
                         </li>
                         <li className={Join(' ', style == 'outline' && 'active', width < 1100 && 'chip top')} onClick={() => setStyle('outline')}>
                             {width < 1100 && <f-icon icon='bars' i-s='outline'/>}
-                            <span>{
-                                {
-                                    en: 'Outline',
-                                    vi: 'Viền',
-                                    fr: 'Contour',
-                                    it: 'Contorno',
-                                    kr: '윤곽',
-                                    ja: 'アウトライン',
-                                    de: 'Umriss',
-                                    nl: 'Omlijning',
-                                    dk: 'Omrids',
-                                    pt: 'Contorno',
-                                    es: 'Contorno',
-                                    ru: 'Контур',
-                                }[lang]
-                            }</span>
+                            <span>Outline</span>
                         </li>
                     </ul>
                     <ul className='btn-list'>
@@ -850,7 +857,10 @@ export default function PageClient() {
                             }</span>
                         </li>
                         <li className={`chip top`}>
-                            <f-icon icon='arrow-down-a-z' i-s='outline'/>
+                            <f-icon
+                                icon={sortOpts[search ? searchSortOpt : sortOpt].icon.name}
+                                i-s={sortOpts[search ? searchSortOpt : sortOpt].icon.isOutline && 'outline'}
+                            />
                             <span>{
                                 {
                                     en: 'Sort',
@@ -867,6 +877,18 @@ export default function PageClient() {
                                     ru: 'Сортировка',
                                 }[lang]
                             }</span>
+                            <ul className='vertical'>{
+                                Object.keys(sortOpts).map(i => {
+                                    let { icon, ...texts } = sortOpts[i];
+                                    return <li
+                                        className={(search ? searchSortOpt : sortOpt) == i && ''}
+                                        onClick={() => search ? setSearchSortOpt(i) : setSortOpt(i)}
+                                    >
+                                        <f-icon icon={icon.name} i-s={icon.isOutline && 'outline'}/>
+                                        <span>{texts[lang]}</span>
+                                    </li>
+                                })
+                            }</ul>
                         </li>
                         <li
                             id='save'
