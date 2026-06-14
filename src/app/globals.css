@@ -307,7 +307,7 @@ ul {
                     line-height: var(--s-ln-hgt);
                     z-index: 2;
                 }
-                &:not(:hover) > :is(span, lang) {
+                &:is(:not(:hover), :has(> :is(ul, div):hover)) > span {
                     opacity: 0;
                     
                     .top > & {
@@ -326,7 +326,7 @@ ul {
                 }
             }
             :not(.vertical) > &:has(> ul.btn-list) {
-                :global(&:not(.chip):before) {
+                &:before {
                     content: '';
                     height: 10px;
                     position:
@@ -334,7 +334,7 @@ ul {
                     inset: 100% 0 0 0;
                     z-index: 1;
                 }
-                &:after {
+                :global(&:not(.chip):after) {
                     content: '\e0a2';
                     font-family: 'Foricon Beta';
                 }

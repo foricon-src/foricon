@@ -882,7 +882,7 @@ export default function PageClient() {
                                     let { icon, ...texts } = sortOpts[i];
                                     return <li
                                         key={i}
-                                        className={(search ? searchSortOpt : sortOpt) == i && ''}
+                                        className={(search ? searchSortOpt : sortOpt) == i && 'active'}
                                         onClick={() => search ? setSearchSortOpt(i) : setSortOpt(i)}
                                     >
                                         <f-icon icon={icon.name} i-s={icon.isOutline && 'outline'}/>
