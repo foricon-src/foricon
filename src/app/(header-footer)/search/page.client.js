@@ -1034,7 +1034,11 @@ export default function PageClient() {
                     }[lang]
                 }
                 </h5>
-                <ul className={`btn-list vertical ${cssStyle.categories}`}>{
+                <ul className={`btn-list vertical ${cssStyle.categories}`} onScroll={({ currentTarget }) => {
+                    let { scrollTop, scrollHeight, clientHeight } = currentTarget;
+                    currentTarget.classList[scrollTop == 0 ? 'add' : 'remove'](cssStyle.scrollTop);
+                    currentTarget.classList[scrollTop + clientHeight == scrollHeight ? 'add' : 'remove'](cssStyle.scrollBottom);
+                }}>{
                     Object.entries(categoryCounts)
                         .filter(([ key, { count } ]) => selectedCategories.includes(key) || count > 0)
                         .sort(([ , a ], [ , b ]) => a[lang].localeCompare(b[lang]))

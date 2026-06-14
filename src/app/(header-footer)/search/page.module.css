@@ -289,10 +289,27 @@
         overflow: hidden;
         grid-template-columns: repeat(2, 1fr);
         max-height: calc(100vh - 88px);
-        overflow-y: scroll;
+        overflow-y: auto;
         position: sticky;
         top: 88px;
         
+        &:before, &:after {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: var(--spacing-xxsmall);
+            pointer-events: none;
+        }
+        &:before {
+            background-image: linear-gradient(to bottom, var(--dk-bg-color), transparent);
+        }
+        &:after {
+            background-image: linear-gradient(to top, var(--dk-bg-color), transparent);
+        }
+        &:not(.scrollTop):before, &:not(.scrollBottom):after {
+            opacity: 0;
+        }
+
         & > li {
             justify-content: space-between;
             flex-direction: row;
