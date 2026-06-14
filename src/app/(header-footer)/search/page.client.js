@@ -440,7 +440,8 @@ export default function PageClient() {
     }, [
         loaded,
         search, family, style, selectedCategories, version,
-        inSaved, sortOpt, searchSortOpt
+        inSaved, sortOpt, searchSortOpt,
+        user
     ])
     let columns = useMemo(
         () => loaded ? getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
