@@ -38,7 +38,7 @@ export default function Loading() {
         return () => cancelled = true;
     }, [ user, icons, packageLoadded ])
 
-    return !done && <iframe id='loading' srcDoc={`
+    return !done && <iframe id='loading' style={{ opacity }} srcDoc={`
         <head>
             <style>
                 :root {
@@ -196,7 +196,7 @@ export default function Loading() {
             </style>
         </head>
         <body class='${isDark ? 'dark' : ''}'>
-            <div id='loading' style='opacity: ${opacity}'>
+            <div id='loading'>
                 <div id='loading_shadow'></div>
                 <div id='loading_bounce'>
                     <div id='loading_spin'></div>

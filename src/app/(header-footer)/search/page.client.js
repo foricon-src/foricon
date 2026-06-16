@@ -842,41 +842,39 @@ export default function PageClient() {
                     </div>
                 </div>
             </div>
-            {!user && <div className='banner blue'>
-                <div>
+            {!user && <div className='banner blue outer-corner'>
+                {
                     {
-                        {
-                            en: 'Enjoy free icons - sign up to access the entire set!',
-                            vi: 'Tận hưởng các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
-                            fr: "Profitez d'icônes gratuites - inscrivez-vous pour accéder à l'ensemble complet !",
-                            it: "Approfitta delle icone gratuite: registrati per accedere all'intero set!",
-                            kr: '무료 아이콘을 즐겨보세요! 가입하시면 전체 아이콘을 이용하실 수 있습니다!',
-                            ja: '無料アイコンをお楽しみください！登録すると全セットにアクセスできます！',
-                            de: 'Sichern Sie sich kostenlose Icons - melden Sie sich an, um Zugriff auf das gesamte Set zu erhalten!',
-                            nl: 'Geniet van gratis iconen - meld je aan om toegang te krijgen tot de volledige set!',
-                            dk: 'Nyd gratis ikoner - tilmeld dig for at få adgang til hele sættet!',
-                            pt: '¡Disfruta de iconos gratuitos! Regístrate para acceder al conjunto completo.',
-                            es: 'Desfrute de ícones gratuitos - registe-se para aceder ao conjunto completo!',
-                            ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
-                        }[lang]
-                    }
-                    <a href='/signup' className='btn'>{
-                        {
-                            en: 'Sign up',
-                            vi: 'Đăng ký',
-                            fr: "S'inscrire",
-                            it: 'Iscrizione',
-                            kr: '가입하기',
-                            ja: 'サインアップ',
-                            de: 'Melden Sie sich an',
-                            nl: 'Aanmelden',
-                            dk: 'Tilmelde',
-                            pt: 'Inscrever-se',
-                            es: 'Inscribirse',
-                            ru: 'Зарегистрироваться',
-                        }[lang]
-                    }</a>
-                </div>
+                        en: 'Enjoy free icons - sign up to access the entire set!',
+                        vi: 'Tận hưởng các biểu tượng miễn phí - đăng ký để truy cập toàn bộ bộ sưu tập',
+                        fr: "Profitez d'icônes gratuites - inscrivez-vous pour accéder à l'ensemble complet !",
+                        it: "Approfitta delle icone gratuite: registrati per accedere all'intero set!",
+                        kr: '무료 아이콘을 즐겨보세요! 가입하시면 전체 아이콘을 이용하실 수 있습니다!',
+                        ja: '無料アイコンをお楽しみください！登録すると全セットにアクセスできます！',
+                        de: 'Sichern Sie sich kostenlose Icons - melden Sie sich an, um Zugriff auf das gesamte Set zu erhalten!',
+                        nl: 'Geniet van gratis iconen - meld je aan om toegang te krijgen tot de volledige set!',
+                        dk: 'Nyd gratis ikoner - tilmeld dig for at få adgang til hele sættet!',
+                        pt: '¡Disfruta de iconos gratuitos! Regístrate para acceder al conjunto completo.',
+                        es: 'Desfrute de ícones gratuitos - registe-se para aceder ao conjunto completo!',
+                        ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
+                    }[lang]
+                }
+                <a href='/signup' className='btn'>{
+                    {
+                        en: 'Sign up',
+                        vi: 'Đăng ký',
+                        fr: "S'inscrire",
+                        it: 'Iscrizione',
+                        kr: '가입하기',
+                        ja: 'サインアップ',
+                        de: 'Melden Sie sich an',
+                        nl: 'Aanmelden',
+                        dk: 'Tilmelde',
+                        pt: 'Inscrever-se',
+                        es: 'Inscribirse',
+                        ru: 'Зарегистрироваться',
+                    }[lang]
+                }</a>
             </div>}
             <div className={`outer-corner ${cssStyle.top}`}>
                 <Search value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
@@ -907,7 +905,20 @@ export default function PageClient() {
                         dynamic(
                             {
                                 icon: 'folders',
-                                title: 'Families',
+                                title: {
+                                    en: 'Families',
+                                    vi: 'Bộ biểu tượng',
+                                    fr: 'Familles',
+                                    it: 'Famiglie',
+                                    kr: '아이콘 세트',
+                                    ja: 'アイコンセット',
+                                    de: 'Familien',
+                                    nl: 'Families',
+                                    dk: 'Familier',
+                                    pt: 'Famílias',
+                                    es: 'Familias',
+                                    ru: 'Семейства',
+                                }[lang],
                             },
                             [
                                 {
@@ -926,7 +937,20 @@ export default function PageClient() {
                         dynamic(
                             {
                                 icon: 'brush',
-                                title: 'Styles',
+                                title: {
+                                    en: 'Styles',
+                                    vi: 'Kiểu',
+                                    fr: 'Styles',
+                                    it: 'Stili',
+                                    kr: '스타일',
+                                    ja: 'スタイル',
+                                    de: 'Stile',
+                                    nl: 'Stijlen',
+                                    dk: 'Stilarter',
+                                    pt: 'Estilos',
+                                    es: 'Estilos',
+                                    ru: 'Стили',
+                                }[lang],
                             },
                             [
                                 {
@@ -1023,7 +1047,22 @@ export default function PageClient() {
                     <ul className='btn-list line line-active'>
                         {width <= 900 ? <li>
                             <f-icon icon='eye'/>
-                            <span>Views</span>
+                            <span>{
+                                {
+                                    en: 'Views',
+                                    vi: 'Chế độ xem',
+                                    fr: 'Vues',
+                                    it: 'Visualizzazioni',
+                                    kr: '보기',
+                                    ja: '表示',
+                                    de: 'Ansichten',
+                                    nl: 'Weergaven',
+                                    dk: 'Visninger',
+                                    pt: 'Visualizações',
+                                    es: 'Vistas',
+                                    ru: 'Виды',
+                                }[lang]
+                            }</span>
                             <ul className='btn-list vertical'>{viewOpts}</ul>
                         </li> : viewOpts}
                         <li className='chip top line'>
