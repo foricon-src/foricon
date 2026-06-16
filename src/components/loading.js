@@ -99,7 +99,7 @@ export default function Loading() {
                 #loading {
                     --initial: .2;
                     --fly-up: .1;
-                    --dura: 10s;
+                    --dura: 2s;
                 
                     background-color: var(--bg-color);
                     background-image:
