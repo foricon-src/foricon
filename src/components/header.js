@@ -152,7 +152,7 @@ export default function Header() {
                             <span>{user.doc.name}</span>
                         </li>
                         : <>
-                            <li className='line' onClick={() => go('login')}>
+                            <li className='chip bottom line' onClick={() => go('login')}>
                                 <f-icon icon='arrow-right-to-bracket' i-s='outline'/>
                                 <span>{
                                     {
@@ -171,7 +171,7 @@ export default function Header() {
                                     }[lang]
                                 }</span>
                             </li>
-                            <li className='line' onClick={() => go('login')}>
+                            <li className='chip bottom' onClick={() => go('login')}>
                                 <f-icon icon='user-plus' i-s='outline'/>
                                 <span>{
                                     {

@@ -1943,7 +1943,7 @@ header {
     z-index: 2;
     display: grid;
     grid-template-areas: 'left center right';
-    grid-template-columns: 167px auto 167px;
+    grid-template-columns: 200px auto 200px;
     align-items: center;
     
     > div {
