@@ -12,8 +12,6 @@ export default function Loading() {
     let [ done, setDone ] = useState(false);
     let [ opacity, setOpacity ] = useState(1);
 
-    let ready = user != null && icons && packageLoadded;
-
     useEffect(() => {
         let cancelled = false;
         
@@ -36,7 +34,7 @@ export default function Loading() {
         })()
 
         return () => cancelled = true;
-    }, [ ready ])
+    }, [ user, icons, packageLoadded ])
 
     return !done && <div id='loading' style={{ opacity }}>
         <div id='loading_shadow'></div>

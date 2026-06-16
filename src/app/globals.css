@@ -2167,56 +2167,59 @@ footer > div {
 }
 @keyframes bounce {
     0% {
-        scale: 1.6 .4;
+        transform: scale(1.6, .4);
         animation-timing-function: cubic-bezier(.5, 0, 1, .75);
     }
     20% {
-        scale: 1 1;
-        translate: 0 -30%;
+        transform: scale(1) translateY(-30%);
         animation-timing-function: cubic-bezier(.1, .25, .5, 1);
     }
     25% {
-        scale: .6 1.4;
+        transform: scale(.6, 1.4);
     }
     35% {
-        scale: 1 1;
+        transform: scale(1);
     }
     50% {
-        scale: 1 1;
-        translate: 0 -200%;
+        transform: scale(1) translateY(-200%);
         animation-timing-function: cubic-bezier(.5, 0, .9, .75);
     }
     80% {
-        scale: 1 1;
-        translate: 0 -30%;
+        transform: scale(1) translateY(-30%);
         animation-timing-function:  cubic-bezier(0, .25, .5, 1);
     }
-    100% { scale: 1.6 .4 }
+    100% { transform: scale(1.6, .4) }
 }
 @keyframes spin {
-    0% { rotate: 0deg }
-    25% { rotate: 0deg }
-    90% { rotate: 360deg }
-    100% { rotate: 360deg }
+    0% { transform: rotate(0deg) }
+    25% { transform: rotate(0deg) }
+    90% { transform: rotate(360deg) }
+    100% { transform: rotate(360deg) }
 }
 @keyframes shadow {
-    0% { opacity: var(--initial); scale: 1 }
+    0% {
+        opacity: var(--initial);
+        transform: scale(1);
+    }
     20% {
         opacity: var(--initial);
-        scale: 1;
+        transform: scale(1);
         animation-timing-function: cubic-bezier(.1, .25, .5, 1);
     }
     50% {
         opacity: var(--fly-up);
-        scale: .5;
+        transform: scale(.5);
         animation-timing-function: cubic-bezier(.5, 0, .9, .75);
     }
     80% {
         opacity: var(--initial);
-        scale: 1;
+        transform: scale(1);
         animation-timing-function:  cubic-bezier(0, .25, .5, 1);
     }
-    100% { opacity: var(--initial); scale: 1 }
+    100% {
+        opacity: var(--initial);
+        transform: scale(1);
+    }
 }
 
 [disabled] {
