@@ -15,7 +15,7 @@ export function UserProvider({ children }) {
     useEffect(() => {
         let { body } = document;
 
-        onAuthStateChanged(auth, async (res = false) => {
+        onAuthStateChanged(auth, async res => {
             let locked = (await get(ref(db, 'locked'))).val();
             let admin;
             

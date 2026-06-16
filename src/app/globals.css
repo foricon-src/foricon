@@ -2127,7 +2127,7 @@ footer > div {
 #loading {
     position: fixed;
     z-index: 6;
-    inset: 0;
+    height: 100vh;
 }
 
 [disabled] {

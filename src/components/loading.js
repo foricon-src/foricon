@@ -25,8 +25,7 @@ export default function Loading() {
         return () => cancelled = true;
     }, [])
     useEffect(() => {
-        console.log(user, icons, packageLoadded);
-        if (user == null || !icons || !packageLoadded) return;
+        if (user == false || !icons || !packageLoadded) return;
 
         let cancelled = false;
 
@@ -196,7 +195,7 @@ export default function Loading() {
                 }
             </style>
         </head>
-        <body className='${isDark ? 'dark' : ''}'>
+        <body class='${isDark ? 'dark' : ''}'>
             <div id='loading' style='opacity: ${opacity}'>
                 <div id='loading_shadow'></div>
                 <div id='loading_bounce'>
