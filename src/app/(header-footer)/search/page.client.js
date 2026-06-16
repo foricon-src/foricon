@@ -842,7 +842,7 @@ export default function PageClient() {
                     </div>
                 </div>
             </div>
-            {!user && <div className='banner blue outer-corner'>
+            {!user && <div className='banner blue'>
                 {
                     {
                         en: 'Enjoy free icons - sign up to access the entire set!',

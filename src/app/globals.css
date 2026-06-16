@@ -1877,7 +1877,7 @@ div.message.offline:before {
     text-align: center;
     color: rgb(30, 30, 30);
     padding: 20px;
-    border-radius: var(--bdr-rad);
+    border-radius: 0 var(--bdr-rad) var(--bdr-rad) 0;
     
     &.blue {
         background-image:
