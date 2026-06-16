@@ -1879,14 +1879,14 @@ div.message.offline:before {
     padding: 20px;
     border-radius: var(--bdr-rad);
     
-    .blue > & {
+    &.blue {
         background-image:
-        radial-gradient(circle at top right, rgba(140, 190, 240, .5), transparent 200px),
-        radial-gradient(circle at 85% -25%, rgba(190, 110, 255, .4), transparent 220px),
-        radial-gradient(circle at 70% 125%, rgba(50, 120, 255, .35), transparent 250px),
-        radial-gradient(circle at 30% 10%, rgba(50, 190, 240, .25), transparent 180px),
-        radial-gradient(circle at 18% 110%, rgba(120, 100, 200, .45), transparent 200px),
-        radial-gradient(circle at top left, rgba(80, 10, 255, .5), transparent 210px);
+            radial-gradient(circle at top right, rgba(140, 190, 240, .5), transparent 200px),
+            radial-gradient(circle at 85% -25%, rgba(190, 110, 255, .4), transparent 220px),
+            radial-gradient(circle at 70% 125%, rgba(50, 120, 255, .35), transparent 250px),
+            radial-gradient(circle at 30% 10%, rgba(50, 190, 240, .25), transparent 180px),
+            radial-gradient(circle at 18% 110%, rgba(120, 100, 200, .45), transparent 200px),
+            radial-gradient(circle at top left, rgba(80, 10, 255, .5), transparent 210px);
         background-color: rgb(210, 225, 255);
     }
     > span {
