@@ -80,6 +80,7 @@ export default function Loading() {
                     scroll-behavior: smooth;
                 }
                 body {
+                    margin: 0;
                     color: var(--text-color);
                     background-color: var(--bg-color);
                     cursor: var(--cursor-default);
@@ -97,24 +98,25 @@ export default function Loading() {
                 }
 
                 #loading {
-                    ${
-                        isDark
-                            ? `--initial: .2; --fly-up: .1;`
-                            : `--initial: .4; --fly-up: .2;`
-                    }
+                    --initial: .2;
+                    --fly-up: .1;
                     --dura: 10s;
                 
                     background-color: var(--bg-color);
                     background-image:
                         radial-gradient(ellipse at top left, var(--xtr-main-color), transparent 60%),
                         radial-gradient(ellipse at bottom right, var(--tr-main-color), transparent 80%);
-                    width: 100vh;
-                    height: 100vw;
+                    width: 100vw;
+                    height: 100vh;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     flex-direction: column-reverse;
 
+                    body.dark & {
+                        --initial: .4;
+                        --fly-up: .2;
+                    }
                     #loading_spin {
                         background-color: var(--main-color);
                         border-radius: var(--bdr-rad);
@@ -194,8 +196,8 @@ export default function Loading() {
                 }
             </style>
         </head>
-        <body>
-            <div id='loading' style={{ opacity }}>
+        <body className='${isDark ? 'dark' : ''}'>
+            <div id='loading' style='opacity: ${opacity}'>
                 <div id='loading_shadow'></div>
                 <div id='loading_bounce'>
                     <div id='loading_spin'></div>
