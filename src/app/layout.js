@@ -1,11 +1,8 @@
 import Script from 'next/script';
 import { GoogleAdSense } from 'next-google-adsense';
-import { LanguageProvider } from 'Com/language';
-import { ThemeProvider } from 'Com/theme';
-import { UserProvider } from 'Com/user';
-import { IconProvider } from 'Com/icons';
 import Loading from 'Com/loading';
 import Process from 'Com/process';
+import Providers from './providers';
 import './globals.css';
 
 export const metadata = {
@@ -28,20 +25,14 @@ export default function RootLayout({ children }) {
             </head>
             <body className='cons'>
                 <GoogleAdSense client='pub-8532596750508498'/>
-                <IconProvider>
-                    <UserProvider>
-                        <LanguageProvider>
-                            <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
-                            <Loading/>
-                            <div id='toast'/>
-                            <ThemeProvider>{
-                                children
-                            }</ThemeProvider>
-                            <Process/>
-                        </LanguageProvider>
-                    </UserProvider>
-                </IconProvider>
+                <Providers>
+                    <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
+                    <Loading/>
+                    <div id='toast'/>
+                    {children}
+                    <Process/>
+                </Providers>
             </body>
         </html>
-    );
+    )
 }

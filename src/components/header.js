@@ -36,7 +36,7 @@ export default function Header() {
                 <Link href='/' name='logo'>
                     <Img src={logo} alt='Foricon logo'/>
                 </Link>
-                <Link href='/changelog' name='version'>{webData.verFull}</Link>
+                <a href='/changelog' name='version'>{webData.verFull}</a>
             </div>
             <ul name='center'>{
                 [
@@ -142,25 +142,56 @@ export default function Header() {
                         }[lang]
                     }</span>
                 </li>
-                <li className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`} onClick={() => go(user ? 'account' : 'login')}>
-                    {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'></f-icon>}
-                    <span>{
-                        user ? user.doc.name : {
-                            en: 'Log in',
-                            vi: 'Đăng nhập',
-                            fr: 'Se connecter',
-                            it: 'Login',
-                            kr: '로그인',
-                            ja: 'ログイン',
-                            de: 'Einloggen',
-                            nl: 'Inloggen',
-                            dk: 'Log ind',
-                            pt: 'Conecte-se',
-                            es: 'Acceso',
-                            ru: 'Авторизоваться',
-                        }[lang]
-                    }</span>
-                </li>
+                {
+                    user
+                        ? <li
+                            className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`}
+                            onClick={() => go('account')}
+                        >
+                            <img src={user.doc.avatar}/>
+                            <span>{user.doc.name}</span>
+                        </li>
+                        : <>
+                            <li className='line' onClick={() => go('login')}>
+                                <f-icon icon='arrow-right-to-bracket' i-s='outline'/>
+                                <span>{
+                                    {
+                                        en: 'Log in',
+                                        vi: 'Đăng nhập',
+                                        fr: 'Se connecter',
+                                        it: 'Login',
+                                        kr: '로그인',
+                                        ja: 'ログイン',
+                                        de: 'Einloggen',
+                                        nl: 'Inloggen',
+                                        dk: 'Log ind',
+                                        pt: 'Conecte-se',
+                                        es: 'Acceso',
+                                        ru: 'Авторизоваться',
+                                    }[lang]
+                                }</span>
+                            </li>
+                            <li className='line' onClick={() => go('login')}>
+                                <f-icon icon='user-plus' i-s='outline'/>
+                                <span>{
+                                    {
+                                        en: 'Sign up',
+                                        vi: 'Đăng ký',
+                                        fr: "S'inscrire",
+                                        it: 'Iscrizione',
+                                        kr: '가입하기',
+                                        ja: 'サインアップ',
+                                        de: 'Melden Sie sich an',
+                                        nl: 'Aanmelden',
+                                        dk: 'Tilmeld dig',
+                                        pt: 'Inscrever-se',
+                                        es: 'Inscribirse',
+                                        ru: 'Зарегистрироваться',
+                                    }[lang]
+                                }</span>
+                            </li>
+                        </>
+                }
             </ul>
             <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
                 <li>Foricon Plus</li>
