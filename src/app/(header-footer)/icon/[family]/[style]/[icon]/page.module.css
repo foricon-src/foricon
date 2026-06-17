@@ -78,12 +78,10 @@
             grid-area: bottom;
             overflow: hidden;
             transition: var(--df-trans), height .5s ease;
+            height: 73px;
 
-            &.active {
+            :global(.active)& {
                 height: calc-size(auto, size);
-            }
-            &:not(.active) {
-                height: 72px;
             }
             & > :first-child {
                 border-bottom: 1px solid var(--dk-gray);
