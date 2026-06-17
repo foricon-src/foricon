@@ -354,7 +354,10 @@ export default function PageClient() {
             ) && selectIcon(null);
         })
         addEvLis(document, 'scroll',
-            () => window.scrollY >= offsetTop + offsetHeight - 88 ? activate(top) : deactivate(top)
+            () => {
+                console.log(window.scrollY, offsetTop + offsetHeight - 88)
+                window.scrollY >= offsetTop + offsetHeight - 88 ? activate(top) : deactivate(top)
+            }
         )
 
         addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
