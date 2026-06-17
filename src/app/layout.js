@@ -7,8 +7,8 @@ import './globals.css';
 
 export const metadata = {
     title: {
-        default: 'Foricon - A fully free icon font library',
-        template: '%s | Foricon'
+        default: 'Foricon - A fully free icon font library (Beta 3.0 Preview)',
+        template: '%s | Foricon (Beta 3.0 Preview)'
     },
     description: 'Foricon is a free icon font library aimed to provide pure-free assets beautifully made to enhance your UI look within seconds. We also support wide range of icon customization to make our icons perfectly fit into your project!',
     platfrom: 'Vercel (Next.js)',
