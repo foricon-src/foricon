@@ -24,7 +24,8 @@ export default function PageClient() {
     let iconSet = useContext(IconContext);
 
     let [ type, setType ] = useState('');
-
+    
+    let topRef = useRef();
     let inputRef = useRef();
     
     let initial = ((params) => {
@@ -80,6 +81,8 @@ export default function PageClient() {
 
     let [ selectedIcon, selectIcon ] = useState(null);
     let [ width, setWidth ] = useState(innerWidth);
+
+    let [ isHovered, setIsHovered ] = useState(false);
 
     let filtered = useMemo(() => {
         if (!iconSet) return [];
@@ -337,79 +340,12 @@ export default function PageClient() {
 
         check();
         
-        let top = qSelec(`.${cssStyle.top}`);
-        let top_search = qSelec(top, 'input');
-        let top_optionList = qSelec(top, 'option-list');
-
-        let animating = false;
-        let isHovered = false;
-        let topPos = `${-top.offsetHeight + 70}px`;
-        let lastPos = 0;
-
-        function openTop() {
-            if (!isActive(top)) return;
-            top.style.top = '20px';
-            isHovered = true;
-        }
-        async function hideTop() {
-            if (!isHovered || !isActive(top)) return;
-            if (document.activeElement != top_search && !isActive(top_optionList)) {
-                top.style.top = topPos;
-                top.classList.add(cssStyle.slowTrans);
-                isHovered = false;
-            }
-            await wait(.5);
-            top.classList.remove(cssStyle.slowTrans);
-        }
-        
         addEvLis(window, 'resize', check);
-        
-        addEvLis(document, 'click', async ({ target }) => {
-            (
-                ![
-                    qSelec(`.${cssStyle.bar}`),
-                    qSelec(`.${cssStyle.results} > .active`),
-                    qSelec('.modal'),
-                ].filter(Boolean).some(i => i.contains(target))
-                ||
-                qSelec(`.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)
-            ) && selectIcon(null);
-            await wait();
-            !top.contains(target) && hideTop();
+        addEvLis(document, 'scroll', () => {
+            let top = topRef.current;
+            let { offsetTop, offsetHeight } = top;
+            document.body.scrollTop >= offsetTop + offsetHeight && activate(top);
         })
-        addEvLis(document, 'scroll', async () => {
-            if (animating) return;
-            animating = true;
-            let calculated = document.documentElement.scrollTop - innerHeight;
-            lastPos = calculated;
-            if (calculated > 0) {
-                activate(top);
-                appendData(top.style, {
-                    top: topPos,
-                    translate: '0 18px',
-                })
-                if (document.activeElement == top_search || isActive(top_optionList)) {
-                    openTop();
-                    top.classList.add(cssStyle.slowTrans);
-                    await wait(.5);
-                    top.classList.remove(cssStyle.slowTrans);
-                }
-                else await wait(.2);
-            }
-            else {
-                let waitTime = .5;
-                if (isHovered) top.style.top = topPos;
-                else waitTime = .2;
-                top.style.translate = 0;
-                isHovered = false;
-                await wait(waitTime);
-                inactivate(top);
-            }
-            animating = false;
-        })
-        
-        addEvLis(top, 'mouseenter', openTop);
-        addEvLis(top, 'mouseleave', hideTop);
 
         addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
     })()}, [])
@@ -428,7 +364,7 @@ export default function PageClient() {
             document,
             'keyup',
             ({ key }) => key == '/' && inputRef.current.focus({ preventScroll: true }),
-            true
+            true,
         )
         return () => manager.remv();
     }, [])
@@ -558,7 +494,7 @@ export default function PageClient() {
                     }[lang]
                 }</a>
             </div>}
-            <div className={`outer-corner ${cssStyle.top}`}>
+            <div ref={topRef} className={`outer-corner ${cssStyle.top}`}>
                 <Search ref={inputRef} value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
                     {
                         en: 'Find the perfect icon for your next masterpiece…',

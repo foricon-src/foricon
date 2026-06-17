@@ -202,14 +202,17 @@
     
     :global(.active)& {
         position: sticky;
-        
-        &.slowTrans, &:hover {
-            transition: var(--df-trans), top .5s ease, translate .5s ease;
-        }
-        &:not(:has(input:focus, :global(option-list.active)), :hover) {
+        top: -136px;
+        transition: var(--df-trans), translate .5s ease;
+
+        &:hover, &:has(input:focus, :global(option-list.active)) {
+            translate: 0 174px;
+
             &:after {
-                opacity: 1;
+                opacity: 0;
             }
+        }
+        &:not(:hover, :has(input:focus, :global(option-list.active))) {
             & > * {
                 opacity: 0;
             }
@@ -225,7 +228,6 @@
         background-color: var(--gray);
         border-radius: 2px;
         position: absolute;
-        opacity: 0;
         pointer-events: none;
     }
     & > :is(label, f-select) {
