@@ -19,6 +19,7 @@ export default function Header() {
     let { isDark, setIsDark } = useContext(ThemeContext);
     let user = useContext(UserContext);
     let [ open, setOpen ] = useState(false);
+    console.log(user);
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) =>
