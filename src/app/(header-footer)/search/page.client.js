@@ -338,7 +338,6 @@ export default function PageClient() {
         let { offsetTop, offsetHeight } = top;
         let fSelect = fSelectRef.current;
         fSelect.setValue(version);
-        setLoaded(true);
 
         check();
         
