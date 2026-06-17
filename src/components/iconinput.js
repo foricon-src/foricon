@@ -39,7 +39,10 @@ export default function IconInput({
             i-s={currentIcon.style}
         />
         <input
-            ref={elem => ref?.current = inputRef.current = elem}
+            ref={elem => {
+                inputRef.current = elem;
+                ref && (ref.current = elem);
+            }}
             placeholder={placeholder}
             value={v}
             onInput={e => {
