@@ -355,7 +355,7 @@ export default function PageClient() {
         })
         addEvLis(document, 'scroll',
             () => {
-                console.log(window.scrollY, offsetTop + offsetHeight - 88)
+                console.log(window.scrollY, offsetTop, offsetHeight)
                 window.scrollY >= offsetTop + offsetHeight - 88 ? activate(top) : deactivate(top)
             }
         )
