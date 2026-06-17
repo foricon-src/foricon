@@ -19,7 +19,6 @@ export default function Header() {
     let { isDark, setIsDark } = useContext(ThemeContext);
     let user = useContext(UserContext);
     let [ open, setOpen ] = useState(false);
-    console.log(user);
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) =>
@@ -151,7 +150,7 @@ export default function Header() {
                     >
                         {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'/>}
                         <span>{
-                            user?.doc.name || {
+                            user ? user.doc.name || {
                                 en: 'Log in',
                                 vi: 'Đăng nhập',
                                 fr: 'Se connecter',
