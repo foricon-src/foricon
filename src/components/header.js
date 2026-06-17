@@ -10,6 +10,7 @@ import Img from 'Com/img';
 import useGo from './go';
 import logo from 'Pub/foricon-f-logo.png';
 import 'Com/utils';
+import Join from './join';
 
 export default function Header() {
     let pathname = usePathname();
@@ -143,54 +144,28 @@ export default function Header() {
                     }</span>
                 </li>
                 {
-                    user
-                        ? <li
-                            className={`chip bottom line${pathname.startsWith('/account') ? ' active' : ''}`}
-                            onClick={() => go('account')}
-                        >
-                            <img src={user.doc.avatar}/>
-                            <span>{user.doc.name}</span>
-                        </li>
-                        : <>
-                            <li className='chip bottom line' onClick={() => go('login')}>
-                                <f-icon icon='arrow-right-to-bracket' i-s='outline'/>
-                                <span>{
-                                    {
-                                        en: 'Log in',
-                                        vi: 'Đăng nhập',
-                                        fr: 'Se connecter',
-                                        it: 'Login',
-                                        kr: '로그인',
-                                        ja: 'ログイン',
-                                        de: 'Einloggen',
-                                        nl: 'Inloggen',
-                                        dk: 'Log ind',
-                                        pt: 'Conecte-se',
-                                        es: 'Acceso',
-                                        ru: 'Авторизоваться',
-                                    }[lang]
-                                }</span>
-                            </li>
-                            <li className='chip bottom' onClick={() => go('login')}>
-                                <f-icon icon='user-plus' i-s='outline'/>
-                                <span>{
-                                    {
-                                        en: 'Sign up',
-                                        vi: 'Đăng ký',
-                                        fr: "S'inscrire",
-                                        it: 'Iscrizione',
-                                        kr: '가입하기',
-                                        ja: 'サインアップ',
-                                        de: 'Melden Sie sich an',
-                                        nl: 'Aanmelden',
-                                        dk: 'Tilmeld dig',
-                                        pt: 'Inscrever-se',
-                                        es: 'Inscribirse',
-                                        ru: 'Зарегистрироваться',
-                                    }[lang]
-                                }</span>
-                            </li>
-                        </>
+                    <li
+                        className={Join('line', user && 'chip top', pathname.startsWith('/account') && 'active')}
+                        onClick={() => go(user ? 'account' : 'login')}
+                    >
+                        {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'/>}
+                        <span>{
+                            user?.doc.name || {
+                                en: 'Log in',
+                                vi: 'Đăng nhập',
+                                fr: 'Se connecter',
+                                it: 'Login',
+                                kr: '로그인',
+                                ja: 'ログイン',
+                                de: 'Einloggen',
+                                nl: 'Inloggen',
+                                dk: 'Log ind',
+                                pt: 'Conecte-se',
+                                es: 'Acceso',
+                                ru: 'Авторизоваться',
+                            }[lang]
+                        }</span>
+                    </li>
                 }
             </ul>
             <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
@@ -261,26 +236,26 @@ export default function Header() {
                 }</li>
                 <li className='line'>Fotorno</li>
                 <li>Hub</li>
-                <li>Media</li>
-                <li>Music</li>
                 <li className={`line${isDark ? ' active' : ''}`} name='dark-toggle' onClick={() => setIsDark(!isDark)}>
                     <div/>
-                    <span dangerouslySetInnerHTML={{
-                        __html: `${{
-                            en: 'Dark mode',
-                            vi: 'Chế độ tối',
-                            fr: 'Mode sombre',
-                            it: 'Modalità scura',
-                            kr: '다크 모드',
-                            ja: 'ダークモード',
-                            de: 'Dunkler Modus',
-                            nl: 'Donkere modus',
-                            dk: 'Mørk tilstand',
-                            pt: 'Modo escuro',
-                            es: 'Modo oscuro',
-                            ru: 'Темный режим',
-                        }[lang]} <span>(<span class='key'>Ctrl</span> + <span class='key'>B</span>)</span>`
-                    }}/>
+                    <span>
+                        {
+                            {
+                                en: 'Dark mode',
+                                vi: 'Chế độ tối',
+                                fr: 'Mode sombre',
+                                it: 'Modalità scura',
+                                kr: '다크 모드',
+                                ja: 'ダークモード',
+                                de: 'Dunkler Modus',
+                                nl: 'Donkere modus',
+                                dk: 'Mørk tilstand',
+                                pt: 'Modo escuro',
+                                es: 'Modo oscuro',
+                                ru: 'Темный режим',
+                            }[lang]
+                        } <span class='key'>Ctrl</span> <span class='key'>B</span>
+                    </span>
                 </li>
             </ul>
         </header>
