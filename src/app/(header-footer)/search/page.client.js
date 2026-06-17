@@ -122,7 +122,7 @@ export default function PageClient() {
         inSaved, sortOpt, searchSortOpt,
     ])
     let columns = useMemo(
-        () => getComputedStyle?.(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length || 1
+        () => iconSet ? getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
         [ width, tick ]
     )
     let perPage = useMemo(() => {
