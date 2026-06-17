@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang='en'>
+        <html>
             <head>
                 <link href='//fonts.googleapis.com' rel='preconnect'/>
                 <link crossOrigin='' href='//fonts.gstatic.com' rel='preconnect'/>

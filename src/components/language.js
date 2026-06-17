@@ -50,6 +50,7 @@ export function LanguageProvider({ children }) {
             await setDoc(doc(dbFirestore, 'statistics', 'item'), stats);
         }
         
+        document.documentElement.lang = language;
         setLanguage(language);
     })()}, [])
     
