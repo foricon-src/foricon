@@ -83,7 +83,6 @@ export default function PageClient() {
     let [ width, setWidth ] = useState(innerWidth);
 
     let filtered = useMemo(() => {
-        console.log(iconSet);
         if (!iconSet) return [];
         
         let icons = iconSet[version];
@@ -118,6 +117,7 @@ export default function PageClient() {
             })
     }, [
         user,
+        iconSet,
         search, family, style, selectedCategories, version,
         inSaved, sortOpt, searchSortOpt,
     ])
