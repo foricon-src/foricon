@@ -1939,7 +1939,7 @@ header {
     z-index: 2;
     display: grid;
     grid-template-areas: 'left center right';
-    grid-template-columns: 200px auto 200px;
+    grid-template-columns: 260px auto 260px;
     align-items: center;
     
     > div {
@@ -2021,7 +2021,7 @@ header {
         > li {
             padding-top: 0;
             padding-bottom: 0;
-            aspect-ratio: 1/1;
+            height: 42px;
             align-items: center;
             
             &.chip {

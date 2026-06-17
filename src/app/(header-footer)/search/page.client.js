@@ -83,6 +83,7 @@ export default function PageClient() {
     let [ width, setWidth ] = useState(innerWidth);
 
     let filtered = useMemo(() => {
+        console.log(iconSet);
         if (!iconSet) return [];
         
         let icons = iconSet[version];
@@ -121,7 +122,7 @@ export default function PageClient() {
         inSaved, sortOpt, searchSortOpt,
     ])
     let columns = useMemo(
-        () => iconSet ? getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
+        () => getComputedStyle?.(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length || 1
         [ width, tick ]
     )
     let perPage = useMemo(() => {
