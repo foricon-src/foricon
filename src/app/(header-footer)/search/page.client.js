@@ -344,8 +344,7 @@ export default function PageClient() {
         addEvLis(document, 'scroll', () => {
             let top = topRef.current;
             let { offsetTop, offsetHeight } = top;
-            console.log(document.body.scrollTop, offsetTop + offsetHeight)
-            document.body.scrollTop >= offsetTop + offsetHeight && activate(top);
+            window.scrollY >= offsetTop + offsetHeight && activate(top);
         })
 
         addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
