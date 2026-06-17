@@ -426,7 +426,7 @@ export default function PageClient() {
     useEffect(() => {
         let manager = evLisMan(
             document,
-            'keypress',
+            'keyup',
             ({ key }) => key == '/' && inputRef.current.focus(),
             true
         )
