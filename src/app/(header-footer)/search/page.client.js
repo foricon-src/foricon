@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo, useContext } from 'react';
+import { useEffect, useState, useMemo, useContext, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Ad } from 'Com/ad';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
@@ -13,6 +13,7 @@ import Search from 'Com/search';
 import Join from 'Com/join';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
+import { input } from 'framer-motion/client';
 
 export default function PageClient() {
     let router = useRouter();
@@ -24,331 +25,7 @@ export default function PageClient() {
 
     let [ type, setType ] = useState('');
 
-    // useEffect(() => {(async () => {
-    //     while (elemById('loading')) await wait();
-  
-    //     let chooseLayers = elemById('choose-layers');
-    //     let chooseLayers_checkboxes = getChild(qSelec(chooseLayers, 'div.checkboxes'));
-        
-    //     let selectedCategories = [];
-    //     let timeoutSearch;
-    //     let currentView = localStorage.getItem('view') || 'large';
-    //     let quickSearch = sessionStorage.getItem('search');
-    //     let top = elemById('top');
-    //     let top_search = qSelec(top, 'input');
-    //     let top_versions = qSelec(top, 'f-select');
-    //     let top_options = qSelec(top, '#options');
-    //     let top_options_families = qSelec(options, '#top_options_families');
-    //     let top_options_styles = qSelec(options, '#top_options_styles');
-    //     let top_options_views = qSelec(options, '#top_options_views');
-    //     let categories = elemById('categories');
-    //     let results = elemById('results');
-    //     let pages = elemById('pages');
-    //     let bar = elemById('bar');
-    //     let bar_code = qSelec(bar, 'code');
-    //     let bar_glyphs = qSelec(bar, '#bar_glyphs');
-    //     let bar_glyphs_primary = qSelec(bar_glyphs, 'div[name="Primary"]');
-    //     let bar_glyphs_secondary = qSelec(bar_glyphs, 'div[name="Secondary"]');
-    //     let bar_unicodes = qSelec(bar, '#bar_unicodes');
-    //     let bar_unicodes_primary = qSelec(bar_unicodes, 'div[name="Primary"]');
-    //     let bar_unicodes_secondary = qSelec(bar_unicodes, 'div[name="Secondary"]');
-    //     let bar_categories = qSelec(bar, '#bar_categories > ul');
-    //     let bar_download = qSelec(bar, '#bar_download');
-    //     let bar_download_ul = qSelec(bar_download, 'ul');
-        
-    //     let charNameList = [], isBarOpened = false;
-        
-    //     try {
-    //         let res = await fetch('/api/get-glyphs');
-    //         let icons = await res.json();
-    //         charNameList.push(...icons);
-    //     }
-    //     catch ({ message }) {
-    //         notify('error', message);
-    //     }
-        
-    //     if (quickSearch) {
-    //         sessionStorage.removeItem('search');
-    //         top_search.value = quickSearch;
-    //         show();
-    //     }
-        
-    //     function formatKeyword(value, reversed) {
-    //         return value.replaceAll(...(reversed ? ['+', ' '] : [' ', '+']));
-    //     }
-    //     function goLink() {
-    //         go(router, `#v=${top_versions.value}&${top_search.value ? `k=${formatKeyword(top_search.value)}` : ''}${selectedCategories.length ? `${top_search.value ? '&' : ''}c=${selectedCategories.join(';')}` : ''}${top_search.value || selectedCategories.length ? '&' : ''}f=${Lower(qSelec(top_options_families, '.active').dataset.value)}&s=${Lower(qSelec(top_options_styles, '.active').dataset.value)}`);
-    //     }
-    //     function show() {
-    //         let value = normalize(top_search.value);
-    //         let currentStyle = Lower(qSelec(top_options_styles, '.active').dataset.value);
-    //         let currentFamily = Lower(qSelec(top_options_families, '.active').dataset.value);
-    //         let obj = structuredClone(webData.categories);
-    //         let style = '', resultCount = 0, children = [];
-            
-    //         clear(categories, results, pages);
-            
-    //         function normalize(value) {
-    //             return Lower(value).replace(/[+-]/g, ' ');
-    //         }
-    //         function showIcon(icon, style) {
-    //             let normalized = normalize(icon.name);
-                
-    //             if (
-    //                 icon.styles.includes(style) &&
-    //                 (normalized.includes(value) || similarity(normalized, value) > .65) &&
-    //                 (!selectedCategories.length || selectedCategories.every(category => icon.categories.includes(category)))
-    //             ) {
-    //                 icon.categories.forEach(cate => {
-    //                     obj[cate].count = (obj[cate].count || 0) + 1
-    //                 })
-                    
-    //                 let num = Math.ceil(++resultCount / 150);
-    //                 let li = newElem('li', `
-    //                     <f-icon icon='${icon.name}' i-s='${style}' ${top_versions.value}></f-icon>
-    //                     <span>${icon.name}</span>`)
-    //                 li.page = num;
-    //                 resultCount > 150 && (li.style.display = 'none');
-    //                 addEvLis(li, 'click', async () => {
-    //                     if (isActive(li)) return;
-
-    //                     isBarOpened && await wait(.2);
-    //                     activate(li);
-                        
-    //                     isBarOpened = true;
-                        
-    //                     let isB1 = top_versions.value == 'b1';
-    //                     let isDuotone = style.startsWith('duotone/');
-            
-    //                     let { name, categories } = icon;
-    //                     let glyphs = icon.glyphs[style.replace('/', '-')];
-    //                     let unicodes = icon.unicodes[style.replace('/', '-')].split('|');
-            
-    //                     clear(bar_categories);
-    //                     activate(bar);
-                        
-    //                     qSelec(bar, 'h6').innerText = name;
-    //                     qSelec(bar, 'f-icon[icon="circle-info"]').onclick = () => notify(
-    //                         'info', '<span className="key">Ctrl</span> + <b>Click</b> to copy the code'
-    //                     )
-    //                     bar_code.innerHTML = formatCode(
-    //                         `<f-icon icon='${name}'${style == 'solid' ? '' : ` i-s='${style}'`}${isB1 ? ' b1' : ''}></f-icon>`
-    //                     )
-    //                     bar_glyphs_primary.innerHTML = glyphs[0];
-    //                     bar_unicodes_primary.innerHTML = unicodes[0];
-    //                     if (isDuotone) {
-    //                         bar_glyphs_secondary.innerText = glyphs[1];
-    //                         bar_unicodes_secondary.innerText = unicodes[1];
-    //                     }
-    //                     else bar_glyphs_secondary.innerText = bar_unicodes_secondary.innerText = '';
-    //                     bar_categories.append(
-    //                         ...categories.map(cate => {
-    //                             let category = webData.categories[cate];
-    //                             return newElem('li', `${category.icon}<span>${category[language]}</span>`);
-    //                         }).sort((a, b) => a.innerText.localeCompare(b.innerText))
-    //                     )
-            
-    //                     getChild(bar_download_ul).forEach(btn => btn.onclick = ({currentTarget}) => {
-    //                         if (isB1) {
-    //                             notify('warn', 'This feature does not support Beta 1.x icons');
-    //                             return;
-    //                         }
-    //                         let type = getAttr(currentTarget, 'name');
-    //                         setType(currentTarget.innerText);
-    //                         isDuotone ? enable(chooseLayers_checkboxes[1]) : disable(chooseLayers_checkboxes[1]);
-    //                         modal(chooseLayers, layers =>
-    //                             layers.forEach(layer => {
-    //                                 let { name } = charNameList.find(i => i.unicode == unicodes[layer == 'pri' ? 0 : 1]);
-    //                                 go(router, `//foricon-server-side.onrender.com/get-icon/${type}/${name}`, true);
-    //                             })
-    //                         )
-    //                     })
-    //                 })
-    //                 results.append(li);
-                    
-    //                 if (resultCount % 150 - 1 == 0) {
-    //                     let li_page = newElem('li');
-    //                     num == 1 && activate(li_page);
-    //                     li_page.innerText = num;
-    //                     addEvLis(li_page, 'click',() =>
-    //                         getChild(results).forEach(each => {
-    //                             each.style.display = each.page == num ? '' : 'none';
-    //                             inactivate(...pages.children);
-    //                             activate(li_page);
-    //                         })
-    //                     )
-    //                     pages.append(li_page);
-    //                 }
-    //             }
-    //         }
-    //         function getStyles(icon) {
-    //             if (currentFamily == 'all' && currentStyle == 'all')
-    //                 return icon.styles;
-    //             if (currentFamily == 'all')
-    //                 return ['', 'duotone/', 'sharp/'].map(prefix => `${prefix}${currentStyle}`);
-    //             if (currentStyle == 'all')
-    //                 return ['solid', 'outline'].map(
-    //                     style => `${currentFamily == 'regular' ? '' : currentFamily + '/'}${style}`
-    //                 );
-    //             return [`${currentFamily == 'regular' ? '' : currentFamily + '/'}${currentStyle}`];
-    //         }
-            
-    //         let icons = webData[top_versions.value == 'b1' ? 'icons' : 'iconsB2'];
-    //         (value ? icons : icons.toSorted(
-    //             (a, b) => similarity(b.name, value) - similarity(a.name, value)
-    //         )).forEach(icon => getStyles(icon).forEach(style => showIcon(icon, style)));
-            
-    //         setCount(resultCount);
-            
-    //         for (let item in obj) {
-    //             let li_category = document.createElement('li');
-    //             selectedCategories.includes(item) && activate(li_category);
-    //             li_category.innerHTML = `<span>${obj[item].icon}${obj[item][language]}</span><span>${abbreviateNumber(obj[item].count || 0)}</span>`;
-                
-    //             addEvLis(li_category, 'click', () => {
-    //                 let i = selectedCategories.indexOf(item);
-    //                 i + 1 ? selectedCategories.splice(i, 1) : selectedCategories.push(item);
-    //                 goLink();
-    //                 show();
-    //             });
-                
-    //             (obj[item].count || isActive(li_category)) && children.push(li_category);
-    //         }
-    //         children.sort(
-    //             (a, b) => qSelec(a, 'span').innerText.localeCompare(qSelec(b, 'span').innerText)
-    //         )
-    //         categories.append(...children);
-    //     }
-        
-    //     top_versions.setValue('b2');
-    //     location.hash.slice(1).split('&').forEach(each => {
-    //         const prefix = each.slice(0, 2);
-    //         const value = each.slice(2);
-    //         ({
-    //             'k=': value => top_search.value = formatKeyword(value, true),
-    //             'c=': value => selectedCategories = value.split(';'),
-    //             's=': value => getChild(top_options_styles).forEach(style => value == Lower(style.dataset.value) && activate(style)),
-    //             'f=': value => getChild(top_options_families).forEach(family => value == Lower(family.dataset.value) && activate(family)),
-    //             'v=': value => value == 'b1' && top_versions.setValue(value)
-    //         })[prefix]?.(value);
-    //     })
-    //     !qSelec(top_options_styles, '.active') && activate(top_options_styles.children[0]);
-    //     !qSelec(top_options_families, '.active') && activate(top_options_families.children[0]);
-    //     show();
-    //     goLink();
-        
-    //     let animating = false;
-    //     let isHovered = false;
-    //     let topPos = `${-top.offsetHeight + 70}px`;
-    //     let lastPos = 0;
-    //     addEvLis(document, 'click', ({target}) => {
-    //         if (!qSelec(results, '.active')?.contains(target) && !bar.contains(target) && !chooseLayers.contains(target) && isActive(bar)) {
-    //             inactivate(...results.children, bar);
-    //             isBarOpened = false;
-    //         }
-    //         !top.contains(target) && hideTop();
-    //     })
-    //     addEvLis(document, 'scroll', async () => {
-    //         if (animating) return;
-    //         animating = true;
-    //         let calculated = document.documentElement.scrollTop - window.innerHeight;
-    //         lastPos = calculated;
-    //         if (calculated > 0) {
-    //             activate(top);
-    //             appendData(top.style, {
-    //                 top: topPos,
-    //                 translate: '0 18px',
-    //             })
-    //             if (document.activeElement == top_search) {
-    //                 openTop();
-    //                 top.classList.add('slow-trans');
-    //                 await wait(.5);
-    //                 top.classList.remove('slow-trans');
-    //             }
-    //             else await wait(.2);
-    //         }
-    //         else {
-    //             let waitTime = .5;
-    //             if (isHovered) top.style.top = topPos;
-    //             else waitTime = .2;
-    //             top.style.translate = 0;
-    //             isHovered = false;
-    //             await wait(waitTime);
-    //             inactivate(top);
-    //         }
-    //         animating = false;
-    //     })
-        
-    //     addEvLis(
-    //         [ bar_glyphs_primary, bar_glyphs_secondary, bar_unicodes_primary, bar_unicodes_secondary ],
-    //         'click',
-    //         async ({currentTarget}) => {
-    //             currentTarget.className = 'copied';
-    //             navigator.clipboard.writeText(currentTarget.innerText);
-    //             await wait(1);
-    //             currentTarget.className = '';
-    //         }
-    //     )
-        
-    //     async function openTop() {
-    //         if (!isActive(top)) return;
-    //         top.style.top = '20px';
-    //         isHovered = true;
-    //     }
-    //     async function hideTop() {
-    //         if (!isHovered || !isActive(top)) return;
-    //         if (document.activeElement != top_search) {
-    //             top.style.top = topPos;
-    //             top.classList.add('slow-trans');
-    //             isHovered = false;
-    //         }
-    //         await wait(.5);
-    //         top.classList.remove('slow-trans');
-    //     }
-    //     addEvLis(top, 'mouseenter', openTop);
-    //     addEvLis(top, 'mouseleave', hideTop);
-    //     addEvLis(top_search, 'input', () => {
-    //         clearTimeout(timeoutSearch)
-    //         timeoutSearch = setTimeout(show, 250);
-    //         goLink();
-    //     })
-    //     addEvLis(top_versions, 'change', () => {
-    //         show();
-    //         results.dataset.version = top_versions.value;
-    //         goLink();
-    //     })
-    //     qSelecA(top_options_styles, 'li').forEach(each => {
-    //         addEvLis(each,'click', () => {
-    //             inactivate(...top_options_styles.children);
-    //             activate(each);
-    //             goLink();
-    //             show();
-    //         })
-    //     })
-    //     qSelecA(top_options_families, 'li').forEach(each => {
-    //         addEvLis(each, 'click', () => {
-    //             inactivate(...top_options_families.children);
-    //             activate(each);
-    //             goLink();
-    //             show();
-    //         })
-    //     })
-    //     qSelecA(top_options_views, 'li').forEach(each => {
-    //         let name = getAttr(each, 'name');
-    //         addEvLis(each, 'click', () => {
-    //             inactivate(...top_options_views.children);
-    //             activate(each);
-    //             results.className = name;
-    //             localStorage.setItem('view', name);
-    //         })
-    //         currentView == name && each.click();
-    //     })
-        
-    //     addEvLis(qSelec('#main > h5:first-of-type'), 'click', () => {
-    //       let item = qSelec('#main > h5:first-of-type');
-    //       window.innerWidth <= 900 && (isActive(item) ? inactivate(item) : activate(item));
-    //     })
-    // })()}, [])
+    let inputRef = useRef();
     
     let initial = ((params) => {
         if (!params) return {
@@ -747,8 +424,13 @@ export default function PageClient() {
         location.search != value && history.replaceState(null, '', `?${value}`);
     }, [ search, family, style, version, selectedCategories ])
     useEffect(() => {
-        let adsenseContent = elemById('adsense-content');
-        adsenseContent && (adsenseContent.style.display = 'none');
+        let manager = evLisMan(
+            document,
+            'keydown',
+            ({ key }) => key == '/' && inputRef.current.focus(),
+            true
+        )
+        return () => manager.remv();
     }, [])
     useEffect(() => { localStorage.setItem('view', view) }, [ view ]);
     useEffect(() => {(async () => {
@@ -877,7 +559,7 @@ export default function PageClient() {
                 }</a>
             </div>}
             <div className={`outer-corner ${cssStyle.top}`}>
-                <Search value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
+                <Search ref={inputRef} value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={
                     {
                         en: 'Find the perfect icon for your next masterpiece…',
                         vi: 'Tìm biểu tượng hoàn hảo cho kiệt tác tiếp theo của bạn…',

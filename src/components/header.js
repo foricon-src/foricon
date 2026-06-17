@@ -145,7 +145,7 @@ export default function Header() {
                 </li>
                 {
                     <li
-                        className={Join('line', user && 'chip top', pathname.startsWith('/account') && 'active')}
+                        className={Join(' ', 'line', user && 'chip bottom', pathname.startsWith('/account') && 'active')}
                         onClick={() => go(user ? 'account' : 'login')}
                     >
                         {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'/>}
