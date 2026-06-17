@@ -2075,7 +2075,7 @@ header {
                     content: '';
                     background-color: var(--main-color);
                     position: absolute;
-                    animation: .5s ease .5s both;
+                    animation: .5s ease 2s both;
                     animation-name: off;
                     border-radius: 15px;
                     inset: 2px 12px 2px 2px;
@@ -2098,9 +2098,9 @@ header {
     100% { left: 2px; right: 12px }
 }
 @keyframes on {
-    0% { left: 12px; right: 2px }
+    0% { left: 2px; right: 12px }
     50% { left: 2px; right: 2px }
-    100% { left: 2px; right: 12px }
+    100% { left: 12px; right: 2px }
 }
 footer > div {
     &, &:last-child > ul {
