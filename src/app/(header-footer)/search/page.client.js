@@ -27,6 +27,7 @@ export default function PageClient() {
     
     let topRef = useRef();
     let inputRef = useRef();
+    let fSelectRef = useRef();
     
     let initial = ((params) => {
         if (!params) return {
@@ -62,8 +63,6 @@ export default function PageClient() {
             categories: verify('c'),
         }
     })(searchParams)
-    
-    let [ loaded, setLoaded ] = useState(false);
 
     let [ inSaved, setInSaved ] = useState(false);
     let [ view, setView ] = useState(localStorage.getItem('view') || 'large');
@@ -81,8 +80,6 @@ export default function PageClient() {
 
     let [ selectedIcon, selectIcon ] = useState(null);
     let [ width, setWidth ] = useState(innerWidth);
-
-    let [ isHovered, setIsHovered ] = useState(false);
 
     let filtered = useMemo(() => {
         if (!iconSet) return [];
@@ -118,12 +115,12 @@ export default function PageClient() {
                 ).filter(i => icon.styles.includes(i)).map(style => ({ icon, style }))
             })
     }, [
-        loaded, user,
+        user,
         search, family, style, selectedCategories, version,
         inSaved, sortOpt, searchSortOpt,
     ])
     let columns = useMemo(
-        () => loaded ? getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length : 1
+        () => getComputedStyle(qSelec(`.${cssStyle.results}`)).gridTemplateColumns.split(' ').length
         [ width, tick ]
     )
     let perPage = useMemo(() => {
@@ -251,7 +248,11 @@ export default function PageClient() {
             ru: 'Плитка',
         }
     ].map(({ icon, value, ...texts }) =>
-        <li key={value} className={Join(' ', width > 900 && 'chip top', view == value && 'active')} onClick={() => setView(value)}>
+        <li
+            key={value}
+            className={Join(' ', width > 900 && 'chip top', view == value && 'active')}
+            onClick={() => setView(value)}
+        >
             <f-icon icon={icon} i-s={icon == 'list' && 'outline'}></f-icon>
             <span>{texts[lang]}</span>
         </li>
@@ -333,19 +334,18 @@ export default function PageClient() {
     }
     
     useEffect(() => {(async () => {
-        let fSelect = qSelec('f-select');
-        while (elemById('loading')) await wait();
+        let top = topRef.current;
+        let { offsetTop, offsetHeight } = top;
+        let fSelect = fSelectRef.current;
         fSelect.setValue(version);
         setLoaded(true);
 
         check();
         
         addEvLis(window, 'resize', check);
-        addEvLis(document, 'scroll', () => {
-            let top = topRef.current;
-            let { offsetTop, offsetHeight } = top;
-            window.scrollY >= offsetTop + offsetHeight - 18 ? activate(top) : deactivate(top);
-        })
+        addEvLis(document, 'scroll',
+            () => window.scrollY >= offsetTop + offsetHeight - 18 ? activate(top) : deactivate(top)
+        )
 
         addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
     })()}, [])
@@ -372,7 +372,7 @@ export default function PageClient() {
     useEffect(() => {(async () => {
         await wait();
         updateTick();
-    })()}, [ loaded, view ])
+    })()}, [ view ])
     useEffect(() => { globalThis[user ? 'enable' : 'disable'](elemById('save')) }, [ user ]);
     useEffect(() => {
         if (!selectedIcon) return;
@@ -511,7 +511,7 @@ export default function PageClient() {
                         ru: 'Найдите идеальную иконку для вашего следующего шедевра…',
                     }[lang]
                 }/>
-                <f-select>
+                <f-select ref={fSelectRef}>
                     <text></text>
                     <option-list>
                         <f-option value='b2'>Beta 2+</f-option>
@@ -765,7 +765,7 @@ export default function PageClient() {
                 </div>
                 <div className={cssStyle.results}>
                     <ul className={`${cssStyle.grid} ${cssStyle[view]}`}>{
-                        loaded ? currentIcons.map(({ icon, style }) => (
+                        currentIcons.map(({ icon, style }) => (
                             <li
                                 key={`${icon.name} | ${style}`}
                                 className={icon.name == selectedIcon?.name && style == selectedIcon?.style && 'active'}
@@ -788,7 +788,7 @@ export default function PageClient() {
                                 })()}></f-icon>
                                 <span>{icon.name}</span>
                             </li>
-                        )) : Array(20).map((_, i) => <li key={i}/>)
+                        ))
                     }</ul>
                     <ul className={`btn-list line-active top ${cssStyle.pages}`}>{
                         (() => {
