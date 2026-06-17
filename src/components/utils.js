@@ -713,9 +713,9 @@ globalThis.activate = (...elems) => {
 }
 /**
  * Removes activate state from element(s)
- * @param {HTMLElement} elems - Element(s) to inactivate
+ * @param {HTMLElement} elems - Element(s) to deactivate
  */
-globalThis.inactivate = (...elems) => {
+globalThis.deactivate = (...elems) => {
     let { body } = document;
     elems.forEach(elem => {
         let html = document.documentElement;
@@ -742,7 +742,7 @@ globalThis.isActive = elem => {
  */
 globalThis.toggle = (...elems) => {
     elems.forEach(
-        elem => isActive(elem) ? inactivate(elem) : activate(elem)
+        elem => isActive(elem) ? deactivate(elem) : activate(elem)
     )
 }
 /**
@@ -1246,7 +1246,7 @@ globalThis.modal = async (elem, actionIfTrue, actionIfFalse, useStrict) => {
             uploadFile?.clear();
             disable(body);
             await actionIfTrue?.(value);
-            inactivate(elem);
+            deactivate(elem);
         }
         catch (err) {
             notify(
@@ -1267,7 +1267,7 @@ globalThis.modal = async (elem, actionIfTrue, actionIfFalse, useStrict) => {
                 uploadFile?.clear();
                 disable(body);
                 await actionIfFalse?.(value);
-                inactivate(elem);
+                deactivate(elem);
             }
             catch (err) {
                 notify(

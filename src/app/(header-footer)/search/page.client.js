@@ -344,7 +344,7 @@ export default function PageClient() {
         addEvLis(document, 'scroll', () => {
             let top = topRef.current;
             let { offsetTop, offsetHeight } = top;
-            window.scrollY >= offsetTop + offsetHeight && activate(top);
+            window.scrollY >= offsetTop + offsetHeight - 18 ? activate(top) : deactivate(top);
         })
 
         addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
@@ -706,7 +706,7 @@ export default function PageClient() {
                 </div>
             </div>
             <div className={cssStyle.main}>
-                <h5 onClick={({ currentTarget }) => isActive(currentTarget) ? inactivate(currentTarget) : activate(currentTarget)}>{
+                <h5 onClick={({ currentTarget }) => isActive(currentTarget) ? deactivate(currentTarget) : activate(currentTarget)}>{
                     {
                         en: 'Categories',
                         vi: 'Thể loại',

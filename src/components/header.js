@@ -28,7 +28,7 @@ export default function Header() {
             ].some(i => i?.contains(target)) && setOpen(false)
         )
 
-        qSelecA('header > center > a')?.forEach(each => each.pathname == pathname ? activate(each) : inactivate(each));
+        qSelecA('header > center > a')?.forEach(each => each.pathname == pathname ? activate(each) : deactivate(each));
     }, [])
 
     return (

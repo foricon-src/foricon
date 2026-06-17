@@ -308,7 +308,7 @@ export default function Process() {
                 }
                 
                 elem.setPlaybackRate = value => {
-                    inactivate(...control_controls_right_speedOptions_options);
+                    deactivate(...control_controls_right_speedOptions_options);
                     control_controls_right_speedOptions_options.forEach(opt => opt.dataset.value == value && activate(opt));
                     video.playbackRate = elem.playbackRate = value;
                 }
@@ -342,7 +342,7 @@ export default function Process() {
                 addEvLis(elem, 'click', ({target}) => {
                     target == elem && !dragging && control_controls_center_play.click();
                     !control_controls_right_speedOptions.contains(target) && !control_controls_right_speed.contains(target) &&
-                    inactivate(control_controls_right_speedOptions)
+                    deactivate(control_controls_right_speedOptions)
                 })
                 
                 addEvLis(elem, ['pointermove', 'pointerleave', 'click'], () => hideControls());
@@ -376,7 +376,7 @@ export default function Process() {
                 addEvLis(document, 'pointerup', async () => {
                     if (dragging) {
                         remvEvLis(document, 'pointermove', drag);
-                        inactivate(control_timeline);
+                        deactivate(control_timeline);
                         play && video.play();
                         await wait();
                         dragging = false;
@@ -491,12 +491,12 @@ export default function Process() {
                 if (elem.isMultiple) {
                     if (elem.value.includes(value)) {
                         if (elem.required && qSelecA(elem.list, '.active').length == 1) return;
-                        inactivate(opt);
+                        deactivate(opt);
                     }
                     else activate(opt);
                 }
                 else {
-                    inactivate(...elem.list.children);
+                    deactivate(...elem.list.children);
                     activate(opt);
                     elem.toggleList();
                 }
@@ -522,7 +522,7 @@ export default function Process() {
                 let { offsetHeight } = elem.list;
                 let values = [ `${offsetHeight}px`, '0' ];
                 toOpen && (values = values.reverse());
-                let func = toOpen ? activate : inactivate;
+                let func = toOpen ? activate : deactivate;
 
                 elem.list.style.height = values[0];
                 await wait();
