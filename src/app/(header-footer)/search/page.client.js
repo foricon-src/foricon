@@ -343,7 +343,7 @@ export default function PageClient() {
         
         addEvLis(window, 'resize', check);
         addEvLis(document, 'scroll',
-            () => window.scrollY >= offsetTop + offsetHeight - 18 ? activate(top) : deactivate(top)
+            () => window.scrollY >= offsetTop + offsetHeight - 88 ? activate(top) : deactivate(top)
         )
 
         addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
