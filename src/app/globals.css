@@ -2075,8 +2075,9 @@ header {
                     content: '';
                     background-color: var(--main-color);
                     position: absolute;
-                    animation: change .5s ease .5s;
+                    animation: change .5s ease .5s both;
                     border-radius: 15px;
+                    inset: 2px 12px 2px 2px;
                 }
                 .active > & {
                     background-color: var(--main-color);
