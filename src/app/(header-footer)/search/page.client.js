@@ -342,6 +342,17 @@ export default function PageClient() {
         check();
         
         addEvLis(window, 'resize', check);
+        addEvLis(document, 'click', async ({ target }) => {
+            (
+                ![
+                    qSelec(`.${cssStyle.bar}`),
+                    qSelec(`.${cssStyle.results} > .active`),
+                    qSelec('.modal'),
+                ].filter(Boolean).some(i => i.contains(target))
+                ||
+                qSelec(`.${cssStyle.bar} > .${cssStyle.categories} > .btn-list`).contains(target)
+            ) && selectIcon(null);
+        })
         addEvLis(document, 'scroll',
             () => window.scrollY >= offsetTop + offsetHeight - 88 ? activate(top) : deactivate(top)
         )
