@@ -427,7 +427,7 @@ export default function PageClient() {
         let manager = evLisMan(
             document,
             'keyup',
-            ({ key }) => key == '/' && inputRef.current.focus(),
+            ({ key }) => key == '/' && inputRef.current.focus({ preventScroll: true }),
             true
         )
         return () => manager.remv();

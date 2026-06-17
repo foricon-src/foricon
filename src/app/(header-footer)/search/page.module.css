@@ -435,6 +435,10 @@
                     
                     :global(body.dark) & {
                         background-color: var(--xdk-main-color);
+
+                        & > * {
+                            color: var(--dk-main-color);
+                        }
                     }
                     & > * {
                         color: var(--main-color);
