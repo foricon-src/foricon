@@ -12,6 +12,7 @@ export default function IconInput({
     className,
     onInput,
     clearable,
+    ref,
     ...rest
 }) {
     let [ v, setV ] = useState(value || '');
@@ -38,7 +39,7 @@ export default function IconInput({
             i-s={currentIcon.style}
         />
         <input
-            ref={inputRef}
+            ref={elem => inputRef.current = ref.current = elem}
             placeholder={placeholder}
             value={v}
             onInput={e => {
