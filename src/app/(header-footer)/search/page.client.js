@@ -29,7 +29,6 @@ export default function PageClient() {
     let inputRef = useRef();
     let fSelectRef = useRef();
     let mainRef = useRef();
-    let resultRef = useRef();
     
     let initial = ((params) => {
         if (!params) return {
@@ -122,10 +121,10 @@ export default function PageClient() {
         search, family, style, selectedCategories, version,
         inSaved, sortOpt, searchSortOpt,
     ])
-    let columns = useMemo(
-        () => iconSet ? getComputedStyle(resultRef.current).gridTemplateColumns.split(' ').length : 1
-        [ width, tick ]
-    )
+    let columns = useMemo(() => {
+        let elem = qSelec(`.${cssStyle.results}`);
+        iconSet && elem ? getComputedStyle(elem).gridTemplateColumns.split(' ').length : 1
+    }, [ width, tick ])
     let perPage = useMemo(() => {
         let rows = Math.floor(
             (view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns
@@ -774,7 +773,7 @@ export default function PageClient() {
                         ))
                 }</ul>
             </div>
-            <div ref={resultRef} className={cssStyle.results}>
+            <div className={cssStyle.results}>
                 <ul className={`${cssStyle.grid} ${cssStyle[view]}`}>{
                     currentIcons.map(({ icon, style }) => (
                         <li
