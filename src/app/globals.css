@@ -1693,29 +1693,13 @@ div.message.offline:before {
     inset: 0;
     background-color: var(--dark-backdrop);
     z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     &:not(.active) {
         opacity: 0;
         pointer-events: none;
-    }
-    > div, > form {
-        padding: var(--spacing-small);
-        border-radius: var(--bdr-rad);
-        background-color: var(--bg-blur);
-        backdrop-filter: var(--bg-blur-px);
-        width: min(100%, 500px);
-        max-height: 80vh;
-        overflow-y: auto;
-        
-        :not(.active) > & {
-            scale: .8;
-        }
-        .wide > & {
-            width: min(100%, 600px);
-        }
-        .wider > & {
-            width: min(100%, 700px);
-        }
     }
     &.confirm {
         text-align: center;
@@ -1865,6 +1849,25 @@ div.message.offline:before {
             gap: 5px;
             grid-template-columns: repeat(2, 1fr);
             width: max-content;
+        }
+    }
+    > div, > form {
+        padding: var(--spacing-small);
+        border-radius: var(--bdr-rad);
+        background-color: var(--bg-blur);
+        backdrop-filter: var(--bg-blur-px);
+        width: min(100%, 500px);
+        max-height: 80vh;
+        overflow-y: auto;
+        
+        :not(.active) > & {
+            scale: .8;
+        }
+        .wide > & {
+            width: min(100%, 600px);
+        }
+        .wider > & {
+            width: min(100%, 700px);
         }
     }
 }

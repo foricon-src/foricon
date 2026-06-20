@@ -355,9 +355,7 @@ export default function PageClient() {
             ) && selectIcon(null);
         })
         addEvLis(document, 'scroll',
-            () => {
-                window.scrollY >= mainRef.current.offsetTop - 88 ? activate(top) : deactivate(top)
-            }
+            () => window.scrollY >= (mainRef.current?.offsetTop || 88) - 88 ? activate(top) : deactivate(top)
         )
 
         addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
