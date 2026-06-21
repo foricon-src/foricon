@@ -95,7 +95,7 @@ export function NotFound({ family, style, icon, currentIcon }) {
                 <ul className='btn-list'>{
                     currentIcon?.styles.map(i => {
                         let { f, s } = GetFamilyAndStyle(i);
-                        return <li className='chip top' key={i} onClick={() => go(`/icon/${f}/${s}/${icon}`)}>
+                        return <li className='tooltip top' key={i} onClick={() => go(`/icon/${f}/${s}/${icon}`)}>
                             <f-icon icon={icon} i-s={i}/>
                             <span>{format(f, s)}</span>
                         </li>

@@ -82,6 +82,9 @@ export default function PageClient() {
     let [ selectedIcon, selectIcon ] = useState(null);
     let [ width, setWidth ] = useState(innerWidth);
 
+    let [ priColor, setPriColor ] = useState('');
+    let [ secColor, setSecColor ] = useState('');
+
     let filtered = useMemo(() => {
         if (!iconSet) return [];
         
@@ -252,7 +255,7 @@ export default function PageClient() {
     ].map(({ icon, value, ...texts }) =>
         <li
             key={value}
-            className={Join(' ', width > 900 && 'chip top', view == value && 'active')}
+            className={Join(' ', width > 900 && 'tooltip top', view == value && 'active')}
             onClick={() => setView(value)}
         >
             <f-icon icon={icon} i-s={icon == 'list' && 'outline'}></f-icon>
@@ -272,7 +275,7 @@ export default function PageClient() {
     function dynamic(dropdown, values, variable, func) {
         return width > 900
             ? <>
-                <li className={Join(' ', variable == 'all' && 'active', width < 1100 && 'chip top')} onClick={() => func('all')}>
+                <li className={Join(' ', variable == 'all' && 'active', width < 1100 && 'tooltip top')} onClick={() => func('all')}>
                     {width < 1100 && <f-icon icon='empty-set' i-s='outline'/>}
                     <span>{
                         {
@@ -293,7 +296,7 @@ export default function PageClient() {
                 </li>
                 {
                     values.map(({ icon: { name, style }, value }) => {
-                        return <li key={value} className={Join(' ', variable == value && 'active', width < 1100 && 'chip top')} onClick={() => func(value)}>
+                        return <li key={value} className={Join(' ', variable == value && 'active', width < 1100 && 'tooltip top')} onClick={() => func(value)}>
                             {width < 1100 && <f-icon icon={name} i-s={style}/>}
                             <span>{Capital(value)}</span>
                         </li>
@@ -594,7 +597,7 @@ export default function PageClient() {
                     )
                 }</ul>
                 <ul className='btn-list'>
-                    <li className={`chip top`}>
+                    <li className={`tooltip top`}>
                         <f-icon icon='palette'/>
                         <span>{
                             {
@@ -612,8 +615,40 @@ export default function PageClient() {
                                 ru: 'Добавить цвета',
                             }[lang]
                         }</span>
+                        <div>
+                            <form>
+                                <span>Primary color</span>
+                                <input type='color' value={priColor} onInput={e => setPriColor(e.currentTarget.value)}/>
+                                <span>Secondary color</span>
+                                <input type='color' value={secColor} onInput={e => setSecColor(e.currentTarget.value)}/>
+                            </form>
+                            <ul>
+                                <li onClick={() => {
+                                    setPriColor('');
+                                    setSecColor('');
+                                }}>
+                                    <f-icon icon='rotate-right' i-s='outline'></f-icon>
+                                    <span>{
+                                        {
+                                            en: 'Reset',
+                                            vi: 'Đặt lại',
+                                            fr: 'Réinitialiser',
+                                            it: 'Reset',
+                                            kr: '다시 놓기',
+                                            ja: 'リセット',
+                                            de: 'Zurücksetzen',
+                                            nl: 'Reset',
+                                            dk: 'Nulstil',
+                                            pt: 'Reiniciar',
+                                            es: 'Reiniciar',
+                                            ru: 'Перезагрузить',
+                                        }[lang]
+                                    }</span>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
-                    <li className={`chip top`}>
+                    <li className={`tooltip top`}>
                         <f-icon
                             icon={sortOpts[search ? searchSortOpt : sortOpt].icon.name}
                             i-s={sortOpts[search ? searchSortOpt : sortOpt].icon.isOutline && 'outline'}
@@ -650,7 +685,7 @@ export default function PageClient() {
                     </li>
                     <li
                         id='save'
-                        className={`chip top${inSaved ? ' active' : ''}`}
+                        className={`tooltip top${inSaved ? ' active' : ''}`}
                         onClick={() => setInSaved(!inSaved)}
                     >
                         <f-icon icon='bookmark'/>
@@ -673,7 +708,7 @@ export default function PageClient() {
                     </li>
                 </ul>
                 <ul className='btn-list line line-active'>
-                    {width <= 900 ? <li>
+                    {width <= 900 ? <li className='tooltip top'>
                         <f-icon icon='eye'/>
                         <span>{
                             {
@@ -693,7 +728,7 @@ export default function PageClient() {
                         }</span>
                         <ul className='btn-list vertical'>{viewOpts}</ul>
                     </li> : viewOpts}
-                    <li className='chip top line'>
+                    <li className='tooltip top line'>
                         <f-icon icon='gear'></f-icon>
                         <span>{
                             {
@@ -791,11 +826,16 @@ export default function PageClient() {
                                 })
                             }
                         }>
-                            <f-icon icon={icon.name} i-s={style}{...(() => {
-                                let obj = {};
-                                version == 'b1' && (obj.b1 = '');
-                                return obj;
-                            })()}></f-icon>
+                            <f-icon
+                                icon={icon.name}
+                                i-s={style}
+                                style={{ '--primary-color': priColor, '--secondary-color': secColor }}
+                                {...(() => {
+                                    let obj = {};
+                                    version == 'b1' && (obj.b1 = '');
+                                    return obj;
+                                })()}
+                            />
                             <span>{icon.name}</span>
                         </li>
                     ))

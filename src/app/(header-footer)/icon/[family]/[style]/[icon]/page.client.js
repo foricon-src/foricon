@@ -75,7 +75,7 @@ export default function PageClient({ params }) {
                             }[lang]
                         }</span>
                     </li>
-                    <li className='chip top line' onClick={() => {
+                    <li className='tooltip top line' onClick={() => {
                         navigator.clipboard.writeText(icon);
                         notify('success', copiedToClipboard);
                     }}>
@@ -97,7 +97,7 @@ export default function PageClient({ params }) {
                             }[lang]
                         }</span>
                     </li>
-                    <li className='chip top' onClick={() => {
+                    <li className='tooltip top' onClick={() => {
                         navigator.clipboard.writeText(location.href);
                         notify('success', copiedToClipboard);
                     }}>
@@ -119,7 +119,7 @@ export default function PageClient({ params }) {
                             }[lang]
                         }</span>
                     </li>
-                    <li className='chip top'>
+                    <li className='tooltip top'>
                         <f-icon icon='bookmark'/>
                         <span>{
                             (
@@ -195,7 +195,7 @@ export default function PageClient({ params }) {
 
                                 return <li
                                     key={i}
-                                    className={`chip top${family == f && style == s ? ' active' : ''}`}
+                                    className={`tooltip top${family == f && style == s ? ' active' : ''}`}
                                     onClick={() => go(str, 'replace')}
                                 >
                                     <f-icon icon={icon} i-s={(f2 ? `${f2}/` : '') + s} className='auto-line-height'/>
@@ -227,18 +227,18 @@ export default function PageClient({ params }) {
                         `<f-icon icon='${icon}'${Join(
                             ' ',
                             '',
-                            !!styleName != 'solid' && `i-s='${styleName}'`,
-                            !!scale && `scale='${scale}'`,
-                            !!size && `size=${size}`,
-                            !!rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
-                            !!animation && `animation='${Join('-', animation, !!animationSpeed && animationSpeed)}'`,
+                            styleName != 'solid' && `i-s='${styleName}'`,
+                            scale && `scale='${scale}'`,
+                            size && `size=${size}`,
+                            rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
+                            animation && `animation='${Join('-', animation, !!animationSpeed && animationSpeed)}'`,
                             [ priColor, priOpacity, secColor, secOpacity ].some(i => i != '') && `style='${
                                 Join(
                                     '; ',
-                                    !!priColor && `--primary-color: ${priColor}`,
-                                    !!priOpacity && `--primary-opacity: ${priOpacity}`,
-                                    !!secColor && `--secondary-color: ${secColor}`,
-                                    !!secOpacity && `--secondary-opacity: ${secOpacity}`,
+                                    priColor && `--primary-color: ${priColor}`,
+                                    priOpacity && `--primary-opacity: ${priOpacity}`,
+                                    secColor && `--secondary-color: ${secColor}`,
+                                    secOpacity && `--secondary-opacity: ${secOpacity}`,
                                 )
                             }'`
                         )}></f-icon>`

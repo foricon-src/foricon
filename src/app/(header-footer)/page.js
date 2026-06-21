@@ -365,13 +365,13 @@ export default function Home() {
                         <ul className='btn-list darker'>
                             {
                                 [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
-                                    <li key={i} onClick={() => setIcon(i)} className={`chip top${icon == i ? ' active' : ''}`}>
+                                    <li key={i} onClick={() => setIcon(i)} className={`tooltip top${icon == i ? ' active' : ''}`}>
                                         <f-icon icon={i} className='auto-line-height'/>
                                         <span>{i}</span>
                                     </li>
                                 ))
                             }
-                            <li onClick={() => go('search')} className='chip top line'>
+                            <li onClick={() => go('search')} className='tooltip top line'>
                                 <f-icon icon='arrow-right' i-s='outline' className='auto-line-height'/>
                                 <span>{
                                     {
@@ -409,7 +409,7 @@ export default function Home() {
                         }</h6>
                         <ul className='btn-list darker'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
-                                <li key={i} onClick={() => setStyle(i)} className={`chip top${style == i ? ' active' : ''}`}>
+                                <li key={i} onClick={() => setStyle(i)} className={`tooltip top${style == i ? ' active' : ''}`}>
                                     <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i} className='auto-line-height'/>
                                     <span>{
                                         i == 'outline' ? 'Outline' :

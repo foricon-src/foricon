@@ -105,7 +105,7 @@ export default function Header() {
                 )
             }</ul>
             <ul className='btn-list' name='right'>
-                <li className={`chip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => go('languages')}>
+                <li className={`tooltip bottom${pathname == '/languages' ? ' active' : ''}`} onClick={() => go('languages')}>
                     <f-icon icon='translate' i-s='outline'></f-icon>
                     <span>{
                         {
@@ -124,7 +124,7 @@ export default function Header() {
                         }[lang]
                     }</span>
                 </li>
-                <li className={`chip bottom${open ? ' active' : ''}`} onClick={() => setOpen(!open)}>
+                <li className={`tooltip bottom${open ? ' active' : ''}`} onClick={() => setOpen(!open)}>
                     <f-icon icon='bars' i-s='outline'></f-icon>
                     <span>{
                         {
@@ -145,7 +145,7 @@ export default function Header() {
                 </li>
                 {
                     <li
-                        className={Join(' ', 'line', user && 'chip bottom', pathname.startsWith('/account') && 'active')}
+                        className={Join(' ', 'line', user && 'tooltip bottom', pathname.startsWith('/account') && 'active')}
                         onClick={() => go(user ? 'account' : 'login')}
                     >
                         {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'/>}

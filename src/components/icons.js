@@ -34,10 +34,7 @@ export function IconProvider({ children }) {
             })
         }
         setIcons(value);
-        console.log(value, icons)
     })()}, [])
 
-    return <IconContext.Provider value={icons}>{
-        children
-    }</IconContext.Provider>
+    return <IconContext.Provider value={icons}>{children}</IconContext.Provider>
 }

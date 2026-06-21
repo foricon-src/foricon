@@ -285,7 +285,7 @@ ul {
                     background-color: var(--gray);
                 }
             }
-            &:is(.chip, :has(> :is(f-icon, i):only-child)), #sidebar:not(.vertical) > & {
+            &:is(.tooltip, :has(> :is(f-icon, i):only-child)), #sidebar:not(.vertical) > & {
                 justify-content: center;
                 padding-left: 0;
                 padding-right: 0;
@@ -334,7 +334,7 @@ ul {
                     inset: 100% 0 0 0;
                     z-index: 1;
                 }
-                :global(&:not(.chip):after) {
+                :global(&:not(.tooltip):after) {
                     content: '\e0a2';
                     font-family: 'Foricon Beta';
                 }
@@ -361,7 +361,7 @@ ul {
                     }
                 }
             }
-            &:not(.chip) :is(span, lang) {
+            &:not(.tooltip) :is(span, lang) {
                 color: inherit;
             }
             &:not(:has(> ul.btn-list:hover)):active {
@@ -428,10 +428,10 @@ ul {
                         left: var(--gap);
                         right: 0;
                     }
-                    .active ~ &:is(.chip, :has(> :is(f-icon, i):only-child)):after {
+                    .active ~ &:is(.tooltip, :has(> :is(f-icon, i):only-child)):after {
                         right: calc(100% - 4px);
                     }
-                    &:is(.chip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
+                    &:is(.tooltip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
                         left: calc(100% - 4px);
                     }
                 }
@@ -455,10 +455,10 @@ ul {
                         top: var(--gap);
                         bottom: 0;
                     }
-                    .active ~ &:is(.chip, :has(> :is(f-icon, i):only-child)):after {
+                    .active ~ &:is(.tooltip, :has(> :is(f-icon, i):only-child)):after {
                         bottom: calc(100% - 4px);
                     }
-                    &:is(.chip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
+                    &:is(.tooltip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
                         top: calc(100% - 4px);
                     }
                 }
@@ -2027,7 +2027,7 @@ header {
             height: 42px;
             align-items: center;
             
-            &.chip {
+            &.tooltip {
                 width: 42px !important;
             }
             &:active > f-icon[icon='bars'] {

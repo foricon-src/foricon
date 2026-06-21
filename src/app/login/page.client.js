@@ -203,13 +203,13 @@ export default function LogIn() {
                 setUserDoc(snapshot.docs[0].data());
             })}>
                 <ul className='btn-list darker'>
-                    <li className='chip top' name='google' onClick={() => MethodPopup(new GoogleAuthProvider(), des)}>
+                    <li className='tooltip top' name='google' onClick={() => MethodPopup(new GoogleAuthProvider(), des)}>
                         <span>Log in with Google</span>
                     </li>
-                    <li className='chip top' name='microsoft' onClick={() => MethodPopup(new OAuthProvider('microsoft.com'), des)}>
+                    <li className='tooltip top' name='microsoft' onClick={() => MethodPopup(new OAuthProvider('microsoft.com'), des)}>
                         <span>Log in with Microsoft</span>
                     </li>
-                    <li className='chip top' name='github' onClick={() => MethodPopup(new GithubAuthProvider(), des)}>
+                    <li className='tooltip top' name='github' onClick={() => MethodPopup(new GithubAuthProvider(), des)}>
                         <span>Log in with Github</span>
                     </li>
                 </ul>
