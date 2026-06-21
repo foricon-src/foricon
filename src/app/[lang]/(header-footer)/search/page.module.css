@@ -506,6 +506,7 @@
         max-height: var(--max-height);
         position: sticky;
         top: var(--top);
+        transition: var(--df-trans), top .5s ease, max-height .5s ease;
         
         &:before, &:after {
             content: '';
