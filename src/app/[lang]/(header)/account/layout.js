@@ -1,11 +1,7 @@
-import Sidebar from "./sidebar";
-import { SidebarPageTransition } from "Com/sidebar-page-transition";
+import Sidebar from './sidebar';
+import { SidebarPageTransition } from 'Com/sidebar-page-transition';
 
-export const metadata = {
-    title: 'My account',
-    robots: { index: false, follow: false },
-}
-export default function generateMetadata({ params }) {
+export function generateMetadata({ params: { lang } }) {
     let myAccount = {
         en: 'My account',
         vi: 'Tài khoản của tôi',
@@ -29,8 +25,6 @@ export default function generateMetadata({ params }) {
 export default function AccountLayout({ children }) {
     return <div id='sidebar-page'>
         <Sidebar/>
-        <SidebarPageTransition>{
-            children
-        }</SidebarPageTransition>
+        <SidebarPageTransition>{children}</SidebarPageTransition>
     </div>
 }
