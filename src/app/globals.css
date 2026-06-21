@@ -294,7 +294,7 @@ ul {
                 .small > & {
                     width: 35px;
                 }
-                > :is(span, lang) {
+                > span {
                     position: absolute;
                     font-size: var(--s-ft-sz);
                     background-color: var(--lt-gray);
@@ -318,10 +318,10 @@ ul {
                     }
                 }
                 
-                &.top > :is(span, lang) {
+                &.top > span {
                     bottom: calc(100% + 10px);
                 }
-                &.bottom > :is(span, lang) {
+                &.bottom > span {
                     top: calc(100% + 10px);
                 }
             }
@@ -338,12 +338,12 @@ ul {
                     content: '\e0a2';
                     font-family: 'Foricon Beta';
                 }
-                &:not(:hover):before, &:not(:hover) > ul.btn-list.vertical {
+                &:not(:hover):before, &:not(:hover) > :is(ul, div) {
                     pointer-events: none;
                     opacity: 0;
                     top: 100%;
                 }
-                > ul.btn-list.vertical, > div {
+                > ul, > div {
                     position: absolute;
                     inset: calc(100% + 5px) 0 auto 0;
                     padding: 5px;
@@ -361,10 +361,10 @@ ul {
                     }
                 }
             }
-            &:not(.tooltip) :is(span, lang) {
+            &:not(.tooltip) span {
                 color: inherit;
             }
-            &:not(:has(> ul.btn-list:hover)):active {
+            &:not(:has(> :is(ul.btn-list, div):hover)):active {
                 color: var(--title-color);
                 background-color: var(--gray);
                 
@@ -873,7 +873,7 @@ table {
         > f-icon {
             width: 27px;
             
-            + :is(span, lang) {
+            + span {
                 margin-left: 10px;
             }
         }
