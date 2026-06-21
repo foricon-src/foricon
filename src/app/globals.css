@@ -356,9 +356,9 @@ ul {
                     cursor: var(--cursor-default);
                     box-shadow: var(--xs-shadow);
                     
-                    &:is(ul) > li {
+                    /* &:is(ul) > li {
                         margin-left: 0;
-                    }
+                    } */
                 }
             }
             &:not(.tooltip) span {
