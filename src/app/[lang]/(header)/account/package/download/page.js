@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { LanguageContext } from 'Com/language';
 import { useContext } from "react";
-import usePage from "Pag/(header)/account/use-page";
+import usePage from "Pag/[lang]/(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
 import './page.css';

@@ -43,4 +43,4 @@ next-env.d.ts
 /scripts
 /public/icons
 
-changelog.txt
+*.txt
