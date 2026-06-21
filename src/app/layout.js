@@ -6,9 +6,9 @@ import AlternativeLanguages from 'Com/alternative-languages';
 import Providers from './providers';
 import './globals.css';
 
-export async function generateMetadata({ params = { lang: 'en' } }) {
-    let { lang } = await params;
-    console.log(params)
+export function generateMetadata({ params = { lang: 'en' } }) {
+    let { lang } = params;
+    console.log('params:', lang, params, JSON.parse(params))
     let pathname = params.segments ? `/${params.segments.join('/')}` : '';
 
     return {
