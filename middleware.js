@@ -12,9 +12,11 @@ const countryToLang = {
 }
 
 export async function middleware(req) {
+    console.log('Middleware running');
     let { pathname } = req.nextUrl;
     let firstSegment = pathname.split('/')[1];
 
+    console.log('Check first segment');
     if (allowedLanguages.includes(firstSegment)) return NextResponse.next();
 
     // Default language
@@ -29,16 +31,15 @@ export async function middleware(req) {
             let country = data.country;
             let mappedLang = countryToLang[country];
 
-            // ✅ Case 2: If location maps to supported language → use it
             mappedLang && allowedLanguages.includes(mappedLang) && (lang = mappedLang);
         }
     }
     catch (err) { console.error('ipinfo error:', err) };
-    console.log( `/${lang}${pathname}`)
-    // Redirect to localized path
-    const url = req.nextUrl.clone();
+
+    console.log('Redirecting');
+    let url = req.nextUrl.clone();
     url.pathname = `/${lang}${pathname}`;
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(url, 308);
 }
 export const config = {
     matcher: [ '/((?!_next|api|static|public|favicon.ico).*)' ],
