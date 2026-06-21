@@ -29,7 +29,7 @@ export default function Process() {
             <f-icon i-s='outline' icon='arrow-up-from-bracket'/>
             <span>Drag & drop the file here, or</span>
             <ul class='btn-list darker vertical'/>
-            <Link class='btn primary' href='javascript:void(0)'>Add file${maxSize ? ` (${formatBytes(maxSize)} maximum)` : ''}</Link>`;
+            <a class='btn primary' href='javascript:void(0)'>Add file${maxSize ? ` (${formatBytes(maxSize)} maximum)` : ''}</a>`;
                 let list = qSelec(elem, 'ul');
                 let btn = qSelec(elem, 'a');
                 

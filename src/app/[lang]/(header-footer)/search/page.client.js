@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useContext, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { Ad } from 'Com/ad';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
 import { LanguageContext } from 'Com/language';

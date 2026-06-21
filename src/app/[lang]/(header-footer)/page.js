@@ -1,6 +1,7 @@
 'use client';
 
 import { useContext, useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
