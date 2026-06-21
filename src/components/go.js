@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 export default function useGo() {
     let router = useRouter();
+    let { lang } = document.documentElement
 
     /**
      * Goes to a page
@@ -13,10 +14,10 @@ export default function useGo() {
     return (value, type) => {
         let action = router[type == 'replace' ? 'replace' : 'push'];
 
-        if (!value) router.push('/');
+        if (!value) router.push(`/${lang}`);
         else if (value[0] == '#') location.hash = value;
         else if (value[0] == '?') action(value);
         else if (value.startsWith('//') || value.startsWith('http')) window.open(value, '_blank');
-        else type == 'new tab' ? window.open(`/${value}`, '_blank') : action(`/${value}`);
+        else type == 'new tab' ? window.open(`/${lang}/${value}`, '_blank') : action(`/${lang}/${value}`);
     }
 }
