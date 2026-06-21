@@ -808,7 +808,7 @@ export default function PageClient() {
                         ))
                 }</ul>
             </div>
-            <div className={cssStyle.results}>
+            <div className={cssStyle.results} style={{ '--primary-color': priColor, '--secondary-color': secColor }}>
                 <ul className={`${cssStyle.grid} ${cssStyle[view]}`}>{
                     currentIcons.map(({ icon, style }) => (
                         <li
@@ -829,7 +829,7 @@ export default function PageClient() {
                             <f-icon
                                 icon={icon.name}
                                 i-s={style}
-                                style={{ '--primary-color': priColor, '--secondary-color': secColor }}
+                                style={{ '--primary-color': 'inherit', '--secondary-color': 'inherit' }}
                                 {...(() => {
                                     let obj = {};
                                     version == 'b1' && (obj.b1 = '');
