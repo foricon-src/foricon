@@ -34,7 +34,7 @@ export async function middleware(req) {
         }
     }
     catch (err) { console.error('ipinfo error:', err) };
-
+    console.log( `/${lang}${pathname}`)
     // Redirect to localized path
     const url = req.nextUrl.clone();
     url.pathname = `/${lang}${pathname}`;

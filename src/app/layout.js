@@ -8,6 +8,7 @@ import './globals.css';
 
 export function generateMetadata({ params = { lang: 'en' } }) {
     let { lang } = params;
+    console.log(lang)
     let pathname = params?.segments ? `/${params.segments.join('/')}` : '';
 
     return {
