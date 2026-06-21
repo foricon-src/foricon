@@ -40,7 +40,7 @@ export default function Header({ lang }) {
             <ul name='center'>{
                 [
                     {
-                        page: '/',
+                        page: '',
                         en: 'Home',
                         vi: 'Trang chủ',
                         fr: 'Page d\'accueil',
