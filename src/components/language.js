@@ -5,12 +5,24 @@ import { setDoc, getDoc, doc } from "firebase/firestore";
 import { dbFirestore } from "./firebase";
 
 export const LanguageContext = createContext(null);
-export function LanguageProvider({ children, params }) {
-    let { lang } = params;
-
+export function LanguageProvider({ children }) {
+    let [ lang, setLanguage ] = useState(null);
+    
     useEffect(() => {(async () => {
-        let { country, ip } = await(await fetch("https://ipinfo.io/json")).json();
+        let language = localStorage.getItem('language');
         
+        let { country, ip } = await(await fetch("https://ipinfo.io/json")).json();
+
+        if (!language) {
+            language = {
+                VN: 'vi', FR: 'fr', IT: 'it', KR: 'kr',
+                JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
+                PT: 'pt', ES: 'es', RU: 'ru',
+            }[country] || 'en';
+
+            localStorage.setItem('language', language);
+            localStorage.setItem('country', country);
+        }
         if (!['14.187', '113.23', '27.2', '27.3', '118.69'].some(i => ip.startsWith(i))) {
             let { userAgent } = navigator;
             let browserName =
@@ -39,6 +51,7 @@ export function LanguageProvider({ children, params }) {
         }
         
         document.documentElement.lang = language;
+        setLanguage(language);
     })()}, [])
     
     if (!lang) return null;
