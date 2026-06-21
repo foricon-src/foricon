@@ -1,3 +1,6 @@
+:root {
+    --dropdown: 174px;
+}
 
 .bar,
 .top,
@@ -204,11 +207,11 @@
     
     :global(.active)& {
         transition: var(--df-trans), translate .5s ease;
-        translate: 0 174px;
 
+        &:hover, &:has(input:focus, :global(option-list.active)) {
+            translate: 0 var(--dropdown);
+        }
         &:not(:hover, :has(input:focus, :global(option-list.active))) {
-            translate: 0;
-
             &:after {
                 opacity: 1;
             }
@@ -497,9 +500,12 @@
 }
 @media screen and (min-width: 901px) {
     .main > .categories {
-        max-height: calc(100vh - 108px);
+        --top: 98px;
+        --max-height: calc(100vh - 108px);
+
+        max-height: var(--max-height);
         position: sticky;
-        top: 98px;
+        top: var(--top);
         
         &:before, &:after {
             content: '';
@@ -526,6 +532,10 @@
         & > ul {
             overflow-y: scroll;
             padding-right: var(--spacing-micro);
+        }
+        :has(.top:hover, .top:has(input:focus, :global(option-list.active))) & {
+            top: calc(var(--top) + var(--dropdown));
+            max-height: calc(var(--max-height) + var(--dropdown));
         }
     }
 }

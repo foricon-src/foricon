@@ -27,8 +27,6 @@ export default function Header({ lang }) {
                 qSelec('header > ul[name="all"]')
             ].some(i => i?.contains(target)) && setOpen(false)
         )
-
-        qSelecA('header > center > a')?.forEach(each => each.pathname == pathname ? activate(each) : deactivate(each));
     }, [])
 
     return (
@@ -42,7 +40,7 @@ export default function Header({ lang }) {
             <ul name='center'>{
                 [
                     {
-                        path: '/',
+                        page: '/',
                         en: 'Home',
                         vi: 'Trang chủ',
                         fr: 'Page d\'accueil',
@@ -56,7 +54,7 @@ export default function Header({ lang }) {
                         es: 'Pagina de inicio',
                         ru: 'Дом',
                     }, {
-                        path: '/search',
+                        page: '/search',
                         en: 'Search',
                         vi: 'Tìm kiếm',
                         fr: 'Recherche',
@@ -70,7 +68,7 @@ export default function Header({ lang }) {
                         es: 'Buscar',
                         ru: 'Поиск',
                     }, {
-                        path: '/docs',
+                        page: '/docs',
                         en: 'Docs',
                         vi: 'Tài liệu',
                         fr: 'Documents',
@@ -84,7 +82,7 @@ export default function Header({ lang }) {
                         es: 'Documentos',
                         ru: 'Документы',
                     }, {
-                        path: '/support',
+                        page: '/support',
                         en: 'Support',
                         vi: 'Hỗ trợ',
                         fr: 'Soutien',
@@ -98,9 +96,9 @@ export default function Header({ lang }) {
                         es: 'Apoyo',
                         ru: 'Поддерживать',
                     }
-                ].map(({ path, ...texts }) =>
-                    <li key={path}>
-                        <Link href={path} className={pathname == path && 'active'}>{texts[lang]}</Link>
+                ].map(({ page, ...texts }) =>
+                    <li key={page}>
+                        <Link href={`/${lang}/${page}`} className={pathname == `/${lang}${page}` && 'active'}>{texts[lang]}</Link>
                     </li>
                 )
             }</ul>
