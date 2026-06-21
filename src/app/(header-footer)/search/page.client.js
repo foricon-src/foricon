@@ -124,7 +124,7 @@ export default function PageClient() {
     let columns = useMemo(() => {
         let elem = qSelec(`.${cssStyle.results}`);
         iconSet && elem ? getComputedStyle(elem).gridTemplateColumns.split(' ').length : 1
-    }, [ width, tick ])
+    }, [ iconSet, width, tick ])
     let perPage = useMemo(() => {
         let rows = Math.floor(
             (view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns
