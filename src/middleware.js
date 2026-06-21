@@ -12,7 +12,6 @@ const countryToLang = {
 }
 
 export async function middleware(req) {
-    console.log('Middleware running');
     let { pathname } = req.nextUrl;
     let firstSegment = pathname.split('/')[1];
 
@@ -42,5 +41,6 @@ export async function middleware(req) {
     return NextResponse.redirect(url, 308);
 }
 export const config = {
+    // matcher: '/:path*'
     matcher: [ '/((?!_next|api|static|public|favicon.ico).*)' ],
 }
