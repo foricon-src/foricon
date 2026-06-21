@@ -37,7 +37,7 @@ export default function Header() {
                 <Link href='/' name='logo'>
                     <Img src={logo} alt='Foricon logo'/>
                 </Link>
-                <a href='/changelog' name='version'>{webData.verFull}</a>
+                <Link href='/changelog' name='version'>{webData.verFull}</Link>
             </div>
             <ul name='center'>{
                 [

@@ -490,7 +490,7 @@ export default function PageClient() {
                     ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
                 }[lang]
             }
-            <a href='/signup' className='btn'>{
+            <Link href='/signup' className='btn'>{
                 {
                     en: 'Sign up',
                     vi: 'Đăng ký',
@@ -505,7 +505,7 @@ export default function PageClient() {
                     es: 'Inscribirse',
                     ru: 'Зарегистрироваться',
                 }[lang]
-            }</a>
+            }</Link>
         </div>}
         <div ref={topRef} className={`outer-corner ${cssStyle.top}`}>
             <Search ref={inputRef} value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={

@@ -175,7 +175,7 @@ export default function LogIn() {
                 </Link>
                 <h1>{texts[lang][step].h1}</h1>
                 <p>{texts[lang][step].p}</p>
-                <a className='btn secondary' href='/signup'>{
+                <Link className='btn secondary' href='/signup'>{
                     {
                         en: 'Create a new account',
                         vi: 'Tạo tài khoản mới',
@@ -190,7 +190,7 @@ export default function LogIn() {
                         es: 'Crea una cuenta nueva',
                         ru: 'Создать новую учетную запись',
                     }[lang]
-                }</a>
+                }</Link>
             </div>
             <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', e, async () => {
                 let snapshot = await getDocs(query(
@@ -244,7 +244,7 @@ export default function LogIn() {
                     <img src={userDoc?.avatar}/>{userDoc?.name}
                 </div>
                 <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
-                <a href='/forgot'>Forgot password</a>
+                <Link href='/forgot'>Forgot password</Link>
                 <div>
                     <button class='secondary' type='button' onClick={() => changePage('email')}>{
                         {

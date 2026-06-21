@@ -16,19 +16,19 @@ export default function Footer() {
                     <Img src={logo}/>
                 </Link>
                 <div>
-                    <a class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>
+                    <Link class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>
                         <i class='fa-brands fa-facebook'/><span>Follow us</span>
-                    </a>
-                    <a class='btn secondary' href='//youtube.com/@ForiconIconFont' target='_blank'>
+                    </Link>
+                    <Link class='btn secondary' href='//youtube.com/@ForiconIconFont' target='_blank'>
                         <i class='fa-brands fa-youtube'/><span>Our channel</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div class='dk-bg first'>
                 <span>©2023 - {new Date().getFullYear()} Foricon</span>
                 <ul>
                     <li>
-                        <a href='/about'>{
+                        <Link href='/about'>{
                             {
                                 en: 'About us',
                                 vi: 'Về chúng tôi',
@@ -42,10 +42,10 @@ export default function Footer() {
                                 pt: 'Sobre nós',
                                 es: 'Sobre nosotros',
                             }[lang]
-                        }</a>
+                        }</Link>
                     </li>
                     <li>
-                        <a href='/tos'>{
+                        <Link href='/tos'>{
                             {
                                 en: 'Terms of Service',
                                 vi: 'Điều khoản dịch vụ',
@@ -59,10 +59,10 @@ export default function Footer() {
                                 pt: 'Termos de serviço',
                                 es: 'Términos de servicio',
                             }[lang]
-                        }</a>
+                        }</Link>
                     </li>
                     <li>
-                        <a href='/refund-policy'>{
+                        <Link href='/refund-policy'>{
                             {
                                 en: 'Refund Policy',
                                 vi: 'Chính sách hoàn tiền',
@@ -76,10 +76,10 @@ export default function Footer() {
                                 pt: 'Política de Reembolso',
                                 es: 'Política de reembolso',
                             }[lang]
-                        }</a>
+                        }</Link>
                     </li>
                     <li>
-                        <a href='/privacy'>{
+                        <Link href='/privacy'>{
                             {
                                 en: 'Privacy Policy',
                                 vi: 'Chính sách bảo mật',
@@ -93,10 +93,10 @@ export default function Footer() {
                                 pt: 'Política de Privacidade',
                                 es: 'Política de Privacidad',
                             }[lang]
-                        }</a>
+                        }</Link>
                     </li>
                     <li>
-                        <a href='/support'>{
+                        <Link href='/support'>{
                             {
                                 en: 'Support',
                                 vi: 'Hỗ trợ',
@@ -110,7 +110,7 @@ export default function Footer() {
                                 pt: 'Apoiar',
                                 es: 'Apoyo',
                             }[lang]
-                        }</a>
+                        }</Link>
                     </li>
                 </ul>
             </div>

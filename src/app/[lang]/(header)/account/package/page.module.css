@@ -40,7 +40,7 @@
     to { --degree: var(--angle) }
 }
 @property --degree {
-    syntax: '<angle>';
+    syntax: '<Linkngle>';
     inherits: false;
     initial-value: 0deg;
 }
