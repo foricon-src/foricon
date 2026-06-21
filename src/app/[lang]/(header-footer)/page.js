@@ -2,7 +2,6 @@
 
 import { useContext, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
@@ -13,9 +12,10 @@ import Join from 'Com/join';
 import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './page.module.css';
 
-export default function Home() {
+export default function Home({ params }) {
+    let { lang } = params;
+
     let go = useGo();
-    let lang = useContext(LanguageContext);
     let user = useContext(UserContext);
     let icons = useContext(IconContext);
 

@@ -14,13 +14,12 @@ import cssStyle from './page.module.css';
 import { Range } from 'Com/range';
 
 export default function PageClient({ params }) {
-    let { family, style, icon } = JSON.parse(params.value);
+    let { family, style, icon, lang } = JSON.parse(params.value);
     let styleName = [ family == 'duotone' && family, style ].filter(Boolean).join('/');
 
     let router = useRouter();
     let go = useGo();
     let icons = useContext(IconContext);
-    let lang = useContext(LanguageContext);
 
     let [ isDropdownOpened, setIsDropdownOpened ] = useState(false);
     let [ priColor, setPriColor ] = useState('');
@@ -574,5 +573,5 @@ export default function PageClient({ params }) {
                 </div>
             </div>
         </div>
-        : <NotFound family={family} style={style} icon={icon} currentIcon={currentIcon}/>;
+        : <NotFound family={family} style={style} icon={icon} currentIcon={currentIcon} lang={lang}/>;
 }

@@ -1,14 +1,10 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { LanguageContext } from 'Com/language';
-import { useContext } from 'react';
 import usePage from '../../use-page';
 import './page.css';
 
-export default function Page() {
-    let router = useRouter();
-    let lang = useContext(LanguageContext)
+export default function Page({ params }) {
+    let { lang } = params;
 
     usePage(() => {})
 

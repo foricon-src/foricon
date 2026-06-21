@@ -26,7 +26,7 @@ export async function middleware(req) {
             let res = await fetch(`https://ipinfo.io/${ip}?token=${process.env.IPINFO_TOKEN}`);
             let data = await res.json();
 
-            let country = data.country?.toLowerCase();
+            let country = data.country;
             let mappedLang = countryToLang[country];
 
             // ✅ Case 2: If location maps to supported language → use it

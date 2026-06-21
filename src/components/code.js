@@ -2,9 +2,7 @@ import { useContext } from 'react';
 import { LanguageContext } from './language';
 import { Lower } from './string-tools';
 
-export default function Code({ children, lang = 'HTML', nameless }) {
-    let language = useContext(LanguageContext);
-
+export default function Code({ children, language, lang = 'HTML', nameless }) {
     return (
         <code name={!nameless && lang} onClick={e => {
             if (!e.ctrlKey) return;

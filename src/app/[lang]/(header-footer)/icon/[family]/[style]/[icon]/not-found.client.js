@@ -1,14 +1,12 @@
 import { useContext } from 'react';
-import { LanguageContext } from 'Com/language';
 import { Capital } from 'Com/string-tools';
 import useGo from 'Com/go';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
 import Search from 'Com/search';
 import cssStyle from './not-found.module.css';
 
-export function NotFound({ family, style, icon, currentIcon }) {
+export function NotFound({ family, style, icon, currentIcon, lang }) {
     let go = useGo();
-    let lang = useContext(LanguageContext);
 
     function format(family, style) {
         return `${Capital(family)} ${Capital(style)}`;

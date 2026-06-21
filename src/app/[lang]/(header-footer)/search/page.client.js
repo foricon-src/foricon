@@ -16,10 +16,10 @@ import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 import { input } from 'framer-motion/client';
 
-export default function PageClient() {
+export default function PageClient({ params }) {
     let router = useRouter();
     let go = useGo();
-    let lang = useContext(LanguageContext);
+    let { lang } = JSON.parse(params.value);
     let searchParams = useSearchParams();
     let user = useContext(UserContext);
     let iconSet = useContext(IconContext);

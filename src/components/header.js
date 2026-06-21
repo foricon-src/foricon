@@ -12,10 +12,12 @@ import logo from 'Pub/foricon-f-logo.png';
 import 'Com/utils';
 import Join from './join';
 
-export default function Header() {
+export default function Header({ params }) {
+    let { lang } = JSON.parse(params.value);
+
     let pathname = usePathname();
     let go = useGo();
-    let lang = useContext(LanguageContext);
+
     let { isDark, setIsDark } = useContext(ThemeContext);
     let user = useContext(UserContext);
     let [ open, setOpen ] = useState(false);

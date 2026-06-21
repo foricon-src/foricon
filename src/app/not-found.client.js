@@ -8,7 +8,7 @@ import 'Com/utils';
 import cssStyle from './not-found.module.css';
 
 export default function PageClient() {
-    let lang = useContext(LanguageContext);
+    let { lang } = useContext(LanguageContext);
     let go = useGo();
 
     return (

@@ -14,9 +14,8 @@ import useGo from 'Com/go';
  * }} param0 
  * @returns
  */
-export default function SidebarComponent({ items, home }) {
+export default function SidebarComponent({ items, home, lang }) {
     let pathname = usePathname();
-    let lang = useContext(LanguageContext);
     let go = useGo();
 
     function stateActive(path, isIcon) {

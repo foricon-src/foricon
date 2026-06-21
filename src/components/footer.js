@@ -6,9 +6,7 @@ import logo from 'Pub/foricon-f-logo.png';
 import { LanguageContext } from "./language";
 import Img from "./img";
 
-export default function Footer() {
-    let lang = useContext(LanguageContext);
-
+export default function Footer({ lang }) {
     return (
         <footer>
             <div>
