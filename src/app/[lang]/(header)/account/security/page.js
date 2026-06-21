@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { LanguageContext } from 'Com/language';
 import useGo from 'Com/go';
-import usePage from "Pag/[lang]/(header)/account/use-page";
+import usePage from "Pag//(header)/account/use-page";
 import 'Pag/sidebar-page.css';
 import 'Pag/(header)/account/internal-global.css';
 import './page.css';

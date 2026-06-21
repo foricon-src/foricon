@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
         "paths": {
-            "Pag/*": ["./src/app/*"],
-            "Api/*": ["./Pag/api/*"],
+            "App/*": ["./src/app/*"],
+            "Pag/*": ["./App/[lang]/*"],
+            "Api/*": ["./App/api/*"],
             "Pub/*": ["./public/*"],
             "Com/*": ["./src/components/*"],
             "Uti/*": ["./src/utils/*"]
