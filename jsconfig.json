@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "paths": {
-            "Pag/*": ["./src/app/*"],
+            "Pag/*": ["./src/app/[lang]/*"],
             "Api/*": ["./Pag/api/*"],
             "Pub/*": ["./public/*"],
             "Com/*": ["./src/components/*"],
