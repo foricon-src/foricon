@@ -1,14 +1,12 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import Code from "Com/code";
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import Code from 'Com/code';
 import { LanguageContext } from 'Com/language';
-import { UpdateRange, Range } from "Com/range";
-import { UserContext } from "Com/user";
-import usePage from "Pag/(header)/account/use-page";
-import 'Pag/sidebar-page.css';
-import 'Pag/(header)/account/internal-global.css';
+import { UpdateRange, Range } from 'Com/range';
+import { UserContext } from 'Com/user';
+import usePage from '../use-page';
 import './page.css';
 
 export default function Page() {

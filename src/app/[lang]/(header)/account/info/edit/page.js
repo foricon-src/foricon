@@ -1,10 +1,8 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { LanguageContext } from "Com/language";
-import usePage from "Pag/(header)/account/use-page";
-import 'Pag/sidebar-page.css';
-import 'Pag/(header)/account/internal-global.css';
+import { useRouter } from 'next/navigation';
+import { LanguageContext } from 'Com/language';
+import usePage from '../../use-page';
 import cssStyle from './page.module.css';
 
 export default function Page() {

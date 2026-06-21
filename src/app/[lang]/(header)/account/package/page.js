@@ -7,9 +7,7 @@ import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { db } from 'Com/firebase';
 import useGo from 'Com/go';
-import usePage from 'Pag/(header)/account/use-page';
-import 'Pag/sidebar-page.css';
-import 'Pag/(header)/account/internal-global.css';
+import usePage from '../use-page';
 import cssStyle from './page.module.css';
 
 export default function Page() {

@@ -49,7 +49,6 @@ export function generateMetadata({ params }) {
         alternates: AlternativeLanguages(pathname),
     }
 }
-
 export default function RootLayout({ children }) {
     return (
         <html>
