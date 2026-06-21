@@ -123,7 +123,7 @@ export default function PageClient() {
     ])
     let columns = useMemo(() => {
         let elem = qSelec(`.${cssStyle.results}`);
-        iconSet && elem ? getComputedStyle(elem).gridTemplateColumns.split(' ').length : 1
+        return iconSet && elem ? getComputedStyle(elem).gridTemplateColumns.split(' ').length : 1;
     }, [ iconSet, width, tick ])
     let perPage = useMemo(() => {
         let rows = Math.floor(
