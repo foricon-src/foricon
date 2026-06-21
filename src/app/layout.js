@@ -3,7 +3,7 @@ import { GoogleAdSense } from 'next-google-adsense';
 import Loading from 'Com/loading';
 import Process from 'Com/process';
 import AlternativeLanguages from 'Com/alternative-languages';
-import Providers from './[lang]/providers';
+import Providers from './providers';
 import './globals.css';
 
 export function generateMetadata({ params }) {
