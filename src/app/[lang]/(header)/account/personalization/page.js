@@ -1,104 +1,24 @@
-'use client';
+import PageClient from './page.client';
 
-import { useContext } from 'react';
-import Code from 'Com/code';
-import { UpdateRange, Range } from 'Com/range';
-import { UserContext } from 'Com/user';
-import usePage from '../use-page';
-import './page.css';
+export function generateMetadata({ params: { lang }}) {
+    return {
+        title: {
+            en: 'Personalization',
+            vi: 'Cá nhân hóa',
+            fr: 'Personnalisation',
+            it: 'Personalizzazione',
+            kr: '개인화',
+            ja: 'パーソナライズ',
+            de: 'Personalisierung',
+            nl: 'Personalisatie',
+            dk: 'Personalisering',
+            pt: 'Personalização',
+            es: 'Personalización',
+            ru: 'Персонализация',
+        }[lang]
+    }  
+}
 
 export default function Page({ params }) {
-    let { lang } = params;
-    let user = useContext(UserContext);
-
-    usePage(() => {
-        let { font, indent } = user.doc.personalization;
-        let form = qSelec('div[name="personalization"] > form');
-        let form_fSelect = qSelec(form, 'f-select');
-        let form_indent = form.indent;
-
-        form_fSelect.setValue(font);
-        UpdateRange(form_indent, indent);
-    })
-
-    return (
-        <div name='personalization'>
-            <form>
-                <span>{
-                    {
-                        en: "Codebox's font",
-                        vi: 'Phông chữ của hộp mã',
-                        fr: 'Police de caractères de Codebox',
-                        it: 'Il carattere di Codebox',
-                        kr: '코드박스의 폰트',
-                        ja: 'Codeboxのフォント',
-                        de: 'Schriftart von Codebox',
-                        nl: 'Het lettertype van Codebox',
-                        dk: "Codebox' skrifttype",
-                        pt: 'Fonte Codebox',
-                        es: 'Fuente de Codebox',
-                        ru: 'Шрифт Codebox',
-                    }[lang]
-                }</span>
-                <f-select name='font'>
-                    <text></text>
-                    <option-list>
-                        <f-option value='cons'>Consolas</f-option>
-                        <f-option value='fira'>Fira Code</f-option>
-                        <f-option value='scp'>Source Code Pro</f-option>
-                        <f-option value='dm'>DM Mono</f-option>
-                        <f-option value='nova'>Nova Mono</f-option>
-                        <f-option value='xanh'>Xanh Mono</f-option>
-                        <f-option value='kode'>Kode Mono</f-option>
-                        <f-option value='sono'>Sono</f-option>
-                    </option-list>
-                </f-select>
-                <Code>{`<div class='box'>
-  <!--<p>Hello World!</p>-->
-</div>
-<script type='module'>
-  let a = JSON.parse(localStorage.getItem('a'));
-  if (a.length) {
-    a.map(i => i == 'data' || i != 'money');
-  }
-  for (let i in a) {
-    a[i] += '_str'
-  }
-</script>`}</Code>
-                <span>{
-                    {
-                        en: 'Indentation space',
-                        vi: 'Khoảng cách thụt dòng',
-                        fr: 'Espace d\'indentation',
-                        it: 'spazio di rientro',
-                        kr: '들여쓰기 공간',
-                        ja: 'インデントスペース',
-                        de: 'Einrückungsraum',
-                        nl: 'Inspringingsruimte',
-                        dk: 'Indrykningsafstand',
-                        pt: 'Espaço de recuo',
-                        es: 'Espacio de indentación',
-                        ru: 'Пространство отступа',
-                    }[lang]
-                }</span>
-                <Range name='indent' min='1' max='6' step='1' dfValue='2'/>
-                <button className='primary'>{
-                    {
-                        en: 'Save changes',
-                        vi: 'Lưu thay đổi',
-                        fr: 'Enregistrer les modifications',
-                        it: 'Salvare le modifiche',
-                        kr: '변경 사항 저장',
-                        ja: '変更を保存',
-                        de: 'Änderungen speichern',
-                        nl: 'Wijzigingen opslaan',
-                        dk: 'Gem ændringer',
-                        pt: 'Guardar alterações',
-                        es: 'Guardar cambios',
-                        ru: 'Сохранить изменения',
-                    }[lang]
-                }</button>
-            </form>
-        </div>
-    )
+    return <PageClient lang={params.lang}/>
 }

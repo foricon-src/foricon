@@ -3,9 +3,7 @@
 import { useEffect, useState, useMemo, useContext, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Ad } from 'Com/ad';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
-import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import { Capital, Lower, Similarity } from 'Com/string-tools';
@@ -14,13 +12,12 @@ import Search from 'Com/search';
 import Join from 'Com/join';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
-import { input } from 'framer-motion/client';
 
-export default function PageClient({ params }) {
+export default function PageClient({ lang }) {
     let router = useRouter();
     let go = useGo();
-    let { lang } = JSON.parse(params.value);
     let searchParams = useSearchParams();
+
     let user = useContext(UserContext);
     let iconSet = useContext(IconContext);
 

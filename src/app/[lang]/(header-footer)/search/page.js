@@ -35,5 +35,5 @@ export function generateMetadata({ params = { lang: 'en' } }) {
     }
 }
 export default function Page({ params }) {
-    return <PageClient params={params}/>
+    return <PageClient lang={params.lang}/>
 }

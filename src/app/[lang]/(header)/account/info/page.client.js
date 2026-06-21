@@ -1,0 +1,151 @@
+'use client';
+
+import { useContext, useState } from 'react';
+import { UserContext } from "Com/user";
+import useGo from 'Com/go';
+import cssStyle from './page.module.css';
+
+export default function Page({ lang }) {
+    let go = useGo();
+    let user = useContext(UserContext);
+
+    return (
+        <div className={cssStyle.account_info}>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>{
+                            {
+                                en: 'Avatar',
+                                vi: 'Ảnh đại diện',
+                                fr: 'Avatar',
+                                it: "L'Avatar",
+                                kr: '화신',
+                                ja: 'アバター',
+                                de: 'Avatar',
+                                nl: 'Avatar',
+                                dk: 'Avatar',
+                                pt: 'Avatar',
+                                es: 'Avatar',
+                                ru: 'Аватар',
+                            }[lang]
+                        }</td>
+                        <td>
+                            <div className='img circle square' style={{ backgroundImage: `url(${user?.doc.avatar})` }}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{
+                            {
+                                en: 'Name',
+                                vi: 'Tên',
+                                fr: 'Nom',
+                                it: 'Nome',
+                                kr: '이름',
+                                ja: '名前',
+                                de: 'Name',
+                                nl: 'Naam',
+                                dk: 'Navn',
+                                pt: 'Nome',
+                                es: 'Nombre',
+                                ru: 'Имя',
+                            }[lang]
+                        }</td>
+                        <td>{user?.doc.name}</td>
+                    </tr>
+                    <tr>
+                        <td>{
+                            {
+                                en: 'Email',
+                                vi: 'Email',
+                                fr: 'Email',
+                                it: 'Email',
+                                kr: '이메일',
+                                ja: 'メール',
+                                de: 'Email',
+                                nl: 'Email',
+                                dk: 'Email',
+                                pt: 'Email',
+                                es: 'Correo electrónico',
+                                ru: 'Электронная почта',
+                            }[lang]
+                        }</td>
+                        <td>{user?.doc.email}{user?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
+                    </tr>
+                    <tr>
+                        <td>{
+                            {
+                                en: 'User ID',
+                                vi: 'ID người dùng',
+                                fr: "ID de l'utilisateur",
+                                it: 'ID utente',
+                                kr: '사용자 ID',
+                                ja: 'ユーザーID',
+                                de: 'Benutzer-ID',
+                                nl: 'Gebruikers-ID',
+                                dk: 'Bruger-id',
+                                pt: 'ID do utilizador',
+                                es: 'ID de usuario',
+                                ru: 'ID пользователя',
+                            }[lang]
+                        }</td>
+                        <td>{user?.uid}<f-icon icon='clone' onClick={() => {
+                            navigator.clipboard.writeText(user.uid);
+                            notify('success', {
+                                en: 'Copied to clipboard',
+                                vi: 'Đã sao chép vào bộ nhớ tạm',
+                                fr: 'Copié dans le presse-papiers',
+                                it: 'Copiato negli appunti',
+                                kr: '클립보드에 복사됨',
+                                ja: 'クリップボードにコピーされました',
+                                de: 'In die Zwischenablage kopiert',
+                                nl: 'Gekopieerd naar het klembord',
+                                dk: 'Kopieret til udklipsholderen',
+                                pt: 'Copiado para a área de transferência',
+                                es: 'Copiado al portapapeles',
+                                ru: 'Скопировано в буфер обмена',
+                            }[lang])
+                        }}/></td>
+                    </tr>
+                    <tr>
+                        <td>{
+                            {
+                                en: 'Joining date',
+                                vi: 'Ngày tham gia',
+                                fr: "Date d'adhésion",
+                                it: 'Data di adesione',
+                                kr: '가입날짜',
+                                ja: '入社日',
+                                de: 'Eintrittsdatum',
+                                nl: 'Datum van toetreding',
+                                dk: 'Tilmeldingsdato',
+                                pt: 'Data de adesão',
+                                es: 'Fecha de ingreso',
+                                ru: 'Дата присоединения',
+                            }[lang]
+                        }</td>
+                        <td id='main_account-info_joining-date'>21 December, 2023</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul className='btn-list vertical large'>
+                <li onClick={() => go('account/info/edit')}>{
+                    {
+                        en: 'Edit account info',
+                        vi: 'Chỉnh sửa thông tin tài khoản',
+                        fr: 'Modifier les informations du compte',
+                        it: 'Modifica informazioni account',
+                        kr: '계정 정보 편집',
+                        ja: 'アカウント情報を編集',
+                        de: 'Kontoinformationen bearbeiten',
+                        nl: 'Accountgegevens bewerken',
+                        dk: 'Rediger kontooplysninger',
+                        pt: 'Editar informações da conta',
+                        es: 'Editar la información de la cuenta',
+                        ru: 'Изменить информацию об аккаунте',
+                    }[lang]
+                }</li>
+            </ul>
+        </div>
+    )
+}

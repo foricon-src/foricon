@@ -1,102 +1,24 @@
-'use client';
+import PageClient from './page.client';
 
-import usePage from '../../use-page';
-import cssStyle from './page.module.css';
+export function generateMetadata({ params: { lang }}) {
+    return {
+        title: {
+            en: 'Edit account info',
+            vi: 'Chỉnh sửa thông tin tài khoản',
+            fr: 'Modifier les informations du compte',
+            it: 'Modifica informazioni account',
+            kr: '계정 정보 편집',
+            ja: 'アカウント情報を編集',
+            de: 'Kontoinformationen bearbeiten',
+            nl: 'Accountgegevens bewerken',
+            dk: 'Rediger kontooplysninger',
+            pt: 'Editar informações da conta',
+            es: 'Editar la información de la cuenta',
+            ru: 'Изменить информацию об аккаунте',
+        }[lang]
+    }   
+}
 
 export default function Page({ params }) {
-    let { lang } = params;
-
-    usePage(() => {})
-
-    return (
-        <div className={cssStyle.account_info_edit}>
-            <h3>{
-                {
-                    en: 'Edit account info',
-                    vi: 'Chỉnh sửa thông tin tài khoản',
-                    fr: 'Modifier les informations du compte',
-                    it: 'Modifica informazioni account',
-                    kr: '계정 정보 편집',
-                    ja: 'アカウント情報を編集',
-                    de: 'Kontoinformationen bearbeiten',
-                    nl: 'Accountgegevens bewerken',
-                    dk: 'Rediger kontooplysninger',
-                    pt: 'Editar informações da conta',
-                    es: 'Editar la información de la cuenta',
-                    ru: 'Изменить информацию об аккаунте',
-                }[lang]
-            }
-            </h3>
-            <form>
-                <span>{
-                    {
-                        en: 'Avatar',
-                        vi: 'Ảnh đại diện',
-                        fr: 'Avatar',
-                        it: "L'Avatar",
-                        kr: '화신',
-                        ja: 'アバター',
-                        de: 'Avatar',
-                        nl: 'Avatar',
-                        dk: 'Avatar',
-                        pt: 'Avatar',
-                        es: 'Avatar',
-                        ru: 'Аватар',
-                    }[lang]
-                }</span>
-                <button type='button' className='secondary' id='main_account-info-edit_form_choose-avatar'>Choose from Media</button>
-                <input name='avatar'/>
-                <span>{
-                    {
-                        en: 'Name',
-                        vi: 'Tên',
-                        fr: 'Nom',
-                        it: 'Nome',
-                        kr: '이름',
-                        ja: '名前',
-                        de: 'Name',
-                        nl: 'Naam',
-                        dk: 'Navn',
-                        pt: 'Nome',
-                        es: 'Nombre',
-                        ru: 'Имя',
-                    }[lang]
-                }</span>
-                <input name='name' type='name' maxlength='30' placeholder='John Doe'/>
-                <span>{
-                    {
-                        en: 'Email',
-                        vi: 'Email',
-                        fr: 'Email',
-                        it: 'Email',
-                        kr: '이메일',
-                        ja: 'メール',
-                        de: 'Email',
-                        nl: 'Email',
-                        dk: 'Email',
-                        pt: 'Email',
-                        es: 'Correo electrónico',
-                        ru: 'Электронная почта',
-                    }[lang]
-                }</span>
-                <input name='email' type='email' placeholder='user@example.com'/>
-                <button className='primary'>{
-                    {
-                        en: 'Save changes',
-                        vi: 'Lưu thay đổi',
-                        fr: 'Enregistrer les modifications',
-                        it: 'Salvare le modifiche',
-                        kr: '변경 사항 저장',
-                        ja: '変更を保存',
-                        de: 'Änderungen speichern',
-                        nl: 'Wijzigingen opslaan',
-                        dk: 'Gem ændringer',
-                        pt: 'Guardar alterações',
-                        es: 'Guardar cambios',
-                        ru: 'Сохранить изменения',
-                    }[lang]
-                }</button>
-            </form>
-        </div>
-    )
+    return <PageClient lang={params.lang}/>
 }

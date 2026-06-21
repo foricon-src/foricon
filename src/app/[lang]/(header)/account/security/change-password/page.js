@@ -1,145 +1,24 @@
-'use client';
+import PageClient from './page.client';
 
-import usePage from '../../use-page';
-import './page.css';
+export function generateMetadata({ params: { lang }}) {
+    return {
+        title: {
+            en: 'Change password',
+            vi: 'Thay đổi mật khẩu',
+            fr: 'Changer le mot de passe',
+            it: 'Cambiare la password',
+            kr: '비밀번호 변경',
+            ja: 'パスワードを変更する',
+            de: 'Kennwort ändern',
+            nl: 'Wachtwoord wijzigen',
+            dk: 'Skift adgangskode',
+            pt: 'Alterar a palavra-passe',
+            es: 'Cambiar la contraseña',
+            ru: 'Изменить пароль',
+        }[lang]
+    }   
+}
 
 export default function Page({ params }) {
-    let { lang } = params;
-
-    usePage(() => {})
-
-    return (
-        <div name='security/change-password'>
-            <h3>{
-                {
-                    en: 'Change password',
-                    vi: 'Thay đổi mật khẩu',
-                    fr: 'Changer le mot de passe',
-                    it: 'Cambiare la password',
-                    kr: '비밀번호 변경',
-                    ja: 'パスワードを変更する',
-                    de: 'Kennwort ändern',
-                    nl: 'Wachtwoord wijzigen',
-                    dk: 'Skift adgangskode',
-                    pt: 'Alterar a palavra-passe',
-                    es: 'Cambiar la contraseña',
-                    ru: 'Изменить пароль',
-                }[lang]
-            }</h3>
-            <form>
-                <span>{
-                    {
-                        en: 'Your current password',
-                        vi: 'Mật khẩu hiện tại của bạn',
-                        fr: 'Votre mot de passe actuel',
-                        it: 'La tua password attuale',
-                        kr: '현재 비밀번호',
-                        ja: '現在のパスワード',
-                        de: 'Ihr aktuelles Passwort',
-                        nl: 'Uw huidige wachtwoord',
-                        dk: 'Din nuværende adgangskode',
-                        pt: 'A sua senha atual',
-                        es: 'Su contraseña actual',
-                        ru: 'Ваш текущий пароль',
-                    }[lang]
-                }</span>
-                <input name='current' type='password' placeholder={
-                    {
-                        en: 'Enter password',
-                        vi: 'Nhập mật khẩu',
-                        fr: 'Entrez le mot de passe',
-                        it: 'Inserisci la password',
-                        kr: '비밀번호를 입력하세요',
-                        ja: 'パスワードを入力してください',
-                        de: 'Passwort eingeben',
-                        nl: 'Voer wachtwoord in',
-                        dk: 'Indtast adgangskode',
-                        pt: 'Introduza a senha',
-                        es: 'Introducir contraseña',
-                        ru: 'Введите пароль',
-                    }[lang]
-                }/>
-                <span>{
-                    {
-                        en: 'Your new password',
-                        vi: 'Mật khẩu mới',
-                        fr: 'Votre nouveau mot de passe',
-                        it: 'La tua nuova password',
-                        kr: '새로운 비밀번호',
-                        ja: '新しいパスワード',
-                        de: 'Ihr neues Passwort',
-                        nl: 'Uw nieuwe wachtwoord',
-                        dk: 'Din nye adgangskode',
-                        pt: 'A sua nova senha',
-                        es: 'Su nueva contraseña',
-                        ru: 'Ваш новый пароль',
-                    }[lang]
-                }</span>
-                <input name='new' type='password' placeholder={
-                    {
-                        en: 'Enter password',
-                        vi: 'Nhập mật khẩu',
-                        fr: 'Entrez le mot de passe',
-                        it: 'Inserisci la password',
-                        kr: '비밀번호를 입력하세요',
-                        ja: 'パスワードを入力してください',
-                        de: 'Passwort eingeben',
-                        nl: 'Voer wachtwoord in',
-                        dk: 'Indtast adgangskode',
-                        pt: 'Introduza a senha',
-                        es: 'Introducir contraseña',
-                        ru: 'Введите пароль',
-                    }[lang]
-                }/>
-                <span>{
-                    {
-                        en: 'Repeat your new password',
-                        vi: 'Nhập lại mật khẩu mới',
-                        fr: 'Répétez votre nouveau mot de passe',
-                        it: 'Ripeti la tua nuova password',
-                        kr: '새로운 비밀번호를 다시 입력하세요',
-                        ja: '新しいパスワードを繰り返し入力してください',
-                        de: 'Wiederholen Sie Ihr neues Passwort',
-                        nl: 'Herhaal uw nieuwe wachtwoord',
-                        dk: 'Gentag din nye adgangskode',
-                        pt: 'Repita a sua nova palavra-passe',
-                        es: 'Repita su nueva contraseña',
-                        ru: 'Повторите ваш новый пароль',
-                    }[lang]
-                }</span>
-                <input name='repeat' type='password' placeholder={
-                    {
-                        en: 'Enter password',
-                        vi: 'Nhập mật khẩu',
-                        fr: 'Entrez le mot de passe',
-                        it: 'Inserisci la password',
-                        kr: '비밀번호를 입력하세요',
-                        ja: 'パスワードを入力してください',
-                        de: 'Passwort eingeben',
-                        nl: 'Voer wachtwoord in',
-                        dk: 'Indtast adgangskode',
-                        pt: 'Introduza a senha',
-                        es: 'Introducir contraseña',
-                        ru: 'Введите пароль',
-                    }[lang]
-                }/>
-                <button className='primary'>{
-                    {
-                        en: 'Change',
-                        vi: 'Thay đổi',
-                        fr: 'Changement',
-                        it: 'Modifica',
-                        kr: '변화',
-                        ja: '変化',
-                        de: 'Ändern',
-                        nl: 'Wijziging',
-                        dk: 'Forandring',
-                        pt: 'Mudar',
-                        es: 'Cambiar',
-                        ru: 'Изменять',
-                    }[lang]
-                }</button>
-            </form>
-        </div>
-    )
+    return <PageClient lang={params.lang}/>
 }

@@ -7,8 +7,7 @@ import Search from 'Com/search';
 import 'Com/utils';
 import cssStyle from './not-found.module.css';
 
-export default function PageClient() {
-    let { lang } = useContext(LanguageContext);
+export default function PageClient({ lang }) {
     let go = useGo();
 
     return (
