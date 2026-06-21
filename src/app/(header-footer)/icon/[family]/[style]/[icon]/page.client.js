@@ -228,17 +228,17 @@ export default function PageClient({ params }) {
                             ' ',
                             '',
                             styleName != 'solid' && `i-s='${styleName}'`,
-                            scale && `scale='${scale}'`,
-                            size && `size=${size}`,
-                            rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
-                            animation && `animation='${Join('-', animation, !!animationSpeed && animationSpeed)}'`,
+                            !!scale && `scale='${scale}'`,
+                            !!size && `size=${size}`,
+                            !!rotate && `${useFRotate ? 'f-' : ''}rotate='${rotate}'`,
+                            !!animation && `animation='${Join('-', animation, !!animationSpeed && animationSpeed)}'`,
                             [ priColor, priOpacity, secColor, secOpacity ].some(i => i != '') && `style='${
                                 Join(
                                     '; ',
-                                    priColor && `--primary-color: ${priColor}`,
-                                    priOpacity && `--primary-opacity: ${priOpacity}`,
-                                    secColor && `--secondary-color: ${secColor}`,
-                                    secOpacity && `--secondary-opacity: ${secOpacity}`,
+                                    !!priColor && `--primary-color: ${priColor}`,
+                                    !!priOpacity && `--primary-opacity: ${priOpacity}`,
+                                    !!secColor && `--secondary-color: ${secColor}`,
+                                    !!secOpacity && `--secondary-opacity: ${secOpacity}`,
                                 )
                             }'`
                         )}></f-icon>`
