@@ -954,8 +954,9 @@ globalThis.classList = (elems, action, className) => {
     elems.forEach(each => each.classList[action](className));
 }
 
-globalThis.getUTC = () => {
-    return new Date().toUTCString();
+globalThis.getUTC = isFull => {
+    let str = new Date().toISOString();
+    return isFull ? str : str.split('T')[0];
 }
 globalThis.localTime = date => {
     return new Date(date);

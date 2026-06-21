@@ -3,7 +3,7 @@ import { GoogleAdSense } from 'next-google-adsense';
 import Loading from 'Com/loading';
 import Process from 'Com/process';
 import AlternativeLanguages from 'Com/alternative-languages';
-import Providers from './providers';
+import Providers from './[lang]/providers';
 import './globals.css';
 
 export function generateMetadata({ params }) {
@@ -49,9 +49,9 @@ export function generateMetadata({ params }) {
         alternates: AlternativeLanguages(pathname),
     }
 }
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, params }) {
     return (
-        <html>
+        <html lang={params.lang}>
             <head>
                 <link href='//fonts.googleapis.com' rel='preconnect'/>
                 <link crossOrigin='' href='//fonts.gstatic.com' rel='preconnect'/>
