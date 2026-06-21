@@ -1,9 +1,7 @@
 'use client';
 
-import { useContext } from "react";
-import Link from "next/link";
+import Link from 'next/link';
 import logo from 'Pub/foricon-f-logo.png';
-import { LanguageContext } from "./language";
 import Img from "./img";
 
 export default function Footer({ lang }) {
