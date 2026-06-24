@@ -6,10 +6,7 @@ import AlternativeLanguages from 'Com/alternative-languages';
 import Providers from './providers';
 import './globals.css';
 
-export function generateMetadata({ params = { lang: 'en' } }) {
-    let { lang } = params;
-    let pathname = params.segments ? `/${params.segments.join('/')}` : '';
-
+export function generateMetadata() {
     return {
         title: 'Foricon - A fully free icon font library',
         description: 'Foricon is a free icon font library offering elegant, customizable icons to enhance your UI quickly. Professional quality, friendly design - perfect for every project.',
