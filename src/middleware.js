@@ -15,10 +15,13 @@ export async function middleware(req) {
     let { pathname } = req.nextUrl;
     let firstSegment = pathname.split('/')[1];
 
-    console.log('Check first segment');
-    if (allowedLanguages.includes(firstSegment)) return NextResponse.next();
+    function setHeader(res, lang) {
+        res.headers.set('f-lang', lang);
+        return res;
+    }
 
-    // Default language
+    if (allowedLanguages.includes(firstSegment)) return setHeader(NextResponse.next(), firstSegment);
+
     let lang = 'en';
 
     try {
@@ -35,10 +38,9 @@ export async function middleware(req) {
     }
     catch (err) { console.error('ipinfo error:', err) };
 
-    console.log('Redirecting');
     let url = req.nextUrl.clone();
     url.pathname = `/${lang}${pathname}`;
-    return NextResponse.redirect(url, 308);
+    return setHeader(NextResponse.redirect(url, 308), lang);
 }
 export const config = {
     // matcher: '/:path*'

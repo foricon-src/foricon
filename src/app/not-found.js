@@ -1,6 +1,9 @@
+import { headers } from 'next/headers';
 import PageClient from './not-found.client';
 
-export function generateMetadata({ params: { lang = 'en' } = {} }) {
+export function generateMetadata() {
+    let lang = headers().get('lang');
+
     return {
         title: `404 - ${
             {
@@ -21,6 +24,7 @@ export function generateMetadata({ params: { lang = 'en' } = {} }) {
         robots: { index: false, follow: false },
     }
 }
-export default function Page({ params: { lang = 'en' } = {} }) {
+export default function Page() {
+    let lang = headers().get('lang');
     return <PageClient lang={lang}/>;
 }
