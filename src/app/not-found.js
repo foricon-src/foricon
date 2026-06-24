@@ -2,7 +2,7 @@ import { headers } from 'next/headers';
 import PageClient from './not-found.client';
 
 export function generateMetadata() {
-    let lang = headers().get('lang');
+    let lang = headers().get('f-lang');
 
     return {
         title: `404 - ${
