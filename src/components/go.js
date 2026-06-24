@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 export default function useGo() {
     let router = useRouter();
-    let { lang } = document.documentElement
+    let { lang = 'en' } = document?.documentElement || {};
 
     /**
      * Goes to a page
