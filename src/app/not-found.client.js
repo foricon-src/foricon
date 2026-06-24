@@ -1,7 +1,5 @@
 'use client';
 
-import { useContext } from 'react';
-import { LanguageContext } from 'Com/language';
 import useGo from 'Com/go';
 import Search from 'Com/search';
 import 'Com/utils';
