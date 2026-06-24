@@ -534,9 +534,9 @@
             overflow-y: scroll;
             padding-right: var(--spacing-micro);
         }
-        :has(.top:hover, .top :is(input:focus, :global(option-list.active))) & {
+        :has(.top.active:hover, .top.active :is(input:focus, :global(option-list.active))) & {
             top: calc(var(--top) + var(--dropdown));
-            max-height: calc(var(--max-height) + var(--dropdown));
+            max-height: calc(var(--max-height) - var(--dropdown));
         }
     }
 }

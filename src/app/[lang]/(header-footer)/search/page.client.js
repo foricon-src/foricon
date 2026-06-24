@@ -620,7 +620,7 @@ export default function PageClient({ lang }) {
                                 <span>Secondary color</span>
                                 <input type='color' value={secColor} onInput={e => setSecColor(e.currentTarget.value)}/>
                             </form>
-                            <ul>
+                            <ul className='btn-list darker'>
                                 <li onClick={() => {
                                     setPriColor('');
                                     setSecColor('');
