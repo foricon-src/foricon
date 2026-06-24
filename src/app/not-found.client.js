@@ -2,7 +2,6 @@
 
 import useGo from 'Com/go';
 import Search from 'Com/search';
-import 'Com/utils';
 import cssStyle from './not-found.module.css';
 
 export default function PageClient({ lang }) {
