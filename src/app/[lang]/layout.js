@@ -1,9 +1,5 @@
-import Script from 'next/script';
-import { GoogleAdSense } from 'next-google-adsense';
-import Loading from 'Com/loading';
-import Process from 'Com/process';
 import AlternativeLanguages from 'Com/alternative-languages';
-import '../globals.css';
+import 'Com/utils';
 
 export function generateMetadata({ params = { lang: 'en' } }) {
     let { lang } = params;

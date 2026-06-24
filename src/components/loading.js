@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from 'react';
 import { UserContext } from './user';
 import { IconContext } from './icons';
 import { ThemeContext } from './theme';
+import 'Com/utils';
 
 export default function Loading() {
     let user = useContext(UserContext);

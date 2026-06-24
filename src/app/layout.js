@@ -4,7 +4,6 @@ import Loading from 'Com/loading';
 import Process from 'Com/process';
 import AlternativeLanguages from 'Com/alternative-languages';
 import Providers from './providers';
-import 'Com/utils';
 import './globals.css';
 
 export function generateMetadata({ params = { lang: 'en' } }) {
