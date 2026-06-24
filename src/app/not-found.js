@@ -21,6 +21,6 @@ export function generateMetadata({ params: { lang = 'en' } = {} }) {
         robots: { index: false, follow: false },
     }
 }
-export default function Page({ params }) {
-    return <PageClient lang={params.lang}/>;
+export default function Page({ params: { lang = 'en' } = {} }) {
+    return <PageClient lang={lang}/>;
 }
