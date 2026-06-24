@@ -1,6 +1,6 @@
 import PageClient from './not-found.client';
 
-export function generateMetadata({ params: { lang } }) {
+export function generateMetadata({ params: { lang = 'en' } = {} }) {
     return {
         title: `404 - ${
             {
