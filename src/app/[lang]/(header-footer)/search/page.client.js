@@ -75,7 +75,6 @@ export default function PageClient({ lang }) {
     let [ version, setVersion ] = useState(initial.version);
 
     let [ page, setPage ] = useState(0);
-    let [ tick, setTick ] = useState(0);
 
     let [ selectedIcon, selectIcon ] = useState(null);
     let [ width, setWidth ] = useState(innerWidth);
@@ -125,7 +124,7 @@ export default function PageClient({ lang }) {
     let columns = useMemo(() => {
         let elem = qSelec(`.${cssStyle.results}`);
         return iconSet && elem ? getComputedStyle(elem).gridTemplateColumns.split(' ').length : 1;
-    }, [ iconSet, width, tick ])
+    }, [ iconSet, width, view ])
     let perPage = useMemo(() => {
         let rows = Math.floor(
             (view == 'large' ? 150 : view == 'small' ? 300 : 160) / columns
@@ -261,9 +260,6 @@ export default function PageClient({ lang }) {
         </li>
     )
     
-    function updateTick() {
-        setTick(tick + 1);
-    }
     function formatKeyword(value, reversed) {
         return value.replaceAll(...(reversed ? [ '+', ' ' ] : [ ' ', '+' ]));
     }
@@ -381,10 +377,6 @@ export default function PageClient({ lang }) {
         return () => manager.remv();
     }, [])
     useEffect(() => { localStorage.setItem('view', view) }, [ view ]);
-    useEffect(() => {(async () => {
-        await wait();
-        updateTick();
-    })()}, [ view ])
     useEffect(() => { globalThis[user ? 'enable' : 'disable'](elemById('save')) }, [ user ]);
     useEffect(() => {
         if (!selectedIcon) return;
