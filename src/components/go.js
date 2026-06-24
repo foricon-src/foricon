@@ -1,10 +1,12 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { LanguageContext } from './language';
 
 export default function useGo() {
     let router = useRouter();
-    let { lang = 'en' } = document?.documentElement || {};
+    let lang = useContext(LanguageContext);
 
     /**
      * Goes to a page
