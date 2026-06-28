@@ -2,14 +2,14 @@
 
 import Img from 'Com/img';
 import logo from 'Pub/foricon-f-logo.png';
-import cssStyle from './internal-global.css';
+import cssStyle from './internal-global.module.css';
 
 export default function Header() {
     return <div className={cssStyle.header}>
         <div>
             <ul className='btn-list'>
-                <li className='chip bottom'>
-                    <f-icon icon='chevron-right'/>
+                <li className='tooltip bottom'>
+                    <f-icon icon='chevron-right' i-s='outline'/>
                     <span>Expand</span>
                 </li>
             </ul>
@@ -18,11 +18,11 @@ export default function Header() {
         </div>
         <input placeholder='Search...'/>
         <ul className='btn-list'>
-            <li className='chip bottom'>
-                <f-icon icon='sticky-note'/>
+            <li className='tooltip bottom'>
+                <f-icon icon='note-sticky'/>
                 <span>Notes</span>
             </li>
-            <li className='chip bottom'>
+            <li className='tooltip bottom'>
                 <f-icon icon='bookmark'/>
                 <span>Saved</span>
             </li>

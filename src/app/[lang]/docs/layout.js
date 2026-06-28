@@ -1,8 +1,8 @@
-import cssStyle from './internal-global.css';
 import Header from './header';
 import Sidebar from './sidebar';
 import NotePanel from './note-panel';
 import SavedPanel from './saved-panel';
+import cssStyle from './internal-global.module.css';
 
 export function generateMetadata({ params: { lang } }) {
     return {
