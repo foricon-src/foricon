@@ -5,6 +5,8 @@
         'sidebar content notePanel savedPanel';
     grid-template-columns: 300px auto 200px 200px;
     align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 .header {
     grid-area: header;
@@ -15,9 +17,16 @@
     &, & > div {
         align-items: center;
     }
-    & > div > img {
+    & > div {
         display: flex;
-        height: 40px;
+        gap: var(--spacing-xxsmall);
+
+        & > img {
+            height: 50px;
+        }
+        & > h4 {
+            margin: 0;
+        }
     }
 }
 .sidebar {
