@@ -4,21 +4,21 @@
         'header header header header'
         'sidebar content notePanel savedPanel';
     grid-template-columns: 300px auto 200px 200px;
+    grid-template-rows: max-content auto;
     align-items: center;
     height: 100vh;
     width: 100vw;
 }
 .header {
     grid-area: header;
-    display: grid;
-    grid-template-columns: calc(100% - 200px) 400px calc(100% - 200px);
+    justify-content: space-between;
     padding: var(--spacing-xxsmall) var(--spacing-default);
 
     &, & > div {
+        display: flex;
         align-items: center;
     }
     & > div {
-        display: flex;
         gap: var(--spacing-xxsmall);
 
         & > img {
@@ -27,6 +27,10 @@
         & > h4 {
             margin: 0;
         }
+    }
+    & > input {
+        width: 400px;
+        margin: 0;
     }
 }
 .sidebar {
