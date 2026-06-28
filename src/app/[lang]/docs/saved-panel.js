@@ -1,7 +1,10 @@
 'use client';
 
+import { useContext } from 'react';
+import { LayoutContext } from './layout-provider';
 import cssStyle from './internal-global.module.css';
 
 export default function SavedPanel() {
-    return <div className={cssStyle.savedPanel}/>
+    let layout = useContext(LayoutContext);
+    return <div className={cssStyle.savedPanel + (layout.savedPanel.isOpened ? ' active' : '')}/>;
 }

@@ -3,6 +3,7 @@ import Sidebar from './sidebar';
 import NotePanel from './note-panel';
 import SavedPanel from './saved-panel';
 import cssStyle from './internal-global.module.css';
+import { LayoutProvider } from './layout-provider';
 
 export function generateMetadata({ params: { lang } }) {
     return {
@@ -42,10 +43,12 @@ export function generateMetadata({ params: { lang } }) {
 }
 export default function RootLayout({ children }) {
     return <div className={cssStyle.wrapper}>
-        <Header/>
-        <Sidebar/>
-        {children}
-        <NotePanel/>
-        <SavedPanel/>
+        <LayoutProvider>
+            <Header/>
+            <Sidebar/>
+            {children}
+            <NotePanel/>
+            <SavedPanel/>
+        </LayoutProvider>
     </div>
 }
