@@ -1,3 +1,5 @@
+'use client';
+
 import Img from 'Com/img';
 import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './internal-global.css';

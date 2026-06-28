@@ -1,3 +1,5 @@
+'use client';
+
 import cssStyle from './internal-global.css';
 
 export default function NotePanel() {
