@@ -11,25 +11,25 @@
 }
 .header {
     grid-area: header;
-    justify-content: space-between;
-    padding: var(--spacing-xxsmall) var(--spacing-default);
+    display: grid;
+    grid-template-columns: calc(100% - 200px) 400px calc(100% - 200px);
+    padding: var(--spacing-micro) var(--spacing-default);
 
     &, & > div {
-        display: flex;
         align-items: center;
     }
     & > div {
+        display: flex;
         gap: var(--spacing-xxsmall);
 
         & > img {
-            height: 50px;
+            height: 40px;
         }
         & > h4 {
             margin: 0;
         }
     }
     & > input {
-        width: 400px;
         margin: 0;
     }
 }
