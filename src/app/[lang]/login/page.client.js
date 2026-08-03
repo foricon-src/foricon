@@ -167,16 +167,20 @@ export default function LogIn({ lang }) {
 
             await func?.();
 
-            let wrapper = elemById('wrapper');
+            let wrapper = qSelec(cssStyle.wrapper);
             wrapper.style.opacity = '0';
 
             await wait(.2);
 
             setStep(step);
+            setNotification(null);
         }
         catch (obj) {
             console.log(obj);
-            notify(obj instanceof Warn ? 'warn' : 'error', obj.message);
+            setNotification({
+                type: obj instanceof Warn ? 'warn' : 'error',
+                content: obj.message,
+            })
         }
         finally {
             await wait();
@@ -361,19 +365,6 @@ export default function LogIn({ lang }) {
                     }</button>
                     <button className='primary' type={isMaxStep ? 'submit' : 'button'}>{
                         isMaxStep ? {
-                            en: 'Next',
-                            vi: 'Tiếp theo',
-                            fr: 'Suivante',
-                            it: 'Prossimo',
-                            ko: '다음',
-                            ja: '次',
-                            de: 'Nächste',
-                            nl: 'Volgende',
-                            dk: 'Næste',
-                            pt: 'Próximo',
-                            es: 'Próximo',
-                            ru: 'Следующий',
-                        }[lang] : {
                             en: 'Log in',
                             vi: 'Đăng nhập',
                             fr: 'Se connecter',
@@ -386,6 +377,19 @@ export default function LogIn({ lang }) {
                             pt: 'Conecte-se',
                             es: 'Acceso',
                             ru: 'Авторизоваться',
+                        }[lang] : {
+                            en: 'Next',
+                            vi: 'Tiếp theo',
+                            fr: 'Suivante',
+                            it: 'Prossimo',
+                            ko: '다음',
+                            ja: '次',
+                            de: 'Nächste',
+                            nl: 'Volgende',
+                            dk: 'Næste',
+                            pt: 'Próximo',
+                            es: 'Próximo',
+                            ru: 'Следующий',
                         }[lang]
                     }</button>
                 </div>
