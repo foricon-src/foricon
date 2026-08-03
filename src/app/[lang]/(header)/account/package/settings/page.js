@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Cài đặt Package',
             fr: 'Paramètres du package',
             it: 'Impostazioni del pacchetto',
-            kr: '패키지 설정',
+            ko: '패키지 설정',
             ja: 'パッケージ設定',
             de: 'Paketeinstellungen',
             nl: 'Pakketinstellingen',

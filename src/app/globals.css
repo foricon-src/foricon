@@ -1771,7 +1771,7 @@ div.message.offline:before {
                     html[lang='it'] &:before {
                         content: 'Sembra che tu non abbia ancora caricato alcun elemento, oppure quelli caricati non soddisfano i requisiti';
                     }
-                    html[lang='kr'] &:before {
+                    html[lang='ko'] &:before {
                         content: '아직 항목을 업로드하지 않았거나 업로드한 항목이 요구 사항을 충족하지 않는 것 같습니다';
                     }
                     html[lang='ja'] &:before {

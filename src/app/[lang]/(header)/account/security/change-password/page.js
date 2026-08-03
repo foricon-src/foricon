@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Thay đổi mật khẩu',
             fr: 'Changer le mot de passe',
             it: 'Cambiare la password',
-            kr: '비밀번호 변경',
+            ko: '비밀번호 변경',
             ja: 'パスワードを変更する',
             de: 'Kennwort ändern',
             nl: 'Wachtwoord wijzigen',

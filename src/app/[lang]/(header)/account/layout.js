@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang } }) {
         vi: 'Tài khoản của tôi',
         fr: 'Mon compte',
         it: 'Il mio conto',
-        kr: '내 계정',
+        ko: '내 계정',
         ja: '私のアカウント',
         de: 'Mein Konto',
         nl: 'Mijn account',

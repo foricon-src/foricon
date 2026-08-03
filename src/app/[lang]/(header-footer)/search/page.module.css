@@ -360,7 +360,7 @@
                 html[lang='it'] &:before {
                     content: 'Sembra che non ci siano risultati corrispondenti alle tue opzioni di ricerca';
                 }
-                html[lang='kr'] &:before {
+                html[lang='ko'] &:before {
                     content: '검색 옵션과 일치하는 결과가 없는 것 같습니다';
                 }
                 html[lang='ja'] &:before {

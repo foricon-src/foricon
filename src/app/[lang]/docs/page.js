@@ -5,7 +5,7 @@ export function generateMetadata({ params: { lang } }) {
             vi: 'Chào mừng',
             fr: 'Bienvenu',
             it: 'Benvenuto',
-            kr: '환영',
+            ko: '환영',
             ja: 'いらっしゃいませ',
             de: 'Willkommen',
             nl: 'Welkom',

@@ -11,7 +11,7 @@ export function generateMetadata() {
                 vi: 'Không tìm thấy trang',
                 fr: 'Page introuvable',
                 it: 'Pagina non trovata',
-                kr: '페이지를 찾을 수 없습니다',
+                ko: '페이지를 찾을 수 없습니다',
                 ja: 'ページが見つかりません',
                 de: 'Seite nicht gefunden',
                 nl: 'Pagina niet gevonden',

@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Lịch sử đăng nhập',
             fr: 'Historique de connexion',
             it: 'Cronologia degli accessi',
-            kr: '로그인 기록',
+            ko: '로그인 기록',
             ja: 'ログイン履歴',
             de: 'Anmeldeverlauf',
             nl: 'Aanmeldingsgeschiedenis',

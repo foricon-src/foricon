@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Tải xuống',
             fr: 'Télécharger',
             it: 'Scaricamento',
-            kr: '다운로드',
+            ko: '다운로드',
             ja: 'ダウンロード',
             de: 'Herunterladen',
             nl: 'Download',

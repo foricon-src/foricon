@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Thông tin',
             fr: 'Infos',
             it: 'Info',
-            kr: '정보',
+            ko: '정보',
             ja: '情報',
             de: 'Info',
             nl: 'Info',

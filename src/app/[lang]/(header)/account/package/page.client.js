@@ -29,7 +29,7 @@ export default function PageClient({ lang }) {
         reset.setDate(reset.getDate() + 30);
         let formatted = formatDate(reset, lang);
         elemById('reset').innerText =
-            lang == 'kr' ? `${formatted}에 재설정됨` :
+            lang == 'ko' ? `${formatted}에 재설정됨` :
             lang == 'ja' ? `${formatted}にリセット` :
             `${
                 {
@@ -73,7 +73,7 @@ export default function PageClient({ lang }) {
                                 vi: 'lượt xem trang',
                                 fr: 'pages vues',
                                 it: 'visualizzazioni di pagina',
-                                kr: '페이지뷰를 사용했습니다',
+                                ko: '페이지뷰를 사용했습니다',
                                 ja: 'ページビューを使用しました',
                                 de: 'Seitenaufrufe verwendet',
                                 nl: 'paginaweergaven gebruikt',
@@ -96,7 +96,7 @@ export default function PageClient({ lang }) {
                                 vi: 'Cài đặt',
                                 fr: 'Paramètres',
                                 it: 'Impostazioni',
-                                kr: '설정',
+                                ko: '설정',
                                 ja: '設定',
                                 de: 'Einstellungen',
                                 nl: 'Instellingen',
@@ -115,7 +115,7 @@ export default function PageClient({ lang }) {
                                 vi: 'Tải xuống',
                                 fr: 'Télécharger',
                                 it: 'Scaricamento',
-                                kr: '다운로드',
+                                ko: '다운로드',
                                 ja: 'ダウンロード',
                                 de: 'Herunterladen',
                                 nl: 'Download',
@@ -134,7 +134,7 @@ export default function PageClient({ lang }) {
                     vi: 'Import',
                     fr: 'Importer',
                     it: 'Importare',
-                    kr: '수입',
+                    ko: '수입',
                     ja: '輸入',
                     de: 'Import',
                     nl: 'Importeren',
@@ -150,7 +150,7 @@ export default function PageClient({ lang }) {
                     vi: "Để import Foricon Package vào trang web của bạn, vui lòng sao chép mã bên dưới và dán vào thẻ <span className='small-code element'>head</span> của HTML của bạn",
                     fr: "Pour importer le package Foricon sur votre site, veuillez copier le code ci-dessous et le coller dans votre <span className='small-code element'>head</span> HTML",
                     it: "Per importare il pacchetto Foricon sul tuo sito, copia il codice sottostante e incollalo nel <span className='small-code element'>head</span> del tuo HTML",
-                    kr: "귀하의 사이트로 Foricon 패키지를 가져오려면 아래 코드를 복사하여 HTML의 <span className='small-code element'>head</span>에 붙여넣으세요.",
+                    ko: "귀하의 사이트로 Foricon 패키지를 가져오려면 아래 코드를 복사하여 HTML의 <span className='small-code element'>head</span>에 붙여넣으세요.",
                     ja: "Foricon パッケージをサイトにインポートするには、以下のコードをコピーして HTML の <span className='small-code element'>head</span> に貼り付けてください。",
                     de: "Um das Foricon-Paket auf Ihre Website zu importieren, kopieren Sie bitte den folgenden Code und fügen Sie ihn in den <span className='small-code element'>head</span> Ihres HTML-Codes ein.",
                     nl: "Om het Foricon-pakket naar uw site te importeren, kopieert u de onderstaande code en plakt u deze in de <span className='small-code element'>head</span> van uw HTML",
@@ -168,7 +168,7 @@ export default function PageClient({ lang }) {
                         vi: 'Hướng dẫn tùy chỉnh biểu tượng',
                         fr: 'Guide sur la personnalisation des icônes',
                         it: 'Guida alla personalizzazione delle icone',
-                        kr: '아이콘 사용자 정의에 대한 가이드',
+                        ko: '아이콘 사용자 정의에 대한 가이드',
                         ja: 'アイコンのカスタマイズに関するガイド',
                         de: 'Anleitung zum Anpassen von Symbolen',
                         nl: 'Handleiding voor het aanpassen van pictogrammen',

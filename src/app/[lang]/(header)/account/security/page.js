@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Bảo mật',
             fr: 'Sécurité',
             it: 'Sicurezza',
-            kr: '보안',
+            ko: '보안',
             ja: 'セキュリティ',
             de: 'Sicherheit',
             nl: 'Beveiliging',

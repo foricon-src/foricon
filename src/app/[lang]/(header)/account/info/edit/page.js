@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Chỉnh sửa thông tin tài khoản',
             fr: 'Modifier les informations du compte',
             it: 'Modifica informazioni account',
-            kr: '계정 정보 편집',
+            ko: '계정 정보 편집',
             ja: 'アカウント情報を編集',
             de: 'Kontoinformationen bearbeiten',
             nl: 'Accountgegevens bewerken',

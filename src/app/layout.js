@@ -11,7 +11,7 @@ export const metadata = {
     description: 'Foricon is a free icon font library offering elegant, customizable icons to enhance your UI quickly. Professional quality, friendly design - perfect for every project.',
     platfrom: 'Vercel (Next.js)',
     icons: { icon: '/foricon-f-fav.png' },
-    alternates: AlternativeLanguages('/'),
+    alternates: AlternativeLanguages(''),
 }
 export default function RootLayout({ children, params }) {
     return (

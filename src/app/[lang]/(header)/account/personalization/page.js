@@ -7,7 +7,7 @@ export function generateMetadata({ params: { lang }}) {
             vi: 'Cá nhân hóa',
             fr: 'Personnalisation',
             it: 'Personalizzazione',
-            kr: '개인화',
+            ko: '개인화',
             ja: 'パーソナライズ',
             de: 'Personalisierung',
             nl: 'Personalisatie',

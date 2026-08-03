@@ -2,25 +2,26 @@
 import { NextResponse } from 'next/server';
 
 const allowedLanguages = [
-    'en', 'vi', 'fr', 'it', 'kr', 'ja', 'de', 'nl', 'dk', 'pt', 'es', 'ru'
+    'en', 'vi', 'fr', 'it', 'ko', 'ja', 'de', 'nl', 'dk', 'pt', 'es', 'ru'
 ]
 
 const countryToLang = {
-    VN: 'vi', FR: 'fr', IT: 'it', KR: 'kr',
+    VN: 'vi', FR: 'fr', IT: 'it', KR: 'ko',
     JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
     PT: 'pt', ES: 'es', RU: 'ru',
 }
 
 export async function middleware(req) {
     let { pathname } = req.nextUrl;
-    let firstSegment = pathname.split('/')[1];
+    let segments = pathname.split('/');
 
-    function setHeader(res, lang) {
+    function setHeader(res, lang, pathname) {
         res.headers.set('f-lang', lang);
+        res.headers.set('f-pathname', pathname);
         return res;
     }
 
-    if (allowedLanguages.includes(firstSegment)) return setHeader(NextResponse.next(), firstSegment);
+    if (allowedLanguages.includes(segments[1])) return setHeader(NextResponse.next(), segments[1], segments.slice(2).join('/'));
 
     let lang = 'en';
 
@@ -40,7 +41,7 @@ export async function middleware(req) {
 
     let url = req.nextUrl.clone();
     url.pathname = `/${lang}${pathname}`;
-    return setHeader(NextResponse.redirect(url, 308), lang);
+    return setHeader(NextResponse.redirect(url, 308), lang, pathname.slice(1));
 }
 export const config = {
     matcher: [ '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)' ],
