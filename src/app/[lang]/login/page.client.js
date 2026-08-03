@@ -242,7 +242,7 @@ export default function LogIn({ lang }) {
             </div>
             <form onSubmit={async e => {
                 if (step == 0) {
-                    changeStep(2, e, async () => {
+                    changeStep(1, e, async () => {
                         let snapshot = await getDocs(query(
                             collection(dbFirestore, 'users'),
                             where('email', '==', email)
