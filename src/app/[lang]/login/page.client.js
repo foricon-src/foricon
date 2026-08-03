@@ -127,14 +127,12 @@ let texts = {
     },
 }
 
-export default function LogIn({ params }) {
+export default function LogIn() {
     let router = useRouter();
     let go = useGo();
     let searchParams = useSearchParams();
     let pathname = usePathname();
     let user = useContext(UserContext);
-
-    let { lang } = params;
 
     let [ step, setStep ] = useState('email');
     let [ email, setEmail ] = useState('');
@@ -143,10 +141,7 @@ export default function LogIn({ params }) {
 
     let des = searchParams.get('redirect') || 'account';
     
-    useEffect(() => {(async () => {
-        if (user == null) return;
-        user && go('account');
-    })()}, [ pathname, user ])
+    useEffect(() => { user && go('account') }, [ pathname, user ])
 
     async function changePage(page, e, func) {
         e?.preventDefault();
