@@ -167,7 +167,7 @@ export default function LogIn({ lang }) {
 
     return (
         <div id='wrapper'>
-            {method && <MethodPopup
+            {provider && <MethodPopup
                 provider={provider}
                 des={des}
             />}
