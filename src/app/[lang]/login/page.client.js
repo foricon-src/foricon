@@ -167,9 +167,6 @@ export default function LogIn({ lang }) {
             body.style.pointerEvents = 'none';
             await func?.();
             wrapper.style.opacity = '0';
-
-            if (step == maxStep) return;
-
             await wait(.2);
             setStep(step);
         }
@@ -177,7 +174,7 @@ export default function LogIn({ lang }) {
             console.log(obj);
             setNotification({
                 type: obj instanceof Warn ? 'warn' : 'error',
-                content: obj.message.slice(1),
+                content: obj.message,
             })
         }
         finally {
@@ -256,7 +253,7 @@ export default function LogIn({ lang }) {
                     let result = await signInWithEmailAndPassword(auth, email, password);
                     let token = await result.user.getIdToken();
                     await recordLogin(token);
-                    router.push(des);
+                    go(des);
                 })
             }}>
                 {!!step ? <>
@@ -339,7 +336,7 @@ export default function LogIn({ lang }) {
                     </ul>
                     <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 </>}
-                {notification && <div className={`message ${notification.type}`}>${notification.content}</div>}
+                {notification && <div className={`message ${notification.type}`}>{notification.content}</div>}
                 <div className={cssStyle.nav}>
                     {!!step && <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
                         {
