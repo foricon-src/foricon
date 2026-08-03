@@ -158,7 +158,7 @@ export default function LogIn({ lang }) {
     async function changeStep(step, e, func) {
         e?.preventDefault();
 
-        let wrapper = qSelec(cssStyle.wrapper);
+        let wrapper = qSelec(`.${cssStyle.wrapper}`);
         let { body } = document;
 
         step < 0 && (step = 0);
