@@ -222,23 +222,23 @@ export default function LogIn({ lang }) {
                             ru: 'У вас нет аккаунта? ',
                         }[lang]
                     }
+                    <Link className='btn secondary' href='/signup'>{
+                        {
+                            en: 'Create one!',
+                            vi: 'Tạo tài khoản mới',
+                            fr: 'Créez-en un !',
+                            it: 'Creane uno!',
+                            ko: '지금 만드세요!',
+                            ja: '作成してください！',
+                            de: 'Jetzt erstellen!',
+                            nl: 'Maak er een aan!',
+                            dk: 'Opret en!',
+                            pt: 'Crie uma!',
+                            es: '¡Crea una!',
+                            ru: 'Создайте его!',
+                        }[lang]
+                    }</Link>
                 </p>
-                <Link className='btn secondary' href='/signup'>{
-                    {
-                        en: 'Create one!',
-                        vi: 'Tạo tài khoản mới',
-                        fr: 'Créez-en un !',
-                        it: 'Creane uno!',
-                        ko: '지금 만드세요!',
-                        ja: '作成してください！',
-                        de: 'Jetzt erstellen!',
-                        nl: 'Maak er een aan!',
-                        dk: 'Opret en!',
-                        pt: 'Crie uma!',
-                        es: '¡Crea una!',
-                        ru: 'Создайте его!',
-                    }[lang]
-                }</Link>
             </div>
             <form onSubmit={async e => {
                 if (step == 1) {

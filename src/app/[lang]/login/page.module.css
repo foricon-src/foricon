@@ -41,9 +41,6 @@
         }
     }
     & > form {
-        :global(:not(.active))& {
-            display: none;
-        }
         & > ul, & > div:not(:last-child) {
             width: 100%;
         }
