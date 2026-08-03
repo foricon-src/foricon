@@ -143,13 +143,13 @@ export default function LogIn({ lang }) {
     let pathname = usePathname();
     let user = useContext(UserContext);
 
-    let [ step, setStep ] = useState(1);
+    let [ step, setStep ] = useState(0);
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
     let [ notification, setNotification ] = useState(null);
 
-    let isMaxStep = step >= 2;
+    let isMaxStep = step >= 1;
 
     let des = searchParams.get('redirect') || 'account';
     
@@ -160,7 +160,7 @@ export default function LogIn({ lang }) {
 
         let { body } = document;
 
-        step < 1 && (step = 1);
+        step < 0 && (step = 0);
 
         try {
             body.style.pointerEvents = 'none';
@@ -225,7 +225,7 @@ export default function LogIn({ lang }) {
                     <Link href='/signup'>{
                         {
                             en: 'Create one!',
-                            vi: 'Tạo tài khoản mới',
+                            vi: 'Tạo ngay một cái!',
                             fr: 'Créez-en un !',
                             it: 'Creane uno!',
                             ko: '지금 만드세요!',
@@ -241,7 +241,7 @@ export default function LogIn({ lang }) {
                 </p>
             </div>
             <form onSubmit={async e => {
-                if (step == 1) {
+                if (step == 0) {
                     changeStep(2, e, async () => {
                         let snapshot = await getDocs(query(
                             collection(dbFirestore, 'users'),
@@ -261,7 +261,7 @@ export default function LogIn({ lang }) {
                 await recordLogin(token);
                 router.push(des);
             }}>
-                {step == 1 ? <>
+                {step == 0 ? <>
                     <ul className='btn-list darker'>
                         <li className='tooltip top' name='google' onClick={() => methodPopup(new GoogleAuthProvider())}>
                             <span>{
@@ -342,51 +342,53 @@ export default function LogIn({ lang }) {
                     }</Link>
                 </>}
                 {notification && <div className={`message ${notification.type}`}>${notification.content}</div>}
-                <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
-                    {
-                        en: 'Back',
-                        vi: 'Trở lại',
-                        fr: 'Dos',
-                        it: 'Indietro',
-                        ko: '뒤쪽에',
-                        ja: '戻る',
-                        de: 'Zurück',
-                        nl: 'Rug',
-                        dk: 'Tilbage',
-                        pt: 'Voltar',
-                        es: 'Atrás',
-                        ru: 'Назад',
-                    }[lang]
-                }</button>
-                <button className='primary' type={isMaxStep ? 'submit' : 'button'}>{
-                    isMaxStep ? {
-                        en: 'Next',
-                        vi: 'Tiếp theo',
-                        fr: 'Suivante',
-                        it: 'Prossimo',
-                        ko: '다음',
-                        ja: '次',
-                        de: 'Nächste',
-                        nl: 'Volgende',
-                        dk: 'Næste',
-                        pt: 'Próximo',
-                        es: 'Próximo',
-                        ru: 'Следующий',
-                    }[lang] : {
-                        en: 'Log in',
-                        vi: 'Đăng nhập',
-                        fr: 'Se connecter',
-                        it: 'Login',
-                        ko: '로그인',
-                        ja: 'ログイン',
-                        de: 'Anmeldung',
-                        nl: 'Log in',
-                        dk: 'Log på',
-                        pt: 'Conecte-se',
-                        es: 'Acceso',
-                        ru: 'Авторизоваться',
-                    }[lang]
-                }</button>
+                <div>
+                    <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
+                        {
+                            en: 'Back',
+                            vi: 'Trở lại',
+                            fr: 'Dos',
+                            it: 'Indietro',
+                            ko: '뒤쪽에',
+                            ja: '戻る',
+                            de: 'Zurück',
+                            nl: 'Rug',
+                            dk: 'Tilbage',
+                            pt: 'Voltar',
+                            es: 'Atrás',
+                            ru: 'Назад',
+                        }[lang]
+                    }</button>
+                    <button className='primary' type={isMaxStep ? 'submit' : 'button'}>{
+                        isMaxStep ? {
+                            en: 'Next',
+                            vi: 'Tiếp theo',
+                            fr: 'Suivante',
+                            it: 'Prossimo',
+                            ko: '다음',
+                            ja: '次',
+                            de: 'Nächste',
+                            nl: 'Volgende',
+                            dk: 'Næste',
+                            pt: 'Próximo',
+                            es: 'Próximo',
+                            ru: 'Следующий',
+                        }[lang] : {
+                            en: 'Log in',
+                            vi: 'Đăng nhập',
+                            fr: 'Se connecter',
+                            it: 'Login',
+                            ko: '로그인',
+                            ja: 'ログイン',
+                            de: 'Anmeldung',
+                            nl: 'Log in',
+                            dk: 'Log på',
+                            pt: 'Conecte-se',
+                            es: 'Acceso',
+                            ru: 'Авторизоваться',
+                        }[lang]
+                    }</button>
+                </div>
             </form>
             {/* <form className={step == 'email' ? 'active' : ''}>
                 <ul className='btn-list darker'>

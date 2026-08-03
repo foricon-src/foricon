@@ -55,7 +55,7 @@
                 background-position: center center;
                 background-repeat: no-repeat;
                 height: 57px;
-                width: unset;
+                width: unset !important;
                 
                 &[name='google'] {
                     --size: 27px;
