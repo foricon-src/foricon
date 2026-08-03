@@ -127,7 +127,7 @@ let texts = {
     },
 }
 
-export default function LogIn() {
+export default function LogIn({ lang }) {
     let router = useRouter();
     let go = useGo();
     let searchParams = useSearchParams();
