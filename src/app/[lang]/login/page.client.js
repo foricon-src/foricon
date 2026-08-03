@@ -208,7 +208,7 @@ export default function LogIn({ lang }) {
                 </Link>
                 <h1>{texts[lang][step].h1}</h1>
                 <p>{texts[lang][step].p}</p>
-                <p>
+                {!step && <p>
                     {
                         {
                             en: "Don't have an account? ",
@@ -241,7 +241,7 @@ export default function LogIn({ lang }) {
                             ru: 'Создайте его!',
                         }[lang]
                     }</Link>
-                </p>
+                </p>}
             </div>
             <form onSubmit={async e => {
                 changeStep(1, e, async () => {

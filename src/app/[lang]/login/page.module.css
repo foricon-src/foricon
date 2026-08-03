@@ -52,9 +52,50 @@
         }
         & > ul {
             display: grid;
-            gap: 10px;
+            gap: var(--spacing-mili) var(--spacing-micro);
             grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                'google microsoft github'
+                'text text text';
             
+            &:before {
+                content: 'or';
+                grid-area: text;
+                text-align: center;
+            }
+            html[lang='vi'] &:before {
+                content: 'hoặc';
+            }
+            html[lang='fr'] &:before {
+                content: 'ou';
+            }
+            html[lang='it'] &:before {
+                content: 'O';
+            }
+            html[lang='ko'] &:before {
+                content: '또는';
+            }
+            html[lang='ja'] &:before {
+                content: 'または';
+            }
+            html[lang='de'] &:before {
+                content: 'oder';
+            }
+            html[lang='nl'] &:before {
+                content: 'of';
+            }
+            html[lang='dk'] &:before {
+                content: 'eller';
+            }
+            html[lang='pt'] &:before {
+                content: 'ou';
+            }
+            html[lang='es'] &:before {
+                content: 'o';
+            }
+            html[lang='ru'] &:before {
+                content: 'или';
+            }
             & > li {
                 background-size: var(--size);
                 background-position: center center;
@@ -79,7 +120,7 @@
                     }
                 }
                 &:active {
-                    scale: calc(var(--size) * .8);
+                    background-size: calc(var(--size) * .8);
                 }
             }
         }
