@@ -1,8 +1,6 @@
 import { Suspense } from 'react';
 import { headers } from 'next/headers';
-import AlternativeLanguages from 'Com/alternative-languages';
 import LogIn from './page.client';
-import './page.css';
 
 export const metadata = {
     title: 'Log in my account',

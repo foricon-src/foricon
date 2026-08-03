@@ -622,6 +622,19 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select, f-up
     border: 1px solid var(--dk-gray);
     background-color: var(--lt-gray);
     margin: 15px 0;
+
+    &.red {
+        border-color: var(--red);
+    }
+    &.yellow {
+        border-color: var(--yellow);
+    }
+    &.green {
+        border-color: var(--green);
+    }
+    &.blue {
+        border-color: var(--blue);
+    }
 }
 input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     font-size: 1rem;

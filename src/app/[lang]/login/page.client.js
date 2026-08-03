@@ -6,124 +6,134 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from 'firebase/auth';
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
 import { dbFirestore, auth } from 'Com/firebase';
-import { LanguageContext } from 'Com/language';
 import Img from 'Com/img';
 import recordLogin from 'Com/record-login';
 import { UserContext } from 'Com/user';
 import useGo from 'Com/go';
 import logo from 'Pub/foricon-f-logo.png';
+import cssStyle from './page.module.css';
 
 let texts = {
-    en: {
-        email: {
-            h1: 'Log in to your account',
+    en: [
+        {
+            h1: 'Log in',
             p: 'Use your Foricon account',
         },
-        password: {
-            h1: 'Enter your password',
+        {
+            h1: 'Welcome back!',
             p: 'Use the password that you have set for your account',
         },
-    },
-    vi: {
-        email: {
+    ],
+    vi: [
+        {
             h1: 'Đăng nhập',
             p: 'Sử dụng tài khoản Foricon của bạn',
         },
-        password: {
-            h1: 'Nhập mật khẩu của bạn',
+        {
+            h1: 'Chào mừng trở lại!',
             p: 'Sử dụng mật khẩu mà bạn đã đặt cho tài khoản của bạn',
         },
-    },
-    fr: {
-        email: {
-            h1: 'Connectez-vous à votre compte',
+    ],
+    fr: [
+        {
+            h1: 'Se connecter',
             p: 'Utilisez votre compte Foricon',
         },
-        password: {
-            h1: 'Tapez votre mot de passe',
+        {
+            h1: 'Content de te revoir!',
             p: 'Utilisez le mot de passe que vous avez défini pour votre compte',
         },
-    },
-    it: {
-        email: {
-            h1: 'Accedi al tuo account',
+    ],
+    it: [
+        {
+            h1: 'Login',
             p: 'Utilizza il tuo account Foricon',
         },
-        password: {
-            h1: 'Inserisci la tua password',
+        {
+            h1: 'Bentornato!',
             p: 'Utilizza la password che hai impostato per il tuo account',
         },
-    },
-    ko: {
-        email: {
-            h1: '귀하의 계정에 로그인하십시오',
+    ],
+    ko: [
+        {
+            h1: '로그인',
             p: 'Foricon 계정을 사용하세요',
         },
-        password: {
-            h1: '비밀번호를 입력하세요',
+        {
+            h1: '다시 오신 것을 환영합니다!',
             p: '계정에 설정한 비밀번호를 사용하세요',
         },
-    },
-    ja: {
-        email: {
-            h1: 'あなたのアカウントにログイン',
+    ],
+    ja: [
+        {
+            h1: 'ログイン',
             p: 'Foriconアカウントを使用する',
         },
-        password: {
-            h1: 'パスワードを入力してください',
+        {
+            h1: 'おかえり！',
             p: 'アカウントに設定したパスワードを使用してください',
         },
-    },
-    de: {
-        email: {
-            h1: 'Ins Konto einloggen',
+    ],
+    de: [
+        {
+            h1: 'Einloggen',
             p: 'Verwenden Sie Ihr Foricon-Konto',
         },
-        password: {
-            h1: 'Geben Sie Ihr Passwort ein',
+        {
+            h1: 'Willkommen zurück!',
             p: 'Verwenden Sie das Passwort, das Sie für Ihr Konto festgelegt haben',
         },
-    },
-    nl: {
-        email: {
-            h1: 'Log in op jouw account',
+    ],
+    nl: [
+        {
+            h1: 'Inloggen',
             p: 'Gebruik uw Foricon-account',
         },
-        password: {
-            h1: 'Voer uw wachtwoord in',
+        {
+            h1: 'Welkom terug!',
             p: 'Gebruik het wachtwoord dat u voor uw account heeft ingesteld',
         },
-    },
-    dk: {
-        email: {
-            h1: 'Log ind på din konto',
+    ],
+    dk: [
+        {
+            h1: 'Log ind',
             p: 'Brug din Foricon-konto',
         },
-        password: {
-            h1: 'Skriv dit kodeord',
+        {
+            h1: 'Velkommen tilbage!',
             p: 'Brug den adgangskode, du har angivet til din konto',
         },
-    },
-    pt: {
-        email: {
-            h1: 'Faça login na sua conta',
+    ],
+    pt: [
+        {
+            h1: 'Conecte-se',
             p: 'Utilize a sua conta Foricon',
         },
-        password: {
-            h1: 'Coloque a sua senha',
+        {
+            h1: 'Bem-vindo de volta!',
             p: 'Utilize a palavra-passe que definiu para a sua conta',
         },
-    },
-    es: {
-        email: {
-            h1: 'Ingrese a su cuenta',
+    ],
+    es: [
+        {
+            h1: 'Acceso',
             p: 'Usa tu cuenta de Foricon',
         },
-        password: {
-            h1: 'Ingresa tu contraseña',
+        {
+            h1: '¡Bienvenido de nuevo!',
             p: 'Utilice la contraseña que ha establecido para su cuenta',
         },
-    },
+    ],
+    ru: [
+        {
+            h1: 'Авторизоваться',
+            p: 'Используйте свою учетную запись Foricon',
+        },
+        {
+            h1: 'Добро пожаловать!',
+            p: 'Используйте пароль, который вы установили для своей учетной записи.',
+        },
+    ],
 }
 
 export default function LogIn({ lang }) {
@@ -133,24 +143,36 @@ export default function LogIn({ lang }) {
     let pathname = usePathname();
     let user = useContext(UserContext);
 
-    let [ step, setStep ] = useState('email');
+    let [ step, setStep ] = useState(1);
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
+    let [ notification, setNotification ] = useState(null);
+
+    let isMaxStep = step >= 2;
 
     let des = searchParams.get('redirect') || 'account';
     
     useEffect(() => { user && go('account') }, [ pathname, user ])
 
-    async function changePage(page, e, func) {
+    async function changeStep(step, e, func) {
         e?.preventDefault();
 
+        let { body } = document;
+
+        step < 1 && (step = 1);
+
         try {
+            body.style.pointerEvents = 'none';
+
+            await func?.();
+
             let wrapper = elemById('wrapper');
             wrapper.style.opacity = '0';
+
             await wait(.2);
-            await func?.();
-            setStep(page);
+
+            setStep(step);
         }
         catch (obj) {
             console.log(obj);
@@ -158,7 +180,8 @@ export default function LogIn({ lang }) {
         }
         finally {
             await wait();
-            wrapper.style.opacity = '1';
+            wrapper.style.opacity = body.style.pointerEvents = '';
+
         }
     }
     async function methodPopup(provider) {
@@ -175,49 +198,251 @@ export default function LogIn({ lang }) {
     }
 
     return (
-        <div id='wrapper'>
+        <div className={cssStyle.wrapper}>
             <div>
                 <Link href='/' title='Back to home'>
                     <Img src={logo}/>
                 </Link>
                 <h1>{texts[lang][step].h1}</h1>
                 <p>{texts[lang][step].p}</p>
+                <p>
+                    {
+                        {
+                            en: "Don't have an account? ",
+                            vi: 'Chưa có tài khoản? ',
+                            fr: "Vous n'avez pas de compte ? ",
+                            it: 'Non hai un account?' ,
+                            ko: '계정이 없으신가요? ',
+                            ja: 'アカウントをお持ちでない方は、',
+                            de: 'Sie haben noch kein Konto? ',
+                            nl: 'Nog geen account? ',
+                            dk: 'Har du ikke en konto? ',
+                            pt: 'Não tem conta? ',
+                            es: '¿No tienes cuenta? ',
+                            ru: 'У вас нет аккаунта? ',
+                        }[lang]
+                    }
+                </p>
                 <Link className='btn secondary' href='/signup'>{
                     {
-                        en: 'Create a new account',
+                        en: 'Create one!',
                         vi: 'Tạo tài khoản mới',
-                        fr: 'Créer un nouveau compte',
-                        it: 'Creare un nuovo account',
-                        ko: '새 계정 생성',
-                        ja: '新しいアカウントを作成する',
-                        de: 'Ein neues Konto erstellen',
-                        nl: 'Maak een nieuw account aan',
-                        dk: 'Oprette en ny konto',
-                        pt: 'Criar uma nova conta',
-                        es: 'Crea una cuenta nueva',
-                        ru: 'Создать новую учетную запись',
+                        fr: 'Créez-en un !',
+                        it: 'Creane uno!',
+                        ko: '지금 만드세요!',
+                        ja: '作成してください！',
+                        de: 'Jetzt erstellen!',
+                        nl: 'Maak er een aan!',
+                        dk: 'Opret en!',
+                        pt: 'Crie uma!',
+                        es: '¡Crea una!',
+                        ru: 'Создайте его!',
                     }[lang]
                 }</Link>
             </div>
-            <form className={step == 'email' ? 'active' : ''} onSubmit={e => changePage('password', e, async () => {
-                let snapshot = await getDocs(query(
-                    collection(dbFirestore, 'users'),
-                    where('email', '==', email)
-                ))
-            
-                if (snapshot.empty) throw new Warn('No account created with this email');
-            
-                setUserDoc(snapshot.docs[0].data());
-            })}>
+            <form onSubmit={async e => {
+                if (step == 1) {
+                    changeStep(2, e, async () => {
+                        let snapshot = await getDocs(query(
+                            collection(dbFirestore, 'users'),
+                            where('email', '==', email)
+                        ))
+                    
+                        if (snapshot.empty) throw new Warn('No account has been created with this email');
+                    
+                        setUserDoc(snapshot.docs[0].data());
+                    })
+                    return;
+                }
+
+                e.preventDefault();
+                let result = await signInWithEmailAndPassword(auth, email, password);
+                let token = await result.user.getIdToken();
+                await recordLogin(token);
+                router.push(des);
+            }}>
+                {step == 1 ? <>
+                    <ul className='btn-list darker'>
+                        <li className='tooltip top' name='google' onClick={() => methodPopup(new GoogleAuthProvider())}>
+                            <span>{
+                                {
+                                    en: 'Continue with Google',
+                                    vi: 'Tiếp tục với Google',
+                                    fr: 'Continuer avec Google',
+                                    it: 'Continua con Google',
+                                    ko: 'Google에서 계속 진행',
+                                    ja: 'Googleで続行',
+                                    de: 'Mit Google fortfahren',
+                                    nl: 'Ga verder met Google',
+                                    dk: 'Fortsæt med Google',
+                                    pt: 'Continuar com o Google',
+                                    es: 'Continuar con Google',
+                                    ru: 'Продолжить с Google',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className='tooltip top' name='microsoft' onClick={() => methodPopup(new OAuthProvider('microsoft.com'))}>
+                            <span>{
+                                {
+                                    en: 'Continue with Microsoft',
+                                    vi: 'Tiếp tục với Microsoft',
+                                    fr: 'Continuer avec Microsoft',
+                                    it: 'Continua con Microsoft',
+                                    ko: 'Microsoft에서 계속 진행',
+                                    ja: 'Microsoftで続行',
+                                    de: 'Mit Microsoft fortfahren',
+                                    nl: 'Ga verder met Microsoft',
+                                    dk: 'Fortsæt med Microsoft',
+                                    pt: 'Continuar com o Microsoft',
+                                    es: 'Continuar con Microsoft',
+                                    ru: 'Продолжить с Microsoft',
+                                }[lang]
+                            }</span>
+                        </li>
+                        <li className='tooltip top' name='github' onClick={() => methodPopup(new GithubAuthProvider())}>
+                            <span>{
+                                {
+                                    en: 'Continue with Github',
+                                    vi: 'Tiếp tục với Github',
+                                    fr: 'Continuer avec Github',
+                                    it: 'Continua con Github',
+                                    ko: 'Github에서 계속 진행',
+                                    ja: 'Githubで続行',
+                                    de: 'Mit Github fortfahren',
+                                    nl: 'Ga verder met Github',
+                                    dk: 'Fortsæt med Github',
+                                    pt: 'Continuar com o Github',
+                                    es: 'Continuar con Github',
+                                    ru: 'Продолжить с Github',
+                                }[lang]
+                            }</span>
+                        </li>
+                    </ul>
+                    <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
+                </> : <>
+                    <div>
+                        <img src={userDoc?.avatar}/>{userDoc?.name}
+                    </div>
+                    <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
+                    <Link href='/forgot'>{
+                        {
+                            en: 'Forgot password',
+                            vi: 'Quên mật khẩu',
+                            fr: 'Mot de passe oublié',
+                            it: 'Ha dimenticato la password',
+                            ko: '비밀번호를 잊으셨나요',
+                            ja: 'パスワードをお忘れですか',
+                            de: 'Passwort vergessen',
+                            nl: 'Wachtwoord vergeten',
+                            dk: 'Glemt adgangskode',
+                            pt: 'Esqueceu-se da sua senha',
+                            es: 'Has olvidado tu contraseña',
+                            ru: 'Забыли пароль',
+                        }[lang]
+                    }</Link>
+                </>}
+                {notification && <div className={`message ${notification.type}`}>${notification.content}</div>}
+                <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
+                    {
+                        en: 'Back',
+                        vi: 'Trở lại',
+                        fr: 'Dos',
+                        it: 'Indietro',
+                        ko: '뒤쪽에',
+                        ja: '戻る',
+                        de: 'Zurück',
+                        nl: 'Rug',
+                        dk: 'Tilbage',
+                        pt: 'Voltar',
+                        es: 'Atrás',
+                        ru: 'Назад',
+                    }[lang]
+                }</button>
+                <button className='primary' type={isMaxStep ? 'submit' : 'button'}>{
+                    isMaxStep ? {
+                        en: 'Next',
+                        vi: 'Tiếp theo',
+                        fr: 'Suivante',
+                        it: 'Prossimo',
+                        ko: '다음',
+                        ja: '次',
+                        de: 'Nächste',
+                        nl: 'Volgende',
+                        dk: 'Næste',
+                        pt: 'Próximo',
+                        es: 'Próximo',
+                        ru: 'Следующий',
+                    }[lang] : {
+                        en: 'Log in',
+                        vi: 'Đăng nhập',
+                        fr: 'Se connecter',
+                        it: 'Login',
+                        ko: '로그인',
+                        ja: 'ログイン',
+                        de: 'Anmeldung',
+                        nl: 'Log in',
+                        dk: 'Log på',
+                        pt: 'Conecte-se',
+                        es: 'Acceso',
+                        ru: 'Авторизоваться',
+                    }[lang]
+                }</button>
+            </form>
+            {/* <form className={step == 'email' ? 'active' : ''}>
                 <ul className='btn-list darker'>
                     <li className='tooltip top' name='google' onClick={() => methodPopup(new GoogleAuthProvider())}>
-                        <span>Log in with Google</span>
+                        <span>{
+                            {
+                                en: 'Continue with Google',
+                                vi: 'Tiếp tục với Google',
+                                fr: 'Continuer avec Google',
+                                it: 'Continua con Google',
+                                ko: 'Google에서 계속 진행',
+                                ja: 'Googleで続行',
+                                de: 'Mit Google fortfahren',
+                                nl: 'Ga verder met Google',
+                                dk: 'Fortsæt med Google',
+                                pt: 'Continuar com o Google',
+                                es: 'Continuar con Google',
+                                ru: 'Продолжить с Google',
+                            }[lang]
+                        }</span>
                     </li>
                     <li className='tooltip top' name='microsoft' onClick={() => methodPopup(new OAuthProvider('microsoft.com'))}>
-                        <span>Log in with Microsoft</span>
+                        <span>{
+                            {
+                                en: 'Continue with Microsoft',
+                                vi: 'Tiếp tục với Microsoft',
+                                fr: 'Continuer avec Microsoft',
+                                it: 'Continua con Microsoft',
+                                ko: 'Microsoft에서 계속 진행',
+                                ja: 'Microsoftで続行',
+                                de: 'Mit Microsoft fortfahren',
+                                nl: 'Ga verder met Microsoft',
+                                dk: 'Fortsæt med Microsoft',
+                                pt: 'Continuar com o Microsoft',
+                                es: 'Continuar con Microsoft',
+                                ru: 'Продолжить с Microsoft',
+                            }[lang]
+                        }</span>
                     </li>
                     <li className='tooltip top' name='github' onClick={() => methodPopup(new GithubAuthProvider())}>
-                        <span>Log in with Github</span>
+                        <span>{
+                            {
+                                en: 'Continue with Github',
+                                vi: 'Tiếp tục với Github',
+                                fr: 'Continuer avec Github',
+                                it: 'Continua con Github',
+                                ko: 'Github에서 계속 진행',
+                                ja: 'Githubで続行',
+                                de: 'Mit Github fortfahren',
+                                nl: 'Ga verder met Github',
+                                dk: 'Fortsæt med Github',
+                                pt: 'Continuar com o Github',
+                                es: 'Continuar con Github',
+                                ru: 'Продолжить с Github',
+                            }[lang]
+                        }</span>
                     </li>
                 </ul>
                 <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
@@ -240,20 +465,14 @@ export default function LogIn({ lang }) {
                     }</button>
                 </div>
             </form>
-            <form className={step == 'password' ? 'active' : ''} onSubmit={async e => {
-                e.preventDefault()
-                let result = await signInWithEmailAndPassword(auth, email, password);
-                let token = await result.user.getIdToken();
-                await recordLogin(token);
-                router.push(des);
-            }}>
+            <form className={step == 'password' ? 'active' : ''}>
                 <div>
                     <img src={userDoc?.avatar}/>{userDoc?.name}
                 </div>
                 <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
                 <Link href='/forgot'>Forgot password</Link>
                 <div>
-                    <button class='secondary' type='button' onClick={() => changePage('email')}>{
+                    <button class='secondary' type='button' onClick={() => changeStep('email')}>{
                         {
                             en: 'Back',
                             vi: 'Trở lại',
@@ -286,7 +505,7 @@ export default function LogIn({ lang }) {
                         }[lang]
                     }</button>
                 </div>
-            </form>
+            </form> */}
         </div>
     )
 }

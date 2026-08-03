@@ -1,20 +1,17 @@
-#wrapper {
+.wrapper {
     height: 100svh;
     width: 100vw;
     padding: var(--spacing-default) 12% var(--spacing-default) 0;
     display: grid;
     grid-template-columns: auto 400px;
     
-    > :is(div, form) {
+    & > :is(div, form) {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-    > div {
-        > :last-child {
-            margin-bottom: 0;
-        }
+    & > div {
         &:first-child > * {
             margin-bottom: 0;
             
@@ -22,18 +19,13 @@
                 margin-top: var(--spacing-small);
             }
             &:is(a) {
-                &:not(.btn) {
-                    background: none;
+                background: none;
                     
-                    &:hover {
-                        scale: 1.05;
-                    }
-                    > img {
-                        height: 100px;
-                    }
+                &:hover {
+                    scale: 1.05;
                 }
-                &.btn {
-                    margin-top: var(--spacing-small);
+                & > img {
+                    height: 100px;
                 }
             }
             &:is(h1) {
@@ -42,31 +34,26 @@
             &:is(p) {
                 text-align: center;
                 max-width: 75%;
-                
-                > img {
-                    display: inline;
-                    height: 20px;
-                    translate: 0 4px;
-                    margin-right: 8px;
-                    border-radius: 50%;
-                }
             }
         }
+        & > :last-child {
+            margin-bottom: 0;
+        }
     }
-    > form {
-        &:not(.active) {
+    & > form {
+        :global(:not(.active))& {
             display: none;
         }
-        > ul, > div:not(:last-child) {
+        & > ul, & > div:not(:last-child) {
             width: 100%;
         }
-        > ul {
+        & > ul {
             display: grid;
             gap: 10px;
             grid-template-columns: repeat(3, 1fr);
             margin-bottom: 15px;
             
-            > li {
+            & > li {
                 background-size: var(--size);
                 background-position: center center;
                 background-repeat: no-repeat;
@@ -94,19 +81,22 @@
                 }
             }
         }
-        > input {
+        & > input {
             margin-top: 0;
         }
-        > a {
+        & > a {
             align-self: flex-start;
         }
-        > div {
+        & > div {
             &:not(:last-child) {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                border-radius: var(--s-bdr-rad);
+                background-color: var(--lt-gray);
+                padding: var(--inner-spacing);
 
-                > img {
+                & > img {
                     height: 20px;
                     border-radius: 50%;
                     margin-right: 10px;
@@ -115,7 +105,7 @@
             &:last-child {
                 align-self: flex-end;
                 
-                > button {
+                & > button {
                     margin-top: 0;
                     margin-bottom: 0;
                 }
