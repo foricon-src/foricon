@@ -158,6 +158,7 @@ export default function LogIn({ lang }) {
     async function changeStep(step, e, func) {
         e?.preventDefault();
 
+        let wrapper = qSelec(cssStyle.wrapper);
         let { body } = document;
 
         step < 0 && (step = 0);
@@ -167,7 +168,6 @@ export default function LogIn({ lang }) {
 
             await func?.();
 
-            let wrapper = qSelec(cssStyle.wrapper);
             wrapper.style.opacity = '0';
 
             await wait(.2);
@@ -324,7 +324,7 @@ export default function LogIn({ lang }) {
                     </ul>
                     <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 </> : <>
-                    <div>
+                    <div className={cssStyle.account}>
                         <img src={userDoc?.avatar}/>{userDoc?.name}
                     </div>
                     <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
@@ -346,7 +346,7 @@ export default function LogIn({ lang }) {
                     }</Link>
                 </>}
                 {notification && <div className={`message ${notification.type}`}>${notification.content}</div>}
-                <div>
+                <div className={cssStyle.nav}>
                     <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
                         {
                             en: 'Back',

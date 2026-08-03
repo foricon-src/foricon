@@ -48,7 +48,7 @@
             display: grid;
             gap: 10px;
             grid-template-columns: repeat(3, 1fr);
-            margin-bottom: 15px;
+            margin-bottom: var(--spacing-xsmall);
             
             & > li {
                 background-size: var(--size);
@@ -85,7 +85,7 @@
             align-self: flex-start;
         }
         & > div {
-            &:not(:last-child) {
+            &.account {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -99,13 +99,16 @@
                     margin-right: 10px;
                 }
             }
-            &:last-child {
+            &.nav {
                 align-self: flex-end;
                 
                 & > button {
                     margin-top: 0;
                     margin-bottom: 0;
                 }
+            }
+            :global(.message)& {
+                margin-bottom: var(--spacing-xsmall);
             }
         }
     }
