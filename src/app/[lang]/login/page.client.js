@@ -169,12 +169,17 @@ export default function LogIn({ lang }) {
             wrapper.style.opacity = '0';
             await wait(.2);
             setStep(step);
+            setNotification(null);
         }
         catch (obj) {
             console.log(obj);
+            let { message } = obj;
             setNotification({
                 type: obj instanceof Warn ? 'warn' : 'error',
-                content: obj.message,
+                message:
+                    message == 'Firebase: Error (auth/invalid-credential).' ? 'Incorrect password' :
+                    message == 'Firebase: Error (auth/network-request-failed).' ? 'No internet connection' :
+                    message,
             })
         }
         finally {
