@@ -139,6 +139,8 @@ export default function LogIn({ lang }) {
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
 
+    let [ provider, setProvider ] = useState();
+
     let des = searchParams.get('redirect') || 'account';
     
     useEffect(() => { user && go('account') }, [ pathname, user ])
@@ -165,6 +167,10 @@ export default function LogIn({ lang }) {
 
     return (
         <div id='wrapper'>
+            {method && <MethodPopup
+                provider={provider}
+                des={des}
+            />}
             <div>
                 <Link href='/' title='Back to home'>
                     <Img src={logo}/>
@@ -199,13 +205,13 @@ export default function LogIn({ lang }) {
                 setUserDoc(snapshot.docs[0].data());
             })}>
                 <ul className='btn-list darker'>
-                    <li className='tooltip top' name='google' onClick={() => MethodPopup(new GoogleAuthProvider(), des)}>
+                    <li className='tooltip top' name='google' onClick={() => setProvider(new GoogleAuthProvider())}>
                         <span>Log in with Google</span>
                     </li>
-                    <li className='tooltip top' name='microsoft' onClick={() => MethodPopup(new OAuthProvider('microsoft.com'), des)}>
+                    <li className='tooltip top' name='microsoft' onClick={() => setProvider(new OAuthProvider('microsoft.com'))}>
                         <span>Log in with Microsoft</span>
                     </li>
-                    <li className='tooltip top' name='github' onClick={() => MethodPopup(new GithubAuthProvider(), des)}>
+                    <li className='tooltip top' name='github' onClick={() => setProvider(new GithubAuthProvider())}>
                         <span>Log in with Github</span>
                     </li>
                 </ul>

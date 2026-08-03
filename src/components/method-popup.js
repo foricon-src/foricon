@@ -21,5 +21,7 @@ export default function MethodPopup(provider, des) {
         await recordLogin(token);
 
         go(des);
-    })()}, [])
+    })()}, [ provider, des ])
+
+    return null;
 }
