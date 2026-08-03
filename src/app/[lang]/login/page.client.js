@@ -148,12 +148,13 @@ export default function LogIn({ lang }) {
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
     let [ notification, setNotification ] = useState(null);
-
+    
     let isMaxStep = step >= 1;
 
     let des = searchParams.get('redirect') || 'account';
     
     useEffect(() => { user && go('account') }, [ pathname, user ])
+    useEffect(() => { console.log(step) }, [ step ])
 
     async function changeStep(step, e, func) {
         e?.preventDefault();
@@ -347,7 +348,7 @@ export default function LogIn({ lang }) {
                 </>}
                 {notification && <div className={`message ${notification.type}`}>${notification.content}</div>}
                 <div className={cssStyle.nav}>
-                    <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
+                    {step && <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
                         {
                             en: 'Back',
                             vi: 'Trở lại',
@@ -362,7 +363,7 @@ export default function LogIn({ lang }) {
                             es: 'Atrás',
                             ru: 'Назад',
                         }[lang]
-                    }</button>
+                    }</button>}
                     <button className='primary' type={isMaxStep ? 'submit' : 'button'}>{
                         isMaxStep ? {
                             en: 'Log in',
