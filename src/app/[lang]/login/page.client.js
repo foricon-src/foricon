@@ -149,7 +149,8 @@ export default function LogIn({ lang }) {
     let [ userDoc, setUserDoc ] = useState(null);
     let [ notification, setNotification ] = useState(null);
     
-    let isMaxStep = step >= 1;
+    let maxStep = 1;
+    let isMaxStep = step >= maxStep;
 
     let des = searchParams.get('redirect') || 'account';
     
@@ -164,27 +165,24 @@ export default function LogIn({ lang }) {
 
         try {
             body.style.pointerEvents = 'none';
-
             await func?.();
-
             wrapper.style.opacity = '0';
 
-            await wait(.2);
+            if (step == maxStep) return;
 
+            await wait(.2);
             setStep(step);
-            setNotification(null);
         }
         catch (obj) {
             console.log(obj);
             setNotification({
                 type: obj instanceof Warn ? 'warn' : 'error',
-                content: obj.message,
+                content: obj.message.slice(1),
             })
         }
         finally {
             await wait();
             wrapper.style.opacity = body.style.pointerEvents = '';
-
         }
     }
     async function methodPopup(provider) {
@@ -244,25 +242,22 @@ export default function LogIn({ lang }) {
                 </p>
             </div>
             <form onSubmit={async e => {
-                if (step == 0) {
-                    changeStep(1, e, async () => {
+                changeStep(1, e, async () => {
+                    if (step == 0) {
                         let snapshot = await getDocs(query(
                             collection(dbFirestore, 'users'),
                             where('email', '==', email)
                         ))
-                    
                         if (snapshot.empty) throw new Warn('No account has been created with this email');
-                    
                         setUserDoc(snapshot.docs[0].data());
-                    })
-                    return;
-                }
+                        return;
+                    }
 
-                e.preventDefault();
-                let result = await signInWithEmailAndPassword(auth, email, password);
-                let token = await result.user.getIdToken();
-                await recordLogin(token);
-                router.push(des);
+                    let result = await signInWithEmailAndPassword(auth, email, password);
+                    let token = await result.user.getIdToken();
+                    await recordLogin(token);
+                    router.push(des);
+                })
             }}>
                 {!!step ? <>
                     <div className={cssStyle.account}>
