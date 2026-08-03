@@ -341,7 +341,7 @@ export default function LogIn({ lang }) {
                     </ul>
                     <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
                 </>}
-                {notification && <div className={`message ${notification.type}`}>{notification.content}</div>}
+                {notification && <div className={`message ${notification.type}`}>{notification.message}</div>}
                 <div className={cssStyle.nav}>
                     {!!step && <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
                         {
