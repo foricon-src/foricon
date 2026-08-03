@@ -41,6 +41,12 @@
         }
     }
     & > form {
+        & > :has(+ input) {
+            margin-bottom: var(--spacing-mili);
+        }
+        & > input ~ :not(input, :last-child) {
+            margin-bottom: var(--spacing-mili);
+        }
         & > ul, & > div:not(:last-child) {
             width: 100%;
         }
@@ -48,7 +54,6 @@
             display: grid;
             gap: 10px;
             grid-template-columns: repeat(3, 1fr);
-            margin-bottom: var(--spacing-xsmall);
             
             & > li {
                 background-size: var(--size);
@@ -106,9 +111,6 @@
                     margin-top: 0;
                     margin-bottom: 0;
                 }
-            }
-            :global(.message)& {
-                margin-bottom: var(--spacing-mili);
             }
         }
     }
