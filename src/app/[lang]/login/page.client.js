@@ -162,8 +162,6 @@ export default function LogIn({ lang }) {
         let wrapper = qSelec(`.${cssStyle.wrapper}`);
         let { body } = document;
 
-        step < 0 && (step = 0);
-
         try {
             body.style.pointerEvents = 'none';
 
@@ -266,7 +264,28 @@ export default function LogIn({ lang }) {
                 await recordLogin(token);
                 router.push(des);
             }}>
-                {step == 0 ? <>
+                {!!step ? <>
+                    <div className={cssStyle.account}>
+                        <img src={userDoc?.avatar}/>{userDoc?.name}
+                    </div>
+                    <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
+                    <Link href='/forgot'>{
+                        {
+                            en: 'Forgot password',
+                            vi: 'Quên mật khẩu',
+                            fr: 'Mot de passe oublié',
+                            it: 'Ha dimenticato la password',
+                            ko: '비밀번호를 잊으셨나요',
+                            ja: 'パスワードをお忘れですか',
+                            de: 'Passwort vergessen',
+                            nl: 'Wachtwoord vergeten',
+                            dk: 'Glemt adgangskode',
+                            pt: 'Esqueceu-se da sua senha',
+                            es: 'Has olvidado tu contraseña',
+                            ru: 'Забыли пароль',
+                        }[lang]
+                    }</Link>
+                </> : <>
                     <ul className='btn-list darker'>
                         <li className='tooltip top' name='google' onClick={() => methodPopup(new GoogleAuthProvider())}>
                             <span>{
@@ -324,31 +343,10 @@ export default function LogIn({ lang }) {
                         </li>
                     </ul>
                     <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
-                </> : <>
-                    <div className={cssStyle.account}>
-                        <img src={userDoc?.avatar}/>{userDoc?.name}
-                    </div>
-                    <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
-                    <Link href='/forgot'>{
-                        {
-                            en: 'Forgot password',
-                            vi: 'Quên mật khẩu',
-                            fr: 'Mot de passe oublié',
-                            it: 'Ha dimenticato la password',
-                            ko: '비밀번호를 잊으셨나요',
-                            ja: 'パスワードをお忘れですか',
-                            de: 'Passwort vergessen',
-                            nl: 'Wachtwoord vergeten',
-                            dk: 'Glemt adgangskode',
-                            pt: 'Esqueceu-se da sua senha',
-                            es: 'Has olvidado tu contraseña',
-                            ru: 'Забыли пароль',
-                        }[lang]
-                    }</Link>
                 </>}
                 {notification && <div className={`message ${notification.type}`}>${notification.content}</div>}
                 <div className={cssStyle.nav}>
-                    {step && <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
+                    {!!step && <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
                         {
                             en: 'Back',
                             vi: 'Trở lại',
@@ -364,7 +362,7 @@ export default function LogIn({ lang }) {
                             ru: 'Назад',
                         }[lang]
                     }</button>}
-                    <button className='primary' type={isMaxStep ? 'submit' : 'button'}>{
+                    <button className='primary' type='submit'>{
                         isMaxStep ? {
                             en: 'Log in',
                             vi: 'Đăng nhập',
