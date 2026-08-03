@@ -43,6 +43,5 @@ export async function middleware(req) {
     return setHeader(NextResponse.redirect(url, 308), lang);
 }
 export const config = {
-    // matcher: '/:path*'
-    matcher: [ '/((?!_next|api|static|public|favicon.ico).*)' ],
+    matcher: [ '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)' ],
 }
