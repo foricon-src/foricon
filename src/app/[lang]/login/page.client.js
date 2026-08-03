@@ -222,7 +222,7 @@ export default function LogIn({ lang }) {
                             ru: 'У вас нет аккаунта? ',
                         }[lang]
                     }
-                    <Link className='btn secondary' href='/signup'>{
+                    <Link href='/signup'>{
                         {
                             en: 'Create one!',
                             vi: 'Tạo tài khoản mới',
