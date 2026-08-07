@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from 'firebase/auth';
@@ -148,6 +148,9 @@ export default function LogIn({ lang }) {
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
     let [ notification, setNotification ] = useState(null);
+
+    let emailRef = useRef();
+    let passwordRef = useRef();
     
     let maxStep = 1;
     let isMaxStep = step >= maxStep;
@@ -155,7 +158,10 @@ export default function LogIn({ lang }) {
     let des = searchParams.get('redirect') || 'account';
     
     useEffect(() => { user && go('account') }, [ pathname, user ])
-    useEffect(() => { console.log(step) }, [ step ])
+    useEffect(() => {
+        let timeout = setTimeout(() => (step ? passwordRef : emailRef).current?.focus(), 200);
+        return () => clearTimeout(timeout);
+    }, [ step ])
 
     async function changeStep(step, e, func) {
         e?.preventDefault();
@@ -214,7 +220,7 @@ export default function LogIn({ lang }) {
                             en: "Don't have an account? ",
                             vi: 'Chưa có tài khoản? ',
                             fr: "Vous n'avez pas de compte ? ",
-                            it: 'Non hai un account?' ,
+                            it: 'Non hai un account? ' ,
                             ko: '계정이 없으신가요? ',
                             ja: 'アカウントをお持ちでない方は、',
                             de: 'Sie haben noch kein Konto? ',
@@ -250,7 +256,22 @@ export default function LogIn({ lang }) {
                             collection(dbFirestore, 'users'),
                             where('email', '==', email)
                         ))
-                        if (snapshot.empty) throw new Warn('No account has been created with this email');
+                        if (snapshot.empty) throw new Warn(
+                            {
+                                en: "We couldn't find an account with this email address",
+                                vi: 'Chúng tôi không tìm thấy tài khoản với địa chỉ email này',
+                                fr: "Nous n'avons pas trouvé de compte associé à cette adresse e-mail",
+                                it: 'Non abbiamo trovato un account associato a questo indirizzo email',
+                                ko: '해당 이메일 주소로 된 계정을 찾을 수 없습니다',
+                                ja: 'このメールアドレスのアカウントは見つかりませんでした',
+                                de: 'Wir konnten kein Konto mit dieser E-Mail-Adresse finden',
+                                nl: 'We konden geen account met dit e-mailadres vinden',
+                                dk: 'Vi kunne ikke finde en konto med denne e-mailadresse',
+                                pt: 'Não foi possível encontrar uma conta com este endereço de e-mail',
+                                es: 'No pudimos encontrar una cuenta con esta dirección de correo electrónico',
+                                ru: 'Мы не смогли найти аккаунт с этим адресом электронной почты',
+                            }[lang]
+                        )
                         setUserDoc(snapshot.docs[0].data());
                         return;
                     }
@@ -265,7 +286,30 @@ export default function LogIn({ lang }) {
                     <div className={cssStyle.account}>
                         <img src={userDoc?.avatar}/>{userDoc?.name}
                     </div>
-                    <input placeholder='Password' name='password' type='password' autocomplete='password' value={password} onChange={e => setPassword(e.target.value)}/>
+                    <input
+                        ref={passwordRef}
+                        placeholder={
+                            {
+                                en: 'Password',
+                                vi: 'Mật khẩu',
+                                fr: 'Mot de passe',
+                                it: 'Password',
+                                ko: '비밀번호',
+                                ja: 'パスワード',
+                                de: 'Passwort',
+                                nl: 'Wachtwoord',
+                                dk: 'Adgangskode',
+                                pt: 'Palavra-passe',
+                                es: 'Contraseña',
+                                ru: 'Пароль',
+                            }[lang]
+                        }
+                        name='password'
+                        type='password'
+                        autocomplete='password'
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
                     <Link href='/forgot'>{
                         {
                             en: 'Forgot password',
@@ -339,7 +383,30 @@ export default function LogIn({ lang }) {
                             }</span>
                         </li>
                     </ul>
-                    <input placeholder='Email' name='email' type='email' autocomplete='email' value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input
+                        ref={emailRef}
+                        placeholder={
+                            {
+                                en: 'Enter your email',
+                                vi: 'Nhập email của bạn',
+                                fr: 'Saisissez votre adresse e-mail',
+                                it: 'Inserisci la tua email',
+                                ko: '이메일 주소를 입력하세요',
+                                ja: 'メールアドレスを入力してください',
+                                de: 'Geben Sie Ihre E-Mail-Adresse ein',
+                                nl: 'Voer uw e-mailadres in',
+                                dk: 'Indtast din e-mail',
+                                pt: 'Insira o seu e-mail',
+                                es: 'Introduce tu correo electrónico',
+                                ru: 'Введите ваш адрес электронной почты',
+                            }[lang]
+                        }
+                        name='email'
+                        type='email'
+                        autocomplete='email'
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
                 </>}
                 {notification && <div className={`message ${notification.type}`}>{notification.message}</div>}
                 <div className={cssStyle.nav}>
