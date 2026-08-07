@@ -1,7 +1,7 @@
 .wrapper {
     height: 100svh;
     width: 100vw;
-    padding: var(--spacing-default) 12% var(--spacing-default) 0;
+    padding-right: 25%;
     display: grid;
     grid-template-columns: auto 400px;
     
@@ -156,19 +156,19 @@
         }
     }
 }
-@media screen and (min-width: 1700px) {
-    .wrapper {
-        padding-right: 25%;
-    }
-}
-@media screen and (min-width: 1500px) {
+@media screen and (max-width: 1700px) {
     .wrapper {
         padding-right: 20%;
     }
 }
+@media screen and (max-width: 1500px) {
+    .wrapper {
+        padding-right: 15%;
+    }
+}
 @media screen and (max-width: 1050px) {
     .wrapper {
-        padding: var(--spacing-medium) 20%;
+        padding: 30% 20%;
         grid-template-columns: 100%;
         grid-template-rows: auto auto;
           
@@ -193,11 +193,32 @@
 }
 @media screen and (max-width: 900px) {
     .wrapper {
-        padding: 60px 15%;
+        padding-left: 15%;
+        padding-right: 15%;
     }
 }
 @media screen and (max-width: 800px) {
     .wrapper {
-        padding: var(--spacing-default) 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+@media screen and (max-width: 1050px) and (max-height: 1200px) {
+    .wrapper {
+        padding-top: 25%;
+        padding-bottom: 25%;
+    }
+}
+@media screen and (max-width: 1050px) and (max-height: 1000px) {
+    .wrapper {
+        padding-top: 20%;
+        padding-bottom: 20%;
+    }
+}
+@media screen and (max-width: 1050px) and (max-height: 800px) {
+    .wrapper {
+        padding-top: 15%;
+        padding-bottom: 15%;
     }
 }
