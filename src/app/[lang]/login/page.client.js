@@ -159,6 +159,7 @@ export default function LogIn({ lang }) {
     
     useEffect(() => { user && go('account') }, [ pathname, user ])
     useEffect(() => {
+        if (elemById('loading')) return;
         let timeout = setTimeout(() => (step ? passwordRef : emailRef).current?.focus(), 200);
         return () => clearTimeout(timeout);
     }, [ step ])
