@@ -179,13 +179,40 @@ export default function LogIn({ lang }) {
             setNotification(null);
         }
         catch (obj) {
-            console.log(obj);
             let { message } = obj;
             setNotification({
                 type: obj instanceof Warn ? 'warn' : 'error',
                 message:
-                    message == 'Firebase: Error (auth/invalid-credential).' ? 'Incorrect password' :
-                    message == 'Firebase: Error (auth/network-request-failed).' ? 'No internet connection' :
+                    message == 'Firebase: Error (auth/invalid-credential).' ?
+                        {
+                            en: 'Incorrect password',
+                            vi: 'Sai mật khẩu',
+                            fr: 'Mot de passe incorrect',
+                            it: 'Password errata',
+                            ko: '잘못된 비밀번호입니다',
+                            ja: 'パスワードが間違っています',
+                            de: 'Falsches Passwort',
+                            nl: 'Onjuist wachtwoord',
+                            dk: 'Forkert adgangskode',
+                            pt: 'Senha incorreta',
+                            es: 'Contraseña incorrecta',
+                            ru: 'Неверный пароль',
+                        }[lang] :
+                    message == 'Firebase: Error (auth/network-request-failed).' ?
+                        {
+                            en: 'No internet connection',
+                            vi: 'Không có kết nối internet',
+                            fr: 'Aucune connexion Internet',
+                            it: 'Nessuna connessione Internet',
+                            ko: '인터넷 연결 없음',
+                            ja: 'インターネットに接続されていません',
+                            de: 'Keine Internetverbindung',
+                            nl: 'Geen internetverbinding',
+                            dk: 'Ingen internetforbindelse',
+                            pt: 'Sem ligação à internet',
+                            es: 'Sin conexión a Internet',
+                            ru: 'Нет подключения к Интернету',
+                        }[lang] :
                     message,
             })
         }
@@ -253,6 +280,22 @@ export default function LogIn({ lang }) {
             <form onSubmit={async e => {
                 changeStep(1, e, async () => {
                     if (step == 0) {
+                        if (!email) throw new Warn(
+                            {
+                                en: 'Please enter a valid email',
+                                vi: 'Vui lòng nhập email hợp lệ',
+                                fr: 'Veuillez saisir une adresse e-mail valide',
+                                it: 'Inserisci un indirizzo email valido',
+                                ko: '유효한 이메일 주소를 입력해 주세요',
+                                ja: '有効なメールアドレスを入力してください',
+                                de: 'Bitte geben Sie eine gültige E-Mail-Adresse ein',
+                                nl: 'Voer een geldig e-mailadres in',
+                                dk: 'Indtast venligst en gyldig e-mail',
+                                pt: 'Por favor, introduza um e-mail válido',
+                                es: 'Por favor, introduzca un correo electrónico válido',
+                                ru: 'Пожалуйста, введите корректный адрес электронной почты',
+                            }[lang]
+                        )
                         let snapshot = await getDocs(query(
                             collection(dbFirestore, 'users'),
                             where('email', '==', email)
