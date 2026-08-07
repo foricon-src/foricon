@@ -203,28 +203,33 @@
     }
 }
 
-@media screen and (max-width: 1050px) and (max-height: 1400px) {
+@media screen and (max-width: 1050px) and (max-height: 1600px) {
     .wrapper {
         padding-block: 25svh;
     }
 }
-@media screen and (max-width: 1050px) and (max-height: 1200px) {
+@media screen and (max-width: 1050px) and (max-height: 1400px) {
     .wrapper {
         padding-block: 20svh;
     }
 }
-@media screen and (max-width: 1050px) and (max-height: 1000px) {
+@media screen and (max-width: 1050px) and (max-height: 1200px) {
     .wrapper {
         padding-block: 15svh;
     }
 }
-@media screen and (max-width: 1050px) and (max-height: 800px) {
+@media screen and (max-width: 1050px) and (max-height: 1000px) {
     .wrapper {
         padding-block: 10svh;
     }
 }
-@media screen and (max-width: 1050px) and (max-height: 600px) {
+@media screen and (max-width: 1050px) and (max-height: 800px) {
     .wrapper {
         padding-block: 5svh;
+    }
+}
+@media screen and (max-width: 1050px) and (max-height: 600px) {
+    .wrapper {
+        padding-block: 2svh;
     }
 }
