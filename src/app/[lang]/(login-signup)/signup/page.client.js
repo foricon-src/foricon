@@ -197,10 +197,9 @@ export default function PageClient({ lang }) {
     let [ name, setName ] = useState('');
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
+    let [ matchedPassword, setMatchedPassword ] = useState(false);
+    let [ agreed, setAgreed ] = useState(false);
     let [ userDoc, setUserDoc ] = useState(null);
-
-    let emailRef = useRef();
-    let passwordRef = useRef();
 
     let des = searchParams.get('redirect') || 'account';
 
@@ -212,7 +211,29 @@ export default function PageClient({ lang }) {
         <>
             <OAuth lang={lang} des={des}/>
             <input
-                ref={emailRef}
+                placeholder={
+                    {
+                        en: 'Enter your name',
+                        vi: 'Nhập tên của bạn',
+                        fr: 'Saisissez votre adresse e-mail',
+                        it: 'Inserisci la tua email',
+                        ko: '이메일 주소를 입력하세요',
+                        ja: 'メールアドレスを入力してください',
+                        de: 'Geben Sie Ihre E-Mail-Adresse ein',
+                        nl: 'Voer uw e-mailadres in',
+                        dk: 'Indtast din e-mail',
+                        pt: 'Insira o seu e-mail',
+                        es: 'Introduce tu correo electrónico',
+                        ru: 'Введите ваш адрес электронной почты',
+                    }[lang]
+                }
+                autocomplete='username'
+                value={name}
+                onChange={e => setName(e.target.value)}
+            />
+        </>,
+        <>
+            <input
                 placeholder={
                     {
                         en: 'Enter your email',
@@ -229,7 +250,6 @@ export default function PageClient({ lang }) {
                         ru: 'Введите ваш адрес электронной почты',
                     }[lang]
                 }
-                name='email'
                 type='email'
                 autocomplete='email'
                 value={email}
@@ -237,49 +257,55 @@ export default function PageClient({ lang }) {
             />
         </>,
         <>
-            <div className={cssStyle.account}>
-                <img src={userDoc?.avatar}/>{userDoc?.name}
-            </div>
             <input
-                ref={passwordRef}
                 placeholder={
                     {
-                        en: 'Password',
-                        vi: 'Mật khẩu',
-                        fr: 'Mot de passe',
-                        it: 'Password',
-                        ko: '비밀번호',
-                        ja: 'パスワード',
-                        de: 'Passwort',
-                        nl: 'Wachtwoord',
-                        dk: 'Adgangskode',
-                        pt: 'Palavra-passe',
-                        es: 'Contraseña',
-                        ru: 'Пароль',
+                        en: 'Enter your password',
+                        vi: 'Nhập mật khẩu của bạn',
+                        fr: 'Saisissez votre adresse e-mail',
+                        it: 'Inserisci la tua email',
+                        ko: '이메일 주소를 입력하세요',
+                        ja: 'メールアドレスを入力してください',
+                        de: 'Geben Sie Ihre E-Mail-Adresse ein',
+                        nl: 'Voer uw e-mailadres in',
+                        dk: 'Indtast din e-mail',
+                        pt: 'Insira o seu e-mail',
+                        es: 'Introduce tu correo electrónico',
+                        ru: 'Введите ваш адрес электронной почты',
                     }[lang]
                 }
-                name='password'
                 type='password'
                 autocomplete='password'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
             />
-            <Link href='/forgot'>{
-                {
-                    en: 'Forgot password',
-                    vi: 'Quên mật khẩu',
-                    fr: 'Mot de passe oublié',
-                    it: 'Ha dimenticato la password',
-                    ko: '비밀번호를 잊으셨나요',
-                    ja: 'パスワードをお忘れですか',
-                    de: 'Passwort vergessen',
-                    nl: 'Wachtwoord vergeten',
-                    dk: 'Glemt adgangskode',
-                    pt: 'Esqueceu-se da sua senha',
-                    es: 'Has olvidado tu contraseña',
-                    ru: 'Забыли пароль',
-                }[lang]
-            }</Link>
+            <input
+                placeholder={
+                    {
+                        en: 'Repeat your password',
+                        vi: 'Nhập lại mật khẩu của bạn',
+                        fr: 'Saisissez votre adresse e-mail',
+                        it: 'Inserisci la tua email',
+                        ko: '이메일 주소를 입력하세요',
+                        ja: 'メールアドレスを入力してください',
+                        de: 'Geben Sie Ihre E-Mail-Adresse ein',
+                        nl: 'Voer uw e-mailadres in',
+                        dk: 'Indtast din e-mail',
+                        pt: 'Insira o seu e-mail',
+                        es: 'Introduce tu correo electrónico',
+                        ru: 'Введите ваш адрес электронной почты',
+                    }[lang]
+                }
+                type='email'
+                autocomplete='email'
+                value={email}
+                onChange={e => setMatchedPassword(e.target.value == password)}
+            />
+            <label>
+                <input type='checkbox' onChange={e => setAgreed(e.target.checked)}/>
+                <div className='checkmark'/>
+                <span>I agree with <Link href='/tos'>Terms of Service</Link> and <Link href='/privacy'>Privacy Policy</Link></span>
+            </label>
         </>
     ]
 
@@ -293,8 +319,8 @@ export default function PageClient({ lang }) {
             {!step && <p>
                 {
                     {
-                        en: "Don't have an account? ",
-                        vi: 'Chưa có tài khoản? ',
+                        en: 'Already a member? ',
+                        vi: 'Đã là thành viên? ',
                         fr: "Vous n'avez pas de compte ? ",
                         it: 'Non hai un account? ' ,
                         ko: '계정이 없으신가요? ',
@@ -307,10 +333,10 @@ export default function PageClient({ lang }) {
                         ru: 'У вас нет аккаунта? ',
                     }[lang]
                 }
-                <Link href='/signup'>{
+                <Link href='/login'>{
                     {
-                        en: 'Create one!',
-                        vi: 'Tạo ngay một cái!',
+                        en: 'Log in now!',
+                        vi: 'Đăng nhập ngay!',
                         fr: 'Créez-en un !',
                         it: 'Creane uno!',
                         ko: '지금 만드세요!',
@@ -330,18 +356,18 @@ export default function PageClient({ lang }) {
             steps={steps}
             lastStepText={
                 {
-                    en: 'Log in',
-                    vi: 'Đăng nhập',
-                    fr: 'Se connecter',
-                    it: 'Login',
-                    ko: '로그인',
-                    ja: 'ログイン',
-                    de: 'Anmeldung',
-                    nl: 'Log in',
-                    dk: 'Log på',
-                    pt: 'Conecte-se',
-                    es: 'Acceso',
-                    ru: 'Авторизоваться',
+                    en: 'Sign up',
+                    vi: 'Đăng ký',
+                    fr: "S'inscrire",
+                    it: 'Iscrizione',
+                    ko: '가입하기',
+                    ja: 'サインアップ',
+                    de: 'Melden Sie sich an',
+                    nl: 'Aanmelden',
+                    dk: 'Tilmelde',
+                    pt: 'Inscrever-se',
+                    es: 'Inscribirse',
+                    ru: 'Зарегистрироваться',
                 }[lang]
             }
             onSubmit={async e => {

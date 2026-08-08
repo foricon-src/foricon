@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import cssStyle from './page.module.css';
 import { Context } from './providers';
 

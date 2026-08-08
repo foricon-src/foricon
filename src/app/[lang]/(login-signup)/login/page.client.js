@@ -150,9 +150,6 @@ export default function PageClient({ lang }) {
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
 
-    let emailRef = useRef();
-    let passwordRef = useRef();
-
     let des = searchParams.get('redirect') || 'account';
 
     let changeStep = useChangeStep();
@@ -163,7 +160,6 @@ export default function PageClient({ lang }) {
         <>
             <OAuth lang={lang} des={des}/>
             <input
-                ref={emailRef}
                 placeholder={
                     {
                         en: 'Enter your email',
@@ -192,7 +188,6 @@ export default function PageClient({ lang }) {
                 <img src={userDoc?.avatar}/>{userDoc?.name}
             </div>
             <input
-                ref={passwordRef}
                 placeholder={
                     {
                         en: 'Password',
