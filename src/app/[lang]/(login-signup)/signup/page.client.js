@@ -207,11 +207,6 @@ export default function PageClient({ lang }) {
     let changeStep = useChangeStep();
     
     useEffect(() => { user && go('account') }, [ pathname, user ])
-    useEffect(() => {
-        if (elemById('loading')) return;
-        let timeout = setTimeout(() => (step ? passwordRef : emailRef).current?.focus(), 400);
-        return () => clearTimeout(timeout);
-    }, [ step ])
 
     let steps = [
         <>

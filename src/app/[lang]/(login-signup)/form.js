@@ -66,8 +66,14 @@ export function useChangeStep() {
     }
 }
 export function Form({ lang, steps, lastStepText, onSubmit }) {
-    let changeStep = useChangeStep()
+    let changeStep = useChangeStep();
     let { stepHandler: [ step ], notificationHandler: [ notification ] } = useContext(Context);
+
+    useEffect(() => {
+        if (elemById('loading')) return;
+        let timeout = setTimeout(() => qSelec('input')?.focus(), 200);
+        return () => clearTimeout(timeout);
+    }, [ step ])
 
     return <form onSubmit={onSubmit}>
         {steps[step]}
