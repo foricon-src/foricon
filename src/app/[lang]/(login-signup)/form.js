@@ -66,12 +66,14 @@ export function useChangeStep() {
     }
 }
 export function Form({ lang, steps, lastStepText, onSubmit }) {
+    let changeStep = useChangeStep()
     let { stepHandler: [ step ], notificationHandler: [ notification ] } = useContext(Context);
+
     return <form onSubmit={onSubmit}>
         {steps[step]}
         {notification && <div className={`message ${notification.type}`}>{notification.message}</div>}
         <div className={cssStyle.nav}>
-            {!!step && <button className='secondary' type='button' onClick={() => ChangeStep(step - 1)}>{
+            {!!step && <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{
                 {
                     en: 'Back',
                     vi: 'Trở lại',
