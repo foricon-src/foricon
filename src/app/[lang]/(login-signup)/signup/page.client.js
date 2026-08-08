@@ -192,8 +192,9 @@ export default function PageClient({ lang }) {
     let searchParams = useSearchParams();
     let pathname = usePathname();
     let user = useContext(UserContext);
-    let [ step ] = useContext(Context).stepProvider;
-
+    let [ step ] = useContext(Context).stepHandler;
+    
+    let [ name, setName ] = useState('');
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
     let [ userDoc, setUserDoc ] = useState(null);
