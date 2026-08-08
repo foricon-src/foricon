@@ -2,12 +2,14 @@ import { useContext } from 'react';
 import cssStyle from './page.module.css';
 import { Context } from './providers';
 
-export function ChangeStep(step, e, func) {
-    e?.preventDefault();
+export function useChangeStep() {
+    let {
+        stepHandler: [, setStep ],
+        notificationHandler: [, setNotification]
+    } = useContext(Context);
 
-    let { stepHandler: [, setStep ], notificationHandler: [, setNotification] } = useContext(Context);
-
-    (async () => {
+    return async (step, e, func) => {
+        e?.preventDefault();
         let wrapper = qSelec(`.${cssStyle.wrapper}`);
         let { body } = document;
 
@@ -61,8 +63,7 @@ export function ChangeStep(step, e, func) {
             await wait();
             wrapper.style.opacity = body.style.pointerEvents = '';
         }
-    })()
-    
+    }
 }
 export function Form({ lang, steps, lastStepText, onSubmit }) {
     let { stepHandler: [ step ], notificationHandler: [ notification ] } = useContext(Context);

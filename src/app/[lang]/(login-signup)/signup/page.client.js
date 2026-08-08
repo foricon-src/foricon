@@ -11,7 +11,7 @@ import recordLogin from 'Com/record-login';
 import { UserContext } from 'Com/user';
 import useGo from 'Com/go';
 import OAuth from '../oauth';
-import { ChangeStep, Form } from '../form';
+import { useChangeStep, Form } from '../form';
 import { Context } from '../providers';
 import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './page.module.css';
@@ -203,6 +203,8 @@ export default function PageClient({ lang }) {
     let passwordRef = useRef();
 
     let des = searchParams.get('redirect') || 'account';
+
+    let changeStep = useChangeStep();
     
     useEffect(() => { user && go('account') }, [ pathname, user ])
     useEffect(() => {
@@ -348,7 +350,7 @@ export default function PageClient({ lang }) {
                 }[lang]
             }
             onSubmit={async e => {
-                ChangeStep(1, e, async () => {
+                changeStep(1, e, async () => {
                     if (!step) {
                         if (!email) throw new Warn(
                             {
