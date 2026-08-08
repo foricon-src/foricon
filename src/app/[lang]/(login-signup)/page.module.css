@@ -130,6 +130,14 @@
         & > a {
             align-self: flex-start;
         }
+        & > .nav {
+            align-self: flex-end;
+            
+            & > button {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
     }
 }
 

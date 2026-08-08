@@ -12,11 +12,3 @@
         margin-right: 10px;
     }
 }
-.nav {
-    align-self: flex-end;
-    
-    & > button {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-}
