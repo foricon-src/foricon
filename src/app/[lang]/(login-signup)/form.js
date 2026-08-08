@@ -70,7 +70,7 @@ export function Form({ lang, steps, lastStepText, onSubmit }) {
         {steps[step]}
         {notification && <div className={`message ${notification.type}`}>{notification.message}</div>}
         <div className={cssStyle.nav}>
-            {currentStep && <button className='secondary' type='button' onClick={() => ChangeStep(step - 1)}>{
+            {step && <button className='secondary' type='button' onClick={() => ChangeStep(step - 1)}>{
                 {
                     en: 'Back',
                     vi: 'Trở lại',
@@ -87,7 +87,7 @@ export function Form({ lang, steps, lastStepText, onSubmit }) {
                 }[lang]
             }</button>}
             <button className='primary' type='submit'>{
-                currentStep == steps.length ? lastStepText : {
+                step == steps.length ? lastStepText : {
                     en: 'Next',
                     vi: 'Tiếp theo',
                     fr: 'Suivante',
