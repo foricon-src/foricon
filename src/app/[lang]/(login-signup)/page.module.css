@@ -12,6 +12,8 @@
         flex-direction: column;
     }
     & > div {
+        text-align: center;
+        
         &:first-child > * {
             margin-bottom: 0;
             
@@ -32,7 +34,6 @@
                 margin-top: var(--spacing-xsmall);
             }
             &:is(p) {
-                text-align: center;
                 max-width: 75%;
             }
         }
