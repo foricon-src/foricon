@@ -215,16 +215,16 @@ export default function PageClient({ lang }) {
                     {
                         en: 'Enter your name',
                         vi: 'Nhập tên của bạn',
-                        fr: 'Saisissez votre adresse e-mail',
-                        it: 'Inserisci la tua email',
-                        ko: '이메일 주소를 입력하세요',
-                        ja: 'メールアドレスを入力してください',
-                        de: 'Geben Sie Ihre E-Mail-Adresse ein',
-                        nl: 'Voer uw e-mailadres in',
-                        dk: 'Indtast din e-mail',
-                        pt: 'Insira o seu e-mail',
-                        es: 'Introduce tu correo electrónico',
-                        ru: 'Введите ваш адрес электронной почты',
+                        fr: 'Entrez votre nom',
+                        it: 'Inserisci il tuo nome',
+                        ko: '이름을 입력하세요',
+                        ja: '名前を入力してください',
+                        de: 'Geben Sie Ihren Namen ein',
+                        nl: 'Vul uw naam in',
+                        dk: 'Indtast dit navn',
+                        pt: 'Introduza o seu nome',
+                        es: 'Introduce tu nombre',
+                        ru: 'Введите свое имя',
                     }[lang]
                 }
                 autocomplete='username'
@@ -262,16 +262,16 @@ export default function PageClient({ lang }) {
                     {
                         en: 'Enter your password',
                         vi: 'Nhập mật khẩu của bạn',
-                        fr: 'Saisissez votre adresse e-mail',
-                        it: 'Inserisci la tua email',
-                        ko: '이메일 주소를 입력하세요',
-                        ja: 'メールアドレスを入力してください',
-                        de: 'Geben Sie Ihre E-Mail-Adresse ein',
-                        nl: 'Voer uw e-mailadres in',
-                        dk: 'Indtast din e-mail',
-                        pt: 'Insira o seu e-mail',
-                        es: 'Introduce tu correo electrónico',
-                        ru: 'Введите ваш адрес электронной почты',
+                        fr: 'Saisissez votre mot de passe',
+                        it: 'Inserisci la tua password',
+                        ko: '비밀번호를 입력하세요',
+                        ja: 'パスワードを入力してください',
+                        de: 'Geben Sie Ihr Passwort ein',
+                        nl: 'Voer uw wachtwoord in',
+                        dk: 'Indtast din adgangskode',
+                        pt: 'Introduza a sua senha',
+                        es: 'Introduce tu contraseña',
+                        ru: 'Введите пароль',
                     }[lang]
                 }
                 type='password'
@@ -284,20 +284,20 @@ export default function PageClient({ lang }) {
                     {
                         en: 'Repeat your password',
                         vi: 'Nhập lại mật khẩu của bạn',
-                        fr: 'Saisissez votre adresse e-mail',
-                        it: 'Inserisci la tua email',
-                        ko: '이메일 주소를 입력하세요',
-                        ja: 'メールアドレスを入力してください',
-                        de: 'Geben Sie Ihre E-Mail-Adresse ein',
-                        nl: 'Voer uw e-mailadres in',
-                        dk: 'Indtast din e-mail',
-                        pt: 'Insira o seu e-mail',
-                        es: 'Introduce tu correo electrónico',
-                        ru: 'Введите ваш адрес электронной почты',
+                        fr: 'Répétez votre mot de passe',
+                        it: 'Ripeti la password',
+                        ko: '비밀번호를 다시 입력하세요',
+                        ja: 'パスワードを再入力してください',
+                        de: 'Wiederholen Sie Ihr Passwort',
+                        nl: 'Herhaal uw wachtwoord',
+                        dk: 'Gentag din adgangskode',
+                        pt: 'Repita a sua senha',
+                        es: 'Repite tu contraseña',
+                        ru: 'Повторите пароль',
                     }[lang]
                 }
-                type='email'
-                autocomplete='email'
+                type='password'
+                autocomplete='password'
                 value={email}
                 onChange={e => setMatchedPassword(e.target.value == password)}
             />
@@ -321,32 +321,32 @@ export default function PageClient({ lang }) {
                     {
                         en: 'Already a member? ',
                         vi: 'Đã là thành viên? ',
-                        fr: "Vous n'avez pas de compte ? ",
-                        it: 'Non hai un account? ' ,
-                        ko: '계정이 없으신가요? ',
-                        ja: 'アカウントをお持ちでない方は、',
-                        de: 'Sie haben noch kein Konto? ',
-                        nl: 'Nog geen account? ',
-                        dk: 'Har du ikke en konto? ',
-                        pt: 'Não tem conta? ',
-                        es: '¿No tienes cuenta? ',
-                        ru: 'У вас нет аккаунта? ',
+                        fr: 'Déjà membre ? ',
+                        it: 'Sei già iscritto? ' ,
+                        ko: '이미 회원이신가요? ',
+                        ja: 'すでに会員ですか？',
+                        de: 'Bereits Mitglied? ',
+                        nl: 'Al lid? ',
+                        dk: 'Allerede medlem? ',
+                        pt: 'Já é membro? ',
+                        es: '¿Ya eres miembro? ',
+                        ru: 'Уже зарегистрированы? ',
                     }[lang]
                 }
                 <Link href='/login'>{
                     {
                         en: 'Log in now!',
                         vi: 'Đăng nhập ngay!',
-                        fr: 'Créez-en un !',
-                        it: 'Creane uno!',
-                        ko: '지금 만드세요!',
-                        ja: '作成してください！',
-                        de: 'Jetzt erstellen!',
-                        nl: 'Maak er een aan!',
-                        dk: 'Opret en!',
-                        pt: 'Crie uma!',
-                        es: '¡Crea una!',
-                        ru: 'Создайте его!',
+                        fr: 'Connectez-vous dès maintenant !',
+                        it: 'Accedi subito!',
+                        ko: '지금 로그인하세요!',
+                        ja: '今すぐログイン！',
+                        de: 'Jetzt anmelden!',
+                        nl: 'Log nu in!',
+                        dk: 'Log ind nu!',
+                        pt: 'Faça login agora!',
+                        es: '¡Inicia sesión ahora!',
+                        ru: 'Войдите прямо сейчас!',
                     }[lang]
                 }</Link>
             </p>}
@@ -373,6 +373,24 @@ export default function PageClient({ lang }) {
             onSubmit={async e => {
                 changeStep(1, e, async () => {
                     if (!step) {
+                        if (name.length < 3) throw new Warn(
+                            {
+                                en: 'Name must has 3 characters at least',
+                                vi: 'Tên phải có ít nhất 3 ký tự',
+                                fr: 'Le nom doit comporter au moins 3 caractères',
+                                it: 'Il nome deve avere almeno 3 caratteri',
+                                ko: '이름은 최소 3자여야 합니다',
+                                ja: '名前は3文字以上である必要があります',
+                                de: 'Der Name muss mindestens 3 Zeichen lang sein',
+                                nl: 'De naam moet uit ten minste 3 tekens bestaan',
+                                dk: 'Navnet skal indeholde mindst 3 tegn',
+                                pt: 'O nome deve ter pelo menos 3 caracteres',
+                                es: 'El nombre debe tener al menos 3 caracteres',
+                                ru: 'Имя должно содержать не менее 3 символов',
+                            }[lang]
+                        )
+                    }
+                    if (step == 1) {
                         if (!email) throw new Warn(
                             {
                                 en: 'Please enter a valid email',
@@ -393,30 +411,46 @@ export default function PageClient({ lang }) {
                             collection(dbFirestore, 'users'),
                             where('email', '==', email)
                         ))
-                        if (snapshot.empty) throw new Warn(
+                        if (!snapshot.empty) throw new Warn(
                             {
-                                en: "We couldn't find an account with this email address",
-                                vi: 'Chúng tôi không tìm thấy tài khoản với địa chỉ email này',
-                                fr: "Nous n'avons pas trouvé de compte associé à cette adresse e-mail",
-                                it: 'Non abbiamo trovato un account associato a questo indirizzo email',
-                                ko: '해당 이메일 주소로 된 계정을 찾을 수 없습니다',
-                                ja: 'このメールアドレスのアカウントは見つかりませんでした',
-                                de: 'Wir konnten kein Konto mit dieser E-Mail-Adresse finden',
-                                nl: 'We konden geen account met dit e-mailadres vinden',
-                                dk: 'Vi kunne ikke finde en konto med denne e-mailadresse',
-                                pt: 'Não foi possível encontrar uma conta com este endereço de e-mail',
-                                es: 'No pudimos encontrar una cuenta con esta dirección de correo electrónico',
-                                ru: 'Мы не смогли найти аккаунт с этим адресом электронной почты',
+                                en: 'This email has already been taken',
+                                vi: 'Email này đã được lấy',
+                                fr: 'Cette adresse e-mail est déjà utilisée',
+                                it: 'Questo indirizzo email è già in uso',
+                                ko: '이미 사용 중인 이메일 주소입니다',
+                                ja: 'このメールアドレスはすでに登録されています',
+                                de: 'Diese E-Mail-Adresse wird bereits verwendet',
+                                nl: 'Dit e-mailadres is al in gebruik',
+                                dk: 'Denne e-mail er allerede taget',
+                                pt: 'Este e-mail já foi utilizado',
+                                es: 'Este correo electrónico ya está registrado',
+                                ru: 'Этот адрес электронной почты уже занят',
                             }[lang]
                         )
-                        setUserDoc(snapshot.docs[0].data());
                         return;
                     }
+
+                    if (!matchedPassword) throw new Warn(
+                        {
+                            en: 'Password did not match',
+                            vi: 'Mật khẩu không khớp',
+                            fr: 'Le mot de passe ne correspond pas',
+                            it: 'La password non corrisponde',
+                            ko: '비밀번호가 일치하지 않습니다',
+                            ja: 'パスワードが一致しませんでした',
+                            de: 'Das Passwort stimmte nicht überein',
+                            nl: 'Wachtwoord kwam niet overeen',
+                            dk: 'Adgangskoden matchede ikke',
+                            pt: 'A palavra-passe não corresponde',
+                            es: 'La contraseña no coincide',
+                            ru: 'Пароль не совпадает',
+                        }[lang]
+                    )
     
-                    let result = await signInWithEmailAndPassword(auth, email, password);
-                    let token = await result.user.getIdToken();
-                    await recordLogin(token);
-                    go(des);
+                    // let result = await signInWithEmailAndPassword(auth, email, password);
+                    // let token = await result.user.getIdToken();
+                    // await recordLogin(token);
+                    // go(des);
                 })
             }}
         />
