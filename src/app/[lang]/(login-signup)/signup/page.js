@@ -1,13 +1,12 @@
-import { Suspense } from 'react';
 import { headers } from 'next/headers';
-import LogIn from './page.client';
+import PageClient from './page.client';
 
 export function generateMetadata() {
     let lang = headers().get('f-lang');
     return {
         title: {
-            en: 'Log in',
-            vi: 'Đăng nhập',
+            en: 'Sign up',
+            vi: 'Đăng ký',
             fr: 'Se connecter',
             it: 'Login',
             ko: '로그인',
@@ -37,9 +36,5 @@ export function generateMetadata() {
 }
 export default function Page() {
     let lang = headers().get('f-lang');
-    return (
-        <Suspense>
-            <LogIn lang={lang}/>
-        </Suspense>
-    )
+    return <PageClient lang={lang}/>
 }

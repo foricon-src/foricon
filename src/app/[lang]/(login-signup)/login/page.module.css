@@ -1,0 +1,22 @@
+.account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--s-bdr-rad);
+    background-color: var(--lt-gray);
+    padding: var(--inner-spacing);
+    
+    & > img {
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+}
+.nav {
+    align-self: flex-end;
+    
+    & > button {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
