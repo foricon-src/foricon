@@ -1,3 +1,5 @@
+import { createContext, useState } from 'react';
+
 export const Context = createContext();
 export function Providers({ children }) {
     let stepHandler = useState(0);
