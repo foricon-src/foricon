@@ -390,7 +390,7 @@ export default function PageClient({ lang }) {
                             }[lang]
                         )
                     }
-                    if (step == 1) {
+                    else if (step == 1) {
                         if (!email) throw new Warn(
                             {
                                 en: 'Please enter a valid email',
@@ -427,30 +427,30 @@ export default function PageClient({ lang }) {
                                 ru: 'Этот адрес электронной почты уже занят',
                             }[lang]
                         )
-                        return;
                     }
-
-                    if (!matchedPassword) throw new Warn(
-                        {
-                            en: 'Password did not match',
-                            vi: 'Mật khẩu không khớp',
-                            fr: 'Le mot de passe ne correspond pas',
-                            it: 'La password non corrisponde',
-                            ko: '비밀번호가 일치하지 않습니다',
-                            ja: 'パスワードが一致しませんでした',
-                            de: 'Das Passwort stimmte nicht überein',
-                            nl: 'Wachtwoord kwam niet overeen',
-                            dk: 'Adgangskoden matchede ikke',
-                            pt: 'A palavra-passe não corresponde',
-                            es: 'La contraseña no coincide',
-                            ru: 'Пароль не совпадает',
-                        }[lang]
-                    )
-    
-                    // let result = await signInWithEmailAndPassword(auth, email, password);
-                    // let token = await result.user.getIdToken();
-                    // await recordLogin(token);
-                    // go(des);
+                    else {
+                        if (!matchedPassword) throw new Warn(
+                            {
+                                en: 'Password did not match',
+                                vi: 'Mật khẩu không khớp',
+                                fr: 'Le mot de passe ne correspond pas',
+                                it: 'La password non corrisponde',
+                                ko: '비밀번호가 일치하지 않습니다',
+                                ja: 'パスワードが一致しませんでした',
+                                de: 'Das Passwort stimmte nicht überein',
+                                nl: 'Wachtwoord kwam niet overeen',
+                                dk: 'Adgangskoden matchede ikke',
+                                pt: 'A palavra-passe não corresponde',
+                                es: 'La contraseña no coincide',
+                                ru: 'Пароль не совпадает',
+                            }[lang]
+                        )
+        
+                        // let result = await signInWithEmailAndPassword(auth, email, password);
+                        // let token = await result.user.getIdToken();
+                        // await recordLogin(token);
+                        // go(des);
+                    }
                 })
             }}
         />
