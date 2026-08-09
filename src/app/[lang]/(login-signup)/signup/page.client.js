@@ -199,7 +199,7 @@ export default function PageClient() {
     let [ name, setName ] = useState('');
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
-    let [ repeatedPassword, setRepeatedPassword ] = useState(false);
+    let [ repeatedPassword, setRepeatedPassword ] = useState('');
     let [ showed, setShowed ] = useState(false);
     let [ agreed, setAgreed ] = useState(false);
 
