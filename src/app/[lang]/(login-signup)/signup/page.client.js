@@ -199,7 +199,7 @@ export default function PageClient() {
     let [ name, setName ] = useState('');
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
-    let [ matchedPassword, setMatchedPassword ] = useState(false);
+    let [ repeatedPassword, setRepeatedPassword ] = useState(false);
     let [ showed, setShowed ] = useState(false);
     let [ agreed, setAgreed ] = useState(false);
 
@@ -254,6 +254,7 @@ export default function PageClient() {
                 }
                 type='email'
                 autocomplete='email'
+                value={email}
                 onChange={e => setEmail(e.target.value)}
             />
         </>,
@@ -277,6 +278,7 @@ export default function PageClient() {
                 }
                 type={!showed && 'password'}
                 autocomplete='password'
+                value={password}
                 onChange={e => setPassword(e.target.value)}
             />
             <input
@@ -298,7 +300,8 @@ export default function PageClient() {
                 }
                 type={!showed && 'password'}
                 autocomplete='password'
-                onChange={e => setMatchedPassword(e.target.value == password)}
+                value={repeatedPassword}
+                onChange={e => setRepeatedPassword(e.target.value)}
             />
             <div>
                 <label>

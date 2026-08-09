@@ -108,7 +108,7 @@ export function Form({ steps, lastStepText, onSubmit }) {
                 }[lang]
             }</button>}
             <button className='primary' type='submit'>{
-                step == steps.length ? lastStepText : {
+                step == steps.length - 1 ? lastStepText : {
                     en: 'Next',
                     vi: 'Tiếp theo',
                     fr: 'Suivante',
