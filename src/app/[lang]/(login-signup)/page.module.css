@@ -89,12 +89,12 @@
             display: grid;
             grid-template-columns: calc(50% - 50px) 100px calc(50% - 50px);
             align-items: center;
-            justify-content: center;
+            text-align: center;
 
             & > div {
                 height: 1px;
                 width: 100%;
-                color: var(--gray);
+                background-color: var(--dk-gray);
             }
         }
         & > input {
