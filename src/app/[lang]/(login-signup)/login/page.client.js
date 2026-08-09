@@ -182,7 +182,6 @@ export default function PageClient() {
                 name='email'
                 type='email'
                 autocomplete='email'
-                value={email}
                 onChange={e => setEmail(e.target.value)}
             />
         </>,
@@ -210,7 +209,6 @@ export default function PageClient() {
                 name='password'
                 type='password'
                 autocomplete='password'
-                value={password}
                 onChange={e => setPassword(e.target.value)}
             />
             <FLink href='/forgot'>{

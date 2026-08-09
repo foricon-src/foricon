@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import cssStyle from './page.module.css';
 import { Context } from './providers';
 
@@ -66,18 +66,27 @@ export function useChangeStep() {
     }
 }
 export function Form({ steps, lastStepText, onSubmit }) {
-    let { lang } = document.documentElement;
-
     let changeStep = useChangeStep();
     let { stepHandler: [ step ], notificationHandler: [ notification ] } = useContext(Context);
+
+    let { lang } = document.documentElement;
+
+    let formRef = useRef();
 
     useEffect(() => {
         if (elemById('loading')) return;
         let timeout = setTimeout(() => qSelec('input')?.focus(), 200);
         return () => clearTimeout(timeout);
     }, [ step ])
+    useEffect(() => {
+        addEvLis(document, 'keypress', ({ key }) => {
+            if (key != 'Enter') return;
+            let nextInput = qSelec(formRef.current, 'input:focus + input');
+            nextInput?.focus();
+        })
+    })
 
-    return <form onSubmit={onSubmit}>
+    return <form ref={formRef} onSubmit={onSubmit}>
         {steps[step]}
         {notification && <div className={`message ${notification.type}`}>{notification.message}</div>}
         <div className={cssStyle.nav}>

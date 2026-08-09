@@ -254,7 +254,6 @@ export default function PageClient() {
                 }
                 type='email'
                 autocomplete='email'
-                value={email}
                 onChange={e => setEmail(e.target.value)}
             />
         </>,
@@ -278,7 +277,6 @@ export default function PageClient() {
                 }
                 type='password'
                 autocomplete='password'
-                value={password}
                 onChange={e => setPassword(e.target.value)}
             />
             <input
@@ -300,7 +298,6 @@ export default function PageClient() {
                 }
                 type='password'
                 autocomplete='password'
-                value={email}
                 onChange={e => setMatchedPassword(e.target.value == password)}
             />
             <label>
