@@ -1,30 +1,32 @@
 'use client';
 
-import Link from 'next/link';
+import FLink from 'Com/link';
 import logo from 'Pub/foricon-f-logo.png';
 import Img from "./img";
 
-export default function Footer({ lang }) {
+export default function Footer() {
+    let { lang } = document.documentElement;
+
     return (
         <footer>
             <div>
-                <Link href='/'>
+                <FLink href='/'>
                     <Img src={logo}/>
-                </Link>
+                </FLink>
                 <div>
-                    <Link class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>
+                    <FLink class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>
                         <i class='fa-brands fa-facebook'/><span>Follow us</span>
-                    </Link>
-                    <Link class='btn secondary' href='//youtube.com/@ForiconIconFont' target='_blank'>
+                    </FLink>
+                    <FLink class='btn secondary' href='//youtube.com/@ForiconIconFont' target='_blank'>
                         <i class='fa-brands fa-youtube'/><span>Our channel</span>
-                    </Link>
+                    </FLink>
                 </div>
             </div>
             <div class='dk-bg first'>
                 <span>©2023 - {new Date().getFullYear()} Foricon</span>
                 <ul>
                     <li>
-                        <Link href='/about'>{
+                        <FLink href='/about'>{
                             {
                                 en: 'About us',
                                 vi: 'Về chúng tôi',
@@ -38,10 +40,10 @@ export default function Footer({ lang }) {
                                 pt: 'Sobre nós',
                                 es: 'Sobre nosotros',
                             }[lang]
-                        }</Link>
+                        }</FLink>
                     </li>
                     <li>
-                        <Link href='/tos'>{
+                        <FLink href='/tos'>{
                             {
                                 en: 'Terms of Service',
                                 vi: 'Điều khoản dịch vụ',
@@ -55,10 +57,10 @@ export default function Footer({ lang }) {
                                 pt: 'Termos de serviço',
                                 es: 'Términos de servicio',
                             }[lang]
-                        }</Link>
+                        }</FLink>
                     </li>
                     <li>
-                        <Link href='/refund-policy'>{
+                        <FLink href='/refund-policy'>{
                             {
                                 en: 'Refund Policy',
                                 vi: 'Chính sách hoàn tiền',
@@ -72,10 +74,10 @@ export default function Footer({ lang }) {
                                 pt: 'Política de Reembolso',
                                 es: 'Política de reembolso',
                             }[lang]
-                        }</Link>
+                        }</FLink>
                     </li>
                     <li>
-                        <Link href='/privacy'>{
+                        <FLink href='/privacy'>{
                             {
                                 en: 'Privacy Policy',
                                 vi: 'Chính sách bảo mật',
@@ -89,10 +91,10 @@ export default function Footer({ lang }) {
                                 pt: 'Política de Privacidade',
                                 es: 'Política de Privacidad',
                             }[lang]
-                        }</Link>
+                        }</FLink>
                     </li>
                     <li>
-                        <Link href='/support'>{
+                        <FLink href='/support'>{
                             {
                                 en: 'Support',
                                 vi: 'Hỗ trợ',
@@ -106,7 +108,7 @@ export default function Footer({ lang }) {
                                 pt: 'Apoiar',
                                 es: 'Apoyo',
                             }[lang]
-                        }</Link>
+                        }</FLink>
                     </li>
                 </ul>
             </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useContext, useRef } from 'react';
-import Link from 'next/link';
+import FLink from 'Com/link';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
@@ -139,12 +139,15 @@ let texts = {
     ],
 }
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
     let go = useGo();
     let searchParams = useSearchParams();
     let pathname = usePathname();
+
     let user = useContext(UserContext);
     let [ step ] = useContext(Context).stepHandler;
+
+    let { lang } = document.documentElement;
 
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
@@ -158,7 +161,7 @@ export default function PageClient({ lang }) {
 
     let steps = [
         <>
-            <OAuth lang={lang} des={des}/>
+            <OAuth des={des}/>
             <input
                 placeholder={
                     {
@@ -210,7 +213,7 @@ export default function PageClient({ lang }) {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
             />
-            <Link href='/forgot'>{
+            <FLink href='/forgot'>{
                 {
                     en: 'Forgot password',
                     vi: 'Quên mật khẩu',
@@ -225,15 +228,15 @@ export default function PageClient({ lang }) {
                     es: 'Has olvidado tu contraseña',
                     ru: 'Забыли пароль',
                 }[lang]
-            }</Link>
+            }</FLink>
         </>
     ]
 
     return <>
         <div>
-            <Link href='/' title='Back to home'>
+            <FLink href='/' title='Back to home'>
                 <Img src={logo}/>
-            </Link>
+            </FLink>
             <h1>{texts[lang][step].h1}</h1>
             <p>{texts[lang][step].p}</p>
             {!step && <p>
@@ -253,7 +256,7 @@ export default function PageClient({ lang }) {
                         ru: 'У вас нет аккаунта? ',
                     }[lang]
                 }
-                <Link href='/signup'>{
+                <FLink href='/signup'>{
                     {
                         en: 'Create one!',
                         vi: 'Tạo ngay một cái!',
@@ -268,11 +271,10 @@ export default function PageClient({ lang }) {
                         es: '¡Crea una!',
                         ru: 'Создайте его!',
                     }[lang]
-                }</Link>
+                }</FLink>
             </p>}
         </div>
         <Form
-            lang={lang}
             steps={steps}
             lastStepText={
                 {

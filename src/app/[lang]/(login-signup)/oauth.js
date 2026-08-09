@@ -3,7 +3,9 @@ import recordLogin from 'Com/record-login';
 import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from 'firebase/auth';
 import cssStyle from './page.module.css'
 
-export default function OAuth({ lang, des }) {
+export default function OAuth({ des }) {
+    let { lang } = document.documentElement;
+
     async function methodPopup(provider) {
         let result = await signInWithPopup(auth, provider);
         let token = await result.user.getIdToken();

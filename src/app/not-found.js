@@ -25,6 +25,5 @@ export function generateMetadata() {
     }
 }
 export default function Page() {
-    let lang = headers().get('f-lang');
-    return <PageClient lang={lang}/>;
+    return <PageClient/>;
 }

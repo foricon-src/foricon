@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo, useContext, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import FLink from 'Com/link';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
@@ -13,13 +13,15 @@ import Join from 'Com/join';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
     let router = useRouter();
     let go = useGo();
     let searchParams = useSearchParams();
 
     let user = useContext(UserContext);
     let iconSet = useContext(IconContext);
+
+    let { lang } = document.documentElement;
 
     let [ type, setType ] = useState('');
     
@@ -480,7 +482,7 @@ export default function PageClient({ lang }) {
                     ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
                 }[lang]
             }
-            <Link href='/signup' className='btn'>{
+            <FLink href='/signup' className='btn'>{
                 {
                     en: 'Sign up',
                     vi: 'Đăng ký',
@@ -495,7 +497,7 @@ export default function PageClient({ lang }) {
                     es: 'Inscribirse',
                     ru: 'Зарегистрироваться',
                 }[lang]
-            }</Link>
+            }</FLink>
         </div>}
         <div ref={topRef} className={`outer-corner ${cssStyle.top}`}>
             <Search ref={inputRef} value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={

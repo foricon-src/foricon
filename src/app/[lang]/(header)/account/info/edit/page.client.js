@@ -2,7 +2,9 @@
 
 import cssStyle from './page.module.css';
 
-export default function Page({ lang }) {
+export default function Page() {
+    let { lang } = document.documentElement;
+
     return (
         <div className={cssStyle.account_info_edit}>
             <h3>{

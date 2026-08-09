@@ -5,8 +5,9 @@ import GetFamilyAndStyle from 'Com/get-family-n-style';
 import Search from 'Com/search';
 import cssStyle from './not-found.module.css';
 
-export function NotFound({ family, style, icon, currentIcon, lang }) {
+export function NotFound({ family, style, icon, currentIcon }) {
     let go = useGo();
+    let { lang } = document.documentElement;
 
     function format(family, style) {
         return `${Capital(family)} ${Capital(style)}`;

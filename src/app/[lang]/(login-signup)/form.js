@@ -65,7 +65,9 @@ export function useChangeStep() {
         }
     }
 }
-export function Form({ lang, steps, lastStepText, onSubmit }) {
+export function Form({ steps, lastStepText, onSubmit }) {
+    let { lang } = document.documentElement;
+
     let changeStep = useChangeStep();
     let { stepHandler: [ step ], notificationHandler: [ notification ] } = useContext(Context);
 

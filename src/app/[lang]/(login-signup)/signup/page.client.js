@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useContext, useRef } from 'react';
-import Link from 'next/link';
+import FLink from 'Com/link';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
@@ -187,12 +187,14 @@ let texts = {
     ],
 }
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
     let go = useGo();
     let searchParams = useSearchParams();
     let pathname = usePathname();
     let user = useContext(UserContext);
     let [ step ] = useContext(Context).stepHandler;
+
+    let { lang } = document.documentElement;
     
     let [ name, setName ] = useState('');
     let [ email, setEmail ] = useState('');
@@ -209,7 +211,7 @@ export default function PageClient({ lang }) {
 
     let steps = [
         <>
-            <OAuth lang={lang} des={des}/>
+            <OAuth des={des}/>
             <input
                 placeholder={
                     {
@@ -304,16 +306,16 @@ export default function PageClient({ lang }) {
             <label>
                 <input type='checkbox' onChange={e => setAgreed(e.target.checked)}/>
                 <div className='checkmark'/>
-                <span>I agree with <Link href='/tos'>Terms of Service</Link> and <Link href='/privacy'>Privacy Policy</Link></span>
+                <span>I agree with <FLink href='/tos'>Terms of Service</FLink> and <FLink href='/privacy'>Privacy Policy</FLink></span>
             </label>
         </>
     ]
 
     return <>
         <div>
-            <Link href='/' title='Back to home'>
+            <FLink href='/' title='Back to home'>
                 <Img src={logo}/>
-            </Link>
+            </FLink>
             <h1>{texts[lang][step].h1}</h1>
             <p>{texts[lang][step].p}</p>
             {!step && <p>
@@ -333,7 +335,7 @@ export default function PageClient({ lang }) {
                         ru: 'Уже зарегистрированы? ',
                     }[lang]
                 }
-                <Link href='/login'>{
+                <FLink href='/login'>{
                     {
                         en: 'Log in now!',
                         vi: 'Đăng nhập ngay!',
@@ -348,11 +350,10 @@ export default function PageClient({ lang }) {
                         es: '¡Inicia sesión ahora!',
                         ru: 'Войдите прямо сейчас!',
                     }[lang]
-                }</Link>
+                }</FLink>
             </p>}
         </div>
         <Form
-            lang={lang}
             steps={steps}
             lastStepText={
                 {

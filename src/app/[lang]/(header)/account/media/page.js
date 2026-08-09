@@ -5,5 +5,5 @@ export function generateMetadata({ params: { lang }}) {
 }
 
 export default function Page({ params }) {
-    return <PageClient lang={params.lang}/>
+    return <PageClient/>
 }

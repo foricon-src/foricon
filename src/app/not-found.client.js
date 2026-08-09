@@ -4,8 +4,10 @@ import useGo from 'Com/go';
 import Search from 'Com/search';
 import cssStyle from './not-found.module.css';
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
     let go = useGo();
+    
+    let { lang } = document.documentElement;
 
     return (
         <div className={`center-middle ${cssStyle.wrapper}`} id='404'>

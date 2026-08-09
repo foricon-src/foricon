@@ -573,5 +573,5 @@ export default function PageClient({ params }) {
                 </div>
             </div>
         </div>
-        : <NotFound family={family} style={style} icon={icon} currentIcon={currentIcon} lang={lang}/>;
+        : <NotFound family={family} style={style} icon={icon} currentIcon={currentIcon}/>;
 }

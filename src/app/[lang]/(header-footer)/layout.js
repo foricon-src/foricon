@@ -6,9 +6,9 @@ export default function RootLayout({ children, params }) {
 
     return (
         <>
-            <Header lang={lang}/>
+            <Header/>
             {children}
-            <Footer lang={lang}/>
+            <Footer/>
         </>
     )
 }
