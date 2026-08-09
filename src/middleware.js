@@ -41,7 +41,7 @@ export async function middleware(req) {
 
     let url = req.nextUrl.clone();
     url.pathname = `/${lang}${pathname}`;
-    return setHeader(NextResponse.redirect(url, 308), lang, pathname.slice(1));
+    return setHeader(NextResponse.redirect(url), lang, pathname.slice(1));
 }
 export const config = {
     matcher: [ '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)' ],
