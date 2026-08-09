@@ -101,7 +101,7 @@ export default function Header() {
                     }
                 ].map(({ page, ...texts }) =>
                     <li key={page}>
-                        <FLink href={page} className={pathname == `/${lang}${page}` && 'active'}>{texts[lang]}</FLink>
+                        <FLink href={page || '/'} className={pathname == `/${lang}${page}` && 'active'}>{texts[lang]}</FLink>
                     </li>
                 )
             }</ul>
