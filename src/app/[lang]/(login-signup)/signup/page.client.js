@@ -200,8 +200,8 @@ export default function PageClient() {
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
     let [ matchedPassword, setMatchedPassword ] = useState(false);
+    let [ showed, setShowed ] = useState(false);
     let [ agreed, setAgreed ] = useState(false);
-    let [ userDoc, setUserDoc ] = useState(null);
 
     let des = searchParams.get('redirect') || 'account';
 
@@ -275,7 +275,7 @@ export default function PageClient() {
                         ru: 'Введите пароль',
                     }[lang]
                 }
-                type='password'
+                type={showed && 'password'}
                 autocomplete='password'
                 onChange={e => setPassword(e.target.value)}
             />
@@ -296,10 +296,15 @@ export default function PageClient() {
                         ru: 'Повторите пароль',
                     }[lang]
                 }
-                type='password'
+                type={showed && 'password'}
                 autocomplete='password'
                 onChange={e => setMatchedPassword(e.target.value == password)}
             />
+            <label>
+                <input type='checkbox' onChange={e => setShowed(e.target.checked)}/>
+                <div className='checkmark'/>
+                <span>Show password</span>
+            </label>
             <label>
                 <input type='checkbox' onChange={e => setAgreed(e.target.checked)}/>
                 <div className='checkmark'/>
