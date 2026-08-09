@@ -4,8 +4,8 @@ import { Providers } from './providers';
 
 export default function Layout({ children }) {
     return <Providers>
-        <Suspense>
+        {/* <Suspense> */}
             <div className={cssStyle.wrapper}>{children}</div>
-        </Suspense>
+        {/* </Suspense> */}
     </Providers>
 }
