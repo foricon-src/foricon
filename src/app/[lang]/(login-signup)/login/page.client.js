@@ -229,6 +229,8 @@ export default function PageClient({ lang }) {
         </>
     ]
 
+    console.log(step)
+
     return <>
         <div>
             <Link href='/' title='Back to home'>
