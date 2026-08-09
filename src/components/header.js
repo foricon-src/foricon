@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import FLink from 'Com/link';
+import Link from 'next/link';
 import { LanguageContext } from 'Com/language';
 import { UserContext } from 'Com/user';
 import { ThemeContext } from 'Com/theme';
@@ -35,10 +35,10 @@ export default function Header() {
     return (
         <header className='outer-corner'>
             <div>
-                <FLink href='/' name='logo'>
+                <Link href='/' name='logo'>
                     <Img src={logo} alt='Foricon logo'/>
-                </FLink>
-                <FLink href='/changelog' name='version'>{webData.verFull}</FLink>
+                </Link>
+                <Link href='/changelog' name='version'>{webData.verFull}</Link>
             </div>
             <ul name='center'>{
                 [
@@ -101,7 +101,7 @@ export default function Header() {
                     }
                 ].map(({ page, ...texts }) =>
                     <li key={page}>
-                        <FLink href={`/${lang}/${page}`} className={pathname == `/${lang}${page}` && 'active'}>{texts[lang]}</FLink>
+                        <Link href={`/${lang}/${page}`} className={pathname == `/${lang}${page}` && 'active'}>{texts[lang]}</Link>
                     </li>
                 )
             }</ul>

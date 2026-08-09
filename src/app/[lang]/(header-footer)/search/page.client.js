@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo, useContext, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import FLink from 'Com/link';
+import Link from 'next/link';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
@@ -482,7 +482,7 @@ export default function PageClient() {
                     ru: 'Наслаждайтесь бесплатными иконками — зарегистрируйтесь, чтобы получить доступ ко всему набору!',
                 }[lang]
             }
-            <FLink href='/signup' className='btn'>{
+            <Link href='/signup' className='btn'>{
                 {
                     en: 'Sign up',
                     vi: 'Đăng ký',
@@ -497,7 +497,7 @@ export default function PageClient() {
                     es: 'Inscribirse',
                     ru: 'Зарегистрироваться',
                 }[lang]
-            }</FLink>
+            }</Link>
         </div>}
         <div ref={topRef} className={`outer-corner ${cssStyle.top}`}>
             <Search ref={inputRef} value={search} onInput={e => setSearch(e.currentTarget.value)} placeholder={

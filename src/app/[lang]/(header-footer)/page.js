@@ -1,7 +1,7 @@
 'use client';
 
-import { useContext, useEffect, useMemo, useState } from 'react';
-import FLink from 'Com/link';
+import { useContext, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { UserContext } from 'Com/user';
 import { IconContext } from 'Com/icons';
 import Code from 'Com/code';
@@ -12,9 +12,7 @@ import Join from 'Com/join';
 import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './page.module.css';
 
-export default function Home({ params }) {
-    let { lang } = params;
-
+export default function Page({ params: { lang } }) {
     let go = useGo();
     let user = useContext(UserContext);
     let icons = useContext(IconContext);
@@ -73,9 +71,9 @@ export default function Home({ params }) {
         <div className={cssStyle.page}>
             <div className={cssStyle.hero}>
                 <Img src={logo}/>
-                <FLink href='/changelog'>
+                <Link href='/changelog'>
                     <f-icon i-s='outline' icon='hashtag'/><span>{webData.verFull}</span>
-                </FLink>
+                </Link>
                 <h1>{
                     {
                         en: 'Icons That Make Your Design Shine',
@@ -223,7 +221,7 @@ export default function Home({ params }) {
                             ru: 'Интеграция нашей библиотеки иконок в ваши проекты &#8212; это просто. Просто выберите нужные вам иконки, получите их код и начните использовать их прямо сейчас. С нашей обширной коллекцией и простым в использовании интерфейсом вы найдете идеальные иконки, которые поднимут ваши проекты.',
                         }[lang]
                     }</p>
-                    <FLink class='btn primary' href='/docs?adding-icons/basics'>{
+                    <Link class='btn primary' href='/docs?adding-icons/basics'>{
                         {
                             en: 'Basics of Adding Icons',
                             vi: 'Hướng dẫn về thêm các icon',
@@ -238,7 +236,7 @@ export default function Home({ params }) {
                             es: 'Conceptos básicos para agregar iconos',
                             ru: 'Основы добавления иконок',
                         }[lang]
-                    }</FLink>
+                    }</Link>
                 </div>
                 <div>
                     <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuciTIEKRlA_20KiNnOyUeny9fCvNkfD33iTLIYl3YOtT8Z3Fyiu5GJ08jCaJI5Pef-2mPUn34O0y0WIF83RUojLoh_B1nVU8wpTu9QbLdjq5alkzCoXDnNg5_O9uS8XBHbozp7evFgFEumm4ZRfkSC4t8naEuOYntcT4Afwdig2qh5lCYCx0hFBteOpU/s1600/screenshot.png'/>
@@ -587,7 +585,7 @@ export default function Home({ params }) {
                         ru: 'Погрузитесь в их свойства и принципы работы. Расширенные настройки цвета, стиля, размера и анимации &#8212; все это в Docs.',
                     }[lang]
                 }</p>
-                <FLink class='btn primary' href='/docs?styling-icons/basics'>{
+                <Link class='btn primary' href='/docs?styling-icons/basics'>{
                     {
                         en: 'Explore',
                         vi: 'Khám phá',
@@ -602,7 +600,7 @@ export default function Home({ params }) {
                         es: 'Explorar',
                         ru: 'Исследовать',
                     }[lang]
-                }</FLink>
+                }</Link>
             </div>
             <div className={`${cssStyle.contentSection} ${cssStyle.compatible} dk-bg`}>
                 <div>
@@ -659,10 +657,10 @@ export default function Home({ params }) {
                         }</h3>
                         <ul>
                             <li>
-                                <FLink href='/p/docs.html?adding-icons/basics'>Easy to Use</FLink>
+                                <Link href='/p/docs.html?adding-icons/basics'>Easy to Use</Link>
                             </li>
                             <li>
-                                <FLink href='/p/docs.html?get-started-on-web/setting-up'>Hosted CDN Options</FLink>
+                                <Link href='/p/docs.html?get-started-on-web/setting-up'>Hosted CDN Options</Link>
                             </li>
                             <li>Works Perfectly with CSS Frameworks</li>
                         </ul>
@@ -686,10 +684,10 @@ export default function Home({ params }) {
                         }</h3>
                         <ul>
                             <li>
-                                <FLink href='/p/search.html'>Wide Range of Icons</FLink>
+                                <Link href='/p/search.html'>Wide Range of Icons</Link>
                             </li>
                             <li>
-                                <FLink href='/p/docs.html?get-started-on-web/setting-up'>Easy Development</FLink>
+                                <Link href='/p/docs.html?get-started-on-web/setting-up'>Easy Development</Link>
                             </li>
                         </ul>
                     </li>
@@ -712,13 +710,13 @@ export default function Home({ params }) {
                         }</h3>
                         <ul>
                             <li>
-                                <FLink href='/p/docs.html?get-started-on-web/setting-up'>Install and Host Easily</FLink>
+                                <Link href='/p/docs.html?get-started-on-web/setting-up'>Install and Host Easily</Link>
                             </li>
                             <li>
-                                <FLink href='/p/search.html'>Multiple Styles</FLink>
+                                <Link href='/p/search.html'>Multiple Styles</Link>
                             </li>
                             <li>
-                                <FLink href='/p/docs.html?styling-icons/basics'>Customize Easily</FLink>
+                                <Link href='/p/docs.html?styling-icons/basics'>Customize Easily</Link>
                             </li>
                         </ul>
                     </li>
@@ -728,43 +726,43 @@ export default function Home({ params }) {
                 <div>
                     <h1>Get started</h1>
                     <p>Get access to the power of the Foricon</p>
-                    <FLink class='btn primary' href='/signup'>
+                    <Link class='btn primary' href='/signup'>
                         <f-icon i-s='outline' icon='arrow-right-to-bracket'/>Sign up
-                    </FLink>
-                    <FLink class='btn secondary' href='/docs'>
+                    </Link>
+                    <Link class='btn secondary' href='/docs'>
                         <f-icon icon='file-lines'/>View the Docs
-                    </FLink>
+                    </Link>
                 </div>
             </div>}
             <div className={`${cssStyle.contentSection} ${cssStyle.pages}`}>
-                <FLink href='/hub'>
+                <Link href='/hub'>
                     <div>
                         <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgu2RsPztgjhUls5ZfAiJvxJ95dXULPYSARYYoJYP-73-qp6GnkN09zQ7Lohja3UMJhq2Zjv78rM2LUOiKMuiE2ZT0xjPKKDw2CQqp5-r7ippkOzKrNWSXtLlMkcnd9K-z-QHo2o8GMbJnGTXd69U5TXvMKCrZZCb99XZZaOlJ9kcEQqa_EbY5qh3JhK0/s320/foricon-hub.png'/>
                     </div>
                     <h5>Foricon Hub</h5>
                     <p>Solve your issues and request features and icons</p>
-                </FLink>
-                <FLink href='/p/stream-chilzymusic.html'>
+                </Link>
+                <Link href='/p/stream-chilzymusic.html'>
                     <div>
                         <img height='42' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsRBUY7vhKuPaXrUxG6BipYVH90Ir-TngNmNkSV9fT5hTVVr2M_80JyG00NJb8CEaxn1cZuIMfWPkeL25ais09c9-zCYs0W6GQQdZIArHMCXl0ZoD6AfUGikFbXhEfBLUXRH5j-x1xeLsBo0xWokoFtGm1nH8uhSEmqJI6r46XlDJzPC-DWbLstQF6DC4/s360/chilzymusic-m.png'/>
                     </div>
                     <h5>Foricon Music</h5>
                     <p>Stream and download music no limit for free</p>
-                </FLink>
-                <FLink href='/fotorno'>
+                </Link>
+                <Link href='/fotorno'>
                     <div>
                         <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq7qnPl4uWBfAYXhQ5quYi_hauu8gNbUU5HdkXNIZ8Efgcpjh85N0_0JLr2J0oeru8S6p8AQXIfVxJ7k0wDZ1MYNSKEQTbkpBFyWt82XelBk5-63143dbrFddbah2ZS-03q7FND2de7ec3SExU1MiU4C4xp-5ExivgiOAnTBimjh0NQBpSIL_SvzkL4Mg/s250/foricon-fotorno.png'/>
                     </div>
                     <h5>Foricon Fotorno</h5>
                     <p>Quickly enhance your image with AI tools</p>
-                </FLink>
-                <FLink href='/support'>
+                </Link>
+                <Link href='/support'>
                     <div>
                         <f-icon icon='circle-question'/>
                     </div>
                     <h5>Support</h5>
                     <p>Have a question about us? Find your answers here</p>
-                </FLink>
+                </Link>
             </div>
         </div>
     )
