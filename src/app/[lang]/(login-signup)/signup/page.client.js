@@ -23,7 +23,7 @@ let texts = {
             p: "Let's start creating a brand new account to take advantage of our awesome set of icon!",
         },
         {
-            h1: 'How will you log in?',
+            h1: "How you'll log in",
             p: 'Enter email for your Foricon account',
         },
         {
@@ -34,25 +34,25 @@ let texts = {
     vi: [
         {
             h1: 'Chào mừng đến với Foricon!',
-            p: 'Hãy bắt đầu tạo một tài khoản hoàn toàn mới để tận dụng được bộ biểu tượng tuyệt cà là vời của chúng tôi!',
+            p: 'Hãy bắt đầu tạo một tài khoản hoàn toàn mới để tận dụng được bộ biểu tượng tuyệt vời của chúng tôi!',
         },
         {
-            h1: 'Bạn sẽ đăng nhập như thế nào?',
+            h1: 'Cách bạn sẽ đăng nhập',
             p: 'Nhập email cho tài khoản Foricon của bạn',
         },
         {
-            h1: "Let's secure it!",
+            h1: 'Bảo mật tài khoản',
             p: 'Hãy cho tài khoản của bạn một mật khẩu mạnh',
         },
     ],
     fr: [
         {
             h1: 'Bienvenue sur Foricon !',
-            p: 'Commençons par créer un tout nouveau compte pour profiter de notre incroyable collection d’icônes !',
+            p: "Commençons par créer un tout nouveau compte pour profiter de notre superbe collection d'icônes !",
         },
         {
-            h1: 'Comment allez-vous vous connecter ?',
-            p: 'Entrez l’adresse e-mail de votre compte Foricon',
+            h1: 'Comment vous connecter',
+            p: "Saisissez l'adresse e-mail de votre compte Foricon",
         },
         {
             h1: 'Sécurisons votre compte !',
@@ -62,11 +62,11 @@ let texts = {
     it: [
         {
             h1: 'Benvenuto su Foricon!',
-            p: 'Iniziamo creando un account completamente nuovo per sfruttare al meglio la nostra fantastica raccolta di icone!',
+            p: 'Iniziamo creando un nuovo account per sfruttare al meglio la nostra fantastica raccolta di icone!',
         },
         {
-            h1: 'Come effettuerai l’accesso?',
-            p: 'Inserisci l’e-mail del tuo account Foricon',
+            h1: "Come effettuerai l'accesso",
+            p: "Inserisci l'e-mail del tuo account Foricon",
         },
         {
             h1: 'Mettiamolo al sicuro!',
@@ -76,38 +76,38 @@ let texts = {
     ko: [
         {
             h1: 'Foricon에 오신 것을 환영합니다!',
-            p: '멋진 아이콘 컬렉션을 마음껏 활용할 수 있도록 새로운 계정을 만들어 보세요!',
+            p: '새 계정을 만들고 멋진 아이콘 컬렉션을 마음껏 이용해 보세요!',
         },
         {
-            h1: '어떻게 로그인하시겠어요?',
+            h1: '로그인 방법',
             p: 'Foricon 계정에 사용할 이메일을 입력하세요',
         },
         {
-            h1: '계정을 안전하게 보호해 볼까요!',
-            p: '계정을 보호할 강력한 비밀번호를 설정하세요',
+            h1: '계정을 안전하게 보호하세요!',
+            p: '안전한 비밀번호를 설정하세요',
         },
     ],
     ja: [
         {
             h1: 'Foriconへようこそ！',
-            p: '素晴らしいアイコンコレクションを活用するために、新しいアカウントを作成しましょう！',
+            p: 'まずは新しいアカウントを作成して、素敵なアイコンコレクションをお楽しみください！',
         },
         {
-            h1: 'どのようにログインしますか？',
+            h1: 'ログイン方法',
             p: 'Foriconアカウントのメールアドレスを入力してください',
         },
         {
-            h1: 'アカウントを安全にしましょう！',
-            p: 'アカウント用の強力なパスワードを設定してください',
+            h1: 'アカウントを安全に保ちましょう！',
+            p: '安全なパスワードを設定してください',
         },
     ],
     de: [
         {
             h1: 'Willkommen bei Foricon!',
-            p: 'Erstellen wir zunächst ein ganz neues Konto, damit du unsere fantastische Sammlung von Icons nutzen kannst!',
+            p: 'Erstellen wir zunächst ein neues Konto, damit du unsere großartige Icon-Sammlung nutzen kannst!',
         },
         {
-            h1: 'Wie möchtest du dich anmelden?',
+            h1: 'So meldest du dich an',
             p: 'Gib die E-Mail-Adresse für dein Foricon-Konto ein',
         },
         {
@@ -118,14 +118,14 @@ let texts = {
     nl: [
         {
             h1: 'Welkom bij Foricon!',
-            p: 'Laten we beginnen met het aanmaken van een gloednieuw account, zodat je optimaal kunt profiteren van onze geweldige iconencollectie!',
+            p: 'Laten we beginnen met het aanmaken van een nieuw account, zodat je optimaal kunt genieten van onze geweldige iconencollectie!',
         },
         {
-            h1: 'Hoe wil je inloggen?',
+            h1: 'Zo log je in',
             p: 'Voer het e-mailadres van je Foricon-account in',
         },
         {
-            h1: 'Laten we je account beveiligen!',
+            h1: 'Beveilig je account!',
             p: 'Kies een sterk wachtwoord voor je account',
         },
     ],
@@ -135,8 +135,8 @@ let texts = {
             p: 'Lad os starte med at oprette en helt ny konto, så du kan få glæde af vores fantastiske samling af ikoner!',
         },
         {
-            h1: 'Hvordan vil du logge ind?',
-            p: 'Indtast e-mailen til din Foricon-konto',
+            h1: 'Sådan logger du ind',
+            p: 'Indtast e-mailadressen til din Foricon-konto',
         },
         {
             h1: 'Lad os sikre den!',
@@ -146,24 +146,24 @@ let texts = {
     pt: [
         {
             h1: 'Bem-vindo ao Foricon!',
-            p: 'Vamos começar criando uma conta totalmente nova para aproveitar a nossa incrível coleção de ícones!',
+            p: 'Vamos começar criando uma nova conta para aproveitar nossa incrível coleção de ícones!',
         },
         {
-            h1: 'Como você vai entrar?',
+            h1: 'Como você vai entrar',
             p: 'Digite o e-mail da sua conta Foricon',
         },
         {
-            h1: 'Vamos deixar sua conta segura!',
+            h1: 'Vamos deixar tudo seguro!',
             p: 'Crie uma senha forte para sua conta',
         },
     ],
     es: [
         {
             h1: '¡Bienvenido a Foricon!',
-            p: '¡Empecemos creando una cuenta completamente nueva para aprovechar nuestra increíble colección de iconos!',
+            p: 'Empecemos creando una cuenta nueva para disfrutar de nuestra increíble colección de iconos.',
         },
         {
-            h1: '¿Cómo vas a iniciar sesión?',
+            h1: 'Cómo iniciarás sesión',
             p: 'Introduce el correo electrónico de tu cuenta de Foricon',
         },
         {
@@ -174,15 +174,15 @@ let texts = {
     ru: [
         {
             h1: 'Добро пожаловать в Foricon!',
-            p: 'Давайте начнём с создания нового аккаунта, чтобы вы могли воспользоваться нашей потрясающей коллекцией иконок!',
+            p: 'Давайте начнём с создания новой учётной записи, чтобы вы могли пользоваться нашей замечательной коллекцией иконок!',
         },
         {
-            h1: 'Как вы будете входить в аккаунт?',
-            p: 'Введите электронную почту для вашего аккаунта Foricon',
+            h1: 'Как вы будете входить',
+            p: 'Введите электронную почту для вашей учётной записи Foricon',
         },
         {
             h1: 'Давайте защитим аккаунт!',
-            p: 'Создайте надёжный пароль для вашего аккаунта',
+            p: 'Придумайте надёжный пароль для своей учётной записи',
         },
     ],
 }
@@ -371,7 +371,7 @@ export default function PageClient({ lang }) {
                 }[lang]
             }
             onSubmit={async e => {
-                changeStep(1, e, async () => {
+                changeStep(step + 1, e, async () => {
                     if (!step) {
                         if (name.length < 3) throw new Warn(
                             {

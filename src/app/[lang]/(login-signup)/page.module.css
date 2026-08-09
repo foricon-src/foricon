@@ -13,7 +13,7 @@
     }
     & > div {
         text-align: center;
-        
+
         &:first-child > * {
             margin-bottom: 0;
             
@@ -53,50 +53,10 @@
         }
         & > ul {
             display: grid;
-            gap: var(--spacing-mili) var(--spacing-micro);
+            gap: var(--spacing-micro);
             grid-template-columns: repeat(3, 1fr);
-            grid-template-areas:
-                'google microsoft github'
-                'text text text';
+            grid-template-areas: 'google microsoft github';
             
-            &:before {
-                content: 'or';
-                grid-area: text;
-                text-align: center;
-            }
-            html[lang='vi'] &:before {
-                content: 'hoặc';
-            }
-            html[lang='fr'] &:before {
-                content: 'ou';
-            }
-            html[lang='it'] &:before {
-                content: 'O';
-            }
-            html[lang='ko'] &:before {
-                content: '또는';
-            }
-            html[lang='ja'] &:before {
-                content: 'または';
-            }
-            html[lang='de'] &:before {
-                content: 'oder';
-            }
-            html[lang='nl'] &:before {
-                content: 'of';
-            }
-            html[lang='dk'] &:before {
-                content: 'eller';
-            }
-            html[lang='pt'] &:before {
-                content: 'ou';
-            }
-            html[lang='es'] &:before {
-                content: 'o';
-            }
-            html[lang='ru'] &:before {
-                content: 'или';
-            }
             & > li {
                 background-size: var(--size);
                 background-position: center center;
@@ -123,6 +83,18 @@
                 &:active {
                     background-size: calc(var(--size) * .8);
                 }
+            }
+        }
+        & > .divider {
+            display: grid;
+            grid-template-columns: calc(50% - 50px) 100px calc(50% - 50px);
+            align-items: center;
+            justify-content: center;
+
+            & > div {
+                height: 1px;
+                width: 100%;
+                color: var(--gray);
             }
         }
         & > input {
