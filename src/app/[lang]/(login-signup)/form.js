@@ -80,10 +80,10 @@ export function Form({ steps, lastStepText, onSubmit }) {
     }, [ step ])
     useEffect(() => {
         addEvLis(document, 'keypress', (e) => {
-            if (e.key != 'Enter') return;
-            e.preventDefault();
             let nextInput = qSelec(formRef.current, 'input:focus + input');
-            nextInput?.focus();
+            if (e.key != 'Enter' || !nextInput) return;
+            e.preventDefault();
+            nextInput.focus();
         })
     })
 
