@@ -7,11 +7,11 @@
     
     & > :is(div, form) {
         display: flex;
-        align-items: center;
         justify-content: center;
         flex-direction: column;
     }
     & > div {
+        align-items: center;
         text-align: center;
 
         &:first-child > * {

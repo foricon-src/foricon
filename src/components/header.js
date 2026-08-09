@@ -146,7 +146,7 @@ export default function Header({ lang }) {
                         className={Join(' ', 'line', user && 'tooltip bottom', pathname.startsWith('/account') && 'active')}
                         onClick={() => go(user ? 'account' : 'login')}
                     >
-                        {user ? <img src={user.doc.avatar}/> : <f-icon icon='arrow-right-to-bracket' i-s='outline'/>}
+                        {user && <img src={user.doc.avatar}/>}
                         <span>{
                             user?.doc?.name || {
                                 en: 'Log in',

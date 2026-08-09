@@ -1,7 +1,4 @@
 .account {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: var(--s-bdr-rad);
     background-color: var(--lt-gray);
     padding: var(--inner-spacing);

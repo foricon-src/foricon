@@ -184,7 +184,7 @@ export default function PageClient({ lang }) {
             />
         </>,
         <>
-            <div className={cssStyle.account}>
+            <div className={`center-middle ${cssStyle.account}`}>
                 <img src={userDoc?.avatar}/>{userDoc?.name}
             </div>
             <input
