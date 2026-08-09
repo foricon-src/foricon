@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useContext, useRef } from 'react';
-import Link from 'next/link';
+import FLink from 'Com/link';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
@@ -312,7 +312,7 @@ export default function PageClient() {
                 <label>
                     <input type='checkbox' onChange={e => setAgreed(e.target.checked)}/>
                     <div className='checkmark'/>
-                    <span>I agree with <Link href='/tos'>Terms of Service</Link> and <Link href='/privacy'>Privacy Policy</Link></span>
+                    <span>I agree with <FLink href='/tos'>Terms of Service</FLink> and <FLink href='/privacy'>Privacy Policy</FLink></span>
                 </label>
             </div>
         </>
@@ -320,9 +320,9 @@ export default function PageClient() {
 
     return <>
         <div>
-            <Link href='/' title='Back to home'>
+            <FLink href='/' title='Back to home'>
                 <Img src={logo}/>
-            </Link>
+            </FLink>
             <h1>{texts[lang][step].h1}</h1>
             <p>{texts[lang][step].p}</p>
             {!step && <p>
@@ -342,7 +342,7 @@ export default function PageClient() {
                         ru: 'Уже зарегистрированы? ',
                     }[lang]
                 }
-                <Link href='/login'>{
+                <FLink href='/login'>{
                     {
                         en: 'Log in now!',
                         vi: 'Đăng nhập ngay!',
@@ -357,7 +357,7 @@ export default function PageClient() {
                         es: '¡Inicia sesión ahora!',
                         ru: 'Войдите прямо сейчас!',
                     }[lang]
-                }</Link>
+                }</FLink>
             </p>}
         </div>
         <Form

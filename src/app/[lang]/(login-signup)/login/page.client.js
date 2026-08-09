@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useContext, useRef } from 'react';
-import Link from 'next/link';
+import FLink from 'Com/link';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, where, query, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
@@ -211,7 +211,7 @@ export default function PageClient() {
                 autocomplete='password'
                 onChange={e => setPassword(e.target.value)}
             />
-            <Link href='/forgot'>{
+            <FLink href='/forgot'>{
                 {
                     en: 'Forgot password',
                     vi: 'Quên mật khẩu',
@@ -226,15 +226,15 @@ export default function PageClient() {
                     es: 'Has olvidado tu contraseña',
                     ru: 'Забыли пароль',
                 }[lang]
-            }</Link>
+            }</FLink>
         </>
     ]
 
     return <>
         <div>
-            <Link href='/' title='Back to home'>
+            <FLink href='/' title='Back to home'>
                 <Img src={logo}/>
-            </Link>
+            </FLink>
             <h1>{texts[lang][step].h1}</h1>
             <p>{texts[lang][step].p}</p>
             {!step && <p>
@@ -254,7 +254,7 @@ export default function PageClient() {
                         ru: 'У вас нет аккаунта? ',
                     }[lang]
                 }
-                <Link href='/signup'>{
+                <FLink href='/signup'>{
                     {
                         en: 'Create one!',
                         vi: 'Tạo ngay một cái!',
@@ -269,7 +269,7 @@ export default function PageClient() {
                         es: '¡Crea una!',
                         ru: 'Создайте его!',
                     }[lang]
-                }</Link>
+                }</FLink>
             </p>}
         </div>
         <Form
