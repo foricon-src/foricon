@@ -275,7 +275,7 @@ export default function PageClient() {
                         ru: 'Введите пароль',
                     }[lang]
                 }
-                type={showed && 'password'}
+                type={!showed && 'password'}
                 autocomplete='password'
                 onChange={e => setPassword(e.target.value)}
             />
@@ -296,20 +296,22 @@ export default function PageClient() {
                         ru: 'Повторите пароль',
                     }[lang]
                 }
-                type={showed && 'password'}
+                type={!showed && 'password'}
                 autocomplete='password'
                 onChange={e => setMatchedPassword(e.target.value == password)}
             />
-            <label>
-                <input type='checkbox' onChange={e => setShowed(e.target.checked)}/>
-                <div className='checkmark'/>
-                <span>Show password</span>
-            </label>
-            <label>
-                <input type='checkbox' onChange={e => setAgreed(e.target.checked)}/>
-                <div className='checkmark'/>
-                <span>I agree with <FLink href='/tos'>Terms of Service</FLink> and <FLink href='/privacy'>Privacy Policy</FLink></span>
-            </label>
+            <div>
+                <label>
+                    <input type='checkbox' onChange={e => setShowed(e.target.checked)}/>
+                    <div className='checkmark'/>
+                    <span>Show password</span>
+                </label>
+                <label>
+                    <input type='checkbox' onChange={e => setAgreed(e.target.checked)}/>
+                    <div className='checkmark'/>
+                    <span>I agree with <FLink href='/tos'>Terms of Service</FLink> and <FLink href='/privacy'>Privacy Policy</FLink></span>
+                </label>
+            </div>
         </>
     ]
 
