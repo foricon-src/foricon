@@ -1,8 +1,8 @@
 'use client';
 
 import FLink from 'Com/link';
-import logo from 'Pub/foricon-text-new';
-import logoLight from 'Pub/foricon-text-new-light';
+import logo from 'Pub/foricon-text-new.png';
+import logoLight from 'Pub/foricon-text-new-light.png';
 import Img from "./img";
 import { useContext } from 'react';
 import { ThemeContext } from './theme';
