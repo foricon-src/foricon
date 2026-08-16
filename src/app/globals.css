@@ -1889,6 +1889,11 @@ div.message.offline:before {
 
 .dk-bg {
     background-color: var(--dk-bg-color);
+    border-radius: 0 var(--bdr-rad) var(--bdr-rad) 0;
+
+    &.bottom {
+        border-bottom-right-radius: 0;
+    }
 }
 
 .banner {
@@ -2131,7 +2136,7 @@ footer {
             align-items: center;
         }
         &:first-child {
-            padding: 0 var(--spacing-default) 0 calc(var(--spacing-default) + var(--spacing-small));
+            padding: 0 var(--spacing-default);
             justify-content: space-between;
             height: 180px;
             
@@ -2140,21 +2145,26 @@ footer {
                 padding: 0;
                 
                 > img {
-                    height: 60px;
+                    height: 30px;
                     width: unset;
                 }
             }
             > div {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, max-content);
+                gap: var(--spacing-xxsmall);
 
-                > h6 {
-                    margin-top: 0;
+                > div {
+                    > h6 {
+                        margin: 0 0 5px;
+                    }
+                    > a {
+                        display: block;
+                    }
                 }
             }
         }
         &:last-child {
-            border-top-right-radius: var(--bdr-rad);
             justify-content: space-between;
             padding: var(--spacing-xxsmall) var(--spacing-default);
             

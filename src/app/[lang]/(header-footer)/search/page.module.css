@@ -265,8 +265,6 @@
 
 .main {
     padding: var(--spacing-medium) var(--spacing-default) var(--spacing-default);
-    border-bottom-right-radius: var(--bdr-rad);
-    background-color: var(--dk-bg-color);
     gap: var(--spacing-small);
     grid-template-areas:
         'categoryTitle resultTitle'

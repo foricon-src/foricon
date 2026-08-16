@@ -742,7 +742,7 @@ export default function PageClient() {
                 </ul>
             </div>
         </div>
-        <div ref={mainRef} className={cssStyle.main}>
+        <div ref={mainRef} className={`${cssStyle.main} dk-bg`}>
             <h5 onClick={({ currentTarget }) => isActive(currentTarget) ? deactivate(currentTarget) : activate(currentTarget)}>{
                 {
                     en: 'Categories',

@@ -19,12 +19,42 @@ export default function Footer() {
                 </FLink>
                 <div>
                     <div>
-                        <h6>Social medias</h6>
+                        <h6>{
+                            {
+                                en: 'Community',
+                                vi: 'Cộng đồng',
+                                fr: 'Communauté',
+                                it: 'Comunità',
+                                ko: '지역 사회',
+                                ja: 'コミュニティ',
+                                de: 'Gemeinschaft',
+                                nl: 'Gemeenschap',
+                                dk: 'Fællesskab',
+                                pt: 'Comunidade',
+                                es: 'Comunidad',
+                                ru: 'Сообщество',
+                            }[lang]
+                        }</h6>
                         <FLink href='//youtube.com/@ForiconIconFont'>YouTube</FLink>
                         <FLink href='//www.facebook.com/profile.php?id=61574026262611'>Facebook</FLink>
                     </div>
                     <div>
-                        <h6>Help</h6>
+                        <h6>{
+                            {
+                                en: 'Help',
+                                vi: 'Trợ giúp',
+                                fr: 'Aide',
+                                it: 'Aiuto',
+                                ko: '돕다',
+                                ja: 'ヘルプ',
+                                de: 'Helfen',
+                                nl: 'Hulp',
+                                dk: 'Hjælp',
+                                pt: 'Ajuda',
+                                es: 'Ayuda',
+                                ru: 'Помощь',
+                            }[lang]
+                        }</h6>
                         <FLink href='/support'>{
                             {
                                 en: 'Support',
@@ -38,25 +68,56 @@ export default function Footer() {
                                 dk: 'Support',
                                 pt: 'Apoiar',
                                 es: 'Apoyo',
+                                ru: 'Поддерживать',
                             }[lang]
                         }</FLink>
                         <FLink href='/hub'>Hub</FLink>
-                        <FLink href='/contact'>Contact us</FLink>
+                        <FLink href='/contact'>{
+                            {
+                                en: 'Contact us',
+                                vi: 'Liên hệ',
+                                fr: 'Contactez-nous',
+                                it: 'Contattaci',
+                                ko: '문의하기',
+                                ja: 'お問い合わせ',
+                                de: 'Kontaktieren Sie uns',
+                                nl: 'Neem contact met ons op',
+                                dk: 'Kontakt os',
+                                pt: 'Contate-nos',
+                                es: 'Contacta con nosotros',
+                                ru: 'Связаться с нами',
+                            }[lang]
+                        }</FLink>
                     </div>
                     <div>
-                        <h6>Others</h6>
+                        <h6>{
+                            {
+                                en: 'Others',
+                                vi: 'Khác',
+                                fr: 'Autres',
+                                it: 'Altri',
+                                ko: '기타',
+                                ja: 'その他',
+                                de: 'Andere',
+                                nl: 'Overige',
+                                dk: 'Andre',
+                                pt: 'Outros',
+                                es: 'Otros',
+                                ru: 'Другие',
+                            }[lang]
+                        }</h6>
                         <FLink href='/fotorno'>Fotorno</FLink>
                     </div>
                 </div>
             </div>
-            <div class='dk-bg first'>
+            <div class='dk-bg bottom'>
                 <span>©2023 - {new Date().getFullYear()} Foricon</span>
                 <ul>
                     <li>
                         <FLink href='/about'>{
                             {
                                 en: 'About us',
-                                vi: 'Về chúng tôi',
+                                vi: 'Giới thiệu',
                                 fr: 'À propos de nous',
                                 it: 'Chi siamo',
                                 ko: '회사 소개',
