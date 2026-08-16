@@ -103,7 +103,7 @@
         &.integration {
             padding-right: 0;
             display: grid;
-            grid-template-columns: 40vw auto;
+            grid-template-columns: 60% auto;
             align-items: center;
             gap: var(--spacing-default);
             
@@ -223,7 +223,6 @@
             }
         }
         &.moreStyling {
-            padding-top: 0;
             text-align: center;
             
             & > :is(h1, a) {

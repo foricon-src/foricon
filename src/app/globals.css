@@ -2145,14 +2145,14 @@ footer {
                 padding: 0;
                 
                 > img {
-                    height: 30px;
+                    height: 40px;
                     width: unset;
                 }
             }
             > div {
                 display: grid;
                 grid-template-columns: repeat(3, max-content);
-                gap: var(--spacing-xxsmall);
+                gap: var(--spacing-default);
 
                 > div {
                     > h6 {
