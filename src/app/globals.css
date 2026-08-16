@@ -2144,6 +2144,14 @@ footer {
                     width: unset;
                 }
             }
+            > div {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+
+                > h6 {
+                    margin-top: 0;
+                }
+            }
         }
         &:last-child {
             border-top-right-radius: var(--bdr-rad);
@@ -2212,5 +2220,11 @@ footer {
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    header > ul[name='center'] {
+        display: none;
     }
 }

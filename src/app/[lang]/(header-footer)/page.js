@@ -171,78 +171,7 @@ export default function Page({ params: { lang } }) {
                     }</p>
                 </div>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.integration}`}>
-                <div>
-                    <h6 class='tagline'>{
-                        {
-                            en: 'Integration',
-                            vi: 'Tích hợp',
-                            fr: "L'intégration",
-                            it: 'Integrazione',
-                            ko: '완성',
-                            ja: '統合',
-                            de: 'Integration',
-                            nl: 'Integratie',
-                            dk: 'Integration',
-                            pt: 'Integração',
-                            es: 'Integración',
-                            ru: 'Интеграция',
-                        }[lang]
-                    }</h6>
-                    <h1 dangerouslySetInnerHTML={{
-                        __html: {
-                            en: 'Easy Integration,<br>Stunning Results',
-                            vi: 'Dễ dàng tích hợp,<br>Kết quả bắt mắt',
-                            fr: 'Intégration facile,<br>Résultats époustouflants',
-                            it: 'Facile integrazione,<br>Risultati sorprendenti',
-                            ko: '쉬운 통합,<br>놀라운 결과',
-                            ja: '簡単な統合、<br>素晴らしい結果',
-                            de: 'Einfache Integration,<br>umwerfende Ergebnisse',
-                            nl: 'Eenvoudige integratie,<br>Verbluffende resultaten',
-                            dk: 'Nem integration,<br>Fantastiske resultater',
-                            pt: 'Fácil Integração,<br>Resultados impressionantes',
-                            es: 'Fácil integración,<br>resultados sorprendentes',
-                            ru: 'Простая интеграция,<br>Потрясающие результаты',
-                        }[lang]
-                    }}/>
-                    <p>{
-                        {
-                            en: "Integrating our icon library into your projects is a breeze. Simply choose the icons you need, get its code, and start using them right away. With our extensive collection and easy-to-use interface, you'll find the perfect icons to elevate your designs.",
-                            vi: 'Tích hợp thư viện icon của chúng tôi vào các dự án của bạn rất dễ. Chỉ cần chọn các biểu tượng bạn cần, lấy mã nhúng của biểu tượng đó và bắt đầu sử dụng ngay. Với bộ sưu tập phong phú và giao diện dễ sử dụng của chúng tôi, bạn sẽ tìm thấy các biểu tượng hoàn hảo để nâng tầm thiết kế của mình.',
-                            fr: "L'intégration de notre bibliothèque d'icônes dans vos projets est un jeu d'enfant. Choisissez simplement les icônes dont vous avez besoin, obtenez leur code et commencez à les utiliser immédiatement. Grâce à notre vaste collection et à notre interface facile à utiliser, vous trouverez les icônes parfaites pour rehausser vos créations.",
-                            it: "Integrare la nostra libreria di icone nei tuoi progetti è un gioco da ragazzi. Scegli semplicemente le icone di cui hai bisogno, ottieni il codice e inizia a usarle subito. Con la nostra vasta collezione e l'interfaccia facile da usare, troverai le icone perfette per migliorare i tuoi design.",
-                            ko: '아이콘 라이브러리를 프로젝트에 통합하는 것은 아주 간단합니다. 필요한 아이콘을 선택하고, 코드를 받고, 바로 사용하기 시작하면 됩니다. 광범위한 컬렉션과 사용하기 쉬운 인터페이스로 디자인을 한 단계 업그레이드할 완벽한 아이콘을 찾을 수 있습니다.',
-                            ja: '当社のアイコン ライブラリをプロジェクトに統合するのは簡単です。必要なアイコンを選択し、コードを取得して、すぐに使い始めるだけです。当社の豊富なコレクションと使いやすいインターフェイスにより、デザインを向上させる完璧なアイコンが見つかります。',
-                            de: 'Die Integration unserer Symbolbibliothek in Ihre Projekte ist ein Kinderspiel. Wählen Sie einfach die gewünschten Symbole aus, holen Sie sich den Code und verwenden Sie sie sofort. Mit unserer umfangreichen Sammlung und der benutzerfreundlichen Oberfläche finden Sie die perfekten Symbole, um Ihre Designs aufzuwerten.',
-                            nl: 'Het integreren van onze icoonbibliotheek in uw projecten is een fluitje van een cent. Kies gewoon de iconen die u nodig hebt, ontvang de code en begin ze meteen te gebruiken. Met onze uitgebreide collectie en gebruiksvriendelijke interface vindt u de perfecte iconen om uw ontwerpen naar een hoger niveau te tillen.',
-                            dk: 'At integrere vores ikonbibliotek i dine projekter er en leg. Du skal blot vælge de ikoner, du har brug for, få dens kode, og begynde at bruge dem med det samme. Med vores omfattende samling og brugervenlige grænseflade finder du de perfekte ikoner til at løfte dine designs.',
-                            pt: 'Integrar a nossa biblioteca de ícones nos seus projetos é muito fácil. Basta escolher os ícones de que necessita, obter o código e começar a utilizá-los imediatamente. Com a nossa extensa coleção e interface fácil de utilizar, encontrará os ícones perfeitos para elevar os seus designs.',
-                            es: 'Integrar nuestra biblioteca de íconos en tus proyectos es muy fácil. Simplemente elige los íconos que necesitas, obtén su código y comienza a usarlos de inmediato. Con nuestra amplia colección y nuestra interfaz fácil de usar, encontrarás los íconos perfectos para mejorar tus diseños.',
-                            ru: 'Интеграция нашей библиотеки иконок в ваши проекты &#8212; это просто. Просто выберите нужные вам иконки, получите их код и начните использовать их прямо сейчас. С нашей обширной коллекцией и простым в использовании интерфейсом вы найдете идеальные иконки, которые поднимут ваши проекты.',
-                        }[lang]
-                    }</p>
-                    <FLink class='btn primary' href='/docs?adding-icons/basics'>{
-                        {
-                            en: 'Basics of Adding Icons',
-                            vi: 'Hướng dẫn về thêm các icon',
-                            fr: "Notions de base sur l'ajout d'icônes",
-                            it: "Nozioni di base sull'aggiunta di icone",
-                            ko: '아이콘 추가의 기본 사항',
-                            ja: 'アイコン追加の基本',
-                            de: 'Grundlagen zum Hinzufügen von Symbolen',
-                            nl: 'Basisprincipes van het toevoegen van pictogrammen',
-                            dk: 'Grundlæggende om tilføjelse af ikoner',
-                            pt: 'Noções básicas de adição de ícones',
-                            es: 'Conceptos básicos para agregar iconos',
-                            ru: 'Основы добавления иконок',
-                        }[lang]
-                    }</FLink>
-                </div>
-                <div>
-                    <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuciTIEKRlA_20KiNnOyUeny9fCvNkfD33iTLIYl3YOtT8Z3Fyiu5GJ08jCaJI5Pef-2mPUn34O0y0WIF83RUojLoh_B1nVU8wpTu9QbLdjq5alkzCoXDnNg5_O9uS8XBHbozp7evFgFEumm4ZRfkSC4t8naEuOYntcT4Afwdig2qh5lCYCx0hFBteOpU/s1600/screenshot.png'/>
-                </div>
-            </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.iconFamilies}`}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.iconFamilies} dk-bg`}>
                 <h6 class='tagline'>{
                     {
                         en: 'Icon Families',
@@ -551,7 +480,7 @@ export default function Page({ params: { lang } }) {
                     <div className='dk-bg' dangerouslySetInnerHTML={{ __html: html }}/>
                 </div>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling}`}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.moreStyling} dk-bg`}>
                 <h1>{
                     {
                         en: 'Explore More Styling Options!',
@@ -602,125 +531,46 @@ export default function Page({ params: { lang } }) {
                     }[lang]
                 }</FLink>
             </div>
-            <div className={`${cssStyle.contentSection} ${cssStyle.compatible} dk-bg`}>
+            <div className={`${cssStyle.contentSection} ${cssStyle.integration}`}>
                 <div>
-                    <h5>{
-                        {
-                            en: 'Compatible With',
-                            vi: 'Tương thích với',
-                            fr: 'Compatible avec',
-                            it: 'Compatibile con',
-                            ko: '호환 가능',
-                            ja: '互換性あり',
-                            de: 'Kompatibel mit',
-                            nl: 'Compatibel met',
-                            dk: 'Kompatibel med',
-                            pt: 'Compatível com',
-                            es: 'Compatible con',
-                            ru: 'Совместим с',
-                        }[lang]
-                    }</h5>
+                    <h6 class='tagline'>Foricon Package</h6>
                     <h1>{
                         {
-                            en: 'Where You Work',
-                            vi: 'Nơi bạn làm việc',
-                            fr: 'Où vous travaillez',
-                            it: 'Dove lavori',
-                            ko: '네가 일하는 곳',
-                            ja: '勤務先',
-                            de: 'Wo arbeitest du',
-                            nl: 'Waar je werkt',
-                            dk: 'Hvor du arbejder',
-                            pt: 'Onde trabalha',
-                            es: 'Donde trabajas',
-                            ru: 'Где ты работаешь',
+                            en: 'All of Our Icons. One Line of Code.',
+                            vi: 'Tất cả biểu tượng. Một dòng lệnh.',
+                            fr: 'Toutes nos icônes. Une seule ligne de code.',
+                            it: 'Tutte le nostre icone. Una riga di codice.',
+                            ko: '모든 아이콘을 단 한 줄의 코드로',
+                            ja: 'すべてのアイコンを、たった1行のコードで。',
+                            de: 'Alle unsere Icons. Eine Zeile Code.',
+                            nl: 'Al onze iconen. Eén regel code.',
+                            dk: 'Alle vores ikoner. Én linje kode.',
+                            pt: 'Todos os nossos ícones. Uma linha de código.',
+                            es: 'Todos nuestros iconos. Una línea de código.',
+                            ru: 'Все наши иконки. Одна строка кода.',
                         }[lang]
                     }</h1>
+                    <p>{
+                        {
+                            en: 'Integrate our icon library into any projects of yours, within just a single, simple embed code.',
+                            vi: 'Tích hợp thư viện của chúng tôi vào bất ký dự án của bạn chỉ với một đoạn mã nhúng đơn giản.',
+                            fr: "Intégrez notre bibliothèque d'icônes à vos projets grâce à un simple code d'intégration unique.",
+                            it: 'Integra la nostra libreria di icone in qualsiasi tuo progetto utilizzando un unico, semplice codice di incorporamento.',
+                            ko: '단 하나의 간단한 임베드 코드로 귀하의 모든 프로젝트에 저희 아이콘 라이브러리를 통합해 보세요.',
+                            ja: 'たった一つのシンプルな埋め込みコードで、当社のアイコンライブラリをあらゆるプロジェクトに組み込むことができます。',
+                            de: 'Integrieren Sie unsere Icon-Bibliothek mithilfe eines einzigen, einfachen Einbettungscodes in Ihre Projekte.',
+                            nl: 'Integreer onze iconenbibliotheek in al je projecten met slechts één eenvoudige embed-code.',
+                            dk: 'Integrer vores ikonbibliotek i alle dine projekter med blot en enkelt, simpel indlejringskode.',
+                            pt: 'Integre a nossa biblioteca de ícones em qualquer um dos seus projetos, com apenas um código de incorporação simples.',
+                            es: 'Integra nuestra biblioteca de iconos en cualquiera de tus proyectos mediante un único y sencillo código de inserción.',
+                            ru: 'Интегрируйте нашу библиотеку иконок в любые свои проекты с помощью всего одного простого кода для вставки.',
+                        }[lang]
+                    }</p>
+                    <FLink class='btn primary' href='/account/package'>Foricon Package</FLink>
                 </div>
-                <ul>
-                    <li>
-                        <h3>{
-                            {
-                                en: 'Developers',
-                                vi: 'Lập trình viên',
-                                fr: 'Développeurs',
-                                it: 'Sviluppatori',
-                                ko: '개발자',
-                                ja: '開発者',
-                                de: 'Entwickler',
-                                nl: 'Ontwikkelaars',
-                                dk: 'Udviklere',
-                                pt: 'Desenvolvedores',
-                                es: 'Desarrolladores',
-                                ru: 'Разработчики',
-                            }[lang]
-                        }</h3>
-                        <ul>
-                            <li>
-                                <FLink href='/p/docs.html?adding-icons/basics'>Easy to Use</FLink>
-                            </li>
-                            <li>
-                                <FLink href='/p/docs.html?get-started-on-web/setting-up'>Hosted CDN Options</FLink>
-                            </li>
-                            <li>Works Perfectly with CSS Frameworks</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>{
-                            {
-                                en: 'Designers',
-                                vi: 'Nhà thiết kế đồ họa',
-                                fr: 'Créateurs',
-                                it: 'Progettisti',
-                                ko: '디자이너',
-                                ja: 'デザイナー',
-                                de: 'Designer',
-                                nl: 'Ontwerpers',
-                                dk: 'Designere',
-                                pt: 'Designers',
-                                es: 'Diseñadores',
-                                ru: 'Дизайнеры',
-                            }[lang]
-                        }</h3>
-                        <ul>
-                            <li>
-                                <FLink href='/p/search.html'>Wide Range of Icons</FLink>
-                            </li>
-                            <li>
-                                <FLink href='/p/docs.html?get-started-on-web/setting-up'>Easy Development</FLink>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>{
-                            {
-                                en: 'Content Creators',
-                                vi: 'Nhà sáng tạo nội dung',
-                                fr: 'Créateurs de contenu',
-                                it: 'Creatori di contenuti',
-                                ko: '콘텐츠 제작자',
-                                ja: 'コンテンツクリエイター',
-                                de: 'Inhaltsersteller',
-                                nl: 'Contentmakers',
-                                dk: 'Indholdsskabere',
-                                pt: 'Criadores de conteúdo',
-                                es: 'Creadores de contenido',
-                                ru: 'Создатели контента',
-                            }[lang]
-                        }</h3>
-                        <ul>
-                            <li>
-                                <FLink href='/p/docs.html?get-started-on-web/setting-up'>Install and Host Easily</FLink>
-                            </li>
-                            <li>
-                                <FLink href='/p/search.html'>Multiple Styles</FLink>
-                            </li>
-                            <li>
-                                <FLink href='/p/docs.html?styling-icons/basics'>Customize Easily</FLink>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <div>
+                    <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuciTIEKRlA_20KiNnOyUeny9fCvNkfD33iTLIYl3YOtT8Z3Fyiu5GJ08jCaJI5Pef-2mPUn34O0y0WIF83RUojLoh_B1nVU8wpTu9QbLdjq5alkzCoXDnNg5_O9uS8XBHbozp7evFgFEumm4ZRfkSC4t8naEuOYntcT4Afwdig2qh5lCYCx0hFBteOpU/s1600/screenshot.png'/>
+                </div>
             </div>
             {!user && <div className={`${cssStyle.contentSection} ${cssStyle.getStarted}`}>
                 <div>
@@ -734,36 +584,6 @@ export default function Page({ params: { lang } }) {
                     </FLink>
                 </div>
             </div>}
-            <div className={`${cssStyle.contentSection} ${cssStyle.pages}`}>
-                <FLink href='/hub'>
-                    <div>
-                        <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgu2RsPztgjhUls5ZfAiJvxJ95dXULPYSARYYoJYP-73-qp6GnkN09zQ7Lohja3UMJhq2Zjv78rM2LUOiKMuiE2ZT0xjPKKDw2CQqp5-r7ippkOzKrNWSXtLlMkcnd9K-z-QHo2o8GMbJnGTXd69U5TXvMKCrZZCb99XZZaOlJ9kcEQqa_EbY5qh3JhK0/s320/foricon-hub.png'/>
-                    </div>
-                    <h5>Foricon Hub</h5>
-                    <p>Solve your issues and request features and icons</p>
-                </FLink>
-                <FLink href='/p/stream-chilzymusic.html'>
-                    <div>
-                        <img height='42' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsRBUY7vhKuPaXrUxG6BipYVH90Ir-TngNmNkSV9fT5hTVVr2M_80JyG00NJb8CEaxn1cZuIMfWPkeL25ais09c9-zCYs0W6GQQdZIArHMCXl0ZoD6AfUGikFbXhEfBLUXRH5j-x1xeLsBo0xWokoFtGm1nH8uhSEmqJI6r46XlDJzPC-DWbLstQF6DC4/s360/chilzymusic-m.png'/>
-                    </div>
-                    <h5>Foricon Music</h5>
-                    <p>Stream and download music no limit for free</p>
-                </FLink>
-                <FLink href='/fotorno'>
-                    <div>
-                        <img height='60' src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq7qnPl4uWBfAYXhQ5quYi_hauu8gNbUU5HdkXNIZ8Efgcpjh85N0_0JLr2J0oeru8S6p8AQXIfVxJ7k0wDZ1MYNSKEQTbkpBFyWt82XelBk5-63143dbrFddbah2ZS-03q7FND2de7ec3SExU1MiU4C4xp-5ExivgiOAnTBimjh0NQBpSIL_SvzkL4Mg/s250/foricon-fotorno.png'/>
-                    </div>
-                    <h5>Foricon Fotorno</h5>
-                    <p>Quickly enhance your image with AI tools</p>
-                </FLink>
-                <FLink href='/support'>
-                    <div>
-                        <f-icon icon='circle-question'/>
-                    </div>
-                    <h5>Support</h5>
-                    <p>Have a question about us? Find your answers here</p>
-                </FLink>
-            </div>
         </div>
     )
 }

@@ -1,25 +1,52 @@
 'use client';
 
 import FLink from 'Com/link';
-import logo from 'Pub/foricon-f-logo.png';
+import logo from 'Pub/foricon-text-new';
+import logoLight from 'Pub/foricon-text-new-light';
 import Img from "./img";
+import { useContext } from 'react';
+import { ThemeContext } from './theme';
 
 export default function Footer() {
+    let { isDark } = useContext(ThemeContext);
     let { lang } = document.documentElement;
 
     return (
         <footer>
             <div>
                 <FLink href='/'>
-                    <Img src={logo}/>
+                    <Img src={isDark ? logoLight : logo}/>
                 </FLink>
                 <div>
-                    <FLink class='btn secondary' href='//www.facebook.com/profile.php?id=61574026262611' target='_blank'>
-                        <i class='fa-brands fa-facebook'/><span>Follow us</span>
-                    </FLink>
-                    <FLink class='btn secondary' href='//youtube.com/@ForiconIconFont' target='_blank'>
-                        <i class='fa-brands fa-youtube'/><span>Our channel</span>
-                    </FLink>
+                    <div>
+                        <h6>Social medias</h6>
+                        <FLink href='//youtube.com/@ForiconIconFont'>YouTube</FLink>
+                        <FLink href='//www.facebook.com/profile.php?id=61574026262611'>Facebook</FLink>
+                    </div>
+                    <div>
+                        <h6>Help</h6>
+                        <FLink href='/support'>{
+                            {
+                                en: 'Support',
+                                vi: 'Hỗ trợ',
+                                fr: 'Soutien',
+                                it: 'Supporto',
+                                ko: '지원하다',
+                                ja: 'サポート',
+                                de: 'Unterstützung',
+                                nl: 'Steun',
+                                dk: 'Support',
+                                pt: 'Apoiar',
+                                es: 'Apoyo',
+                            }[lang]
+                        }</FLink>
+                        <FLink href='/hub'>Hub</FLink>
+                        <FLink href='/contact'>Contact us</FLink>
+                    </div>
+                    <div>
+                        <h6>Others</h6>
+                        <FLink href='/fotorno'>Fotorno</FLink>
+                    </div>
                 </div>
             </div>
             <div class='dk-bg first'>
@@ -90,23 +117,6 @@ export default function Footer() {
                                 dk: 'Fortrolighedspolitik',
                                 pt: 'Política de Privacidade',
                                 es: 'Política de Privacidad',
-                            }[lang]
-                        }</FLink>
-                    </li>
-                    <li>
-                        <FLink href='/support'>{
-                            {
-                                en: 'Support',
-                                vi: 'Hỗ trợ',
-                                fr: 'Soutien',
-                                it: 'Supporto',
-                                ko: '지원하다',
-                                ja: 'サポート',
-                                de: 'Unterstützung',
-                                nl: 'Steun',
-                                dk: 'Support',
-                                pt: 'Apoiar',
-                                es: 'Apoyo',
                             }[lang]
                         }</FLink>
                     </li>
