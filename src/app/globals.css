@@ -2138,7 +2138,7 @@ footer {
         &:first-child {
             padding: 0 var(--spacing-default);
             justify-content: space-between;
-            height: 180px;
+            height: 200px;
             
             > a {
                 background: none;
