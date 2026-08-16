@@ -10,7 +10,7 @@ export function ThemeProvider({ children }) {
     })())
 
     useEffect(() => {
-        addEvLis(document, 'keypress', ({ key, ctrlKey }) => key == 'b' && ctrlKey && setIsDark(!isDark))
+        addEvLis(document, 'keypress', ({ key }) => key == '\u0002' && setIsDark(!isDark))
     })
     useEffect(() => {
         document.body.classList[isDark ? 'add' : 'remove']('dark');
