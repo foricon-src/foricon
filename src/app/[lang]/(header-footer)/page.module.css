@@ -150,7 +150,7 @@
                     background-color: var(--main-color);
                     cursor: var(--cursor-pointer);
                     min-width: 0;
-                    background-color: var(--lt-gray);
+                    background-color: var(--bg-color);
                     padding: var(--spacing-small) var(--spacing-small) var(--spacing-xsmall);
                     border: 1px solid transparent;
     
