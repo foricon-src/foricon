@@ -171,7 +171,7 @@ export default function Header() {
             </ul>
             <ul className={`btn-list vertical${open ? ' active' : ''}`} name='all'>
                 <li>Foricon Plus</li>
-                <li className='line'>{
+                <li className='line' onClick={() => go()}>{
                     {
                         en: 'Home',
                         vi: 'Trang chủ',
@@ -187,7 +187,7 @@ export default function Header() {
                         ru: 'Дом',
                     }[lang]
                 }</li>
-                <li>{
+                <li onClick={() => go('search')}>{
                     {
                         en: 'Search',
                         vi: 'Tìm kiếm',
@@ -203,7 +203,7 @@ export default function Header() {
                         ru: 'Поиск',
                     }[lang]
                 }</li>
-                <li>{
+                <li onClick={() => go('docs')}>{
                     {
                         en: 'Docs',
                         vi: 'Tài liệu',
@@ -219,7 +219,7 @@ export default function Header() {
                         ru: 'Документы',
                     }[lang]
                 }</li>
-                <li>{
+                <li onClick={() => go('support')}>{
                     {
                         en: 'Support',
                         vi: 'Hỗ trợ',
@@ -235,8 +235,8 @@ export default function Header() {
                         ru: 'Поддерживать',
                     }[lang]
                 }</li>
-                <li className='line'>Fotorno</li>
-                <li>Hub</li>
+                <li className='line' onClick={() => go('fotorno')}>Fotorno</li>
+                <li onClick={() => go('hub')}>Hub</li>
                 <li className={`line${isDark ? ' active' : ''}`} name='dark-toggle' onClick={() => setIsDark(!isDark)}>
                     <div/>
                     <span>
