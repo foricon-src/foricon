@@ -256,6 +256,12 @@ export function GET(_, { params: { uid }}) {
                     &[animation^='flip-xy'] {
                         animation-name: flipXY;
                     }
+                    &[animation^='shake'] {
+                        animation-name: shake;
+                    }
+                    &[animation^='bounce'] {
+                        animation-name: bounce;
+                    }
                     
                     &[size='smallest'] {
                         font-size: .25em !important;
@@ -377,6 +383,61 @@ export function GET(_, { params: { uid }}) {
                     0% {transform: rotateX(0deg) rotateY(0deg);}
                     50% {transform: rotateX(180deg) rotateY(180deg);}
                     100% {transform: rotateX(360deg) rotateY(360deg);}
+                }
+                @keyframes shake {
+                    0% {rotate: 0deg}
+                    5% {rotate: 0deg}
+                    10% {rotate: 6deg}
+                    15% {rotate: -6deg}
+                    20% {rotate: 8deg}
+                    25% {rotate: -8deg}
+                    30% {rotate: 10deg}
+                    35% {rotate: -10deg}
+                    40% {rotate: 12deg}
+                    45% {rotate: -12deg}
+                    50% {rotate: 12deg}
+                    55% {rotate: -12deg}
+                    60% {rotate: 12deg}
+                    65% {rotate: -10deg}
+                    70% {rotate: 10deg}
+                    75% {rotate: -8deg}
+                    80% {rotate: 8deg}
+                    85% {rotate: -6deg}
+                    90% {rotate: 6deg}
+                    95% {rotate: 0deg}
+                    100% {rotate: 0deg}
+                }
+                @keyframes bounce {
+                    0% {
+                        scale: 1.2 .8;
+                        translate: 0 10%;
+                        animation-timing-function: cubic-bezier(.5, 0, 1, .75);
+                    }
+                    20% {
+                        scale: 1 1;
+                        translate: 0;
+                        animation-timing-function: cubic-bezier(.1, .25, .5, 1);
+                    }
+                    25% {
+                        scale: .8 1.2;
+                    }
+                    35% {
+                        scale: 1 1;
+                    }
+                    50% {
+                        scale: 1 1;
+                        translate: 0 -50%;
+                        animation-timing-function: cubic-bezier(.5, 0, .9, .75);
+                    }
+                    80% {
+                        scale: 1 1;
+                        translate: 0;
+                        animation-timing-function:  cubic-bezier(0, .25, .5, 1);
+                    }
+                    100% {
+                        scale: 1.2 .8;
+                        translate: 0 10%;
+                    }
                 }\`;
                 let head = document.querySelector('head')
                 head.append(s);

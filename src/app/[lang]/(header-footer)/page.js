@@ -438,8 +438,9 @@ export default function Page({ params: { lang } }) {
                                 '',
                                 'ltfade', 'fade', 'hvfade', 'ulfade',
                                 'smbeat', 'beat', 'bgbeat', 'fadebeat',
-                                'spin', 'spin-reverse',
+                                'spin', 'spin-reverse', 'shake',
                                 'flip-x', 'flip-y', 'flip-xy',
+                                'bounce',
                             ].map(i => (
                                 <li key={i} onClick={() => setAnimation(i)} className={animation == i && 'active'}>{
                                     i || <f-icon icon='empty-set' i-s='outline'/>
