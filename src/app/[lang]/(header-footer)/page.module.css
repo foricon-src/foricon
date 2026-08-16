@@ -152,8 +152,14 @@
                     min-width: 0;
                     background-color: var(--lt-gray);
                     padding: var(--spacing-small) var(--spacing-small) var(--spacing-xsmall);
-
+                    border: 1px solid transparent;
+    
                     &:hover {
+                        border-color: var(--dk-gray);
+                        background-color: var(--lt-gray);
+                    }
+                    &:active {
+                        border-color: var(--dk-gray);
                         background-color: var(--gray);
                     }
                     & > div {
