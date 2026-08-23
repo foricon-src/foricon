@@ -21,6 +21,7 @@ export default function SidebarComponent({ items, home }) {
     let { lang } = document.documentElement;
 
     function stateActive(path, isIcon) {
+        console.log(pathname.slice(4), path.slice(1))
         return pathname.slice(4) == path.slice(1)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
