@@ -9,6 +9,7 @@ import './page.css';
 
 export default function PageClient() {
     let user = useContext(UserContext);
+
     let [ font, setFont ] = useState('');
     let [ indent, setIndent ] = useState(2);
 
@@ -22,6 +23,8 @@ export default function PageClient() {
 
         form_fSelect.setValue(font);
         UpdateRange(form_indent, indent);
+
+        addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
     })
 
     return (
@@ -43,7 +46,7 @@ export default function PageClient() {
                         ru: 'Шрифт Codebox',
                     }[lang]
                 }</span>
-                <f-select name='font' onChange={e => setFont(e.currentTarget.value)}>
+                <f-select name='font'>
                     <text></text>
                     <option-list>
                         <f-option value='cons'>Consolas</f-option>
