@@ -14,7 +14,7 @@
         }
     }
     & > .services {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-xxsmall);
         margin-bottom: var(--spacing-small);
         
@@ -43,9 +43,6 @@
             }
             &:nth-child(3) {
                 animation-delay: .4s;
-            }
-            &:last-child {
-                animation-delay: .5s;
             }
             & > span {
                 top: 0;
