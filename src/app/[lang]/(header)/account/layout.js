@@ -18,8 +18,10 @@ export function generateMetadata({ params: { lang } }) {
     }[lang]
 
     return {
-        title: myAccount,
-        template: `%s | ${myAccount} | Foricon (Beta 3.0 Preview)`,
+        title: {
+            default: myAccount,
+            template: `%s | ${myAccount} | Foricon (Beta 3.0 Preview)`,
+        }
     }
 }
 export default function AccountLayout({ children }) {
