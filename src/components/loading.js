@@ -40,5 +40,5 @@ export default function Loading() {
         return () => cancelled = true;
     }, [ user, icons, packageLoadded ])
 
-    return !done && LoadingElement();
+    return !done && <LoadingElement style={{ opacity }}/>;
 }

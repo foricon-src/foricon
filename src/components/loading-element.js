@@ -1,5 +1,5 @@
-export default function LoadingElement() {
-    return <iframe id='loading' style={{ opacity }} srcDoc={`
+export default function LoadingElement({ ...rest }) {
+    return <iframe id='loading' srcDoc={`
         <head>
             <style>
                 :root {
@@ -164,5 +164,5 @@ export default function LoadingElement() {
                 </div>
             </div>
         </body>
-    `}/>
+    `} {...rest}/>
 }
