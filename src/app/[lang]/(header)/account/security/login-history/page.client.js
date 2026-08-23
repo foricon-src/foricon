@@ -2,7 +2,9 @@
 
 import './page.css';
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
+    let { lang } = document.documentElement;
+
     return (
         <div name='security/login-history'>
             <h3>{

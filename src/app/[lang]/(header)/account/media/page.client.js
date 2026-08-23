@@ -1,3 +1,3 @@
-export default function PageClient({ lang }) {
-    return;
+export default function PageClient() {
+    return <></>;
 }

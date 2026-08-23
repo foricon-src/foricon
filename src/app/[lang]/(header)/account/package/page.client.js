@@ -8,9 +8,11 @@ import useGo from 'Com/go';
 import usePage from '../use-page';
 import cssStyle from './page.module.css';
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
     let go = useGo();
     let user = useContext(UserContext);
+    
+    let { lang } = document.documentElement;
 
     usePage(async () => {
         let { plan, pageview: { count, start } } = user.doc;

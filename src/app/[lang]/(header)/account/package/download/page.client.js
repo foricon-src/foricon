@@ -2,7 +2,9 @@
 
 import './page.css';
 
-export default function Page({ lang }) {
+export default function Page() {
+    let { lang } = document.documentElement;
+
     return (
         <div name='package/download'>
             <h3>{

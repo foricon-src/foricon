@@ -7,8 +7,9 @@ import { UserContext } from 'Com/user';
 import usePage from '../use-page';
 import './page.css';
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
     let user = useContext(UserContext);
+    let { lang } = document.documentElement;
 
     usePage(() => {
         let { font, indent } = user.doc.personalization;

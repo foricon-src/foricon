@@ -3,8 +3,9 @@
 import useGo from 'Com/go';
 import './page.css';
 
-export default function PageClient({ lang }) {
+export default function PageClient() {
     let go = useGo();
+    let { lang } = document.documentElement;
 
     return (
         <div name='security'>
