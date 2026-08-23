@@ -1,4 +1,11 @@
+'use client';
+
+import { useContext } from 'react';
+import { ThemeContext } from './theme';
+
 export default function LoadingElement({ ...rest }) {
+    let { isDark } = useContext(ThemeContext);
+
     return <iframe id='loading' srcDoc={`
         <head>
             <style>

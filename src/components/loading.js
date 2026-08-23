@@ -10,7 +10,6 @@ import LoadingElement from './loading-element';
 export default function Loading() {
     let user = useContext(UserContext);
     let icons = useContext(IconContext);
-    let { isDark } = useContext(ThemeContext);
 
     let [ packageLoadded, setPackageLoadded ] = useState(false);
     let [ done, setDone ] = useState(false);
