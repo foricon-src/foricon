@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Code from 'Com/code';
 import { UpdateRange, Range } from 'Com/range';
 import { UserContext } from 'Com/user';
@@ -9,6 +9,9 @@ import './page.css';
 
 export default function PageClient() {
     let user = useContext(UserContext);
+    let [ font, setFont ] = useState('');
+    let [ indent, setIndent ] = useState(2);
+
     let { lang } = document.documentElement;
 
     usePage(() => {
@@ -40,7 +43,7 @@ export default function PageClient() {
                         ru: 'Шрифт Codebox',
                     }[lang]
                 }</span>
-                <f-select name='font'>
+                <f-select name='font' onChange={e => setFont(e.currentTarget.value)}>
                     <text></text>
                     <option-list>
                         <f-option value='cons'>Consolas</f-option>
@@ -53,17 +56,17 @@ export default function PageClient() {
                         <f-option value='sono'>Sono</f-option>
                     </option-list>
                 </f-select>
-                <Code>{`<div class='box'>
-  <!--<p>Hello World!</p>-->
+                <Code className={font}>{`<div class='box'>
+${' '.repeat(indent)}<!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
-  let a = JSON.parse(localStorage.getItem('a'));
-  if (a.length) {
-    a.map(i => i == 'data' || i != 'money');
-  }
-  for (let i in a) {
-    a[i] += '_str'
-  }
+${' '.repeat(indent)}let a = JSON.parse(localStorage.getItem('a'));
+${' '.repeat(indent)}if (a.length) {
+${' '.repeat(indent * 2)}a.map(i => i == 'data' || i != 'money');
+${' '.repeat(indent)}}
+${' '.repeat(indent)}for (let i in a) {
+${' '.repeat(indent) * 2}a[i] += '_str'
+${' '.repeat(indent)}}
 </script>`}</Code>
                 <span>{
                     {
@@ -81,7 +84,7 @@ export default function PageClient() {
                         ru: 'Пространство отступа',
                     }[lang]
                 }</span>
-                <Range name='indent' min='1' max='6' step='1' dfValue='2'/>
+                <Range name='indent' min='1' max='6' step='1' dfValue='2' onInput={e.currentTarget.value}/>
                 <button className='primary'>{
                     {
                         en: 'Save changes',
