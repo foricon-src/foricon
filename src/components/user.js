@@ -37,7 +37,7 @@ export function UserProvider({ children }) {
                 body.indentSize = indent;
             }
             console.log(res)
-            setUser(res || null);
+            setUser(res);
             console.log(user)
             // if (!admin) {
             //     if (['manager', 'management-center', 'admin'].some(path => location.pathname == `/p/${path}.html`)) document.documentElement.innerHTML = '403 Forbidden';
