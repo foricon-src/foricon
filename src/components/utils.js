@@ -1025,7 +1025,7 @@ globalThis.formatTime = time => {
  * @param {string} lang - Language
  * @returns Formatted date string
  */
-globalThis.formatDate = (date, lang) => {
+globalThis.formatDate = (date, lang = document.documentElement.lang) => {
     let seconds = date.getSeconds();
     let minutes = date.getMinutes();
     let hours = date.getHours();

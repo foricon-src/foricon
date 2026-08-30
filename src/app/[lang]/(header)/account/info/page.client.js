@@ -133,7 +133,7 @@ export default function Page() {
                                 ru: 'Дата присоединения',
                             }[lang]
                         }</td>
-                        <td id='main_account-info_joining-date'>{localTime(obj.joiningDate)}</td>
+                        <td id='main_account-info_joining-date'>{formatDate(localTime(obj.joiningDate))}</td>
                     </tr>
                 </tbody>
             </table>
