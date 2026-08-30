@@ -11,6 +11,13 @@ export default function Page() {
 
     let { lang } = document.documentElement;
 
+    let obj = user?.doc || {
+        avatar: '',
+        name: 'John Doe',
+        email: 'address@example.com',
+        joiningDate: '2023-12-21T17:00:00.000Z',
+    }
+
     return (
         <div className={cssStyle.account_info}>
             <table>
@@ -33,7 +40,7 @@ export default function Page() {
                             }[lang]
                         }</td>
                         <td>
-                            <div className='img circle square' style={{ backgroundImage: `url(${user?.doc.avatar})` }}/>
+                            <div className='img circle square' style={{ backgroundImage: `url(${obj.avatar})` }}/>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +60,7 @@ export default function Page() {
                                 ru: 'Имя',
                             }[lang]
                         }</td>
-                        <td>{user?.doc.name}</td>
+                        <td>{obj.name}</td>
                     </tr>
                     <tr>
                         <td>{
@@ -72,7 +79,7 @@ export default function Page() {
                                 ru: 'Электронная почта',
                             }[lang]
                         }</td>
-                        <td>{user?.doc.email}{user?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
+                        <td>{obj.email}{user?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
                     </tr>
                     <tr>
                         <td>{
@@ -126,7 +133,7 @@ export default function Page() {
                                 ru: 'Дата присоединения',
                             }[lang]
                         }</td>
-                        <td id='main_account-info_joining-date'>21 December, 2023</td>
+                        <td id='main_account-info_joining-date'>{localTime(obj.joiningDate)}</td>
                     </tr>
                 </tbody>
             </table>

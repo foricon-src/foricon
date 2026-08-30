@@ -33,7 +33,7 @@ export function LanguageProvider({ children }) {
                 userAgent.indexOf('Safari') + 1 ? 'Safari' :
                 userAgent.indexOf('Firefox') + 1 ? 'Firefox' : 'Other';
             
-            let today = getUTC();
+            let today = getUTC(true);
             let stats = (await getDoc(doc(dbFirestore, 'statistics', 'item'))).data();
             stats.visits[today] ||= {
                 browsers: {},
