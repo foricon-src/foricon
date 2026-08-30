@@ -20,7 +20,8 @@ export default function SidebarComponent({ items, home }) {
     let { lang } = document.documentElement;
 
     function stateActive(path, isIcon) {
-        return pathname.slice(4).startsWith(path)
+        let sliced = pathname.slice(4);
+        return sliced == '' && path == '' || sliced.startsWith(path)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
     }
