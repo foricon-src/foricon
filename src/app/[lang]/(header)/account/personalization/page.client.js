@@ -31,10 +31,10 @@ export default function PageClient() {
             form_fSelect.setValue(font);
             UpdateRange(form_indent, indent);
 
-            addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
+            addEvLis(form_fSelect, 'change', () => {console.log('changed');setFont(form_fSelect.value)});
         })
         return () => canceled = true;
-    })
+    }, [ user ])
 
     return (
         <div className={cssStyle.personalization}>

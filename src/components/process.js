@@ -468,6 +468,7 @@ export default function Process() {
                 addEvLis(elem.list, 'click', ({ target }) => {
                     let opt = target.closest('f-option');
                     opt && elem.toggleOption(opt);
+                    console.log(opt);
                 })
                 addEvLis(document, 'click',({ target }) => 
                     isActive(elem.list) && (
