@@ -1,19 +1,15 @@
 'use client';
 
-import { usePathname } from "next/navigation";
-import { signOut } from "firebase/auth";
-import { auth } from "Com/firebase";
-import { GoPage } from "Com/sidebar-page-transition";
-import SidebarComponent from "Com/sidebar";
+import { usePathname } from 'next/navigation';
+import { signOut } from 'firebase/auth';
+import { auth } from 'Com/firebase';
+import { GoPage } from 'Com/sidebar-page-transition';
+import SidebarComponent from 'Com/sidebar';
+import useGo from 'Com/go';
 
 export default function Sidebar() {
+    let go = useGo();
     let pathname = usePathname();
-
-    function stateActive(path = '', isIcon) {
-        return (pathname.split('/')[2] || '') == path
-            ? isIcon ? 'solid' : 'active'
-            : isIcon ? 'outline' : '';
-    }
 
     return (
         // <ul className='btn-list vertical line-active'>
@@ -133,7 +129,7 @@ export default function Sidebar() {
                 action: async () => {
                     try {
                         await signOut(auth);
-                        location.reload();
+                        go('login');
                     }
                     catch ({ message }) { notify('error', message) }
                 },

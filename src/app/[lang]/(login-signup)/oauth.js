@@ -2,8 +2,10 @@ import { auth } from 'Com/firebase';
 import recordLogin from 'Com/record-login';
 import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from 'firebase/auth';
 import cssStyle from './page.module.css'
+import useGo from 'Com/go';
 
 export default function OAuth({ des }) {
+    let go = useGo();
     let { lang } = document.documentElement;
 
     async function methodPopup(provider) {
