@@ -37,7 +37,7 @@ export default function SidebarComponent({ items, home }) {
                 return <li
                     key={page}
                     className={Join(' ', hasLine && 'line', page != undefined && stateActive(path), className)}
-                    onClick={() => sliced != path && (action ? action() : GoPage(go, path))}
+                    onClick={() => action ? action() : sliced != path && GoPage(go, path)}
                 >
                     <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || texts[lang]}</span>
