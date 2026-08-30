@@ -16,7 +16,7 @@ export async function POST(req) {
                 date: Date.now(),
             }),
         })
-        return NextResponse.json(null, { status: 204 })
+        return new NextResponse(null, { status: 204 })
     }
     catch (err) {
         console.error(err);

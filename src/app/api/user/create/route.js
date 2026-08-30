@@ -11,7 +11,7 @@ export async function POST(req) {
         let snap = await ref.get();
     
         if (!snap.exists) await ref.set(getUserData(name, email, uid));
-        return NextResponse.json(null, { status: 204 })
+        return new NextResponse(null, { status: 204 })
     }
     catch (err) {
         console.error(err);
