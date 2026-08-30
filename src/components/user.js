@@ -36,9 +36,7 @@ export function UserProvider({ children }) {
                 body.classList.add(font);
                 body.indentSize = indent;
             }
-            console.log(res)
-            setUser(res);
-            console.log(user)
+            setUser(res || false);
             // if (!admin) {
             //     if (['manager', 'management-center', 'admin'].some(path => location.pathname == `/p/${path}.html`)) document.documentElement.innerHTML = '403 Forbidden';
             //     else if (locked) document.documentElement.innerHTML = 'Foricon is updating to the newer version. Please come back later.';
