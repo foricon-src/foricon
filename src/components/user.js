@@ -7,9 +7,9 @@ import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from 'Com/firebase';
 import useGo from 'Com/go';
 
-export const UserContext = createContext(false);
+export const UserContext = createContext(null);
 export function UserProvider({ children }) {
-    let [ user, setUser ] = useState(false);
+    let [ user, setUser ] = useState(null);
     let go = useGo();
 
     useEffect(() => {

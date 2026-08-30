@@ -11,7 +11,7 @@ export async function POST(req) {
     await fs.doc(`users/${uid}/private/default`).update({
         loginHistory: FieldValue.arrayUnion({
             os: getOS(req),
-            date: getUTC(true),
+            date: Date.now(),
         }),
     })
 }

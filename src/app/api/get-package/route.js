@@ -5,11 +5,9 @@ export async function GET(req) {
     try {
         let { searchParams } = req.nextUrl;
         let uid = searchParams.get('uid');
-        let timezone = Number(searchParams.get('timezone'));
         let origin = req.headers.get('origin') || req.headers.get('referer');
         
         if (!uid) return Response.json({ message: 'Missing UID' }, { status: 400 });
-        if (Number.isNaN(timezone)) return Response.json({ message: 'Timezone must be a number' }, { status: 400 });
         
         let userDoc = await fs.collection('users').doc(uid).get();
         if (!userDoc.exists) return Response.json({ message: 'User not found' }, { status: 404 });
@@ -23,42 +21,16 @@ export async function GET(req) {
         let plans = plansSnap.val();
         
         let { plan, pageview: { start, count }, settings } = user;
-        let now = new Date();
-        now.setHours(now.getHours() + now.getTimezoneOffset() / 60);
-        now.setHours(now.getHours() - timezone);
+        let now = Date.now();
         
-        let startDate = new Date(
-            start.year,
-            start.month,
-            start.day,
-            start.hours,
-            start.minutes,
-            start.seconds
-        );
-        startDate.setHours(startDate.getHours() + start.timezone);
-        startDate.setHours(startDate.getHours() - timezone);
-        startDate.setDate(startDate.getDate() + 30);
-        
-        if (now >= startDate) {
-            let checkpoint = new Date(now);
-            checkpoint.setDate(checkpoint.getDate() - 30);
-            let latestStartDate = new Date(startDate);
-            while (checkpoint >= latestStartDate)
-                latestStartDate.setDate(latestStartDate.getDate() + 30);
+        if (now >= start) {
+            let days30 = 30 * 24 * 60 * 60 * 100;
+            let checkpoint = now - days30;
+            let latestStart = start;
+            while (checkpoint >= latestStart) latestStart += days30;
             
             await fs.doc(`users/${uid}`).update({
-                pageview: {
-                    count: 1,
-                    start: {
-                        day: latestStartDate.getDate(),
-                        month: latestStartDate.getMonth(),
-                        year: latestStartDate.getFullYear(),
-                        hours: latestStartDate.getHours(),
-                        minutes: latestStartDate.getMinutes(),
-                        seconds: latestStartDate.getSeconds(),
-                        timezone: start.timezone,
-                    },
-                },
+                pageview: { count: 1, start: Date.now() },
             })
         }
         else {

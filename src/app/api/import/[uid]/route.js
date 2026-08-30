@@ -135,7 +135,7 @@ export function GET(_, { params: { uid }}) {
             })
             
             try {
-                const res = await fetch(\`//foricon.vercel.app/api/get-package?uid=\${uid}&timezone=\${new Date().getTimezoneOffset() / 60}\`);
+                const res = await fetch(\`//foricon.vercel.app/api/get-package?uid=\${uid}&timestamp=\${new Date().toISOString()}\`);
                 const parsed = await res.json();
 
                 if (!res.ok) throw new Error(parsed.message);
