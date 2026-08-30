@@ -16,15 +16,24 @@ export default function PageClient() {
     let { lang } = document.documentElement;
 
     usePage(() => {
-        let { font, indent } = user.doc.personalization;
-        let form = qSelec('div[name="personalization"] > form');
-        let form_fSelect = qSelec(form, 'f-select');
-        let form_indent = form.indent;
+        (async () => {
+            let canceled = false;
 
-        form_fSelect.setValue(font);
-        UpdateRange(form_indent, indent);
+            let { font, indent } = user.doc.personalization;
+            let form = qSelec('div[name="personalization"] > form');
+            let form_fSelect = qSelec(form, 'f-select');
 
-        addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
+            while (!form.indent) await wait();
+            if (canceled) return;
+
+            let form_indent = form.indent;
+
+            form_fSelect.setValue(font);
+            UpdateRange(form_indent, indent);
+
+            addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
+        })
+        return () => canceled = true;
     })
 
     return (

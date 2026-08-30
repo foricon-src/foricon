@@ -10,7 +10,7 @@ export default function usePage(func) {
     let go = useGo();
 
     useEffect(() => {(async () => {
-        if (user == null) return;
+        if (user == false) return;
         if (!user) {
             go('login');
             return;
