@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { LanguageContext } from 'Com/language';
 import { GoPage } from 'Com/sidebar-page-transition';
 import useGo from 'Com/go';
+import Join from './join';
 
 /**
  * Creates a sidebar
@@ -18,9 +19,9 @@ export default function SidebarComponent({ items, home }) {
     let go = useGo();
 
     let { lang } = document.documentElement;
+    let sliced = pathname.slice(4);
 
     function stateActive(path, isIcon) {
-        let sliced = pathname.slice(4);
         let [ pathSegs, slicedSegs ] = [ path.split('/'), sliced.split('/') ];
         
         return (!pathSegs[1] ? !slicedSegs[1]  : slicedSegs[1] == pathSegs[1])
@@ -35,8 +36,8 @@ export default function SidebarComponent({ items, home }) {
                 let path = `${home}${page ? `/${page}` : ''}`;
                 return <li
                     key={page}
-                    className={[ hasLine && 'line', page != undefined && stateActive(path), className ].filter(Boolean).join(' ')}
-                    onClick={e => !isActive(e.currentTarget) && (action ? action() : GoPage(go, path))}
+                    className={Join(' ', hasLine && 'line', page != undefined && stateActive(path), className)}
+                    onClick={e => sliced != path && (action ? action() : GoPage(go, path))}
                 >
                     <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>
                     <span>{text || texts[lang]}</span>
