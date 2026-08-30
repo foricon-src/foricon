@@ -485,6 +485,7 @@ export default function Process() {
                 }).observe(elem.list, { childList: true });
             }
             toggleOption(opt) {
+                console.log(opt)
                 let elem = this;
                 let value = getAttr(opt, 'value') ?? opt.innerText;
 
@@ -552,6 +553,7 @@ export default function Process() {
                 )
             }
             async setValue(value) {
+                console.log(value)
                 let elem = this;
                 if (value == null) elem.clearOptions();
                 else
