@@ -130,7 +130,7 @@ export default function Sidebar() {
         // </ul>
         <SidebarComponent home='account' items={[
             {
-                actions: async () => {
+                action: async () => {
                     try {
                         await signOut(auth);
                         location.reload();
