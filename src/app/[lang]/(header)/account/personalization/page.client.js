@@ -25,6 +25,7 @@ export default function PageClient() {
             let form_indent = form.indent;
 
             form_fSelect.setValue(font);
+            console.log(form_fSelect.setValue)
             UpdateRange(form_indent, indent);
 
             addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
