@@ -15,7 +15,8 @@ export default function PageClient() {
 
     let { lang } = document.documentElement;
 
-    usePage(() => {
+    usePage(() => {(async () => {
+        await wait();
         let { font, indent } = user.doc.personalization;
         let form = qSelec('div[name="personalization"] > form');
         let form_fSelect = qSelec(form, 'f-select');
@@ -24,7 +25,7 @@ export default function PageClient() {
         setIndent(indent);
 
         addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
-    }, [])
+    })}, [])
 
     return (
         <div className={cssStyle.personalization}>
