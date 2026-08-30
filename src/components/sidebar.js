@@ -11,8 +11,7 @@ import useGo from 'Com/go';
  * @param {{
  *   items: Array,
  *   home: string,
- * }} param0 
- * @returns
+ * }} param0
  */
 export default function SidebarComponent({ items, home }) {
     let pathname = usePathname();
@@ -21,7 +20,7 @@ export default function SidebarComponent({ items, home }) {
     let { lang } = document.documentElement;
 
     function stateActive(path, isIcon) {
-        return pathname.slice(4) == path
+        return pathname.slice(4).startsWith(path)
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
     }

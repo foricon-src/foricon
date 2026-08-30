@@ -8,6 +8,7 @@
     --l-bdr-rad: 20px;
     --bdr-rad: 15px;
     --s-bdr-rad: 10px;
+    --xs-bdr-rad: 5px;
     
     /*Spacing*/
     --spacing-default: 80px;
@@ -427,10 +428,22 @@ ul {
                 padding: var(--spacing-xxsmall) var(--spacing-xsmall);
                 border-radius: var(--bdr-rad);
                 justify-content: space-between;
+                background-color: var(--lt-gray);
                 
                 &:after {
                     content: '\e0ab';
                     font-family: 'Foricon Beta';
+                }
+                &:hover {
+                    background-color: var(--gray);
+                }
+                &:has(+ li.large) {
+                    border-bottom-left-radius: var(--xs-bdr-rad);
+                    border-bottom-right-radius: var(--xs-bdr-rad);
+                }
+                & + li.large {
+                    border-top-left-radius: var(--xs-bdr-rad);
+                    border-top-right-radius: var(--xs-bdr-rad);
                 }
             }
             .line-active > & {

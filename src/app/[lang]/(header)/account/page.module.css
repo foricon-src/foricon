@@ -1,16 +1,14 @@
 .account_home {
     & > .hero {
-        height: min(500px, 40vh);
         display: flex;
-        justify-content: center;
         align-items: center;
-        flex-direction: column;
+        margin-bottom: var(--spacing-small);
         
         & > :global(.img) {
-            height: 90px;
+            height: 60px;
         }
-        & > h2 {
-            margin: var(--spacing-small) 0 0;
+        & > h3 {
+            margin: 0;
         }
     }
     & > .services {
