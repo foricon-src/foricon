@@ -68,7 +68,7 @@ ${' '.repeat(indent)}if (a.length) {
 ${' '.repeat(indent * 2)}a.map(i => i == 'data' || i != 'money');
 ${' '.repeat(indent)}}
 ${' '.repeat(indent)}for (let i in a) {
-${' '.repeat(indent) * 2}a[i] += '_str'
+${' '.repeat(indent * 2)}a[i] += '_str'
 ${' '.repeat(indent)}}
 </script>`}</Code>
                 <span>{
@@ -86,7 +86,7 @@ ${' '.repeat(indent)}}
                         es: 'Espacio de indentación',
                         ru: 'Пространство отступа',
                     }[lang]
-                }</span>
+                } {indent}</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2' onInput={e => setIndent(e.currentTarget.value)}/>
                 <button className='primary'>{
                     {
