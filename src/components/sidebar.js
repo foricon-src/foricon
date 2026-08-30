@@ -21,6 +21,8 @@ export default function SidebarComponent({ items, home }) {
 
     function stateActive(path, isIcon) {
         let sliced = pathname.slice(4);
+        sliced = sliced.slice(sliced.indexOf('/') + 1);
+        console.log(path, sliced, path == '' ? sliced == ''  : sliced.startsWith(path))
         return (path == '' ? sliced == ''  : sliced.startsWith(path))
             ? isIcon ? 'solid' : 'active'
             : isIcon ? 'outline' : '';
