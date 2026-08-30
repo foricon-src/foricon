@@ -9,16 +9,22 @@ export default function OAuth({ des }) {
     let { lang } = document.documentElement;
 
     async function methodPopup(provider) {
-        let result = await signInWithPopup(auth, provider);
-        let token = await result.user.getIdToken();
-        
-        await fetch('/api/user/create', {
-            method: 'POST',
-            headers: { Authorization: `Bearer ${token}` },
-        })
-        await recordLogin(token);
+        try {
+            let result = await signInWithPopup(auth, provider);
+            let token = await result.user.getIdToken();
+            
+            await fetch('/api/user/create', {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            await recordLogin(token);
 
-        go(des);
+            go(des);
+        }
+        catch (err) {
+            console.error(err);
+            notify('error', err.message);
+        }
     }
 
     return <>
