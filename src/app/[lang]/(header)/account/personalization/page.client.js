@@ -48,16 +48,42 @@ export default function PageClient() {
                 }</span>
                 <f-select name='font'>
                     <text></text>
-                    <option-list>
-                        <f-option value='cons'>Consolas</f-option>
-                        <f-option value='fira'>Fira Code</f-option>
-                        <f-option value='scp'>Source Code Pro</f-option>
-                        <f-option value='dm'>DM Mono</f-option>
-                        <f-option value='nova'>Nova Mono</f-option>
-                        <f-option value='xanh'>Xanh Mono</f-option>
-                        <f-option value='kode'>Kode Mono</f-option>
-                        <f-option value='sono'>Sono</f-option>
-                    </option-list>
+                    <option-list>{
+                        [
+                            {
+                                name: 'Consolas',
+                                value: 'cons',
+                            },
+                            {
+                                name: 'Fira Code',
+                                value: 'fira',
+                            },
+                            {
+                                name: 'Source Code Pro',
+                                value: 'scp',
+                            },
+                            {
+                                name: 'DM Mono',
+                                value: 'dm',
+                            },
+                            {
+                                name: 'Nova Mono',
+                                value: 'nova',
+                            },
+                            {
+                                name: 'Xanh Mono',
+                                value: 'xanh',
+                            },
+                            {
+                                name: 'Kode Mono',
+                                value: 'kode',
+                            },
+                            {
+                                name: 'Sono',
+                                value: 'sono',
+                            },
+                        ].map(({ name, value }) => <f-option value={value} className={value}>{name}</f-option>)
+                    }</option-list>
                 </f-select>
                 <Code className={font}>{`<div class='box'>
 ${' '.repeat(indent)}<!--<p>Hello World!</p>-->
@@ -86,7 +112,7 @@ ${' '.repeat(indent)}}
                         es: 'Espacio de indentación',
                         ru: 'Пространство отступа',
                     }[lang]
-                } {indent}</span>
+                }: {indent}</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2' onInput={e => setIndent(e.currentTarget.value)}/>
                 <button className='primary'>{
                     {
