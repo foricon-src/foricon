@@ -21,7 +21,7 @@ export default function PageClient() {
         let { font, indent } = user.doc.personalization;
         selectRef.current.setValue(font);
         setIndent(indent);
-        addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
+        addEvLis(selectRef.current, 'change', () => setFont(form_fSelect.value));
     }, [])
 
     return (
