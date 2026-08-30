@@ -437,11 +437,11 @@ ul {
                 &:hover {
                     background-color: var(--gray);
                 }
-                &:has(+ li.large) {
+                &:has(+ li) {
                     border-bottom-left-radius: var(--xs-bdr-rad);
                     border-bottom-right-radius: var(--xs-bdr-rad);
                 }
-                & + li.large {
+                & + li {
                     border-top-left-radius: var(--xs-bdr-rad);
                     border-top-right-radius: var(--xs-bdr-rad);
                 }

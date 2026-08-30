@@ -2,6 +2,7 @@
     & > .hero {
         display: flex;
         align-items: center;
+        gap: var(--spacing-xxsmall);
         margin-bottom: var(--spacing-small);
         
         & > :global(.img) {
