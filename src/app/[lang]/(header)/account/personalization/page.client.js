@@ -82,7 +82,7 @@ export default function PageClient() {
                                 name: 'Sono',
                                 value: 'sono',
                             },
-                        ].map(({ name, value }) => <f-option value={value} className={value}>{name}</f-option>)
+                        ].map(({ name, value }) => <f-option key={value} value={value} className={value}>{name}</f-option>)
                     }</option-list>
                 </f-select>
                 <Code className={font}>{`<div class='box'>
