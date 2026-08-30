@@ -22,16 +22,12 @@ export default function PageClient() {
             let { font, indent } = user.doc.personalization;
             let form = qSelec('div[name="personalization"] > form');
             let form_fSelect = qSelec(form, 'f-select');
-
-            while (!form.indent) await wait();
-            if (canceled) return;
-
-            let form_indent = form.indent;
+            let form_indent = form.indent || qSelec(form, 'input');
 
             form_fSelect.setValue(font);
             UpdateRange(form_indent, indent);
 
-            addEvLis(form_fSelect, 'change', () => {console.log('changed');setFont(form_fSelect.value)});
+            addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
         })
         return () => canceled = true;
     }, [ user ])
