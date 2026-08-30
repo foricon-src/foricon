@@ -5,7 +5,7 @@ import Code from 'Com/code';
 import { UpdateRange, Range } from 'Com/range';
 import { UserContext } from 'Com/user';
 import usePage from '../use-page';
-import './page.css';
+import cssStyle from './page.module.css';
 
 export default function PageClient() {
     let user = useContext(UserContext);
@@ -28,7 +28,7 @@ export default function PageClient() {
     })
 
     return (
-        <div name='personalization'>
+        <div className={cssStyle.personalization}>
             <form>
                 <span>{
                     {
