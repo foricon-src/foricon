@@ -18,10 +18,12 @@ export default function PageClient() {
     let { lang } = document.documentElement;
 
     usePage(() => {
+        let { current } = selectRef;
         let { font, indent } = user.doc.personalization;
-        selectRef.current.setValue(font);
+        
+        current.setValue(font);
         setIndent(indent);
-        addEvLis(selectRef.current, 'change', () => setFont(form_fSelect.value));
+        addEvLis(current, 'change', () => setFont(current.value));
     }, [])
 
     return (
