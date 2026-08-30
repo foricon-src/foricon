@@ -25,7 +25,7 @@ export default function PageClient() {
         setIndent(indent);
 
         addEvLis(form_fSelect, 'change', () => setFont(form_fSelect.value));
-    })}, [])
+    })()}, [])
 
     return (
         <div className={cssStyle.personalization}>

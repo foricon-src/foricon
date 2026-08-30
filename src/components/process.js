@@ -485,7 +485,6 @@ export default function Process() {
                 }).observe(elem.list, { childList: true });
             }
             toggleOption(opt) {
-                console.log(opt)
                 let elem = this;
                 let value = getAttr(opt, 'value') ?? opt.innerText;
 
