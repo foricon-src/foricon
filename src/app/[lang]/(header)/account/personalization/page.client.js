@@ -3,9 +3,11 @@
 import { useContext, useRef, useState } from 'react';
 import Code from 'Com/code';
 import { UpdateRange, Range } from 'Com/range';
-import { UserContext } from 'Com/user';
+import { UpdateUser, UserContext } from 'Com/user';
 import usePage from '../use-page';
 import cssStyle from './page.module.css';
+import { doc, setDoc } from 'firebase/firestore';
+import { dbFirestore } from 'Com/firebase';
 
 export default function PageClient() {
     let user = useContext(UserContext);
@@ -113,7 +115,33 @@ ${' '.repeat(indent)}}
                     }[lang]
                 }: {indent}</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2' onInput={e => setIndent(e.currentTarget.value)}/>
-                <button className='primary'>{
+                <button className='primary' onClick={async () => {
+                    try {
+                        disable(document.body);
+                        await UpdateUser({ personalization: { font, indent } });
+                        notify('success', {
+                            en: 'Updated successfully',
+                            vi: 'Cập nhật thành công',
+                            fr: 'Mise à jour réussie',
+                            it: 'Aggiornamento completato con successo',
+                            ko: '성공적으로 업데이트되었습니다',
+                            ja: '正常に更新されました',
+                            de: 'Erfolgreich aktualisiert',
+                            nl: 'Succesvol bijgewerkt',
+                            dk: 'Opdateret',
+                            pt: 'Atualizado com sucesso',
+                            es: 'Actualizado correctamente',
+                            ru: 'Успешно обновлено',
+                        }[lang])
+                    }
+                    catch (err) {
+                        notify('error', err.message);
+                        console.error(err);
+                    }
+                    finally {
+                        enable(document.body);
+                    }
+                }}>{
                     {
                         en: 'Save changes',
                         vi: 'Lưu thay đổi',
@@ -127,6 +155,22 @@ ${' '.repeat(indent)}}
                         pt: 'Guardar alterações',
                         es: 'Guardar cambios',
                         ru: 'Сохранить изменения',
+                    }[lang]
+                }</button>
+                <button>{
+                    {
+                        en: 'Reset default',
+                        vi: 'Đặt lại mặc định',
+                        fr: 'Rétablir les paramètres par défaut',
+                        it: 'Ripristina impostazioni predefinite',
+                        ko: '기본값으로 재설정',
+                        ja: 'デフォルトにリセット',
+                        de: 'Auf Standard zurücksetzen',
+                        nl: 'Standaardinstelling herstellen',
+                        dk: 'Nulstil standard',
+                        pt: 'Redefinir padrão',
+                        es: 'Restablecer valores predeterminados',
+                        ru: 'Сбросить до настроек по умолчанию',
                     }[lang]
                 }</button>
             </form>

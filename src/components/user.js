@@ -1,8 +1,8 @@
 'use client';
 
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, setDoc } from 'firebase/firestore';
 import { get, ref } from 'firebase/database';
 import { auth, dbFirestore, db } from 'Com/firebase';
 import useGo from 'Com/go';
@@ -47,4 +47,15 @@ export function UserProvider({ children }) {
     return <UserContext.Provider value={user}>{
         children
     }</UserContext.Provider>
+}
+export async function UpdateUser(data) {
+    let user = useContext(UserContext);
+    if (!user) return;
+    try {
+        await setDoc(doc(dbFirestore, 'users', user.uid), data, { merge: true });
+        for (let key in data) user[key] = data[key];
+    }
+    catch (err) {
+        throw err;
+    }
 }
