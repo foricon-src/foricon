@@ -44,7 +44,7 @@ export function UserProvider({ children }) {
         })
     }, [])
 
-    return <UserContext.Provider value={{ user, setUser}}>{
+    return <UserContext.Provider value={{ user, setUser }}>{
         children
     }</UserContext.Provider>
 }
@@ -54,10 +54,10 @@ export function useUpdateUser() {
     return async data => {
         if (!user) return;
         try {
-            await setDoc(doc(dbFirestore, 'users', user.uid), data, { merge: true });
-            let clone = structuredClone(user);
-            for (let key in data) clone.doc[key] = data[key];
-            setUser(clone);
+            let ref = doc(dbFirestore, 'users', user.uid);
+            await setDoc(ref, data, { merge: true });
+            let newDoc = (await getDoc(ref)).data();
+            setUser(prev => ({ ...prev, doc: newDoc }));
         }
         catch (err) {
             throw err;
