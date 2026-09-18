@@ -17,7 +17,7 @@ export default function Header() {
     let go = useGo();
 
     let { isDark, setIsDark } = useContext(ThemeContext);
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
 
     let { lang } = document.documentElement;
 

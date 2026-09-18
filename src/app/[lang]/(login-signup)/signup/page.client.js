@@ -191,7 +191,7 @@ export default function PageClient() {
     let go = useGo();
     let searchParams = useSearchParams();
     let pathname = usePathname();
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
     let [ step ] = useContext(Context).stepHandler;
 
     let { lang } = document.documentElement;

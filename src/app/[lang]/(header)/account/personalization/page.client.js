@@ -10,7 +10,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { dbFirestore } from 'Com/firebase';
 
 export default function PageClient() {
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
     let updateUser = useUpdateUser();
 
     let selectRef = useRef();

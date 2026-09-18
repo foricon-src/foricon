@@ -6,7 +6,7 @@ import useGo from 'Com/go';
 export default function usePage(func) {
     let router = useRouter();
     let pathname = usePathname();
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
     let go = useGo();
 
     useEffect(() => {(async () => {

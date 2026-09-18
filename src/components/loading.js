@@ -7,7 +7,7 @@ import { ThemeContext } from './theme';
 import 'Com/utils';
 
 export default function Loading() {
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
     let icons = useContext(IconContext);
     let { isDark } = useContext(ThemeContext);
 

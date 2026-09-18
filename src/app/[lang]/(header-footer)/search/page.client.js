@@ -18,7 +18,7 @@ export default function PageClient() {
     let go = useGo();
     let searchParams = useSearchParams();
 
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
     let iconSet = useContext(IconContext);
 
     let { lang } = document.documentElement;

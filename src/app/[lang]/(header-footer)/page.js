@@ -14,7 +14,7 @@ import cssStyle from './page.module.css';
 
 export default function Page({ params: { lang } }) {
     let go = useGo();
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
     let icons = useContext(IconContext);
 
     let [ icon, setIcon ] = useState('brush');

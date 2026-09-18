@@ -7,7 +7,7 @@ import cssStyle from './page.module.css';
 
 export default function Page() {
     let go = useGo();
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
 
     let { lang } = document.documentElement;
 

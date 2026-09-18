@@ -9,7 +9,7 @@ import cssStyle from './page.module.css';
 export default function Page({ params }) {
     let go = useGo();
     let { lang } = params;
-    let user = useContext(UserContext);
+    let { user } = useContext(UserContext);
 
     usePage(async () => {
         let hour = new Date().getHours();
