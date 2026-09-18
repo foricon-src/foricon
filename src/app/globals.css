@@ -578,6 +578,7 @@ button, a.btn {
     gap: 10px;
     margin: 15px 0;
     border: 0;
+    cursor: var(--cursor-pointer);
     
     p + & {
         margin: 0;
