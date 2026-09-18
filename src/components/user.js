@@ -48,14 +48,17 @@ export function UserProvider({ children }) {
         children
     }</UserContext.Provider>
 }
-export async function UpdateUser(data) {
+export function useUpdateUser() {
     let user = useContext(UserContext);
-    if (!user) return;
-    try {
-        await setDoc(doc(dbFirestore, 'users', user.uid), data, { merge: true });
-        for (let key in data) user[key] = data[key];
-    }
-    catch (err) {
-        throw err;
+
+    return async data => {
+        if (!user) return;
+        try {
+            await setDoc(doc(dbFirestore, 'users', user.uid), data, { merge: true });
+            for (let key in data) user[key] = data[key];
+        }
+        catch (err) {
+            throw err;
+        }
     }
 }

@@ -3,7 +3,7 @@
 import { useContext, useRef, useState } from 'react';
 import Code from 'Com/code';
 import { UpdateRange, Range } from 'Com/range';
-import { UpdateUser, UserContext } from 'Com/user';
+import { useUpdateUser, UserContext } from 'Com/user';
 import usePage from '../use-page';
 import cssStyle from './page.module.css';
 import { doc, setDoc } from 'firebase/firestore';
@@ -11,6 +11,7 @@ import { dbFirestore } from 'Com/firebase';
 
 export default function PageClient() {
     let user = useContext(UserContext);
+    let updateUser = useUpdateUser();
 
     let selectRef = useRef();
 
@@ -118,7 +119,7 @@ ${' '.repeat(indent)}}
                 <button className='primary' onClick={async () => {
                     try {
                         disable(document.body);
-                        await UpdateUser({ personalization: { font, indent } });
+                        await updateUser({ personalization: { font, indent } });
                         notify('success', {
                             en: 'Updated successfully',
                             vi: 'Cập nhật thành công',
