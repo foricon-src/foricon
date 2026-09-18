@@ -54,10 +54,20 @@ export function useUpdateUser() {
     return async data => {
         if (!user) return;
         try {
+            let { body } = document;
+            let { font } = user.doc.personalization;
             let ref = doc(dbFirestore, 'users', user.uid);
+
             await setDoc(ref, data, { merge: true });
+
             let newDoc = (await getDoc(ref)).data();
+            let { font: newFont } = newDoc.personalization;
+
             setUser(prev => ({ ...prev, doc: newDoc }));
+
+            body.classList.remove(font);
+            body.classList.add(newFont);
+            body.indentSize = indent;
         }
         catch (err) {
             throw err;
