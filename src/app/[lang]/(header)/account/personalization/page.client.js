@@ -12,11 +12,12 @@ import { dbFirestore } from 'Com/firebase';
 export default function PageClient() {
     let { user } = useContext(UserContext);
     let updateUser = useUpdateUser();
+    let { personalization } = user
 
     let selectRef = useRef();
 
-    let [ font, setFont ] = useState('');
-    let [ indent, setIndent ] = useState(2);
+    let [ font, setFont ] = useState(personalization.font);
+    let [ indent, setIndent ] = useState(personalization.indent);
 
     let { lang } = document.documentElement;
 
