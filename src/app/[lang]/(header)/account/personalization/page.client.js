@@ -117,33 +117,38 @@ ${' '.repeat(indent)}}
                     }[lang]
                 }: {indent}</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2' onInput={e => setIndent(e.currentTarget.value)}/>
-                <button className='primary' type='button' onClick={async () => {
-                    try {
-                        disable(document.body);
-                        await updateUser({ personalization: { font, indent } });
-                        notify('success', {
-                            en: 'Updated successfully',
-                            vi: 'Cập nhật thành công',
-                            fr: 'Mise à jour réussie',
-                            it: 'Aggiornamento completato con successo',
-                            ko: '성공적으로 업데이트되었습니다',
-                            ja: '正常に更新されました',
-                            de: 'Erfolgreich aktualisiert',
-                            nl: 'Succesvol bijgewerkt',
-                            dk: 'Opdateret',
-                            pt: 'Atualizado com sucesso',
-                            es: 'Actualizado correctamente',
-                            ru: 'Успешно обновлено',
-                        }[lang])
-                    }
-                    catch (err) {
-                        notify('error', err.message);
-                        console.error(err);
-                    }
-                    finally {
-                        enable(document.body);
-                    }
-                }}>{
+                <button
+                    className='primary'
+                    type='button'
+                    disabled={font != user.doc.personalization.font || indent != user.doc.personalization.indent}
+                    onClick={async () => {
+                        try {
+                            disable(document.body);
+                            await updateUser({ personalization: { font, indent } });
+                            notify('success', {
+                                en: 'Updated successfully',
+                                vi: 'Cập nhật thành công',
+                                fr: 'Mise à jour réussie',
+                                it: 'Aggiornamento completato con successo',
+                                ko: '성공적으로 업데이트되었습니다',
+                                ja: '正常に更新されました',
+                                de: 'Erfolgreich aktualisiert',
+                                nl: 'Succesvol bijgewerkt',
+                                dk: 'Opdateret',
+                                pt: 'Atualizado com sucesso',
+                                es: 'Actualizado correctamente',
+                                ru: 'Успешно обновлено',
+                            }[lang])
+                        }
+                        catch (err) {
+                            notify('error', err.message);
+                            console.error(err);
+                        }
+                        finally {
+                            enable(document.body);
+                        }
+                    }}
+                >{
                     {
                         en: 'Save changes',
                         vi: 'Lưu thay đổi',
@@ -159,7 +164,10 @@ ${' '.repeat(indent)}}
                         ru: 'Сохранить изменения',
                     }[lang]
                 }</button>
-                <button className='secondary' type='button'>{
+                <button className='secondary' type='button' onClick={() => {
+                    setFont('cons');
+                    setIndent(4);
+                }}>{
                     {
                         en: 'Reset default',
                         vi: 'Đặt lại mặc định',
