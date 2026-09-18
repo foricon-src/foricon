@@ -56,7 +56,7 @@ export function useUpdateUser() {
         try {
             await setDoc(doc(dbFirestore, 'users', user.uid), data, { merge: true });
             let clone = structuredClone(user);
-            for (let key in data) clone[key] = data[key];
+            for (let key in data) clone.doc[key] = data[key];
             setUser(clone);
         }
         catch (err) {
