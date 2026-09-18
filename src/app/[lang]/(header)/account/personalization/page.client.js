@@ -116,7 +116,7 @@ ${' '.repeat(indent)}}
                     }[lang]
                 }: {indent}</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2' onInput={e => setIndent(e.currentTarget.value)}/>
-                <button className='primary' onClick={async () => {
+                <button className='primary' type='button' onClick={async () => {
                     try {
                         disable(document.body);
                         await updateUser({ personalization: { font, indent } });
@@ -158,7 +158,7 @@ ${' '.repeat(indent)}}
                         ru: 'Сохранить изменения',
                     }[lang]
                 }</button>
-                <button>{
+                <button className='secondary' type='button'>{
                     {
                         en: 'Reset default',
                         vi: 'Đặt lại mặc định',
