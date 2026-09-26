@@ -108,20 +108,6 @@ export default function Sidebar() {
                 es:'Personalización',
                 ru:'Персонализация',
             },
-            badge: {
-                en:'New',
-                vi:'Mới',
-                fr:'Nouveau',
-                it:'Nuovo',
-                ko:'새로운',
-                ja:'新しい',
-                de:'Neu',
-                nl:'Nieuw',
-                dk:'Ny',
-                pt:'Novo',
-                es:'Nuevo',
-                ru:'Новый',
-            }
         },
         {
             page: 'package',

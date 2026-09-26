@@ -120,7 +120,7 @@ ${' '.repeat(indent)}}
                 <button
                     className='primary'
                     type='button'
-                    disabled={font != user.doc.personalization.font || indent != user.doc.personalization.indent}
+                    disabled={font == user.doc.personalization.font && indent == user.doc.personalization.indent}
                     onClick={async () => {
                         try {
                             disable(document.body);
