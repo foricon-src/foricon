@@ -61,7 +61,7 @@ export function useUpdateUser() {
             await setDoc(ref, data, { merge: true });
 
             let newDoc = (await getDoc(ref)).data();
-            let { font: newFont } = newDoc.personalization;
+            let { font: newFont, indent } = newDoc.personalization;
 
             setUser(prev => ({ ...prev, doc: newDoc }));
 
