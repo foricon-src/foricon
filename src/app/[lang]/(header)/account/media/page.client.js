@@ -1,3 +1,5 @@
+'use client';
+
 import { cssStyle } from './page.module.css';
 
 export default function PageClient() {
