@@ -1,5 +1,8 @@
 .media {
     & > h3 {
-        margin-top: 0;
+        margin: 0;
+    }
+    & > ul.btn-list {
+        margin-top: var(--spacing-mili);
     }
 }

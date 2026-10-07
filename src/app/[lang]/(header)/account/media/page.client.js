@@ -12,15 +12,15 @@ export default function PageClient() {
                 <f-icon icon='rotate-right' i-s='outline'/>
                 <span>Refresh</span>
             </li>
-            <li>
+            <li className='line'>
                 <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
                 <span>Upload</span>
             </li>
-            <li className='line'>
+            <li className='tooltip top line'>
                 <f-icon icon='trash-can' i-s='outline'/>
                 <span>Remove</span>
             </li>
-            <li>
+            <li className='tooltip top'>
                 <f-icon icon='arrow-up-right-from-square' i-s='outline'/>
                 <span>Open</span>
             </li>
