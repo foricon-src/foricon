@@ -1,6 +1,6 @@
 'use client';
 
-import { cssStyle } from './page.module.css';
+import cssStyle from './page.module.css';
 
 export default function PageClient() {
     let { lang } = document.documentElement;
