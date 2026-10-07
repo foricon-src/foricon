@@ -12,7 +12,7 @@ export default function PageClient() {
                 <f-icon icon='rotate-right' i-s='outline'/>
                 <span>Refresh</span>
             </li>
-            <li className='line'>
+            <li>
                 <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
                 <span>Upload</span>
             </li>
