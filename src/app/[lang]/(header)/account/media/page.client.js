@@ -29,7 +29,7 @@ export default function PageClient() {
         {items.length
             ? <ul></ul>
             : <div>
-                <h3>It's a little quiet here</h3>
+                <h3>It&apos;s a little quiet here</h3>
                 <p>Upload some files to make it more lively</p>
                 <button className='btn primary'>
                     <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
