@@ -1424,6 +1424,10 @@ span, p {
 }
 p {
     margin: 15px 0;
+
+    &:has(+ a) {
+        margin-bottom: var(--spacing-small);
+    }
 }
 span {
     &.small-code, &.key {

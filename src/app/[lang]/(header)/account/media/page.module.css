@@ -5,16 +5,18 @@
     & > :global(ul.btn-list) {
         margin-top: var(--spacing-mili);
 
+        & > li[name='refresh'] > f-icon {
+            transition: var(--df-trans), rotate .5s ease;
+        }
         & > li:hover {
             &[name='refresh'] > f-icon {
                 rotate: 360deg;
-                transition: var(--df-trans), rotate .5s ease;
             }
             &[name='upload'] > f-icon:before {
                 translate: 0 -4px;
             }
             &[name='remove'] > f-icon:before {
-                translate: -2px -8px;
+                translate: -2px -4px;
                 rotate: 20deg;
             }
             &[name='open'] > f-icon:before {
@@ -24,5 +26,6 @@
     }
     & > div {
         height: 40vh;
+        flex-direction: column;
     }
 }
