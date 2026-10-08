@@ -28,7 +28,7 @@ export default function PageClient() {
         </ul>
         {items.length
             ? <ul></ul>
-            : <div>
+            : <div className='center-middle'>
                 <h3>It&apos;s a little quiet here</h3>
                 <p>Upload some files to make it more lively</p>
                 <button className='btn primary'>

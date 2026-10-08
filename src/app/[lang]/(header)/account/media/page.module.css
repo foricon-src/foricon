@@ -8,17 +8,21 @@
         & > li:hover {
             &[name='refresh'] > f-icon {
                 rotate: 360deg;
+                transition: var(--df-trans), rotate .5s ease;
             }
             &[name='upload'] > f-icon:before {
-                translate: 0 -25%;
+                translate: 0 -4px;
             }
             &[name='remove'] > f-icon:before {
-                translate: -5% -20%;
+                translate: -2px -8px;
                 rotate: 20deg;
             }
             &[name='open'] > f-icon:before {
-                translate: 25% -25%;
+                translate: 2px -2px;
             }
         }
+    }
+    & > div {
+        height: 40vh;
     }
 }
