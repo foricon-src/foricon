@@ -32,12 +32,12 @@
         }
     }
     & > ul.results > li {
-        padding: var(--spacing-xxsmall);
+        padding: var(--spacing-micro);
         background-color: var(--lt-gray);
         border-radius: var(--bdr-rad);
         display: grid;
         grid-template-columns: 40px auto 100px 180px max-content;
-        gap: var(--spacing-micro);
+        gap: var(--spacing-small);
         align-items: center;
         
         &:hover {
