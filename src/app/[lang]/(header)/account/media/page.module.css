@@ -1,31 +1,30 @@
 .media {
     & > h3 {
-        margin: 0;
+        margin: 0 0 var(--spacing-mili);
     }
-    & > :global(ul.btn-list) {
-        margin-top: var(--spacing-mili);
-
-        & > li {
-            & > f-icon {
-                --secondary-opacity: 1;
-            }
+    & > :global(ul.btn-list) > li, & > ul.results > li > ul > li {
+        & > f-icon {
+            --secondary-opacity: 1;
+        }
+        &[name='refresh'] > f-icon {
+            transition: var(--df-trans), rotate .5s ease;
+        }
+        &:hover {
             &[name='refresh'] > f-icon {
-                transition: var(--df-trans), rotate .5s ease;
+                rotate: 360deg;
             }
-            &:hover {
-                &[name='refresh'] > f-icon {
-                    rotate: 360deg;
-                }
-                &[name='upload'] > f-icon:before {
-                    translate: 0 -4px;
-                }
-                &[name='remove'] > f-icon:before {
-                    translate: -2px -4px;
-                    rotate: 20deg;
-                }
-                &[name='open'] > f-icon:before {
-                    translate: 2px -2px;
-                }
+            &[name='upload'] > f-icon:before {
+                translate: 0 -4px;
+            }
+            &[name='download'] > f-icon:before {
+                translate: 0 4px;
+            }
+            &[name='remove'] > f-icon:before {
+                translate: -2px -4px;
+                rotate: 20deg;
+            }
+            &[name='open'] > f-icon:before {
+                translate: 2px -2px;
             }
         }
     }
