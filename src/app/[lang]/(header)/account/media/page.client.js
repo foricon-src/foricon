@@ -51,8 +51,8 @@ export default function PageClient() {
         </ul>
         {items.length
             ? <ul className={cssStyle.results}>{
-                items.map(i => {
-                    return <li>
+                items.map((i, idx) => {
+                    return <li key={idx}>
                         <div style={{ backgroundImage: i.src }}/>
                         <span>{i.filename}</span>
                         <span>{timeDiff(new Date(i.created_at), lang)}</span>
