@@ -16,9 +16,10 @@ export default function PageClient() {
 
         (async () => {
             let token = await user.getIdToken();
-            let res = await fetch('/api/get-media', {
+            let res = await (await fetch('/api/get-media', {
+                method: 'POST',
                 headers: { authorization: `Bearer ${token}` }
-            })
+            })).json()
             console.log(res)
             //!canceled && setItems(res);
         })()
