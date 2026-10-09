@@ -53,7 +53,7 @@ export default function PageClient() {
             ? <ul className={cssStyle.results}>{
                 items.map((i, idx) => {
                     return <li key={idx}>
-                        <div style={{ backgroundImage: `url(${i.src})` }}/>
+                        <div style={{ backgroundImage: `url(${i.url})` }}/>
                         <span>{i.filename}</span>
                         <span>{formatBytes(i.bytes)}</span>
                         <span>{timeDiff(new Date(i.created_at), lang)}</span>

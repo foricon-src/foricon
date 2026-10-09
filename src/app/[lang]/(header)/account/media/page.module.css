@@ -57,6 +57,7 @@
             background: center/cover no-repeat;
             overflow: hidden;
             pointer-events: none;
+            border-radius: var(--s-bdr-rad);
         }
         & > span:first-of-type {
             overflow: hidden;
