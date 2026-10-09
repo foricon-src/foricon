@@ -55,6 +55,7 @@ export default function PageClient() {
                     return <li key={idx}>
                         <div style={{ backgroundImage: i.src }}/>
                         <span>{i.filename}</span>
+                        <span>{formatBytes(i.bytes)}</span>
                         <span>{timeDiff(new Date(i.created_at), lang)}</span>
                         <ul className='btn-list'>
                             <li className='tooltip top' name='remove'>

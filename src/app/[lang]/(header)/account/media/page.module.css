@@ -28,6 +28,37 @@
             }
         }
     }
+    & > ul.results > li {
+        padding: var(--spacing-micro);
+        background-color: var(--lt-gray);
+        border-radius: var(--bdr-rad);
+        display: grid;
+        grid-template-columns: 60px auto 200px 300px;
+        gap: var(--spacing-micro);
+        align-items: center;
+        
+        &:hover {
+            background-color: var(--gray);
+        }
+        &:has(+ li) {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        & + li {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        & > div {
+            aspect-ratio: 1/1;
+            background: center/center no-repeat;
+            background-size: contain;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        & > span:last-child {
+            text-align: right;
+        }
+    }
     & > div {
         height: 50vh;
         flex-direction: column;
