@@ -24,7 +24,7 @@ export default function PageClient() {
         })()
 
         return () => canceled = true;
-    }, [])
+    }, [ user ])
 
     return <div className={cssStyle.media}>
         <h3>Media</h3>
