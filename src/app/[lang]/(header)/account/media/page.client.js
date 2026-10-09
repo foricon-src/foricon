@@ -1,11 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from 'Com/user';
 import cssStyle from './page.module.css';
 
 export default function PageClient() {
-    let { lang } = document.documentElement;
+    let { user } = useContext(UserContext);
     let [ items, setItems ] = useState([]);
+    let { lang } = document.documentElement;
     
     useEffect(() => {
         if (!user) return;
