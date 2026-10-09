@@ -33,7 +33,7 @@
         background-color: var(--lt-gray);
         border-radius: var(--bdr-rad);
         display: grid;
-        grid-template-columns: 40px auto 100px 180px max-content;
+        grid-template-columns: 40px auto 80px 140px max-content;
         gap: var(--spacing-small);
         align-items: center;
         
