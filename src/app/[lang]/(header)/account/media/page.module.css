@@ -54,10 +54,14 @@
         }
         & > div {
             aspect-ratio: 1/1;
-            background: center/center no-repeat;
-            background-size: contain;
+            background: center/cover no-repeat;
             overflow: hidden;
             pointer-events: none;
+        }
+        & > span:first-of-type {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         & > span:last-child {
             text-align: right;
