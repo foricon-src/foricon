@@ -1,10 +1,28 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import cssStyle from './page.module.css';
 
 export default function PageClient() {
     let { lang } = document.documentElement;
-    let items = [];
+    let [ items, setItems ] = useState([]);
+    
+    useEffect(() => {
+        if (!user) return;
+
+        let canceled = false;
+
+        (async () => {
+            let token = await user.getIdToken();
+            let res = await fetch('/get-media', {
+                headers: { authorization: `Bearer ${token}` }
+            })
+            console.log(res)
+            //!canceled && setItems(res);
+        })()
+
+        return () => canceled = true;
+    }, [])
 
     return <div className={cssStyle.media}>
         <h3>Media</h3>
