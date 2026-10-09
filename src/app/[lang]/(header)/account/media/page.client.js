@@ -38,7 +38,6 @@ export default function PageClient() {
     }, [ user, tick ])
 
     return <div className={cssStyle.media}>
-        <h3>Media</h3>
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>
                 <f-icon icon='rotate-right' i-s='outline'/>

@@ -1,9 +1,6 @@
 .media {
-    & > h3 {
-        margin: 0;
-    }
     & > :global(ul.btn-list) {
-        margin: var(--spacing-mili) 0;
+        margin-bottom: var(--spacing-mili);
     }
     & > :global(ul.btn-list) > li, & > ul.results > li > ul > li {
         & > f-icon {
