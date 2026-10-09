@@ -54,7 +54,7 @@
         }
         & > div {
             aspect-ratio: 1/1;
-            background: center/cover no-repeat;
+            background: var(--dk-gray) center/cover no-repeat;
             overflow: hidden;
             pointer-events: none;
             border-radius: var(--s-bdr-rad);
