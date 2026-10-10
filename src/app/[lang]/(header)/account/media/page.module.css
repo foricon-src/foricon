@@ -44,7 +44,6 @@
         }
 
         :global(.active)& {
-            padding-left: calc(var(--spacing-micro) - 4px);
             border-left: 4px solid var(--main-color);
         }
 
