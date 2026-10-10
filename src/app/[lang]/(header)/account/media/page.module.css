@@ -33,9 +33,10 @@
         background-color: var(--lt-gray);
         border-radius: var(--bdr-rad);
         display: grid;
-        grid-template-columns: 40px auto 100px 140px max-content;
+        grid-template-columns: 30px auto 80px 120px max-content;
         gap: var(--spacing-small);
         align-items: center;
+        font-size: var(--s-ft-sz);
         
         &:hover {
             background-color: var(--gray);

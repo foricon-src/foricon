@@ -420,7 +420,7 @@ ul {
                 padding: var(--inner-spacing-s);
                 gap: 6px;
                 
-                *, :before {
+                *, :before, f-icon[i-s^='duotone/']:after {
                     line-height: var(--s-ln-hgt);
                 }
             }

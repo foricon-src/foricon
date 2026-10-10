@@ -53,10 +53,10 @@ export default function PageClient() {
                 items.map((i, idx) => {
                     return <li key={idx}>
                         <div style={{ backgroundImage: `url(${i.url})` }}/>
-                        <span>{i.filename}</span>
+                        <span>{`${i.filename}.${i.format}`}</span>
                         <span>{formatBytes(i.bytes)}</span>
                         <span>{timeDiff(new Date(i.created_at), lang)}</span>
-                        <ul className='btn-list'>
+                        <ul className='btn-list small'>
                             <li className='tooltip top' name='remove'>
                                 <f-icon icon='trash-can' i-s='duotone/outline'/>
                                 <span>Remove</span>
