@@ -8,7 +8,7 @@ export default function PageClient() {
     let { user } = useContext(UserContext);
 
     let [ items, setItems ] = useState([]);
-    let [ isLoading, setIsLoading ] = useState(false);
+    let [ isLoading, setIsLoading ] = useState(true);
     let [ tick, setTick ] = useState(0);
 
     let { lang } = document.documentElement;
@@ -45,11 +45,41 @@ export default function PageClient() {
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>
                 <f-icon icon='rotate-right' i-s='outline'/>
-                <span>Refresh</span>
+                <span>{
+                    {
+                        en: 'Refresh',
+                        vi: 'Làm mới',
+                        fr: 'Rafraîchir',
+                        it: 'Aggiorna',
+                        ko: '새로 고치다',
+                        ja: '更新',
+                        de: 'Aktualisieren',
+                        nl: 'Vernieuwen',
+                        dk: 'Opfriske',
+                        pt: 'Atualizar',
+                        es: 'Refrescar',
+                        ru: 'Обновить',
+                    }[lang]
+                }</span>
             </li>
             <li name='upload'>
                 <f-icon icon='arrow-up-from-bracket' i-s='duotone/outline'/>
-                <span>Upload</span>
+                <span>{
+                    {
+                        en: 'Upload',
+                        vi: 'Tải lên',
+                        fr: 'Télécharger',
+                        it: 'Caricamento',
+                        ko: '업로드',
+                        ja: 'アップロード',
+                        de: 'Hochladen',
+                        nl: 'Uploaden',
+                        dk: 'Upload',
+                        pt: 'Carregar',
+                        es: 'Subir',
+                        ru: 'Загрузить',
+                    }[lang]
+                }</span>
             </li>
         </ul>
         {
@@ -63,15 +93,60 @@ export default function PageClient() {
                         <ul className='btn-list small'>
                             <li className='tooltip top' name='remove'>
                                 <f-icon icon='trash-can' i-s='duotone/outline'/>
-                                <span>Remove</span>
+                                <span>{
+                                    {
+                                        en: 'Remove',
+                                        vi: 'Xoá',
+                                        fr: 'Retirer',
+                                        it: 'Rimuovere',
+                                        ko: '제거하다',
+                                        ja: '取り除く',
+                                        de: 'Entfernen',
+                                        nl: 'Verwijderen',
+                                        dk: 'Fjerne',
+                                        pt: 'Remover',
+                                        es: 'Eliminar',
+                                        ru: 'Удалять',
+                                    }[lang]
+                                }</span>
                             </li>
                             <li className='tooltip top' name='open'>
                                 <f-icon icon='arrow-up-right-from-square' i-s='duotone/outline'/>
-                                <span>Open</span>
+                                <span>{
+                                    {
+                                        en: 'Open',
+                                        vi: 'Mở',
+                                        fr: 'Ouvrir',
+                                        it: 'Aprire',
+                                        ko: '열려 있는 ',
+                                        ja: '開ける',
+                                        de: 'Offen',
+                                        nl: 'Open',
+                                        dk: 'Åben',
+                                        pt: 'Aberto',
+                                        es: 'Abierto',
+                                        ru: 'Открыть',
+                                    }[lang]
+                                }</span>
                             </li>
                             <li className='tooltip top' name='download'>
                                 <f-icon icon='arrow-down-to-bracket' i-s='duotone/outline'/>
-                                <span>Download</span>
+                                <span>{
+                                    {
+                                        en: 'Download',
+                                        vi: 'Tải xuống',
+                                        fr: 'Télécharger',
+                                        it: 'Scaricamento',
+                                        ko: '다운로드',
+                                        ja: 'ダウンロード',
+                                        de: 'Herunterladen',
+                                        nl: 'Download',
+                                        dk: 'Download',
+                                        pt: 'Transferir',
+                                        es: 'Descargar',
+                                        ru: 'Скачать',
+                                    }[lang]
+                                }</span>
                             </li>
                         </ul>
                     </li>
