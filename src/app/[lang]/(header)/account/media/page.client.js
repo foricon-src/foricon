@@ -21,6 +21,7 @@ export default function PageClient() {
         (async () => {
             try {
                 setItems([]);
+                setIsLoading(true);
                 let token = await user.getIdToken();
                 let res = await (await fetch('/api/get-media', {
                     method: 'POST',
@@ -31,6 +32,9 @@ export default function PageClient() {
             catch (err) {
                 notify('error', err.message);
                 console.error(err);
+            }
+            finally {
+                setIsLoading(false);
             }
         })()
 
@@ -48,8 +52,8 @@ export default function PageClient() {
                 <span>Upload</span>
             </li>
         </ul>
-        {items.length
-            ? <ul className={cssStyle.results}>{
+        {
+            items.length ? <ul className={cssStyle.results}>{
                 items.map((i, idx) => {
                     return <li key={idx}>
                         <div style={{ backgroundImage: `url(${i.url})` }}/>
@@ -72,8 +76,13 @@ export default function PageClient() {
                         </ul>
                     </li>
                 })
-            }</ul>
-            : <div className='center-middle'>
+            }</ul> :
+            isLoading ? <div className='icon-screen'>
+                <f-icon icon='spinner-2p3' i-s='outline' animation='spin'/>
+                <h3>Loading...</h3>
+                <p>Getting your files, it might take a while</p>
+            </div> :
+            <div className='center-middle'>
                 <h3>It&apos;s a little quiet here</h3>
                 <p>Upload some files to make it more lively</p>
                 <button className='btn primary'>
