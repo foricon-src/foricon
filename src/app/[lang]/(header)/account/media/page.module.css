@@ -75,7 +75,7 @@
         }
     }
     & > div {
-        height: 50vh;
+        height: calc(100svh - 232px);
         flex-direction: column;
     }
 }
