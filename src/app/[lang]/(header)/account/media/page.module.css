@@ -44,8 +44,8 @@
         }
 
         :global(.active)& {
-            padding-left: calc(var(--spacing-micro) - 2px);
-            border-left: 2px solid var(--main-color);
+            padding-left: calc(var(--spacing-micro) - 4px);
+            border-left: 4px solid var(--main-color);
         }
 
         &:has(+ li) {

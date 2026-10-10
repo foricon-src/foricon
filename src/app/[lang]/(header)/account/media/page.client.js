@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from 'Com/user';
 import cssStyle from './page.module.css';
 
@@ -10,6 +10,8 @@ export default function PageClient() {
     let [ items, setItems ] = useState([]);
     let [ isLoading, setIsLoading ] = useState(true);
     let [ tick, setTick ] = useState(0);
+
+    let resultsRef = useRef();
 
     let { lang } = document.documentElement;
     
@@ -37,6 +39,13 @@ export default function PageClient() {
                 setIsLoading(false);
             }
         })()
+
+        addEvLis(document, 'click', ({ target }) => {
+            let { current } = resultsRef;
+            if (!current) return;
+            let children = getChild(current);
+            !children.some(i => i.contains(target)) && deactivate(...children);
+        })
 
         return () => canceled = true;
     }, [ user, tick ])
@@ -83,7 +92,7 @@ export default function PageClient() {
             </li>
         </ul>
         {
-            items.length ? <ul className={cssStyle.results}>{
+            items.length ? <ul ref={resultsRef} className={cssStyle.results}>{
                 items.map((i, idx) => {
                     return <li key={idx} onClick={({ target, currentTarget, ctrlKey }) => {
                         if (currentTarget.lastChild.contains(target)) return;
