@@ -27,7 +27,7 @@ export default function PageClient() {
                     method: 'POST',
                     headers: { authorization: `Bearer ${token}` }
                 })).json()
-                !canceled && setItems(res.resources);
+                // !canceled && setItems(res.resources);
             }
             catch (err) {
                 notify('error', err.message);
