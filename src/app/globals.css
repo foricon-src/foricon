@@ -567,6 +567,10 @@ div.icon-screen {
     & > f-icon {
         font-size: 5rem;
         color: var(--text-color);
+
+        &:before {
+            line-height: unset;
+        }
     }
     & > h3, & > p {
         margin-bottom: 0;

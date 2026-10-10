@@ -37,10 +37,17 @@
         gap: var(--spacing-xxsmall);
         align-items: center;
         font-size: var(--s-ft-sz);
+        cursor: var(--cursor-pointer);
         
         &:hover {
             background-color: var(--gray);
         }
+
+        &.active {
+            padding-left: calc(var(--spacing-micro) - 2px);
+            border-left: 2px solid var(--main-color);
+        }
+
         &:has(+ li) {
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -50,6 +57,7 @@
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
+
         & > div {
             aspect-ratio: 1/1;
             background: var(--dk-gray) center/cover no-repeat;
