@@ -85,7 +85,11 @@ export default function PageClient() {
         {
             items.length ? <ul className={cssStyle.results}>{
                 items.map((i, idx) => {
-                    return <li key={idx} onClick={({ target, currentTarget }) => !currentTarget.lastChild.contains(target) && toggle(currentTarget)}>
+                    return <li key={idx} onClick={({ target, currentTarget, ctrlKey }) => {
+                        if (currentTarget.lastChild.contains(target)) return;
+                        !ctrlKey && deactivate(...currentTarget.parentNode.children);
+                        activate(currentTarget);
+                    }}>
                         <div style={{ backgroundImage: `url(${i.url})` }}/>
                         <span>{`${i.filename}.${i.format}`}</span>
                         <span>{formatBytes(i.bytes)}</span>

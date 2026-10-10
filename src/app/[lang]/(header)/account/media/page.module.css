@@ -43,7 +43,7 @@
             background-color: var(--gray);
         }
 
-        &.active {
+        :global(.active)& {
             padding-left: calc(var(--spacing-micro) - 2px);
             border-left: 2px solid var(--main-color);
         }
