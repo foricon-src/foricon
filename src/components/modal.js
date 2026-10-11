@@ -1,3 +1,5 @@
+import Join from "./join";
+
 export function OpenModal(elem, actionIfTrue, actionIfFalse) {
     activate(elem);
     
@@ -75,7 +77,7 @@ export function OpenModal(elem, actionIfTrue, actionIfFalse) {
     })
 }
 export function Modal({ children, btns = [], type = '', size = '', ...rest }) {
-    return <div className={'modal' + type + size} {...rest}>
+    return <div className={Join(' ', 'modal', type, size)} {...rest}>
         <div>
             {children}
             <div>{

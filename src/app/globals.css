@@ -655,7 +655,7 @@ button, a.btn {
     }
 }
 
-input, label:has(> f-icon + input:not([type])), textarea, select, f-select, f-upload {
+input, label:has(> f-icon + input:not([type])), textarea, select, f-select, f-uploader {
     border: 1px solid var(--dk-gray);
     background-color: var(--lt-gray);
     margin: 15px 0;
@@ -865,7 +865,7 @@ div.img {
     }
 }
 
-f-upload {
+f-uploader {
     display: flex;
     justify-content: center;
     align-items: center;
