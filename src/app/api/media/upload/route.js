@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { auth, db, cloudinary } from '@/lib/server-services';
+import { cloudinary } from 'Uti/cloudinary';
+import { admin, db } from 'Uti/firebase-admin';
 
 let max = 200 * 1024 * 1024;
 
@@ -9,7 +10,7 @@ export async function POST(req) {
     
     try {
         let token = req.headers.get('authorization').split('Bearer ')[1];
-        uid = (await auth.verifyIdToken(token)).uid;
+        uid = (await admin.auth().verifyIdToken(token)).uid;
         
         let formData = await req.formData();
         let files = formData.getAll('files');
