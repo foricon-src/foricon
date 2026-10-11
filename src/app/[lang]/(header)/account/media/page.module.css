@@ -83,7 +83,8 @@
             border-radius: 2px;
             background-color: var(--tr-main-color);
 
-            &:after {
+            &::before {
+                content: '';
                 animation: loading 4s ease infinite;
                 position: absolute;
                 top: 0;
