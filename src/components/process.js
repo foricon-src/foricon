@@ -34,7 +34,7 @@ export default function Process() {
         )
     }, [ icons, pathname ])
 
-    if (!customElements.get('f-upload')) {
+    if (!customElements.get('preview-code')) {
         customElements.define('preview-code', class extends HTMLElement {
             constructor() {
                 super();
