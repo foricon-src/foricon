@@ -159,7 +159,11 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         uploaderRef.current.dispatchEvent(new Event('change'));
 
         let { current } = ulRef;
-        getChild(current).forEach(i => i.firstChild.toggleIconOnHover('trash-can', i));
+        console.log(getChild(current));
+        getChild(current).forEach(i => {
+            console.log('added')
+            i.firstChild.toggleIconOnHover('trash-can', i);
+        })
     }, [ files ])
 
     return <f-uploader ref={uploaderRef} {...rest}>
