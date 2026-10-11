@@ -79,6 +79,8 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
     let isControlled = controlledFiles != undefined;
     let files = isControlled ? controlledFiles : internalFiles;
 
+    let { lang } = document.documentElement;
+
     function setFiles(nextFiles) {
         let next = typeof nextFiles == 'function'
             ? nextFiles(files)
@@ -146,7 +148,6 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         })
     }, [])
     useEffect(() => {
-        // Skip the initial render.
         if (previousFilesRef.current == null) {
             previousFilesRef.current = files;
             return;
