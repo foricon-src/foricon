@@ -97,13 +97,13 @@
     }
 }
 @keyframes loading {
-    0% { left: 0; right: 80% }
-    5% { left: 0; right: 80% }
+    0% { left: 0; right: 90% }
+    5% { left: 0; right: 90% }
     25% { left: 0; right: 0 }
     30% { left: 0; right: 0 }
-    50% { left: 80%; right: 0 }
-    55% { left: 80%; right: 0 }
+    50% { left: 90%; right: 0 }
+    55% { left: 90%; right: 0 }
     75% { left: 0; right: 0 }
     80% { left: 0; right: 0 }
-    100% { left: 0; right: 80% }
+    100% { left: 0; right: 90% }
 }

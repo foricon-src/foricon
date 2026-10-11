@@ -74,6 +74,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
     let uploaderRef = useRef();
     let inputRef = useRef();
     let previousFilesRef = useRef();
+    let ulRef = useRef();
 
     let isControlled = controlledFiles != undefined;
     let files = isControlled ? controlledFiles : internalFiles;
@@ -154,15 +155,31 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         if (previousFilesRef.current == files) return;
         previousFilesRef.current = files;
 
-        uploaderRef.current?.dispatchEvent(new Event('change'));
+        uploaderRef.current.dispatchEvent(new Event('change'));
+
+        let { current } = ulRef;
+        getChild(current).map(i => i.firstChild.toggleIconOnHover('trash-can'));
     }, [ files ])
 
     return <f-uploader ref={uploaderRef} {...rest}>
-        <f-icon icon="arrow-up-from-bracket" i-s="outline"/>
-
-        <span>Drag &amp; drop the file here, or</span>
-
-        <ul className="btn-list darker vertical">{
+        <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
+        <span>{
+            {
+                en: 'Drag & drop the file(s) here, or',
+                vi: 'Kéo & thả (các) tệp vào đây, hoặc',
+                fr: 'Glissez-déposez le(s) fichier(s) ici, ou',
+                it: 'Trascina e rilascia il/i file qui, oppure',
+                ko: '파일을 여기에 드래그 앤 드롭하거나',
+                ja: 'ファイルをここにドラッグ＆ドロップするか、',
+                de: 'Ziehen Sie die Datei(en) per Drag & Drop hierher, oder',
+                nl: 'Sleep de bestand(en) hierheen, of',
+                dk: 'Træk og slip filen/filerne hertil, eller',
+                pt: 'Arraste e largue o(s) ficheiro(s) aqui, ou',
+                es: 'Arrastre y suelte el/los archivo(s) aquí, o',
+                ru: 'Перетащите файл(ы) сюда, или',
+            }[lang]
+        }</span>
+        <ul className='btn-list darker vertical'>{
             files.map((file, index) => (
                 <li key={index} onClick={() => setFiles(current => current.filter((_, i) => i != index))}>
                     <f-icon icon='file'/>
@@ -170,11 +187,22 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
                 </li>
             ))
         }</ul>
-
-        <button className='primary' onClick={() => inputRef.current?.click()}>
-            Add file
-        </button>
-
+        <button className='primary' onClick={() => inputRef.current?.click()}>{
+            {
+                en: 'Add file(s)',
+                vi: 'Thêm (các) tệp',
+                fr: 'Ajouter un ou plusieurs fichiers',
+                it: 'Aggiungi file',
+                ko: '파일 추가',
+                ja: 'ファイルを追加',
+                de: 'Datei(en) hinzufügen',
+                nl: 'Bestand(en) toevoegen',
+                dk: 'Tilføj fil(er)',
+                pt: 'Adicionar ficheiro(s)',
+                es: 'Añadir archivo(s)',
+                ru: 'Добавить файл(ы)',
+            }[lang]
+        }</button>
         <input
             ref={inputRef}
             type='file'
@@ -187,4 +215,4 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
             }}
         />
     </f-uploader>
-});
+})
