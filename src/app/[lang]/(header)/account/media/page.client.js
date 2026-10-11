@@ -10,6 +10,7 @@ export default function PageClient() {
     let { user } = useContext(UserContext);
 
     let [ items, setItems ] = useState([]);
+    let [ files, setFiles ] = useState([]);
     let [ isLoading, setIsLoading ] = useState(true);
     let [ tick, setTick ] = useState(0);
 
@@ -117,7 +118,7 @@ export default function PageClient() {
                     ru: '-',
                 }[lang]
             }</p>
-            <Uploader multiple accept='image/*, video/*, audio/*'/>
+            <Uploader multiple accept='image/*, video/*, audio/*' files={files} onFileChange={setFiles}/>
         </Modal>
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>
@@ -139,7 +140,7 @@ export default function PageClient() {
                     }[lang]
                 }</span>
             </li>
-            <li name='upload' onClick={() => modal(modalRef.current)}>
+            <li name='upload' onClick={() => modal(modalRef.current, null, () => setFiles([]))}>
                 <f-icon icon='arrow-up-from-bracket' i-s='duotone/outline'/>
                 <span>{
                     {
