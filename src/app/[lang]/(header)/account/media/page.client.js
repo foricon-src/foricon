@@ -118,7 +118,7 @@ export default function PageClient() {
                     ru: '-',
                 }[lang]
             }</p>
-            <Uploader multiple accept='image/*, video/*, audio/*' files={files} onFileChange={setFiles}/>
+            <Uploader multiple accept='image/*, video/*, audio/*' files={files} onFilesChange={setFiles}/>
         </Modal>
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>

@@ -115,9 +115,6 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         if (!accepted.length) return;
 
         setFiles(current => [ ...(multiple ? current : []), ...accepted ]);
-        console.log('Controlled:', isControlled);
-        console.log('Current files:', files);
-        console.log('Accepted files:', accepted);
     }
 
     useEffect(() => {
