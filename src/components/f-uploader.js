@@ -94,37 +94,6 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
 
     useImperativeHandle(ref, () => ({ clearFiles }))
 
-    useEffect(() => {
-        let element = uploaderRef.current;
-        if (!element) return;
-    
-        addEvLis(element, 'dragover', e => {
-            e.preventDefault();
-    
-            if (multiple || !filesRef.current.length) {
-                element.classList.add('drag');
-            }
-        });
-    
-        addEvLis(element, 'dragleave', () => {
-            element.classList.remove('drag');
-        });
-    
-        addEvLis(element, 'drop', handleDrop);
-    }, [])
-    useEffect(() => {
-        // Skip the initial render.
-        if (previousFilesRef.current == null) {
-            previousFilesRef.current = files;
-            return;
-        }
-
-        if (previousFilesRef.current == files) return;
-        previousFilesRef.current = files;
-
-        uploaderRef.current?.dispatchEvent(new Event('change'));
-    }, [ files ])
-
     function addFiles(incoming) {
         let acceptedTypes = accept
             .split(',')
@@ -153,14 +122,40 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         setFiles(current => [ ...(multiple ? current : []), ...accepted ])
     }
 
-    function handleDrop(e) {
-        e.preventDefault();
-        uploaderRef.current?.classList.remove('drag');
+    useEffect(() => {
+        let { current } = uploaderRef;
+        if (!current) return;
+    
+        addEvLis(current, 'dragover', e => {
+            e.preventDefault();
+            (multiple || !filesRef.current.length) && current.classList.add('drag');
+        })
+    
+        addEvLis(current, 'dragleave', () => {
+            current.classList.remove('drag');
+        })
+    
+        addEvLis(current, 'drop', e => {
+            e.preventDefault();
+            current.classList.remove('drag');
+    
+            if (!multiple && files.length) return;
+    
+            addFiles(e.dataTransfer.files);
+        })
+    }, [])
+    useEffect(() => {
+        // Skip the initial render.
+        if (previousFilesRef.current == null) {
+            previousFilesRef.current = files;
+            return;
+        }
 
-        if (!multiple && files.length) return;
+        if (previousFilesRef.current == files) return;
+        previousFilesRef.current = files;
 
-        addFiles(e.dataTransfer.files);
-    }
+        uploaderRef.current?.dispatchEvent(new Event('change'));
+    }, [ files ])
 
     return <f-uploader ref={uploaderRef} {...rest}>
         <f-icon icon="arrow-up-from-bracket" i-s="outline"/>
