@@ -159,11 +159,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         uploaderRef.current.dispatchEvent(new Event('change'));
 
         let { current } = ulRef;
-        console.log(getChild(current));
-        getChild(current).forEach(i => {
-            console.log('added')
-            i.firstChild.toggleIconOnHover('trash-can', i);
-        })
+        getChild(current).forEach(i => i.firstChild.toggleIconOnHover('trash-can', i));
     }, [ files ])
 
     return <f-uploader ref={uploaderRef} {...rest}>
@@ -184,7 +180,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
                 ru: 'Перетащите файл(ы) сюда, или',
             }[lang]
         }</span>
-        <ul className='btn-list darker vertical'>{
+        <ul ref={ulRef} className='btn-list darker vertical'>{
             files.map((file, index) => (
                 <li key={index} onClick={() => setFiles(current => current.filter((_, i) => i != index))}>
                     <f-icon icon='file'/>
