@@ -97,13 +97,13 @@
     }
 }
 @keyframes loading {
-    0% { left: 0; right: calc(100% - 10px) }
-    5% { left: 0; right: calc(100% - 10px) }
+    0% { left: 0; right: 80% }
+    5% { left: 0; right: 80% }
     25% { left: 0; right: 0 }
     30% { left: 0; right: 0 }
-    50% { left: calc(100% - 10px); right: 0 }
-    55% { left: calc(100% - 10px); right: 0 }
+    50% { left: 80%; right: 0 }
+    55% { left: 80%; right: 0 }
     75% { left: 0; right: 0 }
     80% { left: 0; right: 0 }
-    100% { left: 0; right: calc(100% - 10px) }
+    100% { left: 0; right: 80% }
 }

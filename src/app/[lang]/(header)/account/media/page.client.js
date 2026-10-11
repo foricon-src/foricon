@@ -55,7 +55,7 @@ export default function PageClient() {
     }, [ user, tick ])
 
     return <div className={cssStyle.media}>
-        <Modal ref={modalRef} type='confirm' size='width' btns={[
+        <Modal ref={modalRef} type='confirm' size='wide' btns={[
             {
                 en: 'Cancel',
                 vi: 'Hủy',
