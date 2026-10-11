@@ -1,0 +1,66 @@
+import { NextResponse } from 'next/server';
+import { auth, db, cloudinary } from '@/lib/server-services';
+
+let max = 200 * 1024 * 1024;
+
+export async function POST(req) {
+    let uid;
+    let reservedBytes = 0;
+    
+    try {
+        let token = req.headers.get('authorization').split('Bearer ')[1];
+        uid = (await auth.verifyIdToken(token)).uid;
+        
+        let formData = await req.formData();
+        let files = formData.getAll('files');
+        let totalBytes = files.reduce((sum, file) => sum + file.size, 0);
+        
+        let quotaRef = db.collection('quota').doc(uid);
+        
+        await db.runTransaction(async t => {
+            let doc = await t.get(quotaRef);
+            let used = doc.get('used');
+            
+            if (used + totalBytes > max) throw new Error('QUOTA_EXCEEDED');
+            
+            t.update(quotaRef, { used: used + totalBytes });
+        })
+        
+        reservedBytes = totalBytes;
+        
+        for (let file of files) {
+            let buffer = Buffer.from(await file.arrayBuffer());
+            let resourceType = file.type.startsWith('image/') ? 'image' : 'video';
+            
+            await new Promise((resolve, reject) => 
+                cloudinary.uploader.upload_stream(
+                    {
+                        folder: `quota/${uid}`,
+                        resource_type: resourceType,
+                    },
+                    (err) => (err ? reject(err) : resolve())
+                ).end(buffer)
+            )
+        }
+        
+        return NextResponse.json(null, { status: 204 });
+    }
+    catch ({ message }) {
+        if (uid && reservedBytes) {
+            let quotaRef = db.collection('quota').doc(uid);
+            
+            await db.runTransaction(async (tx) => {
+                let doc = await tx.get(quotaRef);
+                
+                doc.exists && tx.update(quotaRef, {
+                    used: Math.max(0, doc.get('used') - reservedBytes),
+                })
+            }).catch(console.error);
+        }
+        
+        return NextResponse.json(
+            { error: message == 'QUOTA_EXCEEDED' ? 'Quota exceeded' : 'Upload failed' },
+            { status: message == 'QUOTA_EXCEEDED' ? 413 : 500 }
+        )
+    }
+}

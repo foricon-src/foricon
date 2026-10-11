@@ -11,6 +11,9 @@ export async function POST(req) {
         let snap = await ref.get();
     
         if (!snap.exists) await ref.set(getUserData(name, email, uid));
+
+        fs.doc(`quota/${uid}`).set({ used: 0 })
+
         return new NextResponse(null, { status: 204 })
     }
     catch (err) {

@@ -3,6 +3,8 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from 'Com/user';
 import cssStyle from './page.module.css';
+import { Modal } from 'Com/modal';
+import { Uploader } from 'Com/f-uploader';
 
 export default function PageClient() {
     let { user } = useContext(UserContext);
@@ -11,6 +13,7 @@ export default function PageClient() {
     let [ isLoading, setIsLoading ] = useState(true);
     let [ tick, setTick ] = useState(0);
 
+    let modalRef = useRef();
     let resultsRef = useRef();
 
     let { lang } = document.documentElement;
@@ -25,11 +28,11 @@ export default function PageClient() {
                 setItems([]);
                 setIsLoading(true);
                 let token = await user.getIdToken();
-                let res = await (await fetch('/api/get-media', {
+                let res = await (await fetch('/api/media/get', {
                     method: 'POST',
                     headers: { authorization: `Bearer ${token}` }
                 })).json()
-                await wait(2)
+                await wait(2);
                 !canceled && setItems(res.resources);
             }
             catch (err) {
@@ -52,6 +55,70 @@ export default function PageClient() {
     }, [ user, tick ])
 
     return <div className={cssStyle.media}>
+        <Modal ref={modalRef} type='confirm' size='width' btns={[
+            {
+                en: 'Cancel',
+                vi: 'Hủy',
+                fr: 'Annuler',
+                it: 'Cancellare',
+                kr: '취소',
+                ja: 'キャンセル',
+                de: 'Stornieren',
+                nl: 'Annuleren',
+                dk: 'Ophæve',
+                pt: 'Cancelar',
+                es: 'Cancelar',
+                ru: 'Отмена',
+            }[lang],
+            {
+                en: 'Continue',
+                vi: 'Tiếp tục',
+                fr: 'Continuer',
+                it: 'Continuare',
+                kr: '계속하다',
+                ja: '続く',
+                de: 'Weitermachen',
+                nl: 'Doorgaan',
+                dk: 'Fortsætte',
+                pt: 'Continuar',
+                es: 'Continuar',
+                ru: 'Продолжать',
+            }[lang]
+        ]}>
+            <h3>{
+                {
+                    en: 'Upload new files',
+                    vi: 'Tải lên tệp mới',
+                    fr: 'Télécharger de nouveaux fichiers',
+                    it: 'Carica nuovi file',
+                    kr: '새로운 파일 업로드',
+                    ja: '新しいファイルをアップロードする',
+                    de: 'Neue Dateien hochladen',
+                    nl: 'Nieuwe bestanden uploaden',
+                    dk: 'Upload nye filer',
+                    pt: 'Carregar novos ficheiros',
+                    es: 'Subir nuevos archivos',
+                    ru: 'Загрузить новые файлы',
+                }[lang]
+            }</h3>
+            <p>{
+                {
+                    en: '-',
+                    vi: '-',
+                    fr: '-',
+                    it: '-',
+                    kr: '-',
+                    ja: '-',
+                    de: '-',
+                    nl: '-',
+                    dk: '-',
+                    pt: '-',
+                    es: '-',
+                    ru: '-',
+                }[lang]
+            }</p>
+            <Uploader multiple accept='image/*, video/*, audio/*'/>
+        </Modal>
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>
                 <f-icon icon='rotate-right' i-s='outline'/>
@@ -72,7 +139,7 @@ export default function PageClient() {
                     }[lang]
                 }</span>
             </li>
-            <li name='upload'>
+            <li name='upload' onClick={() => modal(modalRef.current)}>
                 <f-icon icon='arrow-up-from-bracket' i-s='duotone/outline'/>
                 <span>{
                     {

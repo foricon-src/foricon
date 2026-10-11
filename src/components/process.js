@@ -9,6 +9,23 @@ export default function Process() {
     let icons = useContext(IconContext);
 
     useEffect(() => {
+        document.addEventListener('keydown', async e => {
+            let { ctrlKey, key, target } = e;
+            let activeModal = qSelec(document, '.modal.confirm.active');
+            
+            if (ctrlKey && key == 'b') setTheme();
+            else if (activeModal && isEnabled(document.body)) {
+                !activeModal.contains(target) && e.preventDefault();
+                
+                let pri = qSelec(activeModal, 'div:last-child > a.btn.primary');
+                let sec = qSelec(activeModal, 'div:last-child > a.btn.secondary');
+                
+                key == 'Enter' && isEnabled(pri) && pri?.click();
+                key == 'Escape' && sec?.click();
+            }
+        })
+    }, [])
+    useEffect(() => {
         if (!icons) return;
         qSelecA('.icon-count').forEach(
             each => each.innerText = `${Math.floor(icons.b2.reduce(
@@ -18,114 +35,6 @@ export default function Process() {
     }, [ icons, pathname ])
 
     if (!customElements.get('f-upload')) {
-        customElements.define('f-upload', class extends HTMLElement {
-            async connectedCallback() {
-                let elem = this;
-                let maxSize = getAttr(elem, 'max-size');
-                let accept = getAttr(elem, 'accept') || '';
-                let multiple = getAttr(elem, 'multiple') != undefined;
-                
-                elem.innerHTML = `
-            <f-icon i-s='outline' icon='arrow-up-from-bracket'/>
-            <span>Drag & drop the file here, or</span>
-            <ul class='btn-list darker vertical'/>
-            <a class='btn primary' href='javascript:void(0)'>Add file${maxSize ? ` (${formatBytes(maxSize)} maximum)` : ''}</a>`;
-                let list = qSelec(elem, 'ul');
-                let btn = qSelec(elem, 'a');
-                
-                elem.files = [];
-                
-                let input = document.createElement('input');
-                input.type = 'file';
-                input.multiple = multiple;
-                input.accept = accept;
-                
-                Object.defineProperty(elem, '_v', {
-                    set(newFiles) {
-                        elem.files = newFiles;
-                        clear(list);
-                        elem.files.forEach((file, i) => {
-                            let li = document.createElement('li');
-                            li.innerHTML = `<f-icon icon='file'/><span>${file.name}</span>`;
-                            li.querySelector('f-icon').toggleIconOnHover('trash-can', li);
-                            li.addEventListener('click', () => {
-                                let array = [...elem.files];
-                                array.splice(i, 1);
-                                elem._v = array;
-                                !multiple && !elem.files.length && enable(btn);
-                            })
-                            list.append(li);
-                        })
-                        elem.dispatchEvent(new Event('change'));
-                    }
-                })
-                
-                elem.addEventListener('dragover', e => {
-                    if (multiple || !elem.files.length) {
-                        e.preventDefault();
-                        elem.classList.add('drag');
-                    }
-                })
-                elem.addEventListener('dragleave', () => elem.classList.remove('drag'));
-                elem.addEventListener('drop', e => {
-                    if (multiple || !elem.files.length) {
-                        e.preventDefault();
-                        
-                        elem.classList.remove('drag');
-                        
-                        let { files } = e.dataTransfer;
-                        if (files.length + 1) {
-                            let dataTransfer = new DataTransfer();
-                            [...files].forEach((file) => {
-                                let acceptedType = accept.split(',').map(type => type.trim());
-                                if (!acceptedType.some(type => type == file.type || type.includes('*') && file.type.startsWith(type.split('/')[0])))
-                                    notify('warn', 'This type of file is not accepted by the uploader');
-                                else if (maxSize && file.size > maxSize)
-                                    notify('warn', `Your file cannot be larger than ${formatBytes(maxSize)}`);
-                                else
-                                    dataTransfer.items.add(file);
-                            })
-                            input.files = dataTransfer.files;
-                            input.dispatchEvent(new Event('change'));
-                        }
-                    }
-                })
-                
-                addEvLis(input, 'change', () => {
-                    elem.add(input.files);
-                    input.files = new DataTransfer().files;
-                })
-                
-                addEvLis(btn, 'click', () => {
-                    btn.blur();
-                    input.click();
-                })
-            }
-            add(files) {
-                let elem = this;
-                let btn = qSelec(elem, 'a');
-                let maxSize = getAttr(elem,'max-size');
-                let notMultiple = getAttr(elem,'multiple') == undefined;
-                
-                if (notMultiple && this.files.length > 1) notify('warn', 'Multiple upload is not allowed');
-                else {
-                    this._v = [...this.files, ...[...files].filter(file => {
-                        let { name, size } = file;
-                        if (this.files.some(i => i.name == name))
-                            notify('warn', `Cannot upload ${name} because you have already added another file with the same name`);
-                        else if (maxSize && size > maxSize)
-                            notify('warn', `Your file cannot be larger than ${formatBytes(maxSize)}`);
-                        else return true;
-                    })]
-                    
-                    notMultiple && this.files.length && disable(btn);
-                }
-            }
-            clear() {
-                enable(qSelec(this, 'a'));
-                this._v = [];
-            }
-        })
         customElements.define('preview-code', class extends HTMLElement {
             constructor() {
                 super();

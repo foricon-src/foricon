@@ -78,7 +78,7 @@
         flex-direction: column;
 
         & > div.loading {
-            width: 40%;
+            width: min(300px, 50%);
             height: 4px;
             border-radius: 2px;
             background-color: var(--tr-main-color);
@@ -98,8 +98,12 @@
 }
 @keyframes loading {
     0% { left: 0; right: calc(100% - 10px) }
+    5% { left: 0; right: calc(100% - 10px) }
     25% { left: 0; right: 0 }
+    30% { left: 0; right: 0 }
     50% { left: calc(100% - 10px); right: 0 }
+    55% { left: calc(100% - 10px); right: 0 }
     75% { left: 0; right: 0 }
+    80% { left: 0; right: 0 }
     100% { left: 0; right: calc(100% - 10px) }
 }
