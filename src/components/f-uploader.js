@@ -60,13 +60,7 @@
 
 'use client';
 
-import {
-    forwardRef,
-    useEffect,
-    useImperativeHandle,
-    useRef,
-    useState,
-} from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 export let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, files: controlledFiles, onFilesChange, ...rest }, ref) {
     let [ internalFiles, setInternalFiles ] = useState([]);
@@ -85,7 +79,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         let next = typeof nextFiles == 'function'
             ? nextFiles(files)
             : nextFiles;
-        console.log(next)
+        
         if (!isControlled) setInternalFiles(next);
 
         onFilesChange?.(next);
@@ -120,7 +114,10 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
 
         if (!accepted.length) return;
 
-        setFiles(current => [ ...(multiple ? current : []), ...accepted ])
+        setFiles(current => [ ...(multiple ? current : []), ...accepted ]);
+        console.log('Controlled:', isControlled);
+        console.log('Current files:', files);
+        console.log('Accepted files:', accepted);
     }
 
     useEffect(() => {
@@ -129,7 +126,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
     
         addEvLis(current, 'dragover', e => {
             e.preventDefault();
-            (multiple || !filesRef.current.length) && current.classList.add('drag');
+            (multiple || !files.length) && current.classList.add('drag');
         })
         addEvLis(current, 'dragleave', () => current.classList.remove('drag'));
         addEvLis(current, 'drop', e => {
