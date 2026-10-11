@@ -78,14 +78,15 @@
         flex-direction: column;
 
         & > div.loading {
-            width: 50%;
+            width: 40%;
             height: 4px;
             border-radius: 2px;
             background-color: var(--tr-main-color);
+            position: absolute;
 
             &::before {
                 content: '';
-                animation: loading 4s ease infinite;
+                animation: loading 2s ease infinite;
                 position: absolute;
                 top: 0;
                 bottom: 0;
