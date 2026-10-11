@@ -74,8 +74,8 @@ export function OpenModal(elem, actionIfTrue, actionIfFalse) {
         }
     })
 }
-export function Modal({ children, btns = [], type = '', size = '' }) {
-    <div className={'modal' + type + size}>
+export function Modal({ children, btns = [], type = '', size = '', ...rest }) {
+    return <div className={'modal' + type + size} {...rest}>
         <div>
             {children}
             <div>{
