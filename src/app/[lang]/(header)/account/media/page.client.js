@@ -91,8 +91,8 @@ export default function PageClient() {
                 }</span>
             </li>
         </ul>
-        {
-            items.length ? <ul ref={resultsRef} className={cssStyle.results}>{
+        {items.length
+            ? <ul ref={resultsRef} className={cssStyle.results}>{
                 items.map((i, idx) => {
                     return <li key={idx} onClick={({ target, currentTarget, ctrlKey }) => {
                         if (currentTarget.lastChild.contains(target)) return;
@@ -164,20 +164,17 @@ export default function PageClient() {
                         </ul>
                     </li>
                 })
-            }</ul> :
-            isLoading ? <div className='icon-screen'>
-                <f-icon icon='spinner-2p3' i-s='outline' animation='spin'/>
-                <h3>Loading...</h3>
-                <p>Getting your files, it might take a while</p>
-            </div> :
-            <div className='center-middle'>
-                <h3>It&apos;s a little quiet here</h3>
-                <p>Upload some files to make it more lively</p>
-                <button className='btn primary'>
-                    <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
-                    <span>Upload</span>
-                </button>
-            </div>
+            }</ul>
+            : <div className='center-middle'>{
+                isLoading ? <div className={cssStyle.loading}/> : <>
+                    <h3>It&apos;s a little quiet here</h3>
+                    <p>Upload some files to make it more lively</p>
+                    <button className='btn primary'>
+                        <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
+                        <span>Upload</span>
+                    </button>
+                </>
+            }</div>
         }
     </div>
 }

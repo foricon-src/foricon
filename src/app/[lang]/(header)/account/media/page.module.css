@@ -76,5 +76,28 @@
     & > div {
         height: calc(100svh - 232px);
         flex-direction: column;
+
+        & > div.loading {
+            width: 50%;
+            height: 4px;
+            border-radius: 2px;
+            background-color: var(--tr-main-color);
+
+            &:after {
+                animation: loading 4s ease infinite;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                border-radius: 2px;
+                background-color: var(--main-color);
+            }
+        }
     }
+}
+@keyframes loading {
+    0% { left: 0; right: calc(100% - 10px) }
+    25% { left: 0; right: 0 }
+    50% { left: calc(100% - 10px); right: 0 }
+    75% { left: 0; right: 0 }
+    100% { left: 0; right: calc(100% - 10px) }
 }
