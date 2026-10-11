@@ -85,7 +85,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         let next = typeof nextFiles == 'function'
             ? nextFiles(files)
             : nextFiles;
-
+        console.log(next)
         if (!isControlled) setInternalFiles(next);
 
         onFilesChange?.(next);
@@ -108,9 +108,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
 
             return acceptedTypes.some(type => {
                 if (type.startsWith('.'))
-                    return file.name.toLowerCase().endsWith(
-                        type.toLowerCase(),
-                    );
+                    return file.name.toLowerCase().endsWith(type.toLowerCase());
 
                 if (type.endsWith('/*')) return file.type.startsWith(type.slice(0, -1));
 
@@ -133,17 +131,11 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
             e.preventDefault();
             (multiple || !filesRef.current.length) && current.classList.add('drag');
         })
-    
-        addEvLis(current, 'dragleave', () => {
-            current.classList.remove('drag');
-        })
-    
+        addEvLis(current, 'dragleave', () => current.classList.remove('drag'));
         addEvLis(current, 'drop', e => {
             e.preventDefault();
             current.classList.remove('drag');
-    
             if (!multiple && files.length) return;
-    
             addFiles(e.dataTransfer.files);
         })
     }, [])
