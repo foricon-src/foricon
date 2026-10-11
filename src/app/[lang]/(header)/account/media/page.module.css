@@ -73,7 +73,7 @@
             text-align: right;
         }
     }
-    & > div {
+    & > :global(div:not(.modal)) {
         height: calc(100svh - 232px);
         flex-direction: column;
 

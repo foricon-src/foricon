@@ -81,7 +81,7 @@ export function Modal({ children, btns = [], type = '', size = '', ...rest }) {
         <div>
             {children}
             <div>{
-                btns.map((btn, i) => <button key={i} className={i ? 'primary' : 'secondary'}>{btn.text}</button>)
+                btns.map((btn, i) => <button key={i} className={i ? 'primary' : 'secondary'}>{btn}</button>)
             }</div>
         </div>
     </div>
