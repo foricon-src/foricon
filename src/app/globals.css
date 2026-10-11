@@ -880,13 +880,17 @@ f-uploader {
     }
     > f-icon {
         font-size: 2rem;
+
+        &:before {
+            line-height: unset;
+        }
     }
     > ul {
         width: 75%;
         max-width: 500px;
         text-align: left;
     }
-    > a.btn.primary {
+    > button {
         margin: 0;
     }
 }
