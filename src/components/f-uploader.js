@@ -100,14 +100,14 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         let accepted = [...incoming].filter(file => {
             if (!acceptedTypes.length) return true;
 
-            return acceptedTypes.some(type => {
+            let allowed = acceptedTypes.some(type => {
                 if (type.startsWith('.')) return file.name.toLowerCase().endsWith(type.toLowerCase());
                 if (type.endsWith('/*')) return file.type.startsWith(type.slice(0, -1));
                 return file.type == type;
             })
+            !allowed && notify('warn', `Not allowed file extension or file type. Rejected <b>${file.name}</b>`);
+            return allowed;
         })
-        console.log(accepted, incoming)
-        accepted.length != incoming.length && notify('warn', 'Some files are not accepted by the uploader');
 
         if (!accepted.length) return;
 
@@ -126,7 +126,6 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         addEvLis(current, 'drop', e => {
             e.preventDefault();
             current.classList.remove('drag');
-            console.log(!multiple && files.length)
             if (!multiple && files.length) return;
             addFiles(e.dataTransfer.files);
         })
