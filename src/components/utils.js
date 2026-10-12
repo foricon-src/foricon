@@ -1128,8 +1128,8 @@ globalThis.notify = async (type, message) => {
         innerHTML: replace(message, [
             [ '<', '&lt;' ],
             [ '>', '&gt;' ],
-            [ /key\((.*?)\)/g, "<span class='key'>$1</span>" ],
-            [ /bold\((.*?)\)/g, '<b>$1</b>' ]
+            [ /key\((.*?)\)/g, "<span class='key'>$1</span>" ], // key(...)
+            [ /bold\((.*?)\)/g, '<b>$1</b>' ] // bold(...)
         ]),
         className: `message ${type}`,
         style: 'opacity: 0; translate: 100%; transition: all .5s ease, margin-bottom 0s;',

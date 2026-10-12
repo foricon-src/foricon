@@ -105,7 +105,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
                 if (type.endsWith('/*')) return file.type.startsWith(type.slice(0, -1));
                 return file.type == type;
             })
-            !allowed && notify('warn', `Not allowed file extension or file type. Rejected <b>${file.name}</b>`);
+            !allowed && notify('warn', `Not allowed file extension or file type. Rejected bold(${file.name})`);
             return allowed;
         })
 
