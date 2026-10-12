@@ -126,6 +126,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         addEvLis(current, 'drop', e => {
             e.preventDefault();
             current.classList.remove('drag');
+            console.log(!multiple && files.length)
             if (!multiple && files.length) return;
             addFiles(e.dataTransfer.files);
         })
@@ -166,7 +167,12 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         <ul ref={ulRef} className='btn-list darker vertical'>{
             files.map((file, index) => (
                 <li key={index} onClick={() => setFiles(current => current.filter((_, i) => i != index))}>
-                    <f-icon icon='file'/>
+                    <f-icon icon={
+                        file.type.startsWith('image/') ? 'file-image' :
+                        file.type.startsWith('audio/') ? 'file-music' :
+                        file.type.startsWith('application/') ? 'file-code' :
+                        'file'
+                    }/>
                     <span>{file.name}</span>
                 </li>
             ))
