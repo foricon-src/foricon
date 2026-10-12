@@ -96,20 +96,17 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
             .split(',')
             .map(type => type.trim())
             .filter(Boolean);
-
+        
         let accepted = [...incoming].filter(file => {
             if (!acceptedTypes.length) return true;
 
             return acceptedTypes.some(type => {
-                if (type.startsWith('.'))
-                    return file.name.toLowerCase().endsWith(type.toLowerCase());
-
+                if (type.startsWith('.')) return file.name.toLowerCase().endsWith(type.toLowerCase());
                 if (type.endsWith('/*')) return file.type.startsWith(type.slice(0, -1));
-
                 return file.type == type;
             })
         })
-
+        console.log(accepted, incoming)
         accepted.length != incoming.length && notify('warn', 'Some files are not accepted by the uploader');
 
         if (!accepted.length) return;
