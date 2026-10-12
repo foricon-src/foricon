@@ -66,6 +66,11 @@ export function GET(_, { params: { uid }}) {
                     else error('Invalid value format: Value must be a valid string or number');
                 }
                 toggleIconOnHover(activeIconName, element = this) {
+                    if (element._i_meh) {
+                        console.warn('Element already has another onHover added. Please use removeToggleIconOnHover() before adding any.')
+                        return;
+                    }
+
                     let t = this;
                     let currentIconName = this.getIcon();
                     
@@ -93,6 +98,11 @@ export function GET(_, { params: { uid }}) {
                     }
                 }
                 toggleStyleOnHover(activeStyleName, element = this) {
+                    if (element._s_meh) {
+                        console.warn('Element already has another onHover added. Please use removeToggleStyleOnHover() before adding any.')
+                        return;
+                    }
+                    
                     let t = this;
                     let currentStyleName = this.getStyle();
                     
