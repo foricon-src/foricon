@@ -65,9 +65,7 @@ export default function PageClient() {
             async () => {
                 try {
                     let formData = new FormData();
-                    console.log(files);
                     for (let file of files) formData.append('files', file);
-                    console.log(formData.getAll('files'))
                     let token = await user.getIdToken();
                     await fetch('/api/media/upload', {
                         method: 'POST',

@@ -81,7 +81,7 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
             : nextFiles;
         
         if (!isControlled) setInternalFiles(next);
-
+        console.log('set file', onFilesChange, next)
         onFilesChange?.(next);
     }
     function clearFiles() {
