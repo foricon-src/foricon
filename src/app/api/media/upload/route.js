@@ -46,19 +46,25 @@ export async function POST(req) {
         
         return NextResponse.json(null, { status: 204 });
     }
-    catch ({ message }) {
-        if (uid && reservedBytes) {
-            let quotaRef = db.collection('quota').doc(uid);
-            
-            await db.runTransaction(async (tx) => {
-                let doc = await tx.get(quotaRef);
-                
-                doc.exists && tx.update(quotaRef, {
-                    used: Math.max(0, doc.get('used') - reservedBytes),
+    catch (err) {
+        let { message } = err;
+
+        if (uid && reservedBytes)
+            try {
+                let quotaRef = db.collection('quota').doc(uid);
+                await db.runTransaction(async (tx) => {
+                    let doc = await tx.get(quotaRef);
+                    
+                    doc.exists && tx.update(quotaRef, {
+                        used: Math.max(0, doc.get('used') - reservedBytes),
+                    })
                 })
-            }).catch(console.error);
-        }
+            }
+            catch (err) {
+                console.error(err)
+            }
         
+        console.log(err);
         return NextResponse.json(
             { error: message == 'QUOTA_EXCEEDED' ? 'Quota exceeded' : 'Upload failed' },
             { status: message == 'QUOTA_EXCEEDED' ? 413 : 500 }
