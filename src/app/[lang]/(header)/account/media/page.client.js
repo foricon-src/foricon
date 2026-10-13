@@ -58,6 +58,9 @@ export default function PageClient() {
 
         return () => canceled = true;
     }, [ user, tick ])
+    useEffect(() => {
+        console.log('PageClient files:', files);
+    }, [files])
 
     function openUploadModal() {
         modal(
