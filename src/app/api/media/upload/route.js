@@ -39,12 +39,15 @@ export async function POST(req) {
                         folder: `quota/${uid}`,
                         resource_type: resourceType,
                     },
-                    (err) => (err ? reject(err) : resolve())
+                    (err, res) => {
+                        if (err) return reject(err);
+                        return resolve(res)
+                    }
                 ).end(buffer)
             )
         }
         
-        return NextResponse(null, { status: 204 });
+        return new NextResponse(null, { status: 204 });
     }
     catch (err) {
         let { message } = err;
@@ -61,12 +64,12 @@ export async function POST(req) {
                 })
             }
             catch (err) {
-                console.error(err)
+                console.error(err);
             }
         
         console.error(err);
         return NextResponse.json(
-            { error: message == 'QUOTA_EXCEEDED' ? 'Quota exceeded' : 'Upload failed' },
+            { message: message == 'QUOTA_EXCEEDED' ? 'Quota exceeded' : 'Internal server error' },
             { status: message == 'QUOTA_EXCEEDED' ? 413 : 500 }
         )
     }
