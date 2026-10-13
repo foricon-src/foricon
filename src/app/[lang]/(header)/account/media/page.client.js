@@ -72,7 +72,7 @@ export default function PageClient() {
                         headers: { authorization: `Bearer ${token}` },
                         body: formData,
                     })
-                    setTick(i + 1);
+                    setTick(tick + 1);
                 }
                 catch (err) {
                     notify('error', err.message);
