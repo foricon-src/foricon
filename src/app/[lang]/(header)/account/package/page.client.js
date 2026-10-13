@@ -7,6 +7,7 @@ import { db } from 'Com/firebase';
 import useGo from 'Com/go';
 import usePage from '../use-page';
 import cssStyle from './page.module.css';
+import Code from 'Com/code';
 
 export default function PageClient() {
     let go = useGo();
@@ -162,7 +163,7 @@ export default function PageClient() {
                     ru: "Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.",
                 }[lang]
             }}/>
-            <code></code>
+            <Code>{`<script src='//foricon.vercel.app/api/import/${user.uid}'><script/>`}</Code>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go('docs/styling-icons/basics')}>{
                     {

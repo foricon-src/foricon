@@ -67,7 +67,7 @@ export function GET(_, { params: { uid }}) {
                 }
                 toggleIconOnHover(activeIconName, element = this) {
                     if (element._i_meh) {
-                        console.warn('Element already has another onHover added. Please use removeToggleIconOnHover() before adding any.')
+                        warn('Duplicate listener: Element already has another listener added. Please use removeToggleIconOnHover() to remove it before adding more.');
                         return;
                     }
 
@@ -99,7 +99,7 @@ export function GET(_, { params: { uid }}) {
                 }
                 toggleStyleOnHover(activeStyleName, element = this) {
                     if (element._s_meh) {
-                        console.warn('Element already has another onHover added. Please use removeToggleStyleOnHover() before adding any.')
+                        warn('Duplicate listener: Element already has another listener added. Please use removeToggleStyleOnHover() to remove it before adding more.');
                         return;
                     }
                     

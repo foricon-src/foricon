@@ -11,15 +11,15 @@ export default function useGo() {
     /**
      * Goes to a page
      * @param {string} [value] - Page to go to
-     * @param {'new tab' | 'replace'} [type] - Action to do
+     * @param {'new tab' | 'replace'} [mode] - Action to do
      */
-    return (value, type) => {
-        let action = router[type == 'replace' ? 'replace' : 'push'];
+    return (value, mode) => {
+        let action = router[mode == 'replace' ? 'replace' : 'push'];
 
         if (!value) router.push(`/${lang}`);
         else if (value[0] == '#') location.hash = value;
         else if (value[0] == '?') action(value);
         else if (value.startsWith('//') || value.startsWith('http')) window.open(value, '_blank');
-        else type == 'new tab' ? window.open(`/${lang}/${value}`, '_blank') : action(`/${lang}/${value}`);
+        else mode == 'new tab' ? window.open(`/${lang}/${value}`, '_blank') : action(`/${lang}/${value}`);
     }
 }
