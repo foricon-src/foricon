@@ -59,6 +59,10 @@ export default function PageClient() {
         return () => canceled = true;
     }, [ user, tick ])
 
+    function openUploadModal() {
+        modal(uploadModalRef.current, null, () => setFiles([]))
+    }
+
     return <div className={cssStyle.media}>
         <Modal ref={uploadModalRef} type='confirm' size='wide' btns={[
             {
@@ -207,7 +211,7 @@ export default function PageClient() {
                     }[lang]
                 }</span>
             </li>
-            <li name='upload' onClick={() => modal(uploadModalRef.current, null, () => setFiles([]))}>
+            <li name='upload' onClick={openUploadModal}>
                 <f-icon icon='arrow-up-from-bracket' i-s='duotone/outline'/>
                 <span>{
                     {
@@ -230,13 +234,19 @@ export default function PageClient() {
                 className='tooltip top'
                 name='remove'
                 onClick={async () => {
-                    let token = await user.getIdToken();
-                    let res = await fetch('/api/media/remove', {
-                        headers: {
-                            authorization: `Bearer ${token}`
-                        },
-                        body: JSON.stringify({ files }),
-                    })
+                    try {
+                        let token = await user.getIdToken();
+                        await fetch('/api/media/remove', {
+                            method: 'POST',
+                            headers: { authorization: `Bearer ${token}` },
+                            body: JSON.stringify({ files }),
+                        })
+                        setTick(tick + 1);
+                    }
+                    catch (err) {
+                        notify('error', err.message);
+                        console.error(err);
+                    }
                 }}
             >
                 <f-icon icon='trash-can' i-s='duotone/outline'/>
@@ -306,7 +316,7 @@ export default function PageClient() {
                 isLoading ? <div className={cssStyle.loading}/> : <>
                     <h3>It&apos;s a little quiet here</h3>
                     <p>Upload some files to make it more lively</p>
-                    <button className='btn primary'>
+                    <button className='btn primary' onClick={openUploadModal}>
                         <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
                         <span>Upload</span>
                     </button>
