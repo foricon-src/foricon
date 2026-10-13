@@ -19,6 +19,7 @@ export default function PageClient() {
     let uploadModalRef = useRef();
     let removeModalRef = useRef();
     let resultsRef = useRef();
+    let filesRef = useRef();
 
     let go = useGo();
 
@@ -58,9 +59,7 @@ export default function PageClient() {
 
         return () => canceled = true;
     }, [ user, tick ])
-    useEffect(() => {
-        console.log('PageClient files:', files);
-    }, [files])
+    useEffect(() => { filesRef.current = files }, [ files ])
 
     function openUploadModal() {
         modal(
@@ -68,8 +67,7 @@ export default function PageClient() {
             async () => {
                 try {
                     let formData = new FormData();
-                    console.log(files);
-                    for (let file of files) formData.append('files', file);
+                    for (let file of filesRef.current) formData.append('files', file);
                     let token = await user.getIdToken();
                     await fetch('/api/media/upload', {
                         method: 'POST',
