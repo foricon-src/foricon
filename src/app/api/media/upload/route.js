@@ -36,7 +36,7 @@ export async function POST(req) {
             await new Promise((resolve, reject) => 
                 cloudinary.uploader.upload_stream(
                     {
-                        folder: `quota/${uid}`,
+                        folder: `users/${uid}`,
                         resource_type: resourceType,
                     },
                     (err, res) => {
