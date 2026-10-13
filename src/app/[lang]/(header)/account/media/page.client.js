@@ -60,7 +60,27 @@ export default function PageClient() {
     }, [ user, tick ])
 
     function openUploadModal() {
-        modal(uploadModalRef.current, null, () => setFiles([]))
+        modal(
+            uploadModalRef.current,
+            async () => {
+                try {
+                    let formData = new FormData();
+                    for (let file of files) formData.append('files', file);
+                    let token = await user.getIdToken();
+                    await fetch('/api/media/upload', {
+                        method: 'POST',
+                        headers: { authorization: `Bearer ${token}` },
+                        body: formData,
+                    })
+                    setTick(i + 1);
+                }
+                catch (err) {
+                    notify('error', err.message);
+                    console.error(err);
+                }
+            },
+            () => setFiles([])
+        )
     }
 
     return <div className={cssStyle.media}>
