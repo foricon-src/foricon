@@ -33,7 +33,7 @@ export async function POST(req) {
             let buffer = Buffer.from(await file.arrayBuffer());
             let resourceType = file.type.startsWith('image/') ? 'image' : 'video';
             
-            await new Promise((resolve, reject) => 
+            let res = await new Promise((resolve, reject) => 
                 cloudinary.uploader.upload_stream(
                     {
                         folder: `users/${uid}`,
@@ -45,6 +45,7 @@ export async function POST(req) {
                     }
                 ).end(buffer)
             )
+            console.log('Uploaded:', res?.secure_url)
         }
         
         return new NextResponse(null, { status: 204 });
