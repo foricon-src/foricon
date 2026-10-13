@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
-import { admin, db } from 'Uti/firebase-admin';
+import { admin, fs } from 'Uti/firebase-admin';
 
 let max = 200 * 1024 * 1024;
 
@@ -16,9 +16,9 @@ export async function POST(req) {
         let files = formData.getAll('files');
         let totalBytes = files.reduce((sum, file) => sum + file.size, 0);
         
-        let quotaRef = db.collection('quota').doc(uid);
+        let quotaRef = fs.collection('quota').doc(uid);
         
-        await db.runTransaction(async t => {
+        await fs.runTransaction(async t => {
             let doc = await t.get(quotaRef);
             let used = doc.get('used');
             
@@ -51,8 +51,8 @@ export async function POST(req) {
 
         if (uid && reservedBytes)
             try {
-                let quotaRef = db.collection('quota').doc(uid);
-                await db.runTransaction(async (tx) => {
+                let quotaRef = fs.collection('quota').doc(uid);
+                await fs.runTransaction(async (tx) => {
                     let doc = await tx.get(quotaRef);
                     
                     doc.exists && tx.update(quotaRef, {
@@ -64,7 +64,7 @@ export async function POST(req) {
                 console.error(err)
             }
         
-        console.log(err);
+        console.error(err);
         return NextResponse.json(
             { error: message == 'QUOTA_EXCEEDED' ? 'Quota exceeded' : 'Upload failed' },
             { status: message == 'QUOTA_EXCEEDED' ? 413 : 500 }

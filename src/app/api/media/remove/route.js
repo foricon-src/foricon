@@ -28,7 +28,7 @@ export async function POST(req) {
             catch { rejected++ }
         }
 
-        deletedBytes > 0 && (await db.runTransaction(async tx => {
+        deletedBytes > 0 && (await fs.runTransaction(async tx => {
             let doc = await tx.get(quotaRef);
             doc.exists && tx.update(quotaRef, {
                 used: Math.max(0, doc.get('used') - deletedBytes),
