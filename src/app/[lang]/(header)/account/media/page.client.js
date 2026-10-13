@@ -53,7 +53,7 @@ export default function PageClient() {
             let { current } = resultsRef;
             if (!current) return;
             let children = getChild(current);
-            !children.some(i => i.contains(target)) && deactivate(...children);
+            !children.some(i => i.contains(target)) && setSelected([]);
         })
 
         return () => canceled = true;
