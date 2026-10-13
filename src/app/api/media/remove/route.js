@@ -14,7 +14,7 @@ export async function POST(req) {
 
         let quotaRef = fs.collection('quote').doc(uid);
 
-        for (let { id, type } of body.files) {
+        for (let { id, type } of JSON.parse(body.files)) {
             if (!id.startsWith(`users/${uid}`)) {
                 rejected++;
                 continue;
