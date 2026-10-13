@@ -28,8 +28,9 @@ export async function POST(req) {
         })
         
         reservedBytes = totalBytes;
-        
+        console.log(files)
         for (let file of files) {
+            console.log(file)
             let buffer = Buffer.from(await file.arrayBuffer());
             let resourceType = file.type.startsWith('image/') ? 'image' : 'video';
             
