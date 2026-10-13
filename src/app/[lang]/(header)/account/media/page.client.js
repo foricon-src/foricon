@@ -261,7 +261,7 @@ export default function PageClient() {
                         await fetch('/api/media/remove', {
                             method: 'POST',
                             headers: { authorization: `Bearer ${token}` },
-                            body: JSON.stringify({ files }),
+                            body: JSON.stringify({ files: selected }),
                         })
                         setTick(tick + 1);
                     }
