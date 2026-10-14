@@ -252,25 +252,21 @@ export default function PageClient() {
                     }[lang]
                 }</span>
             </li>
-            <li
-                className='tooltip top'
-                name='remove'
-                onClick={async () => {
-                    try {
-                        let token = await user.getIdToken();
-                        await fetch('/api/media/remove', {
-                            method: 'POST',
-                            headers: { authorization: `Bearer ${token}` },
-                            body: JSON.stringify({ files: selected }),
-                        })
-                        setTick(tick + 1);
-                    }
-                    catch (err) {
-                        notify('error', err.message);
-                        console.error(err);
-                    }
-                }}
-            >
+            {selected.length && <li name='remove' onClick={async () => {
+                try {
+                    let token = await user.getIdToken();
+                    await fetch('/api/media/remove', {
+                        method: 'POST',
+                        headers: { authorization: `Bearer ${token}` },
+                        body: JSON.stringify({ files: selected }),
+                    })
+                    setTick(tick + 1);
+                }
+                catch (err) {
+                    notify('error', err.message);
+                    console.error(err);
+                }
+            }}>
                 <f-icon icon='trash-can' i-s='duotone/outline'/>
                 <span>{
                     {
@@ -288,14 +284,14 @@ export default function PageClient() {
                         ru: 'Удалять',
                     }[lang]
                 }</span>
-            </li>
+            </li>}
         </ul>
         {items.length
             ? <ul ref={resultsRef} className={cssStyle.results}>{
                 items.map((i, idx) => {
                     return <li
                         key={idx}
-                        className={selected.some(i => i.id == i.public_id) && 'active'}
+                        className={selected.some(file => file.id == i.public_id) && 'active'}
                         onClick={
                             ({ target, currentTarget, ctrlKey }) => {
                                 let obj = {
