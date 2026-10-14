@@ -1182,9 +1182,9 @@ globalThis.abbreviateNumber = (num, lang) => {
  * @returns {string} Formatted byte string
  */
 globalThis.formatBytes = (bytes = 0) => {
-    let k = 1024;;
-    let sizes = [ 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' ];
-    let i = Math.floor(Math.log(bytes) / Math.log(k));
+    let k = 1024;
+    let sizes = [ 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' ];
+    let i = Math.max(Math.floor(Math.log(bytes) / Math.log(k)));
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
 }
 
