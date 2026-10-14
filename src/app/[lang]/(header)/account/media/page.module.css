@@ -1,9 +1,12 @@
 .media {
     & > div.used {
         background-color: var(--lt-gray);
-        padding: var(--spacing-micro) var(--spacing-xxsmall);
+        padding: var(--spacing-mili) var(--spacing-xxsmall);
         border-radius: var(--bdr-rad);
 
+        & > h6 {
+            margin-top: 0;
+        }
         & > div {
             --percentage: 0;
 
