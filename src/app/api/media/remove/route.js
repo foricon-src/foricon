@@ -13,7 +13,7 @@ export async function POST(req) {
         let deletedBytes = 0;
 
         let quotaRef = fs.collection('quote').doc(uid);
-
+        console.log(body)
         for (let { id, type } of JSON.parse(body).files) {
             if (!id.startsWith(`users/${uid}`)) {
                 rejected++;
