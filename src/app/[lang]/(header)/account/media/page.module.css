@@ -73,7 +73,19 @@
             text-align: right;
         }
     }
-    & > :global(div:not(.modal)) {
+    & > div.used {
+        background-color: var(--lt-gray);
+        padding: var(--spacing-micro) var(--spacing-xxsmall);
+
+        & > div {
+            --percentage: 0;
+
+            height: 4px;
+            border-radius: 2px;
+            background-image: linear-gradient(to right, var(--main-color) var(--percentage), var(--lt-main-color) var(--percentage));
+        }
+    }
+    & > div.empty {
         height: calc(100svh - 232px);
         flex-direction: column;
 

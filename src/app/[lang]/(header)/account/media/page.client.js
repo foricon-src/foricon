@@ -15,6 +15,7 @@ export default function PageClient() {
     let [ selected, setSelected ] = useState([]);
     let [ isLoading, setIsLoading ] = useState(true);
     let [ tick, setTick ] = useState(0);
+    let [ usedBytes, setUsedBytes ] = useState(0);
 
     let uploadModalRef = useRef();
     let removeModalRef = useRef();
@@ -284,6 +285,11 @@ export default function PageClient() {
                 }</span>
             </li>}
         </ul>
+        <div className={cssStyle.used}>
+            <span>You have used</span>
+            <h6>{`${formatBytes(usedBytes)} / ${formatBytes(100 * 1024 * 1024)}`}</h6>
+            <div style={{ '--percent': usedBytes / 100 * 1024 * 1024 }}></div>
+        </div>
         {items.length
             ? <ul ref={resultsRef} className={cssStyle.results}>{
                 items.map((i, idx) => {
@@ -328,7 +334,7 @@ export default function PageClient() {
                     </li>
                 })
             }</ul>
-            : <div className='center-middle'>{
+            : <div className={`center-middle ${cssStyle.empty}`}>{
                 isLoading ? <div className={cssStyle.loading}/> : <>
                     <h3>It&apos;s a little quiet here</h3>
                     <p>Upload some files to make it more lively</p>

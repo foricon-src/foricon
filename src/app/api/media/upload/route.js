@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
 import { admin, fs } from 'Uti/firebase-admin';
 
-let max = 200 * 1024 * 1024;
+let max = 100 * 1024 * 1024;
 
 export async function POST(req) {
     let uid, reservedBytes = 0, completedBytes = 0, failed = [];
@@ -37,6 +37,8 @@ export async function POST(req) {
                     cloudinary.uploader.upload_stream(
                         {
                             folder: `users/${uid}`,
+                            use_filename: true,
+                            unique_filename: false,
                             resource_type: resourceType,
                         },
                         (err, res) => {
