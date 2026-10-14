@@ -43,7 +43,7 @@ export default function PageClient() {
                 })).json()
 
                 if (canceled) return;
-                
+
                 setItems(res.files);
                 setUsedBytes(res.usedBytes);
             }
@@ -216,6 +216,11 @@ export default function PageClient() {
                 }[lang]
             }</p>
         </Modal>
+        <div className={cssStyle.used}>
+            <span>You have used</span>
+            <h6>{`${formatBytes(usedBytes)} / ${formatBytes(100 * 1024 * 1024)}`}</h6>
+            <div style={{ '--percent': usedBytes / 100 * 1024 * 1024 }}></div>
+        </div>
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>
                 <f-icon icon='rotate-right' i-s='outline'/>
@@ -289,11 +294,6 @@ export default function PageClient() {
                 }</span>
             </li>}
         </ul>
-        <div className={cssStyle.used}>
-            <span>You have used</span>
-            <h6>{`${formatBytes(usedBytes)} / ${formatBytes(100 * 1024 * 1024)}`}</h6>
-            <div style={{ '--percent': usedBytes / 100 * 1024 * 1024 }}></div>
-        </div>
         {items.length
             ? <ul ref={resultsRef} className={cssStyle.results}>{
                 items.map((i, idx) => {

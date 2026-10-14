@@ -1,6 +1,19 @@
 .media {
+    & > div.used {
+        background-color: var(--lt-gray);
+        padding: var(--spacing-micro) var(--spacing-xxsmall);
+        border-radius: var(--bdr-rad);
+
+        & > div {
+            --percentage: 0;
+
+            height: 4px;
+            border-radius: 2px;
+            background-image: linear-gradient(to right, var(--main-color) var(--percentage), var(--tr-main-color) var(--percentage));
+        }
+    }
     & > :global(ul.btn-list) {
-        margin-bottom: var(--spacing-mili);
+        margin: var(--spacing-xxsmall) 0 var(--spacing-mili);
     }
     & > :global(ul.btn-list) > li, & > ul.results > li > ul > li {
         & > f-icon {
@@ -71,18 +84,6 @@
         }
         & > span:last-child {
             text-align: right;
-        }
-    }
-    & > div.used {
-        background-color: var(--lt-gray);
-        padding: var(--spacing-micro) var(--spacing-xxsmall);
-
-        & > div {
-            --percentage: 0;
-
-            height: 4px;
-            border-radius: 2px;
-            background-image: linear-gradient(to right, var(--main-color) var(--percentage), var(--lt-main-color) var(--percentage));
         }
     }
     & > div.empty {
