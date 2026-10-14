@@ -52,7 +52,7 @@ export async function POST(req) {
                 failed.push(file);
             }
         
-        return new NextResponse.json({
+        return NextResponse.json({
             message: failed.length
                 ? 'Some files encountered errors and have not been uploaded'
                 : 'All files have been uploaded successfully',

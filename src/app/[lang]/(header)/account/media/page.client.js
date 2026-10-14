@@ -295,7 +295,7 @@ export default function PageClient() {
                 items.map((i, idx) => {
                     return <li
                         key={idx}
-                        className={selected.some(i => i.id == idx) && 'active'}
+                        className={selected.some(i => i.id == i.public_id) && 'active'}
                         onClick={
                             ({ target, currentTarget, ctrlKey }) => {
                                 let obj = {
