@@ -8,11 +8,15 @@
             margin-top: 0;
         }
         & > div {
-            --percent: 0;
-
             height: 4px;
             border-radius: 2px;
-            background-image: linear-gradient(to right, var(--main-color) var(--percent), var(--tr-main-color) var(--percent));
+            background-color: var(--tr-main-color);
+
+            & > div {
+                height: 100%;
+                background-color: var(--main-color);
+                transition: var(--df-trans), width .5s ease;
+            }
         }
     }
     & > :global(ul.btn-list) {
