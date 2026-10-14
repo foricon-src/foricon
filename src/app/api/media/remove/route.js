@@ -3,19 +3,19 @@ import { cloudinary } from 'Uti/cloudinary';
 import { admin, fs } from 'Uti/firebase-admin';
 
 export async function POST(req) {
-    let { headers, body } = req;
 
     try {
-        let token = headers.get('authorization')?.split('Bearer ')[1];
+        let token = req.headers.get('authorization')?.split('Bearer ')[1];
         let { uid } = await admin.auth().verifyIdToken(token);
+        let { files } = await req.json();
 
         let rejected = 0;
         let deletedBytes = 0;
 
         let quotaRef = fs.collection('quote').doc(uid);
-        console.log(body)
-        for (let { id, type } of JSON.parse(body).files) {
-            if (!id.startsWith(`users/${uid}`)) {
+        
+        for (let { id, type } of files) {
+            if (!id.startsWith(`users/${uid}/`)) {
                 rejected++;
                 continue;
             }
@@ -25,7 +25,10 @@ export async function POST(req) {
                 let res = await cloudinary.uploader.destroy(id, { resource_type: type });
                 res.result == 'ok' ? deletedBytes += asset.bytes : rejected++;
             }
-            catch { rejected++ }
+            catch (err) {
+                if (err.http_code == 404) continue;
+                rejected++;
+            }
         }
 
         deletedBytes > 0 && (await fs.runTransaction(async tx => {

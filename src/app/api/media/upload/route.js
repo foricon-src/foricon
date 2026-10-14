@@ -5,8 +5,7 @@ import { admin, fs } from 'Uti/firebase-admin';
 let max = 200 * 1024 * 1024;
 
 export async function POST(req) {
-    let uid;
-    let reservedBytes = 0;
+    let uid, reservedBytes = 0, completedBytes = 0, failed = [];
     
     try {
         let token = req.headers.get('authorization').split('Bearer ')[1];
@@ -28,28 +27,37 @@ export async function POST(req) {
         })
         
         reservedBytes = totalBytes;
-        console.log(files)
-        for (let file of files) {
-            console.log(file)
-            let buffer = Buffer.from(await file.arrayBuffer());
-            let resourceType = file.type.startsWith('image/') ? 'image' : 'video';
-            
-            let res = await new Promise((resolve, reject) => 
-                cloudinary.uploader.upload_stream(
-                    {
-                        folder: `users/${uid}`,
-                        resource_type: resourceType,
-                    },
-                    (err, res) => {
-                        if (err) return reject(err);
-                        return resolve(res)
-                    }
-                ).end(buffer)
-            )
-            console.log('Uploaded:', res?.secure_url)
-        }
         
-        return new NextResponse(null, { status: 204 });
+        for (let file of files)
+            try {
+                let buffer = Buffer.from(await file.arrayBuffer());
+                let resourceType = file.type.startsWith('image/') ? 'image' : 'video';
+                
+                await new Promise((resolve, reject) => 
+                    cloudinary.uploader.upload_stream(
+                        {
+                            folder: `users/${uid}`,
+                            resource_type: resourceType,
+                        },
+                        (err, res) => {
+                            if (err) return reject(err);
+                            return resolve(res)
+                        }
+                    ).end(buffer)
+                )
+
+                completedBytes += file.size;
+            }
+            catch (err) {
+                failed.push(file);
+            }
+        
+        return new NextResponse.json({
+            message: failed.length
+                ? 'Some files encountered errors and have not been uploaded'
+                : 'All files have been uploaded successfully',
+            failed,
+        }, { status: 200 });
     }
     catch (err) {
         let { message } = err;
@@ -61,7 +69,7 @@ export async function POST(req) {
                     let doc = await tx.get(quotaRef);
                     
                     doc.exists && tx.update(quotaRef, {
-                        used: Math.max(0, doc.get('used') - reservedBytes),
+                        used: Math.max(0, doc.get('used') - (reservedBytes - completedBytes)),
                     })
                 })
             }
