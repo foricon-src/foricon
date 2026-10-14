@@ -8,11 +8,11 @@
             margin-top: 0;
         }
         & > div {
-            --percentage: 0;
+            --percent: 0;
 
             height: 4px;
             border-radius: 2px;
-            background-image: linear-gradient(to right, var(--main-color) var(--percentage), var(--tr-main-color) var(--percentage));
+            background-image: linear-gradient(to right, var(--main-color) var(--percent), var(--tr-main-color) var(--percent));
         }
     }
     & > :global(ul.btn-list) {
