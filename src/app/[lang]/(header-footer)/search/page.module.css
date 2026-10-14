@@ -370,7 +370,7 @@
                 html[lang='nl'] &:before {
                     content: 'Het lijkt erop dat er geen resultaten zijn die overeenkomen met uw zoekopties';
                 }
-                html[lang='dk'] &:before {
+                html[lang='da'] &:before {
                     content: 'Det ser ud til, at der ikke er nogen resultater, der matcher dine søgemuligheder';
                 }
                 html[lang='pt'] &:before {

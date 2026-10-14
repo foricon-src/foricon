@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: 'パスワードを変更する',
             de: 'Kennwort ändern',
             nl: 'Wachtwoord wijzigen',
-            dk: 'Skift adgangskode',
+            da: 'Skift adgangskode',
             pt: 'Alterar a palavra-passe',
             es: 'Cambiar la contraseña',
             ru: 'Изменить пароль',

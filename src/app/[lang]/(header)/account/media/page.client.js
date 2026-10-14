@@ -99,7 +99,7 @@ export default function PageClient() {
                 ja: 'キャンセル',
                 de: 'Stornieren',
                 nl: 'Annuleren',
-                dk: 'Ophæve',
+                da: 'Ophæve',
                 pt: 'Cancelar',
                 es: 'Cancelar',
                 ru: 'Отмена',
@@ -113,7 +113,7 @@ export default function PageClient() {
                 ja: '続く',
                 de: 'Weitermachen',
                 nl: 'Doorgaan',
-                dk: 'Fortsætte',
+                da: 'Fortsætte',
                 pt: 'Continuar',
                 es: 'Continuar',
                 ru: 'Продолжать',
@@ -129,7 +129,7 @@ export default function PageClient() {
                     ja: '新しいファイルをアップロードする',
                     de: 'Neue Dateien hochladen',
                     nl: 'Nieuwe bestanden uploaden',
-                    dk: 'Upload nye filer',
+                    da: 'Upload nye filer',
                     pt: 'Carregar novos ficheiros',
                     es: 'Subir nuevos archivos',
                     ru: 'Загрузить новые файлы',
@@ -145,7 +145,7 @@ export default function PageClient() {
                     ja: '-',
                     de: '-',
                     nl: '-',
-                    dk: '-',
+                    da: '-',
                     pt: '-',
                     es: '-',
                     ru: '-',
@@ -163,7 +163,7 @@ export default function PageClient() {
                 ja: 'キャンセル',
                 de: 'Stornieren',
                 nl: 'Annuleren',
-                dk: 'Ophæve',
+                da: 'Ophæve',
                 pt: 'Cancelar',
                 es: 'Cancelar',
                 ru: 'Отмена',
@@ -177,7 +177,7 @@ export default function PageClient() {
                 ja: '取り除く',
                 de: 'Entfernen',
                 nl: 'Verwijderen',
-                dk: 'Fjerne',
+                da: 'Fjerne',
                 pt: 'Remover',
                 es: 'Eliminar',
                 ru: 'Удалять',
@@ -193,7 +193,7 @@ export default function PageClient() {
                     ja: 'このファイルを削除しますか?',
                     de: 'Diese Datei entfernen?',
                     nl: 'Dit bestand verwijderen?',
-                    dk: 'Vil du fjerne denne fil?',
+                    da: 'Vil du fjerne denne fil?',
                     pt: 'Remover este ficheiro?',
                     es: '¿Eliminar este archivo?',
                     ru: 'Удалить этот файл?',
@@ -209,7 +209,7 @@ export default function PageClient() {
                     ja: 'このファイルを削除しますか? この操作は元に戻せません',
                     de: 'Möchten Sie diese Datei entfernen? Diese Aktion kann nicht rückgängig gemacht werden',
                     nl: 'Wilt u dit bestand verwijderen? Deze actie kan niet ongedaan worden gemaakt',
-                    dk: 'Vil du fjerne denne fil? Denne handling kan ikke fortrydes',
+                    da: 'Vil du fjerne denne fil? Denne handling kan ikke fortrydes',
                     pt: 'Deseja remover este ficheiro? Esta ação não pode ser anulada',
                     es: '¿Quieres eliminar este archivo? Esta acción no se puede deshacer',
                     ru: 'Вы хотите удалить этот файл? Это действие не может быть отменено',
@@ -219,9 +219,7 @@ export default function PageClient() {
         <div className={cssStyle.used}>
             <span>You have used</span>
             <h6>{`${formatBytes(usedBytes)} / ${formatBytes(100 * 1024 * 1024)}`}</h6>
-            <div>
-                <div style={{ 'width': `${usedBytes / (100 * 1024 * 1024) * 100}%` }}/>
-            </div>
+            <div style={{ '--percent': `${usedBytes / (100 * 1024 * 1024) * 100}%` }}/>
         </div>
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>
@@ -236,7 +234,7 @@ export default function PageClient() {
                         ja: '更新',
                         de: 'Aktualisieren',
                         nl: 'Vernieuwen',
-                        dk: 'Opfriske',
+                        da: 'Opfriske',
                         pt: 'Atualizar',
                         es: 'Refrescar',
                         ru: 'Обновить',
@@ -255,7 +253,7 @@ export default function PageClient() {
                         ja: 'アップロード',
                         de: 'Hochladen',
                         nl: 'Uploaden',
-                        dk: 'Upload',
+                        da: 'Upload',
                         pt: 'Carregar',
                         es: 'Subir',
                         ru: 'Загрузить',
@@ -288,7 +286,7 @@ export default function PageClient() {
                         ja: '取り除く',
                         de: 'Entfernen',
                         nl: 'Verwijderen',
-                        dk: 'Fjerne',
+                        da: 'Fjerne',
                         pt: 'Remover',
                         es: 'Eliminar',
                         ru: 'Удалять',
@@ -329,7 +327,7 @@ export default function PageClient() {
                                         ja: '開ける',
                                         de: 'Offen',
                                         nl: 'Open',
-                                        dk: 'Åben',
+                                        da: 'Åben',
                                         pt: 'Aberto',
                                         es: 'Abierto',
                                         ru: 'Открыть',
@@ -342,11 +340,56 @@ export default function PageClient() {
             }</ul>
             : <div className={`center-middle ${cssStyle.empty}`}>{
                 isLoading ? <div className={cssStyle.loading}/> : <>
-                    <h3>It&apos;s a little quiet here</h3>
-                    <p>Upload some files to make it more lively</p>
+                    <h3>{
+                        {
+                            en: 'Your space is ready',
+                            vi: 'Không gian của bạn đã sẵn sàng',
+                            fr: 'Votre espace est prêt',
+                            it: 'Il tuo spazio è pronto',
+                            ko: '공간이 준비되었어요',
+                            ja: 'スペースの準備ができました',
+                            de: 'Dein Bereich ist bereit',
+                            nl: 'Je ruimte is klaar',
+                            da: 'Dit område er klar',
+                            pt: 'O seu espaço está pronto',
+                            es: 'Tu espacio está listo',
+                            ru: 'Ваше пространство готово',
+                        }[lang]
+                    }</h3>
+                    <p>{
+                        {
+                            en: 'Upload your first files to get things started',
+                            vi: 'Tải lên những tệp đầu tiên để bắt đầu',
+                            fr: 'Importez vos premiers fichiers pour commencer',
+                            it: 'Carica i tuoi primi file per iniziare',
+                            ko: '첫 파일을 업로드하고 시작해 보세요',
+                            ja: '最初のファイルをアップロードして始めましょう',
+                            de: 'Lade deine ersten Dateien hoch, um loszulegen',
+                            nl: 'Upload je eerste bestanden om aan de slag te gaan',
+                            da: 'Upload dine første filer for at komme i gang',
+                            pt: 'Carregue os seus primeiros ficheiros para começar',
+                            es: 'Sube tus primeros archivos para empezar',
+                            ru: 'Загрузите первые файлы, чтобы начать',
+                        }[lang]
+                    }</p>
                     <button className='btn primary' onClick={openUploadModal}>
                         <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
-                        <span>Upload</span>
+                        <span>{
+                            {
+                                en: 'Upload files',
+                                vi: 'Tải tệp lên',
+                                fr: 'Importer des fichiers',
+                                it: 'Carica file',
+                                ko: '파일 업로드',
+                                ja: 'ファイルをアップロード',
+                                de: 'Dateien hochladen',
+                                nl: 'Bestanden uploaden',
+                                da: 'Upload filer',
+                                pt: 'Carregar ficheiros',
+                                es: 'Subir archivos',
+                                ru: 'Загрузить файлы',
+                            }[lang]
+                        }</span>
                     </button>
                 </>
             }</div>

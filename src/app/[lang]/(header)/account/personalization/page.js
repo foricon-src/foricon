@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: 'パーソナライズ',
             de: 'Personalisierung',
             nl: 'Personalisatie',
-            dk: 'Personalisering',
+            da: 'Personalisering',
             pt: 'Personalização',
             es: 'Personalización',
             ru: 'Персонализация',

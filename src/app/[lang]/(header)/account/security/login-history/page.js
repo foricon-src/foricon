@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: 'ログイン履歴',
             de: 'Anmeldeverlauf',
             nl: 'Aanmeldingsgeschiedenis',
-            dk: 'Loginhistorik',
+            da: 'Loginhistorik',
             pt: 'Histórico de login',
             es: 'Historial de inicio de sesión',
             ru: 'История входов',

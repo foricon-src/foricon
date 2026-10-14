@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: 'セキュリティ',
             de: 'Sicherheit',
             nl: 'Beveiliging',
-            dk: 'Sikkerhed',
+            da: 'Sikkerhed',
             pt: 'Segurança',
             es: 'Seguridad',
             ru: 'Безопасность',

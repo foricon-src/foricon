@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: 'ダウンロード',
             de: 'Herunterladen',
             nl: 'Download',
-            dk: 'Download',
+            da: 'Download',
             pt: 'Transferir',
             es: 'Descargar',
             ru: 'Скачать',

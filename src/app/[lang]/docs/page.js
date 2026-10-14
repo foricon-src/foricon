@@ -9,7 +9,7 @@ export function generateMetadata({ params: { lang } }) {
             ja: 'いらっしゃいませ',
             de: 'Willkommen',
             nl: 'Welkom',
-            dk: 'Velkomst',
+            da: 'Velkomst',
             pt: 'Boas-vindas',
             es: 'Bienvenido',
             ru: 'Добро пожаловать',

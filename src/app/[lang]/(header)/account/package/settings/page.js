@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: 'パッケージ設定',
             de: 'Paketeinstellungen',
             nl: 'Pakketinstellingen',
-            dk: 'Pakkeindstillinger',
+            da: 'Pakkeindstillinger',
             pt: 'Configurações do pacote',
             es: 'Configuración del paquete',
             ru: 'Настройки пакета',

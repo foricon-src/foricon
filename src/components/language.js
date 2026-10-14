@@ -16,7 +16,7 @@ export function LanguageProvider({ children }) {
         if (!language) {
             language = {
                 VN: 'vi', FR: 'fr', IT: 'it', KR: 'ko',
-                JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
+                JP: 'ja', DE: 'de', NL: 'nl', DK: 'da',
                 PT: 'pt', ES: 'es', RU: 'ru',
             }[country] || 'en';
 

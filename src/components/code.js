@@ -20,7 +20,7 @@ export default function Code({ children, lang = 'HTML', nameless, ...rest }) {
                     ja: 'クリップボードにコピーされました',
                     de: 'In die Zwischenablage kopiert',
                     nl: 'Gekopieerd naar het klembord',
-                    dk: 'Kopieret til udklipsholderen',
+                    da: 'Kopieret til udklipsholderen',
                     pt: 'Copiado para a área de transferência',
                     es: 'Copiado al portapapeles',
                     ru: 'Скопировано в буфер обмена',

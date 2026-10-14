@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang } }) {
         ja: '私のアカウント',
         de: 'Mein Konto',
         nl: 'Mijn account',
-        dk: 'Min konto',
+        da: 'Min konto',
         pt: 'A minha conta',
         es: 'Mi cuenta',
         ru: 'Мой счет',

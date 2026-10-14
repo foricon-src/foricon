@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: 'アカウント情報を編集',
             de: 'Kontoinformationen bearbeiten',
             nl: 'Accountgegevens bewerken',
-            dk: 'Rediger kontooplysninger',
+            da: 'Rediger kontooplysninger',
             pt: 'Editar informações da conta',
             es: 'Editar la información de la cuenta',
             ru: 'Изменить информацию об аккаунте',

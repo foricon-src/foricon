@@ -11,7 +11,7 @@ export function generateMetadata({ params: { lang }}) {
             ja: '情報',
             de: 'Info',
             nl: 'Info',
-            dk: 'Info',
+            da: 'Info',
             pt: 'Informações',
             es: 'Información',
             ru: 'Инфо',

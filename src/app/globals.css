@@ -1841,7 +1841,7 @@ div.message.offline:before {
                     html[lang='nl'] &:before {
                         content: 'Het lijkt erop dat je nog geen items hebt geüpload, of dat de geüploade items niet aan de vereisten voldoen';
                     }
-                    html[lang='dk'] &:before {
+                    html[lang='da'] &:before {
                         content: 'Det ser ud til, at du endnu ikke har uploadet nogen elementer, eller at de uploadede elementer ikke opfylder kravene';
                     }
                     html[lang='pt'] &:before {

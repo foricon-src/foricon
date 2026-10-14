@@ -15,7 +15,7 @@ export function generateMetadata() {
                 ja: 'ページが見つかりません',
                 de: 'Seite nicht gefunden',
                 nl: 'Pagina niet gevonden',
-                dk: 'Siden blev ikke fundet',
+                da: 'Siden blev ikke fundet',
                 pt: 'Página não encontrada',
                 es: 'Página no encontrada',
                 ru: 'Страница не найдена',

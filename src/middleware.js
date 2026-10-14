@@ -2,12 +2,12 @@
 import { NextResponse } from 'next/server';
 
 const allowedLanguages = [
-    'en', 'vi', 'fr', 'it', 'ko', 'ja', 'de', 'nl', 'dk', 'pt', 'es', 'ru'
+    'en', 'vi', 'fr', 'it', 'ko', 'ja', 'de', 'nl', 'da', 'pt', 'es', 'ru'
 ]
 
 const countryToLang = {
     VN: 'vi', FR: 'fr', IT: 'it', KR: 'ko',
-    JP: 'ja', DE: 'de', NL: 'nl', DK: 'dk',
+    JP: 'ja', DE: 'de', NL: 'nl', DK: 'da',
     PT: 'pt', ES: 'es', RU: 'ru',
 }
 
