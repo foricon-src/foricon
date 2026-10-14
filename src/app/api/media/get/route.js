@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
-import { admin } from 'Uti/firebase-admin';
+import { admin, fs } from 'Uti/firebase-admin';
 
 export async function POST(req) {
     try {
@@ -11,8 +11,10 @@ export async function POST(req) {
             .with_field('context')
             .max_results(100)
             .execute();
+
+        let { used } = (await fs.collection('quota').doc(uid).get()).data();
         
-        return NextResponse.json(res);
+        return NextResponse.json({ usedBytes: used, files: res.resources });
     }
     catch (err) {
         console.error(err);

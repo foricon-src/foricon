@@ -41,7 +41,11 @@ export default function PageClient() {
                     method: 'POST',
                     headers: { authorization: `Bearer ${token}` }
                 })).json()
-                !canceled && setItems(res.resources);
+
+                if (canceled) return;
+                
+                setItems(res.files);
+                setUsedBytes(res.usedBytes);
             }
             catch (err) {
                 notify('error', err.message);
@@ -149,7 +153,7 @@ export default function PageClient() {
             }</p>
             <Uploader multiple accept='image/*, video/*, audio/*' files={files} onFilesChange={setFiles}/>
         </Modal>
-        <Modal ref={removeModalRef} type='confirm' size='wide' btns={[
+        <Modal ref={removeModalRef} type='confirm' btns={[
             {
                 en: 'Cancel',
                 vi: 'Hủy',
