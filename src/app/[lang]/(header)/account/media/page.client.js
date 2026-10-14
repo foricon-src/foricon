@@ -75,6 +75,8 @@ export default function PageClient() {
                     headers: { authorization: `Bearer ${token}` },
                     body: formData,
                 })
+                await wait(5);
+                setFiles([]);
                 setTick(tick + 1);
             },
             () => setFiles([])
@@ -258,6 +260,7 @@ export default function PageClient() {
                             headers: { authorization: `Bearer ${token}` },
                             body: JSON.stringify({ files: selected }),
                         })
+                        setSelected([]);
                         setTick(tick + 1);
                     }
                 )

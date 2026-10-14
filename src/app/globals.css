@@ -1,7 +1,7 @@
 :root {
     /*Cursor*/
-    --cursor-default: url('//res.cloudinary.com/dxrihohkl/image/upload/v1774071081/users/ud4lP1mhq4XvynG7qUlcsAxi0Q02/cursor-dark-new.svg'), auto;
-    --cursor-pointer: url('//res.cloudinary.com/dxrihohkl/image/upload/v1774071081/users/ud4lP1mhq4XvynG7qUlcsAxi0Q02/cursor-hover-new.svg'), pointer;
+    --cursor-default: url('/cursor-dark-new.svg'), auto;
+    --cursor-pointer: url('/cursor-hover-new.svg'), pointer;
     --cursor-text: text;
     
     /*Border radius*/
@@ -128,7 +128,7 @@ body {
         overflow: hidden;
     }
     &.dark {
-        --cursor-default: url('//res.cloudinary.com/dxrihohkl/image/upload/v1774071081/users/ud4lP1mhq4XvynG7qUlcsAxi0Q02/cursor-light-new.svg'), auto;
+        --cursor-default: url('/cursor-light-new.svg'), auto;
         /*Colors*/
         /*_Background*/
         --bg-color-rgb: 23, 23, 23;
