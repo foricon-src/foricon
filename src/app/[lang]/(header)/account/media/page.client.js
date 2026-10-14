@@ -299,7 +299,7 @@ export default function PageClient() {
                         onClick={
                             ({ target, currentTarget, ctrlKey }) => {
                                 let obj = {
-                                    id: idx,
+                                    id: i.public_id,
                                     type: i.resource_type,
                                 }
                                 !currentTarget.lastChild.contains(target) && setSelected(ctrlKey ? [ ...selected, obj ] : [ obj ])
