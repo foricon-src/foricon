@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
 import { admin, fs } from 'Uti/firebase-admin';
@@ -32,13 +33,14 @@ export async function POST(req) {
             try {
                 let buffer = Buffer.from(await file.arrayBuffer());
                 let resourceType = file.type.startsWith('image/') ? 'image' : 'video';
+
+                let filename = path.parse(file.name).name;
                 
                 await new Promise((resolve, reject) => 
                     cloudinary.uploader.upload_stream(
                         {
                             folder: `users/${uid}`,
-                            use_filename: true,
-                            unique_filename: false,
+                            public_id: filename,
                             resource_type: resourceType,
                         },
                         (err, res) => {

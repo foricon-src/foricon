@@ -219,7 +219,7 @@ export default function PageClient() {
         <div className={cssStyle.used}>
             <span>You have used</span>
             <h6>{`${formatBytes(usedBytes)} / ${formatBytes(100 * 1024 * 1024)}`}</h6>
-            <div style={{ '--percent': usedBytes / 100 * 1024 * 1024 }}></div>
+            <div style={{ '--percent': `${usedBytes / (100 * 1024 * 1024)}%` }}></div>
         </div>
         <ul className='btn-list'>
             <li name='refresh' onClick={() => setTick(tick + 1)}>
