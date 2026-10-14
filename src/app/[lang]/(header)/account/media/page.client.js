@@ -18,6 +18,7 @@ export default function PageClient() {
 
     let uploadModalRef = useRef();
     let removeModalRef = useRef();
+    let removeBtnRef = useRef();
     let resultsRef = useRef();
     let filesRef = useRef();
 
@@ -53,8 +54,9 @@ export default function PageClient() {
         addEvLis(document, 'click', ({ target }) => {
             let { current } = resultsRef;
             if (!current) return;
-            let children = getChild(current);
-            !children.some(i => i.contains(target)) && setSelected([]);
+            ![ removeBtnRef.current, removeModalRef.current, ...current.children ]
+                .filter(Boolean)
+                .some(i => i.contains(target)) && setSelected([]);
         })
 
         return () => canceled = true;
@@ -65,21 +67,15 @@ export default function PageClient() {
         modal(
             uploadModalRef.current,
             async () => {
-                try {
-                    let formData = new FormData();
-                    for (let file of filesRef.current) formData.append('files', file);
-                    let token = await user.getIdToken();
-                    await fetch('/api/media/upload', {
-                        method: 'POST',
-                        headers: { authorization: `Bearer ${token}` },
-                        body: formData,
-                    })
-                    setTick(tick + 1);
-                }
-                catch (err) {
-                    notify('error', err.message);
-                    console.error(err);
-                }
+                let formData = new FormData();
+                for (let file of filesRef.current) formData.append('files', file);
+                let token = await user.getIdToken();
+                await fetch('/api/media/upload', {
+                    method: 'POST',
+                    headers: { authorization: `Bearer ${token}` },
+                    body: formData,
+                })
+                setTick(tick + 1);
             },
             () => setFiles([])
         )
@@ -252,21 +248,20 @@ export default function PageClient() {
                     }[lang]
                 }</span>
             </li>
-            {selected.length && <li name='remove' onClick={async () => {
-                try {
-                    let token = await user.getIdToken();
-                    await fetch('/api/media/remove', {
-                        method: 'POST',
-                        headers: { authorization: `Bearer ${token}` },
-                        body: JSON.stringify({ files: selected }),
-                    })
-                    setTick(tick + 1);
-                }
-                catch (err) {
-                    notify('error', err.message);
-                    console.error(err);
-                }
-            }}>
+            {!!selected.length && <li ref={removeBtnRef} name='remove' onClick={() =>
+                modal(
+                    removeModalRef.current,
+                    async () => {
+                        let token = await user.getIdToken();
+                        await fetch('/api/media/remove', {
+                            method: 'POST',
+                            headers: { authorization: `Bearer ${token}` },
+                            body: JSON.stringify({ files: selected }),
+                        })
+                        setTick(tick + 1);
+                    }
+                )
+            }>
                 <f-icon icon='trash-can' i-s='duotone/outline'/>
                 <span>{
                     {

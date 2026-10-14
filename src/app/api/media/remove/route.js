@@ -12,7 +12,7 @@ export async function POST(req) {
         let rejected = 0;
         let deletedBytes = 0;
 
-        let quotaRef = fs.collection('quote').doc(uid);
+        let quotaRef = fs.collection('quota').doc(uid);
         
         for (let { id, type } of files) {
             if (!id.startsWith(`users/${uid}/`)) {
@@ -33,7 +33,7 @@ export async function POST(req) {
 
         deletedBytes > 0 && (await fs.runTransaction(async tx => {
             let doc = await tx.get(quotaRef);
-            doc.exists && tx.update(quotaRef, {
+            tx.update(quotaRef, {
                 used: Math.max(0, doc.get('used') - deletedBytes),
             })
         }))
