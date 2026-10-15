@@ -151,6 +151,8 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
 
         let { current } = ulRef;
         getChild(current).forEach(i => i.firstChild.toggleIconOnHover('trash-can', i));
+
+        setUsedBytes(files.reduce((sum, file) => sum + file.size, 0));
     }, [ files ])
 
     return <f-uploader ref={uploaderRef} {...rest}>
