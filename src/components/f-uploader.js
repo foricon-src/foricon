@@ -96,31 +96,38 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
             .split(',')
             .map(type => type.trim())
             .filter(Boolean);
-        
-        let accepted = [...incoming].filter(file => {
-            if (maxBytes) {
-                let newUsedBytes = usedBytes + file.size;
-                console.log(newUsedBytes)
-                if (newUsedBytes > maxBytes) {
-                    notify('warn', `Exceeded upload limit. Max allowed total size: ${formatBytes(maxBytes)}`);
-                    return;
+    
+        let baseFiles = multiple ? files : [];
+        let nextUsedBytes = baseFiles.reduce((sum, file) => sum + file.size, 0);
+    
+        let accepted = [];
+    
+        for (let file of incoming) {
+            if (acceptedTypes.length) {
+                let allowed = acceptedTypes.some(type => {
+                    if (type.startsWith('.')) return file.name.toLowerCase().endsWith(type.toLowerCase());
+                    if (type.endsWith('/*')) return file.type.startsWith(type.slice(0, -1));
+                    return file.type === type;
+                })
+    
+                if (!allowed) {
+                    notify('warn', `Not allowed file extension or file type. Rejected bold(${file.name})`);
+                    continue;
                 }
-                setUsedBytes(newUsedBytes);
             }
-            if (!acceptedTypes.length) return true;
-
-            let allowed = acceptedTypes.some(type => {
-                if (type.startsWith('.')) return file.name.toLowerCase().endsWith(type.toLowerCase());
-                if (type.endsWith('/*')) return file.type.startsWith(type.slice(0, -1));
-                return file.type == type;
-            })
-            !allowed && notify('warn', `Not allowed file extension or file type. Rejected bold(${file.name})`);
-            return allowed;
-        })
-
+    
+            if (maxBytes && nextUsedBytes + file.size > maxBytes) {
+                notify('warn', `Exceeded upload limit`);
+                continue;
+            }
+    
+            accepted.push(file);
+            nextUsedBytes += file.size;
+        }
+    
         if (!accepted.length) return;
-
-        setFiles(current => [ ...(multiple ? current : []), ...accepted ]);
+    
+        setFiles([...baseFiles, ...accepted]);
     }
 
     useEffect(() => {
