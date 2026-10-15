@@ -98,11 +98,14 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
             .filter(Boolean);
         
         let accepted = [...incoming].filter(file => {
-            if (usedBytes + file.size > maxBytes) {
-                notify('warn', `Exceeded upload limit. Max allowed total size: ${formatBytes(maxBytes)}`);
-                return;
+            if (maxBytes) {
+                let newUsedBytes = usedBytes + file.size;
+                if (newUsedBytes > maxBytes) {
+                    notify('warn', `Exceeded upload limit. Max allowed total size: ${formatBytes(maxBytes)}`);
+                    return;
+                }
+                setUsedBytes(newUsedBytes);
             }
-
             if (!acceptedTypes.length) return true;
 
             let allowed = acceptedTypes.some(type => {
@@ -208,6 +211,7 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
                 event.target.value = '';
             }}
         />
+        {!!maxBytes && <span>Limit: {formatBytes(usedBytes)} / {formatBytes(maxBytes)}</span>}
     </f-uploader>
 })
 export default Uploader;
