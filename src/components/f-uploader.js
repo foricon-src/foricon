@@ -99,7 +99,7 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
         
         let accepted = [...incoming].filter(file => {
             if (usedBytes + file.size > maxBytes) {
-                notify('warn', 'Exceeded upload limit');
+                notify('warn', `Exceeded upload limit. Max allowed total size: ${formatBytes(maxBytes)}`);
                 return;
             }
 
