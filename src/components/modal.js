@@ -1,6 +1,6 @@
 import Join from './join';
 
-export default function Modal({ children, btns = [], type = '', size = '', allowedToProceed = false, ...rest }) {
+export default function Modal({ children, btns = [], type = '', size = '', allowedToProceed = true, ...rest }) {
     return <div className={Join(' ', 'modal', type, size)} {...rest}>
         <div>
             {children}
