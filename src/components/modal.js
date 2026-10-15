@@ -9,7 +9,7 @@ export default function Modal({ children, btns = [], type = '', size = '', allow
                     <button
                         key={i}
                         className={i ? 'primary' : 'secondary'}
-                        {...{ disabled: !!i && !!allowedToProceed }}
+                        {...{ disabled: !!i && !allowedToProceed }}
                     >{btn}</button>
                 )
             }</div>
