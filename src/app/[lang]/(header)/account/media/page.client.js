@@ -3,8 +3,8 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from 'Com/user';
 import cssStyle from './page.module.css';
-import { Modal } from 'Com/modal';
-import { Uploader } from 'Com/f-uploader';
+import Modal from 'Com/modal';
+import Uploader from 'Com/f-uploader';
 import useGo from 'Com/go';
 
 export default function PageClient() {
@@ -74,13 +74,16 @@ export default function PageClient() {
             async () => {
                 let formData = new FormData();
                 for (let file of filesRef.current) formData.append('files', file);
+                
                 let token = await user.getIdToken();
-                await fetch('/api/media/upload', {
+                let res = await fetch('/api/media/upload', {
                     method: 'POST',
                     headers: { authorization: `Bearer ${token}` },
                     body: formData,
                 })
-                await wait(5);
+                
+                if (!res.ok) throw new Error(`An error occured when uploading files. Code ${res.status}`);
+
                 setFiles([]);
                 setTick(tick + 1);
             },
@@ -89,7 +92,7 @@ export default function PageClient() {
     }
 
     return <div className={cssStyle.media}>
-        <Modal ref={uploadModalRef} type='confirm' size='wide' btns={[
+        <Modal ref={uploadModalRef} type='confirm' size='wide' allowedToProceed={files.length} btns={[
             {
                 en: 'Cancel',
                 vi: 'Hủy',

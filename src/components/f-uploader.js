@@ -62,8 +62,9 @@
 
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
-export let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, files: controlledFiles, onFilesChange, ...rest }, ref) {
+let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, maxBytes = 0, files: controlledFiles, onFilesChange, ...rest }, ref) {
     let [ internalFiles, setInternalFiles ] = useState([]);
+    let [ usedBytes, setUsedBytes ] = useState(0);
 
     let uploaderRef = useRef();
     let inputRef = useRef();
@@ -81,7 +82,6 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
             : nextFiles;
         
         if (!isControlled) setInternalFiles(next);
-        console.log('set file', onFilesChange, next)
         onFilesChange?.(next);
     }
     function clearFiles() {
@@ -98,6 +98,11 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
             .filter(Boolean);
         
         let accepted = [...incoming].filter(file => {
+            if (usedBytes + file.size > maxBytes) {
+                notify('warn', 'Exceeded upload limit');
+                return;
+            }
+
             if (!acceptedTypes.length) return true;
 
             let allowed = acceptedTypes.some(type => {
@@ -205,3 +210,4 @@ export let Uploader = forwardRef(function Uploader({ accept = '', multiple = fal
         />
     </f-uploader>
 })
+export default Uploader;
