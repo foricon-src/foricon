@@ -4,6 +4,8 @@
         grid-template-columns: max(30%, 200px) auto;
 
         & + div {
+            padding-top: var(--spacing-xxsmall);
+            border: 1px solid var(--lt-gray);
             margin-top: var(--spacing-xxsmall);
         }
         & > div {
