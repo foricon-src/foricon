@@ -788,7 +788,7 @@ label {
             border-radius: 0;
             width: 100%;
         }
-        &:focus-within > f-icon {
+        &:not(:has(:read-only)):focus-within > f-icon {
             color: var(--main-color);
         }
     }
