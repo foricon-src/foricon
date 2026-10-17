@@ -677,6 +677,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     font-size: 1rem;
     max-width: 100%;
     resize: none;
+    cursor: var(--cursor-pointer);
     color: var(--title-color);
     text-align: left;
     line-height: 27px;
@@ -685,8 +686,8 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     border-radius: var(--s-bdr-rad);
     outline: 0 solid var(--tr-main-color);
 
-    &:not(:read-only) {
-        cursor: var(--cursor-pointer);
+    &:read-only {
+        cursor: var(--cursor-default);
     }
 }
 :is(input, textarea):placeholder {
@@ -696,7 +697,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
 :is(input:not([type='range']), label:has(> f-icon + input:not([type])), textarea):not(:read-only):focus-within {
     cursor: var(--cursor-text);
 }
-:is(input, label:has(> f-icon + input:not([type])), textarea, select, f-select):hover {
+:is(input, label:has(> f-icon + input:not([type])), textarea, select, f-select):not(:read-only):hover {
     background-color: var(--gray);
 }
 :is(input, label:has(> f-icon + input:not([type])), textarea, select):not(:read-only):focus-within, f-select:has(> option-list.active) {
