@@ -1021,7 +1021,7 @@ globalThis.formatTime = time => {
 }
 /**
  * Turns date object into date string
- * @param {Date} date - Formatted date object
+ * @param {Date} date - Date object
  * @param {string} lang - Language
  * @returns Formatted date string
  */

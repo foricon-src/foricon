@@ -1,30 +1,18 @@
 .account_info > table {
-    width: 100%;
+    & > div {
+        display: grid;
+        grid-template-columns: max(30%, 200px);
 
-    & td:first-child {
-        width: 200px;
+        & + div {
+            margin-top: var(--spacing-xxsmall);
+        }
+        & > div {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xxsmall);
+        }
     }
-    & :global(div.img) {
-        height: 50px;
-    }
-    & f-icon {
-        margin-left: 5px;
-
-        &[icon='circle-check'] {
-            color: var(--green);
-        }
-        &[icon='circle-exclamination'] {
-            color: var(--yellow);
-        }
-        &[icon='clone'] {
-            cursor: var(--cursor-pointer);
-
-            &:hover {
-                opacity: .75;
-            }
-            &:active {
-                scale: var(--btn-scale);
-            }
-        }
+    & > button {
+        margin-top: var(--spacing-small);
     }
 }

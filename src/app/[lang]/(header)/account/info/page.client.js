@@ -1,160 +1,223 @@
 'use client';
 
 import { useContext, useState } from 'react';
-import { UserContext } from "Com/user";
+import { UserContext } from 'Com/user';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
+import Img from 'Com/img';
+import IconInput from 'Com/iconinput';
 
-export default function Page() {
+export default function PageClient() {
     let go = useGo();
     let { user } = useContext(UserContext);
-
     let { lang } = document.documentElement;
 
-    let obj = user?.doc || {
-        avatar: '',
-        name: 'John Doe',
-        email: 'address@example.com',
-        joiningDate: '2023-12-21T17:00:00.000Z',
-    }
-
-    return (
-        <div className={cssStyle.account_info}>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>{
-                            {
-                                en: 'Avatar',
-                                vi: 'Ảnh đại diện',
-                                fr: 'Avatar',
-                                it: "L'Avatar",
-                                ko: '화신',
-                                ja: 'アバター',
-                                de: 'Avatar',
-                                nl: 'Avatar',
-                                da: 'Avatar',
-                                pt: 'Avatar',
-                                es: 'Avatar',
-                                ru: 'Аватар',
-                            }[lang]
-                        }</td>
-                        <td>
-                            <div className='img circle square' style={{ backgroundImage: `url(${obj.avatar})` }}/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{
-                            {
-                                en: 'Name',
-                                vi: 'Tên',
-                                fr: 'Nom',
-                                it: 'Nome',
-                                ko: '이름',
-                                ja: '名前',
-                                de: 'Name',
-                                nl: 'Naam',
-                                da: 'Navn',
-                                pt: 'Nome',
-                                es: 'Nombre',
-                                ru: 'Имя',
-                            }[lang]
-                        }</td>
-                        <td>{obj.name}</td>
-                    </tr>
-                    <tr>
-                        <td>{
-                            {
-                                en: 'Email',
-                                vi: 'Email',
-                                fr: 'Email',
-                                it: 'Email',
-                                ko: '이메일',
-                                ja: 'メール',
-                                de: 'Email',
-                                nl: 'Email',
-                                da: 'Email',
-                                pt: 'Email',
-                                es: 'Correo electrónico',
-                                ru: 'Электронная почта',
-                            }[lang]
-                        }</td>
-                        <td>{obj.email}{user?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
-                    </tr>
-                    <tr>
-                        <td>{
-                            {
-                                en: 'User ID',
-                                vi: 'ID người dùng',
-                                fr: "ID de l'utilisateur",
-                                it: 'ID utente',
-                                ko: '사용자 ID',
-                                ja: 'ユーザーID',
-                                de: 'Benutzer-ID',
-                                nl: 'Gebruikers-ID',
-                                da: 'Bruger-id',
-                                pt: 'ID do utilizador',
-                                es: 'ID de usuario',
-                                ru: 'ID пользователя',
-                            }[lang]
-                        }</td>
-                        <td>{user?.uid}<f-icon icon='clone' onClick={() => {
-                            navigator.clipboard.writeText(user.uid);
-                            notify('success', {
-                                en: 'Copied to clipboard',
-                                vi: 'Đã sao chép vào bộ nhớ tạm',
-                                fr: 'Copié dans le presse-papiers',
-                                it: 'Copiato negli appunti',
-                                ko: '클립보드에 복사됨',
-                                ja: 'クリップボードにコピーされました',
-                                de: 'In die Zwischenablage kopiert',
-                                nl: 'Gekopieerd naar het klembord',
-                                da: 'Kopieret til udklipsholderen',
-                                pt: 'Copiado para a área de transferência',
-                                es: 'Copiado al portapapeles',
-                                ru: 'Скопировано в буфер обмена',
-                            }[lang])
-                        }}/></td>
-                    </tr>
-                    <tr>
-                        <td>{
-                            {
-                                en: 'Joining date',
-                                vi: 'Ngày tham gia',
-                                fr: "Date d'adhésion",
-                                it: 'Data di adesione',
-                                ko: '가입날짜',
-                                ja: '入社日',
-                                de: 'Eintrittsdatum',
-                                nl: 'Datum van toetreding',
-                                da: 'Tilmeldingsdato',
-                                pt: 'Data de adesão',
-                                es: 'Fecha de ingreso',
-                                ru: 'Дата присоединения',
-                            }[lang]
-                        }</td>
-                        <td id='main_account-info_joining-date'>{formatDate(localTime(obj.joiningDate))}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <ul className='btn-list vertical large'>
-                <li onClick={() => go('account/info/edit')}>{
-                    {
-                        en: 'Edit account info',
-                        vi: 'Chỉnh sửa thông tin tài khoản',
-                        fr: 'Modifier les informations du compte',
-                        it: 'Modifica informazioni account',
-                        ko: '계정 정보 편집',
-                        ja: 'アカウント情報を編集',
-                        de: 'Kontoinformationen bearbeiten',
-                        nl: 'Accountgegevens bewerken',
-                        da: 'Rediger kontooplysninger',
-                        pt: 'Editar informações da conta',
-                        es: 'Editar la información de la cuenta',
-                        ru: 'Изменить информацию об аккаунте',
-                    }[lang]
-                }</li>
-            </ul>
+    return <div className={cssStyle.account_info}>
+        <div>
+            <div>
+                <span>Avatar</span>
+            </div>
+            <div>
+                <Img src={user?.doc.avatar}/>
+                <button>Replace</button>
+            </div>
         </div>
-    )
+        <div>
+            <div>
+                <span>Name</span>
+            </div>
+            <div>
+                <input value={user?.doc.name}/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <span>Email</span>
+            </div>
+            <div>
+                <input value={user?.doc.email}/>
+                {
+                    user?.emailVerified
+                        ? <span><f-icon icon='circle-check'/> Verified</span>
+                        : <button className='primary'>Verify</button>
+                }
+            </div>
+        </div>
+        <div>
+            <div>
+                <span>UID</span>
+            </div>
+            <div>
+                <IconInput
+                    icon={{ name: 'clone' }}
+                    value={user?.uid}
+                    readOnly
+                />
+            </div>
+        </div>
+        <div>
+            <div>
+                <span>Joined</span>
+            </div>
+            <div>
+                <input type='date' value={formatDate(new Date(user?.doc.joiningDate || '21/12/23'))}/>
+            </div>
+        </div>
+        <button className='primary'>Saved</button>
+        <button className='secondary'>Cancel changes</button>
+    </div>
 }
+
+// export default function Page() {
+//     let go = useGo();
+//     let { user } = useContext(UserContext);
+
+//     let { lang } = document.documentElement;
+
+//     let obj = user?.doc || {
+//         avatar: '',
+//         name: 'John Doe',
+//         email: 'address@example.com',
+//         joiningDate: '2023-12-21T17:00:00.000Z',
+//     }
+
+//     return (
+//         <div className={cssStyle.account_info}>
+//             <table>
+//                 <tbody>
+//                     <tr>
+//                         <td>{
+//                             {
+//                                 en: 'Avatar',
+//                                 vi: 'Ảnh đại diện',
+//                                 fr: 'Avatar',
+//                                 it: "L'Avatar",
+//                                 ko: '화신',
+//                                 ja: 'アバター',
+//                                 de: 'Avatar',
+//                                 nl: 'Avatar',
+//                                 da: 'Avatar',
+//                                 pt: 'Avatar',
+//                                 es: 'Avatar',
+//                                 ru: 'Аватар',
+//                             }[lang]
+//                         }</td>
+//                         <td>
+//                             <div className='img circle square' style={{ backgroundImage: `url(${obj.avatar})` }}/>
+//                         </td>
+//                     </tr>
+//                     <tr>
+//                         <td>{
+//                             {
+//                                 en: 'Name',
+//                                 vi: 'Tên',
+//                                 fr: 'Nom',
+//                                 it: 'Nome',
+//                                 ko: '이름',
+//                                 ja: '名前',
+//                                 de: 'Name',
+//                                 nl: 'Naam',
+//                                 da: 'Navn',
+//                                 pt: 'Nome',
+//                                 es: 'Nombre',
+//                                 ru: 'Имя',
+//                             }[lang]
+//                         }</td>
+//                         <td>{obj.name}</td>
+//                     </tr>
+//                     <tr>
+//                         <td>{
+//                             {
+//                                 en: 'Email',
+//                                 vi: 'Email',
+//                                 fr: 'Email',
+//                                 it: 'Email',
+//                                 ko: '이메일',
+//                                 ja: 'メール',
+//                                 de: 'Email',
+//                                 nl: 'Email',
+//                                 da: 'Email',
+//                                 pt: 'Email',
+//                                 es: 'Correo electrónico',
+//                                 ru: 'Электронная почта',
+//                             }[lang]
+//                         }</td>
+//                         <td>{obj.email}{user?.emailVerified ? <f-icon icon='circle-check'/> : <span>Verify</span>}</td>
+//                     </tr>
+//                     <tr>
+//                         <td>{
+//                             {
+//                                 en: 'User ID',
+//                                 vi: 'ID người dùng',
+//                                 fr: "ID de l'utilisateur",
+//                                 it: 'ID utente',
+//                                 ko: '사용자 ID',
+//                                 ja: 'ユーザーID',
+//                                 de: 'Benutzer-ID',
+//                                 nl: 'Gebruikers-ID',
+//                                 da: 'Bruger-id',
+//                                 pt: 'ID do utilizador',
+//                                 es: 'ID de usuario',
+//                                 ru: 'ID пользователя',
+//                             }[lang]
+//                         }</td>
+//                         <td>{user?.uid}<f-icon icon='clone' onClick={() => {
+//                             navigator.clipboard.writeText(user.uid);
+//                             notify('success', {
+//                                 en: 'Copied to clipboard',
+//                                 vi: 'Đã sao chép vào bộ nhớ tạm',
+//                                 fr: 'Copié dans le presse-papiers',
+//                                 it: 'Copiato negli appunti',
+//                                 ko: '클립보드에 복사됨',
+//                                 ja: 'クリップボードにコピーされました',
+//                                 de: 'In die Zwischenablage kopiert',
+//                                 nl: 'Gekopieerd naar het klembord',
+//                                 da: 'Kopieret til udklipsholderen',
+//                                 pt: 'Copiado para a área de transferência',
+//                                 es: 'Copiado al portapapeles',
+//                                 ru: 'Скопировано в буфер обмена',
+//                             }[lang])
+//                         }}/></td>
+//                     </tr>
+//                     <tr>
+//                         <td>{
+//                             {
+//                                 en: 'Joining date',
+//                                 vi: 'Ngày tham gia',
+//                                 fr: "Date d'adhésion",
+//                                 it: 'Data di adesione',
+//                                 ko: '가입날짜',
+//                                 ja: '入社日',
+//                                 de: 'Eintrittsdatum',
+//                                 nl: 'Datum van toetreding',
+//                                 da: 'Tilmeldingsdato',
+//                                 pt: 'Data de adesão',
+//                                 es: 'Fecha de ingreso',
+//                                 ru: 'Дата присоединения',
+//                             }[lang]
+//                         }</td>
+//                         <td id='main_account-info_joining-date'>{formatDate(localTime(obj.joiningDate))}</td>
+//                     </tr>
+//                 </tbody>
+//             </table>
+//             <ul className='btn-list vertical large'>
+//                 <li onClick={() => go('account/info/edit')}>{
+//                     {
+//                         en: 'Edit account info',
+//                         vi: 'Chỉnh sửa thông tin tài khoản',
+//                         fr: 'Modifier les informations du compte',
+//                         it: 'Modifica informazioni account',
+//                         ko: '계정 정보 편집',
+//                         ja: 'アカウント情報を編集',
+//                         de: 'Kontoinformationen bearbeiten',
+//                         nl: 'Accountgegevens bewerken',
+//                         da: 'Rediger kontooplysninger',
+//                         pt: 'Editar informações da conta',
+//                         es: 'Editar la información de la cuenta',
+//                         ru: 'Изменить информацию об аккаунте',
+//                     }[lang]
+//                 }</li>
+//             </ul>
+//         </div>
+//     )
+// }
