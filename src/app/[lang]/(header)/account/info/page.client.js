@@ -77,7 +77,7 @@ export default function PageClient() {
                 <span>Joined</span>
             </div>
             <div>
-                <input value={formatDate(user?.doc.joiningDate || '2023-12-21T17:00:00.000Z')} readOnly/>
+                <input value={formatDate(user?.doc.joiningDate || '2023-12-21T17:00:00.000Z', { dateOnly: true })} readOnly/>
             </div>
         </div>
         <button className='primary'>Saved</button>

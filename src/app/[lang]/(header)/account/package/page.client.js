@@ -30,7 +30,7 @@ export default function PageClient() {
 
         let reset = new Date(start.year, start.month, start.day, start.hours, start.minutes, start.seconds);
         reset.setDate(reset.getDate() + 30);
-        let formatted = formatDate(reset, lang);
+        let formatted = formatDate(reset, { lang });
         elemById('reset').innerText =
             lang == 'ko' ? `${formatted}에 재설정됨` :
             lang == 'ja' ? `${formatted}にリセット` :

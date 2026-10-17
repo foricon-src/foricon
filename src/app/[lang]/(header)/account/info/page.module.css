@@ -1,12 +1,12 @@
 .account_info {
     & > div {
         display: grid;
-        grid-template-columns: max(30%, 200px) auto;
+        grid-template-columns: max(20%, 200px) auto;
 
         & + div {
-            padding-top: var(--spacing-small);
+            padding-top: var(--spacing-xxsmall);
             border-top: 1px solid var(--dk-gray);
-            margin-top: var(--spacing-small);
+            margin-top: var(--spacing-xxsmall);
         }
         & > div {
             display: flex;

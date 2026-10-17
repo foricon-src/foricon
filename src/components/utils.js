@@ -1022,18 +1022,25 @@ globalThis.formatTime = time => {
 /**
  * Turns date object into date string
  * @param {Date | string} date - Date object
- * @param {string} lang - Language
+ * @param {{
+ *   lang: string,
+ *   dateOnly: boolean,
+ * }} options - Options
  * @returns Formatted date string
  */
-globalThis.formatDate = (date, lang = document.documentElement.lang) => {
+globalThis.formatDate = (date, options) => {
     date = new Date(date);
-    
+
+    let lang = options?.lang || document.documentElement.lang;
+    let dateOnly = options?.lang;
+
     let seconds = date.getSeconds();
     let minutes = date.getMinutes();
     let hours = date.getHours();
     let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
+    
     let string;
     
     hours = hours != undefined
@@ -1080,9 +1087,11 @@ globalThis.formatDate = (date, lang = document.documentElement.lang) => {
         lang == 'ru' ? `${day} ${currentMonth} ${year} г.` :
         `${day} ${currentMonth}, ${year}`;
     
-    string = lang == 'ko' || lang == 'ja'
-        ? string + (time ? ` ${time}` : '')
-        : (time ? `${time}, ` : '') + string;
+    !dateOnly && (
+        string = lang == 'ko' || lang == 'ja'
+            ? string + (time ? ` ${time}` : '')
+            : (time ? `${time}, ` : '') + string
+    )
     
     return string;
 }
