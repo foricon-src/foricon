@@ -1021,11 +1021,13 @@ globalThis.formatTime = time => {
 }
 /**
  * Turns date object into date string
- * @param {Date} date - Date object
+ * @param {Date | string} date - Date object
  * @param {string} lang - Language
  * @returns Formatted date string
  */
 globalThis.formatDate = (date, lang = document.documentElement.lang) => {
+    date = new Date(date);
+    
     let seconds = date.getSeconds();
     let minutes = date.getMinutes();
     let hours = date.getHours();
