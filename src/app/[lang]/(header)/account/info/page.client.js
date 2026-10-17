@@ -51,6 +51,23 @@ export default function PageClient() {
                 <IconInput
                     icon={{ name: 'clone' }}
                     value={user?.uid}
+                    onClick={() => {
+                        navigator.clipboard.writeText(user.uid);
+                        notify('success', {
+                            en: 'Copied to clipboard',
+                            vi: 'Đã sao chép vào bộ nhớ tạm',
+                            fr: 'Copié dans le presse-papiers',
+                            it: 'Copiato negli appunti',
+                            ko: '클립보드에 복사됨',
+                            ja: 'クリップボードにコピーされました',
+                            de: 'In die Zwischenablage kopiert',
+                            nl: 'Gekopieerd naar het klembord',
+                            da: 'Kopieret til udklipsholderen',
+                            pt: 'Copiado para a área de transferência',
+                            es: 'Copiado al portapapeles',
+                            ru: 'Скопировано в буфер обмена',
+                        }[lang])
+                    }}
                     readOnly
                 />
             </div>
@@ -60,7 +77,7 @@ export default function PageClient() {
                 <span>Joined</span>
             </div>
             <div>
-                <input type='date' value={user?.doc.joiningDate || '2023-12-21T17:00:00.000Z'} readOnly/>
+                <input value={formatDate(user?.doc.joiningDate || '2023-12-21T17:00:00.000Z')} readOnly/>
             </div>
         </div>
         <button className='primary'>Saved</button>
