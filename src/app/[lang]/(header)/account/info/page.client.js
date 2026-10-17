@@ -19,7 +19,7 @@ export default function PageClient() {
             </div>
             <div>
                 <Img src={user?.doc.avatar}/>
-                <button>Replace</button>
+                <button className='secondary'>Replace</button>
             </div>
         </div>
         <div>
@@ -39,7 +39,7 @@ export default function PageClient() {
                 {
                     user?.emailVerified
                         ? <span><f-icon icon='circle-check'/> Verified</span>
-                        : <button className='primary'>Verify</button>
+                        : <button className='secondary'>Verify</button>
                 }
             </div>
         </div>
