@@ -60,7 +60,7 @@ export default function PageClient() {
                 <span>Joined</span>
             </div>
             <div>
-                <input type='date' value={formatDate(new Date(user?.doc.joiningDate || '21/12/23'))}/>
+                <input type='date' value={user?.doc.joiningDate || '00:00:00, 21/12/23'}/>
             </div>
         </div>
         <button className='primary'>Saved</button>
