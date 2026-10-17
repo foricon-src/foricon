@@ -1,7 +1,7 @@
-.account_info > table {
+.account_info {
     & > div {
         display: grid;
-        grid-template-columns: max(30%, 200px);
+        grid-template-columns: max(30%, 300px);
 
         & + div {
             margin-top: var(--spacing-xxsmall);
@@ -10,6 +10,14 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-xxsmall);
+
+            & > * {
+                margin: 0;
+
+                &:is(input, label) {
+                    width: 200px;
+                }
+            }
         }
     }
     & > button {
