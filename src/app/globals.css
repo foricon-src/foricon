@@ -677,7 +677,6 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     font-size: 1rem;
     max-width: 100%;
     resize: none;
-    cursor: var(--cursor-pointer);
     color: var(--title-color);
     text-align: left;
     line-height: 27px;
@@ -685,6 +684,10 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     padding: var(--inner-spacing-bdr);
     border-radius: var(--s-bdr-rad);
     outline: 0 solid var(--tr-main-color);
+
+    &:not(:read-only) {
+        cursor: var(--cursor-pointer);
+    }
 }
 :is(input, textarea):placeholder {
     color: var(--text-color);
@@ -775,7 +778,6 @@ input[type='range'] {
 
 label {
     &:has(> input:not([type])) {
-        cursor: var(--cursor-pointer);
         display: flex;
         gap: 12px;
         padding-left: 18px !important;
@@ -793,7 +795,6 @@ label {
         }
     }
     &:has(> input[type='checkbox']) {
-        cursor: var(--cursor-pointer);
         gap: var(--spacing-xxsmall);
         user-select: none;
         padding: var(--inner-spacing);
@@ -838,7 +839,6 @@ label {
         }
     }
     &.search > f-icon {
-        cursor: var(--cursor-pointer);
         width: 20px;
         flex-shrink: 0;
         
