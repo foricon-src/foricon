@@ -4,9 +4,7 @@
         grid-template-columns: max(20%, 200px) auto;
 
         & + div {
-            padding-top: var(--spacing-xxsmall);
-            border-top: 1px solid var(--dk-gray);
-            margin-top: var(--spacing-xxsmall);
+            margin-top: var(--spacing-small);
         }
         & > div {
             display: flex;
@@ -27,5 +25,6 @@
     }
     & > button {
         margin-top: var(--spacing-medium);
+        margin-bottom: 0;
     }
 }

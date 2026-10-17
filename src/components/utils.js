@@ -1032,7 +1032,7 @@ globalThis.formatDate = (date, options) => {
     date = new Date(date);
 
     let lang = options?.lang || document.documentElement.lang;
-    let dateOnly = options?.lang;
+    let dateOnly = options?.dateOnly;
 
     let seconds = date.getSeconds();
     let minutes = date.getMinutes();
@@ -1040,7 +1040,7 @@ globalThis.formatDate = (date, options) => {
     let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
-    
+
     let string;
     
     hours = hours != undefined
