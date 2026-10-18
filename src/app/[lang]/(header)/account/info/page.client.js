@@ -116,6 +116,7 @@ export default function PageClient() {
                         headers: { authorization: `Bearer ${token}` },
                         body: JSON.stringify({ name, avatar: media?.secure_url }),
                     })
+                    
                     if (!res.ok) throw new Error(res.statusText);
 
                     notify('success', 'Updated successfully');
@@ -129,7 +130,12 @@ export default function PageClient() {
                     notify('error', err.message);
                     console.error(err);
                 }
-                finally { enable(body) }
+                finally {
+                    enable(body);
+                    setName(undefined);
+                    setEmail(undefined);
+                    setMedia(undefined);
+                }
             }}
         >Save</button>
         <button

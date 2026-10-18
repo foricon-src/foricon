@@ -11,6 +11,7 @@ export async function POST(req) {
         let obj = {};
         name && (obj.displayName = name);
         avatar && (obj.photoURL = avatar)
+        console.log(req.body)
 
         await adAuth.updateUser(uid, obj);
         return new NextResponse(null, { status: 204 });
