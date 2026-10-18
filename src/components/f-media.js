@@ -39,7 +39,7 @@ export function Media() {
                     aspectRatio && aspectRatio == file.width / file.height ||
                     fileType && checkFileType(fileType, `${file.resource_type}/${file.format}`)
                 ) && file
-            )
+            ).filter(Boolean)
 
             setFiles(f);
             console.log(files)
