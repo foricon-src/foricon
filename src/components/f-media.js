@@ -57,7 +57,7 @@ export function Media() {
                     ? files.map(i =>
                         <li
                             key={i}
-                            className={selected.public_id == i.public_id && 'active'}
+                            className={selected?.public_id == i.public_id && 'active'}
                             onClick={() => setSelected(i)}
                         >
                             <img src={i.url}/>
