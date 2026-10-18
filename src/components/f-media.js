@@ -26,36 +26,18 @@ export function Media() {
     useEffect(() => {(async () => {
         try {
             if (!user) return;
-            
+
             let token = await user.getIdToken();
             let { files } = await (await fetch('/api/media/get', {
                 method: 'POST',
                 headers: { authorization: `Bearer ${token}` }
             })).json()
 
-            files = (
-                await Promise.all(
-                    files.map(async file => {
-                        let { url, type } = file;
-                        let loaded;
-    
-                        let holder = document.createElement(type == 'image' ? 'img' : 'video');
-                        holder.src = url;
-                        holder.addEventListener(type == 'image' ? 'load' : 'loadeddata', () => loaded = true);
-    
-                        while (!loaded) await wait();
-                        console.log(fileType, type, file)
-                        if (aspectRatio != (holder.width || holder.videoWidth) / (holder.height || holder.videoHeight)) return;
-                        if (fileType && !(
-                                fileType.endsWith('/*')
-                                    ? type.startsWith(fileType.slice(0, fileType.indexOf('/*')))
-                                    : type == fileType
-                            )
-                        ) return;
-                        return file;
-                    })
-                )
-            ).filter(Boolean)
+            files = files.map(async file => {
+                if (aspectRatio && aspectRatio != file.width / file.height) return;
+                if (fileType && !checkFileType(fileType, `${file.resource_type}/${file.format}`)) return;
+                return file;
+            }).filter(Boolean)
 
             setFiles(files);
         }

@@ -1625,3 +1625,24 @@ globalThis.formatCode = (value, lang = 'html') => {
     .replaceAll('\ufeff', "<span class='hidden-char' title='U+FEFF'></span>")
     .replaceAll('\u2060', "<span class='hidden-char' title='U+2060'></span>");
 }
+
+/**
+ * Checks whether a file's MIME type matches the allowed types. Works similarly to the `accept` attribute of `<input type='file'>`.
+ *
+ * @param {string} accept - Comma-separated list of allowed file types. Supports MIME types, wildcards (e.g. `image/*`), and file extensions (e.g. `.png`). Example: `image/*, video/mp4, .pdf`.
+ * @param {string} fileType - The file's MIME type to check. Example: `image/png`.
+ * @returns {boolean} Whether the file type is allowed.
+ */
+globalThis.checkFileType = (accept, fileType) => {
+    let [ type, ext ] = fileType.split('/');
+    return accept
+        .split(',')
+        .map(type => type.trim())
+        .filter(Boolean)
+        .some(i => {
+            i = i.replaceAll('jpeg', 'jpg');
+            return i.startsWith('.') ? i.slice(1) == ext.replaceAll('jpeg', 'jpg') :
+                   i.endsWith('/*') ? i.slice(0, -2) == type :
+                   fileType == i;
+        })
+}

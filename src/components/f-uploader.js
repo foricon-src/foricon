@@ -92,23 +92,15 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
     useImperativeHandle(ref, () => ({ clearFiles }))
 
     function addFiles(incoming) {
-        let acceptedTypes = accept
-            .split(',')
-            .map(type => type.trim())
-            .filter(Boolean);
-    
         let baseFiles = multiple ? files : [];
         let nextUsedBytes = baseFiles.reduce((sum, file) => sum + file.size, 0);
     
         let accepted = [];
     
         for (let file of incoming) {
-            if (acceptedTypes.length) {
-                let allowed = acceptedTypes.some(type => {
-                    if (type.startsWith('.')) return file.name.toLowerCase().endsWith(type.toLowerCase());
-                    if (type.endsWith('/*')) return file.type.startsWith(type.slice(0, -1));
-                    return file.type === type;
-                })
+            if (accept) {
+                console.log(file);
+                let allowed = checkFileType(accept, file.type);
     
                 if (!allowed) {
                     notify('warn', `Not allowed file extension or file type. Rejected bold(${file.name})`);
