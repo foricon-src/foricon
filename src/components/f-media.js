@@ -52,10 +52,14 @@ export function Media() {
         <div>
             <h3>Foricon Media</h3>
             <ul className='empty-state'>{
-                files.map(i => <li key={i} onClick={() => setSelected(i)}>
-                    <Img src={i.url}/>
-                    <span>{i.name}</span>
-                </li>)
+                files.length
+                    ? files.map(i => <li key={i} onClick={() => setSelected(i)}>
+                        <Img src={i.url}/>
+                        <span>{i.name}</span>
+                    </li>)
+                    : <span>
+                        <f-icon icon='spinner-2p3' animation='spin'/> Loading
+                    </span>
             }</ul>
             <span>{files.length} files</span>
             <div>

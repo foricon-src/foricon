@@ -1812,7 +1812,7 @@ div.message.offline:before {
         > h3 {
             grid-area: title;
         }
-        > #media_list {
+        > ul {
             grid-area: list;
             margin: var(--spacing-small) 0;
             
