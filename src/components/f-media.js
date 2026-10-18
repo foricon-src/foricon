@@ -42,6 +42,7 @@ export function Media() {
             )
 
             setFiles(f);
+            console.log(files)
         }
         catch (err) {
             notify('error', err.message);
