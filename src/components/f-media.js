@@ -60,7 +60,7 @@ export function Media() {
             notify('error', err.message);
             console.error(err);
         }
-    })()}, [ isOpened ])
+    })()}, [ mediaOptions ])
 
     return <div className={Join(' ', 'modal wider', mediaOptions && 'active')} id='media'>
         <div>
