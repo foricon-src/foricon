@@ -1802,9 +1802,9 @@ div.message.offline:before {
         align-items: center;
         grid-template-columns: 3fr 1fr;
         grid-template-areas:
-        'title title'
-        'list list'
-        'itemCount btns';
+            'title title'
+            'list list'
+            'itemCount btns';
         
         > h3, > div:last-child > a {
             margin: 0;
@@ -1812,92 +1812,90 @@ div.message.offline:before {
         > h3 {
             grid-area: title;
         }
-        > ul {
-            &#media_list {
-                grid-area: list;
-                margin: var(--spacing-small) 0;
+        > #media_list {
+            grid-area: list;
+            margin: var(--spacing-small) 0;
+            
+            &:not(:has(> *)) {
+                &:before {
+                    content: "It looks like you haven’t uploaded any items yet, or the ones you’ve uploaded don’t meet the requirements";
+                }
+                html[lang='vi'] &:before {
+                    content: 'Có vẻ như bạn chưa tải lên bất kỳ mục nào hoặc các mục bạn đã tải lên không đáp ứng yêu cầu';
+                }
+                html[lang='fr'] &:before {
+                    content: 'Il semble que vous n’ayez pas encore téléchargé d’articles, ou que ceux que vous avez téléchargés ne répondent pas aux exigences';
+                }
+                html[lang='it'] &:before {
+                    content: 'Sembra che tu non abbia ancora caricato alcun elemento, oppure quelli caricati non soddisfano i requisiti';
+                }
+                html[lang='ko'] &:before {
+                    content: '아직 항목을 업로드하지 않았거나 업로드한 항목이 요구 사항을 충족하지 않는 것 같습니다';
+                }
+                html[lang='ja'] &:before {
+                    content: 'まだアイテムをアップロードしていないか、アップロードしたアイテムが要件を満たしていないようです';
+                }
+                html[lang='de'] &:before {
+                    content: 'Es sieht so aus, als ob Sie noch keine Artikel hochgeladen haben oder die hochgeladenen Artikel nicht den Anforderungen entsprechen';
+                }
+                html[lang='nl'] &:before {
+                    content: 'Het lijkt erop dat je nog geen items hebt geüpload, of dat de geüploade items niet aan de vereisten voldoen';
+                }
+                html[lang='da'] &:before {
+                    content: 'Det ser ud til, at du endnu ikke har uploadet nogen elementer, eller at de uploadede elementer ikke opfylder kravene';
+                }
+                html[lang='pt'] &:before {
+                    content: 'Parece que você ainda não enviou nenhum item, ou os itens enviados não atendem aos requisitos';
+                }
+                html[lang='es'] &:before {
+                    content: 'Parece que aún no has subido ningún artículo, o los que has subido no cumplen con los requisitos';
+                }
+                html[lang='ru'] &:before {
+                    content: 'Похоже, вы еще не загрузили ни одного элемента, или загруженные элементы не соответствуют требованиям';
+                }
+            }
+            &:has(> li) {
+                display: grid;
+                gap: var(--spacing-small);
+                grid-template-columns: repeat(4, calc(25% - var(--spacing-small) * .75));
+            }
+            > span > f-icon {
+                margin-right: 10px;
+            }
+            > li {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                justify-content: center;
+                text-align: center;
+                cursor: var(--cursor-pointer);
+                padding: 10px;
+                border-radius: var(--bdr-rad);
+                position: relative;
                 
-                &:not(:has(> *)) {
-                    &:before {
-                        content: "It looks like you haven’t uploaded any items yet, or the ones you’ve uploaded don’t meet the requirements";
-                    }
-                    html[lang='vi'] &:before {
-                        content: 'Có vẻ như bạn chưa tải lên bất kỳ mục nào hoặc các mục bạn đã tải lên không đáp ứng yêu cầu';
-                    }
-                    html[lang='fr'] &:before {
-                        content: 'Il semble que vous n’ayez pas encore téléchargé d’articles, ou que ceux que vous avez téléchargés ne répondent pas aux exigences';
-                    }
-                    html[lang='it'] &:before {
-                        content: 'Sembra che tu non abbia ancora caricato alcun elemento, oppure quelli caricati non soddisfano i requisiti';
-                    }
-                    html[lang='ko'] &:before {
-                        content: '아직 항목을 업로드하지 않았거나 업로드한 항목이 요구 사항을 충족하지 않는 것 같습니다';
-                    }
-                    html[lang='ja'] &:before {
-                        content: 'まだアイテムをアップロードしていないか、アップロードしたアイテムが要件を満たしていないようです';
-                    }
-                    html[lang='de'] &:before {
-                        content: 'Es sieht so aus, als ob Sie noch keine Artikel hochgeladen haben oder die hochgeladenen Artikel nicht den Anforderungen entsprechen';
-                    }
-                    html[lang='nl'] &:before {
-                        content: 'Het lijkt erop dat je nog geen items hebt geüpload, of dat de geüploade items niet aan de vereisten voldoen';
-                    }
-                    html[lang='da'] &:before {
-                        content: 'Det ser ud til, at du endnu ikke har uploadet nogen elementer, eller at de uploadede elementer ikke opfylder kravene';
-                    }
-                    html[lang='pt'] &:before {
-                        content: 'Parece que você ainda não enviou nenhum item, ou os itens enviados não atendem aos requisitos';
-                    }
-                    html[lang='es'] &:before {
-                        content: 'Parece que aún no has subido ningún artículo, o los que has subido no cumplen con los requisitos';
-                    }
-                    html[lang='ru'] &:before {
-                        content: 'Похоже, вы еще не загрузили ни одного элемента, или загруженные элементы не соответствуют требованиям';
-                    }
+                &:hover {
+                    background-color: var(--lt-gray);
                 }
-                &:has(> li) {
-                    display: grid;
-                    gap: var(--spacing-small);
-                    grid-template-columns: repeat(4, calc(25% - var(--spacing-small) * .75));
+                &:before {
+                    content: '\e0b9';
+                    font-family: 'Foricon Beta';
+                    color: var(--main-color);
+                    position: absolute;
+                    top: 2px;
+                    right: 5px;
                 }
-                > span > f-icon {
-                    margin-right: 10px;
+                &:not(.active):before {
+                    opacity: 0;
                 }
-                > li {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                    justify-content: center;
-                    text-align: center;
-                    cursor: var(--cursor-pointer);
-                    padding: 10px;
-                    border-radius: var(--bdr-rad);
-                    position: relative;
-                    
-                    &:hover {
-                        background-color: var(--lt-gray);
-                    }
-                    &:before {
-                        content: '\e0b9';
-                        font-family: 'Foricon Beta';
-                        color: var(--main-color);
-                        position: absolute;
-                        top: 2px;
-                        right: 5px;
-                    }
-                    &:not(.active):before {
-                        opacity: 0;
-                    }
-                    > div {
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: center bottom;
-                        width: 100%;
-                        aspect-ratio: 1/1;
-                    }
-                    > span {
-                        font-size: var(--s-ft-sz);
-                    }
+                > div {
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center bottom;
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                }
+                > span {
+                    font-size: var(--s-ft-sz);
                 }
             }
         }
