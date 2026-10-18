@@ -42,7 +42,7 @@ export function Media() {
                         holder.addEventListener(type == 'image' ? 'load' : 'loadeddata', () => loaded = true);
     
                         while (!loaded) await wait();
-    
+                        console.log(fileType, type, file)
                         if (aspectRatio != (holder.width || holder.videoWidth) / (holder.height || holder.videoHeight)) return;
                         if (fileType && !(
                                 fileType.endsWith('/*')
