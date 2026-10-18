@@ -93,6 +93,7 @@ export function Media() {
                 <button className='primary' {...{ disabled: !selected }} onClick={() => {
                     onConfirm?.(selected);
                     setSelected(null);
+                    setFiles([]);
                     setMediaOptions(null);
                 }}>{
                     {
