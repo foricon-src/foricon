@@ -6,6 +6,7 @@ import Process from 'Com/process';
 import AlternativeLanguages from 'Com/alternative-languages';
 import Providers from './providers';
 import './globals.css';
+import { Media } from 'Com/f-media';
 
 export const metadata = {
     title: 'Foricon - A fully free icon font library',
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
                 <Providers>
                     <Script src='/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02' strategy='afterInteractive'/>
                     <Loading/>
+                    <Media/>
                     <div id='toast'/>
                     {children}
                     <Process/>

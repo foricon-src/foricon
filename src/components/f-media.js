@@ -6,24 +6,13 @@ import Img from './img';
 
 export let MediaContext = createContext();
 export function MediaProvider({ children }) {
-    let [ isOpened, setIsOpened ] = useState(false);
-    return <MediaContext.Provider value={{ isOpened, setIsOpened }}>{
+    let [ mediaOptions, setMediaOptions ] = useState(null);
+    return <MediaContext.Provider value={{ mediaOptions, setMediaOptions }}>{
         children
     }</MediaContext.Provider>
 }
-/**
- * 
- * @param {{
- *   requirements: {
- *     aspectRatio: number,
- *     fileType: string,
- *   },
- *   onConfirm: (value: *) => void
- * }} param0 
- * @returns 
- */
-export function Media({ requirements, onConfirm }) {
-    let { isOpened, setIsOpened } = useContext(MediaContext);
+export function Media() {
+    let { mediaOptions, setMediaOptions } = useContext(MediaContext);
     let { user } = useContext(UserContext);
 
     let [ files, setFiles ] = useState([]);
@@ -31,7 +20,7 @@ export function Media({ requirements, onConfirm }) {
 
     let { lang } = document.documentElement;
 
-    let { aspectRatio = 0, fileType = 'all' } = requirements;
+    let { aspectRatio = 0, fileType, onConfirm = () => {} } = mediaOptions || {};
 
     useEffect(() => {(async () => {
         try {
@@ -73,7 +62,7 @@ export function Media({ requirements, onConfirm }) {
         }
     })()}, [ isOpened ])
 
-    return <div className={Join(' ', 'modal wider', isOpened && 'active')}>
+    return <div className={Join(' ', 'modal wider', isOpened && 'active')} id='media'>
         <div>
             <h3>Foricon Media</h3>
             <ul className='empty-state'>{
@@ -87,7 +76,7 @@ export function Media({ requirements, onConfirm }) {
                 <button className='secondary' onClick={() => {
                     setSelected(null);
                     setFiles([]);
-                    setIsOpened(false);
+                    setMediaOptions(null);
                 }}>{
                     {
                         en: 'Cancel',
@@ -107,6 +96,7 @@ export function Media({ requirements, onConfirm }) {
                 <button className='primary' {...{ disabled: !!selected }} onClick={() => {
                     onConfirm?.(selected);
                     setSelected(null);
+                    setMediaOptions(null);
                 }}>{
                     {
                         en: 'Choose',

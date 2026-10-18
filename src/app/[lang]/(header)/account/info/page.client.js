@@ -1,16 +1,24 @@
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from 'Com/user';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 import Img from 'Com/img';
 import IconInput from 'Com/iconinput';
+import { MediaContext } from 'Com/f-media';
 
 export default function PageClient() {
     let go = useGo();
+
     let { user } = useContext(UserContext);
+    let { mediaOptions, setMediaOptions } = useContext(MediaContext);
+
+    let [ avatar, setAvatar ] = useState();
+    
     let { lang } = document.documentElement;
+
+    useEffect(() => console.log(avatar), [ avatar ])
 
     return <div className={cssStyle.account_info}>
         <div>
@@ -18,8 +26,8 @@ export default function PageClient() {
                 <span>Avatar</span>
             </div>
             <div>
-                <Img src={user?.doc.avatar}/>
-                <button className='secondary'>Replace</button>
+                <Img src={avatar || user?.doc.avatar}/>
+                <button className='secondary' onClick={() => setMediaOptions({ aspectRatio: 1, fileType: 'image/*', onConfirm: setAvatar })}>Replace</button>
             </div>
         </div>
         <div>
