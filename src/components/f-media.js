@@ -1,8 +1,7 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from './user';
-import Img from './img';
 import Join from './join';
 
 export let MediaContext = createContext();
@@ -18,6 +17,8 @@ export function Media() {
 
     let [ files, setFiles ] = useState([]);
     let [ selected, setSelected ] = useState(null);
+
+    let listRef = useRef();
 
     let { lang } = document.documentElement;
 
@@ -53,12 +54,18 @@ export function Media() {
             <h3>Foricon Media</h3>
             <ul className='empty-state'>{
                 files.length
-                    ? files.map(i => <li key={i} onClick={() => setSelected(i)}>
-                        <Img src={i.url}/>
-                        <span>{i.name}</span>
-                    </li>)
+                    ? files.map(i =>
+                        <li
+                            key={i}
+                            className={selected.public_id == i.public_id && 'active'}
+                            onClick={() => setSelected(i)}
+                        >
+                            <img src={i.url}/>
+                            <span>{i.name}</span>
+                        </li>
+                    )
                     : <span>
-                        <f-icon icon='spinner-2p3' animation='spin'/> Loading
+                        <f-icon icon='spinner-2p3' i-s='outline' animation='spin'/> Loading
                     </span>
             }</ul>
             <span>{files.length} files</span>
