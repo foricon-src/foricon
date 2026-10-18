@@ -33,14 +33,14 @@ export function Media() {
                 headers: { authorization: `Bearer ${token}` }
             })).json()
 
-            f = f.map(async file => {
-                if (aspectRatio && aspectRatio != file.width / file.height) return;
-                if (fileType && !checkFileType(fileType, `${file.resource_type}/${file.format}`)) return;
-                return file;
-            }).filter(Boolean)
+            f = f.map(file =>
+                (
+                    aspectRatio && aspectRatio == file.width / file.height ||
+                    fileType && checkFileType(fileType, `${file.resource_type}/${file.format}`)
+                ) && file
+            )
 
             setFiles(f);
-            console.log(files);
         }
         catch (err) {
             notify('error', err.message);
