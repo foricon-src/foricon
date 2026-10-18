@@ -12,7 +12,7 @@ import Modal from 'Com/modal';
 export default function PageClient() {
     let go = useGo();
 
-    let { user } = useContext(UserContext);
+    let { user, setUser } = useContext(UserContext);
     let { mediaOptions, setMediaOptions } = useContext(MediaContext);
 
     let modalRef = useRef();
@@ -120,12 +120,10 @@ export default function PageClient() {
                     if (!res.ok) throw new Error(res.statusText);
 
                     await user.reload();
-                    console.log(user)
-
+                    setUser(user);
                     notify('success', 'Updated successfully');
 
                     if (!email || email == user.email) return;
-
                     await verifyBeforeUpdateEmail(user, email);
                     modal(modalRef.current);
                 }
