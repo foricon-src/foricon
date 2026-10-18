@@ -25,6 +25,8 @@ export function Media() {
 
     useEffect(() => {(async () => {
         try {
+            if (!user) return;
+            
             let token = await user.getIdToken();
             let { files } = await (await fetch('/api/media/get', {
                 method: 'POST',
