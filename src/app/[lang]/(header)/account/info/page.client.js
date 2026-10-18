@@ -25,7 +25,7 @@ export default function PageClient() {
     return <div className={cssStyle.account_info}>
         <Modal ref={removeModalRef} type='confirm' btns={[ 'Ok' ]}>
             <h3>Verification email sent</h3>
-            <p>A verification email has been sent. Please check {email}'s inbox or spam folder.</p>
+            <p>A verification email has been sent. Please check {email}&apos;s inbox or spam folder.</p>
         </Modal>
         <div>
             <div>
