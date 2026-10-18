@@ -119,10 +119,12 @@ export default function PageClient() {
                     
                     if (!res.ok) throw new Error(res.statusText);
 
+                    await user.reload();
+                    console.log(user)
+
                     notify('success', 'Updated successfully');
 
-                    if (email == user.email) return;
-                    console.log(email, user)
+                    if (!email || email == user.email) return;
 
                     await verifyBeforeUpdateEmail(user, email);
                     modal(modalRef.current);
