@@ -35,14 +35,13 @@ export function Media() {
             })).json()
 
             f = f.map(file =>
-                (
-                    aspectRatio && aspectRatio == file.width / file.height ||
-                    fileType && checkFileType(fileType, `${file.resource_type}/${file.format}`)
+                !(
+                    aspectRatio && aspectRatio != file.width / file.height ||
+                    fileType && !checkFileType(fileType, `${file.resource_type}/${file.format}`)
                 ) && file
             ).filter(Boolean)
 
             setFiles(f);
-            console.log(files)
         }
         catch (err) {
             notify('error', err.message);
@@ -62,7 +61,7 @@ export function Media() {
                             onClick={() => setSelected(i)}
                         >
                             <img src={i.url}/>
-                            <span>{i.name}</span>
+                            <span>{i.filename}</span>
                         </li>
                     )
                     : <span>
@@ -91,7 +90,7 @@ export function Media() {
                         ru: 'Отмена',
                     }[lang]
                 }</button>
-                <button className='primary' {...{ disabled: !!selected }} onClick={() => {
+                <button className='primary' {...{ disabled: !selected }} onClick={() => {
                     onConfirm?.(selected);
                     setSelected(null);
                     setMediaOptions(null);
