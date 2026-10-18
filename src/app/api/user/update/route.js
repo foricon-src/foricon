@@ -6,7 +6,7 @@ export async function POST(req) {
     try {
         let token = req.headers.get('authorization')?.split('Bearer ')[1];
         let { uid } = await adAuth.verifyIdToken(token);
-        let { params: { name, avatar } } = await req.json();
+        let { name, avatar } = req.body;
 
         let obj = {};
         name && (obj.displayName = name);

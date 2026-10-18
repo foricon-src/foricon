@@ -111,11 +111,12 @@ export default function PageClient() {
                     disable(body);
 
                     let token = await user.getIdToken();
-                    await fetch('/api/user/update', {
+                    let res = await fetch('/api/user/update', {
                         method: 'POST',
                         headers: { authorization: `Bearer ${token}` },
                         body: JSON.stringify({ name, avatar: media?.secure_url }),
                     })
+                    if (!res.ok) throw new Error(res.statusText);
 
                     notify('success', 'Updated successfully');
 
