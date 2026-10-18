@@ -24,7 +24,7 @@ export default function PageClient() {
                 <span>Avatar</span>
             </div>
             <div>
-                <Img src={media.secure_url || user?.doc.avatar}/>
+                <Img src={media?.secure_url || user?.doc.avatar}/>
                 <button
                     className='secondary'
                     onClick={() => setMediaOptions({
