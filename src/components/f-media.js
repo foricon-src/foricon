@@ -34,6 +34,7 @@ export function Media() {
                 headers: { authorization: `Bearer ${token}` }
             })).json()
 
+            console.log(aspectRatio, fileType)
             f = f.map(file =>
                 !(
                     aspectRatio && aspectRatio != file.width / file.height ||
