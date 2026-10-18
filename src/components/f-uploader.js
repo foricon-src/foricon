@@ -98,16 +98,10 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
         let accepted = [];
     
         for (let file of incoming) {
-            if (accept) {
-                console.log(file);
-                let allowed = checkFileType(accept, file.type);
-    
-                if (!allowed) {
-                    notify('warn', `Not allowed file extension or file type. Rejected bold(${file.name})`);
-                    continue;
-                }
+            if (accept && !checkFileType(accept, file.type)) {
+                notify('warn', `Not allowed file extension or file type. Rejected bold(${file.name})`);
+                continue;
             }
-    
             if (maxBytes && nextUsedBytes + file.size > maxBytes) {
                 notify('warn', `Exceeded upload limit`);
                 continue;

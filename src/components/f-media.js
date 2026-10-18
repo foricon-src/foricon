@@ -28,18 +28,19 @@ export function Media() {
             if (!user) return;
 
             let token = await user.getIdToken();
-            let { files } = await (await fetch('/api/media/get', {
+            let { files: f } = await (await fetch('/api/media/get', {
                 method: 'POST',
                 headers: { authorization: `Bearer ${token}` }
             })).json()
 
-            files = files.map(async file => {
+            f = f.map(async file => {
                 if (aspectRatio && aspectRatio != file.width / file.height) return;
                 if (fileType && !checkFileType(fileType, `${file.resource_type}/${file.format}`)) return;
                 return file;
             }).filter(Boolean)
 
-            setFiles(files);
+            setFiles(f);
+            console.log(files);
         }
         catch (err) {
             notify('error', err.message);
