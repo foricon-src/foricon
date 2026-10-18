@@ -14,11 +14,9 @@ export default function PageClient() {
     let { user } = useContext(UserContext);
     let { mediaOptions, setMediaOptions } = useContext(MediaContext);
 
-    let [ avatar, setAvatar ] = useState();
+    let [ media, setMedia ] = useState();
     
     let { lang } = document.documentElement;
-
-    useEffect(() => console.log(avatar), [ avatar ])
 
     return <div className={cssStyle.account_info}>
         <div>
@@ -26,13 +24,13 @@ export default function PageClient() {
                 <span>Avatar</span>
             </div>
             <div>
-                <Img src={avatar || user?.doc.avatar}/>
+                <Img src={media.secure_url || user?.doc.avatar}/>
                 <button
                     className='secondary'
                     onClick={() => setMediaOptions({
                         aspectRatio: 1,
                         fileType: 'image/*',
-                        onConfirm: setAvatar
+                        onConfirm: setMedia
                     })}
                 >Replace</button>
             </div>

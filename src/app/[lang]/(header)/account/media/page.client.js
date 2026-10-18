@@ -313,12 +313,12 @@ export default function PageClient() {
                             }
                         }
                     >
-                        <div style={{ backgroundImage: `url(${i.url})` }}/>
+                        <div style={{ backgroundImage: `url(${i.secure_url})` }}/>
                         <span>{`${i.filename}.${i.format}`}</span>
                         <span>{formatBytes(i.bytes)}</span>
                         <span>{timeDiff(new Date(i.created_at), lang)}</span>
                         <ul className='btn-list small'>
-                            <li className='tooltip top' name='open' onClick={() => go(i.url, 'new tab')}>
+                            <li className='tooltip top' name='open' onClick={() => go(i.secure_url, 'new tab')}>
                                 <f-icon icon='arrow-up-right-from-square' i-s='duotone/outline'/>
                                 <span>{
                                     {

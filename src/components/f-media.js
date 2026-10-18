@@ -26,7 +26,7 @@ export function Media() {
 
     useEffect(() => {(async () => {
         try {
-            if (!user) return;
+            if (!user || !mediaOptions) return;
 
             let token = await user.getIdToken();
             let { files: f } = await (await fetch('/api/media/get', {
@@ -34,7 +34,6 @@ export function Media() {
                 headers: { authorization: `Bearer ${token}` }
             })).json()
 
-            console.log(aspectRatio, fileType)
             f = f.filter(file =>
                 !(
                     aspectRatio && aspectRatio != file.width / file.height ||
@@ -61,7 +60,7 @@ export function Media() {
                             className={selected?.public_id == i.public_id && 'active'}
                             onClick={() => setSelected(i)}
                         >
-                            <img src={i.url}/>
+                            <img src={i.secure_url}/>
                             <span>{i.filename}</span>
                         </li>
                     )
