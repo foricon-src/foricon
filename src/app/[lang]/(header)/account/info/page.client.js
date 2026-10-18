@@ -33,7 +33,7 @@ export default function PageClient() {
                 <span>Avatar</span>
             </div>
             <div>
-                <img src={media?.secure_url || user?.doc.avatar}/>
+                <img src={media?.secure_url || user?.photoURL}/>
                 <button
                     className='secondary'
                     onClick={() => setMediaOptions({
@@ -105,7 +105,7 @@ export default function PageClient() {
         <button
             className='primary'
             {...{ disabled: !(name || email || media)}}
-            onClick={async ({ target }) => {
+            onClick={async () => {
                 let { body } = document;
                 try{
                     disable(body);
@@ -114,7 +114,7 @@ export default function PageClient() {
                     await fetch('/api/user/update', {
                         method: 'POST',
                         headers: { authorization: `Bearer ${token}` },
-                        body: { name, avatar: media?.secure_url },
+                        body: JSON.stringify({ name, avatar: media?.secure_url }),
                     })
 
                     notify('success', 'Updated successfully');
@@ -131,7 +131,15 @@ export default function PageClient() {
                 finally { enable(body) }
             }}
         >Save</button>
-        <button className='secondary' {...{ disabled: !(name || email || media)}}>Cancel changes</button>
+        <button
+            className='secondary'
+            {...{ disabled: !(name || email || media)}}
+            onClick={() => {
+                setName(undefined);
+                setEmail(undefined);
+                setMedia(undefined);
+            }}
+        >Cancel changes</button>
     </div>
 }
 
