@@ -62,7 +62,7 @@ export function Media() {
         }
     })()}, [ isOpened ])
 
-    return <div className={Join(' ', 'modal wider', isOpened && 'active')} id='media'>
+    return <div className={Join(' ', 'modal wider', mediaOptions && 'active')} id='media'>
         <div>
             <h3>Foricon Media</h3>
             <ul className='empty-state'>{

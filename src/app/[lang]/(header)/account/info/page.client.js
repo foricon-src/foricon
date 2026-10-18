@@ -27,7 +27,14 @@ export default function PageClient() {
             </div>
             <div>
                 <Img src={avatar || user?.doc.avatar}/>
-                <button className='secondary' onClick={() => setMediaOptions({ aspectRatio: 1, fileType: 'image/*', onConfirm: setAvatar })}>Replace</button>
+                <button
+                    className='secondary'
+                    onClick={() => setMediaOptions({
+                        aspectRatio: 1,
+                        fileType: 'image/*',
+                        onConfirm: setAvatar
+                    })}
+                >Replace</button>
             </div>
         </div>
         <div>
