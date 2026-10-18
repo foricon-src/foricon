@@ -1,8 +1,9 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { UserContext } from './user';
 import Img from './img';
+import Join from './join';
 
 export let MediaContext = createContext();
 export function MediaProvider({ children }) {
