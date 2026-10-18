@@ -1,10 +1,9 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { UserContext } from 'Com/user';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
-import Img from 'Com/img';
 import IconInput from 'Com/iconinput';
 import { MediaContext } from 'Com/f-media';
 import { verifyBeforeUpdateEmail } from 'firebase/auth';
@@ -16,6 +15,8 @@ export default function PageClient() {
     let { user } = useContext(UserContext);
     let { mediaOptions, setMediaOptions } = useContext(MediaContext);
 
+    let modalRef = useRef();
+
     let [ name, setName ] = useState();
     let [ email, setEmail ] = useState();
     let [ media, setMedia ] = useState();
@@ -23,7 +24,7 @@ export default function PageClient() {
     let { lang } = document.documentElement;
 
     return <div className={cssStyle.account_info}>
-        <Modal ref={removeModalRef} type='confirm' btns={[ 'Ok' ]}>
+        <Modal ref={modalRef} type='confirm' btns={[ 'Ok' ]}>
             <h3>Verification email sent</h3>
             <p>A verification email has been sent. Please check {email}&apos;s inbox or spam folder.</p>
         </Modal>
@@ -121,7 +122,7 @@ export default function PageClient() {
                     if (email == user.email) return;
 
                     await verifyBeforeUpdateEmail(user, email);
-                    modal()
+                    modal(modalRef.current);
                 }
                 catch (err) {
                     notify('error', err.message);
