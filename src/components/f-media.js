@@ -35,12 +35,12 @@ export function Media() {
             })).json()
 
             console.log(aspectRatio, fileType)
-            f = f.map(file =>
+            f = f.filter(file =>
                 !(
                     aspectRatio && aspectRatio != file.width / file.height ||
                     fileType && !checkFileType(fileType, `${file.resource_type}/${file.format}`)
-                ) && file
-            ).filter(Boolean)
+                )
+            )
 
             setFiles(f);
         }
