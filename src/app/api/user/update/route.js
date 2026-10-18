@@ -6,12 +6,11 @@ export async function POST(req) {
     try {
         let token = req.headers.get('authorization')?.split('Bearer ')[1];
         let { uid } = await adAuth.verifyIdToken(token);
-        let { name, avatar } = req.body;
+        let { name, avatar } = await req.json();
 
         let obj = {};
         name && (obj.displayName = name);
-        avatar && (obj.photoURL = avatar)
-        console.log(req.body)
+        avatar && (obj.photoURL = avatar);
 
         await adAuth.updateUser(uid, obj);
         return new NextResponse(null, { status: 204 });

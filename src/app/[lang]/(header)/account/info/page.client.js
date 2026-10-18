@@ -122,6 +122,7 @@ export default function PageClient() {
                     notify('success', 'Updated successfully');
 
                     if (email == user.email) return;
+                    console.log(email, user)
 
                     await verifyBeforeUpdateEmail(user, email);
                     modal(modalRef.current);
