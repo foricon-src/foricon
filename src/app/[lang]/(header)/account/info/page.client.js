@@ -7,6 +7,8 @@ import cssStyle from './page.module.css';
 import Img from 'Com/img';
 import IconInput from 'Com/iconinput';
 import { MediaContext } from 'Com/f-media';
+import { verifyBeforeUpdateEmail } from 'firebase/auth';
+import Modal from 'Com/modal';
 
 export default function PageClient() {
     let go = useGo();
@@ -14,11 +16,17 @@ export default function PageClient() {
     let { user } = useContext(UserContext);
     let { mediaOptions, setMediaOptions } = useContext(MediaContext);
 
+    let [ name, setName ] = useState();
+    let [ email, setEmail ] = useState();
     let [ media, setMedia ] = useState();
     
     let { lang } = document.documentElement;
 
     return <div className={cssStyle.account_info}>
+        <Modal ref={removeModalRef} type='confirm' btns={[ 'Ok' ]}>
+            <h3>Verification email sent</h3>
+            <p>A verification email has been sent. Please check {email}'s inbox or spam folder.</p>
+        </Modal>
         <div>
             <div>
                 <span>Avatar</span>
@@ -40,7 +48,7 @@ export default function PageClient() {
                 <span>Name</span>
             </div>
             <div>
-                <input value={user?.doc.name}/>
+                <input value={name || user?.displayName} onInput={e => setName(e.target.value)}/>
             </div>
         </div>
         <div>
@@ -48,7 +56,7 @@ export default function PageClient() {
                 <span>Email</span>
             </div>
             <div>
-                <input value={user?.doc.email}/>
+                <input value={email || user?.email} onInput={e => setEmail(e.target.value)}/>
                 {
                     user?.emailVerified
                         ? <span><f-icon icon='circle-check'/> Verified</span>
@@ -93,8 +101,36 @@ export default function PageClient() {
                 <input value={formatDate(user?.doc.joiningDate || '2023-12-21T17:00:00.000Z', { dateOnly: true })} readOnly/>
             </div>
         </div>
-        <button className='primary'>Saved</button>
-        <button className='secondary'>Cancel changes</button>
+        <button
+            className='primary'
+            {...{ disabled: !(name || email || media)}}
+            onClick={async ({ target }) => {
+                let { body } = document;
+                try{
+                    disable(body);
+
+                    let token = await user.getIdToken();
+                    await fetch('/api/user/update', {
+                        method: 'POST',
+                        headers: { authorization: `Bearer ${token}` },
+                        body: { name, avatar: media?.secure_url },
+                    })
+
+                    notify('success', 'Updated successfully');
+
+                    if (email == user.email) return;
+
+                    await verifyBeforeUpdateEmail(user, email);
+                    modal()
+                }
+                catch (err) {
+                    notify('error', err.message);
+                    console.error(err);
+                }
+                finally { enable(body) }
+            }}
+        >Save</button>
+        <button className='secondary' {...{ disabled: !(name || email || media)}}>Cancel changes</button>
     </div>
 }
 

@@ -149,9 +149,9 @@ export default function Header() {
                         className={Join(' ', 'line', user && 'tooltip bottom', (!user || pathname.slice(4).startsWith('account')) && 'active')}
                         onClick={() => go(user ? 'account' : 'login')}
                     >
-                        {user && <img src={user.doc.avatar}/>}
+                        {user && <img src={user.photoURL}/>}
                         <span>{
-                            user?.doc?.name || {
+                            user?.displayName || {
                                 en: 'Log in',
                                 vi: 'Đăng nhập',
                                 fr: 'Se connecter',

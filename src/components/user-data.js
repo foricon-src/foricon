@@ -5,12 +5,10 @@
  * @param {string} uid - User's uid
  * @returns User data object
  */
-export default function getUserData(name, email, uid) {
-    let date = Date.now();
+export default function getUserData() {
+    let date = getUTC();
 
     return {
-        avatar: '//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDdMEaj-b8vWZiL6TYKH5XENGyNr-QZZ2BxFdkV-SfNNBPhTOFmuzjxyOJOQvw0e96x40y1UJbHVIjgidnz4CAX0x9wKX5kS7uGJ4ptYhTDRigXfcxiTGK3DBLPR2CEw9eFvGwUqeNRavCIIaJXzveJ7b0UZxGxkOQDmrtAmIp09P6br6tc0tVaqzOS08/s1600/male-01.png',
-        name, email, uid,
         settings: {
             allowedDomains: [],
             renderingOption: 'performance',

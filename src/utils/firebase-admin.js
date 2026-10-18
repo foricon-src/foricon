@@ -8,6 +8,7 @@ admin.initializeApp({
     }),
     databaseURL: 'https://foricon-database-default-rtdb.asia-southeast1.firebasedatabase.app',
 })
-const fs = admin.firestore();
-const db = admin.database();
-export { admin, fs, db };
+let adAuth = admin.auth();
+let fs = admin.firestore();
+let db = admin.database();
+export { admin, adAuth, fs, db };

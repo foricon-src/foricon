@@ -14,7 +14,7 @@ export default function Page({ params }) {
     usePage(async () => {
         let hour = new Date().getHours();
         
-        elemById('avatar').style.backgroundImage = `url(${user.doc.avatar})`;
+        elemById('avatar').style.backgroundImage = `url(${user.photoURL})`;
         elemById('greeting').innerText = `${
             (
                 hour < 12 ? {
@@ -60,7 +60,7 @@ export default function Page({ params }) {
                     ru: 'Добрый вечер',
                 }
             )[lang]
-        }, ${user.doc.name}`;
+        }, ${user.displayName}`;
     })
 
     return (
