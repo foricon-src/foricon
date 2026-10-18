@@ -15,7 +15,8 @@
                 margin: 0 !important;
 
                 &:is(img) {
-                    width: 40px;
+                    width: 60px;
+                    border-radius: 50%;
                 }
                 &:is(input, label) {
                     width: 300px;
