@@ -427,6 +427,7 @@
                     }
                     & > f-icon {
                         font-size: 1.1rem;
+                        line-height: unset;
                     }
                 }
                 &:hover {
@@ -457,6 +458,7 @@
                 }
                 & > f-icon {
                     font-size: 1.25rem;
+                    line-height: unset;
                     color: var(--title-color);
                 }
                 & > span {

@@ -163,6 +163,7 @@ body {
     scroll-behavior: smooth;
 }
 f-icon {
+    line-height: 27px;
     transition: var(--df-trans), color .025s ease;
 }
 * {
