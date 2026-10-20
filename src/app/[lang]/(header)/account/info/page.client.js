@@ -25,12 +25,57 @@ export default function PageClient() {
 
     return <div className={cssStyle.account_info}>
         <Modal ref={modalRef} type='confirm' btns={[ 'Ok' ]}>
-            <h3>Verification email sent</h3>
-            <p>A verification email has been sent. Please check {email}&apos;s inbox or spam folder.</p>
+            <h3>{
+                {
+                    en: 'Check your inbox!',
+                    vi: 'Kiểm tra hộp thư của bạn!',
+                    fr: 'Consultez votre boîte de réception !',
+                    it: 'Controlla la tua casella di posta!',
+                    ko: '받은 편지함을 확인해 보세요!',
+                    ja: '受信トレイを確認してください！',
+                    de: 'Überprüfe deinen Posteingang!',
+                    nl: 'Check je inbox!',
+                    da: 'Tjek din indbakke!',
+                    pt: 'Confira a sua caixa de entrada!',
+                    es: '¡Revisa tu bandeja de entrada!',
+                    ru: 'Загляните в свой почтовый ящик!',
+                }[lang]
+            }</h3>
+            <p>{
+                {
+                    en: `We've sent a verification email to ${email}. Check your inbox or spam folder to verify your email address. Once verified, your email address will be updated.`,
+                    vi: `Chúng tôi đã gửi email xác minh đến ${email}. Vui lòng kiểm tra hộp thư đến hoặc thư mục thư rác để xác minh địa chỉ email của bạn. Sau khi xác minh, địa chỉ email của bạn sẽ được cập nhật.`,
+                    fr: `Nous avons envoyé un e-mail de vérification à l'adresse ${email}. Consultez votre boîte de réception ou votre dossier de courriers indésirables pour confirmer votre adresse e-mail. Une fois cette vérification effectuée, votre adresse e-mail sera mise à jour.`,
+                    it: `Abbiamo inviato un'email di verifica all'indirizzo ${email}. Controlla la tua casella di posta o la cartella dello spam per verificare il tuo indirizzo email. Una volta effettuata la verifica, il tuo indirizzo email verrà aggiornato.`,
+                    ko: `${email}으로 인증 이메일을 보냈습니다. 받은 편지함이나 스팸 메일함을 확인하여 이메일 주소를 인증해 주세요. 인증이 완료되면 이메일 주소가 업데이트됩니다.`,
+                    ja: `${email} 宛てに確認メールを送信しました。受信トレイまたは迷惑メールフォルダを確認し、メールアドレスの認証を行ってください。認証が完了すると、メールアドレスが更新されます。`,
+                    de: `Wir haben eine Bestätigungs-E-Mail an ${email} gesendet. Überprüfen Sie Ihren Posteingang oder Spam-Ordner, um Ihre E-Mail-Adresse zu bestätigen. Sobald die Bestätigung erfolgt ist, wird Ihre E-Mail-Adresse aktualisiert.`,
+                    nl: `We hebben een verificatie-e-mail verstuurd naar ${email}. Controleer je postvak IN of je map met ongewenste e-mail om je e-mailadres te verifiëren. Zodra de verificatie is voltooid, wordt je e-mailadres bijgewerkt.`,
+                    da: `Vi har sendt en bekræftelsesmail til ${email}. Tjek din indbakke eller din mappe med uønsket post for at bekræfte din e-mailadresse. Når den er bekræftet, bliver din e-mailadresse opdateret.`,
+                    pt: `Enviámos um e-mail de verificação para ${email}. Verifique a sua caixa de entrada ou pasta de spam para confirmar o seu endereço de e-mail. Após a verificação, o seu endereço de e-mail será atualizado.`,
+                    es: `Hemos enviado un correo electrónico de verificación a ${email}. Revisa tu bandeja de entrada o la carpeta de correo no deseado para verificar tu dirección de correo electrónico. Una vez verificada, tu dirección de correo electrónico se actualizará.`,
+                    ru: `Мы отправили письмо для подтверждения на адрес ${email}. Проверьте входящие сообщения или папку «Спам», чтобы подтвердить свой адрес электронной почты. После подтверждения ваш адрес электронной почты будет обновлен.`,
+                }[lang]
+            }</p>
         </Modal>
         <div>
             <div>
-                <span>Avatar</span>
+                <span>{
+                    {
+                        en: 'Avatar',
+                        vi: 'Ảnh đại diện',
+                        fr: 'Avatar',
+                        it: 'Avatar',
+                        ko: '화신',
+                        ja: 'アバター',
+                        de: 'Avatar',
+                        nl: 'Avatar',
+                        da: 'Avatar',
+                        pt: 'Avatar',
+                        es: 'Avatar',
+                        ru: 'Аватар',
+                    }[lang]
+                }</span>
             </div>
             <div>
                 <img src={media?.secure_url || user?.photoURL}/>
@@ -41,12 +86,42 @@ export default function PageClient() {
                         fileType: 'image/*',
                         onConfirm: setMedia
                     })}
-                >Replace</button>
+                >{
+                    {
+                        en: 'Replace',
+                        vi: 'Thay thế',
+                        fr: 'Remplacer',
+                        it: 'Sostituire',
+                        ko: '바꾸다',
+                        ja: '交換する',
+                        de: 'Ersetzen',
+                        nl: 'Vervangen',
+                        da: 'Erstatte',
+                        pt: 'Substituir',
+                        es: 'Reemplazar',
+                        ru: 'Заменять',
+                    }[lang]
+                }</button>
             </div>
         </div>
         <div>
             <div>
-                <span>Name</span>
+                <span>{
+                    {
+                        en: 'Name',
+                        vi: 'Tên',
+                        fr: 'Nom',
+                        it: 'Nome',
+                        ko: '이름',
+                        ja: '名前',
+                        de: 'Name',
+                        nl: 'Naam',
+                        da: 'Navn',
+                        pt: 'Nome',
+                        es: 'Nombre',
+                        ru: 'Имя',
+                    }[lang]
+                }</span>
             </div>
             <div>
                 <input value={name || user?.displayName} onInput={e => setName(e.target.value)}/>
@@ -54,14 +129,59 @@ export default function PageClient() {
         </div>
         <div>
             <div>
-                <span>Email</span>
+                <span>{
+                    {
+                        en: 'Email',
+                        vi: 'Email',
+                        fr: 'E-mail',
+                        it: 'E-mail',
+                        ko: '이메일',
+                        ja: 'メール',
+                        de: 'E-Mail',
+                        nl: 'E-mail',
+                        da: 'E-mail',
+                        pt: 'E-mail',
+                        es: 'Correo electrónico',
+                        ru: 'Электронная почта',
+                    }[lang]
+                }</span>
             </div>
             <div>
                 <input value={email || user?.email} onInput={e => setEmail(e.target.value)}/>
                 {
                     user?.emailVerified
-                        ? <span><f-icon icon='circle-check'/> Verified</span>
-                        : <button className='secondary'>Verify</button>
+                        ? <span style={{ color: 'var(--green)' }}><f-icon icon='circle-check'/> {
+                            {
+                                en: 'Verified',
+                                vi: 'Đã xác minh',
+                                fr: 'Vérifié',
+                                it: 'Verificato',
+                                ko: '인증됨',
+                                ja: '認証済み',
+                                de: 'Verifiziert',
+                                nl: 'Geverifieerd',
+                                da: 'Bekræftet',
+                                pt: 'Verificado',
+                                es: 'Verificado',
+                                ru: 'Подтверждено',
+                            }[lang]
+                        }</span>
+                        : <button className='secondary'>{
+                            {
+                                en: 'Verify',
+                                vi: 'Xác minh',
+                                fr: 'Vérifier',
+                                it: 'Verificare',
+                                ko: '확인하다',
+                                ja: '確認する',
+                                de: 'Verifizieren',
+                                nl: 'Verifiëren',
+                                da: 'Verificere',
+                                pt: 'Verificar',
+                                es: 'Verificar',
+                                ru: 'Проверять',
+                            }[lang]
+                        }</button>
                 }
             </div>
         </div>
@@ -96,7 +216,22 @@ export default function PageClient() {
         </div>
         <div>
             <div>
-                <span>Joined</span>
+                <span>{
+                    {
+                        en: 'Joining date',
+                        vi: 'Ngày tham gia',
+                        fr: "Date d'arrivée",
+                        it: 'Data di inizio',
+                        ko: '입사일',
+                        ja: '入社日',
+                        de: 'Eintrittsdatum',
+                        nl: 'Datum van indiensttreding',
+                        da: 'Dato for tiltrædelse',
+                        pt: 'Data de ingresso',
+                        es: 'Fecha de incorporación',
+                        ru: 'Дата начала работы',
+                    }[lang]
+                }</span>
             </div>
             <div>
                 <input value={formatDate(user?.doc.joiningDate || '2023-12-21T17:00:00.000Z', { dateOnly: true })} readOnly/>
@@ -138,7 +273,22 @@ export default function PageClient() {
                     setMedia(undefined);
                 }
             }}
-        >Save</button>
+        >{
+            {
+                en: 'Save',
+                vi: 'Lưu',
+                fr: 'Sauvegarder',
+                it: 'Salva',
+                ko: '구하다',
+                ja: '保存',
+                de: 'Speichern',
+                nl: 'Redden',
+                da: 'Spare',
+                pt: 'Guardar',
+                es: 'Ahorrar',
+                ru: 'Сохранять',
+            }[lang]
+        }</button>
         <button
             className='secondary'
             {...{ disabled: !(name || email || media)}}
@@ -147,7 +297,22 @@ export default function PageClient() {
                 setEmail(undefined);
                 setMedia(undefined);
             }}
-        >Cancel changes</button>
+        >{
+            {
+                en: 'Cancel changes',
+                vi: 'Huỷ thay đổi',
+                fr: 'Annuler les modifications',
+                it: 'Annulla modifiche',
+                ko: '변경 사항 취소',
+                ja: '変更をキャンセル',
+                de: 'Änderungen verwerfen',
+                nl: 'Wijzigingen annuleren',
+                da: 'Annuller ændringer',
+                pt: 'Cancelar alterações',
+                es: 'Cancelar cambios',
+                ru: 'Отменить изменения',
+            }[lang]
+        }</button>
     </div>
 }
 
