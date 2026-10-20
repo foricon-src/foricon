@@ -162,7 +162,7 @@ body {
     transition: var(--df-trans), color .1s ease;
     scroll-behavior: smooth;
 }
-f-icon {
+f-icon[icon] {
     line-height: 27px;
     transition: var(--df-trans), color .025s ease;
 }
@@ -674,7 +674,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     border-radius: var(--s-bdr-rad);
     outline: 0 solid var(--tr-main-color);
 
-    &:not(label):read-only, &:is(label):has(input:read-only) {
+    &:not(label)[readonly], &:is(label):has(input[readonly]) {
         cursor: var(--cursor-default);
     }
 }
@@ -686,8 +686,8 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     label:has(> f-icon + input:not([type])),
     textarea,
 ):not(
-    :not(label):read-only,
-    label:has(input:read-only),
+    :not(label)[readonly],
+    label:has(input[readonly]),
 ):focus-within {
     cursor: var(--cursor-text);
 }
@@ -696,8 +696,8 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     label:has(> f-icon + input:not([type])),
     textarea, select, f-select,
 ):not(
-    :not(label):read-only,
-    label:has(input:read-only),
+    :not(label)[readonly],
+    label:has(input[readonly]),
 ):hover {
     background-color: var(--gray);
 }
@@ -706,8 +706,8 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     label:has(> f-icon + input:not([type])),
     textarea, select,
 ):not(
-    :not(label):read-only,
-    label:has(input:read-only),
+    :not(label)[readonly],
+    label:has(input[readonly]),
 ):focus-within, f-select:has(> option-list.active) {
     border-color: var(--main-color);
     outline-width: 5px;
