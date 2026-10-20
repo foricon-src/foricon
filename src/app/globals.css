@@ -686,7 +686,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     label:has(> f-icon + input:not([type])),
     textarea,
 ):not(
-    :not(label)[readonly],
+    [readonly]:not(label),
     label:has(input[readonly]),
 ):focus-within {
     cursor: var(--cursor-text);
@@ -696,7 +696,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     label:has(> f-icon + input:not([type])),
     textarea, select, f-select,
 ):not(
-    :not(label)[readonly],
+    [readonly]:not(label),
     label:has(input[readonly]),
 ):hover {
     background-color: var(--gray);
@@ -706,7 +706,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     label:has(> f-icon + input:not([type])),
     textarea, select,
 ):not(
-    :not(label)[readonly],
+    [readonly]:not(label),
     label:has(input[readonly]),
 ):focus-within, f-select:has(> option-list.active) {
     border-color: var(--main-color);
