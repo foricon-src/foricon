@@ -92,7 +92,6 @@
                 }
                 & > h1 {
                     font-size: 4rem;
-                    line-height: 107px;
                     
                     & > span {
                         color: inherit;
@@ -225,10 +224,6 @@
                         max-height: calc(100vh - 70px);
                         top: 70px;
                         background-color: var(--dk-bg-color);
-
-                        & > f-icon:before, & > f-icon:after {
-                            line-height: unset;
-                        }
                     }
                 }
             }

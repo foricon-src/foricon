@@ -300,7 +300,7 @@ export default function PageClient() {
         >{
             {
                 en: 'Cancel changes',
-                vi: 'Huỷ thay đổi',
+                vi: 'Hủy thay đổi',
                 fr: 'Annuler les modifications',
                 it: 'Annulla modifiche',
                 ko: '변경 사항 취소',

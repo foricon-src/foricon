@@ -63,7 +63,7 @@ export default function Page({ params: { lang } }) {
 
     function IconFamiliesIcons(style) {
         return [ 'clone', 'image', 'file-lines', 'grid-4', 'compass', 'rectangle-stack' ].map(i =>
-            <f-icon key={i} icon={i} i-s={style} className='auto-line-height'/>
+            <f-icon key={i} icon={i} i-s={style}/>
         )
     }
 
@@ -127,7 +127,7 @@ export default function Page({ params: { lang } }) {
                 {
                     iconArrs?.map((arr, i) =>
                         <div key={i}>{
-                            arr.map(i => <f-icon key={`${i.name} | ${i.style}`} icon={i.name} i-s={i.style} className='auto-line-height'/>)
+                            arr.map(i => <f-icon key={`${i.name} | ${i.style}`} icon={i.name} i-s={i.style}/>)
                         }</div>
                     )
                 }
@@ -294,13 +294,13 @@ export default function Page({ params: { lang } }) {
                             {
                                 [ 'brush', 'grid-4', 'mug-tea-hot', 'layers', 'palette', 'pencil' ].map(i => (
                                     <li key={i} onClick={() => setIcon(i)} className={`tooltip top${icon == i ? ' active' : ''}`}>
-                                        <f-icon icon={i} className='auto-line-height'/>
+                                        <f-icon icon={i}/>
                                         <span>{i}</span>
                                     </li>
                                 ))
                             }
                             <li onClick={() => go('search')} className='tooltip top line'>
-                                <f-icon icon='arrow-right' i-s='outline' className='auto-line-height'/>
+                                <f-icon icon='arrow-right' i-s='outline'/>
                                 <span>{
                                     {
                                         en: 'More icons!',
@@ -338,7 +338,7 @@ export default function Page({ params: { lang } }) {
                         <ul className='btn-list darker'>{
                             [ '', 'outline', 'duotone/solid', 'duotone/outline' ].map(i => (
                                 <li key={i} onClick={() => setStyle(i)} className={`tooltip top${style == i ? ' active' : ''}`}>
-                                    <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i} className='auto-line-height'/>
+                                    <f-icon icon={`circle${i.startsWith('duotone/') ? '-half' : ''}`} i-s={i}/>
                                     <span>{
                                         i == 'outline' ? 'Outline' :
                                         i == 'duotone/solid' ? 'Duotone Solid' :

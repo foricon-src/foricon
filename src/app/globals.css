@@ -165,9 +165,6 @@ body {
 f-icon {
     transition: var(--df-trans), color .025s ease;
 }
-lang, :before, :after {
-    line-height: 27px;
-}
 * {
     margin: 0;
     padding: 0;
@@ -305,7 +302,6 @@ ul {
                     color: var(--title-color);
                     pointer-events: none;
                     width: max-content;
-                    line-height: var(--s-ln-hgt);
                     z-index: 2;
                 }
                 &:is(:not(:hover), :has(> :is(ul, div):hover)) > span {
@@ -419,10 +415,6 @@ ul {
                 font-size: var(--s-ft-sz);
                 padding: var(--inner-spacing-s);
                 gap: 6px;
-                
-                *, :before, f-icon[i-s^='duotone/']:after {
-                    line-height: var(--s-ln-hgt);
-                }
             }
             .large > & {
                 padding: var(--spacing-xxsmall) var(--spacing-xsmall);
@@ -567,10 +559,6 @@ div.icon-screen {
     & > f-icon {
         font-size: 5rem;
         color: var(--text-color);
-
-        &:before {
-            line-height: unset;
-        }
     }
     & > h3, & > p {
         margin-bottom: 0;
@@ -680,7 +668,6 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     cursor: var(--cursor-pointer);
     color: var(--title-color);
     text-align: left;
-    line-height: 27px;
     min-width: 150px;
     padding: var(--inner-spacing-bdr);
     border-radius: var(--s-bdr-rad);
@@ -692,7 +679,6 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
 }
 :is(input, textarea):placeholder {
     color: var(--text-color);
-    line-height: 27px;
 }
 :is(input:not([type='range']), label:has(> f-icon + input:not([type])), textarea):not(:read-only):focus-within {
     cursor: var(--cursor-text);
@@ -881,10 +867,6 @@ f-uploader {
     }
     > f-icon {
         font-size: 2rem;
-
-        &:before {
-            line-height: unset;
-        }
     }
     > ul {
         width: 75%;
@@ -1487,17 +1469,14 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 2.436rem;
     margin: 50px 0;
-    line-height: 65px;
 }
 h2 {
     font-size: 2.1rem;
     margin: 40px 0;
-    line-height: 56px;
 }
 h3 {
     font-size: 1.811rem;
     margin: 30px 0;
-    line-height: 48px;
     
     + p.narrow {
         margin-top: 5px;
@@ -1506,17 +1485,14 @@ h3 {
 h4 {
     font-size: 1.561rem;
     margin: 25px 0;
-    line-height: 41px;
 }
 h5 {
     font-size: 1.346rem;
     margin: 20px 0;
-    line-height: 36px;
 }
 h6 {
     font-size: 1.15rem;
     margin: 15px 0;
-    line-height: 31px;
 }
 h6.tagline {
     color: var(--main-color);
@@ -1735,12 +1711,6 @@ div.message.online:before {
 div.message.offline:before {
     content: '\e360';
     font-family: 'Foricon Beta';
-}
-
-.auto-line-height {
-    &, &:before, &:after {
-        line-height: unset;
-    }
 }
 
 .center-middle {

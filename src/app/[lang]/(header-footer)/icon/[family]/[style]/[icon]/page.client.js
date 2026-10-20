@@ -197,7 +197,7 @@ export default function PageClient({ params }) {
                                     className={`tooltip top${family == f && style == s ? ' active' : ''}`}
                                     onClick={() => go(str, 'replace')}
                                 >
-                                    <f-icon icon={icon} i-s={(f2 ? `${f2}/` : '') + s} className='auto-line-height'/>
+                                    <f-icon icon={icon} i-s={(f2 ? `${f2}/` : '') + s}/>
                                     <span>{`${Capital(f)} ${Capital(s)}`}</span>
                                 </li>
                             })
@@ -217,7 +217,6 @@ export default function PageClient({ params }) {
                             size={size}
                             f-rotate={rotate}
                             animation={Join('-', animation, !!animationSpeed && animationSpeed)}
-                            className='auto-line-height'
                         />
                     </div>
                 </div>

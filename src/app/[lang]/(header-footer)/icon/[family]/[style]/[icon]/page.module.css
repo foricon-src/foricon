@@ -68,10 +68,6 @@
             }
             & > div {
                 margin-top: var(--spacing-mili);
-
-                &:nth-of-type(2) > ul > li > f-icon {
-                    line-height: 27px;
-                }
             }
         }
         & > .bottom {

@@ -15,7 +15,7 @@ export function NotFound({ family, style, icon, currentIcon }) {
 
     return (
         <div className={`center-middle ${cssStyle.wrapper}`}>
-            <f-icon icon='face-frown' className='auto-line-height'/>
+            <f-icon icon='face-frown'/>
             <h3>{
                 (currentIcon ? {
                     en: 'Style unavailable',
