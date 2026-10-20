@@ -685,30 +685,21 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     input:not([type='range']),
     label:has(> f-icon + input:not([type])),
     textarea,
-):not(
-    [readonly]:not(label),
-    label:has(input[readonly]),
-):focus-within {
+):not([readonly], :has(input[readonly])):focus-within {
     cursor: var(--cursor-text);
 }
 :is(
     input,
     label:has(> f-icon + input:not([type])),
     textarea, select, f-select,
-):not(
-    [readonly]:not(label),
-    label:has(input[readonly]),
-):hover {
+):not([readonly], :has(input[readonly])):hover {
     background-color: var(--gray);
 }
 :is(
     input,
     label:has(> f-icon + input:not([type])),
     textarea, select,
-):not(
-    [readonly]:not(label),
-    label:has(input[readonly]),
-):focus-within, f-select:has(> option-list.active) {
+):not([readonly], :has(input[readonly])):focus-within, f-select:has(> option-list.active) {
     border-color: var(--main-color);
     outline-width: 5px;
     background-color: var(--lt-gray) !important;
@@ -981,9 +972,6 @@ f-select {
     }
     &:not(:has(> option-list.active)):after {
         rotate: 180deg;
-    }
-    &:hover {
-        background-color: var(--gray);
     }
     &:not(:has(option-list:active)):active:after {
         translate: 0 5px;
