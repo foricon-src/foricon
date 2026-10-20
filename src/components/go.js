@@ -6,7 +6,6 @@ import { LanguageContext } from './language';
 
 export default function useGo() {
     let router = useRouter();
-    let lang = useContext(LanguageContext);
 
     /**
      * Goes to a page
@@ -15,6 +14,7 @@ export default function useGo() {
      */
     return (value, mode) => {
         let action = router[mode == 'replace' ? 'replace' : 'push'];
+        let { lang } = document.documentElement;
 
         if (!value) router.push(`/${lang}`);
         else if (value[0] == '#') location.hash = value;
