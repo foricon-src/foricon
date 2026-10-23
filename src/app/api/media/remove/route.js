@@ -2,17 +2,26 @@ import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
 import { admin, fs } from 'Uti/firebase-admin';
 
+function calcTotalBytes(arr) {
+    return arr.reduce((sum, i) => sum + (i.size || i.bytes), 0)
+}
+async function setQuota(uid) {
+    let { files } = await getMedia(uid);
+    let used = calcTotalBytes(files);
+
+    await fs.runTransaction(async tx => tx.update(
+        fs.collection('quota').doc(uid), { used }
+    ))
+}
 export async function POST(req) {
 
     try {
-        let token = req.headers.get('authorization')?.split('Bearer ')[1];
-        let { uid } = await admin.auth().verifyIdToken(token);
+        let res = await getIdFromToken(req.headers.get('authorization'));
+        if (!res.ok) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+        let { uid } = res;
         let { files } = await req.json();
 
         let rejected = 0;
-        let deletedBytes = 0;
-
-        let quotaRef = fs.collection('quota').doc(uid);
         
         for (let { id, type } of files) {
             if (!id.startsWith(`users/${uid}/`)) {
@@ -21,9 +30,7 @@ export async function POST(req) {
             }
 
             try {
-                let asset = await cloudinary.api.resource(id, { resource_type: type });
-                let res = await cloudinary.uploader.destroy(id, { resource_type: type });
-                res.result == 'ok' ? deletedBytes += asset.bytes : rejected++;
+                await cloudinary.uploader.destroy(id, { resource_type: type });
             }
             catch (err) {
                 if (err.http_code == 404) continue;
@@ -31,12 +38,7 @@ export async function POST(req) {
             }
         }
 
-        deletedBytes > 0 && (await fs.runTransaction(async tx => {
-            let doc = await tx.get(quotaRef);
-            tx.update(quotaRef, {
-                used: Math.max(0, doc.get('used') - deletedBytes),
-            })
-        }))
+        await setQuota(uid);
 
         return NextResponse.json({
             message: rejected
