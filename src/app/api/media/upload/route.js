@@ -2,19 +2,41 @@ import path from 'node:path';
 import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
 import { admin, fs } from 'Uti/firebase-admin';
+import { getIdFromToken } from 'Uti/get-id-from-token';
+import { getMedia } from 'Uti/get-media';
 
 let max = 100 * 1024 * 1024;
 
+function calcTotalBytes(arr) {
+    return arr.reduce((sum, i) => sum + (i.size || i.bytes), 0)
+}
+async function setQuota(uid) {
+    let { files } = await getMedia(uid);
+    let used = calcTotalBytes(files);
+
+    await fs.runTransaction(async tx => tx.update(
+        fs.collection('quota').doc(uid), { used }
+    ))
+}
+
 export async function POST(req) {
-    let uid, reservedBytes = 0, completedBytes = 0, failed = [];
+    let uid, failed = [];
     
     try {
-        let token = req.headers.get('authorization').split('Bearer ')[1];
-        uid = (await admin.auth().verifyIdToken(token)).uid;
+        let res = await getIdFromToken(req.headers.get('authorization'));
+        if (!res.ok) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+        uid = res.uid;
         
         let formData = await req.formData();
         let files = formData.getAll('files');
-        let totalBytes = files.reduce((sum, file) => sum + file.size, 0);
+
+        if (files.some(i => !(i instanceof File)))
+            return NextResponse.json({ message: 'Invalid files' }, { status: 400 });
+
+        let totalBytes = calcTotalBytes(files);
+
+        if (totalBytes > 4 * 1024 * 1024)
+            return NextResponse.json({ message: 'Content too large' }, { status: 413 });
         
         let quotaRef = fs.collection('quota').doc(uid);
         
@@ -26,8 +48,6 @@ export async function POST(req) {
             
             t.update(quotaRef, { used: used + totalBytes });
         })
-        
-        reservedBytes = totalBytes;
         
         for (let file of files)
             try {
@@ -49,12 +69,12 @@ export async function POST(req) {
                         }
                     ).end(buffer)
                 )
-
-                completedBytes += file.size;
             }
             catch (err) {
                 failed.push(file);
             }
+
+        await setQuota(uid);
         
         return NextResponse.json({
             message: failed.length
@@ -65,26 +85,19 @@ export async function POST(req) {
     }
     catch (err) {
         let { message } = err;
-
-        if (uid && reservedBytes)
-            try {
-                let quotaRef = fs.collection('quota').doc(uid);
-                await fs.runTransaction(async (tx) => {
-                    let doc = await tx.get(quotaRef);
-                    
-                    doc.exists && tx.update(quotaRef, {
-                        used: Math.max(0, doc.get('used') - (reservedBytes - completedBytes)),
-                    })
-                })
-            }
-            catch (err) {
-                console.error(err);
-            }
-        
         console.error(err);
-        return NextResponse.json(
-            { message: message == 'QUOTA_EXCEEDED' ? 'Quota exceeded' : 'Internal server error' },
-            { status: message == 'QUOTA_EXCEEDED' ? 413 : 500 }
-        )
+
+        try {
+            await setQuota(uid);
+        }
+        catch (error) {
+            console.error(error);
+        }
+        finally {
+            return NextResponse.json(
+                { message: message == 'QUOTA_EXCEEDED' ? 'Quota exceeded' : 'Internal server error' },
+                { status: message == 'QUOTA_EXCEEDED' ? 413 : 500 }
+            )
+        }
     }
 }

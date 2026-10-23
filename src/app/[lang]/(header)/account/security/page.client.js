@@ -58,6 +58,22 @@ export default function PageClient() {
                         ru: 'История входов',
                     }[lang]
                 }</li>
+                <li className='red'>{
+                    {
+                        en: 'Remove my account',
+                        vi: 'Xoá tài khoản của tôi',
+                        fr: 'Supprimer mon compte',
+                        it: 'Rimuovi il mio account',
+                        ko: '내 계정 삭제',
+                        ja: 'アカウントを削除する',
+                        de: 'Mein Konto entfernen',
+                        nl: 'Verwijder mijn account',
+                        da: 'Fjern min konto',
+                        pt: 'Remover a minha conta',
+                        es: 'Eliminar mi cuenta',
+                        ru: 'Удалить мой аккаунт',
+                    }[lang]
+                }</li>
             </ul>
         </div>
     )

@@ -1,20 +1,15 @@
 import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
 import { admin, fs } from 'Uti/firebase-admin';
+import { getMedia } from 'Uti/get-media';
 
 export async function POST(req) {
     try {
-        let token = req.headers.get('authorization')?.split('Bearer ')[1];
-        let { uid } = await admin.auth().verifyIdToken(token);
-        let res = await cloudinary.search
-            .expression(`folder:users/${uid}`)
-            .with_field('context')
-            .max_results(100)
-            .execute();
-
-        let { used } = (await fs.collection('quota').doc(uid).get()).data();
-        
-        return NextResponse.json({ usedBytes: used, files: res.resources });
+        let res = await getIdFromToken(req.headers.get('authorization'));
+        if (!res.ok) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+        let { uid } = res;
+        let result = await getMedia(uid);
+        return NextResponse.json({ usedBytes: result.used, files: result.files })
     }
     catch (err) {
         console.error(err);
