@@ -98,6 +98,20 @@ export default function PageClient() {
     return <div className={cssStyle.media}>
         <Modal ref={uploadModalRef} type='confirm' size='wide' allowedToProceed={files.length} btns={[
             {
+                en: 'Continue',
+                vi: 'Tiếp tục',
+                fr: 'Continuer',
+                it: 'Continuare',
+                kr: '계속하다',
+                ja: '続く',
+                de: 'Weitermachen',
+                nl: 'Doorgaan',
+                da: 'Fortsætte',
+                pt: 'Continuar',
+                es: 'Continuar',
+                ru: 'Продолжать',
+            }[lang],
+            {
                 en: 'Cancel',
                 vi: 'Hủy',
                 fr: 'Annuler',
@@ -111,20 +125,6 @@ export default function PageClient() {
                 es: 'Cancelar',
                 ru: 'Отмена',
             }[lang],
-            {
-                en: 'Continue',
-                vi: 'Tiếp tục',
-                fr: 'Continuer',
-                it: 'Continuare',
-                kr: '계속하다',
-                ja: '続く',
-                de: 'Weitermachen',
-                nl: 'Doorgaan',
-                da: 'Fortsætte',
-                pt: 'Continuar',
-                es: 'Continuar',
-                ru: 'Продолжать',
-            }[lang]
         ]}>
             <h3>{
                 {
@@ -162,6 +162,20 @@ export default function PageClient() {
         </Modal>
         <Modal ref={removeModalRef} type='confirm' btns={[
             {
+                en: 'Remove',
+                vi: 'Xoá',
+                fr: 'Retirer',
+                it: 'Rimuovere',
+                kr: '제거하다',
+                ja: '取り除く',
+                de: 'Entfernen',
+                nl: 'Verwijderen',
+                da: 'Fjerne',
+                pt: 'Remover',
+                es: 'Eliminar',
+                ru: 'Удалять',
+            }[lang],
+            {
                 en: 'Cancel',
                 vi: 'Hủy',
                 fr: 'Annuler',
@@ -175,20 +189,6 @@ export default function PageClient() {
                 es: 'Cancelar',
                 ru: 'Отмена',
             }[lang],
-            {
-                en: 'Remove',
-                vi: 'Xoá',
-                fr: 'Retirer',
-                it: 'Rimuovere',
-                kr: '제거하다',
-                ja: '取り除く',
-                de: 'Entfernen',
-                nl: 'Verwijderen',
-                da: 'Fjerne',
-                pt: 'Remover',
-                es: 'Eliminar',
-                ru: 'Удалять',
-            }[lang]
         ]}>
             <h3>{
                 {
