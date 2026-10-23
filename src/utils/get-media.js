@@ -1,4 +1,5 @@
 import { cloudinary } from './cloudinary';
+import { fs } from './firebase-admin';
 
 export default async function getMedia(uid) {
     let files = await cloudinary.search
