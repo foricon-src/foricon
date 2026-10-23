@@ -1,6 +1,6 @@
 import { admin } from './firebase-admin';
 
-export async function getIdFromToken(authorization) {
+export default async function getIdFromToken(authorization) {
     try {
         let match = authorization?.match(/^Bearer\s+(\S+)$/i);
         if (!match) return { ok: false };

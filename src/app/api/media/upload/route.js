@@ -1,9 +1,9 @@
 import path from 'node:path';
 import { NextResponse } from 'next/server';
 import { cloudinary } from 'Uti/cloudinary';
-import { admin, fs } from 'Uti/firebase-admin';
-import { getIdFromToken } from 'Uti/get-id-from-token';
-import { getMedia } from 'Uti/get-media';
+import { fs } from 'Uti/firebase-admin';
+import getIdFromToken from 'Uti/get-id-from-token';
+import getMedia from 'Uti/get-media';
 
 let max = 100 * 1024 * 1024;
 

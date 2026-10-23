@@ -37,10 +37,14 @@ export default function PageClient() {
                 setItems([]);
                 setIsLoading(true);
                 let token = await user.getIdToken();
-                let res = await (await fetch('/api/media/get', {
+                let res = await fetch('/api/media/get', {
                     method: 'POST',
                     headers: { authorization: `Bearer ${token}` }
-                })).json()
+                })
+
+                if (!res.ok) throw new Error(res.statusText);
+
+                res = await res.json();
 
                 if (canceled) return;
 

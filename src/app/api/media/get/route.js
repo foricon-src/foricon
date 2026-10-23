@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import { cloudinary } from 'Uti/cloudinary';
-import { admin, fs } from 'Uti/firebase-admin';
-import { getMedia } from 'Uti/get-media';
+import getIdFromToken from 'Uti/get-id-from-token';
+import getMedia from 'Uti/get-media';
 
 export async function POST(req) {
     try {

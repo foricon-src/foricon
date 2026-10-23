@@ -1,6 +1,6 @@
 import { cloudinary } from './cloudinary';
 
-export async function getMedia(uid) {
+export default async function getMedia(uid) {
     let files = await cloudinary.search
         .expression(`folder:users/${uid}`)
         .with_field('context')

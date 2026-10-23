@@ -29,10 +29,14 @@ export function Media() {
             if (!user || !mediaOptions) return;
 
             let token = await user.getIdToken();
-            let { files: f } = await (await fetch('/api/media/get', {
+            let res = await fetch('/api/media/get', {
                 method: 'POST',
                 headers: { authorization: `Bearer ${token}` }
-            })).json()
+            })
+
+            if (!res.ok) throw new Error(res.statusText);
+
+            let { files: f } = await res.json();
 
             f = f.filter(file =>
                 !(
