@@ -8,8 +8,8 @@ export default function Modal({ children, btns = [], type = '', size = '', allow
                 btns.reverse().map((btn, i) =>
                     <button
                         key={i}
-                        className={!i ? 'primary' : 'secondary'}
-                        {...{ disabled: !i && allowedToProceed }}
+                        className={!!i ? 'primary' : 'secondary'}
+                        {...{ disabled: !!i && allowedToProceed }}
                     >{btn}</button>
                 )
             }</div>
