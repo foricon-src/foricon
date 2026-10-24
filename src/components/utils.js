@@ -1025,7 +1025,7 @@ globalThis.formatTime = time => {
  * @param {{
  *   lang: string,
  *   dateOnly: boolean,
- * }} options - Options
+ * }} [options] - Options
  * @returns Formatted date string
  */
 globalThis.formatDate = (date, options) => {
