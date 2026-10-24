@@ -23,9 +23,9 @@ export async function GET(req) {
         
         let { plan, pageview: { start, count }, settings } = user;
         let now = Date.now();
+        let days30 = 30 * 24 * 60 * 60 * 1000;
         
-        if (now >= start) {
-            let days30 = 30 * 24 * 60 * 60 * 1000;
+        if (now >= start + days30) {
             let checkpoint = now - days30;
             let latestStart = start;
             
