@@ -92,36 +92,38 @@ export default function PageClient() {
                 </li>
             </ul>
             <div className={cssStyle.pageviews}>
-                <span>{
-                    {
-                        en: 'You have used',
-                        vi: 'Bạn đã sử dụng',
-                        fr: 'Vous avez utilisé',
-                        it: 'Hai utilizzato',
-                        de: 'Sie haben',
-                        nl: 'U hebt',
-                        da: 'Du har brugt',
-                        pt: 'Utilizou',
-                        es: 'Has utilizado',
-                        ru: 'Вы использовали',
-                    }[lang]
-                }</span>
-                <h6>{used} / {max} {
-                    {
-                        en: 'pageviews',
-                        vi: 'lượt xem trang',
-                        fr: 'pages vues',
-                        it: 'visualizzazioni di pagina',
-                        ko: '페이지뷰를 사용했습니다',
-                        ja: 'ページビューを使用しました',
-                        de: 'Seitenaufrufe verwendet',
-                        nl: 'paginaweergaven gebruikt',
-                        da: 'sidevisninger',
-                        pt: 'visualizações de página',
-                        es: 'páginas vistas',
-                        ru: 'просмотров страниц',
-                    }[lang]
-                }</h6>
+                <div>
+                    <span>{
+                        {
+                            en: 'You have used',
+                            vi: 'Bạn đã sử dụng',
+                            fr: 'Vous avez utilisé',
+                            it: 'Hai utilizzato',
+                            de: 'Sie haben',
+                            nl: 'U hebt',
+                            da: 'Du har brugt',
+                            pt: 'Utilizou',
+                            es: 'Has utilizado',
+                            ru: 'Вы использовали',
+                        }[lang]
+                    }</span>
+                    <h6>{used} / {max} {
+                        {
+                            en: 'pageviews',
+                            vi: 'lượt xem trang',
+                            fr: 'pages vues',
+                            it: 'visualizzazioni di pagina',
+                            ko: '페이지뷰를 사용했습니다',
+                            ja: 'ページビューを使用しました',
+                            de: 'Seitenaufrufe verwendet',
+                            nl: 'paginaweergaven gebruikt',
+                            da: 'sidevisninger',
+                            pt: 'visualizações de página',
+                            es: 'páginas vistas',
+                            ru: 'просмотров страниц',
+                        }[lang]
+                    }</h6>
+                </div>
                 <div className={cssStyle.bar} style={{ '--percent': `${used / max * 100}%` }}/>
                 <span ref={resetRef}></span>
             </div>

@@ -19,7 +19,7 @@
     }
     & > span {
         grid-area: reset;
-        justify-self: end;
+        align-self: flex-end;
     }
     & > div.bar {
         --percent: 0;
