@@ -117,7 +117,7 @@ export default function Sidebar() {
         {
             page: 'media',
             icon: { name: 'folders' },
-            text: 'Media',
+            text: 'Foricon Media',
         },
     ]}/>
 }

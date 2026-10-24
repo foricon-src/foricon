@@ -9,6 +9,9 @@ import usePage from '../use-page';
 import cssStyle from './page.module.css';
 import Code from 'Com/code';
 
+export const metadata = {
+    title: 'Foricon Package',
+}
 export default function PageClient() {
     let go = useGo();
 
@@ -90,7 +93,7 @@ export default function PageClient() {
                     }</span>
                 </li>
             </ul>
-            <div ref={pageviewsRef} className={cssStyle.pageviews}>
+            <div className={cssStyle.pageviews}>
                 <div>
                     <span>{
                         {
