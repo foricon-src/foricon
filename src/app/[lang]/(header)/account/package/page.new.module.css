@@ -1,18 +1,32 @@
 .pageviews {
+    display: grid;
+    grid-template-areas:
+        'used reset'
+        'bar bar';
+    grid-template-columns: auto max-content;
+    gap: var(--spacing-mili);
     background-color: var(--lt-gray);
     padding: var(--spacing-mili) var(--spacing-xxsmall);
     border-radius: var(--bdr-rad);
     margin-top: var(--spacing-small);
     
-    & > h6 {
-        margin-top: 0;
+    & > div:not(.bar) {
+        grid-area: used;
+
+        & > h6 {
+            margin: 0;
+        }
     }
-    & > div {
+    & > span {
+        grid-area: reset;
+        justify-self: end;
+    }
+    & > div.bar {
         --percent: 0;
 
+        grid-area: bar;
         height: 4px;
         border-radius: 2px;
-        margin-bottom: var(--spacing-micro);
         background-image: linear-gradient(to right, var(--main-color) var(--percent), var(--tr-main-color) var(--percent));
     }
 }
