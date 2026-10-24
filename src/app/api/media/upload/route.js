@@ -10,9 +10,18 @@ let max = 100 * 1024 * 1024;
 function calcTotalBytes(arr) {
     return arr.reduce((sum, i) => sum + (i.size || i.bytes), 0)
 }
-async function setQuota(uid) {
-    let { files } = await getMedia(uid);
-    let used = calcTotalBytes(files);
+async function setQuota(prev, uid) {
+    let used;
+
+    while (true) {
+        let { files } = await getMedia(uid);
+        let calculated = calcTotalBytes(files);
+        
+        if (calculated != prev) {
+            used = calculated;
+            break;
+        }
+    }
 
     await fs.runTransaction(async tx => tx.update(
         fs.collection('quota').doc(uid), { used }
@@ -37,6 +46,8 @@ export async function POST(req) {
 
         if (totalBytes > 4 * 1024 * 1024)
             return NextResponse.json({ message: 'Content too large' }, { status: 413 });
+
+        let prev = calcTotalBytes((await getMedia(uid)).files);
         
         let quotaRef = fs.collection('quota').doc(uid);
         
@@ -74,7 +85,7 @@ export async function POST(req) {
                 failed.push(file);
             }
 
-        await setQuota(uid);
+        await setQuota(prev, uid);
         
         return NextResponse.json({
             message: failed.length
