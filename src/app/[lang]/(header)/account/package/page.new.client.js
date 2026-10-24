@@ -6,12 +6,9 @@ import { UserContext } from 'Com/user';
 import { db } from 'Com/firebase';
 import useGo from 'Com/go';
 import usePage from '../use-page';
-import cssStyle from './page.module.css';
+import cssStyle from './page.new.module.css';
 import Code from 'Com/code';
 
-export const metadata = {
-    title: 'Foricon Package',
-}
 export default function PageClient() {
     let go = useGo();
 
@@ -29,6 +26,7 @@ export default function PageClient() {
 
         let planData = (await get(ref(db, `plans/${plan}`))).val();
 
+        setUsed(count);
         setMax(planData.pageviews);
 
         let formatted = formatDate(new Date(start + 30 * 24 * 60 * 60 * 1000));
