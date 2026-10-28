@@ -16,7 +16,7 @@
         }
     }
     & > :global(ul.btn-list) {
-        margin: var(--spacing-xxsmall) 0 var(--spacing-mili);
+        margin: var(--spacing-xxsmall) 0 var(--spacing-micro);
     }
     & > :global(ul.btn-list) > li, & > ul.results > li > ul > li {
         & > f-icon {

@@ -229,7 +229,7 @@ export default function PageClient() {
             <div style={{ '--percent': `${usedBytes / (100 * 1024 * 1024) * 100}%` }}/>
         </div>
         <ul className='btn-list'>
-            <li name='refresh' onClick={() => setTick(tick + 1)}>
+            <li name='refresh' onClick={() => setTick(tick + 1)} {...{ disabled: isLoading }}>
                 <f-icon icon='rotate-right' i-s='outline'/>
                 <span>{
                     {

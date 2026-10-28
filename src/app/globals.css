@@ -114,6 +114,9 @@
     --shadow: 0 20px 30px 0 rgba(0, 0, 0, .05);
     --s-shadow: 0 10px 15px 0 rgba(0, 0, 0, .06);
     --xs-shadow: 0 5px 7.5px 0 rgba(0, 0, 0, .07);
+
+    /*Text*/
+    --df-ln-hgt: 27px;
 }
 html {
     font-size: 20px;
@@ -163,7 +166,7 @@ body {
     scroll-behavior: smooth;
 }
 f-icon[icon] {
-    line-height: 27px;
+    line-height: var(--df-ln-hgt);
     transition: var(--df-trans), color .025s ease;
 }
 * {
@@ -1680,6 +1683,7 @@ div.message:before {
     font-family: 'Foricon Beta';
     position: absolute;
     left: 35px;
+    line-height: var(--df-ln-hgt);
     translate: -50%;
 }
 div.message:is(.success, .online) {

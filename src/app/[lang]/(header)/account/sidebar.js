@@ -112,12 +112,13 @@ export default function Sidebar() {
         {
             page: 'package',
             icon: { name: 'code', keepState: true },
-            text: 'Foricon Package',
+            hasLine: true,
+            text: 'Package',
         },
         {
             page: 'media',
             icon: { name: 'folders' },
-            text: 'Foricon Media',
+            text: 'Media',
         },
     ]}/>
 }
