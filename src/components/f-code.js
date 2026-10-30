@@ -10,7 +10,7 @@ export default function Code({ children, codeLang = 'html' }) {
         let canceled = false;
 
         (async () => {
-            let res = await highlighter.codeToHtml(children, {
+            let res = (await highlighter).codeToHtml(children, {
                 lang: codeLang,
                 theme: theme.name,
             })
