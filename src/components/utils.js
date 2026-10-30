@@ -1378,7 +1378,7 @@ globalThis.formatCode = (value, lang = 'html') => {
         )
         
         str = str.replace(/&lt;(script|style)((?:(?!&gt;).)*?)&gt;([\s\S]*?)&lt;\/\1&gt;/g, (match, tag, attrs, content) =>
-            `&lt;${tag}&gt;${tag == 'script' ? highlightJS(protect(content)) : highlightCSS(protect(content))}&lt;/${tag}&gt;`
+            `&lt;${tag}${attrs}&gt;${tag == 'script' ? highlightJS(protect(content)) : highlightCSS(protect(content))}&lt;/${tag}&gt;`
         )
         str = unprotect(str.replace(/(&lt;\/?)([a-zA-Z0-9\-]+)((?:(?!&gt;).)*?)(\/?&gt;)/g, (match, open, tagName, attrs, close) => {
             let highlightedAttrs = attrs.replace(
