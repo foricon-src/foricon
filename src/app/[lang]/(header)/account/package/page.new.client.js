@@ -14,10 +14,9 @@ export default function PageClient() {
 
     let [ used, setUsed ] = useState(0);
     let [ max, setMax ] = useState(10000);
+    let [ resetDate, setResetDate ] = useState(new Date())
 
     let { user } = useContext(UserContext);
-
-    let resetRef = useRef();
     
     let { lang } = document.documentElement;
 
@@ -28,25 +27,7 @@ export default function PageClient() {
 
         setUsed(count);
         setMax(planData.pageviews);
-
-        let formatted = formatDate(new Date(start + 30 * 24 * 60 * 60 * 1000));
-        resetRef.current.innerText =
-            lang == 'ko' ? `${formatted}에 재설정됨` :
-            lang == 'ja' ? `${formatted}にリセット` :
-            `${
-                {
-                    en: 'Reset at',
-                    vi: 'Đặt lại vào',
-                    fr: 'Réinitialisé à',
-                    it: 'Reimpostato alle',
-                    de: 'Zurückgesetzt am',
-                    nl: 'Opnieuw ingesteld om',
-                    da: 'Nulstillet kl.',
-                    pt: 'Reiniciado às',
-                    es: 'Reiniciado a las',
-                    ru: 'Сброс настроек в',
-                }[lang]
-            } ${formatted}`;
+        setResetDate(new Date(start + 30 * 24 * 60 * 60 * 1000));
     })
 
     return (
@@ -125,7 +106,25 @@ export default function PageClient() {
                     }</h6>
                 </div>
                 <div className={cssStyle.bar} style={{ '--percent': `${used / max * 100}%` }}/>
-                <span ref={resetRef}></span>
+                <span>
+                    {
+                        {
+                            en: 'Reset in ',
+                            vi: 'Đặt lại sau ',
+                            fr: 'Réinitialisation dans ',
+                            it: 'Ripristino tra ',
+                            ko: '초기화까지 ',
+                            ja: 'リセットまであと',
+                            de: 'Zurücksetzen in ',
+                            nl: 'Reset over ',
+                            da: 'Nulstil om ',
+                            pt: 'Redefinir em ',
+                            es: 'Reinicio en ',
+                            ru: 'Сброс через '
+                        }[lang]
+                    }{timeDiff(resetDate)}
+                    <f-icon icon='circle-info' title={formatDate(resetDate)}/>
+                </span>
             </div>
             <h3>{
                 {

@@ -1,4 +1,4 @@
-import { Lower } from './string-tools';
+import { Capital, Lower } from './string-tools';
 
 globalThis.webData = {
     isBeta: true,
@@ -962,13 +962,21 @@ globalThis.localTime = date => {
     return new Date(date);
 }
 /**
- * Shows the difference between date object and current time
- * @param {Date} date - Formatted date object
+ * Shows the difference between the given date and the current time
+ * @param {Date} date - Date object
+ * @param {{
+ *   lang: string,
+ *   capitalize: Boolean,
+ * }} options - Options
  * @returns Difference string
  */
-globalThis.timeDiff = (date, lang) => {
+globalThis.timeDiff = (date, options = {}) => {
     let now = new Date();
-    let elapsed = now - date;
+    let diff = date - now;
+    let elapsed = Math.abs(diff);
+    let isFuture = diff > 0;
+
+    let { lang = document.documentElement.lang, capitalize = false } = options;
     
     let msPerSecond = 1000;
     let msPerMinute = msPerSecond * 60;
@@ -978,28 +986,51 @@ globalThis.timeDiff = (date, lang) => {
     let msPerYear = msPerDay * 365;
     let msPerMonth = msPerYear / 12;
     
-    let text = {
-        en: [' seconds ago', ' minutes ago', ' hours ago', ' days ago', ' weeks ago', ' months ago', ' years ago'],
-        vi: [' giây trước', ' phút trước', ' giờ trước', ' ngày trước', ' tuần trước', ' tháng trước', ' năm trước'],
-        fr: [' secondes avant', ' minutes avant', ' heures avant', ' jours avant', ' semaines avant', ' mois avant', ' années avant'],
-        it: [' secondi fa', ' minuti fa', ' ore fa', ' giorni fa', ' settimane fa', ' mesi fa', ' anni fa'],
-        ko: [' 초 전', ' 분 전', ' 시간 전', ' 일 전', ' 주 전', ' 개월 전', ' 년 전'],
-        ja: [' 秒前', ' 分前', ' 時間前', ' 日前', ' 週間前', ' ヶ月前', ' 年前'],
-        de: [' Sekunden vor', ' Minuten vor', ' Stunden vor', ' Tagen vor', ' Wochen vor', ' Monaten vor', ' Jahren vor'],
-        nl: [' seconden geleden', ' minuten geleden', ' uren geleden', ' dagen geleden', ' weken geleden', ' maanden geleden', ' jaren geleden'],
-        da: [' sekunder siden', ' minutter siden', ' timer siden', ' dage siden', ' uger siden', ' måneder siden', ' år siden'],
-        pt: [' segundos atrás', ' minutos atrás', ' horas atrás', ' dias atrás', ' semanas atrás', ' meses atrás', ' anos atrás'],
-        es: [' segundos atrás', ' minutos atrás', ' horas atrás', ' días atrás', ' semanas atrás', ' meses atrás', ' años atrás'],
-        ru: [' секунд назад', ' минут назад', ' часов назад', ' дней назад', ' недель назад', ' месяцев назад', ' лет назад']
-    }[lang];
+    let timeUnits = [
+        msPerSecond,
+        msPerMinute,
+        msPerHour,
+        msPerDay,
+        msPerWeek,
+        msPerMonth,
+        msPerYear,
+    ]
+    let units = {
+        en: [' seconds', ' minutes', ' hours', ' days', ' weeks', ' months', ' years'],
+        vi: [' giây', ' phút', ' giờ', ' ngày', ' tuần', ' tháng', ' năm'],
+        fr: [' secondes', ' minutes', ' heures', ' jours', ' semaines', ' mois', ' années'],
+        it: [' secondi', ' minuti', ' ore', ' giorni', ' settimane', ' mesi', ' anni'],
+        ko: [' 초', ' 분', ' 시간', ' 일', ' 주', ' 개월', ' 년'],
+        ja: [' 秒', ' 分', ' 時間', ' 日', ' 週間', ' ヶ月', ' 年'],
+        de: [' Sekunden', ' Minuten', ' Stunden', ' Tagen', ' Wochen', ' Monaten', ' Jahren'],
+        nl: [' seconden', ' minuten', ' uren', ' dagen', ' weken', ' maanden', ' jaren'],
+        da: [' sekunder', ' minutter', ' timer', ' dage', ' uger', ' måneder', ' år'],
+        pt: [' segundos', ' minutos', ' horas', ' dias', ' semanas', ' meses', ' anos'],
+        es: [' segundos', ' minutos', ' horas', ' días', ' semanas', ' meses', ' años'],
+        ru: [' секунд', ' минут', ' часов', ' дней', ' недель', ' месяцев', ' лет']
+    }[lang]
+    let { prefix, suffix } = {
+        en: { prefix: '', suffix: ' ago' },
+        vi: { prefix: '', suffix: ' trước' },
+        fr: { prefix: 'il y a ', suffix: '' },
+        it: { prefix: '', suffix: ' fa' },
+        ko: { prefix: '', suffix: ' 전' },
+        ja: { prefix: '', suffix: '前' },
+        de: { prefix: 'vor ', suffix: '' },
+        nl: { prefix: '', suffix: ' geleden' },
+        da: { prefix: '', suffix: ' siden' },
+        pt: { prefix: '', suffix: ' atrás' },
+        es: { prefix: 'hace ', suffix: '' },
+        ru: { prefix: '', suffix: ' назад' },
+    }[lang]
     
-    return elapsed < msPerMinute ? Math.floor(elapsed / msPerSecond) + text[0] :
-           elapsed < msPerHour ? Math.floor(elapsed / msPerMinute) + text[1] :
-           elapsed < msPerDay ? Math.floor(elapsed / msPerHour) + text[2] :
-           elapsed < msPerWeek ? Math.floor(elapsed / msPerDay) + text[3] :
-           elapsed < msPerMonth ? Math.floor(elapsed / msPerWeek) + text[4] :
-           elapsed < msPerYear ? Math.floor(elapsed / msPerMonth) + text[5] :
-           Math.floor(elapsed / msPerYear) + text[6];
+    let i = timeUnits.findIndex((_, i, arr) => elapsed < (arr[i + 1] || Infinity))
+
+    let value = Math.floor(elapsed / timeUnits[index]) + units[i];
+
+    return isFuture
+        ? (capitalize ? Capital(prefix) : prefix) + value + suffix
+        : value;
 }
 /**
  * Turns time object into time string
