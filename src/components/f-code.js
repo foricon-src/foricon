@@ -3,7 +3,7 @@
 import { highlighter } from './highlighter';
 import { useEffect, useState } from 'react';
 
-export default async function Code({ children, codeLang = 'html' }) {
+export default function Code({ children, codeLang = 'html' }) {
     if (typeof children != 'string') {
         console.error('Content must be a string');
         return;
