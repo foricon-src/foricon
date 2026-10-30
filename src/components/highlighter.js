@@ -1,6 +1,6 @@
 import { createHighlighter } from 'shiki';
 
-let theme = {
+export let theme = {
     name: 'Foricon',
     settings: [
         {
@@ -78,7 +78,6 @@ let theme = {
     //     color: rgb(50, 200, 115);
     // }
 }
-
 export let highlighter = createHighlighter({
     themes: [ theme ],
     langs: [ 'javascript', 'html', 'css' ],
