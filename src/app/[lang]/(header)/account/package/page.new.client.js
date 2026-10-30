@@ -122,8 +122,7 @@ export default function PageClient() {
                             es: 'Reinicio en ',
                             ru: 'Сброс через '
                         }[lang]
-                    }{timeDiff(resetDate)}
-                    <f-icon icon='circle-info' title={formatDate(resetDate)}/>
+                    }{timeDiff(resetDate)} <f-icon icon='circle-info' title={formatDate(resetDate)}/>
                 </span>
             </div>
             <h3>{
