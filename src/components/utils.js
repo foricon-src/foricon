@@ -1029,8 +1029,8 @@ globalThis.timeDiff = (date, options = {}) => {
     let value = Math.floor(elapsed / timeUnits[i]) + units[i];
 
     return isFuture
-        ? (capitalize ? Capital(prefix) : prefix) + value + suffix
-        : value;
+        ? value
+        : (capitalize ? Capital(prefix) : prefix) + value + suffix;
 }
 /**
  * Turns time object into time string
