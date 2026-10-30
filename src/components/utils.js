@@ -1026,7 +1026,7 @@ globalThis.timeDiff = (date, options = {}) => {
     
     let i = timeUnits.findIndex((_, i, arr) => elapsed < (arr[i + 1] || Infinity))
 
-    let value = Math.floor(elapsed / timeUnits[index]) + units[i];
+    let value = Math.floor(elapsed / timeUnits[i]) + units[i];
 
     return isFuture
         ? (capitalize ? Capital(prefix) : prefix) + value + suffix
