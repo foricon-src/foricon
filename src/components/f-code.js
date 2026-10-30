@@ -4,15 +4,6 @@ import { highlighter } from './highlighter';
 import { useEffect, useState } from 'react';
 
 export default function Code({ children, codeLang = 'html' }) {
-    if (typeof children != 'string') {
-        console.error('Content must be a string');
-        return;
-    }
-    if (![ 'javascript', 'html', 'css' ].includes(codeLang)) {
-        console.error('Unsupported language');
-        return;
-    }
-
     let [ html, setHtml ] = useState('');
 
     useEffect(() => {
@@ -28,6 +19,15 @@ export default function Code({ children, codeLang = 'html' }) {
 
         return () => canceled = true;
     }, [ children ])
+    
+    if (typeof children != 'string') {
+        console.error('Content must be a string');
+        return;
+    }
+    if (![ 'javascript', 'html', 'css' ].includes(codeLang)) {
+        console.error('Unsupported language');
+        return;
+    }
 
     return <f-code>
         <div>
