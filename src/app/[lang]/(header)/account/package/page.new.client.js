@@ -122,7 +122,12 @@ export default function PageClient() {
                             es: 'Reinicio en ',
                             ru: 'Сброс через '
                         }[lang]
-                    }{timeDiff(resetDate)} <f-icon icon='circle-info' title={formatDate(resetDate)}/>
+                    }{timeDiff(resetDate)}
+                    <f-icon
+                        icon='circle-info'
+                        title={formatDate(resetDate)}
+                        style={{ marginLeft: 'var(--spacing-micro)' }}
+                    />
                 </span>
             </div>
             <h3>{
@@ -157,7 +162,7 @@ export default function PageClient() {
                     ru: "Чтобы импортировать пакет Foricon на свой сайт, скопируйте код ниже и вставьте его в <span className='small-code element'>head</span> вашего HTML-кода.",
                 }[lang]
             }}/>
-            <Code>{`<script src='https://foricon.vercel.app/api/import/${user?.uid}'><script/>`}</Code>
+            <Code>{`<script src='https://foricon.vercel.app/api/import/${user?.uid}'></script>`}</Code>
             <ul className='btn-list vertical large'>
                 <li onClick={() => go('docs/styling-icons/basics')}>{
                     {
