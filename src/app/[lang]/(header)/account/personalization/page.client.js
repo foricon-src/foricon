@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, useRef, useState } from 'react';
-import Code from 'Com/code';
+import Code from 'Com/f-code';
 import { UpdateRange, Range } from 'Com/range';
 import { useUpdateUser, UserContext } from 'Com/user';
 import usePage from '../use-page';
@@ -88,7 +88,7 @@ export default function PageClient() {
                         ].map(({ name, value }) => <f-option key={value} value={value} className={value}>{name}</f-option>)
                     }</option-list>
                 </f-select>
-                <Code className={font}>{`<div class='box'>
+                <Code>{`<div class='box'>
 ${' '.repeat(indent)}<!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
