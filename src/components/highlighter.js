@@ -4,15 +4,23 @@ export let theme = {
     name: 'Foricon',
     settings: [
         {
-            scope: [ 'string', 'punctuation.definition.template-expression', 'string.quoted', 'string.quoted.css' ],
-            settings: { foreground: 'rgb(220, 105, 70)' },
+            scope: [ 'string', 'string.template', 'punctuation.definition.template-expression', 'string.quoted', 'string.quoted.css' ],
+            settings: { foreground: 'rgb(220, 110, 70)' },
+        },
+        {
+            scope: [ 'keyword.other.important.css' ],
+            settings: { foreground: 'rgb(220, 50, 50)' },
+        },
+        {
+            scope: [ 'string.regexp' ],
+            settings: { foreground: 'rgb(180, 200, 60)' },
         },
         {
             scope: [ 'comment', 'comment.block.html', 'comment.block.css' ],
             settings: { foreground: 'rgb(210, 170, 60)' },
         },
         {
-            scope: [ 'entity.name.function' ],
+            scope: [ 'entity.name.function', 'support.function.css' ],
             settings: { foreground: 'lightseagreen' },
         },
         {
@@ -24,8 +32,24 @@ export let theme = {
             settings: { foreground: 'rgb(50, 200, 115)' },
         },
         {
-            scope: [ 'variable.other', 'entity.name.tag' ],
+            scope: [ 'variable.other', 'entity.name.tag', 'variable.css' ],
             settings: { foreground: 'rgb(40, 120, 230)' },
+        },
+        {
+            scope: [ 'storage.type', 'keyword.control.at-rule.css' ],
+            settings: { foreground: 'rgb(110, 70, 190)' },
+        },
+        {
+            scope: [ 'constant.language', 'constant.language.boolean', 'constant.character.entity' ],
+            settings: { foreground: 'rgb(70, 130, 180)' },
+        },
+        {
+            scope: [ 'keyword.operator', 'punctuation.definition.tag', 'keyword.doctype', 'punctuation.separator.key-value' ],
+            settings: { foreground: 'dimgray' },
+        },
+        {
+            scope: [ '' ],
+            settings: { foreground: '' },
         },
         {
             scope: [ '' ],
