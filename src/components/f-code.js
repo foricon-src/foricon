@@ -20,7 +20,13 @@ export default function Code({ children, codeLang = 'HTML' }) {
 
             const tokens = (await highlighter).codeToTokens(
                 `\`\${this.name.open()}\`
-                class a extends Helo {}`,
+                class a extends Helo {}
+                class Helo() {}
+                async function L() {}
+                document
+                console
+                window
+                new Date()`,
                 {
                     lang: 'javascript',
                     theme: 'Foricon',

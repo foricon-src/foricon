@@ -41,12 +41,11 @@ export let theme = {
         },
         {
             scope: [
-                'keyword',
                 'keyword.control',
                 'keyword.control.at-rule.css',
                 'keyword.operator.expression.of.js',
                 'keyword.operator.new.js',
-                'storage.type',
+                'storage',
             ],
             settings: { foreground: 'rgb(110, 70, 190)' },
         },
@@ -65,6 +64,7 @@ export let theme = {
                 'variable.other.readwrite',
                 'variable.other.object.js',
                 'variable.argument.css',
+                'entity.name.type.class.js',
                 'entity.name.tag',
             ],
             settings: { foreground: 'rgb(40, 120, 230)' },
