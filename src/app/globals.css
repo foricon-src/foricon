@@ -1698,6 +1698,7 @@ f-code {
         white-space-collapse: preserve;
         display: grid;
         grid-template-columns: max-content auto;
+        column-gap: var(--spacing-xxsmall);
 
         &, span {
             font-family: var(--mns-ft);

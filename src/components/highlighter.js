@@ -75,6 +75,13 @@ export let theme = {
         },
         {
             scope: [
+                'entity.name.type.class.js',
+                'entity.name.tag',
+            ],
+            settings: { foreground: 'rgb(40, 120, 230)' },
+        },
+        {
+            scope: [
                 'variable.parameter.js',
                 'variable.other.readwrite',
                 'variable.other.object.js',
@@ -82,10 +89,8 @@ export let theme = {
                 'variable.other.constant.object.js',
                 'variable.argument.css',
                 'variable.css',
-                'entity.name.type.class.js',
-                'entity.name.tag',
             ],
-            settings: { foreground: 'rgb(40, 120, 230)' },
+            settings: { foreground: 'rgb(80, 140, 230)' },
         },
         {
             scope: [
@@ -104,7 +109,7 @@ export let theme = {
                 'entity.other.attribute-name.pseudo-class.css',
                 'entity.other.attribute-name.pseudo-element.css',
             ],
-            settings: { foreground: 'rgb(70, 130, 180)' },
+            settings: { foreground: 'rgb(180, 80, 130)' },
         },
         {
             scope: [

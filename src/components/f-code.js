@@ -15,20 +15,20 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 lang: Lower(codeLang),
                 theme: theme.name,
                 structure: 'inline',
-            }).split('<br>')
+            })
             if (!canceled) setHtml(
-                res.map((line, i) => `<span class='line-num'>${i + 1}</span><span>${line}</span>`).join('')
+                res.split('<br>').map((line, i) => `<span class='line-num'>${i + 1}</span><span>${line}</span>`).join('')
             )
 
-            const tokens = (await highlighter).codeToTokens(
-                `<body data-value='blue'/>`,
-                {
-                    lang: 'html',
-                    theme: 'Foricon',
-                    includeExplanation: true,
-                }
-            );
-            console.log(tokens)
+            // const tokens = (await highlighter).codeToTokens(
+            //     `<body data-value='blue'/>`,
+            //     {
+            //         lang: 'html',
+            //         theme: 'Foricon',
+            //         includeExplanation: true,
+            //     }
+            // );
+            // console.log(tokens)
         })()
 
         return () => canceled = true;
@@ -47,7 +47,23 @@ export default function Code({ children, codeLang = 'HTML' }) {
         <div>
             <span>{codeLang}</span>
             <ul className='btn-list small'>
-                <li className='tooltip top'>
+                <li className='tooltip top' onClick={async () => {
+                    await navigator.clipboard.writeText(children);
+                    notify('success', {
+                        en: 'Copied to clipboard',
+                        vi: 'Đã sao chép vào bộ nhớ tạm',
+                        fr: 'Copié dans le presse-papiers',
+                        it: 'Copiato negli appunti',
+                        ko: '클립보드에 복사됨',
+                        ja: 'クリップボードにコピーされました',
+                        de: 'In die Zwischenablage kopiert',
+                        nl: 'Gekopieerd naar het klembord',
+                        da: 'Kopieret til udklipsholderen',
+                        pt: 'Copiado para a área de transferência',
+                        es: 'Copiado al portapapeles',
+                        ru: 'Скопировано в буфер обмена',
+                    }[language])
+                }}>
                     <f-icon icon='clone'/>
                     <span>Copy</span>
                 </li>
