@@ -14,10 +14,14 @@ export let theme = {
         },
         {
             scope: [
-                'keyword.regexp',
-                'keyword.operator.anchor.regexp',
+                'string.regexp',
+                'punctuation.definition.string.begin.js',
+                'punctuation.definition.string.end.js',
+                'keyword.control.anchor.regexp',
+                'punctuation.definition.character-class.regexp',
+                'constant.other.character-class.range.regexp',
                 'keyword.operator.quantifier.regexp',
-                'keyword.other.regexp',
+                'keyword.other.js',
                 'entity.name.tag.css',
                 'entity.other.attribute-name.class.css',
                 'entity.other.attribute-name.id.css',

@@ -1690,6 +1690,7 @@ f-code {
     }
     > div:last-child {
         padding: var(--spacing-xxsmall);
+        white-space-collapse: preserve;
 
         &, > span {
             font-family: var(--mns-ft);
