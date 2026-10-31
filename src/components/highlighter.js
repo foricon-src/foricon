@@ -36,7 +36,7 @@ export let theme = {
             settings: { foreground: 'rgb(210, 170, 60)' },
         },
         {
-            scope: [ 'meta.template.expression.js' ],
+            scope: [ 'meta.template.expression.js', 'support.constant.color.w3c-standard-color-name.css' ],
             settings: { foreground: 'rgb(240, 132, 60)' },
         },
         {
@@ -54,6 +54,8 @@ export let theme = {
                 'keyword.control.at-rule.css',
                 'keyword.operator.expression.of.js',
                 'keyword.operator.new.js',
+                'meta.at-rule.media.header.css',
+                'meta.at-rule.keyframes.body.css',
                 'storage',
             ],
             settings: { foreground: 'rgb(130, 60, 230)' },
@@ -84,7 +86,7 @@ export let theme = {
             scope: [
                 'variable.other.property',
                 'variable.other.object.property.js',
-                'support.constant.property-value.css',
+                'meta.property-value.css',
             ],
             settings: { foreground: 'rgb(120, 160, 120)' },
         },
@@ -93,6 +95,7 @@ export let theme = {
                 'constant.language',
                 'constant.language.boolean',
                 'constant.character.entity',
+                'meta.at-rule.keyframes.header.css',
                 'entity.other.attribute-name.pseudo-class.css',
                 'entity.other.attribute-name.pseudo-element.css',
             ],
@@ -114,8 +117,9 @@ export let theme = {
         {
             scope: [
                 'support.type.property-name.css',
+                'support.type.property-name.media.css',
                 'variable.language.this.js',
-                'variable.language.super.js'
+                'variable.language.super.js',
             ],
             settings: { foreground: 'rgb(230, 70, 100)' },
         },
