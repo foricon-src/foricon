@@ -19,7 +19,9 @@ export default function Code({ children, codeLang = 'HTML' }) {
             if (!canceled) setHtml(res);
 
             const tokens = (await highlighter).codeToTokens(
-                `body {font-size: calc(1px + var(--c))}`,
+                `let a = 1
+                a += 1
+                b = 1`,
                 {
                     lang: 'css',
                     theme: 'Foricon',

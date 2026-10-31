@@ -62,15 +62,16 @@ export let theme = {
         {
             scope: [
                 'variable.parameter.js',
-                'variable.other.constant.js',
+                'variable.other.readwrite',
                 'variable.other.object.js',
-                'meta.function.variable.css',
+                'variable.argument.css',
                 'entity.name.tag',
             ],
             settings: { foreground: 'rgb(40, 120, 230)' },
         },
         {
             scope: [
+                'variable.other.property',
                 'variable.other.object.property.js',
             ],
             settings: { foreground: 'rgb(60, 200, 220)' },
