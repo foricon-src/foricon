@@ -18,7 +18,7 @@ export default function Code({ children, codeLang = 'html' }) {
             if (!canceled) setHtml(res);
         })()
 
-        const tokens = highlighter.codeToTokens(
+        const tokens = (await highlighter).codeToTokens(
             `const app = document.querySelector("#app");
         const button = document.querySelector("button");
         
