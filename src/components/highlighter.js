@@ -5,7 +5,7 @@ export let theme = {
     fg: 'var(--text-color)',
     settings: [
         {
-            scope: [ 'string', 'string.template', 'punctuation.definition.template-expression', 'string.quoted', 'string.quoted.css' ],
+            scope: [ 'string', 'punctuation.definition.template-expression', 'string.quoted', 'string.quoted.css' ],
             settings: { foreground: 'rgb(220, 110, 70)' },
         },
         {
@@ -14,6 +14,7 @@ export let theme = {
         },
         {
             scope: [
+                'keyword.regexp',
                 'keyword.operator.anchor.regexp',
                 'keyword.operator.quantifier.regexp',
                 'keyword.other.regexp',
@@ -38,7 +39,6 @@ export let theme = {
                 'keyword.control.at-rule.css',
                 'keyword.operator.expression.of.js',
                 'keyword.operator.new.js',
-                'variable.parameter',
                 'storage.type',
             ],
             settings: { foreground: 'rgb(110, 70, 190)' },
@@ -53,6 +53,7 @@ export let theme = {
         },
         {
             scope: [
+                'variable.parameter',
                 'variable.other.readwrite',
                 'variable.css',
                 'entity.name.tag',
