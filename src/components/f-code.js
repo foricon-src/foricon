@@ -17,7 +17,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 structure: 'inline',
             }).split('<br>')
             if (!canceled) setHtml(
-                res.map((line, i) => `<span class='line-num'>${i + 1}</span>${line}`).join('<br>')
+                res.map((line, i) => `<span class='line-num'>${i + 1}</span><span>${line}</span>`).join('<br>')
             )
 
             const tokens = (await highlighter).codeToTokens(
