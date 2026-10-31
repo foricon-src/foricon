@@ -117,6 +117,7 @@ export let theme = {
                 'keyword.doctype',
                 'punctuation.definition.tag',
                 'punctuation.separator.key-value.html',
+                'keyword.operator.pattern.css',
                 // 'punctuation.separator.key-value',
             ],
             settings: { foreground: 'rgba(var(--text-color-rgb), .5)' },
