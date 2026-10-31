@@ -27,6 +27,7 @@ export default function Code({ children, codeLang = 'html' }) {
                 {
                     lang: 'javascript',
                     theme: 'Foricon',
+                    includeExplanation: true,
                 }
             );
             
