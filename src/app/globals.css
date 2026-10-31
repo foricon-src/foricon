@@ -1674,6 +1674,30 @@ preview-code {
     }
 }
 
+f-code {
+    border-radius: var(--bdr-rad);
+    border: 1px solid var(--dk-gray);
+    position: relative;
+    overflow: hidden;
+
+    > div:first-child {
+        padding: var(--spacing-micro) var(--spacing-xxsmall);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+    }
+    > div:last-child {
+        padding: var(--spacing-xxsmall);
+
+        &, > span {
+            font-family: var(--mns-ft);
+            font-size: var(--mns-ft-sz);
+        }
+    }
+}
+
 div.message {
     padding: 15px 30px 15px 60px;
     position: relative;
