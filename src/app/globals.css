@@ -1681,6 +1681,7 @@ preview-code {
 f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
+    display: block;
 
     > div:first-child {
         padding: 5px var(--spacing-xxsmall);

@@ -41,7 +41,7 @@ export let theme = {
                 'support.constant.color.w3c-standard-color-name.css',
                 'support.constant.color.w3c-extended-color-name.css',
             ],
-            settings: { foreground: 'rgb(240, 132, 60)' },
+            settings: { foreground: 'rgb(240, 120, 40)' },
         },
         {
             scope: [
@@ -90,7 +90,7 @@ export let theme = {
                 'variable.argument.css',
                 'variable.css',
             ],
-            settings: { foreground: 'rgb(80, 140, 230)' },
+            settings: { foreground: 'rgb(120, 160, 230)' },
         },
         {
             scope: [
