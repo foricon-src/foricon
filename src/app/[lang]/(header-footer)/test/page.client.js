@@ -1,3 +1,5 @@
+'use client';
+
 import Code from 'Com/f-code';
 
 export default function PageClient() {
