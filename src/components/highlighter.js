@@ -36,12 +36,16 @@ export let theme = {
             settings: { foreground: 'rgb(210, 170, 60)' },
         },
         {
+            scope: [ 'meta.template.expression.js' ],
+            settings: { foreground: 'rgb(240, 132, 60)' },
+        },
+        {
             scope: [
                 'entity.name.function',
                 'support.function',
-                'entity.other.inherited-class.js'
+                'entity.other.inherited-class.js',
             ],
-            settings: { foreground: 'lightseagreen' },
+            settings: { foreground: 'rgb(32, 178, 170)' },
         },
         {
             scope: [
@@ -51,7 +55,7 @@ export let theme = {
                 'keyword.operator.new.js',
                 'storage',
             ],
-            settings: { foreground: 'rgb(110, 70, 190)' },
+            settings: { foreground: 'rgb(130, 60, 230)' },
         },
         {
             scope: [
@@ -77,8 +81,9 @@ export let theme = {
             scope: [
                 'variable.other.property',
                 'variable.other.object.property.js',
+                'support.constant.property-value.css',
             ],
-            settings: { foreground: 'rgb(60, 200, 220)' },
+            settings: { foreground: 'rgb(100, 130, 160)' },
         },
         {
             scope: [
@@ -86,7 +91,7 @@ export let theme = {
                 'constant.language.boolean',
                 'constant.character.entity',
                 'entity.other.attribute-name.pseudo-class.css',
-                'entity.other.attribute-name.pseudo-element.css'
+                'entity.other.attribute-name.pseudo-element.css',
             ],
             settings: { foreground: 'rgb(70, 130, 180)' },
         },
@@ -96,9 +101,16 @@ export let theme = {
                 'keyword.doctype',
                 'punctuation.definition.tag',
                 // 'punctuation.separator.key-value',
-                // 'storage.type.function.arrow.js',
             ],
-            settings: { foreground: 'dimgray' },
+            settings: { foreground: 'rgb(100, 100, 100)' },
+        },
+        {
+            scope: [ 'storage.type.function.arrow.js', 'meta.embedded.line.js' ],
+            settings: { foreground: 'var(--text-color)' },
+        },
+        {
+            scope: [ 'support.type.property-name.css' ],
+            settings: { foreground: 'rgb(200, 30, 70)' },
         },
     ]
     
