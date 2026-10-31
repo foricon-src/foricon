@@ -118,6 +118,7 @@ export let theme = {
                 'punctuation.section',
                 'punctuation.definition.parameters',
                 'punctuation.separator',
+                'punctuation.terminator',
             ],
             settings: { foreground: 'var(--text-color)' },
         },
