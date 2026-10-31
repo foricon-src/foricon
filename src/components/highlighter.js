@@ -24,11 +24,11 @@ export let theme = {
             settings: { foreground: 'lightseagreen' },
         },
         {
-            scope: [ 'keyword', 'keyword.control', 'storage.type', 'keyword.control.at-rule.css' ],
+            scope: [ 'keyword', 'keyword.control', 'storage.type', 'keyword.control.at-rule.css', 'keyword.operator.expression.of.js', 'keyword.operator.new.js' ],
             settings: { foreground: 'rgb(110, 70, 190)' },
         },
         {
-            scope: [ 'number', 'entity.other.attribute-name', 'constant.numeric.css' ],
+            scope: [ 'constant.numeric', 'entity.other.attribute-name', 'constant.numeric.css' ],
             settings: { foreground: 'rgb(50, 200, 115)' },
         },
         {
@@ -40,7 +40,7 @@ export let theme = {
             settings: { foreground: 'rgb(70, 130, 180)' },
         },
         {
-            scope: [ 'keyword.operator', 'punctuation.definition.tag', 'keyword.doctype', 'punctuation.separator.key-value' ],
+            scope: [ 'keyword.operator', 'punctuation.definition.tag', 'keyword.doctype', 'punctuation.separator.key-value', 'storage.type.function.arrow.js' ],
             settings: { foreground: 'dimgray' },
         },
         {

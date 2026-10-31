@@ -13,6 +13,7 @@ export default function Code({ children, codeLang = 'html' }) {
             let res = (await highlighter).codeToHtml(children, {
                 lang: codeLang,
                 theme: theme.name,
+                structure: 'inline',
             })
             if (!canceled) setHtml(res);
         })()
