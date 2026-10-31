@@ -419,6 +419,10 @@ ul {
                 font-size: var(--s-ft-sz);
                 padding: var(--inner-spacing-s);
                 gap: 6px;
+
+                > f-icon {
+                    line-height: var(--s-ln-hgt);
+                }
             }
             .large > & {
                 padding: var(--spacing-xxsmall) var(--spacing-xsmall);
@@ -1677,8 +1681,6 @@ preview-code {
 f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
-    position: relative;
-    overflow: hidden;
 
     > div:first-child {
         padding: var(--spacing-micro) var(--spacing-xxsmall);
@@ -1686,7 +1688,10 @@ f-code {
         justify-content: space-between;
         align-items: center;
         position: sticky;
-        top: 0;
+        top: 70px;
+        background-color: var(--bg-blur);
+        backdrop-filter: var(--bg-blur-px);
+        border: calc(var(--bdr-rad) - 1px) calc(var(--bdr-rad) - 1px) 0 0;
     }
     > div:last-child {
         padding: var(--spacing-xxsmall);

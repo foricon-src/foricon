@@ -3,8 +3,7 @@
 import Code from 'Com/f-code';
 
 export default function PageClient() {
-    return <Code>{`
-<!DOCTYPE html>
+    return <Code>{`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -285,6 +284,5 @@ export default function PageClient() {
     console.error("Error example");
   </script>
 </body>
-</html>
-    `}</Code>
+</html>`}</Code>
 }
