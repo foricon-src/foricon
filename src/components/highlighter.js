@@ -116,6 +116,8 @@ export let theme = {
                 'storage.type.function.arrow.js',
                 'meta.embedded.line.js',
                 'punctuation.section',
+                'punctuation.definition.parameters',
+                'punctuation.separator',
             ],
             settings: { foreground: 'var(--text-color)' },
         },
