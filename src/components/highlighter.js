@@ -2,7 +2,7 @@ import { createHighlighter } from 'shiki';
 
 export let theme = {
     name: 'Foricon',
-    fg: 'var(--text-color)',
+    fg: 'var(--title-color)',
     settings: [
         {
             scope: [
@@ -21,12 +21,13 @@ export let theme = {
             scope: [
                 'string.regexp',
                 'keyword.control.anchor.regexp',
-                'punctuation.definition.character-class.regexp',
-                'constant.other.character-class.range.regexp',
                 'keyword.operator.quantifier.regexp',
+                'keyword.other.js',
                 'entity.name.tag.css',
                 'entity.other.attribute-name.class.css',
                 'entity.other.attribute-name.id.css',
+                'punctuation.definition.character-class.regexp',
+                'constant.other.character-class.range.regexp',
             ],
             settings: { foreground: 'rgb(180, 200, 60)' },
         },
@@ -53,6 +54,7 @@ export let theme = {
             scope: [
                 'constant.numeric',
                 'constant.numeric.css',
+                'keyword.other.unit',
                 'entity.other.attribute-name',
             ],
             settings: { foreground: 'rgb(50, 200, 115)' },
@@ -86,9 +88,7 @@ export let theme = {
             scope: [
                 'keyword.operator',
                 'keyword.doctype',
-                'meta.template.expression',
                 'punctuation.definition.tag',
-                'punctuation.definition.template-expression',
                 'punctuation.separator.key-value',
                 'storage.type.function.arrow.js',
             ],
