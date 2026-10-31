@@ -115,7 +115,7 @@ export let theme = {
             scope: [
                 'storage.type.function.arrow.js',
                 'meta.embedded.line.js',
-                'punctuation',
+                'punctuation.section',
             ],
             settings: { foreground: 'var(--text-color)' },
         },
