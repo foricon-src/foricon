@@ -26,7 +26,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                     background: url('https://example.com') no-repeat center/cover;
                 }
                 :root {
-                    --primary: #6366f1;
+                    --primary: gold;
                     --surface: rgb(30, 30, 40);
                     --spacing: 1.5rem;
                     --radius: 12px;
