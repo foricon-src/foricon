@@ -76,7 +76,8 @@ export let theme = {
                 'variable.other.object.js',
                 'variable.other.constant.js',
                 'variable.other.constant.object.js',
-                'variable.argument.css',
+                // 'variable.argument.css',
+                'variable.css',
                 'entity.name.type.class.js',
                 'entity.name.tag',
             ],
@@ -111,7 +112,11 @@ export let theme = {
             settings: { foreground: 'rgb(100, 100, 100)' },
         },
         {
-            scope: [ 'storage.type.function.arrow.js', 'meta.embedded.line.js' ],
+            scope: [
+                'storage.type.function.arrow.js',
+                'meta.embedded.line.js',
+                'punctuation',
+            ],
             settings: { foreground: 'var(--text-color)' },
         },
         {

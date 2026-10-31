@@ -21,7 +21,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
             const tokens = (await highlighter).codeToTokens(
                 `body {
                     color: blue;
-                    transition: transform 2s ease;
+                    transition: transform 2s ease var(--var);
                     animation: fade-in 2s ease infinite both;
                     background: url('https://example.com') no-repeat center/cover;
                 }
