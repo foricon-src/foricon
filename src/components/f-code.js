@@ -20,15 +20,15 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 res.split('<br>').map((line, i) => `<span class='line-num'>${i + 1}</span><span>${line}</span>`).join('')
             )
 
-            // const tokens = (await highlighter).codeToTokens(
-            //     `<body data-value='blue'/>`,
-            //     {
-            //         lang: 'html',
-            //         theme: 'Foricon',
-            //         includeExplanation: true,
-            //     }
-            // );
-            // console.log(tokens)
+            const tokens = (await highlighter).codeToTokens(
+                `[type='a'], '[type^='a'] {}`,
+                {
+                    lang: 'css',
+                    theme: 'Foricon',
+                    includeExplanation: true,
+                }
+            );
+            console.log(tokens)
         })()
 
         return () => canceled = true;
