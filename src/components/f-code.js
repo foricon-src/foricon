@@ -2,8 +2,9 @@
 
 import { highlighter, theme } from './highlighter';
 import { useEffect, useState } from 'react';
+import { Lower } from './string-tools';
 
-export default function Code({ children, codeLang = 'html' }) {
+export default function Code({ children, codeLang = 'HTML' }) {
     let [ html, setHtml ] = useState('');
 
     useEffect(() => {
@@ -11,21 +12,16 @@ export default function Code({ children, codeLang = 'html' }) {
 
         (async () => {
             let res = (await highlighter).codeToHtml(children, {
-                lang: codeLang,
+                lang: Lower(codeLang),
                 theme: theme.name,
                 structure: 'inline',
             })
             if (!canceled) setHtml(res);
 
             const tokens = (await highlighter).codeToTokens(
-                `const app = document.querySelector("#app");
-            const button = document.querySelector("button");
-            
-            button?.addEventListener("click", event => {
-                event.a.preventDefault();
-            });`,
+                `body {font-size: calc(1px + var(--c))}`,
                 {
-                    lang: 'javascript',
+                    lang: 'css',
                     theme: 'Foricon',
                     includeExplanation: true,
                 }
@@ -47,7 +43,7 @@ export default function Code({ children, codeLang = 'html' }) {
 
     return <f-code>
         <div>
-            <span></span>
+            <span>{codeLang}</span>
             <ul className='btn-list small'>
                 <li className='tooltip top'>
                     <f-icon icon='clone'/>
