@@ -21,7 +21,10 @@ export default function Code({ children, codeLang = 'HTML' }) {
             const tokens = (await highlighter).codeToTokens(
                 `\`\${this.name.open()} go\`
                 let a = b
-                let [ a ] = b`,
+                let [ a ] = b
+                JSON.stringify()
+                super.speak()
+                Promise.all()`,
                 {
                     lang: 'javascript',
                     theme: 'Foricon',

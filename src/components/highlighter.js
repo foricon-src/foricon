@@ -83,7 +83,7 @@ export let theme = {
                 'variable.other.object.property.js',
                 'support.constant.property-value.css',
             ],
-            settings: { foreground: 'rgb(100, 130, 160)' },
+            settings: { foreground: 'rgb(120, 160, 120)' },
         },
         {
             scope: [
@@ -109,8 +109,8 @@ export let theme = {
             settings: { foreground: 'var(--text-color)' },
         },
         {
-            scope: [ 'support.type.property-name.css' ],
-            settings: { foreground: 'rgb(200, 30, 70)' },
+            scope: [ 'support.type.property-name.css', 'variable.language.this.js' ],
+            settings: { foreground: 'rgb(220, 40, 80)' },
         },
     ]
     
