@@ -1681,8 +1681,6 @@ preview-code {
 f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
-    display: grid;
-    grid-template-columns: max-content auto;
 
     > div:first-child {
         padding: 5px var(--spacing-xxsmall);
@@ -1698,6 +1696,8 @@ f-code {
     > div:last-child {
         padding: 0 var(--spacing-xxsmall) var(--spacing-xxsmall);
         white-space-collapse: preserve;
+        display: grid;
+        grid-template-columns: max-content auto;
 
         &, span {
             font-family: var(--mns-ft);
