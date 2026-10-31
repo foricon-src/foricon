@@ -12,7 +12,14 @@ export let theme = {
             settings: { foreground: 'rgb(220, 50, 50)' },
         },
         {
-            scope: [ 'string.regexp', 'entity.name.tag.css', 'entity.other.attribute-name.class.css', 'entity.other.attribute-name.id.css' ],
+            scope: [
+                'keyword.operator.anchor.regexp',
+                'keyword.operator.quantifier.regexp',
+                'keyword.other.regexp',
+                'entity.name.tag.css',
+                'entity.other.attribute-name.class.css',
+                'entity.other.attribute-name.id.css',
+            ],
             settings: { foreground: 'rgb(180, 200, 60)' },
         },
         {
@@ -24,36 +31,51 @@ export let theme = {
             settings: { foreground: 'lightseagreen' },
         },
         {
-            scope: [ 'keyword', 'keyword.control', 'storage.type', 'keyword.control.at-rule.css', 'keyword.operator.expression.of.js', 'keyword.operator.new.js' ],
+            scope: [
+                'keyword',
+                'keyword.control',
+                'keyword.control.at-rule.css',
+                'keyword.operator.expression.of.js',
+                'keyword.operator.new.js',
+                'storage.type',
+            ],
             settings: { foreground: 'rgb(110, 70, 190)' },
         },
         {
-            scope: [ 'constant.numeric', 'entity.other.attribute-name', 'constant.numeric.css' ],
+            scope: [
+                'constant.numeric',
+                'constant.numeric.css',
+                'entity.other.attribute-name',
+            ],
             settings: { foreground: 'rgb(50, 200, 115)' },
         },
         {
-            scope: [ 'variable.other', 'entity.name.tag', 'variable.css' ],
+            scope: [
+                'variable.other',
+                'variable.css',
+                'entity.name.tag',
+            ],
             settings: { foreground: 'rgb(40, 120, 230)' },
         },
         {
-            scope: [ 'constant.language', 'constant.language.boolean', 'constant.character.entity', 'entity.other.attribute-name.pseudo-class.css', 'entity.other.attribute-name.pseudo-element.css' ],
+            scope: [
+                'constant.language',
+                'constant.language.boolean',
+                'constant.character.entity',
+                'entity.other.attribute-name.pseudo-class.css',
+                'entity.other.attribute-name.pseudo-element.css'
+            ],
             settings: { foreground: 'rgb(70, 130, 180)' },
         },
         {
-            scope: [ 'keyword.operator', 'punctuation.definition.tag', 'keyword.doctype', 'punctuation.separator.key-value', 'storage.type.function.arrow.js' ],
+            scope: [
+                'keyword.operator',
+                'keyword.doctype',
+                'punctuation.definition.tag',
+                'punctuation.separator.key-value',
+                'storage.type.function.arrow.js'
+            ],
             settings: { foreground: 'dimgray' },
-        },
-        {
-            scope: [ '' ],
-            settings: { foreground: '' },
-        },
-        {
-            scope: [ '' ],
-            settings: { foreground: '' },
-        },
-        {
-            scope: [ '' ],
-            settings: { foreground: '' },
         },
     ]
     
