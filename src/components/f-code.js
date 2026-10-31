@@ -20,7 +20,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
 
             const tokens = (await highlighter).codeToTokens(
                 `\`\${this.name.open()} go\`
-                let a = b
+                const a = b
                 let [ a ] = b
                 JSON.stringify()
                 super.speak()

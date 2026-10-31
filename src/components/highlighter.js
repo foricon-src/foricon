@@ -44,6 +44,7 @@ export let theme = {
                 'entity.name.function',
                 'support.function',
                 'entity.other.inherited-class.js',
+                'support.class.promise.js',
             ],
             settings: { foreground: 'rgb(32, 178, 170)' },
         },
@@ -71,6 +72,7 @@ export let theme = {
                 'variable.parameter.js',
                 'variable.other.readwrite',
                 'variable.other.object.js',
+                'variable.other.constant.object.js',
                 'variable.argument.css',
                 'entity.name.type.class.js',
                 'entity.name.tag',
@@ -109,8 +111,12 @@ export let theme = {
             settings: { foreground: 'var(--text-color)' },
         },
         {
-            scope: [ 'support.type.property-name.css', 'variable.language.this.js' ],
-            settings: { foreground: 'rgb(220, 40, 80)' },
+            scope: [
+                'support.type.property-name.css',
+                'variable.language.this.js',
+                'variable.language.super.js'
+            ],
+            settings: { foreground: 'rgb(230, 70, 100)' },
         },
     ]
     
