@@ -88,11 +88,11 @@ export let theme = {
         },
         {
             scope: [
-                'keyword.operator',
+                // 'keyword.operator',
                 'keyword.doctype',
                 'punctuation.definition.tag',
-                'punctuation.separator.key-value',
-                'storage.type.function.arrow.js',
+                // 'punctuation.separator.key-value',
+                // 'storage.type.function.arrow.js',
             ],
             settings: { foreground: 'dimgray' },
         },

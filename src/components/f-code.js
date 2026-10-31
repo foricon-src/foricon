@@ -19,12 +19,8 @@ export default function Code({ children, codeLang = 'HTML' }) {
             if (!canceled) setHtml(res);
 
             const tokens = (await highlighter).codeToTokens(
-                `let a = 1
-                a += 1
-                b = 1
-                b.prop = 2
-                b?.prop = 2
-                !b = 2`,
+                `\`\${this.name.open()}\`
+                class a extends Helo {}`,
                 {
                     lang: 'javascript',
                     theme: 'Foricon',
