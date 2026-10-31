@@ -36,7 +36,11 @@ export let theme = {
             settings: { foreground: 'rgb(210, 170, 60)' },
         },
         {
-            scope: [ 'entity.name.function', 'support.function' ],
+            scope: [
+                'entity.name.function',
+                'support.function',
+                'entity.other.inherited-class.js'
+            ],
             settings: { foreground: 'lightseagreen' },
         },
         {
