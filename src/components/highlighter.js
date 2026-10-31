@@ -63,6 +63,7 @@ export let theme = {
             scope: [
                 'variable.parameter',
                 'variable.other.readwrite',
+                'variable.other.constant.js',
                 'variable.css',
                 'entity.name.tag',
             ],
