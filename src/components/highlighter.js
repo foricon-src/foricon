@@ -58,7 +58,7 @@ export let theme = {
                 'meta.at-rule.keyframes.body.css',
                 'storage',
             ],
-            settings: { foreground: 'rgb(130, 60, 230)' },
+            settings: { foreground: 'rgb(150, 90, 230)' },
         },
         {
             scope: [
@@ -76,7 +76,7 @@ export let theme = {
                 'variable.other.object.js',
                 'variable.other.constant.js',
                 'variable.other.constant.object.js',
-                // 'variable.argument.css',
+                'variable.argument.css',
                 'variable.css',
                 'entity.name.type.class.js',
                 'entity.name.tag',
@@ -89,7 +89,7 @@ export let theme = {
                 'variable.other.object.property.js',
                 'meta.property-value.css',
             ],
-            settings: { foreground: 'rgb(120, 160, 120)' },
+            settings: { foreground: 'rgb(150, 180, 170)' },
         },
         {
             scope: [
@@ -109,7 +109,7 @@ export let theme = {
                 'punctuation.definition.tag',
                 // 'punctuation.separator.key-value',
             ],
-            settings: { foreground: 'rgb(100, 100, 100)' },
+            settings: { foreground: 'rgba(var(--text-color-rgb), .5)' },
         },
         {
             scope: [
