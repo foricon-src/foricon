@@ -12,7 +12,7 @@ export let theme = {
             settings: { foreground: 'rgb(220, 50, 50)' },
         },
         {
-            scope: [ 'string.regexp' ],
+            scope: [ 'string.regexp', 'entity.name.tag.css', 'entity.other.attribute-name.class.css', 'entity.other.attribute-name.id.css' ],
             settings: { foreground: 'rgb(180, 200, 60)' },
         },
         {
@@ -24,11 +24,11 @@ export let theme = {
             settings: { foreground: 'lightseagreen' },
         },
         {
-            scope: [ 'keyword', 'keyword.control' ],
-            settings: { foreground: 'mediumorchid' },
+            scope: [ 'keyword', 'keyword.control', 'storage.type', 'keyword.control.at-rule.css' ],
+            settings: { foreground: 'rgb(110, 70, 190)' },
         },
         {
-            scope: [ 'number', 'entity.other.attribute-name' ],
+            scope: [ 'number', 'entity.other.attribute-name', 'constant.numeric.css' ],
             settings: { foreground: 'rgb(50, 200, 115)' },
         },
         {
@@ -36,11 +36,7 @@ export let theme = {
             settings: { foreground: 'rgb(40, 120, 230)' },
         },
         {
-            scope: [ 'storage.type', 'keyword.control.at-rule.css' ],
-            settings: { foreground: 'rgb(110, 70, 190)' },
-        },
-        {
-            scope: [ 'constant.language', 'constant.language.boolean', 'constant.character.entity' ],
+            scope: [ 'constant.language', 'constant.language.boolean', 'constant.character.entity', 'entity.other.attribute-name.pseudo-class.css', 'entity.other.attribute-name.pseudo-element.css' ],
             settings: { foreground: 'rgb(70, 130, 180)' },
         },
         {
