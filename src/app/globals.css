@@ -1681,6 +1681,7 @@ preview-code {
 f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
+    display: block;
 
     > div:first-child {
         padding: var(--spacing-micro) var(--spacing-xxsmall);
@@ -1691,7 +1692,7 @@ f-code {
         top: 70px;
         background-color: var(--bg-blur);
         backdrop-filter: var(--bg-blur-px);
-        border: calc(var(--bdr-rad) - 1px) calc(var(--bdr-rad) - 1px) 0 0;
+        border-radius: calc(var(--bdr-rad) - 1px) calc(var(--bdr-rad) - 1px) 0 0;
     }
     > div:last-child {
         padding: var(--spacing-xxsmall);
