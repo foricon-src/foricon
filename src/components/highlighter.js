@@ -93,7 +93,7 @@ export let theme = {
                 'variable.other.object.property.js',
                 'meta.property-value.css',
             ],
-            settings: { foreground: 'rgb(150, 180, 170)' },
+            settings: { foreground: 'rgb(110, 180, 160)' },
         },
         {
             scope: [
@@ -111,6 +111,7 @@ export let theme = {
                 // 'keyword.operator',
                 'keyword.doctype',
                 'punctuation.definition.tag',
+                'punctuation.separator.key-value.html',
                 // 'punctuation.separator.key-value',
             ],
             settings: { foreground: 'rgba(var(--text-color-rgb), .5)' },
