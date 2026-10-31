@@ -17,8 +17,19 @@ export default function Code({ children, codeLang = 'html' }) {
             })
             if (!canceled) setHtml(res);
 
-            console.log((await highlighter).getBundledLanguages())
-            console.log((await highlighter).getBundledThemes())
+            const tokens = (await highlighter).codeToTokens(
+                `const app = document.querySelector("#app");
+            const button = document.querySelector("button");
+            
+            button?.addEventListener("click", event => {
+                event.a.preventDefault();
+            });`,
+                {
+                    lang: 'javascript',
+                    theme: 'Foricon',
+                    includeExplanation: true,
+                }
+            );
         })()
 
         return () => canceled = true;
