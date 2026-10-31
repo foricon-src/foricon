@@ -36,7 +36,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
         console.error('Content must be a string');
         return;
     }
-    if (![ 'javascript', 'html', 'css' ].includes(codeLang)) {
+    if (![ 'JavaScript', 'HTML', 'CSS' ].includes(codeLang)) {
         console.error('Unsupported language');
         return;
     }

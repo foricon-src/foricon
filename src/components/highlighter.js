@@ -36,7 +36,7 @@ export let theme = {
             settings: { foreground: 'rgb(210, 170, 60)' },
         },
         {
-            scope: [ 'entity.name.function', 'support.function.css' ],
+            scope: [ 'entity.name.function', 'support.function' ],
             settings: { foreground: 'lightseagreen' },
         },
         {
@@ -64,7 +64,7 @@ export let theme = {
                 'variable.parameter.js',
                 'variable.other.constant.js',
                 'variable.other.object.js',
-                'variable.css',
+                'meta.function.variable.css',
                 'entity.name.tag',
             ],
             settings: { foreground: 'rgb(40, 120, 230)' },
