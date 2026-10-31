@@ -2,7 +2,7 @@ import { createHighlighter } from 'shiki';
 
 export let theme = {
     name: 'Foricon',
-    fg: 'var(--title-color)',
+    fg: 'var(--text-color)',
     settings: [
         {
             scope: [

@@ -17,21 +17,8 @@ export default function Code({ children, codeLang = 'html' }) {
             })
             if (!canceled) setHtml(res);
 
-            const tokens = (await highlighter).codeToTokensWithThemes(
-                `const app = document.querySelector("#app");
-            const button = document.querySelector("button");
-            
-            button?.addEventListener("click", event => {
-                event.preventDefault();
-            });`,
-                {
-                    lang: 'javascript',
-                    theme: 'Foricon',
-                    includeExplanation: true,
-                }
-            );
-            
-            console.log(tokens);
+            console.log((await highlighter).getBundledLanguages())
+            console.log((await highlighter).getBundledThemes())
         })()
 
         return () => canceled = true;
