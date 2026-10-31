@@ -19,14 +19,31 @@ export default function Code({ children, codeLang = 'HTML' }) {
             if (!canceled) setHtml(res);
 
             const tokens = (await highlighter).codeToTokens(
-                `\`\${this.name.open()} go\`
-                const a = b
-                let [ a ] = b
-                JSON.stringify()
-                super.speak()
-                Promise.all()`,
+                `body {
+                    color: blue;
+                    transition: transform 2s ease;
+                    animation: fade-in 2s ease infinite both;
+                    background: url('https://example.com') no-repeat center/cover;
+                }
+                :root {
+                    --primary: #6366f1;
+                    --surface: rgb(30, 30, 40);
+                    --spacing: 1.5rem;
+                    --radius: 12px;
+                }
+                @media screen and (min-width: 768px) {
+                    .layout {
+                        display: grid;
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        gap: 2rem;
+                    }
+                }
+                @keyframes fade-in {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }`,
                 {
-                    lang: 'javascript',
+                    lang: 'css',
                     theme: 'Foricon',
                     includeExplanation: true,
                 }

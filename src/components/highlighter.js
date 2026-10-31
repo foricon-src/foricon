@@ -72,6 +72,7 @@ export let theme = {
                 'variable.parameter.js',
                 'variable.other.readwrite',
                 'variable.other.object.js',
+                'variable.other.constant.js',
                 'variable.other.constant.object.js',
                 'variable.argument.css',
                 'entity.name.type.class.js',
