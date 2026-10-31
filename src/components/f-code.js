@@ -30,6 +30,7 @@ export default function Code({ children, codeLang = 'html' }) {
                     includeExplanation: true,
                 }
             );
+            console.log(tokens)
         })()
 
         return () => canceled = true;
