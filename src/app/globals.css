@@ -1684,7 +1684,7 @@ f-code {
     display: block;
 
     > div:first-child {
-        padding: var(--spacing-micro) var(--spacing-xxsmall);
+        padding: 5px var(--spacing-xxsmall);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1695,12 +1695,18 @@ f-code {
         border-radius: calc(var(--bdr-rad) - 1px) calc(var(--bdr-rad) - 1px) 0 0;
     }
     > div:last-child {
-        padding: var(--spacing-xxsmall);
+        padding: 0 var(--spacing-xxsmall) var(--spacing-xxsmall);
         white-space-collapse: preserve;
 
         &, > span {
             font-family: var(--mns-ft);
             font-size: var(--mns-ft-sz);
+
+            &.line-num {
+                display: inline-block;
+                width: 20px;
+                color: rgb(var(--text-color-rgb), .5);
+            }
         }
     }
 }

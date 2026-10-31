@@ -36,7 +36,11 @@ export let theme = {
             settings: { foreground: 'rgb(210, 170, 60)' },
         },
         {
-            scope: [ 'meta.template.expression.js', 'support.constant.color.w3c-standard-color-name.css' ],
+            scope: [
+                'meta.template.expression.js',
+                'support.constant.color.w3c-standard-color-name.css',
+                'support.constant.color.w3c-extended-color-name.css',
+            ],
             settings: { foreground: 'rgb(240, 132, 60)' },
         },
         {

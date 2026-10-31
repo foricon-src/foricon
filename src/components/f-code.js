@@ -15,35 +15,15 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 lang: Lower(codeLang),
                 theme: theme.name,
                 structure: 'inline',
-            })
-            if (!canceled) setHtml(res);
+            }).split('<br>')
+            if (!canceled) setHtml(
+                res.map((line, i) => `<span class='line-num'>${i + 1}</span>${line}`)
+            )
 
             const tokens = (await highlighter).codeToTokens(
-                `body {
-                    color: blue;
-                    transition: transform 2s ease var(--var);
-                    animation: fade-in 2s ease infinite both;
-                    background: url('https://example.com') no-repeat center/cover;
-                }
-                :root {
-                    --primary: gold;
-                    --surface: rgb(30, 30, 40);
-                    --spacing: 1.5rem;
-                    --radius: 12px;
-                }
-                @media screen and (min-width: 768px) {
-                    .layout {
-                        display: grid;
-                        grid-template-columns: repeat(2, minmax(0, 1fr));
-                        gap: 2rem;
-                    }
-                }
-                @keyframes fade-in {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }`,
+                `<body data-value='blue'/>`,
                 {
-                    lang: 'css',
+                    lang: 'html',
                     theme: 'Foricon',
                     includeExplanation: true,
                 }
