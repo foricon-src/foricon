@@ -151,7 +151,7 @@ export default function PageClient() {
     const symbol = Symbol("id");
 
     // Strings, template literals, and escape sequences
-    const message = \`Count: ${count}\nEnabled: ${enabled}\`;
+    const message = \`Count: \${count}\nEnabled: \${enabled}\`;
     const escaped = "Line one\nLine two\tTabbed";
 
     // Operators, comparisons, logical operators, and nullish coalescing
@@ -170,7 +170,7 @@ export default function PageClient() {
       active: true,
       tags: ["admin", "editor"],
       greet() {
-        return \`Hello, ${this.name}\`;
+        return \`Hello, \${this.name}\`;
       }
     };
 
@@ -219,7 +219,7 @@ export default function PageClient() {
       }
 
       speak() {
-        return \`${this.name} makes a sound\`;
+        return \`\${this.name} makes a sound\`;
       }
 
       static create(name) {
@@ -247,7 +247,7 @@ export default function PageClient() {
         const response = await fetch(url);
 
         if (!response.ok) {
-          throw new Error(\`HTTP error: ${response.status}\`);
+          throw new Error(\`HTTP error: \${response.status}\`);
         }
 
         return await response.json();
