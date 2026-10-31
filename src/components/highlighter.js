@@ -5,7 +5,12 @@ export let theme = {
     fg: 'var(--text-color)',
     settings: [
         {
-            scope: [ 'string', 'punctuation.definition.template-expression', 'string.quoted', 'string.quoted.css' ],
+            scope: [
+                'string.quoted.single',
+                'string.quoted.double',
+                'string.quoted.css',
+                'string.template',
+            ],
             settings: { foreground: 'rgb(220, 110, 70)' },
         },
         {
@@ -15,13 +20,10 @@ export let theme = {
         {
             scope: [
                 'string.regexp',
-                'punctuation.definition.string.begin.js',
-                'punctuation.definition.string.end.js',
                 'keyword.control.anchor.regexp',
                 'punctuation.definition.character-class.regexp',
                 'constant.other.character-class.range.regexp',
                 'keyword.operator.quantifier.regexp',
-                'keyword.other.js',
                 'entity.name.tag.css',
                 'entity.other.attribute-name.class.css',
                 'entity.other.attribute-name.id.css',
@@ -84,9 +86,11 @@ export let theme = {
             scope: [
                 'keyword.operator',
                 'keyword.doctype',
+                'meta.template.expression',
                 'punctuation.definition.tag',
+                'punctuation.definition.template-expression',
                 'punctuation.separator.key-value',
-                'storage.type.function.arrow.js'
+                'storage.type.function.arrow.js',
             ],
             settings: { foreground: 'dimgray' },
         },
