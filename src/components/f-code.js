@@ -21,9 +21,12 @@ export default function Code({ children, codeLang = 'HTML' }) {
             const tokens = (await highlighter).codeToTokens(
                 `let a = 1
                 a += 1
-                b = 1`,
+                b = 1
+                b.prop = 2
+                b?.prop = 2
+                !b = 2`,
                 {
-                    lang: 'css',
+                    lang: 'javascript',
                     theme: 'Foricon',
                     includeExplanation: true,
                 }
