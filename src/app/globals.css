@@ -106,9 +106,13 @@
     --mns-ft: Consolas;
     
     /*Font size*/
-    --s-ft-sz: .85rem;
-    --s-ln-hgt: 23px;
+    --s-ft-scale: .85;
+    --s-ft-sz: calc(var(--s-ft-scale) * 1rem);
+    --s-ln-hgt: calc(var(--s-ft-scale) * 27px);
     --mns-ft-sz: .7rem;
+
+    /*Font spacing*/
+    --lt-spacing: 0;
     
     /*Shadow*/
     --shadow: 0 20px 30px 0 rgba(0, 0, 0, .05);
@@ -181,31 +185,32 @@ f-icon[icon] {
 }
 .fira {
     --mns-ft: 'Fira Code';
-    --mns-ft-sz: .7rem;
+    --mns-ft-sz: .65rem;
 }
 .scp {
     --mns-ft: 'Source Code Pro';
-    --mns-ft-sz: .75rem;
+    --mns-ft-sz: .675rem;
 }
 .dm {
     --mns-ft: 'DM Mono';
-    --mns-ft-sz: .73rem;
+    --mns-ft-sz: .65rem;
 }
 .nova {
     --mns-ft: 'Nova Mono';
-    --mns-ft-sz: .7rem;
+    --mns-ft-sz: .6rem;
 }
 .xanh {
     --mns-ft: 'Xanh Mono';
-    --mns-ft-sz: .796rem;
+    --mns-ft-sz: .696rem;
+    --lt-spcg: 2px;
 }
 .kode {
     --mns-ft: 'Kode Mono';
-    --mns-ft-sz: .74rem;
+    --mns-ft-sz: .65rem;
 }
 .sono {
     --mns-ft: 'Sono';
-    --mns-ft-sz: .79rem;
+    --mns-ft-sz: .65rem;
 }
 
 ul.btn-list > li, f-option {
@@ -1704,6 +1709,7 @@ f-code {
         &, span {
             font-family: var(--mns-ft);
             font-size: var(--mns-ft-sz);
+            letter-spacing: var(--lt-spcg);
 
             &.line-num {
                 color: rgb(var(--text-color-rgb), .5);
