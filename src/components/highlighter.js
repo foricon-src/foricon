@@ -90,7 +90,7 @@ export let theme = {
                 'variable.argument.css',
                 'variable.css',
             ],
-            settings: { foreground: 'rgb(200, 200, 100)' },
+            settings: { foreground: 'rgb(200, 200, 130)' },
         },
         {
             scope: [
