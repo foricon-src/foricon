@@ -1706,6 +1706,12 @@ f-code {
         grid-template-columns: max-content auto;
         column-gap: var(--spacing-xxsmall);
 
+        &::selection {
+            background-color: rgba(0, 0, 0, .1);
+        }
+        body.dark &::selection {
+            background-color: rgba(255, 255, 255, .1);
+        }
         &, span {
             font-family: var(--mns-ft);
             font-size: var(--mns-ft-sz);

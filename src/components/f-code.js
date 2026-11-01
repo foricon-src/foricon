@@ -47,7 +47,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
         <div>
             <span>{codeLang}</span>
             <ul className='btn-list small'>
-                <li className='tooltip top' onClick={async () => {
+                <li className='tooltip bottom' onClick={async () => {
                     await navigator.clipboard.writeText(children);
                     notify('success', {
                         en: 'Copied to clipboard',
