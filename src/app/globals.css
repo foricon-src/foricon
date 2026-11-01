@@ -1689,7 +1689,7 @@ f-code {
     display: block;
 
     > div:first-child {
-        padding: 5px var(--spacing-xxsmall);
+        padding: 5px 5px 5px var(--spacing-xxsmall);
         display: flex;
         justify-content: space-between;
         align-items: center;
