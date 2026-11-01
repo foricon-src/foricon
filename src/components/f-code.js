@@ -26,8 +26,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
             if (!canceled) setHtml(
                 res.split('<br>').map((line, i) => {
                     let [ , space, rest ] = line.match(/^<span\b[^>]*>(\s*)(.*)$/) || [];
-                    console.log(line, space);
-                    let chunks = space.match(new RegExp(`.{1,${indent}}`, 'g')) || [];
+                    let chunks = space?.match(new RegExp(`.{1,${indent}}`, 'g')) || [];
                     return `<span class='line-num'>${i + 1}</span><span>${
                         chunks.join('<span class="line">│</span>') + rest
                     }</span>`
