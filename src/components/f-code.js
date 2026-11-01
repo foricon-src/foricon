@@ -26,14 +26,10 @@ export default function Code({ children, codeLang = 'HTML' }) {
             if (!canceled) setHtml(
                 res.split('<br>').map((line, i) => {
                     let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
-                    console.log(match)
                     if (!match) return `<span class='line-num'>${i + 1}</span><span>${line}</span>`;
 
                     let [ , span, space, rest ] = match;
-                    let chunks = space.match(new RegExp(`.{1,${indent}}`, 'g')) || [];
-                    console.log(`<span class='line-num'>${i + 1}</span><span>${
-                        span + chunks.join('<span class="line">│</span>') + rest
-                    }</span>`)
+                    let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
                     return `<span class='line-num'>${i + 1}</span><span>${
                         span + chunks.join('<span class="line">│</span>') + rest
                     }</span>`
