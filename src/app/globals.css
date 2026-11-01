@@ -1729,11 +1729,6 @@ f-code {
                 position: absolute;
             }
         }
-
-        &.active {
-            height: calc-size(auto, size);
-            padding-bottom: var(--spacing-xxsmall);
-        }
     }
 }
 

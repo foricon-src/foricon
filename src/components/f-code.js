@@ -10,7 +10,6 @@ export default function Code({ children, codeLang = 'HTML' }) {
     let { indent } = user?.doc.personalization || 0;
 
     let [ html, setHtml ] = useState('');
-    let [ expanded, setExpanded ] = useState(true);
 
     let { lang } = document.documentElement;
 
@@ -63,26 +62,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
         <div>
             <span>{codeLang}</span>
             <ul className='btn-list small'>
-                <li className='tooltip bottom' onClick={() => setExpanded(!expanded)}>
-                    <f-icon icon='chevron-up' i-s='outline' f-rotate={!expanded && '180'}/>
-                    <span>{
-                        {
-                            en: [ 'Expand', 'Collapse'],
-                            vi: [ 'Mở rộng', 'Thu gọn' ],
-                            fr: [ 'Développer', 'Effondrement' ],
-                            it: [ 'Espandere', 'Crollo' ],
-                            ko: [ '확장하다', '무너지다' ],
-                            ja: [ '拡大する', '崩壊' ],
-                            de: [ 'Expandieren', 'Zusammenbruch' ],
-                            nl: [ 'Uitbreiden', 'Instorten' ],
-                            da: [ 'Udvide', 'Bryde sammen' ],
-                            pt: [ 'Expandir', 'Colapso' ],
-                            es: [ 'Expandir', 'Colapsar' ],
-                            ru: [ 'Расширять', 'Крах' ],
-                        }[lang][expanded ? 1 : 0]
-                    }</span>
-                </li>
-                <li className='tooltip bottom' onClick={async () => {
+                <li onClick={async () => {
                     await navigator.clipboard.writeText(children);
                     notify('success', {
                         en: 'Copied to clipboard',
@@ -119,6 +99,6 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 </li>
             </ul>
         </div>
-        <div className={expanded && 'active'} dangerouslySetInnerHTML={{ __html: html }}/>
+        <div dangerouslySetInnerHTML={{ __html: html }}/>
     </f-code>
 }
