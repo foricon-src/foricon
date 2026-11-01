@@ -7,6 +7,8 @@ import { Lower } from './string-tools';
 export default function Code({ children, codeLang = 'HTML' }) {
     let [ html, setHtml ] = useState('');
 
+    let { lang } = document.documentElement;
+
     useEffect(() => {
         let canceled = false;
 
@@ -62,10 +64,25 @@ export default function Code({ children, codeLang = 'HTML' }) {
                         pt: 'Copiado para a área de transferência',
                         es: 'Copiado al portapapeles',
                         ru: 'Скопировано в буфер обмена',
-                    }[language])
+                    }[lang])
                 }}>
                     <f-icon icon='clone'/>
-                    <span>Copy</span>
+                    <span>{
+                        {
+                            en: 'Copy',
+                            vi: 'Sao chép',
+                            fr: 'Copie',
+                            it: 'Copia',
+                            ko: '복사',
+                            ja: 'コピー',
+                            de: 'Kopie',
+                            nl: 'Kopiëren',
+                            da: 'Kopi',
+                            pt: 'Cópia',
+                            es: 'Copiar',
+                            ru: 'Копировать',
+                        }[lang]
+                    }</span>
                 </li>
             </ul>
         </div>

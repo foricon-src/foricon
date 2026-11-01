@@ -109,7 +109,7 @@ export let theme = {
                 'entity.other.attribute-name.pseudo-class.css',
                 'entity.other.attribute-name.pseudo-element.css',
             ],
-            settings: { foreground: 'rgb(180, 80, 130)' },
+            settings: { foreground: 'rgb(100, 90, 210)' },
         },
         {
             scope: [
