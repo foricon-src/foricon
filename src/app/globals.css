@@ -1697,7 +1697,7 @@ f-code {
         top: 70px;
         background-color: var(--bg-blur);
         backdrop-filter: var(--bg-blur-px);
-        border-radius: calc(var(--bdr-rad) - 1px) calc(var(--bdr-rad) - 1px) 0 0;
+        border-radius: calc(var(--bdr-rad) - 1px);
     }
     > div:last-child {
         padding: 0 var(--spacing-xxsmall);
