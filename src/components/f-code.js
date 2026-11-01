@@ -26,6 +26,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
             if (!canceled) setHtml(
                 res.split('<br>').map((line, i) => {
                     let match = line.match(/^<span\b[^>]*>(\s*)(.*)$/);
+                    console.log(match)
                     if (!match) return `<span class='line-num'>${i + 1}</span><span>${line}</span>`;
 
                     let [ , space, rest ] = match;
