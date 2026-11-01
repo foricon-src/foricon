@@ -30,6 +30,9 @@ export default function Code({ children, codeLang = 'HTML' }) {
 
                     let [ , space, rest ] = match;
                     let chunks = space.match(new RegExp(`.{1,${indent}}`, 'g')) || [];
+                    console.log(`<span class='line-num'>${i + 1}</span><span>${
+                        chunks.join('<span class="line">│</span>') + rest
+                    }</span>`)
                     return `<span class='line-num'>${i + 1}</span><span>${
                         chunks.join('<span class="line">│</span>') + rest
                     }</span>`
