@@ -98,7 +98,7 @@ export let theme = {
                 'variable.other.object.property.js',
                 'meta.property-value.css',
             ],
-            settings: { foreground: 'rgb(110, 180, 160)' },
+            settings: { foreground: 'rgb(80, 200, 170)' },
         },
         {
             scope: [
@@ -109,7 +109,7 @@ export let theme = {
                 'entity.other.attribute-name.pseudo-class.css',
                 'entity.other.attribute-name.pseudo-element.css',
             ],
-            settings: { foreground: 'rgb(100, 90, 210)' },
+            settings: { foreground: 'rgb(90, 130, 210)' },
         },
         {
             scope: [
