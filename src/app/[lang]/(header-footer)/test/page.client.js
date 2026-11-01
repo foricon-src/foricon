@@ -1,288 +1,292 @@
 'use client';
 
 import Code from 'Com/f-code';
+import { UserContext } from 'Com/user';
+import { useContext } from 'react';
 
 export default function PageClient() {
+    let { user } = useContext(UserContext);
+    let { indent } = user?.doc.personalization || 0;
     return <Code>{`<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Syntax highlighting test">
-  <title>Shiki Syntax Test</title>
+${' '.repeat(indent)}<meta charset="UTF-8">
+${' '.repeat(indent)}<meta name="viewport" content="width=device-width, initial-scale=1.0">
+${' '.repeat(indent)}<meta name="description" content="Syntax highlighting test">
+${' '.repeat(indent)}<title>Shiki Syntax Test</title>
 
-  <style>
-    /* CSS comments, custom properties, and values */
-    :root {
-      --primary: #6366f1;
-      --surface: rgb(30, 30, 40);
-      --spacing: 1.5rem;
-      --radius: 12px;
-    }
+${' '.repeat(indent)}<style>
+${' '.repeat(indent * 2)}/* CSS comments, custom properties, and values */
+${' '.repeat(indent * 2)}:root {
+${' '.repeat(indent * 3)}--primary: #6366f1;
+${' '.repeat(indent * 3)}--surface: rgb(30, 30, 40);
+${' '.repeat(indent * 3)}--spacing: 1.5rem;
+${' '.repeat(indent * 3)}--radius: 12px;
+${' '.repeat(indent * 2)}}
 
-    /* Element, class, ID, attribute, and combinator selectors */
-    body > main.content ~ footer,
-    input[type="text"]:not(:disabled) {
-      color: var(--primary);
-      padding: var(--spacing);
-      border: 1px solid hsl(240 10% 50%);
-      box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2);
-    }
+${' '.repeat(indent * 2)}/* Element, class, ID, attribute, and combinator selectors */
+${' '.repeat(indent * 2)}body > main.content ~ footer,
+${' '.repeat(indent * 2)}input[type="text"]:not(:disabled) {
+${' '.repeat(indent * 3)}color: var(--primary);
+${' '.repeat(indent * 3)}padding: var(--spacing);
+${' '.repeat(indent * 3)}border: 1px solid hsl(240 10% 50%);
+${' '.repeat(indent * 3)}box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2);
+${' '.repeat(indent * 2)}}
 
-    /* Nesting, pseudo-classes, and pseudo-elements */
-    .card {
-      background: linear-gradient(135deg, #222, #444);
-      border-radius: var(--radius);
-      transition: transform 200ms ease;
+${' '.repeat(indent * 2)}/* Nesting, pseudo-classes, and pseudo-elements */
+${' '.repeat(indent * 2)}.card {
+${' '.repeat(indent * 3)}background: linear-gradient(135deg, #222, #444);
+${' '.repeat(indent * 3)}border-radius: var(--radius);
+${' '.repeat(indent * 3)}transition: transform 200ms ease;
 
-      &:hover,
-      &:focus-within {
-        transform: translateY(-4px);
-      }
+${' '.repeat(indent * 3)}&:hover,
+${' '.repeat(indent * 3)}&:focus-within {
+${' '.repeat(indent * 4)}transform: translateY(-4px);
+${' '.repeat(indent * 3)}}
 
-      & > h2::before {
-        content: "→";
-        color: gold;
-      }
+${' '.repeat(indent * 3)}& > h2::before {
+${' '.repeat(indent * 4)}content: "→";
+${' '.repeat(indent * 4)}color: gold;
+${' '.repeat(indent * 3)}}
 
-      & + .card {
-        margin-top: 1rem;
-      }
-    }
+${' '.repeat(indent * 3)}& + .card {
+${' '.repeat(indent * 4)}margin-top: 1rem;
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}}
 
-    /* Functions, calculations, and important declarations */
-    #app {
-      width: clamp(200px, calc(100% - 2rem), 800px);
-      opacity: 0.95 !important;
-    }
+${' '.repeat(indent * 2)}/* Functions, calculations, and important declarations */
+${' '.repeat(indent * 2)}#app {
+${' '.repeat(indent * 3)}width: clamp(200px, calc(100% - 2rem), 800px);
+${' '.repeat(indent * 3)}opacity: 0.95 !important;
+${' '.repeat(indent * 2)}}
 
-    /* At-rules and keyframes */
-    @media (min-width: 768px) {
-      .layout {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2rem;
-      }
-    }
+${' '.repeat(indent * 2)}/* At-rules and keyframes */
+${' '.repeat(indent * 2)}@media (min-width: 768px) {
+${' '.repeat(indent * 3)}.layout {
+${' '.repeat(indent * 4)}display: grid;
+${' '.repeat(indent * 4)}grid-template-columns: repeat(2, minmax(0, 1fr));
+${' '.repeat(indent * 4)}gap: 2rem;
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}}
 
-    @supports (display: grid) {
-      .layout {
-        display: grid;
-      }
-    }
+${' '.repeat(indent * 2)}@supports (display: grid) {
+${' '.repeat(indent * 3)}.layout {
+${' '.repeat(indent * 4)}display: grid;
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}}
 
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-  </style>
+${' '.repeat(indent * 2)}@keyframes fade-in {
+${' '.repeat(indent * 3)}from { opacity: 0; }
+${' '.repeat(indent * 3)}to${' '.repeat(indent)} { opacity: 1; }
+${' '.repeat(indent * 2)}}
+${' '.repeat(indent)}</style>
 </head>
 
 <body>
-  <!-- Semantic HTML, attributes, entities, and nested elements -->
-  <header id="top" class="site-header" data-theme="dark">
-    <nav aria-label="Main navigation">
-      <a href="#app" title="Go to application">Home &amp; About</a>
-    </nav>
-  </header>
+${' '.repeat(indent)}<!-- Semantic HTML, attributes, entities, and nested elements -->
+${' '.repeat(indent)}<header id="top" class="site-header" data-theme="dark">
+${' '.repeat(indent * 2)}<nav aria-label="Main navigation">
+${' '.repeat(indent * 3)}<a href="#app" title="Go to application">Home &amp; About</a>
+${' '.repeat(indent * 2)}</nav>
+${' '.repeat(indent)}</header>
 
-  <main id="app" class="content layout">
-    <section class="card" aria-labelledby="heading">
-      <h1 id="heading">Syntax <strong>Highlighting</strong></h1>
-      <p>Test <em>inline elements</em>, <code>code</code>, and <mark>marked text</mark>.</p>
+${' '.repeat(indent)}<main id="app" class="content layout">
+${' '.repeat(indent * 2)}<section class="card" aria-labelledby="heading">
+${' '.repeat(indent * 3)}<h1 id="heading">Syntax <strong>Highlighting</strong></h1>
+${' '.repeat(indent * 3)}<p>Test <em>inline elements</em>, <code>code</code>, and <mark>marked text</mark>.</p>
 
-      <ul>
-        <li>First item</li>
-        <li>Second item</li>
-      </ul>
+${' '.repeat(indent * 3)}<ul>
+${' '.repeat(indent * 4)}<li>First item</li>
+${' '.repeat(indent * 4)}<li>Second item</li>
+${' '.repeat(indent * 3)}</ul>
 
-      <img src="image.png" alt="Example image" width="120" loading="lazy">
+${' '.repeat(indent * 3)}<img src="image.png" alt="Example image" width="120" loading="lazy">
 
-      <form action="/submit" method="post">
-        <label for="username">Username</label>
-        <input
-          id="username"
-          name="username"
-          type="text"
-          placeholder="Enter a name"
-          required
-        >
+${' '.repeat(indent * 3)}<form action="/submit" method="post">
+${' '.repeat(indent * 4)}<label for="username">Username</label>
+${' '.repeat(indent * 4)}<input
+${' '.repeat(indent * 5)}id="username"
+${' '.repeat(indent * 5)}name="username"
+${' '.repeat(indent * 5)}type="text"
+${' '.repeat(indent * 5)}placeholder="Enter a name"
+${' '.repeat(indent * 5)}required
+${' '.repeat(indent * 4)}>
 
-        <select name="role" disabled>
-          <option value="admin">Admin</option>
-          <option value="user" selected>User</option>
-        </select>
+${' '.repeat(indent * 4)}<select name="role" disabled>
+${' '.repeat(indent * 5)}<option value="admin">Admin</option>
+${' '.repeat(indent * 5)}<option value="user" selected>User</option>
+${' '.repeat(indent * 4)}</select>
 
-        <button type="submit" aria-pressed="false">Submit</button>
-      </form>
+${' '.repeat(indent * 4)}<button type="submit" aria-pressed="false">Submit</button>
+${' '.repeat(indent * 3)}</form>
 
-      <table>
-        <thead>
-          <tr><th scope="col">Name</th><th scope="col">Value</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Alpha</td><td>100</td></tr>
-        </tbody>
-      </table>
-    </section>
+${' '.repeat(indent * 3)}<table>
+${' '.repeat(indent * 4)}<thead>
+${' '.repeat(indent * 5)}<tr><th scope="col">Name</th><th scope="col">Value</th></tr>
+${' '.repeat(indent * 4)}</thead>
+${' '.repeat(indent * 4)}<tbody>
+${' '.repeat(indent * 5)}<tr><td>Alpha</td><td>100</td></tr>
+${' '.repeat(indent * 4)}</tbody>
+${' '.repeat(indent * 3)}</table>
+${' '.repeat(indent * 2)}</section>
 
-    <aside class="card">
-      <details open>
-        <summary>More information</summary>
-        <p>HTML entities: &lt; &gt; &quot; &apos; &copy; &mdash;</p>
-      </details>
-    </aside>
-  </main>
+${' '.repeat(indent * 2)}<aside class="card">
+${' '.repeat(indent * 3)}<details open>
+${' '.repeat(indent * 4)}<summary>More information</summary>
+${' '.repeat(indent * 4)}<p>HTML entities: &lt; &gt; &quot; &apos; &copy; &mdash;</p>
+${' '.repeat(indent * 3)}</details>
+${' '.repeat(indent * 2)}</aside>
+${' '.repeat(indent)}</main>
 
-  <footer>
-    <small>&copy; 2026 Example</small>
-  </footer>
+${' '.repeat(indent)}<footer>
+${' '.repeat(indent * 2)}<small>&copy; 2026 Example</small>
+${' '.repeat(indent)}</footer>
 
-  <script>
-    // Comments, declarations, and primitive values
-    var legacy = "old";
-    let count = 100;
-    let decimal = 3.14;
-    const enabled = true;
-    const empty = null;
-    const missing = undefined;
-    const large = 123n;
-    const symbol = Symbol("id");
+${' '.repeat(indent)}<script>
+${' '.repeat(indent * 2)}// Comments, declarations, and primitive values
+${' '.repeat(indent * 2)}var legacy = "old";
+${' '.repeat(indent * 2)}let count = 100;
+${' '.repeat(indent * 2)}let decimal = 3.14;
+${' '.repeat(indent * 2)}const enabled = true;
+${' '.repeat(indent * 2)}const empty = null;
+${' '.repeat(indent * 2)}const missing = undefined;
+${' '.repeat(indent * 2)}const large = 123n;
+${' '.repeat(indent * 2)}const symbol = Symbol("id");
 
-    // Strings, template literals, and escape sequences
-    const message = \`Count: \${count}\nEnabled: \${enabled}\`;
-    const escaped = "Line one\nLine two\tTabbed";
+${' '.repeat(indent * 2)}// Strings, template literals, and escape sequences
+${' '.repeat(indent * 2)}const message = \`Count: \${count}\nEnabled: \${enabled}\`;
+${' '.repeat(indent * 2)}const escaped = "Line one\nLine two\tTabbed";
 
-    // Operators, comparisons, logical operators, and nullish coalescing
-    const result = count + decimal * 2;
-    const comparison = count >= 100 && enabled !== false;
-    const fallback = empty ?? "default";
-    const conditional = comparison ? "yes" : "no";
-    count += 1;
-    count **= 2;
+${' '.repeat(indent * 2)}// Operators, comparisons, logical operators, and nullish coalescing
+${' '.repeat(indent * 2)}const result = count + decimal * 2;
+${' '.repeat(indent * 2)}const comparison = count >= 100 && enabled !== false;
+${' '.repeat(indent * 2)}const fallback = empty ?? "default";
+${' '.repeat(indent * 2)}const conditional = comparison ? "yes" : "no";
+${' '.repeat(indent * 2)}count += 1;
+${' '.repeat(indent * 2)}count **= 2;
 
-    // Arrays, objects, destructuring, and spread
-    const items = [1, 2, 3, ...[4, 5]];
-    const user = {
-      id: 1,
-      name: "Alex",
-      active: true,
-      tags: ["admin", "editor"],
-      greet() {
-        return \`Hello, \${this.name}\`;
-      }
-    };
+${' '.repeat(indent * 2)}// Arrays, objects, destructuring, and spread
+${' '.repeat(indent * 2)}const items = [1, 2, 3, ...[4, 5]];
+${' '.repeat(indent * 2)}const user = {
+${' '.repeat(indent * 3)}id: 1,
+${' '.repeat(indent * 3)}name: "Alex",
+${' '.repeat(indent * 3)}active: true,
+${' '.repeat(indent * 3)}tags: ["admin", "editor"],
+${' '.repeat(indent * 3)}greet() {
+${' '.repeat(indent * 4)}return \`Hello, \${this.name}\`;
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}};
 
-    const [first, second, ...remaining] = items;
-    const { name, active: isActive } = user;
-    const updatedUser = { ...user, name: "Sam" };
+${' '.repeat(indent * 2)}const [first, second, ...remaining] = items;
+${' '.repeat(indent * 2)}const { name, active: isActive } = user;
+${' '.repeat(indent * 2)}const updatedUser = { ...user, name: "Sam" };
 
-    // Functions, arrow functions, default and rest parameters
-    function multiply(a, b = 2) {
-      return a * b;
-    }
+${' '.repeat(indent * 2)}// Functions, arrow functions, default and rest parameters
+${' '.repeat(indent * 2)}function multiply(a, b = 2) {
+${' '.repeat(indent * 3)}return a * b;
+${' '.repeat(indent * 2)}}
 
-    const sum = (...numbers) =>
-      numbers.reduce((total, number) => total + number, 0);
+${' '.repeat(indent * 2)}const sum = (...numbers) =>
+${' '.repeat(indent * 3)}numbers.reduce((total, number) => total + number, 0);
 
-    // Control flow and loops
-    if (isActive) {
-      for (const item of items) {
-        console.log(item);
-      }
-    } else {
-      console.warn("Inactive");
-    }
+${' '.repeat(indent * 2)}// Control flow and loops
+${' '.repeat(indent * 2)}if (isActive) {
+${' '.repeat(indent * 3)}for (const item of items) {
+${' '.repeat(indent * 4)}console.log(item);
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}} else {
+${' '.repeat(indent * 3)}console.warn("Inactive");
+${' '.repeat(indent * 2)}}
 
-    for (let i = 0; i < 3; i++) {
-      if (i === 1) continue;
-      console.log(i);
-    }
+${' '.repeat(indent * 2)}for (let i = 0; i < 3; i++) {
+${' '.repeat(indent * 3)}if (i === 1) continue;
+${' '.repeat(indent * 3)}console.log(i);
+${' '.repeat(indent * 2)}}
 
-    switch (first) {
-      case 1:
-        console.log("One");
-        break;
-      default:
-        console.log("Other");
-    }
+${' '.repeat(indent * 2)}switch (first) {
+${' '.repeat(indent * 3)}case 1:
+${' '.repeat(indent * 4)}console.log("One");
+${' '.repeat(indent * 4)}break;
+${' '.repeat(indent * 3)}default:
+${' '.repeat(indent * 4)}console.log("Other");
+${' '.repeat(indent * 2)}}
 
-    // Classes, inheritance, getters, and static methods
-    class Animal {
-      constructor(name) {
-        this.name = name;
-      }
+${' '.repeat(indent * 2)}// Classes, inheritance, getters, and static methods
+${' '.repeat(indent * 2)}class Animal {
+${' '.repeat(indent * 3)}constructor(name) {
+${' '.repeat(indent * 4)}this.name = name;
+${' '.repeat(indent * 3)}}
 
-      get label() {
-        return this.name.toUpperCase();
-      }
+${' '.repeat(indent * 3)}get label() {
+${' '.repeat(indent * 4)}return this.name.toUpperCase();
+${' '.repeat(indent * 3)}}
 
-      speak() {
-        return \`\${this.name} makes a sound\`;
-      }
+${' '.repeat(indent * 3)}speak() {
+${' '.repeat(indent * 4)}return \`\${this.name} makes a sound\`;
+${' '.repeat(indent * 3)}}
 
-      static create(name) {
-        return new Animal(name);
-      }
-    }
+${' '.repeat(indent * 3)}static create(name) {
+${' '.repeat(indent * 4)}return new Animal(name);
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}}
 
-    class Dog extends Animal {
-      speak() {
-        return \`\${super.speak()}!\`;
-      }
-    }
+${' '.repeat(indent * 2)}class Dog extends Animal {
+${' '.repeat(indent * 3)}speak() {
+${' '.repeat(indent * 4)}return \`\${super.speak()}!\`;
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}}
 
-    const dog = new Dog("Rex");
+${' '.repeat(indent * 2)}const dog = new Dog("Rex");
 
-    // Regular expressions and built-in objects
-    const pattern = /^[a-z]+\d{2,4}$/i;
-    const matched = pattern.test("test123");
-    const date = new Date();
-    const json = JSON.stringify({ matched, date });
+${' '.repeat(indent * 2)}// Regular expressions and built-in objects
+${' '.repeat(indent * 2)}const pattern = /^[a-z]+\d{2,4}$/i;
+${' '.repeat(indent * 2)}const matched = pattern.test("test123");
+${' '.repeat(indent * 2)}const date = new Date();
+${' '.repeat(indent * 2)}const json = JSON.stringify({ matched, date });
 
-    // Promises, async/await, try/catch, and throw
-    async function loadData(url) {
-      try {
-        const response = await fetch(url);
+${' '.repeat(indent * 2)}// Promises, async/await, try/catch, and throw
+${' '.repeat(indent * 2)}async function loadData(url) {
+${' '.repeat(indent * 3)}try {
+${' '.repeat(indent * 4)}const response = await fetch(url);
 
-        if (!response.ok) {
-          throw new Error(\`HTTP error: \${response.status}\`);
-        }
+${' '.repeat(indent * 4)}if (!response.ok) {
+${' '.repeat(indent * 5)}throw new Error(\`HTTP error: \${response.status}\`);
+${' '.repeat(indent * 4)}}
 
-        return await response.json();
-      } catch (error) {
-        console.error(error.message);
-        throw error;
-      } finally {
-        console.log("Request completed");
-      }
-    }
+${' '.repeat(indent * 4)}return await response.json();
+${' '.repeat(indent * 3)}} catch (error) {
+${' '.repeat(indent * 4)}console.error(error.message);
+${' '.repeat(indent * 4)}throw error;
+${' '.repeat(indent * 3)}} finally {
+${' '.repeat(indent * 4)}console.log("Request completed");
+${' '.repeat(indent * 3)}}
+${' '.repeat(indent * 2)}}
 
-    Promise.resolve("done")
-      .then(value => console.log(value))
-      .catch(error => console.error(error));
+${' '.repeat(indent * 2)}Promise.resolve("done")
+${' '.repeat(indent * 3)}.then(value => console.log(value))
+${' '.repeat(indent * 3)}.catch(error => console.error(error));
 
-    // DOM APIs, optional chaining, and event listeners
-    const app = document.querySelector("#app");
-    const button = document.querySelector("button");
+${' '.repeat(indent * 2)}// DOM APIs, optional chaining, and event listeners
+${' '.repeat(indent * 2)}const app = document.querySelector("#app");
+${' '.repeat(indent * 2)}const button = document.querySelector("button");
 
-    app?.classList.add("ready");
+${' '.repeat(indent * 2)}app?.classList.add("ready");
 
-    button?.addEventListener("click", event => {
-      event.preventDefault();
-      event.currentTarget.textContent = "Clicked";
-    });
+${' '.repeat(indent * 2)}button?.addEventListener("click", event => {
+${' '.repeat(indent * 3)}event.preventDefault();
+${' '.repeat(indent * 3)}event.currentTarget.textContent = "Clicked";
+${' '.repeat(indent * 2)}});
 
-    // Map, Set, and iteration
-    const unique = new Set([1, 2, 2, 3]);
-    const lookup = new Map([["name", "Alex"]]);
+${' '.repeat(indent * 2)}// Map, Set, and iteration
+${' '.repeat(indent * 2)}const unique = new Set([1, 2, 2, 3]);
+${' '.repeat(indent * 2)}const lookup = new Map([["name", "Alex"]]);
 
-    // Debugging methods
-    console.log(message, result, sum(1, 2, 3));
-    console.table(items);
-    console.warn("Warning example");
-    console.error("Error example");
-  </script>
+${' '.repeat(indent * 2)}// Debugging methods
+${' '.repeat(indent * 2)}console.log(message, result, sum(1, 2, 3));
+${' '.repeat(indent * 2)}console.table(items);
+${' '.repeat(indent * 2)}console.warn("Warning example");
+${' '.repeat(indent * 2)}console.error("Error example");
+${' '.repeat(indent)}</script>
 </body>
 </html>`}</Code>
 }

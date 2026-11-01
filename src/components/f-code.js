@@ -1,10 +1,14 @@
 'use client';
 
 import { highlighter, theme } from './highlighter';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Lower } from './string-tools';
+import { UserContext } from './user';
 
 export default function Code({ children, codeLang = 'HTML' }) {
+    let { user } = useContext(UserContext);
+    let { indent } = user?.doc.personalization || 0;
+
     let [ html, setHtml ] = useState('');
     let [ expanded, setExpanded ] = useState(true);
 
@@ -20,18 +24,24 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 structure: 'inline',
             })
             if (!canceled) setHtml(
-                res.split('<br>').map((line, i) => `<span class='line-num'>${i + 1}</span><span>${line}</span>`).join('')
+                res.split('<br>').map((line, i) => {
+                    let [ , spaces, rest ] = line.match(/^(\s*)(.*)$/s);
+                    let chunks = spaces.match(new RegExp(`.{1,${indent}}`, 'g')) || [];
+                    return `<span class='line-num'>${i + 1}</span><span>${
+                        chunks.join('<span class="line">│</span>') + rest
+                    }</span>`
+                }).join('')
             )
 
-            const tokens = (await highlighter).codeToTokens(
-                `[type='a'], '[type^='a'] {}`,
-                {
-                    lang: 'css',
-                    theme: 'Foricon',
-                    includeExplanation: true,
-                }
-            );
-            console.log(tokens)
+            // const tokens = (await highlighter).codeToTokens(
+            //     `[type='a'], '[type^='a'] {}`,
+            //     {
+            //         lang: 'css',
+            //         theme: 'Foricon',
+            //         includeExplanation: true,
+            //     }
+            // );
+            // console.log(tokens)
         })()
 
         return () => canceled = true;
