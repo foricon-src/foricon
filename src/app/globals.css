@@ -1726,6 +1726,7 @@ f-code {
                 text-align: right;
             }
             &.line {
+                color: rgb(var(--text-color-rgb), .25);
                 position: absolute;
             }
         }
