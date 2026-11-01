@@ -1700,13 +1700,14 @@ f-code {
         border-radius: calc(var(--bdr-rad) - 1px) calc(var(--bdr-rad) - 1px) 0 0;
     }
     > div:last-child {
-        padding: 0 var(--spacing-xxsmall) var(--spacing-xxsmall);
+        padding: 0 var(--spacing-xxsmall);
         white-space-collapse: preserve;
         display: grid;
         grid-template-columns: max-content auto;
         column-gap: var(--spacing-xxsmall);
         height: 0;
         overflow: hidden;
+        transition: height .5s ease, var(--df-trans);
 
         &::selection {
             background-color: rgba(0, 0, 0, .1);
@@ -1727,7 +1728,8 @@ f-code {
         }
 
         &.active {
-            height: calc-size(auto);
+            height: calc-size(auto, size);
+            padding-bottom: var(--spacing-xxsmall);
         }
     }
 }
