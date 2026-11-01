@@ -1728,6 +1728,7 @@ f-code {
             &.line {
                 color: rgb(var(--text-color-rgb), .25);
                 user-select: none;
+                pointer-events: none;
                 translate: -50%;
                 position: absolute;
             }
