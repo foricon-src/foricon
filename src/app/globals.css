@@ -108,7 +108,7 @@
     /*Font size*/
     --s-ft-sz: .85rem;
     --s-ln-hgt: 23px;
-    --mns-ft-sz: .8rem;
+    --mns-ft-sz: .7rem;
     
     /*Shadow*/
     --shadow: 0 20px 30px 0 rgba(0, 0, 0, .05);
@@ -177,7 +177,7 @@ f-icon[icon] {
 
 .cons {
     --mns-ft: Consolas;
-    --mns-ft-sz: .8rem;
+    --mns-ft-sz: .7rem;
 }
 .fira {
     --mns-ft: 'Fira Code';
@@ -1707,6 +1707,8 @@ f-code {
 
             &.line-num {
                 color: rgb(var(--text-color-rgb), .5);
+                user-select: none;
+                text-align: right;
             }
         }
     }
