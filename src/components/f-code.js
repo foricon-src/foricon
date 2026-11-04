@@ -24,13 +24,8 @@ export default function Code({ children, codeLang = 'HTML' }) {
             })
             if (!canceled) {
                 let lastDepth = 0;
-                console.log(res)
-                console.log(JSON.stringify(res))
+                console.log(res.split('<br>'))
                 let HTML = res.split('<br>').map((line, i) => {
-                    console.log('------')
-                    console.log('Index:', i)
-                    console.log(line)
-                    console.log('Stringified:', JSON.stringify(line))
                     if (!line || /^\s*$/.test(line)) {
                         console.log(lastDepth);
                         
