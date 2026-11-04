@@ -1723,11 +1723,12 @@ f-code {
             &.line {
                 position: relative;
 
-                .indicator {
+                div.indicator {
                     color: rgb(var(--text-color-rgb), .25);
-                    user-select: none;
+                    display: inline-block;
+                    width: 1px;
+                    height: 100%;
                     pointer-events: none;
-                    translate: -50%;
                     position: absolute;
                 }
             }

@@ -28,7 +28,7 @@ export default function Code({ children, codeLang = 'HTML', ...rest }) {
                 setHtml(
                     res.split('<br>').map((line, i) => {
                         let lineNum = `<span class='line-num'>${i + 1}</span>`;
-                        let indicator = '<span class="indicator">│</span>';
+                        let indicator = '<div class="indicator"/>';
 
                         if (!line || /^\s*$/.test(line)) {
                             let chunks = [ '', ...Array.from({ length: lastDepth }, () => indentation) ];
