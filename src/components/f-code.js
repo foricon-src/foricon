@@ -7,7 +7,7 @@ import { UserContext } from './user';
 
 export default function Code({ children, codeLang = 'HTML' }) {
     let { user } = useContext(UserContext);
-    let { indent } = user?.doc.personalization || 0;
+    let { indent } = user?.doc.personalization || 4;
 
     let [ html, setHtml ] = useState('');
 
@@ -15,40 +15,39 @@ export default function Code({ children, codeLang = 'HTML' }) {
 
     useEffect(() => {
         let canceled = false;
+        let indentation = ' '.repeat(indent);
 
         (async () => {
-            let res = (await highlighter).codeToHtml(children, {
+            let res = (await highlighter).codeToHtml(children.replaceAll('@ind', indentation), {
                 lang: Lower(codeLang),
                 theme: theme.name,
                 structure: 'inline',
             })
             if (!canceled) {
                 let lastDepth = 0;
-                let HTML = res.split('<br>').map((line, i) => {
-                    i < 20 && console.log(line)
-                    if (!line || /^\s*$/.test(line)) {
-                        i < 20 && console.log('Last depth:', lastDepth);
-                        
-                        let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
-                        i < 20 && console.log('chunks:', chunks);
-                        return `<span class='line-num'>${i + 1}</span><span>${
-                            chunks.join('<span class="line">│</span>')
-                        }</span>`;
-                    }
+                setHtml(
+                    res.split('<br>').map((line, i) => {
+                        let lineNum = `<span class='line-num'>${i + 1}</span>`;
 
-                    let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
-                    if (!match) return `<span class='line-num'>${i + 1}</span><span>${line}</span>`;
+                        if (!line || /^\s*$/.test(line)) {
+                            let chunks = [ '', ...Array.from({ length: lastDepth }, () => indentation) ];
+                            return `${lineNum}<span>${
+                                chunks.join('<span class="line">│</span>')
+                            }</span>`;
+                        }
 
-                    let [ , span, space, rest ] = match;
-                    let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
-                    lastDepth = chunks.length;
-                    i < 20 && console.log(chunks.length);
+                        let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
+                        if (!match) return `${lineNum}<span>${line}</span>`;
 
-                    return `<span class='line-num'>${i + 1}</span><span>${
-                        span + chunks.join('<span class="line">│</span>') + rest
-                    }</span>`
-                }).join('');
-                setHtml(HTML)
+                        let [ , span, space, rest ] = match;
+                        let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
+                        lastDepth = chunks.length - 1;
+
+                        return `${lineNum}<span>${
+                            span + chunks.join('<span class="line">│</span>') + rest
+                        }</span>`
+                    }).join('')
+                )
             }
 
             // const tokens = (await highlighter).codeToTokens(
