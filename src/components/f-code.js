@@ -32,7 +32,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                             console.log(lastDepth);
                             
                             let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
-                            console.log('Joined:', chunks.join('<span class="line">│</span>'))
+                            console.log('Joined:', chunks, chunks.join('<span class="line">│</span>'))
                             return `<span class='line-num'>${i + 1}</span><span>${
                                 chunks.join('<span class="line">│</span>')
                             }</span>`;
