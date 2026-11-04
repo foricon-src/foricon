@@ -24,37 +24,37 @@ export default function Code({ children, codeLang = 'HTML' }) {
             })
             if (!canceled) {
                 let lastDepth = 0;
-                setHtml(
-                    res.split('<br>').map((line, i) => {
-                        console.log('------')
-                        console.log('Index:', i)
-                        if (!line || /^\s*$/.test(line)) {
-                            console.log(lastDepth);
-                            
-                            let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
-                            let str = `<span class='line-num'>${i + 1}</span><span>${
-                                chunks.join('<span class="line">│</span>')
-                            }</span>`
-                            console.log(str)
-                            return str;
-                        }
-
-                        let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
-                        if (!match) return `<span class='line-num'>${i + 1}</span><span>${line}</span>`;
-
-                        let [ , span, space, rest ] = match;
-                        let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
-                        lastDepth = chunks.length;
-                        let joined = chunks.join('<span class="line">│</span>');
-                        console.log('Line:', line)
-                        console.log(`Spaces: "${space}"`)
-                        console.log(joined)
-
-                        return `<span class='line-num'>${i + 1}</span><span>${
-                            span + joined + rest
+                let HTML = res.split('<br>').map((line, i) => {
+                    console.log('------')
+                    console.log('Index:', i)
+                    if (!line || /^\s*$/.test(line)) {
+                        console.log(lastDepth);
+                        
+                        let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
+                        let str = `<span class='line-num'>${i + 1}</span><span>${
+                            chunks.join('<span class="line">│</span>')
                         }</span>`
-                    }).join('')
-                )
+                        console.log(str)
+                        return str;
+                    }
+
+                    let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
+                    if (!match) return `<span class='line-num'>${i + 1}</span><span>${line}</span>`;
+
+                    let [ , span, space, rest ] = match;
+                    let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
+                    lastDepth = chunks.length;
+                    let joined = chunks.join('<span class="line">│</span>');
+                    console.log('Line:', line)
+                    console.log(`Spaces: "${space}"`)
+                    console.log(joined)
+
+                    return `<span class='line-num'>${i + 1}</span><span>${
+                        span + joined + rest
+                    }</span>`
+                }).join('')
+                console.log(HTML)
+                setHtml(HTML)
             }
 
             // const tokens = (await highlighter).codeToTokens(
