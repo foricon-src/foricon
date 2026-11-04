@@ -2318,7 +2318,7 @@ footer {
                     margin-bottom: 0;
                 }
                 > form {
-                    > :not(code) {
+                    > :not(code, f-code) {
                         max-width: 400px;
                     }
                     > code {
