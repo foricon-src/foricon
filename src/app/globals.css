@@ -1702,7 +1702,7 @@ f-code {
         display: grid;
         grid-template-columns: max-content auto;
         column-gap: var(--spacing-xxsmall);
-        transition: height 1s ease, var(--df-trans);
+        transition: var(--df-trans), height .5s ease;
         overflow: auto hidden;
         height: 0;
 
@@ -2334,10 +2334,6 @@ footer {
                     }
                     > code, > f-code {
                         margin-top: 0;
-                        
-                        &, * {
-                            transition: var(--df-trans), font-size 0s;
-                        }
                     }
                 }
             }
