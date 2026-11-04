@@ -48,7 +48,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                         let joined = chunks.join('<span class="line">│</span>');
                         console.log('Line:', line)
                         console.log(`Spaces: "${space}"`)
-                        console.log('Chunks:', chunks, joined, chunks.join('<span class="line">│</span>'))
+                        console.log(joined)
 
                         return `<span class='line-num'>${i + 1}</span><span>${
                             span + joined + rest
