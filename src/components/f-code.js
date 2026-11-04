@@ -24,9 +24,11 @@ export default function Code({ children, codeLang = 'HTML' }) {
             })
             if (!canceled) {
                 let lastDepth = 0;
+                console.log(res)
                 let HTML = res.split('<br>').map((line, i) => {
                     console.log('------')
                     console.log('Index:', i)
+                    console.log(line)
                     if (!line || /^\s*$/.test(line)) {
                         console.log(lastDepth);
                         
