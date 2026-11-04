@@ -26,16 +26,13 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 let lastDepth = 0;
                 let HTML = res.split('<br>').map((line, i) => {
                     i < 20 && console.log(line)
-                    // return `<span class='line-num'>${i + 1}</span><span>${line}</span>`
                     if (!line || /^\s*$/.test(line)) {
-                        console.log(lastDepth);
+                        i < 20 && console.log('Last depth:', lastDepth);
                         
                         let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
-                        let str = `<span class='line-num'>${i + 1}</span><span>${
+                        return `<span class='line-num'>${i + 1}</span><span>${
                             chunks.join('<span class="line">│</span>')
-                        }</span>`
-                        console.log(str)
-                        return str;
+                        }</span>`;
                     }
 
                     let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
@@ -44,11 +41,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                     let [ , span, space, rest ] = match;
                     let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
                     lastDepth = chunks.length;
-                    let joined = chunks.join('<span class="line">│</span>');
-                    console.log('Line:', line)
-                    console.log('Formatted line:', `<span class='line-num'>${i + 1}</span><span>${
-                        span + chunks.join('<span class="line">│</span>') + rest
-                    }</span>`)
+                    i < 20 && console.log(chunks.length);
 
                     return `<span class='line-num'>${i + 1}</span><span>${
                         span + chunks.join('<span class="line">│</span>') + rest
