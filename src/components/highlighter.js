@@ -56,7 +56,7 @@ export let theme = {
             scope: [
                 'keyword.control',
                 'keyword.control.at-rule.css',
-                'keyword.operator.expression.of.js',
+                'keyword.operator.expression',
                 'keyword.operator.new.js',
                 'meta.at-rule.media.header.css',
                 'meta.at-rule.keyframes.body.css',

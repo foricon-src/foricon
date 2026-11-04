@@ -461,7 +461,6 @@ export default function Process() {
                 )
             }
             async setValue(value) {
-                console.log(value)
                 let elem = this;
                 if (value == null) elem.clearOptions();
                 else
