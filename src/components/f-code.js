@@ -47,15 +47,15 @@ export default function Code({ children, codeLang = 'HTML', ...rest }) {
                 )
             }
 
-            // const tokens = (await highlighter).codeToTokens(
-            //     `[type='a'], '[type^='a'] {}`,
-            //     {
-            //         lang: 'css',
-            //         theme: 'Foricon',
-            //         includeExplanation: true,
-            //     }
-            // );
-            // console.log(tokens)
+            const tokens = (await highlighter).codeToTokens(
+                children,
+                {
+                    lang: 'html',
+                    theme: 'Foricon',
+                    includeExplanation: true,
+                }
+            );
+            console.log(tokens)
         })()
 
         return () => canceled = true;
