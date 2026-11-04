@@ -1688,6 +1688,7 @@ f-code {
     border: 1px solid var(--dk-gray);
     display: block;
     overflow: hidden;
+    margin: var(--spacing-small) 0;
 
     > div:first-child {
         padding: 5px 5px 5px var(--spacing-xxsmall);
@@ -1696,7 +1697,7 @@ f-code {
         align-items: center;
     }
     > div:last-child {
-        padding: 0 var(--spacing-xxsmall);
+        padding: 0 var(--spacing-xxsmall) var(--spacing-xxsmall);
         white-space-collapse: preserve;
         display: grid;
         grid-template-columns: max-content auto;
