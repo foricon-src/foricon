@@ -1687,8 +1687,9 @@ f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
     display: block;
-    overflow: hidden;
+    overflow: hidden auto;
     margin: var(--spacing-small) 0;
+    white-space: nowrap;
 
     > div:first-child {
         padding: 5px 5px 5px var(--spacing-xxsmall);
