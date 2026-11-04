@@ -1724,7 +1724,7 @@ f-code {
                 position: relative;
 
                 div.indicator {
-                    color: rgb(var(--text-color-rgb), .25);
+                    background-color: rgb(var(--text-color-rgb), .25);
                     display: inline-block;
                     width: 1px;
                     height: 100%;
