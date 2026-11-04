@@ -32,12 +32,11 @@ export default function Code({ children, codeLang = 'HTML' }) {
                             console.log(lastDepth);
                             
                             let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
-                            console.log(`<span class='line-num'>${i + 1}</span><span>${
+                            let str = `<span class='line-num'>${i + 1}</span><span>${
                                 chunks.join('<span class="line">│</span>')
-                            }</span>`)
-                            return `<span class='line-num'>${i + 1}</span><span>${
-                                chunks.join('<span class="line">│</span>')
-                            }</span>`;
+                            }</span>`
+                            console.log(str)
+                            return str;
                         }
 
                         let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
@@ -47,7 +46,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                         let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
                         lastDepth = chunks.length;
                         console.log('Line:', line)
-                        console.log('Assigned:', lastDepth)
+                        console.log('Chunks:', chunks)
 
                         return `<span class='line-num'>${i + 1}</span><span>${
                             span + chunks.join('<span class="line">│</span>') + rest
