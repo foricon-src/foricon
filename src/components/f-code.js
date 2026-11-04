@@ -24,8 +24,9 @@ export default function Code({ children, codeLang = 'HTML' }) {
             })
             if (!canceled) {
                 let lastDepth = 0;
-                console.log(res.split('<br>'))
                 let HTML = res.split('<br>').map((line, i) => {
+                    i < 20 && console.log(line)
+                    return `<span class='line-num'>${i + 1}</span><span>${line}</span>`
                     if (!line || /^\s*$/.test(line)) {
                         console.log(lastDepth);
                         
@@ -52,9 +53,8 @@ export default function Code({ children, codeLang = 'HTML' }) {
                     return `<span class='line-num'>${i + 1}</span><span>${
                         span + chunks.join('<span class="line">│</span>') + rest
                     }</span>`
-                })
-                console.log(HTML)
-                setHtml(HTML.join(''))
+                }).join('');
+                setHtml(HTML)
             }
 
             // const tokens = (await highlighter).codeToTokens(
