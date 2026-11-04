@@ -26,7 +26,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 let lastDepth = 0;
                 let HTML = res.split('<br>').map((line, i) => {
                     i < 20 && console.log(line)
-                    return `<span class='line-num'>${i + 1}</span><span>${line}</span>`
+                    // return `<span class='line-num'>${i + 1}</span><span>${line}</span>`
                     if (!line || /^\s*$/.test(line)) {
                         console.log(lastDepth);
                         
