@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Lower } from './string-tools';
 import { UserContext } from './user';
 
-export default function Code({ children, codeLang = 'HTML' }) {
+export default function Code({ children, codeLang = 'HTML', ...rest }) {
     let { user } = useContext(UserContext);
     let { indent } = user?.doc.personalization || 4;
 
@@ -73,7 +73,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
         return;
     }
 
-    return <f-code>
+    return <f-code {...rest}>
         <div>
             <span>{codeLang}</span>
             <ul className='btn-list small'>

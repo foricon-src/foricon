@@ -88,7 +88,7 @@ export default function PageClient() {
                         ].map(({ name, value }) => <f-option key={value} value={value} className={value}>{name}</f-option>)
                     }</option-list>
                 </f-select>
-                <Code>{`<div class='box'>
+                <Code className={font}>{`<div class='box'>
 ${' '.repeat(indent)}<!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
