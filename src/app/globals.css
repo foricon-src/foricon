@@ -1721,11 +1721,15 @@ f-code {
                 text-align: right;
             }
             &.line {
-                color: rgb(var(--text-color-rgb), .25);
-                user-select: none;
-                pointer-events: none;
-                translate: -50%;
-                position: absolute;
+                position: relative;
+
+                > .indicator {
+                    color: rgb(var(--text-color-rgb), .25);
+                    user-select: none;
+                    pointer-events: none;
+                    translate: -50%;
+                    position: absolute;
+                }
             }
         }
     }

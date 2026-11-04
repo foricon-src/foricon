@@ -28,24 +28,21 @@ export default function Code({ children, codeLang = 'HTML', ...rest }) {
                 setHtml(
                     res.split('<br>').map((line, i) => {
                         let lineNum = `<span class='line-num'>${i + 1}</span>`;
+                        let indicator = '<span class="indicator">│</span>';
 
                         if (!line || /^\s*$/.test(line)) {
                             let chunks = [ '', ...Array.from({ length: lastDepth }, () => indentation) ];
-                            return `${lineNum}<span>${
-                                chunks.join('<span class="line">│</span>')
-                            }</span>`;
+                            return `${lineNum}<span class='line'>${chunks.join(indicator)}</span>`;
                         }
 
                         let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
-                        if (!match) return `${lineNum}<span>${line}</span>`;
+                        if (!match) return `${lineNum}<span class='line'>${line}</span>`;
 
                         let [ , span, space, rest ] = match;
                         let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
                         lastDepth = chunks.length - 1;
 
-                        return `${lineNum}<span>${
-                            span + chunks.join('<span class="line">│</span>') + rest
-                        }</span>`
+                        return `${lineNum}<span class='line'>${span + chunks.join(indicator) + rest}</span>`
                     }).join('')
                 )
             }
