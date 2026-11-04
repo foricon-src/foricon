@@ -45,11 +45,13 @@ export default function Code({ children, codeLang = 'HTML' }) {
                         let [ , span, space, rest ] = match;
                         let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
                         lastDepth = chunks.length;
+                        let joined = chunks.join('<span class="line">│</span>');
                         console.log('Line:', line)
-                        console.log('Chunks:', chunks)
+                        console.log(`Spaces: "${space}"`)
+                        console.log('Chunks:', chunks, joined, chunks.join('<span class="line">│</span>'))
 
                         return `<span class='line-num'>${i + 1}</span><span>${
-                            span + chunks.join('<span class="line">│</span>') + rest
+                            span + joined + rest
                         }</span>`
                     }).join('')
                 )
