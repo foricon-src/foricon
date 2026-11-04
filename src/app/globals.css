@@ -1723,7 +1723,7 @@ f-code {
             &.line {
                 position: relative;
 
-                > .indicator {
+                .indicator {
                     color: rgb(var(--text-color-rgb), .25);
                     user-select: none;
                     pointer-events: none;
