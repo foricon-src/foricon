@@ -22,18 +22,30 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 theme: theme.name,
                 structure: 'inline',
             })
-            if (!canceled) setHtml(
-                res.split('<br>').map((line, i) => {
-                    let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
-                    if (!match) return `<span class='line-num'>${i + 1}</span><span>${line}</span>`;
+            if (!canceled) {
+                let lastDepth = 0;
+                setHtml(
+                    res.split('<br>').map((line, i) => {
+                        if (!line || /^\s*$/.test(line)) {
+                            let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
+                            return `<span class='line-num'>${i + 1}</span><span>${
+                                chunks.join('<span class="line">│</span>')
+                            }</span>`;
+                        }
 
-                    let [ , span, space, rest ] = match;
-                    let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
-                    return `<span class='line-num'>${i + 1}</span><span>${
-                        span + chunks.join('<span class="line">│</span>') + rest
-                    }</span>`
-                }).join('')
-            )
+                        let match = line.match(/^(<span\b[^>]*>)(\s*)(.*)$/);
+                        if (!match) return `<span class='line-num'>${i + 1}</span><span>${line}</span>`;
+
+                        let [ , span, space, rest ] = match;
+                        let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
+                        lastDepth = chunks.length;
+
+                        return `<span class='line-num'>${i + 1}</span><span>${
+                            span + chunks.join('<span class="line">│</span>') + rest
+                        }</span>`
+                    }).join('')
+                )
+            }
 
             // const tokens = (await highlighter).codeToTokens(
             //     `[type='a'], '[type^='a'] {}`,
