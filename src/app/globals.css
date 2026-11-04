@@ -2321,7 +2321,7 @@ footer {
                     > :not(code, f-code) {
                         max-width: 400px;
                     }
-                    > code {
+                    > code, > f-code {
                         margin-top: 0;
                         
                         &, * {
