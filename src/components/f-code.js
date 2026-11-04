@@ -30,6 +30,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                         i < 20 && console.log('Last depth:', lastDepth);
                         
                         let chunks = Array.from({ length: lastDepth }, () => ' '.repeat(indent));
+                        i < 20 && console.log('chunks:', chunks);
                         return `<span class='line-num'>${i + 1}</span><span>${
                             chunks.join('<span class="line">│</span>')
                         }</span>`;
