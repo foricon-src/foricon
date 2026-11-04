@@ -4,12 +4,14 @@ import { highlighter, theme } from './highlighter';
 import { useContext, useEffect, useState } from 'react';
 import { Lower } from './string-tools';
 import { UserContext } from './user';
+import Join from './join';
 
-export default function Code({ children, codeLang = 'HTML', ...rest }) {
+export default function Code({ children, codeLang = 'HTML', className, ...rest }) {
     let { user } = useContext(UserContext);
     let { indent } = user?.doc.personalization || 4;
 
     let [ html, setHtml ] = useState('');
+    let [ expanded, setExpanded ] = useState(true);
 
     let { lang } = document.documentElement;
 
@@ -70,10 +72,29 @@ export default function Code({ children, codeLang = 'HTML', ...rest }) {
         return;
     }
 
-    return <f-code {...rest}>
+    return <f-code className={Join(' ', expanded && 'active', className)} {...rest}>
         <div>
             <span>{codeLang}</span>
             <ul className='btn-list small'>
+                <li className='tooltip top' onClick={() => setExpanded(!expanded)}>
+                    <f-icon icon='chevron-up' i-s='outline' f-rotate={!expanded && '180'}/>
+                    <span>{
+                        {
+                            en: [ 'Expand', 'Collapse' ],
+                            vi: [ 'Mở rộng', 'Thu gọn' ],
+                            fr: [ 'Développer', 'Effondrement' ],
+                            it: [ 'Espandere', 'Crollo' ],
+                            ko: [ '확장하다', '무너지다' ],
+                            ja: [ '拡大する', '崩壊' ],
+                            de: [ 'Expandieren', 'Zusammenbruch' ],
+                            nl: [ 'Uitbreiden', 'Instorten' ],
+                            da: [ 'Udvide', 'Bryde sammen' ],
+                            pt: [ 'Expandir', 'Colapso' ],
+                            es: [ 'Expandir', 'Colapsar' ],
+                            ru: [ 'Расширять', 'Крах' ],
+                        }[lang][expanded ? 1 : 0]
+                    }</span>
+                </li>
                 <li onClick={async () => {
                     await navigator.clipboard.writeText(children);
                     notify('success', {

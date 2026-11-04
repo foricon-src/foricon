@@ -1687,7 +1687,6 @@ f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
     display: block;
-    overflow: hidden auto;
     margin: var(--spacing-small) 0;
     white-space: nowrap;
 
@@ -1698,18 +1697,24 @@ f-code {
         align-items: center;
     }
     > div:last-child {
-        padding: 0 var(--spacing-xxsmall) var(--spacing-xxsmall);
+        padding: 0 var(--spacing-xxsmall) ;
         white-space-collapse: preserve;
         display: grid;
         grid-template-columns: max-content auto;
         column-gap: var(--spacing-xxsmall);
         transition: height .5s ease, var(--df-trans);
+        overflow: hidden auto;
+        height: 0;
 
         &::selection {
             background-color: rgba(0, 0, 0, .1);
         }
         body.dark &::selection {
             background-color: rgba(255, 255, 255, .1);
+        }
+        .active > & {
+            padding-bottom: var(--spacing-xxsmall);
+            height: calc-size(auto, size);
         }
         &, span {
             font-family: var(--mns-ft);
