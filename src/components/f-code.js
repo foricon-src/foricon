@@ -26,6 +26,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                 let lastDepth = 0;
                 setHtml(
                     res.split('<br>').map((line, i) => {
+                        console.log('------')
                         console.log('Index:', i)
                         if (!line || /^\s*$/.test(line)) {
                             console.log(lastDepth);
@@ -42,6 +43,7 @@ export default function Code({ children, codeLang = 'HTML' }) {
                         let [ , span, space, rest ] = match;
                         let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
                         lastDepth = chunks.length;
+                        console.log('Line:', line)
                         console.log('Assigned:', lastDepth)
 
                         return `<span class='line-num'>${i + 1}</span><span>${
