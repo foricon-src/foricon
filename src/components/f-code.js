@@ -46,15 +46,16 @@ export default function Code({ children, codeLang = 'HTML' }) {
                     lastDepth = chunks.length;
                     let joined = chunks.join('<span class="line">│</span>');
                     console.log('Line:', line)
-                    console.log(`Spaces: "${space}"`)
-                    console.log(joined)
+                    console.log('Formatted line:', `<span class='line-num'>${i + 1}</span><span>${
+                        span + chunks.join('<span class="line">│</span>') + rest
+                    }</span>`)
 
                     return `<span class='line-num'>${i + 1}</span><span>${
-                        span + joined + rest
+                        span + chunks.join('<span class="line">│</span>') + rest
                     }</span>`
-                }).join('')
+                })
                 console.log(HTML)
-                setHtml(HTML)
+                setHtml(HTML.join(''))
             }
 
             // const tokens = (await highlighter).codeToTokens(
