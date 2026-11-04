@@ -1702,8 +1702,8 @@ f-code {
         display: grid;
         grid-template-columns: max-content auto;
         column-gap: var(--spacing-xxsmall);
-        transition: height .5s ease, var(--df-trans);
-        overflow: hidden auto;
+        transition: height 1s ease, var(--df-trans);
+        overflow: auto hidden;
         height: 0;
 
         &::selection {
