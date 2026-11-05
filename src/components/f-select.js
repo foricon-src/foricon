@@ -29,7 +29,7 @@ export default function Select({ options = [], values = [], onChange = () => {},
                     key={v}
                     className={values.includes(v)}
                     onClick={() => setSelected(multiple ? [ ...selected, v ] : v)}
-                >{text}</li>
+                >{i.text}</li>
             })
         }</ul>
     </f-select>

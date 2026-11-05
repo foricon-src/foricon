@@ -1000,6 +1000,7 @@ f-select {
     &:not(:has(ul:active)):active:after {
         translate: 0 5px;
     }
+    
     > :not(ul) * {
         color: var(--title-color);
     }
@@ -1042,6 +1043,7 @@ f-select {
                 top: unset;
             }
         }
+
         > li {
             padding: 5px 10px;
             border-radius: 6px;
