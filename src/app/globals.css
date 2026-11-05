@@ -991,35 +991,26 @@ f-select {
         color: var(--title-color);
         font-family: 'Foricon Beta';
     }
-    &:not(:has(> option-list.active)):after {
+    &:not(:has(> ul.active)):after {
         rotate: 180deg;
     }
     &:hover {
         background-color: var(--gray);
     }
-    &:not(:has(option-list:active)):active:after {
+    &:not(:has(ul:active)):active:after {
         translate: 0 5px;
     }
-    > :not(option-list) * {
+    > :not(ul) * {
         color: var(--title-color);
     }
-    > text {
+    > span {
         color: var(--title-color);
         pointer-events: none;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        
-        :not(:has(f-option.active)) > &:before {
-            content: attr(placeholder);
-            opacity: .5;
-        }
-        > span:has(+ span):after {
-            content: ', ';
-        }
     }
-    > option-list {
-        display: block;
+    > ul {
         padding: 10px;
         border-radius: var(--s-bdr-rad);
         position: absolute;
@@ -1051,7 +1042,7 @@ f-select {
                 top: unset;
             }
         }
-        > f-option {
+        > li {
             padding: 5px 10px;
             border-radius: 6px;
             cursor: var(--cursor-pointer);

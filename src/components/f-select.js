@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Select({ options = [], values = [], onChange = () => {}, multiple = false }) {
     let [ selected, setSelected ] = useState(multiple ? [] : null);
+    let [ opened, setOpened ] = useState(false);
 
-    useState(() => { onChange?.(selected) }, [ selected ]);
+    let elemRef = useRef();
+    let boxRef = useRef();
 
-    return <f-select>
+    useEffect(() => {
+        addEvLis(document, 'click', ({ target }) => {
+            elemRef.current.contains(target)
+                ? !boxRef.current.contains(target) && setOpened(!opened)
+                : setOpened(false);
+        })
+    }, [])
+    useEffect(() => { onChange?.(selected) }, [ selected ]);
+
+    return <f-select ref={elemRef}>
         <span>{
             options.map(i => values.includes(i.value || i.text) && i.text)
                 .filter(Boolean)
                 .join(', ')
         }</span>
-        <ul>{
+        <ul ref={boxRef} className={opened && 'active'}>{
             options.map(i => <li
                 className={values.includes(i.value || i.text)}
                 onClick={() => {
