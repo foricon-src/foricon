@@ -23,13 +23,14 @@ export default function Select({ options = [], values = [], onChange = () => {},
                 .join(', ')
         }</span>
         <ul ref={boxRef} className={opened && 'active'}>{
-            options.map(i => <li
-                className={values.includes(i.value || i.text)}
-                onClick={() => {
-                    let v = i.value || i.text;
-                    setSelected(multiple ? [ ...selected, v ] : v);
-                }}
-            >{text}</li>)
+            options.map(i => {
+                let v = i.value || i.text;
+                return <li
+                    key={v}
+                    className={values.includes(v)}
+                    onClick={() => setSelected(multiple ? [ ...selected, v ] : v)}
+                >{text}</li>
+            })
         }</ul>
     </f-select>
 }
