@@ -19,11 +19,10 @@ export default function PageClient() {
 
     usePage(() => {
         let { font, indent } = user.doc.personalization;
-        
+        console.log('set')
         setFont(font);
         setIndent(indent);
     }, [])
-    useEffect(() => { console.log(font) }, [ font ])
 
     return (
         <div className={cssStyle.personalization}>
