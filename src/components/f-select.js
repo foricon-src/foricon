@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 export default function Select({ options = [], values = [], onChange = () => {}, multiple = false }) {
-    let [ selected, setSelected ] = useState(multiple ? [] : null);
+    let [ selected, setSelected ] = useState(values);
     let [ opened, setOpened ] = useState(false);
 
     let elemRef = useRef();
@@ -18,7 +18,7 @@ export default function Select({ options = [], values = [], onChange = () => {},
 
     return <f-select ref={elemRef}>
         <span>{
-            options.map(i => values.includes(i.value || i.text) && i.text)
+            options.map(i => selected.includes(i.value || i.text) && i.text)
                 .filter(Boolean)
                 .join(', ')
         }</span>
@@ -27,8 +27,8 @@ export default function Select({ options = [], values = [], onChange = () => {},
                 let v = i.value || i.text;
                 return <li
                     key={v}
-                    className={values.includes(v)}
-                    onClick={() => setSelected(multiple ? [ ...selected, v ] : v)}
+                    className={selected.includes(v) && 'active'}
+                    onClick={() => setSelected(multiple ? [ ...selected, v ] : [ v ])}
                 >{i.text}</li>
             })
         }</ul>
