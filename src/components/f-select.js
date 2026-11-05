@@ -8,7 +8,9 @@ export default function Select({ options = [], values = [], onChange = () => {},
     let boxRef = useRef();
 
     useEffect(() => {
+        console.log(values)
         addEvLis(document, 'click', ({ target }) => {
+            console.log(elemRef.current.contains(target), boxRef.current.contains(target))
             elemRef.current.contains(target)
                 ? !boxRef.current.contains(target) && setOpened(!opened)
                 : setOpened(false);
