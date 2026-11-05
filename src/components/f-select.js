@@ -8,14 +8,14 @@ export default function Select({ options = [], values: controlledValues, onChang
     let boxRef = useRef();
 
     let isControlled = controlledValues != undefined;
-    let selected = isControlled ? controlledValues : internalValues;
+    let selected = isControlled ? controlledValues : internal;
 
     function setSelected(nextValues) {
         let next = typeof nextValues == 'function'
             ? nextValues(selected)
             : nextValues;
 
-        if (!isControlled) setInternalValues(next);
+        if (!isControlled) setInternal(next);
         onChange?.(multiple ? next : next[0] ?? '');
     }
 
