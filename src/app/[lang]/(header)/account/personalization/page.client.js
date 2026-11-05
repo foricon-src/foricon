@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Code from 'Com/f-code';
 import { Range } from 'Com/range';
 import { useUpdateUser, UserContext } from 'Com/user';
@@ -23,6 +23,7 @@ export default function PageClient() {
         setFont(font);
         setIndent(indent);
     }, [])
+    useEffect(() => { console.log(font) }, [ font ])
 
     return (
         <div className={cssStyle.personalization}>
