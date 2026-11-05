@@ -1,19 +1,16 @@
 'use client';
 
-import { useContext, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import Code from 'Com/f-code';
-import { UpdateRange, Range } from 'Com/range';
+import { Range } from 'Com/range';
 import { useUpdateUser, UserContext } from 'Com/user';
+import Select from 'Com/f-select';
 import usePage from '../use-page';
 import cssStyle from './page.module.css';
-import { doc, setDoc } from 'firebase/firestore';
-import { dbFirestore } from 'Com/firebase';
 
 export default function PageClient() {
     let { user } = useContext(UserContext);
     let updateUser = useUpdateUser();
-
-    let selectRef = useRef();
 
     let [ font, setFont ] = useState('');
     let [ indent, setIndent ] = useState(2);
@@ -21,13 +18,10 @@ export default function PageClient() {
     let { lang } = document.documentElement;
 
     usePage(() => {
-        let { current } = selectRef;
         let { font, indent } = user.doc.personalization;
         
-        current.setValue(font);
         setFont(font);
         setIndent(indent);
-        addEvLis(current, 'change', () => setFont(current.value));
     }, [])
 
     return (
@@ -49,45 +43,46 @@ export default function PageClient() {
                         ru: 'Шрифт Codebox',
                     }[lang]
                 }</span>
-                <f-select ref={selectRef} name='font'>
-                    <text></text>
-                    <option-list>{
+                <Select
+                    options={
                         [
                             {
-                                name: 'Consolas',
+                                text: 'Consolas',
                                 value: 'cons',
                             },
                             {
-                                name: 'Fira Code',
+                                text: 'Fira Code',
                                 value: 'fira',
                             },
                             {
-                                name: 'Source Code Pro',
+                                text: 'Source Code Pro',
                                 value: 'scp',
                             },
                             {
-                                name: 'DM Mono',
+                                text: 'DM Mono',
                                 value: 'dm',
                             },
                             {
-                                name: 'Nova Mono',
+                                text: 'Nova Mono',
                                 value: 'nova',
                             },
                             {
-                                name: 'Xanh Mono',
+                                text: 'Xanh Mono',
                                 value: 'xanh',
                             },
                             {
-                                name: 'Kode Mono',
+                                text: 'Kode Mono',
                                 value: 'kode',
                             },
                             {
-                                name: 'Sono',
+                                text: 'Sono',
                                 value: 'sono',
                             },
-                        ].map(({ name, value }) => <f-option key={value} value={value} className={value}>{name}</f-option>)
-                    }</option-list>
-                </f-select>
+                        ]
+                    }
+                    value={[ font ]}
+                    onChange={setFont}
+                />
                 <Code className={font}>{`<div class='box'>
 ${' '.repeat(indent)}<!--<p>Hello World!</p>-->
 </div>
