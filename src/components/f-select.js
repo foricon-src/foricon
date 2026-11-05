@@ -9,10 +9,11 @@ export default function Select({ options = [], values = [], onChange = () => {},
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) => {
-            console.log(elemRef.current.contains(target), !boxRef.current.contains(target), opened)
-            elemRef.current.contains(target)
-                ? !boxRef.current.contains(target) && setOpened(!opened)
-                : setOpened(false);
+            // console.log(elemRef.current.contains(target), !boxRef.current.contains(target), opened)
+            // elemRef.current.contains(target)
+            //     ? !boxRef.current.contains(target) && setOpened(!opened)
+            //     : setOpened(false);
+            setOpened(!opened)
         })
     }, [])
     useEffect(() => { onChange?.(selected) }, [ selected ]);
