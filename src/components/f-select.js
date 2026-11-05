@@ -13,6 +13,7 @@ export default function Select({ options = [], values = [], onChange = () => {},
             // elemRef.current.contains(target)
             //     ? !boxRef.current.contains(target) && setOpened(!opened)
             //     : setOpened(false);
+            console.log('clicked')
             setOpened(!opened)
         })
     }, [])
