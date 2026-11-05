@@ -1,11 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function Select({ options = [], values = [], onChange = () => {}, multiple = false }) {
-    let [ selected, setSelected ] = useState(values);
+export default function Select({ options = [], values: controlledValues, onChange = () => {}, multiple = false }) {
+    let [ internal, setInternal ] = useState([]);
     let [ opened, setOpened ] = useState(false);
 
     let elemRef = useRef();
     let boxRef = useRef();
+
+    let isControlled = controlledValues != undefined;
+    let selected = isControlled ? controlledValues : internalValues;
+
+    function setSelected(nextValues) {
+        let next = typeof nextValues == 'function'
+            ? nextValues(selected)
+            : nextValues;
+
+        if (!isControlled) setInternalValues(next);
+        onChange?.(multiple ? next : next[0] ?? '');
+    }
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) => {
@@ -14,23 +26,31 @@ export default function Select({ options = [], values = [], onChange = () => {},
                 : setOpened(false);
         })
     }, [])
-    useEffect(() => { onChange?.(selected) }, [ selected ]);
-    useEffect(() => { setSelected(values); console.log('Values:', values) }, [ values ]);
 
     return <f-select ref={elemRef}>
         <span>{
-            options.map(i => selected.includes(i.value || i.text) && i.text)
-                .filter(Boolean)
+            options
+                .filter(i => selected.includes(i.value || i.text))
+                .map(i => i.text)
                 .join(', ')
         }</span>
         <ul ref={boxRef} className={opened && 'active'}>{
             options.map(i => {
                 let v = i.value || i.text;
+
                 return <li
                     key={v}
                     className={selected.includes(v) && 'active'}
-                    onClick={() => setSelected(multiple ? [ ...selected, v ] : [ v ])}
-                >{i.text}</li>
+                    onClick={() => setSelected(
+                        multiple
+                            ? selected.includes(v)
+                                ? selected.filter(x => x !== v)
+                                : [...selected, v]
+                            : [v]
+                    )}
+                >
+                    {i.text}
+                </li>
             })
         }</ul>
     </f-select>
