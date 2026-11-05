@@ -80,7 +80,7 @@ export default function PageClient() {
                             },
                         ]
                     }
-                    value={[ font ]}
+                    values={[ font ]}
                     onChange={setFont}
                 />
                 <Code className={font}>{`<div class='box'>
