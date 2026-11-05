@@ -15,7 +15,7 @@ export default function Select({ options = [], values = [], onChange = () => {},
         })
     }, [])
     useEffect(() => { onChange?.(selected) }, [ selected ]);
-    // useEffect(() => { setSelected(values); console.log('Values:', values) }, [ values ]);
+    useEffect(() => { setSelected(values); console.log('Values:', values) }, [ values ]);
 
     return <f-select ref={elemRef}>
         <span>{
