@@ -8,15 +8,15 @@ export default function Select({ options = [], values = [], onChange = () => {},
     let boxRef = useRef();
 
     useEffect(() => {
-        console.log(values)
         addEvLis(document, 'click', ({ target }) => {
-            console.log(elemRef.current.contains(target), boxRef.current.contains(target))
+            console.log(elemRef.current.contains(target), !boxRef.current.contains(target))
             elemRef.current.contains(target)
-                ? !boxRef.current.contains(target) && setOpened(!opened)
+                ? !boxRef.current.contains(target) && (() => {console.log('Opened:', opened);setOpened(!opened)})()
                 : setOpened(false);
         })
     }, [])
     useEffect(() => { onChange?.(selected) }, [ selected ]);
+    useEffect(() => { setSelected(values) }, [ values ]);
 
     return <f-select ref={elemRef}>
         <span>{
