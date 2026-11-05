@@ -23,6 +23,7 @@ export default function PageClient() {
         setFont(font);
         setIndent(indent);
     }, [])
+    useEffect(() => { console.log('Font: ', font) }, [ font ])
 
     return (
         <div className={cssStyle.personalization}>
