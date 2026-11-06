@@ -44,7 +44,7 @@ export default function Select({ options = [], values: controlledValues, onChang
                     key={v}
                     className={selected.includes(v) && 'active'}
                     onClick={() => {
-                        console.log(selected)
+                        console.log(selected, selected.filter(i => i != v))
                         setSelected(
                             multiple
                                 ? selected.includes(v)
