@@ -4,7 +4,6 @@ import Select from 'Com/f-select';
 import './page.css';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from 'Com/user';
-import { ul } from 'framer-motion/client';
 
 export default function PageClient() {
     let { user } = useContext(UserContext);
@@ -13,7 +12,7 @@ export default function PageClient() {
 
     let [ v, setV ] = useState([]);
     let [ ad, setAd ] = useState([]);
-    let [ ro, setRo ] = useState('precision');
+    let [ ro, setRo ] = useState('');
     
     let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
 
@@ -63,19 +62,19 @@ export default function PageClient() {
                         [
                             {
                                 text: 'Beta 1.7.5',
-                                value: 'b1'
+                                value: 'b1',
                             },
                             {
                                 text: 'Beta 2+ (TTF)',
-                                value: 'b2'
+                                value: 'b2',
                             },
                             {
                                 text: 'Beta 2+ (WOFF2)',
-                                value: 'b2w2'
+                                value: 'b2w2',
                             },
                         ]
                     }
-                    values={v || versions}
+                    values={v.length ? v : versions}
                     onChange={setV}
                 />
                 <span>{
