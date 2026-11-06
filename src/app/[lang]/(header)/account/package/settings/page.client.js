@@ -1,12 +1,13 @@
 'use client';
 
-import Select from 'Com/f-select';
-import './page.css';
 import { useContext, useEffect, useRef, useState } from 'react';
+import Select from 'Com/f-select';
 import { UserContext } from 'Com/user';
+import cssStyle from './page.module.css';
 
 export default function PageClient() {
     let { user } = useContext(UserContext);
+    let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
 
     let ulRef = useRef();
 
@@ -17,7 +18,6 @@ export default function PageClient() {
     let { lang } = document.documentElement;
 
     useEffect(() => {
-        let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
         setV(versions);
         setAd(allowedDomains);
         setRo(renderingOption);
@@ -27,7 +27,7 @@ export default function PageClient() {
     }, [ allowedDomains ])
     
     return (
-        <div name='package/settings'>
+        <div className={cssStyle.settings}>
             <h3>{
                 {
                     en: 'Package settings',

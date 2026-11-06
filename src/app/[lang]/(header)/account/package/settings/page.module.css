@@ -1,0 +1,12 @@
+.settings > form > ul > li {
+    :first-child ~ &:has(~ :nth-last-child(2)) {
+        border-radius: 5px;
+    }
+    &:first-child, :first-child ~ &:has(~ :nth-last-child(2)), &:nth-last-child(2) {
+        background-color: var(--lt-gray);
+
+        &:hover {
+            background-color: var(--gray);
+        }
+    }
+}
