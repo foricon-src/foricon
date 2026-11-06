@@ -20,7 +20,7 @@ export default function PageClient() {
 
     useEffect(() => {
         getChild(ulRef.current).forEach(i => i.firstChild.toggleIconOnHover('trash-can', i))
-    }, [])
+    }, [ user ])
     
     return (
         <div name='package/settings'>
