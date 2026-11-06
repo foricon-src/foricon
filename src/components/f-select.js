@@ -45,7 +45,7 @@ export default function Select({ options = [], values: controlledValues, onChang
                     onClick={() => setSelected(
                         multiple
                             ? selected.includes(v)
-                                ? selected.filter(x => x !== v)
+                                ? selected.filter(i => i != v)
                                 : [...selected, v]
                             : [v]
                     )}
