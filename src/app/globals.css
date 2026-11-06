@@ -720,7 +720,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
 ):not(
     :not(label)[readonly],
     label:has(> input[readonly])
-):focus-within, f-select:has(> option-list.active) {
+):focus-within, f-select:has(> ul.active) {
     border-color: var(--main-color);
     outline-width: 5px;
     background-color: var(--lt-gray) !important;
@@ -1000,7 +1000,7 @@ f-select {
     &:not(:has(ul:active)):active:after {
         translate: 0 5px;
     }
-    
+
     > :not(ul) * {
         color: var(--title-color);
     }
@@ -1057,7 +1057,7 @@ f-select {
                 color: var(--dk-main-color);
                 background-color: var(--main-color);
             }
-            + f-option {
+            + li {
                 margin-top: 5px;
             }
             > * {

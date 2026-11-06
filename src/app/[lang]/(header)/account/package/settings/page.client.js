@@ -1,9 +1,27 @@
 'use client';
 
+import Select from 'Com/f-select';
 import './page.css';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { UserContext } from 'Com/user';
+import { ul } from 'framer-motion/client';
 
 export default function PageClient() {
+    let { user } = useContext(UserContext);
+
+    let ulRef = useRef();
+
+    let [ v, setV ] = useState([]);
+    let [ ad, setAd ] = useState([]);
+    let [ ro, setRo ] = useState('precision');
+    
+    let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
+
     let { lang } = document.documentElement;
+
+    useEffect(() => {
+        getChild(ulRef.current).forEach(i => i.firstChild.toggleIconOnHover('trash-can', i))
+    }, [])
     
     return (
         <div name='package/settings'>
@@ -40,14 +58,26 @@ export default function PageClient() {
                         ru: 'Вариант рендеринга',
                     }[lang]
                 }</span>
-                <f-select name='versions' multiple required>
-                    <text></text>
-                    <option-list>
-                    <f-option value='b1'>Beta 1.7.5</f-option>
-                    <f-option value='b2'>Beta 2+ (TTF)</f-option>
-                    <f-option value='b2w2'>Beta 2+ (WOFF2)</f-option>
-                    </option-list>
-                </f-select>
+                <Select
+                    options={
+                        [
+                            {
+                                text: 'Beta 1.7.5',
+                                value: 'b1'
+                            },
+                            {
+                                text: 'Beta 2+ (TTF)',
+                                value: 'b2'
+                            },
+                            {
+                                text: 'Beta 2+ (WOFF2)',
+                                value: 'b2w2'
+                            },
+                        ]
+                    }
+                    values={v || versions}
+                    onChange={setV}
+                />
                 <span>{
                     {
                         en: 'Rendering option',
@@ -64,43 +94,48 @@ export default function PageClient() {
                         ru: 'Вариант рендеринга',
                     }[lang]
                 }</span>
-                <f-select name='rendering-option'>
-                    <text></text>
-                    <option-list>
-                    <f-option value='performance'>{
-                        {
-                            en: 'Performance',
-                            vi: 'Hiệu suất',
-                            fr: 'Performance',
-                            it: 'Prestazione',
-                            ko: '성능',
-                            ja: 'パフォーマンス',
-                            de: 'Leistung',
-                            nl: 'Prestatie',
-                            da: 'Ydeevne',
-                            pt: 'Desempenho',
-                            es: 'Actuación',
-                            ru: 'Производительность',
-                        }[lang]
-                    }</f-option>
-                    <f-option value='precision'>{
-                        {
-                            en: 'Precision',
-                            vi: 'Chính xác',
-                            fr: 'Précision',
-                            it: 'Precisione',
-                            ko: '정도',
-                            ja: '精度',
-                            de: 'Präzision',
-                            nl: 'Precisie',
-                            da: 'Præcision',
-                            pt: 'Precisão',
-                            es: 'Precisión',
-                            ru: 'Точность',
-                        }[lang]
-                    }</f-option>
-                    </option-list>
-                </f-select>
+                <Select
+                    options={
+                        [
+                            {
+                                text: {
+                                    en: 'Performance',
+                                    vi: 'Hiệu suất',
+                                    fr: 'Performance',
+                                    it: 'Prestazione',
+                                    ko: '성능',
+                                    ja: 'パフォーマンス',
+                                    de: 'Leistung',
+                                    nl: 'Prestatie',
+                                    da: 'Ydeevne',
+                                    pt: 'Desempenho',
+                                    es: 'Actuación',
+                                    ru: 'Производительность',
+                                }[lang],
+                                value: 'performance',
+                            },
+                            {
+                                text: {
+                                    en: 'Precision',
+                                    vi: 'Chính xác',
+                                    fr: 'Précision',
+                                    it: 'Precisione',
+                                    ko: '정도',
+                                    ja: '精度',
+                                    de: 'Präzision',
+                                    nl: 'Precisie',
+                                    da: 'Præcision',
+                                    pt: 'Precisão',
+                                    es: 'Precisión',
+                                    ru: 'Точность',
+                                },
+                                value: 'precision'
+                            },
+                        ]
+                    }
+                    values={ro || renderingOption}
+                    onChange={setRo}
+                />
                 <span>{
                     {
                         en: 'Allowed domains',
@@ -117,9 +152,17 @@ export default function PageClient() {
                         ru: 'Разрешенные домены',
                     }[lang]
                 }</span>
-                <ul className='btn-list vertical' name='domains'>
+                <ul ref={ulRef} className='btn-list vertical' name='domains'>
+                    {
+                        allowedDomains.map(i =>{
+                            return <li>
+                                <f-icon icon='globe'/>
+                                <span>{i}</span>
+                            </li>
+                        })
+                    }
                     <li>
-                        <f-icon icon='plus' i-s='outline'></f-icon>
+                        <f-icon icon='plus' i-s='outline'/>
                         <span>{
                             {
                                 en: 'Add a domain',

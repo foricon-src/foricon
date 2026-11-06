@@ -16,14 +16,9 @@ export default function PageClient() {
     let [ indent, setIndent ] = useState(2);
 
     let { lang } = document.documentElement;
-
-    usePage(() => {
-        let { font, indent } = user.doc.personalization;
-        console.log('set')
-        setFont(font);
-        setIndent(indent);
-    }, [])
-    useEffect(() => { console.log('Font: ', font) }, [ font ])
+    
+    let { font: f = 'cons', indent: i = 2 } = user?.doc.personalization || {};
+    let cond = !font && !indent || font == f && indent == i;
 
     return (
         <div className={cssStyle.personalization}>
@@ -81,7 +76,7 @@ export default function PageClient() {
                             },
                         ]
                     }
-                    values={[ font ]}
+                    values={[ font || f ]}
                     onChange={setFont}
                 />
                 <Code className={font}>{`<div class='box'>
@@ -112,11 +107,11 @@ ${' '.repeat(indent)}}
                         ru: 'Пространство отступа',
                     }[lang]
                 }: {indent}</span>
-                <Range name='indent' min='1' max='6' step='1' dfValue='2' value={indent} onInput={e => setIndent(e.currentTarget.value)}/>
+                <Range name='indent' min='1' max='6' step='1' dfValue='2' value={indent || i} onInput={e => setIndent(e.currentTarget.value)}/>
                 <button
                     className='primary'
                     type='button'
-                    disabled={font == user?.doc.personalization.font && indent == user?.doc.personalization.indent}
+                    disabled={cond}
                     onClick={async () => {
                         try {
                             disable(document.body);
@@ -158,6 +153,30 @@ ${' '.repeat(indent)}}
                         pt: 'Guardar alterações',
                         es: 'Guardar cambios',
                         ru: 'Сохранить изменения',
+                    }[lang]
+                }</button>
+                <button
+                    className='secondary'
+                    type='button'
+                    disabled={cond}
+                    onClick={() => {
+                        setFont(f);
+                        setIndent(i);
+                    }}
+                >{
+                    {
+                        en: 'Cancel',
+                        vi: 'Hủy',
+                        fr: 'Annuler',
+                        it: 'Cancellare',
+                        kr: '취소',
+                        ja: 'キャンセル',
+                        de: 'Stornieren',
+                        nl: 'Annuleren',
+                        da: 'Ophæve',
+                        pt: 'Cancelar',
+                        es: 'Cancelar',
+                        ru: 'Отмена',
                     }[lang]
                 }</button>
                 <button className='secondary' type='button' onClick={() => {
