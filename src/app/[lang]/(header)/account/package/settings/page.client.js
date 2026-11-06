@@ -153,12 +153,12 @@ export default function PageClient() {
                 }</span>
                 <ul ref={ulRef} className='btn-list vertical' name='domains'>
                     {
-                        // allowedDomains.map(
-                        //     i => <li key={i}>
-                        //         <f-icon icon='globe'/>
-                        //         <span>{i}</span>
-                        //     </li>
-                        // )
+                        allowedDomains.map(
+                            i => {console.log(i); return<li key={i}>
+                                <f-icon icon='globe'/>
+                                <span>{i}</span>
+                            </li>}
+                        )
                     }
                     <li>
                         <f-icon icon='plus' i-s='outline'/>

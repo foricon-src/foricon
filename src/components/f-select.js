@@ -38,6 +38,7 @@ export default function Select({ options = [], values: controlledValues, onChang
         <ul ref={boxRef} className={opened && 'active'}>{
             options.map(i => {
                 let v = i.value || i.text;
+                console.log(i.text)
 
                 return <li
                     key={v}
