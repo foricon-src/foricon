@@ -19,7 +19,7 @@ export default function PageClient() {
     let { lang } = document.documentElement;
 
     useEffect(() => {
-        getChild(ulRef.current).forEach(i => i.firstChild.toggleIconOnHover('trash-can', i))
+        getChild(ulRef.current).forEach(i => i.firstChild.toggleIconOnHover?.('trash-can', i))
     }, [ user ])
     
     return (
