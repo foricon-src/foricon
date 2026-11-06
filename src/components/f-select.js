@@ -21,6 +21,7 @@ export default function Select({ options = [], values: controlledValues, onChang
 
     useEffect(() => {
         addEvLis(document, 'click', ({ target }) => {
+            if (!elemRef.current) return;
             elemRef.current.contains(target)
                 ? !boxRef.current.contains(target) && setOpened(prev => !prev)
                 : setOpened(false);
