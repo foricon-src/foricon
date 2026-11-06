@@ -17,14 +17,14 @@ export default function PageClient() {
     let { lang } = document.documentElement;
 
     useEffect(() => {
-        console.log(getChild(ulRef.current).slice(0, -1))
-        getChild(ulRef.current).slice(0, -1).forEach(i => i.firstChild.toggleIconOnHover?.('trash-can', i));
-
         let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
         setV(versions);
         setAd(allowedDomains);
         setRo(renderingOption);
     }, [ user ])
+    useEffect(() => {
+        getChild(ulRef.current).slice(0, -1).forEach(i => i.firstChild.toggleIconOnHover?.('trash-can', i));
+    }, [ allowedDomains ])
     
     return (
         <div name='package/settings'>
