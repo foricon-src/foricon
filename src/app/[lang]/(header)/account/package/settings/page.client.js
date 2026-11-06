@@ -76,6 +76,7 @@ export default function PageClient() {
                     }
                     values={v.length ? v : versions}
                     onChange={setV}
+                    multiple
                 />
                 <span>{
                     {
