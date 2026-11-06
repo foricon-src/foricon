@@ -127,7 +127,7 @@ export default function PageClient() {
                                     pt: 'Precisão',
                                     es: 'Precisión',
                                     ru: 'Точность',
-                                },
+                                }[lang],
                                 value: 'precision'
                             },
                         ]
@@ -153,11 +153,11 @@ export default function PageClient() {
                 }</span>
                 <ul ref={ulRef} className='btn-list vertical' name='domains'>
                     {
-                        allowedDomains.map(
-                            i => {console.log(i); return<li key={i}>
+                        (ad.length ? ad : allowedDomains).map(
+                            i => <li key={i}>
                                 <f-icon icon='globe'/>
                                 <span>{i}</span>
-                            </li>}
+                            </li>
                         )
                     }
                     <li>
