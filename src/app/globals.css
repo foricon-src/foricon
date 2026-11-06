@@ -990,6 +990,7 @@ f-select {
         content: '\e0b4';
         color: var(--title-color);
         font-family: 'Foricon Beta';
+        line-height: var(--df-ln-hgt);
     }
     &:not(:has(> ul.active)):after {
         rotate: 180deg;

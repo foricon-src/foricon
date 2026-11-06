@@ -27,7 +27,6 @@ export default function Select({ options = [], values: controlledValues, onChang
                 : setOpened(false);
         })
     }, [])
-    useEffect(() => { console.log(selected) }, [ selected ])
 
     return <f-select ref={elemRef}>
         <span>{
@@ -43,16 +42,13 @@ export default function Select({ options = [], values: controlledValues, onChang
                 return <li
                     key={v}
                     className={selected.includes(v) && 'active'}
-                    onClick={() => {
-                        console.log(selected, selected.filter(i => i != v))
-                        setSelected(
-                            multiple
-                                ? selected.includes(v)
-                                    ? selected.filter(i => i != v)
-                                    : [...selected, v]
-                                : [v]
-                        )
-                    }}
+                    onClick={() => setSelected(
+                        multiple
+                            ? selected.includes(v)
+                                ? selected.filter(i => i != v)
+                                : [...selected, v]
+                            : [v]
+                    )}
                 >
                     {i.text}
                 </li>
