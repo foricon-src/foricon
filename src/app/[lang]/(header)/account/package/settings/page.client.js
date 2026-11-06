@@ -13,13 +13,16 @@ export default function PageClient() {
     let [ v, setV ] = useState([]);
     let [ ad, setAd ] = useState([]);
     let [ ro, setRo ] = useState('');
-    
-    let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
 
     let { lang } = document.documentElement;
 
     useEffect(() => {
-        getChild(ulRef.current).forEach(i => i.firstChild.toggleIconOnHover?.('trash-can', i))
+        getChild(ulRef.current).slice(0, -1).forEach(i => i.firstChild.toggleIconOnHover?.('trash-can', i));
+        
+        let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
+        setV(versions);
+        setAd(allowedDomains);
+        setRo(renderingOption);
     }, [ user ])
     
     return (
@@ -74,7 +77,7 @@ export default function PageClient() {
                             },
                         ]
                     }
-                    values={v.length ? v : versions}
+                    values={v}
                     onChange={setV}
                     multiple
                 />
@@ -133,7 +136,7 @@ export default function PageClient() {
                             },
                         ]
                     }
-                    values={[ ro || renderingOption ]}
+                    values={[ ro ]}
                     onChange={setRo}
                 />
                 <span>{
@@ -154,7 +157,7 @@ export default function PageClient() {
                 }</span>
                 <ul ref={ulRef} className='btn-list vertical' name='domains'>
                     {
-                        (ad.length ? ad : allowedDomains).map(
+                        ad.map(
                             i => <li key={i}>
                                 <f-icon icon='globe'/>
                                 <span>{i}</span>

@@ -14,8 +14,6 @@ export default function Select({ options = [], values: controlledValues, onChang
         let next = typeof nextValues == 'function'
             ? nextValues(selected)
             : nextValues;
-        
-        console.log(nextValues, next)
 
         if (!isControlled) setInternal(next);
         onChange?.(multiple ? next : next[0] ?? '');
