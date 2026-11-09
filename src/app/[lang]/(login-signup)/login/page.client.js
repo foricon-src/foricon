@@ -151,7 +151,7 @@ export default function PageClient() {
 
     let [ email, setEmail ] = useState('');
     let [ password, setPassword ] = useState('');
-    let [ userDoc, setUserDoc ] = useState(null);
+    let [ userData, setUserData ] = useState(null);
 
     let des = searchParams.get('redirect') || 'account';
 
@@ -187,7 +187,7 @@ export default function PageClient() {
         </>,
         <>
             <div className={`center-middle ${cssStyle.account}`}>
-                <img src={userDoc?.avatar}/>{userDoc?.name}
+                <img src={userData?.avatar}/>{userData?.name}
             </div>
             <input
                 placeholder={
@@ -309,11 +309,12 @@ export default function PageClient() {
                                 ru: 'Пожалуйста, введите корректный адрес электронной почты',
                             }[lang]
                         )
-                        let snapshot = await getDocs(query(
-                            collection(dbFirestore, 'users'),
-                            where('email', '==', email)
-                        ))
-                        if (snapshot.empty) throw new Warn(
+                        let res = await fetch(`/api/user/get/email/${email}`);
+                        // let snapshot = await getDocs(query(
+                        //     collection(dbFirestore, 'users'),
+                        //     where('email', '==', email)
+                        // ))
+                        if (res.status == 404) throw new Warn(
                             {
                                 en: "We couldn't find an account with this email address",
                                 vi: 'Chúng tôi không tìm thấy tài khoản với địa chỉ email này',
@@ -329,7 +330,8 @@ export default function PageClient() {
                                 ru: 'Мы не смогли найти аккаунт с этим адресом электронной почты',
                             }[lang]
                         )
-                        setUserDoc(snapshot.docs[0].data());
+                        if (!res.ok) throw new Warn('Failed to fetch user');
+                        setUserData(await res.json());
                         return;
                     }
     
