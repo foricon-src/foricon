@@ -229,7 +229,7 @@ export default function PageClient() {
                         ru: 'Введите свое имя',
                     }[lang]
                 }
-                autocomplete='username'
+                autoComplete='name'
                 value={name}
                 onChange={e => setName(e.target.value)}
             />
@@ -253,7 +253,7 @@ export default function PageClient() {
                     }[lang]
                 }
                 type='email'
-                autocomplete='email'
+                autoComplete='email'
                 value={email}
                 onChange={e => setEmail(e.target.value)}
             />
@@ -277,7 +277,6 @@ export default function PageClient() {
                     }[lang]
                 }
                 type={!showed && 'password'}
-                autocomplete='password'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
             />
@@ -299,7 +298,7 @@ export default function PageClient() {
                     }[lang]
                 }
                 type={!showed && 'password'}
-                autocomplete='password'
+                autoComplete='new-password'
                 value={repeatedPassword}
                 onChange={e => setRepeatedPassword(e.target.value)}
             />

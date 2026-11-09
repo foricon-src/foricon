@@ -181,7 +181,7 @@ export default function PageClient() {
                 }
                 name='email'
                 type='email'
-                autocomplete='email'
+                autoComplete='email'
                 onChange={e => setEmail(e.target.value)}
             />
         </>,
@@ -208,7 +208,7 @@ export default function PageClient() {
                 }
                 name='password'
                 type='password'
-                autocomplete='password'
+                autoComplete='current-password'
                 onChange={e => setPassword(e.target.value)}
             />
             <FLink href='/forgot'>{
@@ -310,10 +310,6 @@ export default function PageClient() {
                             }[lang]
                         )
                         let res = await fetch(`/api/user/get/email/${email}`);
-                        // let snapshot = await getDocs(query(
-                        //     collection(dbFirestore, 'users'),
-                        //     where('email', '==', email)
-                        // ))
                         if (res.status == 404) throw new Warn(
                             {
                                 en: "We couldn't find an account with this email address",
