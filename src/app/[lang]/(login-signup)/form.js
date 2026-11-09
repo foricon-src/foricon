@@ -4,8 +4,8 @@ import { Context } from './providers';
 
 export function useChangeStep() {
     let {
-        stepHandler: [, setStep ],
-        notificationHandler: [, setNotification]
+        stepHandler: [ , setStep ],
+        notificationHandler: [ , setNotification ]
     } = useContext(Context);
 
     return async (step, e, func) => {
@@ -88,7 +88,11 @@ export function Form({ steps, lastStepText, onSubmit }) {
     })
 
     return <form ref={formRef} onSubmit={onSubmit}>
-        {steps[step]}
+        {
+            steps.map((step, i) => (
+                <div key={i} className={step == i && 'active'}>{step}</div>
+            ))
+        }
         {notification && <div className={`message ${notification.type}`}>{notification.message}</div>}
         <div className={cssStyle.nav}>
             {!!step && <button className='secondary' type='button' onClick={() => changeStep(step - 1)}>{

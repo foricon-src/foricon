@@ -97,8 +97,13 @@
                 background-color: var(--dk-gray);
             }
         }
-        & > input {
-            margin-top: 0;
+        & > .step {
+            & > input {
+                margin: 0;
+            }
+            & + .step {
+                margin-top: 5px;
+            }
         }
         & > a {
             align-self: flex-start;

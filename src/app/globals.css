@@ -1072,6 +1072,9 @@ form {
     > :first-child {
         margin-top: 0;
     }
+    > :last-child {
+        margin-bottom: 0;
+    }
     > :is(input, textarea, select, f-select) {
         display: block;
         width: 100%;
@@ -1091,15 +1094,11 @@ form {
             }
         }
     }
-    > button {
-        :not(span) + & {
-            margin-top: 10px;
-        }
-        &.secondary:not(:last-child) {
-            display: block;
-            width: fit-content;
-        }
-        &:last-child {
+    > div.btns {
+        margin-top: var(--spacing-micro);
+
+        > button {
+            margin-top: 0;
             margin-bottom: 0;
         }
     }
@@ -2358,6 +2357,10 @@ footer {
     }
 }
 @media screen and (max-width: 600px) {
+    header {
+        padding-left: var(--spacing-medium);
+        padding-right: var(--spacing-medium);
+    }
     #sidebar-page {
         grid-template-columns: 100%;
         grid-template-rows: calc(100% - 117px) 117px;
