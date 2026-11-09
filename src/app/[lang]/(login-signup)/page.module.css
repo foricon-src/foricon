@@ -42,14 +42,18 @@
         }
     }
     & > form {
+        & > :not(.step, .nav) {
+            margin-bottom: var(--spacing-mili);
+        }
         & > .step {
+            :global(:not(.active))& {
+                display: none;
+            }
             & + .step {
                 margin-top: 5px;
             }
-            & > input {
+            & > :is(ul, input, div) {
                 margin: 0;
-            }
-            & > ul, & > div:not(:last-child) {
                 width: 100%;
             }
             & > ul {
