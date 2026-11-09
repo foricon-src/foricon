@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 export default function PageClient() {
     let { user } = useContext(UserContext);
-    let { indent } = user?.doc.personalization || 0;
+    let { indent } = user?.doc?.personalization || 0;
     return <Code>{`<!DOCTYPE html>
 <html lang="en">
 <head>

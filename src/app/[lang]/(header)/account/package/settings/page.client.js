@@ -7,7 +7,7 @@ import cssStyle from './page.module.css';
 
 export default function PageClient() {
     let { user } = useContext(UserContext);
-    let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc.settings || {};
+    let { allowedDomains = [], renderingOption = 'precision', versions = [] } = user?.doc?.settings || {};
 
     let ulRef = useRef();
 
@@ -25,6 +25,8 @@ export default function PageClient() {
     useEffect(() => {
         getChild(ulRef.current).slice(0, -1).forEach(i => i.firstChild.toggleIconOnHover?.('trash-can', i));
     }, [ allowedDomains ])
+
+    usePage();
     
     return (
         <div className={cssStyle.settings}>

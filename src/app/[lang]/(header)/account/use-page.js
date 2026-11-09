@@ -3,7 +3,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { UserContext } from 'Com/user';
 import useGo from 'Com/go';
 
-export default function usePage(func) {
+export default function usePage(func = () => {}) {
     let router = useRouter();
     let pathname = usePathname();
     let { user } = useContext(UserContext);

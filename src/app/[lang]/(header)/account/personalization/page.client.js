@@ -17,8 +17,10 @@ export default function PageClient() {
 
     let { lang } = document.documentElement;
     
-    let { font: f = 'cons', indent: i = 2 } = user?.doc.personalization || {};
+    let { font: f = 'cons', indent: i = 2 } = user?.doc?.personalization || {};
     let cond = !font && !indent || font == f && indent == i;
+
+    usePage();
 
     return (
         <div className={cssStyle.personalization}>

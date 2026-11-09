@@ -8,6 +8,7 @@ import IconInput from 'Com/iconinput';
 import { MediaContext } from 'Com/f-media';
 import { verifyBeforeUpdateEmail } from 'firebase/auth';
 import Modal from 'Com/modal';
+import usePage from '../use-page';
 
 export default function PageClient() {
     let go = useGo();
@@ -22,6 +23,8 @@ export default function PageClient() {
     let [ media, setMedia ] = useState();
     
     let { lang } = document.documentElement;
+
+    usePage();
 
     return <div className={cssStyle.account_info}>
         <Modal ref={modalRef} type='confirm' btns={[ 'Ok' ]}>
@@ -234,7 +237,7 @@ export default function PageClient() {
                 }</span>
             </div>
             <div>
-                <input value={formatDate(user?.doc.joiningDate || '2023-12-21T17:00:00.000Z', { dateOnly: true })} readOnly/>
+                <input value={formatDate(user?.doc?.joiningDate || '2023-12-21T17:00:00.000Z', { dateOnly: true })} readOnly/>
             </div>
         </div>
         <button

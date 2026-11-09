@@ -8,7 +8,7 @@ import Join from './join';
 
 export default function Code({ children, codeLang = 'HTML', className, ...rest }) {
     let { user } = useContext(UserContext);
-    let { indent } = user?.doc.personalization || 4;
+    let { indent } = user?.doc?.personalization || 4;
 
     let [ html, setHtml ] = useState('');
     let [ expanded, setExpanded ] = useState(true);
