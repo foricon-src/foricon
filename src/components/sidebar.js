@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { LanguageContext } from 'Com/language';
 import { GoPage } from 'Com/sidebar-page-transition';
 import useGo from 'Com/go';
@@ -19,7 +19,7 @@ export default function SidebarComponent({ items, home }) {
     let sliced = pathname.slice(4);
     let go = useGo();
 
-    let { innerWidth} = window;
+    let [ width, setWidth ] = useState(window.innerWidth);
 
     let { lang } = document.documentElement;
 
@@ -31,8 +31,12 @@ export default function SidebarComponent({ items, home }) {
             : isIcon ? 'outline' : '';
     }
 
+    useEffect(() => {
+        addEvLis(window, 'resize', () => setWidth(window.innerWidth));
+    }, [])
+
     return (
-        <ul className={`btn-list line-active${innerWidth > 600 ? ' vertical' : ''}`}>
+        <ul className={`btn-list line-active${width > 600 ? ' vertical' : ''}`}>
             {items.map(item => {
                 let { page, text, texts, action, hasLine, icon: { name, keepState }, badge, className } = item;
                 let path = `${home}${page ? `/${page}` : ''}`;
@@ -41,7 +45,7 @@ export default function SidebarComponent({ items, home }) {
                     className={Join(' ',
                         hasLine && 'line',
                         page != undefined && stateActive(path),
-                        innerWidth <= 850 && 'tooltip top',
+                        width <= 850 && 'tooltip top',
                         className
                     )}
                     onClick={() => action ? action() : sliced != path && GoPage(go, path)}

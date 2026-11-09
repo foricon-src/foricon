@@ -2348,8 +2348,12 @@ footer {
     #sidebar-page {
         grid-template-columns: max-content auto;
         
+        > div:not(.modal) {
+            padding-left: 0;
+        }
         > ul.btn-list {
-		    padding-left: calc(var(--spacing-medium) - 20px);
+		    padding-left: var(--spacing-medium);
+		    padding-right: calc(var(--spacing-default) - 16px);
         }
     }
 }
