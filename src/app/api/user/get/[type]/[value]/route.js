@@ -5,7 +5,7 @@ export async function GET(_, { params: { type, value }}) {
     if (!type || !value)
         return NextResponse.json({ message: 'Missing parameter' }, { status: 400 });
     try {
-        let user = await adAuth[type == 'uid' ? 'getUser' : 'getUserByEmail'](uid);
+        let user = await adAuth[type == 'uid' ? 'getUser' : 'getUserByEmail'](value);
         return NextResponse.json({
             name: user.displayName,
             email: {
