@@ -32,7 +32,7 @@ export default function SidebarComponent({ items, home }) {
     }
 
     return (
-        <ul className={`btn-list line-active${window > 600 ? ' vertical' : ''}`}>
+        <ul className={`btn-list line-active${innerWidth > 600 ? ' vertical' : ''}`}>
             {items.map(item => {
                 let { page, text, texts, action, hasLine, icon: { name, keepState }, badge, className } = item;
                 let path = `${home}${page ? `/${page}` : ''}`;

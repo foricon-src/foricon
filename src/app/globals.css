@@ -2336,8 +2336,12 @@ footer {
 }
 
 @media screen and (max-width: 1100px) {
-    header > ul[name='center'] {
-        display: none;
+    header {
+        grid-template-columns: repeat(3, auto);
+
+        > ul[name='center'] {
+            display: none;
+        }
     }
 }
 @media screen and (max-width: 850px) {
@@ -2355,16 +2359,13 @@ footer {
         grid-template-rows: calc(100% - 87px) 87px;
 
         > :not(.modal) {
-            padding-left: var(--spacing-medium) !important;
-
             &:is(div) {
                 padding-left: var(--spacing-medium);
                 padding-right: calc(var(--spacing-medium) - 16px);
+                padding-bottom: var(--spacing-xxsmall);
             }
             &:is(ul.btn-list) {
-                padding-top: var(--spacing-xxsmall);
-                padding-bottom: var(--spacing-xxsmall);
-                padding-right: var(--spacing-medium);
+                padding-left: var(--spacing-medium) var(--spacing-medium) var(--spacing-xxsmall);
                 overflow: scroll hidden;
                 flex-wrap: nowrap;
                 order: 1;
