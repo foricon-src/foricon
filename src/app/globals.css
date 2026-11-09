@@ -2353,14 +2353,14 @@ footer {
         }
         > ul.btn-list {
 		    padding-left: var(--spacing-medium);
-		    padding-right: calc(var(--spacing-default) - 16px);
+		    padding-right: var(--spacing-default);
         }
     }
 }
 @media screen and (max-width: 600px) {
     #sidebar-page {
         grid-template-columns: 100%;
-        grid-template-rows: calc(100% - 87px) 87px;
+        grid-template-rows: calc(100% - 117px) 117px;
 
         > :not(.modal) {
             &:is(div) {
@@ -2369,7 +2369,7 @@ footer {
                 padding-bottom: var(--spacing-xxsmall);
             }
             &:is(ul.btn-list) {
-                padding-left: var(--spacing-medium) var(--spacing-medium) var(--spacing-xxsmall);
+                padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-xxsmall);
                 overflow: scroll hidden;
                 flex-wrap: nowrap;
                 order: 1;
