@@ -49,9 +49,6 @@
             :global(:not(.active))& {
                 display: none;
             }
-            & + .step {
-                margin-top: 5px;
-            }
             & > :is(ul, input, div) {
                 margin: 0;
                 width: 100%;

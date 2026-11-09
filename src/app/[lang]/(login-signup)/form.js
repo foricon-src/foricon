@@ -89,8 +89,8 @@ export function Form({ steps, lastStepText, onSubmit }) {
 
     return <form ref={formRef} onSubmit={onSubmit}>
         {
-            steps.map((step, i) => (
-                <div key={i} className={cssStyle.step + (step == i ? ' active' : '')}>{step}</div>
+            steps.map((currentStep, i) => (
+                <div key={i} className={cssStyle.step + (step == i ? ' active' : '')}>{currentStep}</div>
             ))
         }
         {notification && <div className={`message ${notification.type}`}>{notification.message}</div>}
