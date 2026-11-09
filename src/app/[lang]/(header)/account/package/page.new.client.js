@@ -5,9 +5,9 @@ import { get, ref } from 'firebase/database';
 import { UserContext } from 'Com/user';
 import { db } from 'Com/firebase';
 import useGo from 'Com/go';
+import Code from 'Com/f-code';
 import usePage from '../use-page';
 import cssStyle from './page.new.module.css';
-import Code from 'Com/code';
 
 export default function PageClient() {
     let go = useGo();

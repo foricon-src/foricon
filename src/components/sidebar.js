@@ -16,10 +16,12 @@ import Join from './join';
  */
 export default function SidebarComponent({ items, home }) {
     let pathname = usePathname();
+    let sliced = pathname.slice(4);
     let go = useGo();
 
+    let { innerWidth} = window;
+
     let { lang } = document.documentElement;
-    let sliced = pathname.slice(4);
 
     function stateActive(path, isIcon) {
         let [ pathSegs, slicedSegs ] = [ path.split('/'), sliced.split('/') ];
@@ -30,13 +32,18 @@ export default function SidebarComponent({ items, home }) {
     }
 
     return (
-        <ul className='btn-list vertical line-active'>
+        <ul className={`btn-list line-active${window > 600 ? ' vertical' : ''}`}>
             {items.map(item => {
                 let { page, text, texts, action, hasLine, icon: { name, keepState }, badge, className } = item;
                 let path = `${home}${page ? `/${page}` : ''}`;
                 return <li
                     key={page}
-                    className={Join(' ', hasLine && 'line', page != undefined && stateActive(path), className)}
+                    className={Join(' ',
+                        hasLine && 'line',
+                        page != undefined && stateActive(path),
+                        innerWidth <= 850 && 'tooltip top',
+                        className
+                    )}
                     onClick={() => action ? action() : sliced != path && GoPage(go, path)}
                 >
                     <f-icon icon={name} i-s={page == undefined || keepState ? 'outline' : stateActive(path, true)}/>

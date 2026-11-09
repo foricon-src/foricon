@@ -2340,3 +2340,35 @@ footer {
         display: none;
     }
 }
+@media screen and (max-width: 850px) {
+    #sidebar-page {
+        grid-template-columns: max-content auto;
+        
+        > ul.btn-list {
+		    padding-left: calc(var(--spacing-medium) - 20px);
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    #sidebar-page {
+        grid-template-columns: 100%;
+        grid-template-rows: calc(100% - 87px) 87px;
+
+        > :not(.modal) {
+            padding-left: var(--spacing-medium) !important;
+
+            &:is(div) {
+                padding-left: var(--spacing-medium);
+                padding-right: calc(var(--spacing-medium) - 16px);
+            }
+            &:is(ul.btn-list) {
+                padding-top: var(--spacing-xxsmall);
+                padding-bottom: var(--spacing-xxsmall);
+                padding-right: var(--spacing-medium);
+                overflow: scroll hidden;
+                flex-wrap: nowrap;
+                order: 1;
+            }
+        }
+    }
+}
