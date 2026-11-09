@@ -52,6 +52,7 @@
             & > :is(ul, input, div) {
                 margin: 0;
                 width: 100%;
+                margin-bottom: var(--spacing-mili);
             }
             & > ul {
                 display: grid;
