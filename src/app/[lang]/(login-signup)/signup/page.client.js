@@ -34,7 +34,7 @@ let texts = {
     vi: [
         {
             h1: 'Chào mừng đến với Foricon!',
-            p: 'Hãy bắt đầu tạo một tài khoản hoàn toàn mới để tận dụng được bộ biểu tượng tuyệt vời của chúng tôi!',
+            p: 'Hãy bắt đầu tạo một tài khoản hoàn toàn mới để sử dụng bộ biểu tượng tuyệt vời của chúng tôi!',
         },
         {
             h1: 'Cách bạn sẽ đăng nhập',
@@ -229,7 +229,7 @@ export default function PageClient() {
                         ru: 'Введите свое имя',
                     }[lang]
                 }
-                autoComplete='name'
+                autoComplete='username'
                 value={name}
                 onChange={e => setName(e.target.value)}
             />

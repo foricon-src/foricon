@@ -75,7 +75,10 @@ export function Form({ steps, lastStepText, onSubmit }) {
 
     useEffect(() => {
         if (elemById('loading')) return;
-        let timeout = setTimeout(() => qSelec('input')?.focus(), 200);
+        let timeout = setTimeout(() => {
+            console.log(qSelec('input'));
+            qSelec('input')?.focus();
+        }, 200);
         return () => clearTimeout(timeout);
     }, [ step ])
     useEffect(() => {
@@ -85,7 +88,7 @@ export function Form({ steps, lastStepText, onSubmit }) {
             e.preventDefault();
             nextInput.focus();
         })
-    })
+    }, [])
 
     return <form ref={formRef} onSubmit={onSubmit}>
         {
