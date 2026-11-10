@@ -242,7 +242,7 @@ export default function PageClient() {
         </div>
         <button
             className='primary'
-            {...{ disabled: !(name || email || media)}}
+            {...{ inert: !(name || email || media)}}
             onClick={async () => {
                 let { body } = document;
                 try{
@@ -294,7 +294,7 @@ export default function PageClient() {
         }</button>
         <button
             className='secondary'
-            {...{ disabled: !(name || email || media)}}
+            {...{ inert: !(name || email || media)}}
             onClick={() => {
                 setName(undefined);
                 setEmail(undefined);

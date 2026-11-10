@@ -113,7 +113,7 @@ ${' '.repeat(indent)}}
                 <button
                     className='primary'
                     type='button'
-                    disabled={cond}
+                    inert={cond}
                     onClick={async () => {
                         try {
                             disable(document.body);
@@ -160,7 +160,7 @@ ${' '.repeat(indent)}}
                 <button
                     className='secondary'
                     type='button'
-                    disabled={cond}
+                    inert={cond}
                     onClick={() => {
                         setFont(f);
                         setIndent(i);

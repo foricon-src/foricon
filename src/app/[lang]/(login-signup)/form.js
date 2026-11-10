@@ -75,10 +75,7 @@ export function Form({ steps, lastStepText, onSubmit }) {
 
     useEffect(() => {
         if (elemById('loading')) return;
-        let timeout = setTimeout(() => {
-            console.log(qSelec('input'));
-            qSelec('input')?.focus();
-        }, 200);
+        let timeout = setTimeout(() => qSelec(`.${cssStyle.step}.active > input`)?.focus(), 200);
         return () => clearTimeout(timeout);
     }, [ step ])
     useEffect(() => {

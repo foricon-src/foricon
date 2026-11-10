@@ -378,7 +378,7 @@ ul {
                     scale: var(--btn-scale);
                 }
             }
-            &[disabled]:not([disabled='false']):has(> *) {
+            &[inert]:has(> *) {
                 opacity: 1;
                 
                 > * {
@@ -1083,7 +1083,7 @@ form {
         display: flex;
     }
     > span {
-        &:has(+ [disabled]) {
+        &:has(+ [inert]) {
             opacity: .5;
         }
         + * {
@@ -2287,9 +2287,8 @@ footer {
     background-color: var(--bg-color);
 }
 
-[disabled] {
+[inert] {
     opacity: .5;
-    pointer-events: none;
 }
 
 #sidebar-page {

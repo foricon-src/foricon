@@ -94,7 +94,7 @@ export function Media() {
                         ru: 'Отмена',
                     }[lang]
                 }</button>
-                <button className='primary' {...{ disabled: !selected }} onClick={() => {
+                <button className='primary' {...{ inert: !selected }} onClick={() => {
                     onConfirm?.(selected);
                     setSelected(null);
                     setFiles([]);

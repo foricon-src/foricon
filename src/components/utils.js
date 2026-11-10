@@ -747,30 +747,23 @@ globalThis.toggle = (...elems) => {
 }
 /**
  * Makes elements unclickable
- * @param {HTMLElement} elems - Element(s) to disable
+ * @param {HTMLElement[]} elems - Element(s) to disable
  */
-globalThis.disable = (...elems) => {
-    elems.forEach(elem => {
-        elem.setAttribute('disabled', '');
-        qSelec(elem, ':focus')?.blur();
-    })
-}
+globalThis.disable = (...elems) =>
+    elems.forEach(elem => elem.inert = true)
 /**
  * Makes elements clickable again
  * @param {HTMLElement} elems - Element(s) to enable
  */
-globalThis.enable = (...elems) => {
-    elems.forEach(elem => {
-        elem.removeAttribute('disabled');
-    })
-}
+globalThis.enable = (...elems) =>
+    elems.forEach(elem => elem.inert = false)
 /**
  * Checks whether an element is enabled
  * @param {HTMLElement} elem - Element to check
  * @returns Boolean
  */
 globalThis.isEnabled = (elem) => {
-    return elem.getAttribute('disabled') == undefined;
+    return elem.inert;
 }
 /**
  * Removes all children of element(s)
