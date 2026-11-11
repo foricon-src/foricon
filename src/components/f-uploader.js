@@ -1,68 +1,26 @@
-// 'use client';
-
-// import { input } from 'framer-motion/client';
-// import { useEffect, useRef, useState } from 'react';
-
-// export function Uploader({ accept = '', multiple = false, ...rest }) {
-//     let [ files, setFiles ] = useState([]);
-
-//     let uploaderRef = useRef();
-//     let ulRef = useRef();
-//     let inputRef = useRef();
-
-//     let { lang } = document.documentElement;
-
-//     useEffect(() => {
-//         let { current } = uploaderRef;
-//         addEvLis(current, 'dragover', () => (multiple || !files.length) && current.classList.add('drag'));
-//         addEvLis(current, 'dragleave', () => current.classList.remove('drag'));
-//         addEvLis(current, 'drop', e => {
-//             if (!multiple && files.length)  return;
-//             e.preventDefault();
-
-//             current.classList.remove('drag');
-
-//             let { files } = e.dataTransfer;
-//             if (files.length + 1) {
-//                 let arr = [];
-//                 [...files].forEach((file) => {
-//                     let acceptedType = accept.split(',').map(type => type.trim());
-//                     !acceptedType.some(type => type == file.type || type.includes('*') && file.type.startsWith(type.split('/')[0]))
-//                         ? notify('warn', 'This type of file is not accepted by the uploader')
-//                         : arr.push(file)
-//                 })
-//                 setFiles([ ...files, ...arr ]);
-//             }
-//         })
-//     }, [])
-//     useEffect(() => {
-//         let { current: uploaderRefCr } = uploaderRef;
-//         let { current: ulRefCr } = ulRef;
-//         getChild(ulRefCr).map(i => i.firstChild.toggleIconOnHover('trash-can'));
-//         uploaderRefCr?.dispatchEvent(new Event('change'));
-//     }, [ files ])
-
-//     return <f-uploader ref={uploaderRef}>
-//         <f-icon icon='arrow-up-from-bracket' i-s='outline'/>
-//         <span>Drag & drop the file here, or</span>
-//         <ul ref={ulRef} class='btn-list darker vertical'>{
-//             files.map((file, i) => {
-//                 return <li key={i} onClick={() => setFiles([ ...files.slice(0, i), ...files.slice(i + 1) ])}>
-//                     <f-icon icon='file'/>
-//                     <span>{file.name}</span>
-//                 </li>
-//             })
-//         }</ul>
-//         <button class='primary' onClick={() => inputRef.current.click()}>Add file</button>
-//         <input type='file' multiple={multiple} onChange={({ target }) => setFiles([ ...files, ...target.files ])}/>
-//     </f-uploader>
-// }
-
 'use client';
 
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
-let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, maxBytes = 0, files: controlledFiles, onFilesChange, ...rest }, ref) {
+/**
+ * A file uploader supporting drag-and-drop, multiple selection, file type validation, and size limits.
+ *
+ * @param {Object} props
+ * @param {string} [props.accept] - Accepted file types
+ * @param {File[]} [props.files] - Controlled list of selected files
+ * @param {(files: File[]) => void} [props.onChange] - Called when the selected files change
+ * @param {boolean} [props.multiple] - Whether multiple files can be selected
+ * @param {number} [props.maxBytes] - Maximum total file size in bytes. `0` means unlimited
+ * @returns {JSX.Element}
+ */
+export default function Uploader({
+    accept = '',
+    files: controlledFiles,
+    onChange,
+    multiple = false,
+    maxBytes = 0,
+    ...rest
+}) {
     let [ internalFiles, setInternalFiles ] = useState([]);
     let [ usedBytes, setUsedBytes ] = useState(0);
 
@@ -82,14 +40,14 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
             : nextFiles;
         
         if (!isControlled) setInternalFiles(next);
-        onFilesChange?.(next);
+        onChange?.(next);
     }
-    function clearFiles() {
-        setFiles([]);
-        inputRef.current && (inputRef.current.value = '');
-    }
+    // function clearFiles() {
+    //     setFiles([]);
+    //     inputRef.current && (inputRef.current.value = '');
+    // }
 
-    useImperativeHandle(ref, () => ({ clearFiles }))
+    // useImperativeHandle(ref, () => ({ clearFiles }))
 
     function addFiles(incoming) {
         let baseFiles = multiple ? files : [];
@@ -209,5 +167,4 @@ let Uploader = forwardRef(function Uploader({ accept = '', multiple = false, max
         />
         {!!maxBytes && <span>Limit: {formatBytes(usedBytes)} / {formatBytes(maxBytes)}</span>}
     </f-uploader>
-})
-export default Uploader;
+}

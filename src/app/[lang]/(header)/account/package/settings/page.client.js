@@ -64,23 +64,21 @@ export default function PageClient() {
                     }[lang]
                 }</span>
                 <Select
-                    options={
-                        [
-                            {
-                                text: 'Beta 1.7.5',
-                                value: 'b1',
-                            },
-                            {
-                                text: 'Beta 2+ (TTF)',
-                                value: 'b2',
-                            },
-                            {
-                                text: 'Beta 2+ (WOFF2)',
-                                value: 'b2w2',
-                            },
-                        ]
-                    }
-                    values={v}
+                    options={[
+                        {
+                            text: 'Beta 1.7.5',
+                            value: 'b1',
+                        },
+                        {
+                            text: 'Beta 2+ (TTF)',
+                            value: 'b2',
+                        },
+                        {
+                            text: 'Beta 2+ (WOFF2)',
+                            value: 'b2w2',
+                        },
+                    ]}
+                    value={v}
                     onChange={setV}
                     multiple
                 />
@@ -101,45 +99,43 @@ export default function PageClient() {
                     }[lang]
                 }</span>
                 <Select
-                    options={
-                        [
-                            {
-                                text: {
-                                    en: 'Performance',
-                                    vi: 'Hiệu suất',
-                                    fr: 'Performance',
-                                    it: 'Prestazione',
-                                    ko: '성능',
-                                    ja: 'パフォーマンス',
-                                    de: 'Leistung',
-                                    nl: 'Prestatie',
-                                    da: 'Ydeevne',
-                                    pt: 'Desempenho',
-                                    es: 'Actuación',
-                                    ru: 'Производительность',
-                                }[lang],
-                                value: 'performance',
-                            },
-                            {
-                                text: {
-                                    en: 'Precision',
-                                    vi: 'Chính xác',
-                                    fr: 'Précision',
-                                    it: 'Precisione',
-                                    ko: '정도',
-                                    ja: '精度',
-                                    de: 'Präzision',
-                                    nl: 'Precisie',
-                                    da: 'Præcision',
-                                    pt: 'Precisão',
-                                    es: 'Precisión',
-                                    ru: 'Точность',
-                                }[lang],
-                                value: 'precision'
-                            },
-                        ]
-                    }
-                    values={[ ro ]}
+                    options={[
+                        {
+                            text: {
+                                en: 'Performance',
+                                vi: 'Hiệu suất',
+                                fr: 'Performance',
+                                it: 'Prestazione',
+                                ko: '성능',
+                                ja: 'パフォーマンス',
+                                de: 'Leistung',
+                                nl: 'Prestatie',
+                                da: 'Ydeevne',
+                                pt: 'Desempenho',
+                                es: 'Actuación',
+                                ru: 'Производительность',
+                            }[lang],
+                            value: 'performance',
+                        },
+                        {
+                            text: {
+                                en: 'Precision',
+                                vi: 'Chính xác',
+                                fr: 'Précision',
+                                it: 'Precisione',
+                                ko: '정도',
+                                ja: '精度',
+                                de: 'Präzision',
+                                nl: 'Precisie',
+                                da: 'Præcision',
+                                pt: 'Precisão',
+                                es: 'Precisión',
+                                ru: 'Точность',
+                            }[lang],
+                            value: 'precision'
+                        },
+                    ]}
+                    value={ro}
                     onChange={setRo}
                 />
                 <span>{

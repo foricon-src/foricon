@@ -158,7 +158,13 @@ export default function PageClient() {
                     ru: '-',
                 }[lang]
             }</p>
-            <Uploader multiple accept='image/*, video/*, audio/*' maxBytes={4 * 1024 * 1024} files={files} onFilesChange={setFiles}/>
+            <Uploader
+                accept='image/*, video/*, audio/*'
+                files={files}
+                onChange={setFiles}
+                mulitple
+                maxBytes={4 * 1024 * 1024}
+            />
         </Modal>
         <Modal ref={removeModalRef} type='confirm' btns={[
             {

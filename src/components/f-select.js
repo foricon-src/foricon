@@ -1,14 +1,38 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function Select({ options = [], values: controlledValues, onChange = () => {}, multiple = false }) {
+/**
+ * Represents an available option in the select component.
+ *
+ * @typedef {Object} SelectOption
+ * @property {string} text - The label displayed to the user.
+ * @property {string} [value] - The underlying option value. Defaults to `text` when omitted.
+ */
+/**
+ * A customizable select component supporting single and multiple selection.
+ *
+ * @param {Object} props
+ * @param {SelectOption[]} [props.options] - Available options
+ * @param {string | string[]} [props.value] - Selected value(s)
+ * @param {(value: string | string[]) => void} [props.onChange] - Called when the selection changes
+ * @param {boolean} [props.multiple] - Whether multiple options can be selected
+ * @returns {JSX.Element}
+ */
+export default function Select({
+    options = [],
+    value: controlledValue,
+    onChange,
+    multiple
+}) {
     let [ internal, setInternal ] = useState([]);
     let [ opened, setOpened ] = useState(false);
 
     let elemRef = useRef();
     let boxRef = useRef();
 
-    let isControlled = controlledValues != undefined;
-    let selected = isControlled ? controlledValues : internal;
+    let isControlled = controlledValue != undefined;
+    let selected = isControlled
+        ? Array.isArray(controlledValue) ? controlledValue : [ controlledValue ]
+        : internal;
 
     function setSelected(nextValues) {
         let next = typeof nextValues == 'function'

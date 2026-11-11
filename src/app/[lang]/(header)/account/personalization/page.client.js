@@ -42,43 +42,41 @@ export default function PageClient() {
                     }[lang]
                 }</span>
                 <Select
-                    options={
-                        [
-                            {
-                                text: 'Consolas',
-                                value: 'cons',
-                            },
-                            {
-                                text: 'Fira Code',
-                                value: 'fira',
-                            },
-                            {
-                                text: 'Source Code Pro',
-                                value: 'scp',
-                            },
-                            {
-                                text: 'DM Mono',
-                                value: 'dm',
-                            },
-                            {
-                                text: 'Nova Mono',
-                                value: 'nova',
-                            },
-                            {
-                                text: 'Xanh Mono',
-                                value: 'xanh',
-                            },
-                            {
-                                text: 'Kode Mono',
-                                value: 'kode',
-                            },
-                            {
-                                text: 'Sono',
-                                value: 'sono',
-                            },
-                        ]
-                    }
-                    values={[ font || f ]}
+                    options={[
+                        {
+                            text: 'Consolas',
+                            value: 'cons',
+                        },
+                        {
+                            text: 'Fira Code',
+                            value: 'fira',
+                        },
+                        {
+                            text: 'Source Code Pro',
+                            value: 'scp',
+                        },
+                        {
+                            text: 'DM Mono',
+                            value: 'dm',
+                        },
+                        {
+                            text: 'Nova Mono',
+                            value: 'nova',
+                        },
+                        {
+                            text: 'Xanh Mono',
+                            value: 'xanh',
+                        },
+                        {
+                            text: 'Kode Mono',
+                            value: 'kode',
+                        },
+                        {
+                            text: 'Sono',
+                            value: 'sono',
+                        },
+                    ]}
+                    value={font || f}
                     onChange={setFont}
                 />
                 <Code className={font}>{`<div class='box'>

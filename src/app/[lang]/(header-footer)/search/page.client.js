@@ -12,6 +12,7 @@ import Search from 'Com/search';
 import Join from 'Com/join';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
+import Select from 'Com/f-select';
 
 export default function PageClient() {
     let router = useRouter();
@@ -27,7 +28,6 @@ export default function PageClient() {
     
     let topRef = useRef();
     let inputRef = useRef();
-    let fSelectRef = useRef();
     let mainRef = useRef();
     
     let initial = ((params) => {
@@ -336,8 +336,6 @@ export default function PageClient() {
     
     useEffect(() => {(async () => {
         let top = topRef.current;
-        let fSelect = fSelectRef.current;
-        fSelect.setValue(version);
 
         check();
         
@@ -356,8 +354,6 @@ export default function PageClient() {
         addEvLis(document, 'scroll',
             () => window.scrollY >= (mainRef.current?.offsetTop || 88) - 88 ? activate(top) : deactivate(top)
         )
-
-        addEvLis(fSelect, 'change', () => setVersion(fSelect.value));
     })()}, [])
     useEffect(() => {
         let value = [
@@ -516,13 +512,20 @@ export default function PageClient() {
                     ru: 'Найдите идеальную иконку для вашего следующего шедевра…',
                 }[lang]
             }/>
-            <f-select ref={fSelectRef}>
-                <text></text>
-                <option-list>
-                    <f-option value='b2'>Beta 2+</f-option>
-                    <f-option value='b1'>Beta 1.7.5</f-option>
-                </option-list>
-            </f-select>
+            <Select
+                options={[
+                    {
+                        text: 'Beta 2+',
+                        value: 'b2',
+                    },
+                    {
+                        text: 'Beta 1.7.5',
+                        value: 'b1',
+                    },
+                ]}
+                value={version}
+                onChange={setVersion}
+            />
             <div className={cssStyle.options}>
                 <ul className='btn-list line-active'>{
                     dynamic(

@@ -6,6 +6,13 @@ import { Lower } from './string-tools';
 import { UserContext } from './user';
 import Join from './join';
 
+/**
+ * A codebox with syntax highlighting and indent level indicators.
+ *
+ * @param {Object} props
+ * @param {string} [props.codeLang] - Language of the code
+ * @returns {JSX.Element}
+ */
 export default function Code({ children, codeLang = 'HTML', className, ...rest }) {
     let { user } = useContext(UserContext);
     let { indent } = user?.doc?.personalization || 4;
