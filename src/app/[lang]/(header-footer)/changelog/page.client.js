@@ -33,7 +33,7 @@ export default function PageClient() {
                 <f-icon b1 icon='list' i-s='outline'></f-icon><span>Detailed</span>
             </li>
         </ul>
-        <div className={`${cssStyle.versions}` `${cssStyle[Lower(view)]}`}>
+        <div className={`${cssStyle.versions} ${cssStyle[Lower(view)]}`}>
             <div>
                 <div className={cssStyle.name}>
                     <div>
@@ -125,7 +125,7 @@ export default function PageClient() {
                         <p>Your <Link target='_blank' href='/account'>Account</Link> page now comes with fresh <b>personalization options</b>! The first two features - <b>Codebox&apos;s font</b> and <b>Indentation space</b> - let you tailor your workspace to match your style. More personalization tools are on the way, so consider this just the beginning.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPzjk_sqlElZ678Ia-ezX2lVSqUv7Y5gu1rNEobuZZmmPMWniqYwX5bZrXDcDaARNPb02YtnEEdniJwD5A63FycIX_sUHDnKg_aNWfsmTnTQ4winxV87-6yC0mEIsQ0P9UO-tZXrVihJXuMBTSD-ZIDNDNrmMp4K4sH-2zmnMXXxOb8MUgBlxD43gdp4Q/s1600/beta2-codebox-font-&amp;-indent.png'/>
                         <h3>Smarter Syntax, Seamless Flow</h3>
-                        <p>Across the site, we&apos;ve supercharged the <b>syntax highlighting</b> mechanism for clarity and precision. In <Link target='_blank' href='/hub'>Foricon Hub</Link>, you'll also enjoy <b>automatic indentation</b> for cleaner code, and <b>quick keyboard shortcuts</b> to indent, outdent, or comment multiple lines at once</p>
+                        <p>Across the site, we&apos;ve supercharged the <b>syntax highlighting</b> mechanism for clarity and precision. In <Link target='_blank' href='/hub'>Foricon Hub</Link>, you&apos;ll also enjoy <b>automatic indentation</b> for cleaner code, and <b>quick keyboard shortcuts</b> to indent, outdent, or comment multiple lines at once</p>
                         <h3>Writing That Feels Effortless</h3>
                         <p><b>Paragraph</b> elements now break lines more naturally, making text flow smoother and editing more intuitive in <Link target='_blank' href='/hub'>Foricon Hub</Link>.</p>
                         <h3>Conversations, Redesigned</h3>
