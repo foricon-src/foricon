@@ -28,7 +28,7 @@
                 top: 161px;
                 text-align: center;
                 
-                > h6 {
+                & > h6 {
                     margin: 0 0 10px;
                     width: 100%;
                     border-radius: var(--s-bdr-rad);
