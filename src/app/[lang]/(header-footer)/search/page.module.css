@@ -208,10 +208,10 @@
     :global(.active)& {
         transition: var(--df-trans), translate .5s ease;
 
-        &:hover, &:has(input:focus, :global(option-list.active)) {
+        &:hover, &:has(input:focus, f-select > :global(ul.active)) {
             translate: 0 var(--dropdown);
         }
-        &:not(:hover, :has(input:focus, :global(option-list.active))) {
+        &:not(:hover, :has(input:focus, f-select > :global(ul.active))) {
             &:after {
                 opacity: 1;
             }
