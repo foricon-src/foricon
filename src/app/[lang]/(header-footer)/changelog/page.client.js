@@ -20,9 +20,9 @@ export default function PageClient() {
                     icon: 'list',
                 }
             ].map(
-                i => <li className={i.value == view} onClick={() => setView(i.value)}>
-                    <f-icon icon={i.icon}/>
-                    <span>{i.value}</span>
+                ({ value, icon }) => <li key={value} className={value == view} onClick={() => setView(value)}>
+                    <f-icon icon={icon}/>
+                    <span>{value}</span>
                 </li>
             )
         }
@@ -102,8 +102,8 @@ export default function PageClient() {
                         <ul className='list-layout'>
                             <li>Moved the shortcut to <Link target='_blank' href='/account'>Account</Link> from inside <b>All</b> menu to the <b>header</b></li>
                             <li>Optimized the site&apos;s codes</li>
-                            <li>Changed the icon for <Link target='_blank' href='//foricon-dev.blogspot.com/search?c=arrows'>Arrows</Link> category from <Link target='_blank' href='/search?k=arrow-down'>arrow-down</Link> to <Link target='_blank' href='/search?k=arrows-repeat'>arrows-repeat</Link></li>
-                            <li>Changed the icon for <Link target='_blank' href='//foricon-dev.blogspot.com/search?c=writing'>Writing</Link> category from <Link target='_blank' href='/search?k=file-lines'>file-lines</Link> to <Link target='_blank' href='/search?k=paragraph'>paragraph</Link></li>
+                            <li>Changed the icon for <Link target='_blank' href='/search?c=arrows'>Arrows</Link> category from <Link target='_blank' href='/search?k=arrow-down'>arrow-down</Link> to <Link target='_blank' href='/search?k=arrows-repeat'>arrows-repeat</Link></li>
+                            <li>Changed the icon for <Link target='_blank' href='/search?c=writing'>Writing</Link> category from <Link target='_blank' href='/search?k=file-lines'>file-lines</Link> to <Link target='_blank' href='/search?k=paragraph'>paragraph</Link></li>
                         </ul>
                         <h3>Fixed</h3>
                         <ul className='list-layout'>
@@ -312,7 +312,7 @@ export default function PageClient() {
                         </ul>
                         <h3>Updated / Changed</h3>
                         <ul className='list-layout'>
-                            <li>Style of icon tiles' hover and active state in <Link target='_blank' href='/search'>Search</Link></li>
+                            <li>Style of icon tiles&apos; hover and active state in <Link target='_blank' href='/search'>Search</Link></li>
                             <li>Adjusted spacing of elements a litte bit</li>
                             <li>Search bar and search options are now fixed at the top and automatically appear on hover in <Link target='_blank' href='/search'>Search</Link></li>
                             <li>Rearranged buttons in <b>Foricon Package</b> in <Link target='_blank' href='/account'>Account</Link></li>
@@ -342,7 +342,7 @@ export default function PageClient() {
                         <h3>Updated / Changed</h3>
                         <ul className='list-layout'>
                             <li>Christmas logo</li>
-                            <li>Cursors' designs were changed a litte bit</li>
+                            <li>Cursors&apos; designs were changed a litte bit</li>
                         </ul>
                     </div>
                 </div>
