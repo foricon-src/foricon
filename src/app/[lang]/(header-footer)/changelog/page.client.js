@@ -125,7 +125,7 @@ export default function PageClient() {
                         <p>Your <Link target='_blank' href='/account'>Account</Link> page now comes with fresh <b>personalization options</b>! The first two features - <b>Codebox&apos;s font</b> and <b>Indentation space</b> - let you tailor your workspace to match your style. More personalization tools are on the way, so consider this just the beginning.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPzjk_sqlElZ678Ia-ezX2lVSqUv7Y5gu1rNEobuZZmmPMWniqYwX5bZrXDcDaARNPb02YtnEEdniJwD5A63FycIX_sUHDnKg_aNWfsmTnTQ4winxV87-6yC0mEIsQ0P9UO-tZXrVihJXuMBTSD-ZIDNDNrmMp4K4sH-2zmnMXXxOb8MUgBlxD43gdp4Q/s1600/beta2-codebox-font-&amp;-indent.png'/>
                         <h3>Smarter Syntax, Seamless Flow</h3>
-                        <p>Across the site, we've supercharged the <b>syntax highlighting</b> mechanism for clarity and precision. In <Link target='_blank' href='/hub'>Foricon Hub</Link>, you'll also enjoy <b>automatic indentation</b> for cleaner code, and <b>quick keyboard shortcuts</b> to indent, outdent, or comment multiple lines at once</p>
+                        <p>Across the site, we&apos;ve supercharged the <b>syntax highlighting</b> mechanism for clarity and precision. In <Link target='_blank' href='/hub'>Foricon Hub</Link>, you'll also enjoy <b>automatic indentation</b> for cleaner code, and <b>quick keyboard shortcuts</b> to indent, outdent, or comment multiple lines at once</p>
                         <h3>Writing That Feels Effortless</h3>
                         <p><b>Paragraph</b> elements now break lines more naturally, making text flow smoother and editing more intuitive in <Link target='_blank' href='/hub'>Foricon Hub</Link>.</p>
                         <h3>Conversations, Redesigned</h3>
@@ -297,9 +297,9 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Introducing WOFF2 support</h3>
-                        <p>We've included full support for the modern <b>WOFF2</b> font format for brand new <b>Beta 2.1</b> update! This upgrade means faster load times, sharper rendering, and a smoother design experience across the platform. Fonts now feel lighter, cleaner, and more future‑ready - empowering creators to focus on what matters most: their craft.</p>
+                        <p>We&apos;ve included full support for the modern <b>WOFF2</b> font format for brand new <b>Beta 2.1</b> update! This upgrade means faster load times, sharper rendering, and a smoother design experience across the platform. Fonts now feel lighter, cleaner, and more future‑ready - empowering creators to focus on what matters most: their craft.</p>
                         <h3>Refined search experience</h3>
-                        <p>We've also made subtle yet impactful improvements to the <b>search bar</b> and <b>options panel</b>. With <b>search controls</b> anchored at the top, your workflow feels streamlined and exploring icons becomes effortless by eliminating unnecessary scrolling - a small change, yet it makes navigating Foricon more intuitive and enjoyable.</p>
+                        <p>We&apos;ve also made subtle yet impactful improvements to the <b>search bar</b> and <b>options panel</b>. With <b>search controls</b> anchored at the top, your workflow feels streamlined and exploring icons becomes effortless by eliminating unnecessary scrolling - a small change, yet it makes navigating Foricon more intuitive and enjoyable.</p>
                     </div>
                     <div className={cssStyle.detailed}>
                         <h3>Added</h3>
@@ -378,7 +378,7 @@ export default function PageClient() {
                     <div className={cssStyle.featured}>
                         <h3>Your Icons, Your Way</h3>
                         <p>Dear designers, developers, and pixel-perfectionists, starting today, every icon in the Foricon icon font is now downloadable in your favorite formats: <b>.svg</b>, <b>.png</b>, and <b>.webp</b>.</p>
-                        <p>Whether you're building a sleek UI, crafting a pitch-perfect presentation, or prototyping your next big idea, Foricon now gives you the freedom to scale with precision using crisp <b>SVGs</b>, drop into any project with ready-to-use <b>PNGs</b>, or optimize for the web with lightning-fast <b>WebP</b> files. No more workarounds. No more compromises. Just beautiful, flexible icons - exactly how you need them.</p>
+                        <p>Whether you&apos;re building a sleek UI, crafting a pitch-perfect presentation, or prototyping your next big idea, Foricon now gives you the freedom to scale with precision using crisp <b>SVGs</b>, drop into any project with ready-to-use <b>PNGs</b>, or optimize for the web with lightning-fast <b>WebP</b> files. No more workarounds. No more compromises. Just beautiful, flexible icons - exactly how you need them.</p>
                     </div>
                     <div className={cssStyle.detailed}>
                         <h3>Added</h3>
@@ -457,7 +457,7 @@ export default function PageClient() {
                         <p>We have reworked our entire icon set with a grid-based approach to bring harmony and consistency to every visual element. Say goodbye to uneven sizing - our newly redesigned icons are sleek, balanced, and easier on the eyes, making every interaction feel more refined.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0VhVmb51C4hAh5N1sP3tnDEkq0GdyzgRZb6YKjRkcMI2eHP0Gbnmlfe0twyB4tKvShF_hb1NctKtVjgykIcgGu5C6usFo5BHs_Lbu92k8jDkGmdOu7c2wuNwPvqWLrRqnrqtzq1uFlmJ1jHExjSFGxl7fXvuu-QmtWGNNpLwlzrsAxam_H4fPmkVZwhw/s1600/beta2-redesign-icons.png'/>
                         <h3>Foricon Music on Mobile: Now Even More Sleek and Stress-Free</h3>
-                        <p>The mobile player page in <Link target='_blank' href='/stream-chilzymusic'>Foricon Music</Link> has been completely redesigned with a cleaner, more intuitive layout, along with smoother controls, and a more immersive feel. Whether you're streaming your favorite tracks or exploring new sounds, the new UI makes every moment more enjoyable.</p>
+                        <p>The mobile player page in <Link target='_blank' href='/stream-chilzymusic'>Foricon Music</Link> has been completely redesigned with a cleaner, more intuitive layout, along with smoother controls, and a more immersive feel. Whether you&apos;re streaming your favorite tracks or exploring new sounds, the new UI makes every moment more enjoyable.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEga5ajK89gPtaROPSwIxqc7gnGTvEEsSyMJ8wrGp_-0kpL8IVR2qAwHLPX9drAwc6l4UG50vN2wWvQhfHqzEfKafrRbKtTsPoIN6aChCxPvvKQ1MnTSvqSlOzTWMWk42MC2SpPoqAOdknhrQQ_LXipUn-1vUn3qVYIxsssYDwRf2zzso0jjAMVwCIt1Zk8/s1600/beta2-foricon-music-mobile.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -666,7 +666,7 @@ export default function PageClient() {
                     <div className={cssStyle.featured}>
                         <h3>Introducing Foricon Fotorno: Brand New Ultimate Image Editing Companion</h3>
                         <p><Link target='_blank' href='/fotorno'>Foricon Fotorno</Link> brings a seamless editing experience along with some generative AI tools, which means whether you need to recolor, replace, or remove elements from your images, Fotorno makes the process simplified and effortless.</p>
-                        <p>Say goodbye to long hours of frustrating tweaking, now thanks to convenient and intuitive tools powered by cutting-edge technology, you can edit and enhance your visuals in seconds - no complicated steps, no steep learning curve, just seamless editing at your fingertips. Whether you're a professional designer or simply someone who wants to enhance their photos, Foricon Fortono adapts to your needs and makes image editing a breeze.</p>
+                        <p>Say goodbye to long hours of frustrating tweaking, now thanks to convenient and intuitive tools powered by cutting-edge technology, you can edit and enhance your visuals in seconds - no complicated steps, no steep learning curve, just seamless editing at your fingertips. Whether you&apos;re a professional designer or simply someone who wants to enhance their photos, Foricon Fortono adapts to your needs and makes image editing a breeze.</p>
                         <img src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjo9hYxk5xXJdRv-UbdMS8b6Pvab5wcuGPavZLyu3uiWXHuZL74ReiIk5nOixuBG2SOKDHPTc9aGJkjkFIpRGQLO-fnLh0S0nMjy7_B6my8PquIzXt1c2odxEenVidfvCQ7y9SwQct2PaGDKmT6fo8UNyD5NUHYM8AVVQArNR2suF4dvAxISAlkMYJe_NA/s1600/beta1-foricon-fortono.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1005,7 +1005,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Always on Time With the New Clock Icons</h3>
-                        <p>Time waits for no one, but now, with our sleek and stylish clock icons, you will always be right on time. These new icons are designed to enhance your projects with precision and style. Whether you're working on scheduling apps, digital planners, or simply adding a touch of punctuality to your designs, our clock icons have got you covered.</p>
+                        <p>Time waits for no one, but now, with our sleek and stylish clock icons, you will always be right on time. These new icons are designed to enhance your projects with precision and style. Whether you&apos;re working on scheduling apps, digital planners, or simply adding a touch of punctuality to your designs, our clock icons have got you covered.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhA-5llycCHwXhp2P9tB4BEOb1Kbs6zm5XhDnRG5ZiFUDLBYEN9sY0JNkciRQKpz7k_kFTXNxKY8vNCRCbBKj0WjaybbSs1ddWBnmKZLg3Y7Gq3KbhswjcusnsXur_MV0S_FFhmpYZuGO39MkDWQg_N1fEswRWHfbxOAK8D4qZ_n0kJzNzIPgwe8Rim144/s1600/beta1-clock-icons.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1169,7 +1169,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Sing Together With Newly Added Lyrics in Foricon Music</h3>
-                        <p>Get ready to elevate your music experience with the latest feature in Foricon Music: Lyrics! Whether you're passionate about karaoke or simply enjoy singing along, this new addition lets you follow the words to your favorite songs effortlessly. Dive into your music library and let the lyrics guide you, making every listening session more enjoyable and immersive.</p>
+                        <p>Get ready to elevate your music experience with the latest feature in Foricon Music: Lyrics! Whether you&apos;re passionate about karaoke or simply enjoy singing along, this new addition lets you follow the words to your favorite songs effortlessly. Dive into your music library and let the lyrics guide you, making every listening session more enjoyable and immersive.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEil9kxrO6zb5ZQNP0q1O-4RXkxwyDTc-o979FGlacII1T0Na993uZlRKvHqQyrhYv1ce3jDlR7hOU5bbXqeWQfl46mHjAqvY8hkZcEy7rTaJuEW_S7Kxfi_7uMPZJL39BDCK1xchkRaO1kC-ZT1HfEKEKFUNa5NTLPmlzGAuxrbcJIJkyYXBIgnOEMWNMA/s1600/beta1-foricon-music-lyrics.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1315,7 +1315,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Brand New Place for Foricon Community - Foricon Hub</h3>
-                        <p>Foricon Hub, our brand-new forum designed for you, has launched along with Alpha 9.6! Whether you're looking to solve a problem, ask questions, or request new icons, Foricon Hub is the place to be.</p>
+                        <p>Foricon Hub, our brand-new forum designed for you, has launched along with Alpha 9.6! Whether you&apos;re looking to solve a problem, ask questions, or request new icons, Foricon Hub is the place to be.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMM3BmLHJhxLNw2oJp7uPEZEbMS_YfpT2fx8IH3o96salTKALmH6rqTv51rKURI3r8SEiT3_cfTDT3dqc5RpYl1JCjMtTTVyZkGUnjeVDjt3EdZ271sqDBJYPdpSN-GIY7ji1lT5gBHuSMMkqMjEX0yN5yzZQ7s69NFnN8vGMgvCmKADWf699Z-y63zeQ/s1600/alpha9-hub.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1365,7 +1365,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>New Icons in Text Formatting Category</h3>
-                        <p>Alpha 9.4 came with the addition of 25 brand-new icons to our <Link target='_blank' href='/search?categories=text-formatting'>Text formatting</Link> category. These icons are designed to enhance your projects with style and precision. Whether you're working on web design, mobile apps, or print media, these new icons will help you highlight your text formatting skills effortlessly.</p>
+                        <p>Alpha 9.4 came with the addition of 25 brand-new icons to our <Link target='_blank' href='/search?categories=text-formatting'>Text formatting</Link> category. These icons are designed to enhance your projects with style and precision. Whether you&apos;re working on web design, mobile apps, or print media, these new icons will help you highlight your text formatting skills effortlessly.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZWOpoed_UHrzE8064hu2ZOMz06nU_qNwnuO_mCi7CjI9S-D7SUF51mnmqarG8MV30lQI3czNTfPLHUd2oawpGoWyFquPBZWNTvOx_AtN2xiuyD2UTBK-zkc29pbQ5gyUV2RBRi0qV3FosxLxLSwhIHmH-CuLSLdGTiZr_VAM_0qfQSzNBuNZI1miFJYI/s1600/alpha9-textformatting.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1975,7 +1975,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Allow Domains to Use Installation Script</h3>
-                        <p>To prevent unauthorized use of our installation scripts, we've added a domain restriction option for all accounts. Simply add any domains you want using our installation script.</p>
+                        <p>To prevent unauthorized use of our installation scripts, we&apos;ve added a domain restriction option for all accounts. Simply add any domains you want using our installation script.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAehZ9MSOLZg8g3SeQTEmb75mls0WdH7tuQLaEnc5zzunHZA_S1-Vc3HZKNKzsB48sLhVfjW02WdjW2zcvDD56XLodwkoBFRMH9FWWXCa8fVNiBu9rXudS7PIbOHyz8WS52jpMxKdN6SF5rKg4l98HhB1-veIgwzU8bajq8Xuims_15LuZ79QonAn8tik/s1600/alpha8-limitdomains.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1996,7 +1996,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>New Look to Foricon!</h3>
-                        <p>Updating website design is an important step in maintaining its relevance and effectiveness. New designs can improve user experience, align with current trends, and enhance overall website performance. Alpha 8 has a completely new design and we've also redesigned a lot of the pages to accommodate this big update!</p>
+                        <p>Updating website design is an important step in maintaining its relevance and effectiveness. New designs can improve user experience, align with current trends, and enhance overall website performance. Alpha 8 has a completely new design and we&apos;ve also redesigned a lot of the pages to accommodate this big update!</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVPvFliGgweMQL-aecbejU4dquzdkJForbkG7IZDOY2yfE5ebGHtoSohyphenhyphenukduAZKexh8cEQm2V-dsbcpVYFRcpSKkKBXiUbgrnKf8Fy2nImY5PB9ljH7CIaYuJATCC5iulNqGrQX_YStiqCHrxiDpboSKm570Oh5fG2RK7s1WTDeEpGNfSPAKhgKaasCA/s1600/alpha8-new-look.png'/>
                         <h3>Remade Icons</h3>
                         <p>Our icons now even have the higher quality without paying any money. Why hesitant? Try using our icons today!</p>
