@@ -533,7 +533,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>A Borderline Icon Extravaganza!</h3>
-                        <p>This update brings a fresh set of "border" icons - lots of them! From <Link target='_blank' href='/search?k=border-none'>border-none</Link> to <Link target='_blank' href='/search?k=border-all'>border-all</Link> icons, there&apos;s a whole lineup waiting to boost your creativity. We also made a bunch of improvements in Foricon Music, including a cleaner layout, better translations, and snappier mobile responsiveness.</p>
+                        <p>This update brings a fresh set of &quot;border&quot; icons - lots of them! From <Link target='_blank' href='/search?k=border-none'>border-none</Link> to <Link target='_blank' href='/search?k=border-all'>border-all</Link> icons, there&apos;s a whole lineup waiting to boost your creativity. We also made a bunch of improvements in Foricon Music, including a cleaner layout, better translations, and snappier mobile responsiveness.</p>
                     </div>
                     <div className={cssStyle.detailed}>
                         <h3>Added</h3>
@@ -986,7 +986,7 @@ export default function PageClient() {
                         </ul>
                         <h3>Updated / Changed</h3>
                         <ul className='list-layout'>
-                            <li>Remove icon animation by using <span className='small-code'>setAnimation()</span> with <span className='small-code'>null</span> for <span className='small-code'>animationName</span> instead of <span className='small-code'>"none"</span></li>
+                            <li>Remove icon animation by using <span className='small-code'>setAnimation()</span> with <span className='small-code'>null</span> for <span className='small-code'>animationName</span> instead of <span className='small-code'>&quot;none&quot;</span></li>
                         </ul>
                         <h3>Fixed</h3>
                         <ul className='list-layout'>
@@ -1470,7 +1470,7 @@ export default function PageClient() {
                 </div>
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
-                        <h3>Introducing The New "Chilzy Music"</h3>
+                        <h3>Introducing The New &quot;Chilzy Music&quot;</h3>
                         <p>Chilzy Music has been renamed to Foricon Music! This change reflects our commitment to evolving and enhancing your music experience. While our name has changed, our dedication to providing you with the best music remains the same. Stay tuned for more updates and new features coming your way!</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_eWqyfrT7V334o2wX1eS0oaPc-u0QbwCfs0ozZvY5Sb_kVqy7wo5HRyLRrpXp-6yaB3iovdsc8e1PZXrRxo_s0Dy1bEu2c7dUMDxF3ie3xD2raLHd8kPZtwgUNbuh0ohS7ldkxn7jkGPeo7QA2Qdg2qeEfjbTTUwdKWpMYa3YPlN2r37nZ877IfmobVY/s1600/foricon-music-banner.png'/>
                     </div>
@@ -1682,7 +1682,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>New Mathematic Icons</h3>
-                        <p>Now you can "calculate" directly on Foricon. <Link target='_blank' href='/search'>Browse it now!</Link></p>
+                        <p>Now you can &quot;calculate&quot; directly on Foricon. <Link target='_blank' href='/search'>Browse it now!</Link></p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTd6V6gHEYK0qKu_FdsIsrObiNrwGNKSgNL-VMkr5nObOenm9NcVXA5JZYLa4rXJ6z_l6qsnamZ_eFkR3-1QVuufVtVbsvC6Xp5YtWbAgIKyJFljiEG2k9OJdZ3KiAVRp3pT3aa67InJD6KxhltPRoMqh9Y8jEBJJbA2Wj7kRxmQTPVzDjUTLMmuwTKG4/s1600/math.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
