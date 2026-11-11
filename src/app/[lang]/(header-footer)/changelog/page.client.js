@@ -50,7 +50,7 @@ export default function PageClient() {
                         </ul>
                         <h3>Fixed</h3>
                         <ul className='list-layout'>
-                            <li>Site's bugs</li>
+                            <li>Site&apos;s bugs</li>
                         </ul>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ export default function PageClient() {
                         </ul>
                         <h3>Fixed</h3>
                         <ul className='list-layout'>
-                            <li>Site's bugs</li>
+                            <li>Site&apos;s bugs</li>
                         </ul>
                     </div>
                 </div>
@@ -101,13 +101,13 @@ export default function PageClient() {
                         <h3>Updated / Changed</h3>
                         <ul className='list-layout'>
                             <li>Moved the shortcut to <Link target='_blank' href='/account'>Account</Link> from inside <b>All</b> menu to the <b>header</b></li>
-                            <li>Optimized the site's codes</li>
+                            <li>Optimized the site&apos;s codes</li>
                             <li>Changed the icon for <Link target='_blank' href='//foricon-dev.blogspot.com/search?c=arrows'>Arrows</Link> category from <Link target='_blank' href='/search?k=arrow-down'>arrow-down</Link> to <Link target='_blank' href='/search?k=arrows-repeat'>arrows-repeat</Link></li>
                             <li>Changed the icon for <Link target='_blank' href='//foricon-dev.blogspot.com/search?c=writing'>Writing</Link> category from <Link target='_blank' href='/search?k=file-lines'>file-lines</Link> to <Link target='_blank' href='/search?k=paragraph'>paragraph</Link></li>
                         </ul>
                         <h3>Fixed</h3>
                         <ul className='list-layout'>
-                            <li>Site's bugs</li>
+                            <li>Site&apos;s bugs</li>
                         </ul>
                     </div>
                 </div>
@@ -122,7 +122,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Personalize to Improve Your Coding Experience</h3>
-                        <p>Your <Link target='_blank' href='/account'>Account</Link> page now comes with fresh <b>personalization options</b>! The first two features - <b>Codebox's font</b> and <b>Indentation space</b> - let you tailor your workspace to match your style. More personalization tools are on the way, so consider this just the beginning.</p>
+                        <p>Your <Link target='_blank' href='/account'>Account</Link> page now comes with fresh <b>personalization options</b>! The first two features - <b>Codebox&apos;s font</b> and <b>Indentation space</b> - let you tailor your workspace to match your style. More personalization tools are on the way, so consider this just the beginning.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPzjk_sqlElZ678Ia-ezX2lVSqUv7Y5gu1rNEobuZZmmPMWniqYwX5bZrXDcDaARNPb02YtnEEdniJwD5A63FycIX_sUHDnKg_aNWfsmTnTQ4winxV87-6yC0mEIsQ0P9UO-tZXrVihJXuMBTSD-ZIDNDNrmMp4K4sH-2zmnMXXxOb8MUgBlxD43gdp4Q/s1600/beta2-codebox-font-&amp;-indent.png'/>
                         <h3>Smarter Syntax, Seamless Flow</h3>
                         <p>Across the site, we've supercharged the <b>syntax highlighting</b> mechanism for clarity and precision. In <Link target='_blank' href='/hub'>Foricon Hub</Link>, you'll also enjoy <b>automatic indentation</b> for cleaner code, and <b>quick keyboard shortcuts</b> to indent, outdent, or comment multiple lines at once</p>
@@ -163,7 +163,7 @@ export default function PageClient() {
                             <li><b>Likes</b> and <b>dislikes</b> for comment in <Link target='_blank' href='/hub'>Foricon Hub</Link></li>
                             <li><b>Personalization</b> is now available in <Link target='_blank' href='/account'>Account</Link>
                                 <ul className='list-layout'>
-                                    <li>Codebox's font: <b>Consolas</b> (default), <b>Fira Code</b>, <b>Source Code Pro</b> and <b>DM Mono</b></li>
+                                    <li>Codebox&apos;s font: <b>Consolas</b> (default), <b>Fira Code</b>, <b>Source Code Pro</b> and <b>DM Mono</b></li>
                                     <li>Indentation space</li>
                                 </ul>
                             </li>
@@ -362,7 +362,7 @@ export default function PageClient() {
                             <li>Login history tracker</li>
                             <li>A new sub-page to view login history in <Link target='_blank' href='/account'>Account</Link></li>
                             <li><b>Foricon Package</b> now retries if it takes too long to recieve data</li>
-                            <li>Interact animation for the <b>All menu</b> toggle's icon</li>
+                            <li>Interact animation for the <b>All menu</b> toggle&apos;s icon</li>
                         </ul>
                     </div>
                 </div>
@@ -451,7 +451,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Foricon Enters the Next Phase of Beta</h3>
-                        <p>October marks a bold new chapter for Foricon as we unveil <b>Beta 2.0</b> (or simply <b>B2</b>) - a milestone shaped by months of refinement, creativity, and user-first thinking. This release isn't just an update - it's a transformation. From visual polish to smarter interactions, <b>B2</b> brings a wave of enhancements designed to elevate your experience across the board.</p>
+                        <p>October marks a bold new chapter for Foricon as we unveil <b>Beta 2.0</b> (or simply <b>B2</b>) - a milestone shaped by months of refinement, creativity, and user-first thinking. This release isn&apos;t just an update - it&apos;s a transformation. From visual polish to smarter interactions, <b>B2</b> brings a wave of enhancements designed to elevate your experience across the board.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE29Xrd1Nw11MGPe2WMcdOZNpNstJ9P8sSTxt2eOqVQDA6FIXkr1CcMslU5W5uWEKXtmBIlGIVeXOn4jhyphenhyphentGv4Oo3FEHI34CgPw3xFxmYkrZCw7prNXFpklacesyjR5iKyZPQk4fVS51OGPWAuGrcf95dViuHGpk-IZumFXBd4JZYizZB39grvyhamSD0/s1600/beta2-introduce.png'/>
                         <h3>Iconography, Reimagined</h3>
                         <p>We have reworked our entire icon set with a grid-based approach to bring harmony and consistency to every visual element. Say goodbye to uneven sizing - our newly redesigned icons are sleek, balanced, and easier on the eyes, making every interaction feel more refined.</p>
@@ -466,7 +466,7 @@ export default function PageClient() {
                             <li>Many new icons and icon variations</li>
                             <li><b>Icon Families</b> section in <Link target='_blank' href='/'>Home</Link></li>
                             <li>Version select box in <Link target='_blank' href='/search'>Search</Link></li>
-                            <li>Icon's categories are now showed on <b>the bar</b> in <Link target='_blank' href='/search'>Search</Link></li>
+                            <li>Icon&apos;s categories are now showed on <b>the bar</b> in <Link target='_blank' href='/search'>Search</Link></li>
                             <li>Area selection feature for <b>Generative remove</b> in <Link target='_blank' href='/fotorno'>Foricon Fotorno</Link></li>
                             <li>Feature to edit your posts in <Link target='_blank' href='/hub'>Foricon Hub</Link></li>
                             <li>Documents about <span className='small-code'>toggleIconOnHover()</span>, <span className='small-code'>removeToggleIconOnHover()</span>, <span className='small-code'>toggleStyleOnHover()</span>, <span className='small-code'>removeToggleStyleOnHover()</span> in <Link target='_blank' href='/docs'>Docs</Link></li>
@@ -533,7 +533,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>A Borderline Icon Extravaganza!</h3>
-                        <p>This update brings a fresh set of "border" icons - lots of them! From <Link target='_blank' href='/search?k=border-none'>border-none</Link> to <Link target='_blank' href='/search?k=border-all'>border-all</Link> icons, there's a whole lineup waiting to boost your creativity. We also made a bunch of improvements in Foricon Music, including a cleaner layout, better translations, and snappier mobile responsiveness.</p>
+                        <p>This update brings a fresh set of "border" icons - lots of them! From <Link target='_blank' href='/search?k=border-none'>border-none</Link> to <Link target='_blank' href='/search?k=border-all'>border-all</Link> icons, there&apos;s a whole lineup waiting to boost your creativity. We also made a bunch of improvements in Foricon Music, including a cleaner layout, better translations, and snappier mobile responsiveness.</p>
                     </div>
                     <div className={cssStyle.detailed}>
                         <h3>Added</h3>
@@ -921,9 +921,9 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>New place for your Foricon Hub content</h3>
-                        <p>In a world where every moment counts, why not make the most of your content too? Introducing <Link target='_blank' href='/my-content-library'>My Content Library</Link> – the ultimate hub that will revolutionize the way you manage and access your Foricon Hub content such as images live never before. But this versatile library is not just for images; it's a dynamic hub for all your creative assets.</p>
+                        <p>In a world where every moment counts, why not make the most of your content too? Introducing <Link target='_blank' href='/my-content-library'>My Content Library</Link> – the ultimate hub that will revolutionize the way you manage and access your Foricon Hub content such as images live never before. But this versatile library is not just for images; it&apos;s a dynamic hub for all your creative assets.</p>
                         <p>Imagine effortlessly browsing through your images, documents, and other multimedia files, all in one intuitive space. <Link target='_blank' href='/my-content-library'>My Content Library</Link> is designed to streamline your workflow, making it easier for you to find, organize, and use your content.</p>
-                        <p>But that's not all! Stay tuned for exciting updates as we integrate the library into future file-related services, enhancing your Foricon Hub experience even further.</p>
+                        <p>But that&apos;s not all! Stay tuned for exciting updates as we integrate the library into future file-related services, enhancing your Foricon Hub experience even further.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFbGt9Nkx5sdXbUqEpdY0M1jr0oTrw7WCrSAVj9pj0u1SBiQ4F4f6wIBdjC6EdGGCFPKChHko3DGtp5eb_Wo74zUdhrairoGPmCH_garYaxN5vZpv841HS_7smBd9iBjzUcv0T0sOifivm3EPOhrawTPFwM8U35xnRhLw0_3kfGFqPuMBtRVu_vx24D9w/s1600/beta1-my-content-library.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1154,7 +1154,7 @@ export default function PageClient() {
                     <div className={cssStyle.detailed}>
                         <h3>Fixed</h3>
                         <ul className='list-layout'>
-                            <li><Link target='_blank' href='/stream-chilzymusic'>Foricon Music</Link> replay button didn't save when enabled and disabled</li>
+                            <li><Link target='_blank' href='/stream-chilzymusic'>Foricon Music</Link> replay button didn&apos;t save when enabled and disabled</li>
                         </ul>
                     </div>
                 </div>
@@ -1259,7 +1259,7 @@ export default function PageClient() {
                         </ul>
                         <h3>Fixed</h3>
                         <ul className='list-layout'>
-                            <li><Link target='_blank' href='/search?k=file-code'>file-code</Link> Duotone Solid secondary layer which previously didn't match with primary one</li>
+                            <li><Link target='_blank' href='/search?k=file-code'>file-code</Link> Duotone Solid secondary layer which previously didn&apos;t match with primary one</li>
                         </ul>
                     </div>
                 </div>
@@ -1337,7 +1337,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Fully Redesigned Foricon Logo</h3>
-                        <p>From a hexagon to Foricon's F, this fresh new design represents our commitment to innovation and excellence. Our new logo embodies the spirit of our brand, reflecting our values and vision for the future.</p>
+                        <p>From a hexagon to Foricon&apos;s F, this fresh new design represents our commitment to innovation and excellence. Our new logo embodies the spirit of our brand, reflecting our values and vision for the future.</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg98rxwrGpg0g3IXb5BvdTtOfgJBhpK3Svw7o5MjlJiqQdkbGD9CrHCWsFizMf1PZCrHdtYCyTokttEChfoZGXmbuGhPj6ME7PhoORsDqJZqBbv7i4UO9AY4G7mOTb9534imG9jAMLyLKR5ZVvU6R_pKmeCEO5r6dl12S7Py-MytLoDG6xmE64hwsID99Y/s1600/alpha9-newlogo.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
@@ -1714,7 +1714,7 @@ export default function PageClient() {
                 <div className={cssStyle.content}>
                     <div className={cssStyle.featured}>
                         <h3>Brand New Language - Russian</h3>
-                        <p>Alpha 8.10 is set to include Russian language support, expanding its accessibility and user-friendliness. This addition is part of Foricon's target to enhancing user experience and providing more inclusive services. With this update, Russian-speaking users will be able to navigate and utilize Foricon's features in their native language, making the platform even more versatile and global.</p>
+                        <p>Alpha 8.10 is set to include Russian language support, expanding its accessibility and user-friendliness. This addition is part of Foricon&apos;s target to enhancing user experience and providing more inclusive services. With this update, Russian-speaking users will be able to navigate and utilize Foricon&apos;s features in their native language, making the platform even more versatile and global.</p>
                     </div>
                     <div className={cssStyle.detailed}>
                         <h3>Added</h3>
@@ -1935,7 +1935,7 @@ export default function PageClient() {
                         <h3>More Things To Do in Your Account!</h3>
                         <p>Now you can change your password and your email right in <Link target='_blank' href='/account'>Account</Link>. We also improved every account security.</p>
                         <h3>New emojis</h3>
-                        <p>Instead using random emoji images on Google for your project, why don't you use our brand new emoji icons? First 12 emojis will be released in Alpha 8.2</p>
+                        <p>Instead using random emoji images on Google for your project, why don&apos;t you use our brand new emoji icons? First 12 emojis will be released in Alpha 8.2</p>
                         <img src='//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjgdagCJamNH_1VoYjDvqc0jKFGemJUx6kdkMLdSdsX5c9jyYiP6iBDalKQAfIfMKUJ38nxp1XnvclPyCRF76OS7HgzOW2Ltp0RUbFZqRxP3jI5mt3HHYKEEOvTzEiD9r9OkwORNos7PWwiSKmJvvd1S-OoiCAELhEf9OcZ-D-QZRzHxD0SC1etNOGnGk/s1600/alpha8-emojis.png'/>
                     </div>
                     <div className={cssStyle.detailed}>
