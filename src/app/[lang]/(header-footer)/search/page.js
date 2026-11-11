@@ -1,4 +1,4 @@
-import PageClient from "./page.client";
+import PageClient from './page.client';
 
 export function generateMetadata({ params = { lang: 'en' } }) {
     let { lang } = params;
