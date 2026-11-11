@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import cssStyle from 'page.module.css';
+import cssStyle from './page.module.css';
 import { Lower } from 'Com/string-tools';
 import Link from 'next/link';
 
