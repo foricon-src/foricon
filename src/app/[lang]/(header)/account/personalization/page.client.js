@@ -12,15 +12,21 @@ export default function PageClient() {
     let { user } = useContext(UserContext);
     let updateUser = useUpdateUser();
 
-    let [ font, setFont ] = useState('');
-    let [ indent, setIndent ] = useState();
+    let [ font, setFont ] = useState(null);
+    let [ indent, setIndent ] = useState(null);
+    let [ currentFont, setCurrentFont ] = useState();
+    let [ currentIndent, setCurrentIndent ] = useState();
+
+    let cond = !font && !indent || font == currentFont && indent == currentIndent;
 
     let { lang } = document.documentElement;
-    
-    let { font: f = 'cons', indent: i = 4 } = user?.doc?.personalization || {};
-    let cond = !font && !indent || font == f && indent == i;
 
     usePage();
+    useEffect(() => {
+        let { font = 'cons', indent = 4 } = user?.doc?.personalization || {};
+        setCurrentFont(font);
+        setCurrentIndent(indent);
+    }, [ user ])
 
     return (
         <div className={cssStyle.personalization}>
@@ -160,8 +166,8 @@ ${' '.repeat(indent)}}
                     type='button'
                     inert={cond}
                     onClick={() => {
-                        setFont(f);
-                        setIndent(i);
+                        setFont(null);
+                        setIndent(null);
                     }}
                 >{
                     {

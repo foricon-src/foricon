@@ -15,8 +15,8 @@ import Join from './join';
  */
 export default function Code({ children, codeLang = 'HTML', className, ...rest }) {
     let { user } = useContext(UserContext);
-    let { indent } = user?.doc?.personalization || 4;
 
+    let [ indent, setIndent ] = useState(0);
     let [ html, setHtml ] = useState('');
     let [ expanded, setExpanded ] = useState(true);
 
@@ -69,6 +69,9 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
 
         return () => canceled = true;
     }, [ children ])
+    useEffect(() => {
+        setIndent(user?.doc.personalization || 4);
+    }, [ user ])
 
     if (typeof children != 'string') {
         console.error('Content must be a string');
