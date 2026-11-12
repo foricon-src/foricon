@@ -28,6 +28,7 @@ export default function PageClient() {
         setCurrentFont(font);
         setCurrentIndent(indent);
     }, [ user ])
+    useEffect(() => { console.log(`"${' '.repeat(calcIndent)}"`, calcIndent) }, [ calcIndent ])
 
     return (
         <div className={cssStyle.personalization}>
