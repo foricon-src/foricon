@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import Code from 'Com/f-code';
 import { Range } from 'Com/range';
 import { useUpdateUser, UserContext } from 'Com/user';
@@ -18,9 +18,11 @@ export default function PageClient() {
     let [ currentIndent, setCurrentIndent ] = useState();
 
     let calcIndent = indent || currentIndent;
-    let cond = !font && !indent || font == currentFont && indent == currentIndent;
-    useEffect(() => { console.log(!font, !indent, font == currentFont, indent == currentIndent) }, [ cond ]);
-
+    let cond = useMemo(
+        () => !font && !indent || font == currentFont && indent == currentIndent,
+        [ font, currentFont, indent, currentIndent ],
+    )
+    
     let { lang } = document.documentElement;
 
     usePage();
