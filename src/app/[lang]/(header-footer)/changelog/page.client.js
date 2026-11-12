@@ -20,7 +20,7 @@ export default function PageClient() {
                     icon: 'list',
                 }
             ].map(
-                ({ value, icon }) => <li key={value} className={value == view} onClick={() => setView(value)}>
+                ({ value, icon }) => <li key={value} className={value == view && 'active'} onClick={() => setView(value)}>
                     <f-icon icon={icon} i-s={icon == 'list' && 'outline'}/>
                     <span>{value}</span>
                 </li>
