@@ -112,7 +112,7 @@ ${' '.repeat(indent)}}
                         es: 'Espacio de indentación',
                         ru: 'Пространство отступа',
                     }[lang]
-                }: {indent}</span>
+                }: {indent || currentIndent}</span>
                 <Range name='indent' min='1' max='6' step='1' dfValue='2' value={indent || currentIndent} onInput={e => setIndent(e.currentTarget.value)}/>
                 <button
                     className='primary'

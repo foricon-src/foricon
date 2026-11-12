@@ -70,6 +70,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
         return () => canceled = true;
     }, [ children ])
     useEffect(() => {
+        console.log(user)
         setIndent(user?.doc.personalization || 4);
     }, [ user ])
 
