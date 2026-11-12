@@ -24,6 +24,8 @@ export default function PageClient() {
         () => !font && !indent || font == currentFont && indent == currentIndent,
         [ font, currentFont, indent, currentIndent ],
     )
+    useEffect(() => { console.log(font) }, [ font ])
+    useEffect(() => { console.log(indent) }, [ indent ])
     useEffect(() => { console.log(font, currentFont, indent, currentIndent) }, [ cond ])
     
     let { lang } = document.documentElement;
