@@ -25,7 +25,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
     useEffect(() => {
         let canceled = false;
         let indentation = ' '.repeat(indent);
-        console.log(children);
+        
         (async () => {
             let res = (await highlighter).codeToHtml(children.replaceAll('@ind', indentation), {
                 lang: Lower(codeLang),
@@ -38,7 +38,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
                     res.split('<br>').map((line, i) => {
                         let lineNum = `<span class='line-num'>${i + 1}</span>`;
                         let indicator = '<div class="indicator"></div>';
-
+                        
                         if (!line || /^\s*$/.test(line)) {
                             let chunks = [ '', ...Array.from({ length: lastDepth }, () => indentation) ];
                             return `${lineNum}<span class='line'>${chunks.join(indicator)}</span>`;

@@ -91,13 +91,13 @@ export default function PageClient() {
 ${' '.repeat(calcIndent)}<!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
-${' '.repeat(calcIndent)}let a = JSON.parse(localStorage.getItem('a'));
-${' '.repeat(calcIndent)}if (a.length) {
-${' '.repeat(calcIndent * 2)}a.map(i => i == 'data' || i != 'money');
-${' '.repeat(calcIndent)}}
-${' '.repeat(calcIndent)}for (let i in a) {
-${' '.repeat(calcIndent * 2)}a[i] += '_str'
-${' '.repeat(calcIndent)}}
+${' '.repeat(2)}let a = JSON.parse(localStorage.getItem('a'));
+${' '.repeat(2)}if (a.length) {
+${' '.repeat(2 * 2)}a.map(i => i == 'data' || i != 'money');
+${' '.repeat(2)}}
+${' '.repeat(2)}for (let i in a) {
+${' '.repeat(2 * 2)}a[i] += '_str'
+${' '.repeat(2)}}
 </script>`}</Code>
                 <span>{
                     {
