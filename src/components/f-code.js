@@ -38,6 +38,8 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
                     res.split('<br>').map((line, i) => {
                         let lineNum = `<span class='line-num'>${i + 1}</span>`;
                         let indicator = '<div class="indicator"></div>';
+
+                        console.log(line, indent)
                         
                         if (!line || /^\s*$/.test(line)) {
                             let chunks = [ '', ...Array.from({ length: lastDepth }, () => indentation) ];
@@ -50,6 +52,8 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
                         let [ , span, space, rest ] = match;
                         let chunks = [ '', ...(space.match(new RegExp(`.{1,${indent}}`, 'g')) || []) ];
                         lastDepth = chunks.length - 1;
+
+                        console.log(chunks)
 
                         return `${lineNum}<span class='line'>${span + chunks.join(indicator) + rest}</span>`
                     }).join('')
