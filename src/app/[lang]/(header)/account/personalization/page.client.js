@@ -20,13 +20,12 @@ export default function PageClient() {
     let calcFont = font || currentFont;
     let calcIndent = indent || currentIndent;
 
-    let cond = useMemo(
-        () => !font && !indent || font == currentFont && indent == currentIndent,
-        [ font, currentFont, indent, currentIndent ],
-    )
-    useEffect(() => { console.log(font) }, [ font ])
-    useEffect(() => { console.log(indent) }, [ indent ])
-    useEffect(() => { console.log(font, currentFont, indent, currentIndent) }, [ cond ])
+    let cond = !font && !indent || font == currentFont && indent == currentIndent;
+    
+    useEffect(() => {
+        console.log(font, currentFont, indent, currentIndent);
+        console.log(!font && !indent, font == currentFont && indent == currentIndent);
+    }, [ font, indent, currentFont, currentIndent ])
     
     let { lang } = document.documentElement;
 
