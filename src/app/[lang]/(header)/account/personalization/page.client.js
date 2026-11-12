@@ -16,8 +16,10 @@ export default function PageClient() {
     let [ indent, setIndent ] = useState(null);
     let [ currentFont, setCurrentFont ] = useState();
     let [ currentIndent, setCurrentIndent ] = useState();
-
+    
+    let calcFont = font || currentFont;
     let calcIndent = indent || currentIndent;
+
     let cond = useMemo(
         () => !font && !indent || font == currentFont && indent == currentIndent,
         [ font, currentFont, indent, currentIndent ],
@@ -87,7 +89,7 @@ export default function PageClient() {
                             value: 'sono',
                         },
                     ]}
-                    value={font || currentFont}
+                    value={calcFont}
                     onChange={setFont}
                 />
                 <Code className={font}>{`<div class='box'>
@@ -126,7 +128,12 @@ ${' '.repeat(calcIndent)}}
                     onClick={async () => {
                         try {
                             disable(document.body);
-                            await updateUser({ personalization: { font, indent } });
+                            await updateUser({
+                                personalization: {
+                                    font: calcFont,
+                                    indent: calcIndent,
+                                }
+                            })
                             notify('success', {
                                 en: 'Updated successfully',
                                 vi: 'Cập nhật thành công',
