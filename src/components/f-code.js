@@ -69,10 +69,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
 
         return () => canceled = true;
     }, [ children ])
-    useEffect(() => {
-        console.log(user)
-        setIndent(user?.doc.personalization || 4);
-    }, [ user ])
+    useEffect(() => { setIndent(user?.doc.personalization || 4) }, [ user ]);
 
     if (typeof children != 'string') {
         console.error('Content must be a string');

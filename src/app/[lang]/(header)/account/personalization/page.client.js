@@ -17,13 +17,14 @@ export default function PageClient() {
     let [ currentFont, setCurrentFont ] = useState();
     let [ currentIndent, setCurrentIndent ] = useState();
 
+    let calcIndent = indent || currentIndent;
     let cond = !font && !indent || font == currentFont && indent == currentIndent;
 
     let { lang } = document.documentElement;
 
     usePage();
     useEffect(() => {
-        let { font = 'cons', indent = 4 } = user?.doc?.personalization || {};
+        let { font = 'cons', indent = 4 } = user?.doc.personalization || {};
         setCurrentFont(font);
         setCurrentIndent(indent);
     }, [ user ])
@@ -86,16 +87,16 @@ export default function PageClient() {
                     onChange={setFont}
                 />
                 <Code className={font}>{`<div class='box'>
-${' '.repeat(indent)}<!--<p>Hello World!</p>-->
+${' '.repeat(calcIndent)}<!--<p>Hello World!</p>-->
 </div>
 <script type='module'>
-${' '.repeat(indent)}let a = JSON.parse(localStorage.getItem('a'));
-${' '.repeat(indent)}if (a.length) {
-${' '.repeat(indent * 2)}a.map(i => i == 'data' || i != 'money');
-${' '.repeat(indent)}}
-${' '.repeat(indent)}for (let i in a) {
-${' '.repeat(indent * 2)}a[i] += '_str'
-${' '.repeat(indent)}}
+${' '.repeat(calcIndent)}let a = JSON.parse(localStorage.getItem('a'));
+${' '.repeat(calcIndent)}if (a.length) {
+${' '.repeat(calcIndent * 2)}a.map(i => i == 'data' || i != 'money');
+${' '.repeat(calcIndent)}}
+${' '.repeat(calcIndent)}for (let i in a) {
+${' '.repeat(calcIndent * 2)}a[i] += '_str'
+${' '.repeat(calcIndent)}}
 </script>`}</Code>
                 <span>{
                     {
@@ -112,8 +113,8 @@ ${' '.repeat(indent)}}
                         es: 'Espacio de indentación',
                         ru: 'Пространство отступа',
                     }[lang]
-                }: {indent || currentIndent}</span>
-                <Range name='indent' min='1' max='6' step='1' dfValue='2' value={indent || currentIndent} onInput={e => setIndent(e.currentTarget.value)}/>
+                }: {calcIndent}</span>
+                <Range name='indent' min='1' max='6' step='1' dfValue='2' value={calcIndent} onInput={e => setIndent(e.currentTarget.value)}/>
                 <button
                     className='primary'
                     type='button'
