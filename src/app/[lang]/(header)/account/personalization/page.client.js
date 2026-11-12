@@ -19,6 +19,7 @@ export default function PageClient() {
 
     let calcIndent = indent || currentIndent;
     let cond = !font && !indent || font == currentFont && indent == currentIndent;
+    useEffect(() => { console.log(!font, !indent, font == currentFont, indent == currentIndent) }, [ cond ]);
 
     let { lang } = document.documentElement;
 
