@@ -25,7 +25,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
     useEffect(() => {
         let canceled = false;
         let indentation = ' '.repeat(indent);
-console.log(children)
+        console.log(children);
         (async () => {
             let res = (await highlighter).codeToHtml(children.replaceAll('@ind', indentation), {
                 lang: Lower(codeLang),
