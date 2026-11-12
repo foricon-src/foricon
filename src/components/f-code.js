@@ -25,7 +25,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
     useEffect(() => {
         let canceled = false;
         let indentation = ' '.repeat(indent);
-
+console.log(children)
         (async () => {
             let res = (await highlighter).codeToHtml(children.replaceAll('@ind', indentation), {
                 lang: Lower(codeLang),
@@ -69,7 +69,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
 
         return () => canceled = true;
     }, [ children ])
-    useEffect(() => { setIndent(user?.doc.personalization || 4) }, [ user ]);
+    useEffect(() => { user && setIndent(user.doc.personalization) }, [ user ]);
 
     if (typeof children != 'string') {
         console.error('Content must be a string');
