@@ -21,18 +21,11 @@ export default function PageClient() {
                 }
             ].map(
                 ({ value, icon }) => <li key={value} className={value == view} onClick={() => setView(value)}>
-                    <f-icon icon={icon}/>
+                    <f-icon icon={icon} i-s={icon == 'list' && 'outline'}/>
                     <span>{value}</span>
                 </li>
             )
-        }
-            <li className='active'>
-                <f-icon b1 icon='sparkle'></f-icon><span>Featured</span>
-            </li>
-            <li>
-                <f-icon b1 icon='list' i-s='outline'></f-icon><span>Detailed</span>
-            </li>
-        </ul>
+        }</ul>
         <div className={`${cssStyle.versions} ${cssStyle[Lower(view)]}`}>
             <div>
                 <div className={cssStyle.name}>

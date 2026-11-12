@@ -1,7 +1,7 @@
 .views {
     justify-content: center;
     padding: var(--spacing-medium) 0 12px;
-    position: sticky;
+    position: sticky !important;
     top: 32px;
     background-color: var(--bg-blur);
     backdrop-filter: var(--bg-blur-px);
