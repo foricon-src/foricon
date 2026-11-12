@@ -82,7 +82,7 @@ export default function PageClient() {
                             value: 'sono',
                         },
                     ]}
-                    value={font || f}
+                    value={font || currentFont}
                     onChange={setFont}
                 />
                 <Code className={font}>{`<div class='box'>
@@ -113,7 +113,7 @@ ${' '.repeat(indent)}}
                         ru: 'Пространство отступа',
                     }[lang]
                 }: {indent}</span>
-                <Range name='indent' min='1' max='6' step='1' dfValue='2' value={indent || i} onInput={e => setIndent(e.currentTarget.value)}/>
+                <Range name='indent' min='1' max='6' step='1' dfValue='2' value={indent || currentIndent} onInput={e => setIndent(e.currentTarget.value)}/>
                 <button
                     className='primary'
                     type='button'
