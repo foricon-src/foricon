@@ -68,7 +68,7 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
         })()
 
         return () => canceled = true;
-    }, [ children ])
+    }, [ children, indent ])
     useEffect(() => { user && setIndent(user.doc.personalization.indent) }, [ user ]);
 
     if (typeof children != 'string') {
