@@ -13,11 +13,11 @@ export default function PageClient() {
     let updateUser = useUpdateUser();
 
     let [ font, setFont ] = useState('');
-    let [ indent, setIndent ] = useState(2);
+    let [ indent, setIndent ] = useState();
 
     let { lang } = document.documentElement;
     
-    let { font: f = 'cons', indent: i = 2 } = user?.doc?.personalization || {};
+    let { font: f = 'cons', indent: i = 4 } = user?.doc?.personalization || {};
     let cond = !font && !indent || font == f && indent == i;
 
     usePage();
@@ -95,7 +95,7 @@ ${' '.repeat(indent)}}
                     {
                         en: 'Indentation space',
                         vi: 'Khoảng cách thụt dòng',
-                        fr: 'Espace d\'indentation',
+                        fr: "Espace d'indentation",
                         it: 'spazio di rientro',
                         ko: '들여쓰기 공간',
                         ja: 'インデントスペース',

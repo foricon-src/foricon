@@ -6,7 +6,7 @@ import { Lower } from 'Com/string-tools';
 import Link from 'next/link';
 
 export default function PageClient() {
-    let [ view, setView ] = useState('featured');
+    let [ view, setView ] = useState('Featured');
 
     return <>
         <ul className={`btn-list line-active ${cssStyle.views}`}>{
