@@ -1,17 +1,17 @@
 'use client';
 
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IconContext } from 'Com/icons';
-import { LanguageContext } from 'Com/language';
 import GetFamilyAndStyle from 'Com/get-family-n-style';
 import Code from 'Com/code';
 import { Capital } from 'Com/string-tools';
 import useGo from 'Com/go';
 import Join from 'Com/join';
+import { Range } from 'Com/range';
+import { UserContext } from 'Com/user';
 import { NotFound } from './not-found.client';
 import cssStyle from './page.module.css';
-import { Range } from 'Com/range';
 
 export default function PageClient({ params }) {
     let { family, style, icon, lang } = JSON.parse(params.value);
@@ -19,6 +19,8 @@ export default function PageClient({ params }) {
 
     let router = useRouter();
     let go = useGo();
+
+    let { user } = useContext(UserContext);
     let icons = useContext(IconContext);
 
     let [ isDropdownOpened, setIsDropdownOpened ] = useState(false);
@@ -118,24 +120,11 @@ export default function PageClient({ params }) {
                             }[lang]
                         }</span>
                     </li>
-                    <li className='tooltip top'>
+                    <li className={`tooltip top${user.doc.savedIcons.some(i => i == icon) ? ' active' : ''}`}>
                         <f-icon icon='bookmark'/>
                         <span>{
                             (
-                                true ? {
-                                    en: 'Save',
-                                    vi: 'Lưu',
-                                    fr: 'Sauvegarder',
-                                    it: 'Salva',
-                                    ko: '구하다',
-                                    ja: '保存',
-                                    de: 'Speichern',
-                                    nl: 'Redden',
-                                    da: 'Spare',
-                                    pt: 'Guardar',
-                                    es: 'Ahorrar',
-                                    ru: 'Сохранять',
-                                } :
+                                user.doc.savedIcons.some(i => i == icon) ?
                                 {
                                     en: 'Saved',
                                     vi: 'Đã lưu',
@@ -149,6 +138,20 @@ export default function PageClient({ params }) {
                                     pt: 'Salvo',
                                     es: 'Guardado',
                                     ru: 'Сохранено',
+                                } :
+                                {
+                                    en: 'Save',
+                                    vi: 'Lưu',
+                                    fr: 'Sauvegarder',
+                                    it: 'Salva',
+                                    ko: '구하다',
+                                    ja: '保存',
+                                    de: 'Speichern',
+                                    nl: 'Redden',
+                                    da: 'Spare',
+                                    pt: 'Guardar',
+                                    es: 'Ahorrar',
+                                    ru: 'Сохранять',
                                 }
                             )[lang]
                         }</span>

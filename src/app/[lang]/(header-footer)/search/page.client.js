@@ -13,6 +13,7 @@ import Join from 'Com/join';
 import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 import Select from 'Com/f-select';
+import useToggleSaveIcon from '../toggle-save-icon';
 
 export default function PageClient() {
     let router = useRouter();
@@ -22,13 +23,15 @@ export default function PageClient() {
     let { user } = useContext(UserContext);
     let iconSet = useContext(IconContext);
 
-    let { lang } = document.documentElement;
-
     let [ type, setType ] = useState('');
+
+    let toggleSaveIcon = useToggleSaveIcon();
     
     let topRef = useRef();
     let inputRef = useRef();
     let mainRef = useRef();
+
+    let { lang } = document.documentElement;
     
     let initial = ((params) => {
         if (!params) return {
@@ -105,7 +108,7 @@ export default function PageClient() {
                     ) && (
                         !selectedCategories.length || selectedCategories.every(c => categories.includes(c))
                     )
-                ) && (!inSaved || user.doc.savedIcons.some(i => i.name == name))
+                ) && (!inSaved || user.doc.savedIcons.some(i => i == name))
             })
             .flatMap(icon => {
                 return (
@@ -375,7 +378,6 @@ export default function PageClient() {
         return () => manager.remv();
     }, [])
     useEffect(() => { localStorage.setItem('view', view) }, [ view ]);
-    useEffect(() => { globalThis[user ? 'enable' : 'disable'](elemById('save')) }, [ user ]);
     useEffect(() => {
         if (!selectedIcon) return;
         let { f, s } = GetFamilyAndStyle(selectedIcon.style);
@@ -679,8 +681,8 @@ export default function PageClient() {
                         }</ul>
                     </li>
                     <li
-                        id='save'
                         className={`tooltip top${inSaved ? ' active' : ''}`}
+                        inert={!!user}
                         onClick={() => setInSaved(!inSaved)}
                     >
                         <f-icon icon='bookmark'/>
@@ -897,25 +899,14 @@ export default function PageClient() {
         <div className={cssStyle.bar + (selectedIcon ? ' active' : '')}>
             <div>
                 <h6>{selectedIcon?.name}</h6>
-                <span>
-                    <f-icon icon='bookmark' i-s='outline'/>
+                {user && <span onClick={() => selectedIcon && toggleSaveIcon(selectedIcon.name)}>
+                    <f-icon
+                        icon='bookmark'
+                        i-s={user.doc.savedIcons.some(i => i == selectedIcon?.name) ? 'solid' : 'outline'}
+                    />
                     {
                         (
-                            true ? {
-                                en: 'Save',
-                                vi: 'Lưu',
-                                fr: 'Sauvegarder',
-                                it: 'Salva',
-                                ko: '구하다',
-                                ja: '保存',
-                                de: 'Speichern',
-                                nl: 'Redden',
-                                da: 'Spare',
-                                pt: 'Guardar',
-                                es: 'Ahorrar',
-                                ru: 'Сохранять',
-                            } :
-                            {
+                            user.doc.savedIcons.some(i => i == selectedIcon?.name) ? {
                                 en: 'Saved',
                                 vi: 'Đã lưu',
                                 fr: 'Sauvé',
@@ -928,10 +919,24 @@ export default function PageClient() {
                                 pt: 'Salvo',
                                 es: 'Guardado',
                                 ru: 'Сохранено',
+                            } :
+                            {
+                                en: 'Save',
+                                vi: 'Lưu',
+                                fr: 'Sauvegarder',
+                                it: 'Salva',
+                                ko: '구하다',
+                                ja: '保存',
+                                de: 'Speichern',
+                                nl: 'Redden',
+                                da: 'Spare',
+                                pt: 'Guardar',
+                                es: 'Ahorrar',
+                                ru: 'Сохранять',
                             }
                         )[lang]
                     }
-                </span>
+                </span>}
                 <span onClick={({ ctrlKey }) => {
                     let { f, s } = GetFamilyAndStyle(selectedIcon.style)
                     go(`icon/${f}/${s}/${selectedIcon.name}`, ctrlKey && 'new tab');
