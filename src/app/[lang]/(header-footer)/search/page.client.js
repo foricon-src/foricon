@@ -682,7 +682,7 @@ export default function PageClient() {
                     </li>
                     <li
                         className={`tooltip top${inSaved ? ' active' : ''}`}
-                        inert={!!user}
+                        inert={!user}
                         onClick={() => setInSaved(!inSaved)}
                     >
                         <f-icon icon='bookmark'/>
