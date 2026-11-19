@@ -1,4 +1,6 @@
 .wrapper {
+    --sidebar-width: 300px;
+
     --sidebar: 0;
     --note-panel: 0;
     --saved-panel: 0;
@@ -13,7 +15,7 @@
     width: 100vw;
 
     &:has(:global(.active).sidebar) {
-        --sidebar: 300px;
+        --sidebar: var(--sidebar-width);
     }
     &:has(:global(.active).notePanel) {
         --note-panel: 200px;
@@ -51,6 +53,8 @@
     }
     & > .sidebar {
         grid-area: sidebar;
+        width: var(--sidebar-width);
+        overflow: hidden scroll;
 
         & > div {
             & > h6 {
@@ -63,7 +67,7 @@
     }
     & > .content {
         grid-area: content;
-        padding: var(--spacing-medium) var(--spacing-default);
+        padding: var(--spacing-small) var(--spacing-default) var(--spacing-default);
         overflow-y: scroll;
     }
     & > .notePanel {
