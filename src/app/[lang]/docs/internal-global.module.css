@@ -82,6 +82,7 @@
         grid-area: content;
         padding: var(--spacing-small) var(--spacing-default) var(--spacing-default);
         overflow-y: scroll;
+        justify-self: end;
 
         & > :first-child {
             margin-top: 0;
