@@ -12,20 +12,24 @@ export default function Sidebar() {
     let groups = [
         {
             name: 'Getting Started',
-            pages: {
-                name: 'Introduction',
-                path: '/',
-            },
+            pages: [
+                {
+                    name: 'Setting Up',
+                    path: '/',
+                },
+            ],
         },
         {
-            name: 'Using on Web',
-            pages: {
-                name: 'Basics',
-                path: '/using-on-web/basics',
-            },
+            name: 'Adding Icons',
+            pages: [
+                {
+                    name: 'Basics',
+                    path: '/adding-icons/basics',
+                },
+            ],
         },
     ]
-    
+
     return <div className={cssStyle.sidebar + (layout.sidebar.isOpened ? ' active' : '')}>{
         groups.map(({ name, pages }) => {
             return <div key={name}>
