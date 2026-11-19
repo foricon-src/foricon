@@ -1,5 +1,5 @@
 .wrapper {
-    --sidebar-width: 300px;
+    --sidebar-width: 250px;
 
     --sidebar: 0;
     --note-panel: 0;
@@ -16,12 +16,24 @@
 
     &:has(:global(.active).sidebar) {
         --sidebar: var(--sidebar-width);
+
+        & > .content {
+            padding-left: var(--spacing-small);
+        }
     }
     &:has(:global(.active).notePanel) {
         --note-panel: 200px;
+
+        & > .content {
+            padding-right: var(--spacing-small);
+        }
     }
     &:has(:global(.active).savedPanel) {
         --saved-panel: 200px;
+
+        & > .content {
+            padding-right: var(--spacing-small);
+        }
     }
     
     & > .header {
@@ -54,7 +66,8 @@
     & > .sidebar {
         grid-area: sidebar;
         width: var(--sidebar-width);
-        overflow: hidden scroll;
+        overflow-y: scroll;
+        padding: var(--spacing-small) 0 var(--spacing-small) var(--spacing-small);
 
         & > div {
             & > h6 {
@@ -69,6 +82,13 @@
         grid-area: content;
         padding: var(--spacing-small) var(--spacing-default) var(--spacing-default);
         overflow-y: scroll;
+
+        & > :first-child {
+            margin-top: 0;
+        }
+        & > :last-child {
+            margin-bottom: 0;
+        }
     }
     & > .notePanel {
         grid-area: notePanel;
