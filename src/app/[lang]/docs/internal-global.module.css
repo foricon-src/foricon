@@ -68,6 +68,7 @@
         width: var(--sidebar-width);
         overflow-y: scroll;
         padding: var(--spacing-small) 0 var(--spacing-small) var(--spacing-small);
+        justify-self: end;
 
         & > div {
             & > h6 {
@@ -82,7 +83,6 @@
         grid-area: content;
         padding: var(--spacing-small) var(--spacing-default) var(--spacing-default);
         overflow-y: scroll;
-        justify-self: end;
 
         & > :first-child {
             margin-top: 0;
