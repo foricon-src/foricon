@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
         <LayoutProvider>
             <Header/>
             <Sidebar/>
-            {children}
+            <div className={cssStyle.content}>{children}</div>
             <NotePanel/>
             <SavedPanel/>
         </LayoutProvider>

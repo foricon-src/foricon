@@ -17,7 +17,7 @@ export function generateMetadata({ params: { lang } }) {
     }
 }
 export default function Page() {
-    return <div>
+    return <>
         <h1>Welcome to Foricon Docs!</h1>
-    </div>
+    </>
 }

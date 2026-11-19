@@ -51,9 +51,20 @@
     }
     & > .sidebar {
         grid-area: sidebar;
+
+        & > div {
+            & > h6 {
+                margin-top: 0;
+            }
+            & + div {
+                margin-top: var(--spacing-micro);
+            }
+        }
     }
     & > .content {
         grid-area: content;
+        padding: var(--spacing-medium) var(--spacing-default);
+        overflow-y: scroll;
     }
     & > .notePanel {
         grid-area: notePanel;
