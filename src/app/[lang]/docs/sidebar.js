@@ -26,6 +26,108 @@ export default function Sidebar() {
                     name: 'Basics',
                     path: '/adding-icons/basics',
                 },
+                {
+                    name: 'CSS Pseudo-elements',
+                    path: '/adding-icons/pseudo-elements',
+                },,
+                {
+                    name: 'Unicodes',
+                    path: '/adding-icons/unicodes',
+                },,
+                {
+                    name: 'Glyphs',
+                    path: '/adding-icons/glyphs',
+                },
+            ],
+        },
+        {
+            name: 'Styling Icons',
+            pages: [
+                {
+                    name: 'Basics',
+                    path: '/styling-icons/basics',
+                },
+                {
+                    name: 'Animating',
+                    path: '/styling-icons/animating',
+                },
+                {
+                    name: 'Rotating',
+                    path: '/styling-icons/rotating',
+                },
+                {
+                    name: 'Sizing & Scaling',
+                    path: '/styling-icons/sizing-scaling',
+                },
+                {
+                    name: 'Duotone Icons',
+                    path: '/styling-icons/duotone',
+                },
+            ],
+        },
+        {
+            name: 'Javascript API',
+            pages: [
+                {
+                    name: 'getIcon()',
+                    path: '/js-api/get-icon',
+                },
+                {
+                    name: 'setIcon()',
+                    path: '/js-api/set-icon',
+                },
+                {
+                    name: 'toggleIcon()',
+                    path: '/js-api/toggle-icon',
+                },
+                {
+                    name: 'getStyle()',
+                    path: '/js-api/get-style',
+                },
+                {
+                    name: 'setStyle()',
+                    path: '/js-api/set-style',
+                },
+                {
+                    name: 'toggleStyle()',
+                    path: '/js-api/toggle-style',
+                },
+                {
+                    name: 'setAnimation()',
+                    path: '/js-api/set-animation',
+                },
+                {
+                    name: 'setSize()',
+                    path: '/js-api/set-size',
+                },
+                {
+                    name: 'setScale()',
+                    path: '/js-api/set-scale',
+                },
+                {
+                    name: 'rotate()',
+                    path: '/js-api/rotate',
+                },
+                {
+                    name: 'set()',
+                    path: '/js-api/set',
+                },
+                {
+                    name: 'toggleIconOnHover()',
+                    path: '/js-api/toggle-icon-on-hover',
+                },
+                {
+                    name: 'removeToggleIconOnHover()',
+                    path: '/js-api/remove-toggle-icon-on-hover',
+                },
+                {
+                    name: 'toggleStyleOnHover()',
+                    path: '/js-api/toggle-style-on-hover',
+                },
+                {
+                    name: 'removeToggleStyleOnHover()',
+                    path: '/js-api/remove-toggle-style-on-hover',
+                },
             ],
         },
     ]

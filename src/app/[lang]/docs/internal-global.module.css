@@ -1,5 +1,5 @@
 .wrapper {
-    --sidebar-width: 250px;
+    --sidebar-width: 280px;
 
     --sidebar: 0;
     --note-panel: 0;
@@ -72,7 +72,7 @@
 
         & > div {
             & > h6 {
-                margin-top: 0;
+                margin: 0 0 5px;
             }
             & + div {
                 margin-top: var(--spacing-micro);
