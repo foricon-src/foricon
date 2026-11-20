@@ -137,7 +137,7 @@ export default function Sidebar() {
             return <div key={name}>
                 <h6>{name}</h6>
                 <ul className='btn-list small vertical line-active'>{
-                    pages.map(({ name, path }) => <li key={name} onClick={() => go(`doc${path}`)}>{name}</li>)
+                    pages.map(({ name, path }) => <li key={name} onClick={() => go(`docs${path}`)}>{name}</li>)
                 }</ul>
             </div>
         })
