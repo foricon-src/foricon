@@ -27,19 +27,19 @@ export default function Header() {
             placeholder='Search... [/]'
             clearable
         />
-        <ul className='btn-list line-active'>
+        <ul className='btn-list'>
             <li
                 className={`tooltip bottom${notePanel.isOpened ? ' active' : ''}`}
                 onClick={() => notePanel.func(!notePanel.isOpened)}
             >
-                <f-icon icon='note-sticky' i-s={notePanel.isOpened ? 'solid' : 'outline'}/>
+                <f-icon icon='note-sticky'/>
                 <span>Notes</span>
             </li>
             <li
                 className={`tooltip bottom${savedPanel.isOpened ? ' active' : ''}`}
                 onClick={() => savedPanel.func(!savedPanel.isOpened)}
             >
-                <f-icon icon='bookmark' i-s={savedPanel.isOpened ? 'solid' : 'outline'}/>
+                <f-icon icon='bookmark'/>
                 <span>Saved</span>
             </li>
         </ul>
