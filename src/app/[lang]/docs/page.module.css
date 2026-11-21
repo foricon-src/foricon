@@ -1,0 +1,21 @@
+.shortcut {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-micro);
+
+    & > li {
+        border-radius: var(--bdr-rad);
+        border: 1px solid var(--dk-gray);
+        padding: var(--spacing-mili) var(--spacing-xxsmall);
+
+        &:hover {
+            background-color: var(--lt-gray);
+        }
+        & > :first-child {
+            margin-top: 0;
+        }
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
