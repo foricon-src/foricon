@@ -1,5 +1,5 @@
 .wrapper {
-    --sidebar-width: 300px;
+    --sidebar-width: 280px;
 
     --sidebar: 0;
     --note-panel: 0;
@@ -17,12 +17,24 @@
 
     &:has(:global(.active).sidebar) {
         --sidebar: var(--sidebar-width);
+
+        & > .content {
+            margin-left: 5px;
+        }
     }
     &:has(:global(.active).notePanel) {
         --note-panel: 200px;
+        
+        & > .content {
+            margin-right: 5px;
+        }
     }
     &:has(:global(.active).savedPanel) {
         --saved-panel: 200px;
+        
+        & > .content {
+            margin-right: 5px;
+        }
     }
     
     & > .header {
@@ -86,7 +98,7 @@
     }
     & > .content {
         grid-area: content;
-        padding: var(--spacing-small) var(--spacing-default) var(--spacing-default);
+        padding: var(--spacing-default);
         overflow-y: scroll;
         background-color: var(--bg-color);
         border-radius: var(--bdr-rad) var(--bdr-rad) 0 0;
