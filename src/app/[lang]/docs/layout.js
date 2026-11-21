@@ -8,6 +8,7 @@ import { LayoutProvider } from './layout-provider';
 export function generateMetadata({ params: { lang } }) {
     return {
         title: {
+            default: 'Foricon Docs',
             template: `%s | ${
                 {
                     en: 'Foricon Docs',
