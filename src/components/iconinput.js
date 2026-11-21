@@ -2,6 +2,19 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * An input with an icon
+ *
+ * @param {Object} props
+ * @param {{
+ *   name: string,
+ *   style: string,
+ * }} props.icon - The icon showed
+ * @param {string} [props.value] - Value
+ * @param {string} props.placeholder - The text showed when the input is blank
+ * @param {boolean} [props.clearable] - Whether the input can be cleared by clicking the icon
+ * @returns {JSX.Element}
+ */
 export default function IconInput({
     icon = {
         name: '',
