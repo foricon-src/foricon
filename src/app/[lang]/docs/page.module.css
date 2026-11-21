@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-micro);
+    margin-top: var(--spacing-small);
 
     & > li {
         border-radius: var(--bdr-rad);
