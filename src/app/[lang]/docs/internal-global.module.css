@@ -24,17 +24,9 @@
     }
     &:has(:global(.active).notePanel) {
         --note-panel: 200px;
-        
-        & > .content {
-            margin-right: 5px;
-        }
     }
     &:has(:global(.active).savedPanel) {
         --saved-panel: 200px;
-        
-        & > .content {
-            margin-right: 5px;
-        }
     }
     
     & > .header {
@@ -78,27 +70,11 @@
             & > h6 {
                 margin: 0 0 5px;
             }
-            & > ul > li {
-                &:hover {
-                    background-color: var(--gray);
-                }
-                &:active {
-                    background-color: var(--dk-gray);
-                }
-                :global(body.dark) & {
-                    &:hover {
-                        background-color: var(--bg-color);
-                    }
-                    &:active {
-                        background-color: var(--lt-gray);
-                    }
-                }
-            }
         }
     }
     & > .content {
         grid-area: content;
-        padding: var(--spacing-default);
+        padding: var(--spacing-medium) var(--spacing-default);
         overflow-y: scroll;
         background-color: var(--bg-color);
         border-radius: var(--bdr-rad) var(--bdr-rad) 0 0;
