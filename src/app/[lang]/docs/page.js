@@ -25,7 +25,7 @@ export default function Page() {
         <ul className={cssStyle.shortcut}>
             <li>
                 <h6>Getting Started</h6>
-                <p>New to Foricon? Or just need a refresher? Here&apos;s some tips for you on how to get started.</p>
+                <p>New to Foricon? Or just need a refresher? Here&apos;s some tips for you to get started.</p>
             </li>
             <li>
                 <h6>Cuztomizing Icons</h6>
@@ -33,7 +33,7 @@ export default function Page() {
             </li>
             <li>
                 <h6>Functions</h6>
-                <p>Conveniently edit our icons using JavaScript. These helpers can also make your project much more interactive.</p>
+                <p>Edit and modify our icons easily with JavaScript by using our built-in functions.</p>
             </li>
         </ul>
     </>
