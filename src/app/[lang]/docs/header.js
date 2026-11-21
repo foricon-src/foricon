@@ -23,7 +23,7 @@ export default function Header() {
         </div>
         <IconInput
             icon={{ name: 'magnifying-glass', style: 'outline' }}
-            placeholder='Search...'
+            placeholder='Search... [/]'
             clearable
         />
         <ul className='btn-list'>

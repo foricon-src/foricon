@@ -24,7 +24,7 @@ export default function Sidebar() {
             pages: [
                 {
                     name: 'Basics',
-                    path: '/adding-icons/basics',
+                    path: '/adding-icons',
                 },
                 {
                     name: 'CSS Pseudo-elements',
@@ -45,7 +45,7 @@ export default function Sidebar() {
             pages: [
                 {
                     name: 'Basics',
-                    path: '/styling-icons/basics',
+                    path: '/styling-icons',
                 },
                 {
                     name: 'Animating',

@@ -23,6 +23,8 @@ export default function Process() {
                 key == 'Enter' && isEnabled(pri) && pri?.click();
                 key == 'Escape' && sec?.click();
             }
+            else if (pathname.slice(4).startsWith('docs'))
+                key == '/' && qSelec('input').focus();
         })
     }, [])
     useEffect(() => {
