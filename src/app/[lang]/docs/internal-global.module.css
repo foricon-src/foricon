@@ -13,27 +13,16 @@
     grid-template-rows: max-content auto;
     height: 100vh;
     width: 100vw;
+    background-color: var(--dk-bg-color);
 
     &:has(:global(.active).sidebar) {
         --sidebar: var(--sidebar-width);
-
-        & > .content {
-            padding-left: var(--spacing-small);
-        }
     }
     &:has(:global(.active).notePanel) {
         --note-panel: 200px;
-
-        & > .content {
-            padding-right: var(--spacing-small);
-        }
     }
     &:has(:global(.active).savedPanel) {
         --saved-panel: 200px;
-
-        & > .content {
-            padding-right: var(--spacing-medium);
-        }
     }
     
     & > .header {
@@ -71,11 +60,27 @@
         justify-self: end;
 
         & > div {
+            & + div {
+                margin-top: var(--spacing-small);
+            }
             & > h6 {
                 margin: 0 0 5px;
             }
-            & + div {
-                margin-top: var(--spacing-small);
+            & > ul > li {
+                &:hover {
+                    background-color: var(--gray);
+                }
+                &:active {
+                    background-color: var(--dk-gray);
+                }
+                :global(body.dark) & {
+                    &:hover {
+                        background-color: var(--bg-color);
+                    }
+                    &:active {
+                        background-color: var(--lt-gray);
+                    }
+                }
             }
         }
     }
@@ -83,6 +88,8 @@
         grid-area: content;
         padding: var(--spacing-small) var(--spacing-default) var(--spacing-default);
         overflow-y: scroll;
+        background-color: var(--bg-color);
+        border-radius: var(--bdr-rad) var(--bdr-rad) 0 0;
 
         & > :first-child {
             margin-top: 0;
