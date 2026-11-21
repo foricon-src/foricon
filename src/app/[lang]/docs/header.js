@@ -22,6 +22,7 @@ export default function Header() {
             <h4>Docs</h4>
         </div>
         <IconInput
+            id='docs-search'
             icon={{ name: 'magnifying-glass', style: 'outline' }}
             placeholder='Search... [/]'
             clearable

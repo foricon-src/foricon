@@ -12,7 +12,7 @@ export default function Process() {
         document.addEventListener('keydown', async e => {
             let { ctrlKey, key, target } = e;
             let activeModal = qSelec(document, '.modal.confirm.active');
-            let input = qSelec('header input:not(:focus)');
+            let input = qSelec('#docs-search:not(:focus)');
             
             if (ctrlKey && key == 'b') setTheme();
             else if (activeModal && isEnabled(document.body)) {
