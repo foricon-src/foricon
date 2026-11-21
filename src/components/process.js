@@ -12,6 +12,7 @@ export default function Process() {
         document.addEventListener('keydown', async e => {
             let { ctrlKey, key, target } = e;
             let activeModal = qSelec(document, '.modal.confirm.active');
+            let input = qSelec('header input:not(:focus)');
             
             if (ctrlKey && key == 'b') setTheme();
             else if (activeModal && isEnabled(document.body)) {
@@ -23,8 +24,10 @@ export default function Process() {
                 key == 'Enter' && isEnabled(pri) && pri?.click();
                 key == 'Escape' && sec?.click();
             }
-            else if (pathname.slice(4).startsWith('docs'))
-                key == '/' && qSelec('input').focus();
+            else if (pathname.slice(4).startsWith('docs') && input && key == '/') {
+                e.preventDefault();
+                input.focus();
+            }
         })
     }, [])
     useEffect(() => {
