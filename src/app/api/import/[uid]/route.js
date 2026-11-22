@@ -2,6 +2,10 @@ export function GET(_, { params: { uid }}) {
     return new Response(`
         const { log, warn, error } = console;
         const uid = '${uid}';
+
+        const iconlisteners = new WeakMap();
+        const stylelisteners = new WeakMap();
+
         window.foriconPackageIsLoaded = false;
 
         (async () => {
@@ -24,20 +28,40 @@ export function GET(_, { params: { uid }}) {
                 }
                 setStyle(styleName) {
                     if (typeof styleName != 'string') error('Invalid value format: Style name must be a valid string');
+                    else if (![ 'solid', 'outline', 'duotone/solid', 'duotone/outline' ]) error(\`Invalid value: '\${styleName}' is not supported\`)
                     else this.setAttribute('i-s', styleName);
                 }
                 toggleStyle(style1Name, style2Name) {
-                    let currentStyle = this.getAttribute('i-s') || 'Solid';
+                    let currentStyle = this.getAttribute('i-s') || 'solid';
                     if (!style1Name) error('Missing arguments: style1Name is undefined');
                     else if (!style2Name) error('Missing arguments: style2Name is undefined');
                     else this.setStyle(currentStyle == style1Name ? style2Name : style1Name);
                 }
+                getAnimation() {
+                    let value = this.getAttribute('animation');
+                    if (!value) return null;
+                    let [ animation, speed = null ] = value.split('-');
+                    return { animation, speed };
+                }
                 setAnimation(animationName, speedName) {
                     if (animationName == null) this.removeAttribute('animation');
-                    else if (typeof animationName != 'string' || (speedName && typeof speedName != 'string')) error('Invalid value format: animationName and speedName must be a valid string');
-                    else if (![ 'spin', 'spin-reverse', 'ltfade', 'fade', 'hvfade', 'ulfade', 'csfade', 'smbeat', 'beat', 'bgbeat', 'fadebeat', 'csbeat', 'flip-x', 'flip-y', 'flip-xy' ].includes(animationName)) error(\`Invalid value: '\${animationName}' is not supported\`);
-                    else if (speedName && ![ 'xxslow', 'xslow', 'slow', 'semislow', '', 'semifast', 'fast', 'xfast', 'xxfast' ].includes(speedName)) error(\`Invalid value: '\${speedName}' is not supported\`);
+                    else if (typeof animationName != 'string' || (speedName && typeof speedName != 'string'))
+                        error('Invalid value format: animationName and speedName must be a valid string');
+                    else if (![
+                        'spin', 'spin-reverse',
+                        'ltfade', 'fade', 'hvfade', 'ulfade', 'csfade',
+                        'smbeat', 'beat', 'bgbeat', 'fadebeat', 'csbeat',
+                        'flip-x', 'flip-y', 'flip-xy'
+                    ].includes(animationName)) error(\`Invalid value: '\${animationName}' is not supported\`);
+                    else if (speedName && ![
+                        'xxslow', 'xslow', 'slow', 'semislow',
+                        '',
+                        'semifast', 'fast', 'xfast', 'xxfast'
+                    ].includes(speedName)) error(\`Invalid value: '\${speedName}' is not supported\`);
                     else this.setAttribute('animation', \`\${animationName}\${speedName ? \`-\${speedName}\` : ''}\`);
+                }
+                getSize() {
+                    return this.getAttribute('size') || null;
                 }
                 setSize(sizeName) {
                     if (sizeName == null) this.removeAttribute('size');
@@ -46,6 +70,9 @@ export function GET(_, { params: { uid }}) {
                         else error(\`Invalid value: '\${sizeName}' is not supported\`);
                     }
                     else error('Invalid value format: sizeName must be a valid string');
+                }
+                getScale() {
+                    return this.getAttribute('scale') || null;
                 }
                 setScale(scaleName) {
                     if (scaleName == null) this.removeAttribute('scale');
@@ -56,68 +83,74 @@ export function GET(_, { params: { uid }}) {
                     }
                     else error('Invalid value format: scaleName must be a valid string');
                 }
-                rotate(value) {
-                    if (value == null) this.removeAttribute('rotate');
+                getRotate(value) {
+                    return this.getAttribute('f-rotate') || this.getAttribute('rotate') || null;
+                }
+                rotate(value, useFRotate) {
+                    let attr = useFRotate ? 'f-rotate' : 'rotate';
+                    if (value == null) this.removeAttribute(attr);
                     else if (typeof value == 'string' || typeof value == 'number') {
                         let values = [ '90', '180', '270', 'flip-x', 'flip-y' ];
-                        if (values.includes(value.toString())) this.setAttribute('rotate', value);
+                        if (values.includes(value.toString())) this.setAttribute(attr, value);
                         else error(\`Invalid value: '\${value}' is not supported\`);
                     }
                     else error('Invalid value format: Value must be a valid string or number');
                 }
                 toggleIconOnHover(activeIconName, element = this) {
-                    if (element._i_meh) {
-                        warn('Duplicate listener: Element already has another listener added. Please use removeToggleIconOnHover() to remove it before adding more.');
+                    if (iconListeners.has(this)) {
+                        warn('Duplicate listener: This icon already has another listener added. Please use removeToggleIconOnHover() to remove it before adding more.');
                         return;
                     }
-
-                    let t = this;
+                    
                     let currentIconName = this.getIcon();
                     
-                    function i_meh() {
-                        t.setIcon(activeIconName);
+                    function mouseEnter() {
+                        this.setIcon(activeIconName);
                     }
-                    function i_mlh() {
-                        t.setIcon(currentIconName);
+                    function mouseLeave() {
+                        this.setIcon(currentIconName);
                     }
                 
-                    element.addEventListener('mouseenter', i_meh);
-                    element.addEventListener('mouseleave', i_mlh);
-                
-                    element._i_meh = i_meh;
-                    element._i_mlh = i_mlh;
+                    element.addEventListener('mouseenter', mouseEnter);
+                    element.addEventListener('mouseleave', mouseLeave);
+
+                    iconListeners.set(this, {
+                        element,
+                        mouseEnter,
+                        mouseLeave,
+                    })
                 }
-                removeToggleIconOnHover(element = this) {
-                    if (element._i_meh) {
-                        element.removeEventListener('mouseenter', element._i_meh);
-                        delete element._i_meh;
-                    }
-                    if (element._i_mlh) {
-                        element.removeEventListener('mouseleave', element._i_mlh);
-                        delete element._i_mlh;
-                    }
+                removeToggleStyleOnHover() {
+                    let listener = iconListeners.get(this);
+                    if (!listener) return;
+                    let { element, mouseEnter, mouseLeave } = listener;
+                    element.removeEventListener('mouseenter', mouseEnter);
+                    element.removeEventListener('mouseleave', mouseLeave);
+                    iconListeners.delete(this);
                 }
                 toggleStyleOnHover(activeStyleName, element = this) {
-                    if (element._s_meh) {
+                    if (styleListeners.has(this)) {
                         warn('Duplicate listener: Element already has another listener added. Please use removeToggleStyleOnHover() to remove it before adding more.');
                         return;
                     }
                     
-                    let t = this;
                     let currentStyleName = this.getStyle();
                     
-                    function s_meh() {
+                    function mouseEnter() {
                         t.setStyle(activeStyleName);
                     }
-                    function s_mlh() {
+                    function mouseLeave() {
                         t.setStyle(currentStyleName);
                     }
                 
-                    element.addEventListener('mouseenter', s_meh);
-                    element.addEventListener('mouseleave', s_mlh);
-                
-                    element._s_meh = s_meh;
-                    element._s_mlh = s_mlh;
+                    element.addEventListener('mouseenter', mouseEnter);
+                    element.addEventListener('mouseleave', mouseLeave);
+
+                    iconListeners.set(this, {
+                        element,
+                        mouseEnter,
+                        mouseLeave,
+                    })
                 }
                 removeToggleStyleOnHover(element = this) {
                     if (element._s_meh) {
@@ -129,18 +162,44 @@ export function GET(_, { params: { uid }}) {
                         delete element._s_mlh;
                     }
                 }
+                removeToggleStyleOnHover() {
+                    let listener = styleListeners.get(this);
+                    if (!listener) return;
+                    let { element, mouseEnter, mouseLeave } = listener;
+                    element.removeEventListener('mouseenter', mouseEnter);
+                    element.removeEventListener('mouseleave', mouseLeave);
+                    styleListeners.delete(this);
+                }
                 set(options) {
                     if (!options) {
-                        error('Missing arguments: option is undefined');
+                        error('Missing arguments: options is undefined');
                         return;
                     }
+                    
                     const { icon, style, animation, size, scale, rotate } = options;
+
                     icon && this.setIcon(icon);
                     style && this.setStyle(style);
-                    animation && this.setAnimation(animation.name, animation.speed);
-                    size && this.setSize(size);
-                    scale && this.setScale(scale);
-                    rotate && this.rotate(rotate);
+
+                    if (animation in options) {
+                        if (animation == null) this.setAnimation(null);
+                        else if (!animation.name) error('Missing arguments: The name of animation is undefined')
+                        else this.setAnimation(animation.name, animation.speed);
+                    }
+                    
+                    size in options && this.setSize(size);
+                    scale in options && this.setScale(scale);
+                    rotate in options && this.rotate(rotate);
+                }
+                get() {
+                    return {
+                        name: this.getIcon(),
+                        style: this.getStyle(),
+                        animation: this.getAnimation(),
+                        size: this.getSize(),
+                        scale: this.getScale(),
+                        rotate: this.getRotate(),
+                    }
                 }
             })
             
