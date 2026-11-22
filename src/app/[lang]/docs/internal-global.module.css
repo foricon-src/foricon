@@ -35,10 +35,11 @@
         display: grid;
         grid-template-columns: calc(50% - 200px) 400px calc(50% - 200px);
         padding: var(--spacing-micro) var(--spacing-medium) var(--spacing-micro) var(--spacing-small);
+        transition: var(--df-trans), grid-template-columns .5s ease;
 
         &:has(input:focus) {
             --value: max(500px, 40%);
-            
+
             grid-template-columns: calc(50% - var(--value) / 2) var(--value) calc(50% - var(--value) / 2);
         }
         &, & > div {
