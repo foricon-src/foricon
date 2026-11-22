@@ -69,6 +69,10 @@ export default function Sidebar() {
             name: 'Javascript API',
             pages: [
                 {
+                    name: 'Introduction',
+                    path: '/js-api',
+                },
+                {
                     name: 'getIcon()',
                     path: '/js-api/get-icon',
                 },
