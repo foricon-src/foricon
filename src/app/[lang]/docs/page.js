@@ -1,23 +1,23 @@
 import cssStyle from './page.module.css';
 
-export function generateMetadata({ params: { lang } }) {
-    return {
-        title: {
-            en: 'Welcome',
-            vi: 'Chào mừng',
-            fr: 'Bienvenu',
-            it: 'Benvenuto',
-            ko: '환영',
-            ja: 'いらっしゃいませ',
-            de: 'Willkommen',
-            nl: 'Welkom',
-            da: 'Velkomst',
-            pt: 'Boas-vindas',
-            es: 'Bienvenido',
-            ru: 'Добро пожаловать',
-        }[lang],
-    }
-}
+// export function generateMetadata({ params: { lang } }) {
+//     return {
+//         title: {
+//             en: 'Welcome',
+//             vi: 'Chào mừng',
+//             fr: 'Bienvenu',
+//             it: 'Benvenuto',
+//             ko: '환영',
+//             ja: 'いらっしゃいませ',
+//             de: 'Willkommen',
+//             nl: 'Welkom',
+//             da: 'Velkomst',
+//             pt: 'Boas-vindas',
+//             es: 'Bienvenido',
+//             ru: 'Добро пожаловать',
+//         }[lang],
+//     }
+// }
 export default function Page() {
     return <>
         <h1>Welcome to Foricon Docs!</h1>
