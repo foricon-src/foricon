@@ -37,7 +37,8 @@
         padding: var(--spacing-micro) var(--spacing-medium) var(--spacing-micro) var(--spacing-small);
 
         &:has(input:focus) {
-            --value: max(500px, 60vw);
+            --value: max(500px, 40%);
+            
             grid-template-columns: calc(50% - var(--value) / 2) var(--value) calc(50% - var(--value) / 2);
         }
         &, & > div {
