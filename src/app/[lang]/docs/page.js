@@ -1,3 +1,4 @@
+import useGo from 'Com/go';
 import cssStyle from './page.module.css';
 
 // export function generateMetadata({ params: { lang } }) {
