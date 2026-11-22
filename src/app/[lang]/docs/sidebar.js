@@ -11,11 +11,11 @@ export default function Sidebar() {
 
     let groups = [
         {
-            name: 'Getting Started',
+            name: 'Web',
             pages: [
                 {
-                    name: 'Setting Up',
-                    path: '/',
+                    name: 'Getting Started',
+                    path: '/web/getting-started',
                 },
             ],
         },
@@ -93,24 +93,36 @@ export default function Sidebar() {
                     path: '/js-api/toggle-style',
                 },
                 {
+                    name: 'getAnimation()',
+                    path: '/js-api/get-animation',
+                },
+                {
                     name: 'setAnimation()',
                     path: '/js-api/set-animation',
+                },
+                {
+                    name: 'getSize()',
+                    path: '/js-api/get-size',
                 },
                 {
                     name: 'setSize()',
                     path: '/js-api/set-size',
                 },
                 {
+                    name: 'getScale()',
+                    path: '/js-api/get-scale',
+                },
+                {
                     name: 'setScale()',
                     path: '/js-api/set-scale',
                 },
                 {
-                    name: 'rotate()',
-                    path: '/js-api/rotate',
+                    name: 'getRotate()',
+                    path: '/js-api/get-rotate',
                 },
                 {
-                    name: 'set()',
-                    path: '/js-api/set',
+                    name: 'rotate()',
+                    path: '/js-api/rotate',
                 },
                 {
                     name: 'toggleIconOnHover()',
@@ -127,6 +139,23 @@ export default function Sidebar() {
                 {
                     name: 'removeToggleStyleOnHover()',
                     path: '/js-api/remove-toggle-style-on-hover',
+                },
+                {
+                    name: 'set()',
+                    path: '/js-api/set',
+                },
+                {
+                    name: 'get()',
+                    path: '/js-api/get',
+                },
+            ],
+        },
+        {
+            name: 'Desktop',
+            pages: [
+                {
+                    name: 'Getting Started',
+                    path: '/desktop/getting-started',
                 },
             ],
         },

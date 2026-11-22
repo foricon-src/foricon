@@ -24,8 +24,12 @@ export default function Page() {
         <p>We have set up a whole set of guides for you. Learn how add, modify and tweak our icons however you like.</p>
         <ul className={cssStyle.shortcut}>
             <li>
-                <h6>Getting Started</h6>
+                <h6>Getting Started on Web</h6>
                 <p>New to Foricon? Or just need a refresher? Here&apos;s some tips for you to get started.</p>
+            </li>
+            <li>
+                <h6>Getting Started on Desktop</h6>
+                <p>Use our icons in desktop design programs like Figma or Illustrator, or craft beautiful docs or slides.</p>
             </li>
             <li>
                 <h6>Cuztomizing Icons</h6>
