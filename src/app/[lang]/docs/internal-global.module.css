@@ -14,6 +14,7 @@
     height: 100vh;
     width: 100vw;
     background-color: var(--dk-bg-color);
+    transition: var(--df-trans), grid-template-columns .5s ease;
 
     &:has(:global(.active).sidebar) {
         --sidebar: var(--sidebar-width);
