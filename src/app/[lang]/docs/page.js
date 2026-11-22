@@ -29,7 +29,7 @@ export default function Page() {
             </li>
             <li>
                 <h6>Getting Started on Desktop</h6>
-                <p>Use our icons in desktop design programs like Figma or Illustrator, or craft beautiful docs or slides.</p>
+                <p>Use our icons in desktop design programs, or give your docs or slides a nice touch.</p>
             </li>
             <li>
                 <h6>Cuztomizing Icons</h6>
