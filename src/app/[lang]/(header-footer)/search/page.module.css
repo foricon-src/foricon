@@ -195,7 +195,7 @@
         'options options';
     grid-template-columns: calc(100% - min(200px, 30%) - 5px) min(200px, 30%);
     padding:
-        var(--space-11)
+        var(--space-10)
         max(var(--space-11), calc(50vw - 1000px))
         var(--space-4);
     gap: var(--space-7) 5px;
@@ -203,7 +203,7 @@
     position: sticky;
     z-index: 1;
     translate: 0;
-    top: -136px;
+    top: -116px;
     
     :global(.active)& {
         transition: var(--df-trans), translate .5s ease;
@@ -255,8 +255,12 @@
             & > li:has(> f-icon[icon='palette']) > div {
                 padding: 10px;
 
-                & > form > input {
-                    height: 40px;
+                & > form {
+                    margin-bottom: var(--space-4);
+
+                    & > input {
+                        height: 40px;
+                    }
                 }
             }
         }
