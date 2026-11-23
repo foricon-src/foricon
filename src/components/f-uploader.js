@@ -102,7 +102,7 @@ export default function Uploader({
         uploaderRef.current.dispatchEvent(new Event('change'));
 
         let { current } = ulRef;
-        getChild(current).forEach(i => i.firstChild.changesOn('hover', [ 'icon', 'trash-can' ], i));
+        getChild(current).forEach(i => i.firstChild.changesOn('hover', [[ 'icon', 'trash-can' ]], i));
 
         setUsedBytes(files.reduce((sum, file) => sum + file.size, 0));
     }, [ files ])
