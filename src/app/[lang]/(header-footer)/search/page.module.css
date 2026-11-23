@@ -203,7 +203,7 @@
     position: sticky;
     z-index: 1;
     translate: 0;
-    top: -116px;
+    top: -108px;
     
     :global(.active)& {
         transition: var(--df-trans), translate .5s ease;
