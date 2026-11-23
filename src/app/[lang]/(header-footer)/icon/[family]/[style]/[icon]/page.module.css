@@ -97,7 +97,7 @@
                         margin-top: 5px;
                     }
                     & > div {
-                        gap: 5px;
+                        gap: var(--spacing-gap);
                         margin-bottom: var(--spacing-micro);
                     }
                     & > input {
