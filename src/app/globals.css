@@ -2074,7 +2074,7 @@ header {
             rgba(var(--main-color-rgb), .05) 5%,
             transparent 30%
         );
-    height: 70px;
+    height: 60px;
     width: 100%;
     padding: 10px var(--space-11);
     position: sticky;
@@ -2098,7 +2098,7 @@ header {
             background: none;
             
             > img {
-                height: 40px;
+                height: var(--space-5);
                 display: block;
             }
         }
@@ -2116,7 +2116,7 @@ header {
         justify-content: center;
         
         > li > a {
-            padding: 5px 15px;
+            padding: var(--space-1) var(--space-3);
             border-radius: var(--s-bdr-rad);
             display: block;
             color: var(--text-color);
@@ -2309,7 +2309,7 @@ footer {
 #sidebar-page {
     display: grid;
     grid-template-columns: 300px auto;
-    height: calc(100svh - 70px);
+    height: calc(100svh - 60px);
     
     > :not(.modal) {
         padding: var(--space-8) 0;

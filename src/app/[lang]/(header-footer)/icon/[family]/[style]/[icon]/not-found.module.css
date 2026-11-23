@@ -1,5 +1,5 @@
 .wrapper {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 60px);
     padding: var(--space-11) 0;
     flex-direction: column;
 
