@@ -332,7 +332,7 @@ export function GET(_, { params: { uid }}) {
                 }
                 get() {
                     return {
-                        name: this.getIcon(),
+                        icon: this.getIcon(),
                         style: this.getStyle(),
                         animation: this.getAnimation(),
                         size: this.getSize(),
