@@ -262,7 +262,7 @@ ul {
                 var(--space-3)
                 0
                 var(--space-3)
-                calc(var(--space-3) * -1 + 1px);
+                calc(var(--space-3) * -1);
             background-color: var(--dk-gray);
             pointer-events: none;
         }
@@ -280,7 +280,7 @@ ul {
             &.line:before, & > li.line:before {
                 height: 1px;
                 width: auto;
-                inset: calc(var(--space-3) * -1 + 1px) var(--space-3) 0;
+                inset: calc(var(--space-3) * -1) var(--space-3) 0;
             }
         }
         > li {
@@ -409,10 +409,10 @@ ul {
 
             &.line {
                 :not(.vertical) > & {
-                    margin-left: calc(var(--space-3) * 2);
+                    margin-left: calc(var(--space-3) * 2 + 1px - var(--space-1));
                 }
                 .vertical > & {
-                    margin-top: calc(var(--space-3) * 2);
+                    margin-top: calc(var(--space-3) * 2 + 1px - var(--space-1));
                 }
             }
             &.red {
