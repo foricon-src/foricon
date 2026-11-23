@@ -20,7 +20,7 @@
         --sidebar: var(--sidebar-width);
 
         & > .content {
-            margin-left: var(--spacing-gap);
+            margin-left: var(--space-1);
         }
     }
     &:has(:global(.active).notePanel) {
@@ -34,7 +34,7 @@
         grid-area: header;
         display: grid;
         grid-template-columns: calc(50% - 200px) 400px calc(50% - 200px);
-        padding: var(--spacing-micro) var(--spacing-medium) var(--spacing-micro) var(--spacing-small);
+        padding: var(--space-2) var(--space-8) var(--space-2) var(--space-7);
         transition: var(--df-trans), grid-template-columns .5s ease;
 
         &:has(input:focus) {
@@ -47,10 +47,10 @@
         }
         & > div {
             display: flex;
-            gap: var(--spacing-xxsmall);
+            gap: var(--space-4);
 
             & > img {
-                height: var(--spacing-xsmall);
+                height: var(--space-5);
             }
             & > h4 {
                 margin: 0;
@@ -67,12 +67,12 @@
         grid-area: sidebar;
         width: var(--sidebar-width);
         overflow-y: scroll;
-        padding: var(--spacing-small) var(--spacing-micro) var(--spacing-small) var(--spacing-small);
+        padding: var(--space-7) var(--space-2) var(--space-7) var(--space-7);
         justify-self: end;
 
         & > div {
             & + div {
-                margin-top: var(--spacing-xxsmall);
+                margin-top: var(--space-4);
             }
             & > h6 {
                 margin-top: 0;
@@ -81,7 +81,7 @@
     }
     & > .content {
         grid-area: content;
-        padding: var(--spacing-medium) var(--spacing-default);
+        padding: var(--space-8) var(--space-11);
         overflow-y: scroll;
         background-color: var(--bg-color);
         border-radius: var(--bdr-rad) var(--bdr-rad) 0 0;

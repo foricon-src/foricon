@@ -11,17 +11,20 @@
     --xs-bdr-rad: 5px;
     
     /*Spacing*/
-    --spacing-default: 80px;
-    --spacing-medium: 54px;
-    --spacing-small: 36px;
-    --spacing-xsmall: 24px;
-    --spacing-xxsmall: 16px;
-    --spacing-mili: 12px;
-    --spacing-micro: 8px;
-    --spacing-gap: 4px;
-    --inner-spacing: var(--spacing-micro) var(--spacing-mili);
-    --inner-spacing-bdr: calc(var(--spacing-micro) - 1px) calc(var(--spacing-mili) - 1px);
-    --inner-spacing-s: var(--spacing-gap) var(--spacing-micro);
+    --space-11: 80px;
+    --space-10: 64px;
+    --space-9: 48px;
+    --space-8: 40px;
+    --space-7: 32px;
+    --space-6: 24px;
+    --space-5: 20px;
+    --space-4: 16px;
+    --space-3: 12px;
+    --space-2: 8px;
+    --space-1: 4px;
+    --inner-spacing: var(--space-2) var(--space-3);
+    --inner-spacing-bdr: calc(var(--space-2) - 1px) calc(var(--space-3) - 1px);
+    --inner-spacing-s: var(--space-1) var(--space-2);
     
     /*Sizing*/
     --bn-li-icon-width: 20.22px;
@@ -225,10 +228,10 @@ ul.btn-list > li, f-option {
 }
 
 :not(ul.list-layout, ol) > :not(li) > :is(ul.list-layout, ol) {
-    margin: var(--spacing-mili) 0;
+    margin: var(--space-3) 0;
 }
 ul.list-layout, ol {
-    padding-left: var(--spacing-xxsmall);
+    padding-left: var(--space-4);
 }
 ul {
     list-style: none;
@@ -246,7 +249,7 @@ ul {
     &.btn-list {
         display: flex;
         position: relative;
-        gap: var(--spacing-gap);
+        gap: var(--space-1);
         
         &:not(.vertical) {
             flex-wrap: wrap;
@@ -256,19 +259,19 @@ ul {
             position: absolute;
             width: 1px;
             inset:
-                calc(var(--spacing-micro) * 2)
+                calc(var(--space-2) * 2)
                 0
-                calc(var(--spacing-micro) * 2)
-                calc(var(--spacing-micro) * -2 + 1);
+                calc(var(--space-2) * 2)
+                calc(var(--space-2) * -2 + 1);
             background-color: var(--dk-gray);
             pointer-events: none;
         }
         &.line {
             &.vertical {
-                margin-top: var(--spacing-micro);
+                margin-top: var(--space-2);
             }
             &:not(.vertical) {
-                margin-left: var(--spacing-micro);
+                margin-left: var(--space-2);
             }
         }
         &.vertical {
@@ -277,7 +280,7 @@ ul {
             &.line:before, & > li.line:before {
                 height: 1px;
                 width: auto;
-                inset: calc(var(--spacing-micro) * -2 + 1) calc(var(--spacing-micro) * 2) 0;
+                inset: calc(var(--space-2) * -2 + 1) calc(var(--space-2) * 2) 0;
             }
         }
         > li {
@@ -311,7 +314,7 @@ ul {
                     font-size: var(--s-ft-sz);
                     background-color: var(--lt-gray);
                     border-radius: var(--xs-bdr-rad);
-                    padding: 2px var(--spacing-micro);
+                    padding: 2px var(--space-2);
                     border: 1px solid var(--gray);
                     color: var(--title-color);
                     pointer-events: none;
@@ -322,24 +325,24 @@ ul {
                     opacity: 0;
                     
                     .top > & {
-                        translate: 0 var(--spacing-gap);
+                        translate: 0 var(--space-1);
                     }
                     .bottom > & {
-                        translate: 0 calc(var(--spacing-gap) * -1);
+                        translate: 0 calc(var(--space-1) * -1);
                     }
                 }
                 
                 &.top > span {
-                    bottom: calc(100% + var(--spacing-gap) * 2);
+                    bottom: calc(100% + var(--space-1) * 2);
                 }
                 &.bottom > span {
-                    top: calc(100% + var(--spacing-gap) * 2);
+                    top: calc(100% + var(--space-1) * 2);
                 }
             }
             :not(.vertical) > &:has(> ul.btn-list, > div) {
                 &:before {
                     content: '';
-                    height: calc(var(--spacing-gap) * 2);
+                    height: calc(var(--space-1) * 2);
                     position:
                     absolute;
                     inset: 100% 0 0 0;
@@ -356,8 +359,8 @@ ul {
                 }
                 > ul, > div {
                     position: absolute;
-                    inset: calc(100% + var(--spacing-gap)) 0 auto 0;
-                    padding: var(--spacing-gap);
+                    inset: calc(100% + var(--space-1)) 0 auto 0;
+                    padding: var(--space-1);
                     border-radius: var(--bdr-rad);
                     background-color: var(--bg-blur);
                     backdrop-filter: var(--bg-blur-px);
@@ -406,10 +409,10 @@ ul {
 
             &.line {
                 :not(.vertical) > & {
-                    margin-left: var(--spacing-mili);
+                    margin-left: var(--space-3);
                 }
                 .vertical > & {
-                    margin-top: var(--spacing-mili);
+                    margin-top: var(--space-3);
                 }
             }
             &.red {
@@ -428,14 +431,14 @@ ul {
             .small > & {
                 font-size: var(--s-ft-sz);
                 padding: var(--inner-spacing-s);
-                gap: var(--spacing-gap);
+                gap: var(--space-1);
 
                 > f-icon {
                     line-height: var(--s-ln-hgt);
                 }
             }
             .large > & {
-                padding: var(--spacing-xxsmall) var(--spacing-xsmall);
+                padding: var(--space-4) var(--space-5);
                 border-radius: var(--bdr-rad);
                 justify-content: space-between;
                 background-color: var(--lt-gray);
@@ -471,19 +474,19 @@ ul {
                 }
                 :not(.vertical) > & {
                     &:after {
-                        inset: auto 15px calc(var(--spacing-micro) * -1);
+                        inset: auto 15px calc(var(--space-2) * -1);
                         height: 4px;
                     }
                     :not(:has(> .active)) > &:not(.active):after {
-                        inset: auto calc(100% - 2px) calc(var(--spacing-micro) * -1);
+                        inset: auto calc(100% - 2px) calc(var(--space-2) * -1);
                     }
                     &.active:hover:after {
-                        left: var(--spacing-micro);
-                        right: var(--spacing-micro);
+                        left: var(--space-2);
+                        right: var(--space-2);
                     }
                     .top > &:after {
                         bottom: unset;
-                        top: calc(var(--spacing-micro) * -1);
+                        top: calc(var(--space-2) * -1);
                     }
                     .active ~ &:after {
                         left: 0;
@@ -494,23 +497,23 @@ ul {
                         right: 0;
                     }
                     .active ~ &:is(.tooltip, :has(> :is(f-icon, i):only-child)):after {
-                        right: calc(100% - var(--spacing-micro) / 2);
+                        right: calc(100% - var(--space-2) / 2);
                     }
                     &:is(.tooltip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
-                        left: calc(100% - var(--spacing-micro) / 2);
+                        left: calc(100% - var(--space-2) / 2);
                     }
                 }
                 .vertical > & {
                     &:after {
-                        inset: var(--spacing-mili) 0 var(--spacing-mili) calc(var(--spacing-micro) * -1);
+                        inset: var(--space-3) 0 var(--space-3) calc(var(--space-2) * -1);
                         width: 4px;
                     }
                     :not(:has(> .active)) > &:not(.active):after {
-                        inset: calc(100% - 2px) 0 calc(100% - 2px) calc(var(--spacing-micro) * -1);
+                        inset: calc(100% - 2px) 0 calc(100% - 2px) calc(var(--space-2) * -1);
                     }
                     &:hover:after {
-                        top: var(--spacing-micro);
-                        bottom: var(--spacing-micro);
+                        top: var(--space-2);
+                        bottom: var(--space-2);
                     }
                     .active ~ &:after {
                         top: 0;
@@ -521,10 +524,10 @@ ul {
                         bottom: 0;
                     }
                     .active ~ &:is(.tooltip, :has(> :is(f-icon, i):only-child)):after {
-                        bottom: calc(100% - var(--spacing-micro) / 2);
+                        bottom: calc(100% - var(--space-2) / 2);
                     }
                     &:is(.tooltip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
-                        top: calc(100% - var(--spacing-micro) / 2);
+                        top: calc(100% - var(--space-2) / 2);
                     }
                 }
             }
@@ -806,7 +809,7 @@ label {
     &:has(> input:not([type])) {
         display: flex;
         gap: 12px;
-        padding-left: 18px !important;
+        padding-left: var(--space-4) !important;
         
         > input:not([type]) {
             padding: 0;
@@ -821,7 +824,7 @@ label {
         }
     }
     &:has(> input[type='checkbox']) {
-        gap: var(--spacing-xxsmall);
+        gap: var(--space-4);
         user-select: none;
         padding: var(--inner-spacing);
         border-radius: var(--s-bdr-rad);
@@ -897,8 +900,8 @@ f-uploader {
     align-items: center;
     border-radius: var(--bdr-rad);
     flex-direction: column;
-    padding: var(--spacing-medium) 0 var(--spacing-small);
-    gap: var(--spacing-xxsmall);
+    padding: var(--space-8) 0 var(--space-7);
+    gap: var(--space-4);
     min-width: 500px;
     
     &.drag {
@@ -937,7 +940,7 @@ table {
     font-size: 1rem;
     border-spacing: 0;
     border-radius: var(--bdr-rad);
-    margin: var(--spacing-small) 0;
+    margin: var(--space-7) 0;
     overflow: hidden;
     
     th {
@@ -1100,7 +1103,7 @@ form {
         }
     }
     > div.btns {
-        margin-top: var(--spacing-micro);
+        margin-top: var(--space-2);
 
         > button {
             margin-top: 0;
@@ -1204,7 +1207,7 @@ f-player {
         > div {
             background-color: var(--bg-blur);
             backdrop-filter: var(--bg-blur-px);
-            padding: var(--spacing-small);
+            padding: var(--space-7);
             border-radius: var(--bdr-rad);
             
             :not(.active) > & {
@@ -1358,7 +1361,7 @@ f-player {
                     }
                     > .player_control_controls_left_timer {
                         font-size: var(--s-ft-sz);
-                        margin-left: var(--spacing-xxsmall);
+                        margin-left: var(--space-4);
                         
                         &, * {
                             color: white;
@@ -1465,10 +1468,10 @@ span, p {
     color: var(--text-color);
 }
 p {
-    margin: var(--spacing-mili) 0;
+    margin: var(--space-3) 0;
 
     &:has(+ :is(a.btn, button)) {
-        margin-bottom: var(--spacing-small);
+        margin-bottom: var(--space-7);
     }
 }
 span {
@@ -1524,10 +1527,10 @@ h5 {
 }
 h6 {
     font-size: 1.15rem;
-    margin: var(--spacing-mili) 0;
+    margin: var(--space-3) 0;
 
     + p {
-        margin-top: var(--spacing-gap);
+        margin-top: var(--space-1);
     }
 }
 h6.tagline {
@@ -1541,7 +1544,7 @@ h6.tagline {
             margin-bottom: 0;
 
             &:has(+ *) {
-                margin-bottom: var(--spacing-small);
+                margin-bottom: var(--space-7);
             }
         }
     }
@@ -1558,7 +1561,7 @@ code {
     padding: 25px;
     border-radius: var(--bdr-rad);
     font-size: var(--mns-ft-sz);
-    margin: var(--spacing-small) 0;
+    margin: var(--space-7) 0;
     font-family: var(--mns-ft);
     position: relative;
     border: 1px solid var(--dk-gray);
@@ -1692,21 +1695,21 @@ f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
     display: block;
-    margin: var(--spacing-small) 0;
+    margin: var(--space-7) 0;
     white-space: nowrap;
 
     > div:first-child {
-        padding: 5px 5px 5px var(--spacing-xxsmall);
+        padding: 5px 5px 5px var(--space-4);
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
     > div:last-child {
-        padding: 0 var(--spacing-xxsmall) ;
+        padding: 0 var(--space-4) ;
         white-space-collapse: preserve;
         display: grid;
         grid-template-columns: max-content auto;
-        column-gap: var(--spacing-xxsmall);
+        column-gap: var(--space-4);
         transition: var(--df-trans), height .5s ease;
         overflow: auto hidden;
         height: 0;
@@ -1718,7 +1721,7 @@ f-code {
             background-color: rgba(255, 255, 255, .1);
         }
         .active > & {
-            padding-bottom: var(--spacing-xxsmall);
+            padding-bottom: var(--space-4);
             height: calc-size(auto, size);
         }
         &, span {
@@ -1842,10 +1845,10 @@ div.message.offline:before {
                 color: var(--title-color);
             }
             &:not(:has(input, f-select)) > p {
-                margin-bottom: var(--spacing-xsmall);
+                margin-bottom: var(--space-5);
             }
             > p + *:has(+ div) {
-                margin: 0 0 var(--spacing-xsmall);
+                margin: 0 0 var(--space-5);
                 width: 100%;
             }
             > div.checkboxes:not(:has(> *)):before {
@@ -1854,7 +1857,7 @@ div.message.offline:before {
             }
             > div:last-child {
                 border-top: 1px solid var(--gray);
-                padding-top: var(--spacing-xxsmall);
+                padding-top: var(--space-4);
                 display: grid;
                 gap: 10px;
                 grid-template-columns: repeat(2, 1fr);
@@ -1883,7 +1886,7 @@ div.message.offline:before {
         }
         > ul {
             grid-area: list;
-            margin: var(--spacing-small) 0;
+            margin: var(--space-7) 0;
             
             &:not(:has(> *)) {
                 &:before {
@@ -1925,8 +1928,8 @@ div.message.offline:before {
             }
             &:has(> li) {
                 display: grid;
-                gap: var(--spacing-small);
-                grid-template-columns: repeat(4, calc(25% - var(--spacing-small) * .75));
+                gap: var(--space-7);
+                grid-template-columns: repeat(4, calc(25% - var(--space-7) * .75));
             }
             > span > f-icon {
                 margin-right: 10px;
@@ -1984,7 +1987,7 @@ div.message.offline:before {
         }
     }
     > div, > form {
-        padding: var(--spacing-small);
+        padding: var(--space-7);
         border-radius: var(--bdr-rad);
         background-color: var(--bg-blur);
         backdrop-filter: var(--bg-blur-px);
@@ -2073,7 +2076,7 @@ header {
         );
     height: 70px;
     width: 100%;
-    padding: 10px var(--spacing-default);
+    padding: 10px var(--space-11);
     position: sticky;
     top: 0;
     z-index: 2;
@@ -2087,7 +2090,7 @@ header {
         display: grid;
         grid-template-columns: 18.84px max-content;
         justify-items: right;
-        gap: var(--spacing-medium);
+        gap: var(--space-8);
         align-items: center;
         
         > a[name='logo'] {
@@ -2109,7 +2112,7 @@ header {
     > ul[name='center'] {
         grid-area: center;
         display: flex;
-        gap: var(--spacing-gap);
+        gap: var(--space-1);
         justify-content: center;
         
         > li > a {
@@ -2253,7 +2256,7 @@ footer {
             align-items: center;
         }
         &:first-child {
-            padding: 0 var(--spacing-default);
+            padding: 0 var(--space-11);
             justify-content: space-between;
             height: 200px;
             
@@ -2269,7 +2272,7 @@ footer {
             > div {
                 display: grid;
                 grid-template-columns: repeat(3, max-content);
-                gap: var(--spacing-default);
+                gap: var(--space-11);
 
                 > div {
                     > h6 {
@@ -2283,7 +2286,7 @@ footer {
         }
         &:last-child {
             justify-content: space-between;
-            padding: var(--spacing-xxsmall) var(--spacing-default);
+            padding: var(--space-4) var(--space-11);
             
             > ul > li + li {
                 margin-left: 20px;
@@ -2309,11 +2312,11 @@ footer {
     height: calc(100svh - 70px);
     
     > :not(.modal) {
-        padding: var(--spacing-medium) 0;
+        padding: var(--space-8) 0;
         
         &:is(ul) {
             overflow-y: scroll;
-            padding-left: calc(var(--spacing-default) - 20px);
+            padding-left: calc(var(--space-11) - 20px);
             
             &::-webkit-scrollbar {
                 display: none;
@@ -2321,8 +2324,8 @@ footer {
         }
         &:is(div) {
             overflow-y: scroll;
-            padding-right: calc(var(--spacing-default) - 16px);
-            padding-left: var(--spacing-medium);
+            padding-right: calc(var(--space-11) - 16px);
+            padding-left: var(--space-8);
             container: main / inline-size;
 
             > div {
@@ -2362,15 +2365,15 @@ footer {
             padding-left: 0;
         }
         > ul.btn-list {
-		    padding-left: var(--spacing-medium);
-		    padding-right: var(--spacing-default);
+		    padding-left: var(--space-8);
+		    padding-right: var(--space-11);
         }
     }
 }
 @media screen and (max-width: 600px) {
     header {
-        padding-left: var(--spacing-medium);
-        padding-right: var(--spacing-medium);
+        padding-left: var(--space-8);
+        padding-right: var(--space-8);
     }
     #sidebar-page {
         grid-template-columns: 100%;
@@ -2378,12 +2381,12 @@ footer {
 
         > :not(.modal) {
             &:is(div) {
-                padding-left: var(--spacing-medium);
-                padding-right: calc(var(--spacing-medium) - 16px);
-                padding-bottom: var(--spacing-xxsmall);
+                padding-left: var(--space-8);
+                padding-right: calc(var(--space-8) - 16px);
+                padding-bottom: var(--space-4);
             }
             &:is(ul.btn-list) {
-                padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-xxsmall);
+                padding: var(--space-8) var(--space-8) var(--space-4);
                 overflow: scroll hidden;
                 flex-wrap: nowrap;
                 order: 1;

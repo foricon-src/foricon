@@ -1,10 +1,10 @@
 .pageviews {
     --angle: 0;
     
-    padding: var(--spacing-small);
+    padding: var(--space-7);
     border: 1px solid var(--gray);
     border-radius: var(--bdr-rad);
-    gap: var(--spacing-small);
+    gap: var(--space-7);
     
     &, & > .chart > div {
         display: flex;
@@ -15,7 +15,7 @@
     & > .chart {
         height: 300px;
         aspect-ratio: 1/1;
-        padding: var(--spacing-xxsmall);
+        padding: var(--space-4);
         background-image: conic-gradient(var(--main-color) var(--degree), var(--tr-main-color) var(--degree));
         animation: grow var(--duration) ease .2s forwards;
 
@@ -32,7 +32,7 @@
     }
     & > ul {
         align-self: start;
-        margin: calc(-1 * var(--spacing-mili)) calc(-1 * var(--spacing-micro));
+        margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-2));
     }
 } 
 @keyframes grow {

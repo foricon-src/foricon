@@ -126,7 +126,7 @@ export default function PageClient() {
                     <f-icon
                         icon='circle-info'
                         title={formatDate(resetDate)}
-                        style={{ marginLeft: 'var(--spacing-micro)' }}
+                        style={{ marginLeft: 'var(--space-2)' }}
                     />
                 </span>
             </div>

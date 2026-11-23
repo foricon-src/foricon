@@ -1,7 +1,7 @@
 .media {
     & > div.used {
         background-color: var(--lt-gray);
-        padding: var(--spacing-mili) var(--spacing-xxsmall);
+        padding: var(--space-3) var(--space-4);
         border-radius: var(--bdr-rad);
 
         & > h6 {
@@ -16,7 +16,7 @@
         }
     }
     & > :global(ul.btn-list) {
-        margin: var(--spacing-xxsmall) 0 var(--spacing-micro);
+        margin: var(--space-4) 0 var(--space-2);
     }
     & > :global(ul.btn-list) > li, & > ul.results > li > ul > li {
         & > f-icon {
@@ -45,12 +45,12 @@
         }
     }
     & > ul.results > li {
-        padding: var(--spacing-micro);
+        padding: var(--space-2);
         background-color: var(--lt-gray);
         border-radius: var(--bdr-rad);
         display: grid;
         grid-template-columns: 35px auto 80px 120px max-content;
-        gap: var(--spacing-xxsmall);
+        gap: var(--space-4);
         align-items: center;
         font-size: var(--s-ft-sz);
         cursor: var(--cursor-pointer);

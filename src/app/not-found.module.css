@@ -21,11 +21,11 @@
             }
         }
         & > hr {
-            margin: var(--spacing-mili) 0;
+            margin: var(--space-3) 0;
         }
         & > ul {
             width: 350px;
-            gap: var(--spacing-micro);
+            gap: var(--space-2);
         }
     }
 }

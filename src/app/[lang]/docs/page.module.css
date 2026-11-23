@@ -1,13 +1,13 @@
 .shortcut {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-micro);
-    margin-top: var(--spacing-small);
+    gap: var(--space-2);
+    margin-top: var(--space-7);
 
     & > li {
         border-radius: var(--bdr-rad);
         border: 1px solid var(--dk-gray);
-        padding: var(--spacing-mili) var(--spacing-xxsmall);
+        padding: var(--space-3) var(--space-4);
         cursor: var(--cursor-pointer);
 
         &:hover {

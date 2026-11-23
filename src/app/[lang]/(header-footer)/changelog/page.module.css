@@ -1,6 +1,6 @@
 .views {
     justify-content: center;
-    padding: var(--spacing-medium) 0 12px;
+    padding: var(--space-8) 0 12px;
     position: sticky !important;
     top: 32px;
     background-color: var(--bg-blur);
@@ -8,14 +8,14 @@
     z-index: 1;
 }
 .versions {
-    padding: var(--spacing-medium) var(--spacing-default) var(--spacing-default);
+    padding: var(--space-8) var(--space-11) var(--space-11);
     display: grid;
-    gap: var(--spacing-default);
+    gap: var(--space-11);
     
     & > div {
         display: grid;
         grid-template-columns: 190px auto;
-        gap: var(--spacing-default);
+        gap: var(--space-11);
         
         .featured > &:not(:has(.featured > *)) {
             display: none;
@@ -44,7 +44,7 @@
                     width: 100%;
                     border-radius: var(--bdr-rad);
                     display: block;
-                    margin-top: var(--spacing-small);
+                    margin-top: var(--space-7);
                 }
                 &.detailed > ul {
                     margin-top: 15px;

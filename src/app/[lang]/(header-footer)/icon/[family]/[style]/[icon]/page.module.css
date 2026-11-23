@@ -1,5 +1,5 @@
 .wrapper {
-    padding: var(--spacing-default);
+    padding: var(--space-11);
 
     & h6, & > .main > .bottom > :last-child > div > div > input {
         margin: 0;
@@ -11,10 +11,10 @@
     }
 
     & > .title {
-        margin-bottom: var(--spacing-small);
+        margin-bottom: var(--space-7);
 
         & > h3 {
-            margin: 0 var(--spacing-small) 0 0;
+            margin: 0 var(--space-7) 0 0;
         }
         & > :last-child {
             margin-left: auto;
@@ -31,10 +31,10 @@
         }
         &, & > .bottom > :last-child, & > .bottom > :last-child > div > div {
             grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-mili);
+            gap: var(--space-3);
         }
         & > .top, & > :is(.right, .bottom) > div {
-            padding: var(--spacing-xxsmall);
+            padding: var(--space-4);
         }
         & > :is(.top, .left, .bottom), & > .right > div {
             border: 1px solid var(--dk-gray);
@@ -43,7 +43,7 @@
 
         & > .top {
             grid-area: top;
-            gap: var(--spacing-small);
+            gap: var(--space-7);
 
             & > h6 {
                 flex-shrink: 0;
@@ -51,7 +51,7 @@
         }
         & > .left {
             grid-template-rows: max-content;
-            padding: var(--spacing-mili);
+            padding: var(--space-3);
 
             & > ul > li {
                 flex-grow: 1;
@@ -67,7 +67,7 @@
                 margin: 0;
             }
             & > div {
-                margin-top: var(--spacing-mili);
+                margin-top: var(--space-3);
             }
         }
         & > .bottom {
@@ -90,21 +90,21 @@
                 }
             }
             & > :last-child {
-                column-gap: var(--spacing-small);
+                column-gap: var(--space-7);
 
                 & > div {
                     & > div, & > ul:nth-child(2) {
                         margin-top: 5px;
                     }
                     & > div {
-                        gap: var(--spacing-gap);
-                        margin-bottom: var(--spacing-micro);
+                        gap: var(--space-1);
+                        margin-bottom: var(--space-2);
                     }
                     & > input {
                         width: 100%;
                     }
                     & > label {
-                        margin-top: var(--spacing-micro);
+                        margin-top: var(--space-2);
                     }
                 }
             }

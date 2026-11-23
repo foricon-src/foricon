@@ -4,11 +4,11 @@
         'used reset'
         'bar bar';
     grid-template-columns: auto max-content;
-    gap: var(--spacing-mili);
+    gap: var(--space-3);
     background-color: var(--lt-gray);
-    padding: var(--spacing-mili) var(--spacing-xxsmall);
+    padding: var(--space-3) var(--space-4);
     border-radius: var(--bdr-rad);
-    margin-top: var(--spacing-micro);
+    margin-top: var(--space-2);
     
     & > div:not(.bar) {
         grid-area: used;

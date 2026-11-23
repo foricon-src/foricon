@@ -7,12 +7,12 @@
         text-align: center;
         flex-direction: column;
         overflow: hidden;
-        padding: 0 var(--spacing-default) 7vh;
+        padding: 0 var(--space-11) 7vh;
         background: url('//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5KJE4NqlY-rEfGQ9qd_ty1MXPzdbY6SgMFt-xdwAStwyd7fUSUuX97g660VVzRNiYhXo-iijRkJlWDLP7f6MyBxEixbGbss8UvZJ0VL1eb1f3eHycUxIEnYnR7JBe-MSXsX5FkSkzwCkcqh5A9t4rHLoPzbW6tyk3H5_lQzqxMUBYaBZ3jqUw-vHt0tQ/s1600/pattern.png') no-repeat center/contain;
         
         & > img {
             height: 80px;
-            margin-bottom: var(--spacing-medium);
+            margin-bottom: var(--space-8);
         }
         & > a {
             background: none;
@@ -25,7 +25,7 @@
             margin: 0;
         }
         & > p {
-            margin-bottom: var(--spacing-small);
+            margin-bottom: var(--space-7);
         }
         & > label {
             width: 400px;
@@ -37,14 +37,14 @@
         }
     }
     .contentSection {
-        padding: var(--spacing-default);
+        padding: var(--space-11);
         
         /*.contentSection#anniversary {
         display: grid;
         align-items: center;
         justify-content: center;
-        grid-template-columns: 60% calc(40% - var(--spacing-default));
-        gap: var(--spacing-default);
+        grid-template-columns: 60% calc(40% - var(--space-11));
+        gap: var(--space-11);
         background-color: var(--dk-bg-color);
         border-radius: 0 var(--bdr-rad) var(--bdr-rad) 0;
         }
@@ -105,7 +105,7 @@
             display: grid;
             grid-template-columns: 50% auto;
             align-items: center;
-            gap: var(--spacing-default);
+            gap: var(--space-11);
             
             & > div:first-child {
                 & > p {
@@ -139,8 +139,8 @@
         &.iconFamilies {
             & > ul {
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: var(--spacing-xxsmall);
-                margin-top: var(--spacing-small);
+                gap: var(--space-4);
+                margin-top: var(--space-7);
                 
                 &, & > li > div {
                     display: grid;
@@ -151,7 +151,7 @@
                     cursor: var(--cursor-pointer);
                     min-width: 0;
                     background-color: var(--bg-color);
-                    padding: var(--spacing-small) var(--spacing-small) var(--spacing-xsmall);
+                    padding: var(--space-7) var(--space-7) var(--space-5);
                     border: 1px solid transparent;
                     box-shadow: var(--xs-shadow);
     
@@ -164,7 +164,7 @@
                         background-color: var(--gray);
                     }
                     & > div {
-                        gap: var(--spacing-xxsmall);
+                        gap: var(--space-4);
                         grid-template-columns: repeat(3, 1fr);
                         
                         & > f-icon {
@@ -191,12 +191,12 @@
             & > div {
                 display: grid;
                 grid-template-columns: 45vw auto;
-                gap: var(--spacing-small);
-                margin: var(--spacing-default) calc(var(--spacing-default) - var(--spacing-default) * 2) 0 0;
+                gap: var(--space-7);
+                margin: var(--space-11) calc(var(--space-11) - var(--space-11) * 2) 0 0;
                 
                 & > div {
                     &:first-child {
-                        padding: var(--spacing-small) 0;
+                        padding: var(--space-7) 0;
                         
                         & > :first-child {
                             margin-top: 0;
@@ -211,7 +211,7 @@
                         }
                         & > code {
                             position: sticky;
-                            bottom: var(--spacing-xxsmall);
+                            bottom: var(--space-4);
                             margin-bottom: 0;
                         }
                     }
@@ -260,7 +260,7 @@
                 box-shadow: var(--shadow);
                 
                 & + li {
-                    margin-top: var(--spacing-medium);
+                    margin-top: var(--space-8);
                 }
                 & > h3 {
                     margin: 0 0 20px;
@@ -305,7 +305,7 @@
             padding: 60px 60px 0;
             
             & > a {
-                padding: var(--spacing-xxsmall);
+                padding: var(--space-4);
                 border-radius: var(--l-bdr-rad);
                 display: block;
                 
@@ -328,7 +328,7 @@
                     font-size: 2.5rem;
                 }
                 & > h5 {
-                    margin: var(--spacing-xsmall) 0 0;
+                    margin: var(--space-5) 0 0;
                 }
                 & > p {
                     margin-bottom: 0;

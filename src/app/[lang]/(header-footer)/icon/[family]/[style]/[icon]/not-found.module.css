@@ -1,6 +1,6 @@
 .wrapper {
     min-height: calc(100vh - 70px);
-    padding: var(--spacing-default) 0;
+    padding: var(--space-11) 0;
     flex-direction: column;
 
     & > f-icon {
@@ -14,7 +14,7 @@
         margin-bottom: 0;
     }
     & > ul {
-        margin: 5px 0 var(--spacing-mili);
+        margin: 5px 0 var(--space-3);
     }
     & > form > label {
         margin: 0 !important;

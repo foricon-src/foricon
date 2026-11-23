@@ -24,8 +24,8 @@
 .bar {
     position: fixed;
     bottom: 10px;
-    left: var(--spacing-default);
-    right: var(--spacing-default);
+    left: var(--space-11);
+    right: var(--space-11);
     padding: 15px 15px 15px 25px;
     border-radius: var(--bdr-rad);
     grid-template-areas:
@@ -53,7 +53,7 @@
         
         &:first-child {
             grid-area: name;
-            padding-right: var(--spacing-mili);
+            padding-right: var(--space-3);
 
             & > h6 {
                 margin-right: auto;
@@ -66,10 +66,10 @@
                     opacity: .75;
                 }
                 & + span {
-                    margin-left: var(--spacing-small);
+                    margin-left: var(--space-7);
                 }
                 & > f-icon {
-                    margin-right: var(--spacing-micro);
+                    margin-right: var(--space-2);
                 }
             }
         }
@@ -195,10 +195,10 @@
         'options options';
     grid-template-columns: calc(100% - min(200px, 30%) - 5px) min(200px, 30%);
     padding:
-        var(--spacing-default)
-        max(var(--spacing-default), calc(50vw - 1000px))
-        var(--spacing-xxsmall);
-    gap: var(--spacing-small) 5px;
+        var(--space-11)
+        max(var(--space-11), calc(50vw - 1000px))
+        var(--space-4);
+    gap: var(--space-7) 5px;
     background-color: var(--bg-color);
     position: sticky;
     z-index: 1;
@@ -264,8 +264,8 @@
 }
 
 .main {
-    padding: var(--spacing-medium) var(--spacing-default) var(--spacing-default);
-    gap: var(--spacing-small);
+    padding: var(--space-8) var(--space-11) var(--space-11);
+    gap: var(--space-7);
     grid-template-areas:
         'categoryTitle resultTitle'
         'categories results';
@@ -476,7 +476,7 @@
             }
         }
         & > .pages {
-            margin-top: var(--spacing-small);
+            margin-top: var(--space-7);
             justify-content: center;
             
             & > li {
@@ -521,7 +521,7 @@
             position: absolute;
             left: 0;
             right: 16px;
-            height: var(--spacing-small);
+            height: var(--space-7);
             pointer-events: none;
             z-index: 1;
         }
@@ -540,7 +540,7 @@
         }
         & > ul {
             overflow-y: scroll;
-            padding-right: var(--spacing-micro);
+            padding-right: var(--space-2);
         }
         :has(:global(.active).top:hover, :global(.active).top :is(input:focus, f-select > :global(ul.active))) & {
             top: calc(var(--top) + var(--dropdown));
@@ -562,7 +562,7 @@
             user-select: none;
             
             :global(:not(.active))& {
-                margin-bottom: calc(-1 * var(--spacing-small));
+                margin-bottom: calc(-1 * var(--space-7));
             }
             &:before {
                 content: '\e0ae';
