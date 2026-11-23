@@ -2,9 +2,10 @@ export function GET(_, { params: { uid }}) {
     return new Response(`
         const { log, warn, error } = console;
         const uid = '${uid}';
-
-        const iconlisteners = new WeakMap();
-        const stylelisteners = new WeakMap();
+        
+        const listeners = new WeakMap();
+        const iconListeners = new WeakMap();
+        const styleListeners = new WeakMap();
 
         window.foriconPackageIsLoaded = false;
 
@@ -28,7 +29,7 @@ export function GET(_, { params: { uid }}) {
                 }
                 setStyle(styleName) {
                     if (typeof styleName != 'string') error('Invalid value format: Style name must be a valid string');
-                    else if (![ 'solid', 'outline', 'duotone/solid', 'duotone/outline' ]) error(\`Invalid value: '\${styleName}' is not supported\`)
+                    else if (![ 'solid', 'outline', 'duotone/solid', 'duotone/outline' ].includes(styleName)) error(\`Invalid value: '\${styleName}' is not supported\`)
                     else this.setAttribute('i-s', styleName);
                 }
                 toggleStyle(style1Name, style2Name) {
@@ -94,7 +95,155 @@ export function GET(_, { params: { uid }}) {
                         if (values.includes(value.toString())) this.setAttribute(attr, value);
                         else error(\`Invalid value: '\${value}' is not supported\`);
                     }
-                    else error('Invalid value format: Value must be a valid string or number');
+                    else error('Invalid value format: value must be a valid string or number');
+                }
+                changesOn(event, options = [], element = this) {
+                    if (![ 'click', 'hold', 'hover', 'focus' ].includes(event)) error(\`Invalid value: '\${event}' is not supported\`);
+                    else if (listeners.get(this)?.has(event))
+                        warn(\`Duplicate listener: This icon already has another '\${event}' listener added. Please remove it before adding more.\`);
+                    else if (!Array.isArray(options)) error('Invalid value format: options must be a valid array');
+                    else if (!(element instanceof HTMLElement)) error('Invalid value format: element must be a valid HTML element');
+                    else {
+                        let enabled = true, active = false;
+                        let normalized = [];
+                        let existed = [];
+
+                        let handlers = {
+                            icon: value => this.setIcon(value),
+                            style: value => this.setStyle(value),
+                            size: value => this.setSize(value),
+                            scale: value => this.setScale(value),
+                            rotate: value => this.rotate(value),
+                            'f-rotate': value => this.rotate(value, true),
+                            animation: value => this.setAnimation(value?.name || null, value?.speed),
+                        }
+                        let eventMap = {
+                            hover: ['pointerenter', 'pointerleave'],
+                            hold: [
+                                'pointerdown',
+                                'pointerup',
+                                'pointercancel',
+                                'lostpointercapture'
+                            ],
+                            focus: ['focusin', 'focusout']
+                        }
+
+                        function isPlainObject(value) {
+                            return value !== null &&
+                                typeof value == 'object' &&
+                                !Array.isArray(value) &&
+                                Object.getPrototypeOf(value) == Object.prototype;
+                        }
+
+                        for (let option of options) {
+                            let obj;
+                            if (Array.isArray(option)) {
+                                if (![ 2, 3 ].includes(option.length)) {
+                                    error(\`Invalid value: Option using Shortened Syntax must only have 2 or 3 items\`);
+                                    continue;
+                                }
+                                let [ type, value, restore ] = option;
+                                obj = { type, value, restore };
+                            }
+                            else if (!isPlainObject(option)) {
+                                error('Invalid value format: option must be an object or array');
+                                continue
+                            }
+                            else obj = option;
+
+                            if (typeof obj.type != 'string') error('Invalid value format: type must be a valid string')
+                            else if (![ 'icon', 'style', 'size', 'scale', 'f-rotate', 'rotate', 'animation' ].includes(obj.type))
+                                error(\`Invalid value: '\${obj.type}' is not supported\`)
+                            else if (existed.includes(obj.type))
+                                error(\`Duplicated: '\${obj.type}' has already been defined\`)
+                            else if (obj.type == 'f-rotate' && existed.includes('rotate') || obj.type == 'rotate' && existed.includes('f-rotate'))
+                                error(\`Duplicated: '\${obj.type}' has already been defined. Please note that f-rotate is considered as rotate.\`)
+                            else if (obj.value === undefined) error('Missing arguments: value is undefined')
+                            else if (obj.type == 'animation' && !isPlainObject(obj.value))
+                                error("Invalid value: Invalid animation configuration")
+                            else if (obj.type == 'animation' && typeof obj.value.name != 'string')
+                                error('Invalid value format: Animation name must be a string')
+                            else {
+                                existed.push(obj.type);
+                                normalized.push(obj);
+                            }
+                        }
+
+                        let defaults = {
+                            ...this.get(),
+                            rotate: this.getAttribute('rotate') || null,
+                            'f-rotate': this.getAttribute('f-rotate') || null,
+                        }
+                        
+                        let on = e => {
+                            if (!enabled || active) return;
+                            active = true;
+                            event == 'hold' && e && element.setPointerCapture(e.pointerId);
+                            for (let option of normalized) {
+                                let { type, value, restore = true } = option;
+                                handlers[type](value);
+                            }
+                        }
+                        let off = e => {
+                            if (!active || event == 'focus' && e && element.contains(e.relatedTarget)) return;
+                            active = false;
+                            for (let option of normalized) {
+                                let { type, restore = true } = option;
+                                restore !== false && handlers[type](
+                                    restore === true ? defaults[type] : restore
+                                )
+                            }
+                        }
+                        
+                        if (!listeners.has(this))
+                            listeners.set(this, new Map());
+                        let currentListeners = listeners.get(this);
+
+                        if (event == 'click') {
+                            let onClick = () => enabled && (active ? off() : on());
+                            element.addEventListener('click', onClick);
+                            currentListeners.set('click', onClick);
+                        }
+                        else {
+                            let events = eventMap[event];
+                            element.addEventListener(events[0], on);
+                            element.addEventListener(events[1], off);
+
+                            if (event == 'hold') {
+                                element.addEventListener(events[2], off);
+                                element.addEventListener(events[3], off);
+                            }
+
+                            currentListeners.set(event, { on, off });
+                        }
+                        
+                        return {
+                            enable() {
+                                enabled = true;
+                            },
+                            disable(restore) {
+                                enabled = false;
+                                restore && off()
+                            },
+                            remove() {
+                                let value = currentListeners.get(event);
+                                if (!value) warn('Listeners have already been removed')
+                                else if (event == 'click') element.removeEventListener('click', value)
+                                else {
+                                    let events = eventMap[event];
+                                    element.removeEventListener(events[0], value.on);
+                                    element.removeEventListener(events[1], value.off);
+
+                                    if (event == 'hold') {
+                                        element.removeEventListener(events[2], value.off);
+                                        element.removeEventListener(events[3], value.off);
+                                    }
+                                }
+                                off();
+                                currentListeners.delete(event);
+                            },
+                        }
+                    }
                 }
                 toggleIconOnHover(activeIconName, element = this) {
                     if (iconListeners.has(this)) {
@@ -104,10 +253,10 @@ export function GET(_, { params: { uid }}) {
                     
                     let currentIconName = this.getIcon();
                     
-                    function mouseEnter() {
+                    let mouseEnter = () => {
                         this.setIcon(activeIconName);
                     }
-                    function mouseLeave() {
+                    let mouseLeave = () => {
                         this.setIcon(currentIconName);
                     }
                 
@@ -120,7 +269,7 @@ export function GET(_, { params: { uid }}) {
                         mouseLeave,
                     })
                 }
-                removeToggleStyleOnHover() {
+                removeToggleIconOnHover() {
                     let listener = iconListeners.get(this);
                     if (!listener) return;
                     let { element, mouseEnter, mouseLeave } = listener;
@@ -136,31 +285,21 @@ export function GET(_, { params: { uid }}) {
                     
                     let currentStyleName = this.getStyle();
                     
-                    function mouseEnter() {
-                        t.setStyle(activeStyleName);
+                    let mouseEnter = () => {
+                        this.setStyle(activeStyleName);
                     }
-                    function mouseLeave() {
-                        t.setStyle(currentStyleName);
+                    let mouseLeave = () => {
+                        this.setStyle(currentStyleName);
                     }
                 
                     element.addEventListener('mouseenter', mouseEnter);
                     element.addEventListener('mouseleave', mouseLeave);
 
-                    iconListeners.set(this, {
+                    styleListeners.set(this, {
                         element,
                         mouseEnter,
                         mouseLeave,
                     })
-                }
-                removeToggleStyleOnHover(element = this) {
-                    if (element._s_meh) {
-                        element.removeEventListener('mouseenter', element._s_meh);
-                        delete element._s_meh;
-                    }
-                    if (element._s_mlh) {
-                        element.removeEventListener('mouseleave', element._s_mlh);
-                        delete element._s_mlh;
-                    }
                 }
                 removeToggleStyleOnHover() {
                     let listener = styleListeners.get(this);
@@ -181,15 +320,15 @@ export function GET(_, { params: { uid }}) {
                     icon && this.setIcon(icon);
                     style && this.setStyle(style);
 
-                    if (animation in options) {
+                    if ('animation' in options) {
                         if (animation == null) this.setAnimation(null);
                         else if (!animation.name) error('Missing arguments: The name of animation is undefined')
                         else this.setAnimation(animation.name, animation.speed);
                     }
                     
-                    size in options && this.setSize(size);
-                    scale in options && this.setScale(scale);
-                    rotate in options && this.rotate(rotate);
+                    'size' in options && this.setSize(size);
+                    'scale' in options && this.setScale(scale);
+                    'rotate' in options && this.rotate(rotate);
                 }
                 get() {
                     return {

@@ -23,7 +23,7 @@ export default function PageClient() {
         setRo(renderingOption);
     }, [ user ])
     useEffect(() => {
-        getChild(ulRef.current).slice(0, -1).forEach(i => i.firstChild.toggleIconOnHover?.('trash-can', i));
+        getChild(ulRef.current).slice(0, -1).forEach(i => i.firstChild.changesOn?.('hover', [ 'icon', 'trash-can' ], i));
     }, [ allowedDomains ])
 
     usePage();

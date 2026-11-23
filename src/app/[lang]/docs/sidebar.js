@@ -129,20 +129,8 @@ export default function Sidebar() {
                     path: '/js-api/rotate',
                 },
                 {
-                    name: 'toggleIconOnHover()',
-                    path: '/js-api/toggle-icon-on-hover',
-                },
-                {
-                    name: 'removeToggleIconOnHover()',
-                    path: '/js-api/remove-toggle-icon-on-hover',
-                },
-                {
-                    name: 'toggleStyleOnHover()',
-                    path: '/js-api/toggle-style-on-hover',
-                },
-                {
-                    name: 'removeToggleStyleOnHover()',
-                    path: '/js-api/remove-toggle-style-on-hover',
+                    name: 'changesOn()',
+                    path: '/js-api/changes-on',
                 },
                 {
                     name: 'set()',
