@@ -268,10 +268,10 @@ ul {
         }
         &.line {
             &.vertical {
-                margin-top: var(--space-3);
+                margin-top: calc(var(--space-3) * 2);
             }
             &:not(.vertical) {
-                margin-left: var(--space-3);
+                margin-left: calc(var(--space-3) * 2);
             }
         }
         &.vertical {
@@ -730,7 +730,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
     label:has(> input[readonly])
 ):focus-within, f-select:has(> ul.active) {
     border-color: var(--main-color);
-    outline-width: 5px;
+    outline-width: var(--space-1);
     background-color: var(--lt-gray) !important;
 }
 input[type='color'] {

@@ -245,15 +245,14 @@
     }
     & > .options {
         grid-area: options;
-        margin: 0 -12px 0 -15px;
+        margin: 0 calc(var(--space-2) * -1);
         grid-template-columns: max-content max-content auto max-content;
-        gap: 10px 0;
         
         & > ul {
             justify-content: flex-end;
 
             & > li:has(> f-icon[icon='palette']) > div {
-                padding: 10px;
+                padding: var(--space-2);
 
                 & > form {
                     margin-bottom: var(--space-4);
