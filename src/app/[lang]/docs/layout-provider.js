@@ -4,7 +4,7 @@ import { createContext, useState } from 'react';
 
 export const LayoutContext = createContext(null);
 export function LayoutProvider({ children }) {
-    let [ isSidebarOpened, setIsSidebarOpened ] = useState(false);
+    let [ isSidebarOpened, setIsSidebarOpened ] = useState(true);
     let [ isNotePanelOpened, setIsNotePanelOpened ] = useState(false);
     let [ isSavedPanelOpened, setIsSavedPanelOpened ] = useState(false);
 

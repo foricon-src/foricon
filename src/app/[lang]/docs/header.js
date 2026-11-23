@@ -2,10 +2,11 @@
 
 import { useContext } from 'react';
 import Img from 'Com/img';
+import IconInput from 'Com/iconinput';
+import useGo from 'Com/go';
 import logo from 'Pub/foricon-f-logo.png';
 import { LayoutContext } from './layout-provider';
 import cssStyle from './internal-global.module.css';
-import IconInput from 'Com/iconinput';
 
 export default function Header() {
     let go = useGo();
