@@ -185,41 +185,41 @@ f-icon[icon] {
 
 .cons {
     --mns-ft: Consolas;
-    --mns-ft-sz: .7rem;
+    --mns-ft-sz: .8rem;
 }
 .fira {
     --mns-ft: 'Fira Code';
-    --mns-ft-sz: .65rem;
+    --mns-ft-sz: .74rem;
 }
 .scp {
     --mns-ft: 'Source Code Pro';
-    --mns-ft-sz: .675rem;
+    --mns-ft-sz: .77rem;
 }
 .dm {
     --mns-ft: 'DM Mono';
-    --mns-ft-sz: .65rem;
+    --mns-ft-sz: .74rem;
 }
 .nova {
     --mns-ft: 'Nova Mono';
-    --mns-ft-sz: .6rem;
+    --mns-ft-sz: .69rem;
 }
 .xanh {
     --mns-ft: 'Xanh Mono';
-    --mns-ft-sz: .696rem;
+    --mns-ft-sz: .8rem;
     --lt-spcg: 2px;
 }
 .kode {
     --mns-ft: 'Kode Mono';
-    --mns-ft-sz: .65rem;
+    --mns-ft-sz: .74rem;
 }
 .sono {
     --mns-ft: 'Sono';
-    --mns-ft-sz: .65rem;
+    --mns-ft-sz: .74rem;
 }
 
 ul.btn-list > li, f-option {
     display: flex;
-    gap: 10px;
+    gap: var(--space-2);
     
     :is(.vertical) > & > f-icon, &:is(f-option) > f-icon {
         flex-shrink: 0;
@@ -262,7 +262,7 @@ ul {
                 var(--space-3)
                 0
                 var(--space-3)
-                calc(var(--space-3) * -1 + 1);
+                calc(var(--space-3) * -1 + 1px);
             background-color: var(--dk-gray);
             pointer-events: none;
         }
@@ -280,7 +280,7 @@ ul {
             &.line:before, & > li.line:before {
                 height: 1px;
                 width: auto;
-                inset: calc(var(--space-3) * -1 + 1) var(--space-3) 0;
+                inset: calc(var(--space-3) * -1 + 1px) var(--space-3) 0;
             }
         }
         > li {
@@ -1999,10 +1999,10 @@ div.message.offline:before {
             scale: .8;
         }
         .wide > & {
-            width: min(100%, 600px);
+            width: min(100%, 500px);
         }
         .wider > & {
-            width: min(100%, 700px);
+            width: min(100%, 600px);
         }
     }
 }
@@ -2098,7 +2098,7 @@ header {
             background: none;
             
             > img {
-                height: var(--space-5);
+                height: var(--space-7);
                 display: block;
             }
         }
