@@ -198,7 +198,7 @@
         var(--space-10)
         max(var(--space-11), calc(50vw - 1000px))
         var(--space-4);
-    gap: var(--space-7) 5px;
+    gap: var(--space-6) var(--space-1);
     background-color: var(--bg-color);
     position: sticky;
     z-index: 1;
