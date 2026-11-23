@@ -8,6 +8,7 @@ import cssStyle from './internal-global.module.css';
 import IconInput from 'Com/iconinput';
 
 export default function Header() {
+    let go = useGo();
     let { sidebar, notePanel, savedPanel } = useContext(LayoutContext);
 
     return <div className={cssStyle.header}>
@@ -29,7 +30,14 @@ export default function Header() {
         />
         <ul className='btn-list'>
             <li
-                className={`tooltip bottom${notePanel.isOpened ? ' active' : ''}`}
+                className='tooltip bottom'
+                onClick={() => go()}
+            >
+                <f-icon icon='house'/>
+                <span>Home</span>
+            </li>
+            <li
+                className={`line tooltip bottom${notePanel.isOpened ? ' active' : ''}`}
                 onClick={() => notePanel.func(!notePanel.isOpened)}
             >
                 <f-icon icon='note-sticky'/>

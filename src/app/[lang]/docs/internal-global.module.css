@@ -50,7 +50,7 @@
             gap: var(--space-4);
 
             & > img {
-                height: var(--space-5);
+                height: var(--space-7);
             }
             & > h4 {
                 margin: 0;
