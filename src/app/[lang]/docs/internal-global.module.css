@@ -20,7 +20,7 @@
         --sidebar: var(--sidebar-width);
 
         & > .content {
-            margin-left: 5px;
+            margin-left: var(--spacing-gap);
         }
     }
     &:has(:global(.active).notePanel) {
@@ -50,7 +50,7 @@
             gap: var(--spacing-xxsmall);
 
             & > img {
-                height: 40px;
+                height: var(--spacing-xsmall);
             }
             & > h4 {
                 margin: 0;
@@ -72,10 +72,10 @@
 
         & > div {
             & + div {
-                margin-top: var(--spacing-small);
+                margin-top: var(--spacing-xxsmall);
             }
             & > h6 {
-                margin: 0 0 5px;
+                margin-top: 0;
             }
         }
     }

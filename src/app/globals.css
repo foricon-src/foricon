@@ -24,7 +24,7 @@
     --inner-spacing-s: var(--spacing-gap) var(--spacing-micro);
     
     /*Sizing*/
-    --bn-li-icon-width: 22.47px;
+    --bn-li-icon-width: 20.22px;
     --btn-scale: .85;
     
     /*Transition*/
@@ -107,9 +107,9 @@
     --mns-ft: Consolas;
     
     /*Font size*/
-    --s-ft-scale: .85;
+    --s-ft-scale: .9;
     --s-ft-sz: calc(var(--s-ft-scale) * 1rem);
-    --s-ln-hgt: calc(var(--s-ft-scale) * 27px);
+    --s-ln-hgt: calc(var(--s-ft-scale) * 24px);
     --mns-ft-sz: .8rem;
 
     /*Font spacing*/
@@ -301,10 +301,10 @@ ul {
                 justify-content: center;
                 padding-left: 0;
                 padding-right: 0;
-                width: 47px;
+                width: 40px;
                 
                 .small > & {
-                    width: 35px;
+                    width: 30.95px;
                 }
                 > span {
                     position: absolute;
