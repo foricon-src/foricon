@@ -305,6 +305,7 @@ ul {
                 padding-left: 0;
                 padding-right: 0;
                 width: 40px;
+                aspect-ratio: 1/1;
                 
                 .small > & {
                     width: 30.95px;
