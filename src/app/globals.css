@@ -603,13 +603,12 @@ a {
 }
 button, a.btn {
     display: inline-flex;
-    padding: 8px 20px;
+    padding: var(--inner-spacing);
     border-radius: var(--s-bdr-rad);
     font-size: 1rem;
     justify-content: center;
-    gap: 10px;
+    gap: var(--space-2);
     margin: var(--space-3) 0;
-    border: 0;
     cursor: var(--cursor-pointer);
     
     p + & {
@@ -657,7 +656,7 @@ button, a.btn {
         }
     }
     & + :is(a.btn, button) {
-        margin-left: 5px;
+        margin-left: var(--space-1);
     }
     & > span {
         color: inherit;
@@ -736,7 +735,7 @@ input, label:has(> f-icon + input:not([type])), textarea, select, f-select {
 input[type='color'] {
     cursor: var(--cursor-pointer) !important;
     padding: 0;
-    height: 60px;
+    height: var(--space-9);
     width: 100%;
     
     &::-webkit-color-swatch {
@@ -753,7 +752,7 @@ input[type='range'] {
     background: transparent;
     cursor: var(--cursor-default);
     padding: 0;
-    margin: 20px 0;
+    margin: var(--space-4) 0;
     border: none;
     cursor: var(--cursor-pointer);
     background: linear-gradient(to right, var(--main-color) var(--pos), var(--tr-main-color) var(--pos)) !important;
@@ -808,7 +807,7 @@ input[type='range'] {
 label {
     &:has(> input:not([type])) {
         display: flex;
-        gap: 12px;
+        gap: var(--space-2);
         padding-left: var(--space-4) !important;
         
         > input:not([type]) {
@@ -824,7 +823,7 @@ label {
         }
     }
     &:has(> input[type='checkbox']) {
-        gap: var(--space-4);
+        gap: var(--space-2);
         user-select: none;
         padding: var(--inner-spacing);
         border-radius: var(--s-bdr-rad);
@@ -842,7 +841,7 @@ label {
             background-color: var(--gray);
         }
         + label {
-            margin-top: 5px;
+            margin-top: var(--space-1);
         }
         > input {
             display: none;
@@ -868,7 +867,7 @@ label {
         }
     }
     &.search > f-icon {
-        width: 20px;
+        width: 18px;
         flex-shrink: 0;
         
         &[icon='xmark']:active {
@@ -947,13 +946,13 @@ table {
         color: var(--title-color);
     }
     :is(th, td) {
-        padding: 7px 20px;
+        padding: var(--space-2) var(--space-4);
         
         > f-icon {
-            width: 27px;
+            width: var(--bn-li-icon-width);
             
             + span {
-                margin-left: 10px;
+                margin-left: var(--space-2);
             }
         }
     }
@@ -1007,7 +1006,7 @@ f-select {
         background-color: var(--gray);
     }
     &:not(:has(ul:active)):active:after {
-        translate: 0 5px;
+        translate: 0 var(--space-1);
     }
 
     > :not(ul) * {
@@ -1021,11 +1020,11 @@ f-select {
         text-overflow: ellipsis;
     }
     > ul {
-        padding: 10px;
+        padding: var(--space-1);
         border-radius: var(--s-bdr-rad);
         position: absolute;
         z-index: 2;
-        top: calc(100% + 12px);
+        top: calc(100% + var(--space-2));
         left: -1px;
         right: -1px;
         background-color: var(--lt-gray);
@@ -1044,7 +1043,7 @@ f-select {
             top: 100%;
         }
         &.bottom {
-            bottom: calc(100% + 12px);
+            bottom: calc(100% + var(--space-2));
             top: unset;
             
             &:not(.active) {
@@ -1054,7 +1053,7 @@ f-select {
         }
 
         > li {
-            padding: 5px 10px;
+            padding: var(--inner-spacing-s);
             border-radius: 6px;
             cursor: var(--cursor-pointer);
             
@@ -1067,7 +1066,7 @@ f-select {
                 background-color: var(--main-color);
             }
             + li {
-                margin-top: 5px;
+                margin-top: var(--space-1);
             }
             > * {
                 color: inherit;
@@ -1095,10 +1094,10 @@ form {
             opacity: .5;
         }
         + * {
-            margin-top: 5px;
+            margin-top: var(--space-1);
             
             &:is(input[type='range']) {
-                margin-top: 10px;
+                margin-top: var(--space-2);
             }
         }
     }
@@ -1476,8 +1475,8 @@ p {
 }
 span {
     &.small-code, &.key {
-        padding: 2px 5px;
-        border-radius: 5px;
+        padding: 2px var(--space-1);
+        border-radius: var(--xs-bdr-rad);
         font-size: var(--mns-ft-sz);
     }
     &.small-code {
@@ -1675,10 +1674,10 @@ preview-code {
 
 #toast {
     position: fixed;
-    right: 10px;
-    top: 10px;
+    right: var(--space-2);
+    top: var(--space-2);
     z-index: 9;
-    width: min(calc(100svw - 20px), 400px);
+    width: min(calc(100svw - var(--space-2) * 2), 400px);
     
     > div.message {
         transition: all .5s ease;
@@ -1686,7 +1685,7 @@ preview-code {
         overflow: hidden;
         
         &:has(+ div.message) {
-            margin-bottom: 10px;
+            margin-bottom: var(--space-2);
         }
     }
 }
@@ -1699,13 +1698,13 @@ f-code {
     white-space: nowrap;
 
     > div:first-child {
-        padding: 5px 5px 5px var(--space-4);
+        padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
     > div:last-child {
-        padding: 0 var(--space-4) ;
+        padding: 0 var(--space-4);
         white-space-collapse: preserve;
         display: grid;
         grid-template-columns: max-content auto;
@@ -1758,7 +1757,7 @@ div.message {
 div.message:before {
     font-family: 'Foricon Beta';
     position: absolute;
-    left: 35px;
+    left: var(--space-6);
     line-height: var(--df-ln-hgt);
     translate: -50%;
 }
@@ -1859,7 +1858,7 @@ div.message.offline:before {
                 border-top: 1px solid var(--gray);
                 padding-top: var(--space-4);
                 display: grid;
-                gap: 10px;
+                gap: var(--space-1);
                 grid-template-columns: repeat(2, 1fr);
                 
                 &:has(a:only-child) {
@@ -1932,16 +1931,16 @@ div.message.offline:before {
                 grid-template-columns: repeat(4, calc(25% - var(--space-7) * .75));
             }
             > span > f-icon {
-                margin-right: 10px;
+                margin-right: var(--space-2);
             }
             > li {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
+                gap: var(--space-2);
                 justify-content: center;
                 text-align: center;
                 cursor: var(--cursor-pointer);
-                padding: 10px;
+                padding: var(--space-2);
                 border-radius: var(--bdr-rad);
                 position: relative;
                 
@@ -1954,7 +1953,7 @@ div.message.offline:before {
                     color: var(--main-color);
                     position: absolute;
                     top: 2px;
-                    right: 5px;
+                    right: var(--space-1);
                 }
                 &:not(.active):before {
                     opacity: 0;
@@ -2019,7 +2018,7 @@ div.message.offline:before {
 .banner {
     text-align: center;
     color: rgb(30, 30, 30);
-    padding: 20px;
+    padding: var(--space-4);
     border-radius: 0 var(--bdr-rad) var(--bdr-rad) 0;
     
     &.blue {
@@ -2033,11 +2032,11 @@ div.message.offline:before {
         background-color: rgb(210, 225, 255);
     }
     > span {
-        margin: 0 0 0 20px;
+        margin: 0 0 0 var(--space-4);
         color: rgb(35, 35, 35);
     }
     > a.btn {
-        margin: 0 0 0 20px;
+        margin: 0 0 0 var(--space-4);
         color: white;
         background: rgb(35, 35, 35);
         
@@ -2103,10 +2102,10 @@ header {
             }
         }
         > a[name='version'] {
-            padding: 0 7px;
+            padding: 0 var(--space-1);
             background-color: var(--main-color);
             color: var(--dk-main-color);
-            border-radius: 7px;
+            border-radius: var(--xs-bdr-rad);
         }
     }
     > ul[name='center'] {
@@ -2174,7 +2173,7 @@ header {
         border-radius: var(--bdr-rad);
         overflow-y: scroll;
         position: absolute;
-        right: 20px;
+        right: var(--space-4);
         top: 50px;
         transition: var(--df-trans), max-height .25s ease-out;
         border: 1px solid var(--gray);
@@ -2274,7 +2273,7 @@ footer {
             padding: var(--space-4) var(--space-11);
             
             > ul > li + li {
-                margin-left: 20px;
+                margin-left: var(--space-4);
             }
         }
     }
@@ -2301,7 +2300,7 @@ footer {
         
         &:is(ul) {
             overflow-y: scroll;
-            padding-left: calc(var(--space-11) - 20px);
+            padding-left: calc(var(--space-11) - var(--space-3));
             
             &::-webkit-scrollbar {
                 display: none;
