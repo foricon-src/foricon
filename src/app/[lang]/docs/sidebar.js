@@ -199,7 +199,7 @@ export default function Sidebar() {
                     pages.map(({ name, path }) => <li
                         key={name}
                         onClick={() => go(`docs${path}`)}
-                        className={pathname.slice(8) == path}
+                        className={pathname.slice(8) == path && 'active'}
                     >{name}</li>)
                 }</ul>
             </div>
