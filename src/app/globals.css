@@ -544,12 +544,12 @@ ul {
 
                     .small > & {
                         &:after {
-                            top: var(--space-1);
-                            bottom: var(--space-1);
+                            top: var(--space-2);
+                            bottom: var(--space-2);
                         }
                         &.active:hover:after {
-                            top: 2px;
-                            bottom: 2px;
+                            top: var(--space-1);
+                            bottom: var(--space-1);
                         }
                     }
                 }
