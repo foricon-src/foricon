@@ -67,7 +67,7 @@
         grid-area: sidebar;
         width: var(--sidebar-width);
         overflow-y: scroll;
-        padding: 0 var(--space-2) var(--space-7) var(--space-7);
+        padding: var(--space-4) var(--space-2) var(--space-7) var(--space-7);
         justify-self: end;
 
         & > div {
