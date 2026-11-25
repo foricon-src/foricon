@@ -15,7 +15,7 @@ export default function Sidebar() {
             pages: [
                 {
                     name: 'Getting Started',
-                    path: '/web/getting-started',
+                    path: '/web',
                 },
             ],
         },
@@ -27,13 +27,17 @@ export default function Sidebar() {
                     path: '/adding-icons',
                 },
                 {
+                    name: 'Icon Names',
+                    path: '/adding-icons/icon-names',
+                },
+                {
                     name: 'CSS Pseudo-elements',
                     path: '/adding-icons/pseudo-elements',
-                },,
+                },
                 {
                     name: 'Unicodes',
                     path: '/adding-icons/unicodes',
-                },,
+                },
                 {
                     name: 'Glyphs',
                     path: '/adding-icons/glyphs',
@@ -58,6 +62,18 @@ export default function Sidebar() {
                 {
                     name: 'Sizing & Scaling',
                     path: '/styling-icons/sizing-scaling',
+                },
+                {
+                    name: 'Stacking Icons',
+                    path: '/styling-icons/stacking',
+                },
+                {
+                    name: 'Layering',
+                    path: '/styling-icons/rotating',
+                },
+                {
+                    name: 'Using in a List',
+                    path: '/styling-icons/list',
                 },
                 {
                     name: 'Duotone Icons',
@@ -147,7 +163,19 @@ export default function Sidebar() {
             pages: [
                 {
                     name: 'Getting Started',
-                    path: '/desktop/getting-started',
+                    path: '/desktop',
+                },
+                {
+                    name: 'Glyphs',
+                    path: '/desktop/glyphs',
+                },
+                {
+                    name: 'SVGs',
+                    path: '/desktop/svgs',
+                },
+                {
+                    name: 'Duotone Icons',
+                    path: '/desktop/duotone',
                 },
             ],
         },
