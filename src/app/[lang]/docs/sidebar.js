@@ -1,15 +1,25 @@
 'use client';
 
 import { useContext } from 'react';
+import { usePathname } from 'next/navigation';
 import { LayoutContext } from './layout-provider';
 import useGo from 'Com/go';
 import cssStyle from './internal-global.module.css';
 
 export default function Sidebar() {
-    let layout = useContext(LayoutContext);
     let go = useGo();
+    let pathname = usePathname();
+    let layout = useContext(LayoutContext);
 
     let groups = [
+        {
+            pages: [
+                {
+                    name: 'Home',
+                    path: '',
+                },
+            ],
+        },
         {
             name: 'Web',
             pages: [
@@ -184,9 +194,13 @@ export default function Sidebar() {
     return <div className={cssStyle.sidebar + (layout.sidebar.isOpened ? ' active' : '')}>{
         groups.map(({ name, pages }) => {
             return <div key={name}>
-                <h6>{name}</h6>
+                {name && <h6>{name}</h6>}
                 <ul className='btn-list small vertical line-active'>{
-                    pages.map(({ name, path }) => <li key={name} onClick={() => go(`docs${path}`)}>{name}</li>)
+                    pages.map(({ name, path }) => <li
+                        key={name}
+                        onClick={() => go(`docs${path}`)}
+                        className={pathname.slice(8) == path}
+                    >{name}</li>)
                 }</ul>
             </div>
         })
