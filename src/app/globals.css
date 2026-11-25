@@ -503,6 +503,17 @@ ul {
                     &:is(.tooltip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
                         left: calc(100% - var(--space-2) / 2);
                     }
+
+                    .small > & {
+                        &:after {
+                            left: var(--space-2);
+                            right: var(--space-2);
+                        }
+                        &.active:hover:after {
+                            left: var(--space-1);
+                            right: var(--space-1);
+                        }
+                    }
                 }
                 .vertical > & {
                     &:after {
@@ -529,6 +540,17 @@ ul {
                     }
                     &:is(.tooltip, :has(> :is(f-icon, i):only-child)):has(~ .active):after {
                         top: calc(100% - var(--space-2) / 2);
+                    }
+
+                    .small > & {
+                        &:after {
+                            top: var(--space-1);
+                            bottom: var(--space-1);
+                        }
+                        &.active:hover:after {
+                            top: 2px;
+                            bottom: 2px;
+                        }
                     }
                 }
             }
