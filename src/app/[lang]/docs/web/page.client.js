@@ -13,9 +13,9 @@ export default function PageClient() {
         <p>Ready to bring your designs to life with Foricon? Getting started is easy. Follow these simple steps to add our icons to your project and make them truly yours.</p>
         <h3>1. Import to Your Project</h3>
         <p>The Foricon Package is the quickest way to bring our icon collection into your project. You can find your import code on the <Link href='/account/package'>Package</Link> page in your account.</p>
-        <p>Don't have an account yet? No worries! <Link href='/login'>Log in</Link> or <Link href='/signup'>create a free account</Link> to get started.</p>
+        <p>Don&apos;t have an account yet? No worries! <Link href='/login'>Log in</Link> or <Link href='/signup'>create a free account</Link> to get started.</p>
         <h3>2. Adding Icons</h3>
-        <p>Browse our <Link href='/search'>icon collection</Link> and pick the ones that fit your design. Once you've found your favorites, simply use the <span className='small-code'>&lt;f-icon&gt;</span> tag to add them to your project.</p>
+        <p>Browse our <Link href='/search'>icon collection</Link> and pick the ones that fit your design. Once you&apos;ve found your favorites, simply use the <span className='small-code'>&lt;f-icon&gt;</span> tag to add them to your project.</p>
         <Code>{`<!--Regular Solid-->
 <f-icon icon='book'></f-icon>
 
