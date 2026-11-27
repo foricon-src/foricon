@@ -1,7 +1,7 @@
 'use client';
 
 import useGo from 'Com/go';
-import cssStyle from './page.module.css';
+import cssStyle from './internal-global.module.css';
 
 export default function PageClient() {
     let go = useGo();
@@ -9,7 +9,7 @@ export default function PageClient() {
     return <>
         <h1>Welcome to Foricon Docs!</h1>
         <p>We have set up a whole set of guides for you. Learn how add, modify and tweak our icons however you like.</p>
-        <ul className={cssStyle.shortcut}>
+        <ul className={cssStyle.items}>
             <li onClick={() => go('docs/web/getting-started')}>
                 <h6>Getting Started on Web</h6>
                 <p>New to Foricon? Or just need a refresher? Here&apos;s some tips for you to get started.</p>

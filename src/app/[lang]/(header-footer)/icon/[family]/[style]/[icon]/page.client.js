@@ -120,11 +120,11 @@ export default function PageClient({ params }) {
                             }[lang]
                         }</span>
                     </li>
-                    <li className={`tooltip top${user.doc.savedIcons.some(i => i == icon) ? ' active' : ''}`}>
+                    <li className={`tooltip top${user?.doc.savedIcons.some(i => i == icon) ? ' active' : ''}`} inert={!user}>
                         <f-icon icon='bookmark'/>
                         <span>{
                             (
-                                user.doc.savedIcons.some(i => i == icon) ?
+                                user?.doc.savedIcons.some(i => i == icon) ?
                                 {
                                     en: 'Saved',
                                     vi: 'Đã lưu',

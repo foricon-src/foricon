@@ -100,3 +100,30 @@
         grid-area: savedPanel;
     }
 }
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+    margin-top: var(--space-7);
+
+    & > li {
+        border-radius: var(--bdr-rad);
+        border: 1px solid var(--dk-gray);
+        padding: var(--space-3) var(--space-4);
+        cursor: var(--cursor-pointer);
+
+        &:hover {
+            background-color: var(--lt-gray);
+        }
+        &:has(> :only-child) {
+            padding: var(--space-6) var(--space-7);
+        }
+        & > :first-child {
+            margin-top: 0;
+        }
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
