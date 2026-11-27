@@ -40,7 +40,7 @@ export default function Header() {
             <li
                 className='tooltip bottom'
             >
-                <f-icon icon='translate'/>
+                <f-icon icon='translate' i-s='outline'/>
                 <span>Languages</span>
             </li>
             <li

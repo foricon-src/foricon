@@ -27,6 +27,14 @@ export default function Sidebar() {
                     name: 'Getting Started',
                     path: '/web',
                 },
+                {
+                    name: 'Configurating Package',
+                    path: '/web/config',
+                },
+                {
+                    name: 'Host Yourself',
+                    path: '/web/host',
+                },
             ],
         },
         {
