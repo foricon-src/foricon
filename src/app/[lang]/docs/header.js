@@ -38,6 +38,19 @@ export default function Header() {
                 <span>Home</span>
             </li>
             <li
+                className='tooltip bottom'
+            >
+                <f-icon icon='translate'/>
+                <span>Languages</span>
+            </li>
+            <li
+                className='tooltip bottom'
+                onClick={() => go('account')}
+            >
+                <f-icon icon='user'/>
+                <span>My account</span>
+            </li>
+            <li
                 className={`line tooltip bottom${notePanel.isOpened ? ' active' : ''}`}
                 onClick={() => notePanel.func(!notePanel.isOpened)}
             >

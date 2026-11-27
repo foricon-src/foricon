@@ -16,7 +16,7 @@ export default function PageClient() {
             </li>
             <li onClick={() => go('docs/desktop/getting-started')}>
                 <h6>Getting Started on Desktop</h6>
-                <p>Bring Foricon into your favorite desktop design tools. Add icons to your designs, documents, and presentations with ease.</p>
+                <p>Bring Foricon into your favorite desktop design tools. Add icons to your designs, documents, and slides with ease.</p>
             </li>
             <li onClick={() => go('docs/styling-icons')}>
                 <h6>Cuztomizing Icons</h6>
