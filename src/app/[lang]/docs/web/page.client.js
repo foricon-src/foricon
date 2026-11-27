@@ -1,8 +1,8 @@
 'use client';
 
-import useGo from 'Com/go';
 import Link from 'next/link';
 import Code from 'Com/f-code';
+import useGo from 'Com/go';
 import cssStyle from '../internal-global.module.css';
 
 export default function PageClient() {
@@ -10,11 +10,12 @@ export default function PageClient() {
 
     return <>
         <h1>Getting Started</h1>
-        <p>Let our icons appear in your project and elevate its look. We have prepared for you guides to do so, in a quick and efficient way.</p>
+        <p>Ready to bring your designs to life with Foricon? Getting started is easy. Follow these simple steps to add our icons to your project and make them truly yours.</p>
         <h3>1. Import to Your Project</h3>
-        <p>Using our import code (aka Foricon Package) is the fastest and easiest way to introduce our icons to your project. You can find it in the <Link href='/account/package'>Package</Link> page of Account - obviously you need an account for that. <Link href='/login'>Log in</Link> or create a brand new account <Link href='/signup'>here</Link>.</p>
+        <p>The Foricon Package is the quickest way to bring our icon collection into your project. You can find your import code on the <Link href='/account/package'>Package</Link> page in your account.</p>
+        <p>Don't have an account yet? No worries! <Link href='/login'>Log in</Link> or <Link href='/signup'>create a free account</Link> to get started.</p>
         <h3>2. Adding Icons</h3>
-        <p>Choose any icons from our <Link href='/search'>collection</Link>, and use <span className='small-code'>&lt;f-icon&gt;</span> tag to add the icon.</p>
+        <p>Browse our <Link href='/search'>icon collection</Link> and pick the ones that fit your design. Once you've found your favorites, simply use the <span className='small-code'>&lt;f-icon&gt;</span> tag to add them to your project.</p>
         <Code>{`<!--Regular Solid-->
 <f-icon icon='book'></f-icon>
 
@@ -26,28 +27,28 @@ export default function PageClient() {
 
 <!--Duotone Outline-->
 <f-icon icon='book' i-s='duotone/outline'></f-icon>`}</Code>
-        <h3>3. Further Customization</h3>
-        <p>Now your design has been more lively thanks to the newly-added icons, let&apos;s now give it some distinct styles.</p>
+        <h3>3. Make Them Your Own</h3>
+        <p>Your icons are in place. Now comes the fun part! Fine-tune their appearance, add a little motion, or combine different styles to make them feel right at home in your design.</p>
         <ul className={cssStyle.items}>
-            <li>
+            <li onClick={() => go('docs/styling-icons/animating')}>
                 <h6>Animating</h6>
             </li>
-            <li>
+            <li onClick={() => go('docs/styling-icons/rotating')}>
                 <h6>Rotating</h6>
             </li>
-            <li>
+            <li onClick={() => go('docs/styling-icons/sizing-scaling')}>
                 <h6>Sizing & Scaling</h6>
             </li>
-            <li>
+            <li onClick={() => go('docs/styling-icons/stacking')}>
                 <h6>Stacking Icons</h6>
             </li>
-            <li>
+            <li onClick={() => go('docs/styling-icons/layering')}>
                 <h6>Layering</h6>
             </li>
-            <li>
+            <li onClick={() => go('docs/styling-icons/list')}>
                 <h6>Using in a List</h6>
             </li>
-            <li style={{ gridColumnEnd: 'span 2' }}>
+            <li onClick={() => go('docs/styling-icons/duotone')} style={{ gridColumnEnd: 'span 2' }}>
                 <h6>Duotone Icons</h6>
             </li>
         </ul>
