@@ -11,10 +11,10 @@ export default function PageClient() {
     return <>
         <h1>Getting Started</h1>
         <p>Let our icons appear in your project and elevate its look. We have prepared for you guides to do so, in a quick and efficient way.</p>
-        <h3>I. Import to Your Project</h3>
-        <p>Using our import code (aka Foricon Package) is the fastest and easiest way to introduce our icons to your project. You can find it in the <Link href='/account/package'>Package</Link> page of Account - obviously you need an account for that. <Link href='/login'>Log in</Link> or create a brand new account <Link href='/signup'>here</Link></p>
-        <h3>II. Adding Icons</h3>
-        <p>Choose any icons from our <Link href='/search'>collection</Link>, and use <span className='small-code'>&lt;f-icon&gt;</span> tag to add the icon</p>
+        <h3>1. Import to Your Project</h3>
+        <p>Using our import code (aka Foricon Package) is the fastest and easiest way to introduce our icons to your project. You can find it in the <Link href='/account/package'>Package</Link> page of Account - obviously you need an account for that. <Link href='/login'>Log in</Link> or create a brand new account <Link href='/signup'>here</Link>.</p>
+        <h3>2. Adding Icons</h3>
+        <p>Choose any icons from our <Link href='/search'>collection</Link>, and use <span className='small-code'>&lt;f-icon&gt;</span> tag to add the icon.</p>
         <Code>{`<!--Regular Solid-->
 <f-icon icon='book'></f-icon>
 
@@ -26,7 +26,7 @@ export default function PageClient() {
 
 <!--Duotone Outline-->
 <f-icon icon='book' i-s='duotone/outline'></f-icon>`}</Code>
-        <h3>III. Further Customization</h3>
+        <h3>3. Further Customization</h3>
         <p>Now your design has been more lively thanks to the newly-added icons, let&apos;s now give it some distinct styles.</p>
         <ul className={cssStyle.items}>
             <li>

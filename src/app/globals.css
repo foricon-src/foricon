@@ -1718,7 +1718,7 @@ f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
     display: block;
-    margin: var(--space-7) 0;
+    margin: var(--space-6) 0;
     white-space: nowrap;
 
     > div:first-child {

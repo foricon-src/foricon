@@ -105,7 +105,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-2);
-    margin-top: var(--space-7);
+    margin-top: var(--space-6);
 
     & > li {
         border-radius: var(--bdr-rad);
@@ -117,7 +117,7 @@
             background-color: var(--lt-gray);
         }
         &:has(> :only-child) {
-            padding: var(--space-6) var(--space-7);
+            padding: var(--space-5) var(--space-6);
         }
         & > :first-child {
             margin-top: 0;
