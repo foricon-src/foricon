@@ -4,13 +4,15 @@ import { useContext } from 'react';
 import Img from 'Com/img';
 import IconInput from 'Com/iconinput';
 import useGo from 'Com/go';
-import logo from 'Pub/foricon-f-logo.png';
+import { ThemeContext } from 'Com/theme';
 import { LayoutContext } from './layout-provider';
+import logo from 'Pub/foricon-f-logo.png';
 import cssStyle from './internal-global.module.css';
 
 export default function Header() {
     let go = useGo();
     let { sidebar, notePanel, savedPanel } = useContext(LayoutContext);
+    let { isDark, setIsDark } = useContext(ThemeContext);
 
     return <div className={cssStyle.header}>
         <div>
@@ -49,6 +51,13 @@ export default function Header() {
             >
                 <f-icon icon='user'/>
                 <span>My account</span>
+            </li>
+            <li
+                className='tooltip bottom'
+                onClick={() => setIsDark(!isDark)}
+            >
+                <f-icon icon='circle-half-stroke'/>
+                <span>Toggle dark mode</span>
             </li>
             <li
                 className={`line tooltip bottom${notePanel.isOpened ? ' active' : ''}`}
