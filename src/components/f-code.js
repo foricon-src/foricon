@@ -11,9 +11,10 @@ import Join from './join';
  *
  * @param {Object} props
  * @param {'HTML' | 'CSS' | 'JavaScript'} [props.codeLang] - Language of the code
+ * @param {Boolean} [props.preview] - Whether the preview of the code is showed
  * @returns {JSX.Element}
  */
-export default function Code({ children, codeLang = 'HTML', className, ...rest }) {
+export default function Code({ children, codeLang = 'HTML', preview, className, ...rest }) {
     let { user } = useContext(UserContext);
 
     let [ indent, setIndent ] = useState(4);
@@ -80,66 +81,79 @@ export default function Code({ children, codeLang = 'HTML', className, ...rest }
         return;
     }
 
-    return <f-code className={Join(' ', expanded && 'active', className)} {...rest}>
-        <div>
-            <span>{codeLang}</span>
-            <ul className='btn-list small'>
-                <li className='tooltip top' onClick={() => setExpanded(!expanded)}>
-                    <f-icon icon='chevron-up' i-s='outline' f-rotate={!expanded && '180'}/>
-                    <span>{
-                        {
-                            en: [ 'Expand', 'Collapse' ],
-                            vi: [ 'Mở rộng', 'Thu gọn' ],
-                            fr: [ 'Développer', 'Effondrement' ],
-                            it: [ 'Espandere', 'Crollo' ],
-                            ko: [ '확장하다', '무너지다' ],
-                            ja: [ '拡大する', '崩壊' ],
-                            de: [ 'Expandieren', 'Zusammenbruch' ],
-                            nl: [ 'Uitbreiden', 'Instorten' ],
-                            da: [ 'Udvide', 'Bryde sammen' ],
-                            pt: [ 'Expandir', 'Colapso' ],
-                            es: [ 'Expandir', 'Colapsar' ],
-                            ru: [ 'Расширять', 'Крах' ],
-                        }[lang][expanded ? 1 : 0]
-                    }</span>
-                </li>
-                <li onClick={async () => {
-                    await navigator.clipboard.writeText(children);
-                    notify('success', {
-                        en: 'Copied to clipboard',
-                        vi: 'Đã sao chép vào bộ nhớ tạm',
-                        fr: 'Copié dans le presse-papiers',
-                        it: 'Copiato negli appunti',
-                        ko: '클립보드에 복사됨',
-                        ja: 'クリップボードにコピーされました',
-                        de: 'In die Zwischenablage kopiert',
-                        nl: 'Gekopieerd naar het klembord',
-                        da: 'Kopieret til udklipsholderen',
-                        pt: 'Copiado para a área de transferência',
-                        es: 'Copiado al portapapeles',
-                        ru: 'Скопировано в буфер обмена',
-                    }[lang])
-                }}>
-                    <f-icon icon='clone'/>
-                    <span>{
-                        {
-                            en: 'Copy',
-                            vi: 'Sao chép',
-                            fr: 'Copie',
-                            it: 'Copia',
-                            ko: '복사',
-                            ja: 'コピー',
-                            de: 'Kopie',
-                            nl: 'Kopiëren',
-                            da: 'Kopi',
-                            pt: 'Cópia',
-                            es: 'Copiar',
-                            ru: 'Копировать',
-                        }[lang]
-                    }</span>
-                </li>
-            </ul>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: html }}/>
-    </f-code>
+    return <>
+        {preview && <iframe srcDoc={
+            `
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <script src='https://foricon.vercel.app/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02'></script>
+                </head>
+                <body>${children}</body>
+            </html>
+            `
+        }></iframe>}
+        <f-code className={Join(' ', expanded && 'active', className)} {...rest}>
+            <div>
+                <span>{codeLang}</span>
+                <ul className='btn-list small'>
+                    <li className='tooltip top' onClick={() => setExpanded(!expanded)}>
+                        <f-icon icon='chevron-up' i-s='outline' f-rotate={!expanded && '180'}/>
+                        <span>{
+                            {
+                                en: [ 'Expand', 'Collapse' ],
+                                vi: [ 'Mở rộng', 'Thu gọn' ],
+                                fr: [ 'Développer', 'Effondrement' ],
+                                it: [ 'Espandere', 'Crollo' ],
+                                ko: [ '확장하다', '무너지다' ],
+                                ja: [ '拡大する', '崩壊' ],
+                                de: [ 'Expandieren', 'Zusammenbruch' ],
+                                nl: [ 'Uitbreiden', 'Instorten' ],
+                                da: [ 'Udvide', 'Bryde sammen' ],
+                                pt: [ 'Expandir', 'Colapso' ],
+                                es: [ 'Expandir', 'Colapsar' ],
+                                ru: [ 'Расширять', 'Крах' ],
+                            }[lang][expanded ? 1 : 0]
+                        }</span>
+                    </li>
+                    <li onClick={async () => {
+                        await navigator.clipboard.writeText(children);
+                        notify('success', {
+                            en: 'Copied to clipboard',
+                            vi: 'Đã sao chép vào bộ nhớ tạm',
+                            fr: 'Copié dans le presse-papiers',
+                            it: 'Copiato negli appunti',
+                            ko: '클립보드에 복사됨',
+                            ja: 'クリップボードにコピーされました',
+                            de: 'In die Zwischenablage kopiert',
+                            nl: 'Gekopieerd naar het klembord',
+                            da: 'Kopieret til udklipsholderen',
+                            pt: 'Copiado para a área de transferência',
+                            es: 'Copiado al portapapeles',
+                            ru: 'Скопировано в буфер обмена',
+                        }[lang])
+                    }}>
+                        <f-icon icon='clone'/>
+                        <span>{
+                            {
+                                en: 'Copy',
+                                vi: 'Sao chép',
+                                fr: 'Copie',
+                                it: 'Copia',
+                                ko: '복사',
+                                ja: 'コピー',
+                                de: 'Kopie',
+                                nl: 'Kopiëren',
+                                da: 'Kopi',
+                                pt: 'Cópia',
+                                es: 'Copiar',
+                                ru: 'Копировать',
+                            }[lang]
+                        }</span>
+                    </li>
+                </ul>
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: html }}/>
+        </f-code>
+    </>
 }
