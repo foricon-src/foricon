@@ -11,7 +11,7 @@ import Join from './join';
  *
  * @param {Object} props
  * @param {'HTML' | 'CSS' | 'JavaScript'} [props.codeLang] - Language of the code
- * @param {Boolean} [props.preview] - Whether the preview of the code is showed
+ * @param {JSX.Element} [props.preview] - The preview of the code
  * @returns {JSX.Element}
  */
 export default function Code({ children, codeLang = 'HTML', preview, className, ...rest }) {
@@ -82,18 +82,8 @@ export default function Code({ children, codeLang = 'HTML', preview, className, 
     }
 
     return <>
-        {preview && codeLang == 'HTML' && <iframe srcDoc={
-            `
-            <!DOCTYPE html>
-            <html>
-                <head>
-                    <script src='https://foricon.vercel.app/api/import/ud4lP1mhq4XvynG7qUlcsAxi0Q02'></script>
-                </head>
-                <body>${children}</body>
-            </html>
-            `
-        }></iframe>}
-        <f-code className={Join(' ', expanded && 'active', className)} {...rest}>
+        {preview && codeLang == 'HTML' && <f-code-preview translate='no'>{preview}</f-code-preview>}
+        <f-code translate='no' className={Join(' ', expanded && 'active', className)} {...rest}>
             <div>
                 <span>{codeLang}</span>
                 <ul className='btn-list small'>
