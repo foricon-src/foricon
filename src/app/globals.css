@@ -7,7 +7,7 @@
     /*Border radius*/
     --l-bdr-rad: var(--space-4);
     --bdr-rad: var(--space-3);
-    --s-bdr-rad: var(--space-1);
+    --s-bdr-rad: var(--space-2);
     --xs-bdr-rad: var(--space-1);
     
     /*Spacing*/
@@ -1732,7 +1732,7 @@ f-code-preview, f-code {
     }
 }
 f-code-preview {
-    padding: var(--space-8);
+    padding: var(--space-6);
 }
 f-code {
     white-space: nowrap;
