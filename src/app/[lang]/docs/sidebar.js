@@ -15,13 +15,13 @@ export default function Sidebar() {
         {
             pages: [
                 {
-                    name: 'Home',
+                    name: 'Welcome',
                     path: '',
                 },
             ],
         },
         {
-            name: 'Web',
+            name: 'Using on Web',
             pages: [
                 {
                     name: 'Getting Started',
@@ -45,19 +45,19 @@ export default function Sidebar() {
                     path: '/adding-icons',
                 },
                 {
-                    name: 'Icon Names',
+                    name: 'Using Icon Names',
                     path: '/adding-icons/icon-names',
                 },
                 {
-                    name: 'CSS Pseudo-elements',
+                    name: 'Using CSS Pseudo-elements',
                     path: '/adding-icons/pseudo-elements',
                 },
                 {
-                    name: 'Unicodes',
+                    name: 'Using Unicodes',
                     path: '/adding-icons/unicodes',
                 },
                 {
-                    name: 'Glyphs',
+                    name: 'Using Glyphs',
                     path: '/adding-icons/glyphs',
                 },
             ],
@@ -177,18 +177,18 @@ export default function Sidebar() {
             ],
         },
         {
-            name: 'Desktop',
+            name: 'Using on Desktop',
             pages: [
                 {
                     name: 'Getting Started',
                     path: '/desktop',
                 },
                 {
-                    name: 'Glyphs',
+                    name: 'Using Glyphs',
                     path: '/desktop/glyphs',
                 },
                 {
-                    name: 'SVGs',
+                    name: 'Using SVGs',
                     path: '/desktop/svgs',
                 },
                 {
