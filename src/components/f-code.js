@@ -82,7 +82,7 @@ export default function Code({ children, codeLang = 'HTML', preview, className, 
     }
 
     return <>
-        {preview && <iframe srcDoc={
+        {preview && codeLang == 'HTML' && <iframe srcDoc={
             `
             <!DOCTYPE html>
             <html>

@@ -16,7 +16,7 @@ export default function PageClient() {
         <p>New to Foricon? <Link href='/signup'>Create an account</Link> to get started, or <Link href='/login'>log in</Link> if you already have one.</p>
         <h3>2. Adding Icons</h3>
         <p>Browse our <Link href='/search'>icon collection</Link> and pick the ones that fit your design. Once you&apos;ve found your favorites, simply use the <span className='small-code'>&lt;f-icon&gt;</span> tag to add them to your project.</p>
-        <Code>{`<!--Regular Solid-->
+        <Code preview>{`<!--Regular Solid-->
 <f-icon icon='book'></f-icon>
 
 <!--Regular Outline-->
