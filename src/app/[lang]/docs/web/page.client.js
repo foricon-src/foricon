@@ -18,10 +18,10 @@ export default function PageClient() {
         <p>Browse our <Link href='/search'>icon collection</Link> and pick the ones that fit your design. Once you&apos;ve found your favorites, simply use the <span className='small-code'>&lt;f-icon&gt;</span> tag to add them to your project.</p>
         <Code preview={
             <>
-                <f-icon icon='book'></f-icon>
-                <f-icon icon='book' i-s='outline'></f-icon>
-                <f-icon icon='book' i-s='duotone/solid'></f-icon>
-                <f-icon icon='book' i-s='duotone/outline'></f-icon>
+                <f-icon icon='book' size='larger'></f-icon>
+                <f-icon icon='book' i-s='outline' size='larger'></f-icon>
+                <f-icon icon='book' i-s='duotone/solid' size='larger'></f-icon>
+                <f-icon icon='book' i-s='duotone/outline' size='larger'></f-icon>
             </>
         }>{`<!--Regular Solid-->
 <f-icon icon='book'></f-icon>

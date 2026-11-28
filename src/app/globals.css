@@ -1714,7 +1714,7 @@ preview-code {
     }
 }
 
-f-code-preivew, f-code {
+f-code-preview, f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
     display: block;
