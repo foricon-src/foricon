@@ -1714,11 +1714,23 @@ preview-code {
     }
 }
 
-f-code {
+f-code-preivew, f-code {
     border-radius: var(--bdr-rad);
     border: 1px solid var(--dk-gray);
     display: block;
     margin: var(--space-6) 0;
+    
+    &:has(+ f-code) {
+        margin-bottom: 0;
+    }
+    & + f-code {
+        margin-top: var(--space-3);
+    }
+}
+f-code-preview {
+    padding: var(--space-8);
+}
+f-code {
     white-space: nowrap;
 
     > div:first-child {
