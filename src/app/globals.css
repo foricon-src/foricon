@@ -5,10 +5,10 @@
     --cursor-text: text;
     
     /*Border radius*/
-    --l-bdr-rad: 20px;
-    --bdr-rad: 15px;
-    --s-bdr-rad: 10px;
-    --xs-bdr-rad: 5px;
+    --l-bdr-rad: var(--space-4);
+    --bdr-rad: var(--space-3);
+    --s-bdr-rad: var(--space-1);
+    --xs-bdr-rad: var(--space-1);
     
     /*Spacing*/
     --space-11: 80px;
@@ -1722,9 +1722,13 @@ f-code-preview, f-code {
     
     &:has(+ f-code) {
         margin-bottom: 0;
+        border-bottom-left-radius: var(--xs-bdr-rad);
+        border-bottom-right-radius: var(--xs-bdr-rad);
     }
     & + f-code {
-        margin-top: var(--space-3);
+        margin-top: var(--space-1);
+        border-top-left-radius: var(--xs-bdr-rad);
+        border-top-right-radius: var(--xs-bdr-rad);
     }
 }
 f-code-preview {
